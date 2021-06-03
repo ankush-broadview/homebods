@@ -1,0 +1,26 @@
+[27-May-2021 04:42:21 America/Boise] PHP Fatal error:  Cannot use [] for reading in /home1/homebods/public_html/booking/User.php on line 236
+[27-May-2021 04:42:28 America/Boise] PHP Fatal error:  Cannot use [] for reading in /home1/homebods/public_html/booking/User.php on line 236
+[27-May-2021 06:36:10 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 in /home1/homebods/public_html/booking/User.php:220
+Stack trace:
+#0 /home1/homebods/public_html/booking/User.php(220): PDO->query('SELECT uuid, co...')
+#1 /home1/homebods/public_html/booking/process.php(93): User->getUsers()
+#2 {main}
+  thrown in /home1/homebods/public_html/booking/User.php on line 220
+[27-May-2021 06:43:46 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 in /home1/homebods/public_html/booking/User.php:220
+Stack trace:
+#0 /home1/homebods/public_html/booking/User.php(220): PDO->query('SELECT uuid, co...')
+#1 /home1/homebods/public_html/booking/process.php(93): User->getUsers()
+#2 {main}
+  thrown in /home1/homebods/public_html/booking/User.php on line 220
+[02-Jun-2021 05:44:12 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 in /home1/homebods/public_html/booking/User.php:200
+Stack trace:
+#0 /home1/homebods/public_html/booking/User.php(200): PDO->query('SELECT uuid, fu...')
+#1 /home1/homebods/public_html/booking/process.php(93): User->getUsers()
+#2 {main}
+  thrown in /home1/homebods/public_html/booking/User.php on line 200
+[02-Jun-2021 05:47:02 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 in /home1/homebods/public_html/booking/User.php:200
+Stack trace:
+#0 /home1/homebods/public_html/booking/User.php(200): PDO->query('SELECT uuid, fu...')
+#1 /home1/homebods/public_html/booking/process.php(93): User->getUsers()
+#2 {main}
+  thrown in /home1/homebods/public_html/booking/User.php on line 200
