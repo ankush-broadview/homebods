@@ -3214,11 +3214,15 @@ jQuery(document).on("click",".provider_select",function(){
       }else{
       	var cart_sub_total = jQuery(".cart_sub_total").html();
       }
-	  
+	  jQuery(".cart_tax").html(res.tax_value);
       var cart_tax = jQuery(".cart_tax").html();
       var cart_tax_val = cart_tax.replace(currency_symbol, "");
       var sub_total = parseInt(cart_sub_total_val);
-      var cart_total = parseInt(cart_tax_val)+parseInt(sub_total);
+	  if(cart_tax){
+		  var cart_total = parseInt(cart_tax_val)+parseInt(sub_total);
+	  }else{
+		  var cart_total = parseInt(sub_total);
+	  }
 	  
       jQuery(".cart_sub_total").html(sub_total.toFixed(price_format_decimal_places));
       jQuery(".cart_total").html(price_format_with_symbol(cart_total));
@@ -6498,10 +6502,10 @@ jQuery(document).on("click touchstart","#apply_coupon",function(){
 
         url: site_url+"front/firststep.php",
 
-        data : { "coupon_code" : coupon_code, "frequently_discount_id" : frequently_discount_id, "coupon_check" : 1 },
+        data : { "subtotal" : subtotal, "coupon_code" : coupon_code, "frequently_discount_id" : frequently_discount_id, "coupon_check" : 1 },
 
         success: function(res){
-
+		
           jQuery(".ct-loading-main").hide();
 
           var cart_session_data=jQuery.parseJSON(res);
@@ -6531,6 +6535,8 @@ jQuery(document).on("click touchstart","#apply_coupon",function(){
             jQuery(".coupon_display").show();
 
             jQuery(".partial_amount").html(cart_session_data.partial_amount);
+			
+            jQuery("#display_code").html(coupon_code);
 
             jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
@@ -6577,7 +6583,9 @@ jQuery(document).on("click touchstart",".reverse_coupon",function(){
   var site_url=siteurlObj.site_url;
 
   var coupon_reverse = jQuery("#display_code").text();
-
+  
+  var subtotal=jQuery(".cart_sub_total").text();
+  
   var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
   jQuery.ajax({
@@ -6586,8 +6594,7 @@ jQuery(document).on("click touchstart",".reverse_coupon",function(){
 
     url: site_url+"front/firststep.php",
 
-    data : { "coupon_reverse" : coupon_reverse, "frequently_discount_id" : frequently_discount_id, "coupon_reversed" : 1 },
-
+    data : { "subtotal" : subtotal, "coupon_reverse" : coupon_reverse, "frequently_discount_id" : frequently_discount_id, "coupon_reversed" : 1 },
     success: function(res){
 
       jQuery(".ct-loading-main").hide();

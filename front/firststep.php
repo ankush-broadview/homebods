@@ -898,12 +898,12 @@ if (isset($_POST['add_to_cart'])){
 
 elseif (isset($_POST['coupon_check'])){
 	$jsonn_array = array();
-	$_SESSION['ct_cart']['method'] = array_values($_SESSION['ct_cart']['method']);
+	/* $_SESSION['ct_cart']['method'] = array_values($_SESSION['ct_cart']['method']);
 	$c_rates = 0;
 	for ($i = 0; $i < (count((array)$_SESSION['ct_cart']['method'])); $i++){
 		$c_rates = ($c_rates + $_SESSION['ct_cart']['method'][$i]['s_m_rate']);
-	}
-
+	} */
+    $c_rates = $_POST['subtotal'];
 	$frequently_discount->id = $_POST['frequently_discount_id'];
 	$freq_dis_data = $frequently_discount->readone();
 	if ($freq_dis_data){
@@ -1001,10 +1001,10 @@ elseif (isset($_POST['coupon_reversed'])){
 	$result = $coupon->checkcode();
 	if ($result['coupon_used'] >= 0){
 		$_SESSION['ct_cart']['method'] = array_values($_SESSION['ct_cart']['method']);
-		$c_rates = 0;
-		for ($i = 0; $i < (count((array)$_SESSION['ct_cart']['method'])); $i++){
+		$c_rates = $_POST['subtotal'];
+		/* for ($i = 0; $i < (count((array)$_SESSION['ct_cart']['method'])); $i++){
 			$c_rates = ($c_rates + $_SESSION['ct_cart']['method'][$i]['s_m_rate']);
-		}
+		} */
 
 		if ($freq_dis_data){
 			if ($freq_dis_data['d_type'] == 'F'){
@@ -1289,7 +1289,7 @@ elseif (isset($_POST['get_staff_sess'])){
 	
 	$_SESSION['staff_id_cal'] = $_POST['staff_id'];
 	$staff_detail['new_staff'] = $objadmin->get_search_staff_detail_byid($_POST['staff_id']);
-
+    $staff_detail['tax_value'] = $settings->get_option('ct_tax_vat_value');
 	$staff_detail['rate_type'] = $_SESSION['rate_type'];
 	echo json_encode($staff_detail);
 }		

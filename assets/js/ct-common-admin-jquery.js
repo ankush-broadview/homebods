@@ -8504,7 +8504,7 @@ jQuery(document).on("click", "#promo_code", function () {
   jQuery(".ct-loading-main").show();
 
   var datastring = { coupon_code: coupon_code, coupon_type: coupon_type, value: value, limit: limit, expiry_date: expiry_date, action: "add_promo_code" };
-
+  
   jQuery.ajax({
 
     type: "POST",
@@ -8514,7 +8514,6 @@ jQuery(document).on("click", "#promo_code", function () {
     data: datastring,
 
     success: function (response) {
-
       if(parseInt(response) == 1){
 
         jQuery(".mainheader_message_fail").show();
@@ -8618,7 +8617,7 @@ jQuery(document).on("click", ".mybtnupdatepromocode", function () {
   jQuery(".ct-loading-main").show();
 
   var datastring = { recordid: id, edit_coupon_code: edit_coupon_code, edit_coupon_type: edit_coupon_type, edit_value: edit_value, edit_limit: edit_limit, edit_expiry_date: edit_expiry_date, action: "edit_promo_code" };
-
+  
   jQuery.ajax({
 
     type: "POST",
@@ -9073,7 +9072,7 @@ jQuery(document).on("click", "#logout", function () {
 
       if(user=="user"){
 
-        window.location=site_url;
+        window.location=site_url+"admin/";
 
       } else{
 

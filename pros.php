@@ -131,9 +131,9 @@
            		</select>
            	</label> 
 			      <label>
-              <span>Trainer For</span>
+              <span>Services</span>
               <!-- <select name="trainer_type" id="trainer_type" class="staff_image select-imag-set"> -->
-              <select class="selectpicker mb-10 w-100 trainer-select" name="trainer_type" id="trainer_type" multiple data-size="10" style="display: none;">
+              <select class="selectpicker mb-10 w-100 trainer-select select-imag-set bg-trasprent" name="trainer_type" id="trainer_type" multiple data-size="10" style="display: none;">
                 <!-- <option value="">---Choose Trainer Type---</option> -->
                 <option value="" disabled>Choose Trainer Type</option>
                 <!-- <option value="general">Physical Training/General Fitness</option>
@@ -151,6 +151,11 @@
   			    <label>
               <span>Standard Rate</span>
               <input type="text" placeholder="" name="custom_rate" id="custom_rate" />
+            </label>
+			</label>
+  			    <label>
+              <span>Single Customer Rate</span>
+              <input type="text" placeholder="" name="single_custom_rate" id="single_custom_rate" />
             </label>
            	<label class="w-100 image-upload-main">
            		<span>Photo Upload</span>

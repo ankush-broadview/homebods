@@ -170,7 +170,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	$allData = $objadmininfo->readall_staff();
   while($value = mysqli_fetch_array($allData)){
   
-    if($value['pro_user_id'] == $_POST['pro_user_id']){
+    if(strcasecmp($value['pro_user_id'], $_POST['pro_user_id']) == 0){
       echo 0;
       die();
     }
@@ -178,10 +178,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 
   $allUserData = $users->readAll();
   while($value = mysqli_fetch_array($allUserData)){
-    if($value['grinders_id'] == $_POST['pro_user_id']){
+    if(strcasecmp($value['grinders_id'], $_POST['pro_user_id']) == 0){
       echo 0;
       die();
-    }elseif($value['user_email'] == $_POST['email']){
+    }elseif(strcasecmp($value['user_email'], $_POST['email']) == 0){
       echo 2;
       die();
     }
@@ -205,6 +205,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
   $objadmininfo->staff_bio = isset($_POST['staff_bio'])? $_POST['staff_bio'] : '';  
 	$objadmininfo->pro_user_id = isset($_POST['pro_user_id'])? $_POST['pro_user_id'] : '';  
 	$objadmininfo->custom_rate = isset($_POST['custom_rate'])? $_POST['custom_rate'] : '';
+	$objadmininfo->single_customer_rate = isset($_POST['single_custom_rate'])? $_POST['single_custom_rate'] : '';
 	/*if($_POST['trainer_type']=='general'){
 		$objadmininfo->service_ids = 9;
 		
@@ -331,10 +332,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 
   $allUserData = $users->readAll();
   while($value = mysqli_fetch_array($allUserData)){
-    if($value['grinders_id'] == $_POST['grinder_user_id']){
+    if(strcasecmp($value['grinders_id'], $_POST['grinder_user_id']) == 0){
       echo 1;
       die();
-    }elseif($value['user_email'] == $_POST['email']){
+    }elseif(strcasecmp($value['user_email'], $_POST['email']) == 0){
       echo 2;
       die();
     }
@@ -342,10 +343,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 
   $allAdminData = $objadmininfo->readall_staff();
   while($value = mysqli_fetch_array($allAdminData)){
-    if($value['pro_user_id'] == $_POST['grinder_user_id']){
+    if(strcasecmp($value['pro_user_id'], $_POST['grinder_user_id']) == 0){
       echo 1;
       die();
-    }elseif ($value['email'] == $_POST['email']) {
+    }elseif (strcasecmp($value['email'], $_POST['email']) == 0) {
       echo 2;
       die();
     }

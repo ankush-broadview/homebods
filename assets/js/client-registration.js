@@ -447,6 +447,7 @@ jQuery(document).on("click",".staff_register_front",function() {
   var fileInput =jQuery("#pcasctimagename").val();
   var term_condition = jQuery("#term_condition").prop("checked");
   var custom_rate = jQuery("#custom_rate").val();
+  var single_custom_rate = jQuery("#single_custom_rate").val();
 
   if(term_condition == false){
     jQuery(".spacial_class").show();
@@ -477,6 +478,7 @@ jQuery(document).on("click",".staff_register_front",function() {
       "pro_user_id":pro_user_id,
       "file" : fileInput,
 	    "custom_rate" : custom_rate,
+	    "single_custom_rate" : single_custom_rate,
       action:"pre_staff_reg_himself" 
     }, 
     url: ajax_url + "admin_login_ajax.php",
