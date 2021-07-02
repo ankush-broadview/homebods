@@ -230,21 +230,6 @@ if(isset($_SESSION["ct_details"]) && $_SESSION["ct_details"]!=""){
   }elseif(isset($_SESSION["ct_details"]["stripe_trans_id"]) && $_SESSION["ct_details"]["payment_method"] == "stripe-payment"){
     $payment_status = "Completed";
     $transaction_id = $_SESSION["ct_details"]["stripe_trans_id"];
-  }elseif(isset($_SESSION["ct_details"]["twocheckout_trans_id"]) && $_SESSION["ct_details"]["payment_method"] == "2checkout-payment"){
-    $payment_status = "Completed";
-    $transaction_id = $_SESSION["ct_details"]["twocheckout_trans_id"];
-  }elseif(isset($_SESSION["ct_details"]["ext_payment_token"]) && $_SESSION["ct_details"]["payment_method"] == "payway-payment"){
-    $payment_status = "Completed";
-    $transaction_id = $_SESSION["ct_details"]["ext_payment_token"];
-  }elseif(isset($_SESSION["ct_details"]["paumoney_transaction_id"]) && $_SESSION["ct_details"]["payment_method"] == "payumoney"){
-    $payment_status = "Completed";
-    $transaction_id = $_SESSION["ct_details"]["paumoney_transaction_id"];
-  }elseif(isset($_SESSION["ct_details"]["braintree_trans_id"]) && $_SESSION["ct_details"]["payment_method"] == "braintree"){
-    $payment_status = "Completed";
-    $transaction_id = $_SESSION["ct_details"]["braintree_trans_id"];
-  }elseif(isset($_SESSION["ct_details"]["paypal_transaction_id"]) && $_SESSION["ct_details"]["payment_method"] == "paypal"){
-    $payment_status = "Completed";
-    $transaction_id =$_SESSION["ct_details"]["paypal_transaction_id"];
   }
   
   $last_order_id=$booking->last_booking_id();
@@ -1273,47 +1258,8 @@ if(isset($_SESSION["ct_details"]) && $_SESSION["ct_details"]!=""){
     }
 
   
-  if(isset($_SESSION["ct_details"]["payment_method"]) && ($_SESSION["ct_details"]["payment_method"]=="paypal")){
-    if($settings->get_option("ct_thankyou_page_url") == ""){
-      $thankyou_page_url = SITE_URL."front/thankyou.php";
-    }else{
-      $thankyou_page_url = $settings->get_option("ct_thankyou_page_url");
-    }
-    ?>
-    <script>window.location = "<?php echo $thankyou_page_url; ?>"; </script>
-    <?php  
-  }if(isset($_SESSION["ct_details"]["payment_method"]) && ($_SESSION["ct_details"]["payment_method"]=="Wallet-payment")){
-    if($settings->get_option("ct_thankyou_page_url") == ""){
-      $thankyou_page_url = SITE_URL."front/thankyou.php";
-    }else{
-      $thankyou_page_url = $settings->get_option("ct_thankyou_page_url");
-    }
-    ?>
-    <?php
-    $wallet_array = array(); 
-    $wallet_array['status'] = "success";
-    echo json_encode($wallet_array);
 
-  }elseif(isset($_SESSION["ct_details"]["payment_method"]) && ($_SESSION["ct_details"]["payment_method"]=="payumoney")){
-    if($settings->get_option("ct_thankyou_page_url") == ""){
-      $thankyou_page_url = SITE_URL."front/thankyou.php";
-    }else{
-      $thankyou_page_url = $settings->get_option("ct_thankyou_page_url");
-    }
-    ?>
-    <script>window.location = "<?php echo $thankyou_page_url; ?>"; </script>
-    <?php  
-  }/*elseif(isset($_SESSION["ct_details"]["payment_method"]) && ($_SESSION["ct_details"]["payment_method"]=="braintree")){
-    if($settings->get_option("ct_thankyou_page_url") == ""){
-      $thankyou_page_url = SITE_URL."front/thankyou.php";
-    }else{
-      $thankyou_page_url = $settings->get_option("ct_thankyou_page_url");
-    }
-    ?>
-    <script>window.location = "<?php echo $thankyou_page_url; ?>"; </script>
-    <?php  
-  }*/else{
     echo "ok";
     unset($_SESSION["referral_detail"]["user_referral_code"]);
-  }
+  
 }

@@ -44,14 +44,14 @@
          ?>
       	<title><?php  echo "Register"; ?></title>
       	<link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css" type="text/css" media="all">
-        <link rel="stylesheet" href="/booking/assets/css/bootstrap-select.min.css" type="text/css" media="all">
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css" media="all">
       	<link rel="stylesheet" href="assets/css/jquery.Jcrop.min.css" type="text/css" media="all">
       	<link rel="stylesheet" href="assets/css/client-registration.css" type="text/css" media="all">
 
       	<script src="assets/js/jquery-2.1.4.min.js"></script>
         <script src="assets/js/jquery.validate.min.js"></script>
   		  <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-  		  <script src="/booking/assets/js/bootstrap-select.min.js" type="text/javascript"></script>
+  		  <script src="assets/js/bootstrap-select.min.js" type="text/javascript"></script>
   		  <script src="assets/js/jquery.Jcrop.min.js" type="text/javascript"></script>
       	<script src="assets/js/client-registration.js"></script>
 
@@ -131,9 +131,9 @@
            		</select>
            	</label> 
 			      <label>
-              <span>Services</span>
+              <span>Trainer For</span>
               <!-- <select name="trainer_type" id="trainer_type" class="staff_image select-imag-set"> -->
-              <select class="selectpicker mb-10 w-100 trainer-select select-imag-set bg-trasprent" name="trainer_type" id="trainer_type" multiple data-size="10" style="display: none;">
+              <select class="selectpicker mb-10 w-100 trainer-select" name="trainer_type" id="trainer_type" multiple data-size="10" style="display: none;">
                 <!-- <option value="">---Choose Trainer Type---</option> -->
                 <option value="" disabled>Choose Trainer Type</option>
                 <!-- <option value="general">Physical Training/General Fitness</option>
@@ -151,11 +151,6 @@
   			    <label>
               <span>Standard Rate</span>
               <input type="text" placeholder="" name="custom_rate" id="custom_rate" />
-            </label>
-			</label>
-  			    <label>
-              <span>Single Customer Rate</span>
-              <input type="text" placeholder="" name="single_custom_rate" id="single_custom_rate" />
             </label>
            	<label class="w-100 image-upload-main">
            		<span>Photo Upload</span>

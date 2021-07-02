@@ -9,6 +9,7 @@ include (dirname(dirname(dirname(__FILE__))) . '/objects/class.phpmailer.php');
 include (dirname(dirname(dirname(__FILE__))) . '/objects/class_setting.php');
 include (dirname(dirname(dirname(__FILE__))) . '/objects/class_users.php');
 include (dirname(dirname(dirname(__FILE__))) . '/objects/class_front_first_step.php');
+include (dirname(dirname(dirname(__FILE__))) . '/objects/class_stripe_utils.php');
 $con = new cleanto_db();
 $conn = $con->connect();
 $settings = new cleanto_setting();
@@ -168,24 +169,24 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	// error_reporting(E_ALL);	
 	// chmod(dirname(dirname(dirname(__FILE__)))."/assets/images/services", 0777);
 	$allData = $objadmininfo->readall_staff();
-  while($value = mysqli_fetch_array($allData)){
-  
-    if(strcasecmp($value['pro_user_id'], $_POST['pro_user_id']) == 0){
-      echo 0;
-      die();
-    }
-  }
+	while($value = mysqli_fetch_array($allData)){
 
-  $allUserData = $users->readAll();
-  while($value = mysqli_fetch_array($allUserData)){
-    if(strcasecmp($value['grinders_id'], $_POST['pro_user_id']) == 0){
-      echo 0;
-      die();
-    }elseif(strcasecmp($value['user_email'], $_POST['email']) == 0){
-      echo 2;
-      die();
-    }
-  }
+		if($value['pro_user_id'] == $_POST['pro_user_id']){
+			echo 0;
+			die();
+		}
+	}
+
+	$allUserData = $users->readAll();
+	while($value = mysqli_fetch_array($allUserData)){
+		if($value['grinders_id'] == $_POST['pro_user_id']) {
+			echo 0;
+			die();
+		} elseif ($value['user_email'] == $_POST['email']) {
+			echo 2;
+			die();
+		}
+	}
 
 	$objadmininfo->email = isset($_POST['email']) ? $_POST['email'] : '';
 	$objadmininfo->first_name = isset($_POST['first_name'])?ucwords($_POST['first_name']):''; 
@@ -196,16 +197,15 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	//$objadmininfo->address = isset($_POST['address'])? $_POST['address'] : '';  	
 	$objadmininfo->city = isset($_POST['city'])?$_POST['city']:'';  	
 	$objadmininfo->state = isset($_POST['state'] ) ? $_POST['state'] : '';  	
-  $objadmininfo->country = isset($_POST['country'])? $_POST['country'] : '';    
+  	$objadmininfo->country = isset($_POST['country'])? $_POST['country'] : '';    
 	$objadmininfo->zoom_link = isset($_POST['zoom_link'])? $_POST['zoom_link'] : '';  	
 	$objadmininfo->offered = isset($_POST['offered'])? $_POST['offered'] : '';  
 	$objadmininfo->price_for_single = isset($_POST['price_for_single'])? $_POST['price_for_single'] : '';  
 	$objadmininfo->price_for_3 = isset($_POST['price_for_3'])? $_POST['price_for_3'] : '';  
 	$objadmininfo->price_for_5 = isset($_POST['price_for_5'])? $_POST['price_for_5'] : '';   
-  $objadmininfo->staff_bio = isset($_POST['staff_bio'])? $_POST['staff_bio'] : '';  
+  	$objadmininfo->staff_bio = isset($_POST['staff_bio'])? $_POST['staff_bio'] : '';  
 	$objadmininfo->pro_user_id = isset($_POST['pro_user_id'])? $_POST['pro_user_id'] : '';  
 	$objadmininfo->custom_rate = isset($_POST['custom_rate'])? $_POST['custom_rate'] : '';
-	$objadmininfo->single_customer_rate = isset($_POST['single_custom_rate'])? $_POST['single_custom_rate'] : '';
 	/*if($_POST['trainer_type']=='general'){
 		$objadmininfo->service_ids = 9;
 		
@@ -236,7 +236,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	if($checkemail){	  	
 		$otp = rand(1000,99999);	  	
 		$objadmininfo->otp = $otp;		
-		$staff_register=$objadmininfo->pre_reg_staff();	
+		$staff_register = $objadmininfo->pre_reg_staff();	
 		
 		if ($staff_register) {
 		$_SESSION['staff_tem_id'] = $staff_register;
@@ -310,16 +310,16 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 			}else{			
 				$mail->IsMail();		
 			}		
-			$mail->SMTPDebug  = 0;		
-			$mail->IsHTML(true);		
-			$mail->From = $company_email;		
-			$mail->FromName = $company_name;		
-			$mail->Sender = $company_email;		
-			$mail->AddAddress($to,"Staff");		
-			$mail->Subject = $reg_subject;		
-			$mail->Body = $reg_body;		
-			$mail->send();		
-			$mail->ClearAllRecipients();		
+			// $mail->SMTPDebug  = 0;		
+			// $mail->IsHTML(true);		
+			// $mail->From = $company_email;		
+			// $mail->FromName = $company_name;		
+			// $mail->Sender = $company_email;		
+			// $mail->AddAddress($to,"Staff");		
+			// $mail->Subject = $reg_subject;		
+			// $mail->Body = $reg_body;		
+			// $mail->send();		
+			// $mail->ClearAllRecipients();		
 			echo 1;exit();		
 		} else {			
 			echo "not";exit();		
@@ -332,10 +332,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 
   $allUserData = $users->readAll();
   while($value = mysqli_fetch_array($allUserData)){
-    if(strcasecmp($value['grinders_id'], $_POST['grinder_user_id']) == 0){
+    if($value['grinders_id'] == $_POST['grinder_user_id']){
       echo 1;
       die();
-    }elseif(strcasecmp($value['user_email'], $_POST['email']) == 0){
+    }elseif($value['user_email'] == $_POST['email']){
       echo 2;
       die();
     }
@@ -343,10 +343,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 
   $allAdminData = $objadmininfo->readall_staff();
   while($value = mysqli_fetch_array($allAdminData)){
-    if(strcasecmp($value['pro_user_id'], $_POST['grinder_user_id']) == 0){
+    if($value['pro_user_id'] == $_POST['grinder_user_id']){
       echo 1;
       die();
-    }elseif (strcasecmp($value['email'], $_POST['email']) == 0) {
+    }elseif ($value['email'] == $_POST['email']) {
       echo 2;
       die();
     }
@@ -362,9 +362,9 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	$users->address = $_POST['address'];  
 	$users->city = $_POST['city'];  
 	$users->state = $_POST['state'];  
-  $users->country = $_POST['country'];  
-  $users->grinders_id = $_POST['grinder_user_id'];  
-  $users->user_bio = $_POST['fitness_goal'];
+	$users->country = $_POST['country'];  
+	$users->grinders_id = $_POST['grinder_user_id'];  
+	$users->user_bio = $_POST['fitness_goal'];
 	$users->status = 'E';
 
 	$filename = basename( $_POST['file']);
@@ -434,20 +434,21 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	} 		
 	echo "Fitness Pros Register Successfully";
 
-}elseif(isset($_REQUEST['action']) && $_REQUEST['action'] == 'pre_staff_otp_check'){	
+} elseif (isset($_REQUEST['action']) && $_REQUEST['action'] == 'pre_staff_otp_check'){	
 	/* ini_set('display_errors', 1);	
 	ini_set('display_startup_errors', 1);	
 	error_reporting(E_ALL);	
 	echo 1;	 */
-
+	$stripeObj = new cleanto_stripe_utils();
+	$reponse = ['status'=>1,'data'=>[],'msg'=>''];
 	$objadmininfo->email = $_REQUEST['email'];	
-	$objadmininfo->otp = $_REQUEST['otp'];	
-	$check_staff_email_existing = $objadmininfo->verify_staff_otp_for_email();	
-	
-	if ($check_staff_email_existing){	 
-   $objadmininfo->update_staff_validate();
-       /* $_SESSION['ct_staffid'] = $_SESSION['staff_tem_id'];
-		$_SESSION['ct_useremail'] = $_SESSION['staff_tem_email'];	 */
+	$objadmininfo->otp = $_REQUEST['otp'];
+	$check_staff_email_existing = $objadmininfo->verify_staff_otp_for_email();
+	if ($check_staff_email_existing) {		
+   		$objadmininfo->update_staff_validate();
+       	$_SESSION['ct_staffid'] = $_SESSION['staff_tem_id'];
+		$_SESSION['ct_useremail'] = $_SESSION['staff_tem_email'];	
+
 		$objadmininfo->otp ='';	     
 		$data = $objadmininfo->staff_update_otp_for_email();
 		$to = $_REQUEST['email'];
@@ -506,11 +507,42 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 			$mail->Body = $reg_body;		
 			$mail->send();		
 			$mail->ClearAllRecipients();
-		echo  1;	
-	}else{	   	
-		echo  2;	
+		
+
+		$stripId = $objadmininfo->getStripeAccountIdById();
+		if(count($stripId) == 0) {
+			$stripId = $stripeObj->createStripeAccount($objadmininfo->email);			
+		} else {
+			$stripId = $stripId[0];
+			if (empty($stripId )) {
+				$stripId = $stripeObj->createStripeAccount($objadmininfo->email);			
+			}
+		}
+		$_SESSION['stripe_account_id'] = $stripId;
+		//$_SESSION['stripe_account_status'] = $stripId;
+		$objadmininfo->updateStripeAccountId($stripId);
+		$onboardingUrl = $stripeObj->getStripeOnboardingLink($stripId);
+		$reponse['data'] = ['onboarding_url'=>$onboardingUrl];
+		echo json_encode($reponse);
+		die;
+	} else {
+		$reponse['status'] = 2;
+		echo  json_encode($reponse);
 	}
-}	
+} elseif (isset($_REQUEST['action']) && $_REQUEST['action'] == 'complete_stripe_onboarding'){
+	$reponse = ['status'=>1,'data'=>[],'msg'=>''];
+	$stripId = $_REQUEST['stripe_id'];
+	if(empty($stripId)){
+		$reponse['status'] = 2;
+		$reponse['msg'] = "Something went wrong. Please try again later.";
+	} else {
+		$stripeObj = new cleanto_stripe_utils();
+		$_SESSION['stripe_account_id'] = $stripId;
+		$onboardingUrl = $stripeObj->getStripeOnboardingLink($stripId);
+		$reponse['data'] = ['onboarding_url'=>$onboardingUrl];
+	}
+	echo json_encode($reponse);
+}
 // if (isset($_POST['email'])){
 	//   $objadmininfo->email =trim(strip_tags(mysqli_real_escape_string($conn,$_POST['email'])));
 	//   $check_staff_email_existing = $objadmininfo->check_staff_email_existing();
@@ -520,4 +552,5 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 		//     echo "true";
 	//   }
 // }
+
 ?>

@@ -1430,7 +1430,6 @@ jQuery(document).on("click",".ct-provider-img",function(e){
     jQuery(".date_time_error1").hide();
 });
 
-
 jQuery(document).on("click","#complete_bookings",function(e){
 
   var site_url=siteurlObj.site_url;
@@ -2356,6 +2355,7 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
 });
 
+
 jQuery(document).on("click","#accept-conditions",function(){
 
   jQuery(".terms_and_condition").hide();
@@ -2553,6 +2553,8 @@ jQuery(document).on("change",".existing-user",function() {
     var country_flag = jQuery(".selected-flag").attr("title");
     var site_url = siteurlObj.site_url;
     var country_alpha_code = countrycodeObj.alphacode;
+    var allowed_country_alpha_code = countrycodeObj.allowed;
+    var array = allowed_country_alpha_code.split(",");
 
   if(jQuery(".existing-user").is(":checked")) {
 
@@ -2615,6 +2617,8 @@ jQuery(document).on("change",".new-user",function() {
     var country_flag = jQuery(".selected-flag").attr("title");
     var site_url = siteurlObj.site_url;
     var country_alpha_code = countrycodeObj.alphacode;
+    var allowed_country_alpha_code = countrycodeObj.allowed;
+    var array = allowed_country_alpha_code.split(",");
 
   if(jQuery(".new-user").is(":checked")) {
 
@@ -3187,6 +3191,7 @@ jQuery(document).on("click",".provider_select",function(){
 
   var staff_id = jQuery(this).attr("data-id");
 
+  $("#selected_provider_id").val(staff_id);
   jQuery.ajax({
 
     type : "post",
@@ -3214,15 +3219,11 @@ jQuery(document).on("click",".provider_select",function(){
       }else{
       	var cart_sub_total = jQuery(".cart_sub_total").html();
       }
-	  jQuery(".cart_tax").html(res.tax_value);
+	  
       var cart_tax = jQuery(".cart_tax").html();
       var cart_tax_val = cart_tax.replace(currency_symbol, "");
       var sub_total = parseInt(cart_sub_total_val);
-	  if(cart_tax){
-		  var cart_total = parseInt(cart_tax_val)+parseInt(sub_total);
-	  }else{
-		  var cart_total = parseInt(sub_total);
-	  }
+      var cart_total = parseInt(cart_tax_val)+parseInt(sub_total);
 	  
       jQuery(".cart_sub_total").html(sub_total.toFixed(price_format_decimal_places));
       jQuery(".cart_total").html(price_format_with_symbol(cart_total));
@@ -6502,10 +6503,10 @@ jQuery(document).on("click touchstart","#apply_coupon",function(){
 
         url: site_url+"front/firststep.php",
 
-        data : { "subtotal" : subtotal, "coupon_code" : coupon_code, "frequently_discount_id" : frequently_discount_id, "coupon_check" : 1 },
+        data : { "coupon_code" : coupon_code, "frequently_discount_id" : frequently_discount_id, "coupon_check" : 1 },
 
         success: function(res){
-		
+
           jQuery(".ct-loading-main").hide();
 
           var cart_session_data=jQuery.parseJSON(res);
@@ -6535,8 +6536,6 @@ jQuery(document).on("click touchstart","#apply_coupon",function(){
             jQuery(".coupon_display").show();
 
             jQuery(".partial_amount").html(cart_session_data.partial_amount);
-			
-            jQuery("#display_code").html(coupon_code);
 
             jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
@@ -6583,9 +6582,7 @@ jQuery(document).on("click touchstart",".reverse_coupon",function(){
   var site_url=siteurlObj.site_url;
 
   var coupon_reverse = jQuery("#display_code").text();
-  
-  var subtotal=jQuery(".cart_sub_total").text();
-  
+
   var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
   jQuery.ajax({
@@ -6594,7 +6591,8 @@ jQuery(document).on("click touchstart",".reverse_coupon",function(){
 
     url: site_url+"front/firststep.php",
 
-    data : { "subtotal" : subtotal, "coupon_reverse" : coupon_reverse, "frequently_discount_id" : frequently_discount_id, "coupon_reversed" : 1 },
+    data : { "coupon_reverse" : coupon_reverse, "frequently_discount_id" : frequently_discount_id, "coupon_reversed" : 1 },
+
     success: function(res){
 
       jQuery(".ct-loading-main").hide();
@@ -7025,68 +7023,17 @@ if(ct_postalcode_status_check == "Y"){
           jQuery(".ct_remove_id").attr("id", "");
           jQuery(".postal_code_error").show();
           jQuery(".postal_code_error").html(errorobj_our_service_not_available_at_your_location);
-          //console.log('not match');
+          
         }
         
-      /*var check_postal_code = false;
-
-      jQuery(".postal_code_error").hide();
-
-      jQuery(".postal_code_available").hide();
-
-      if (jQuery.inArray(postal_code, get_all_postal_code) !== -1) {
-
-        check_postal_code = true;
-
-      } else {
-
-        jQuery.each(get_all_postal_code, function(key, value) {
-
-          if (postal_code.substr(0, value.length) === value) {
-
-            check_postal_code = true;
-
-          }
-
-        });
-
-      }
-
-      if (check_postal_code) {
-
-        jQuery(".ct_remove_id").attr("id", "complete_bookings");
-
-        jQuery("#complete_bookings").removeClass("ct_remove_id");
-
-        jQuery(".remove_show_error_class").removeClass("show-error");
-
-        jQuery(".postal_code_error").hide();
-
-      } else {
-
-        jQuery(".remove_show_error_class").addClass("show-error");
-
-        jQuery("#complete_bookings").addClass("ct_remove_id");
-
-        jQuery(document).on("click", ".ct_remove_id", function() {
-
-          jQuery("#ct_postal_code").focus();
-
-        });
-
-        jQuery(".ct_remove_id").attr("id", "");
-
-        jQuery(".postal_code_error").show();
-
-        jQuery(".postal_code_error").html(errorobj_our_service_not_available_at_your_location);
-
-      }*/
 
     }
 
         var country_flag = jQuery(".selected-flag").attr("title");
         var site_url = siteurlObj.site_url;
         var country_alpha_code = countrycodeObj.alphacode;
+        var allowed_country_alpha_code = countrycodeObj.allowed;
+        var array = allowed_country_alpha_code.split(",");
         jQuery('#ct-user-phone').intlTelInput({
               onlyCountries: array,
 

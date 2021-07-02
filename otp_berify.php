@@ -62,10 +62,12 @@ $settings->conn = $conn;
 					</label>
 					<button type="button" href="javascript:void(0);"
 					class="submit staff_register_otp">Submit</button>
-					<div id="register-meesg" style="display: none;text-align: center;padding-top: 10px;"></div>
+					<div id="register-meesg" style="display: none;text-align: center;padding-top: 10px;">
+						
+					</div>
 				</div>
 			</div>
-			<?php }else{ ?>
+			<?php } else{ ?>
 				<h5> Invalid Url </h5>
 			<?php }?>
 		</div>

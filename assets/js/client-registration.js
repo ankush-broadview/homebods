@@ -447,7 +447,6 @@ jQuery(document).on("click",".staff_register_front",function() {
   var fileInput =jQuery("#pcasctimagename").val();
   var term_condition = jQuery("#term_condition").prop("checked");
   var custom_rate = jQuery("#custom_rate").val();
-  var single_custom_rate = jQuery("#single_custom_rate").val();
 
   if(term_condition == false){
     jQuery(".spacial_class").show();
@@ -478,7 +477,6 @@ jQuery(document).on("click",".staff_register_front",function() {
       "pro_user_id":pro_user_id,
       "file" : fileInput,
 	    "custom_rate" : custom_rate,
-	    "single_custom_rate" : single_custom_rate,
       action:"pre_staff_reg_himself" 
     }, 
     url: ajax_url + "admin_login_ajax.php",
@@ -539,23 +537,28 @@ jQuery(document).on("click",".staff_register_otp",function() {
         action:"pre_staff_otp_check" 
       },
       url: ajax_url + "admin_login_ajax.php",
-      success: function (res) {
-        
+      success: function (res) {        
         jQuery(".ct-loading-main").hide();
         jQuery("#register-meesg").css('display','block');
-        // var result = jQuery.parseJSON(res);
-        // alert(res['status']);
-        // console.log(res);
-        // console.log(res.status);
-        if(res == 11 || res == 1){
-          setTimeout(function() {
-             window.location.href = site_url + "admin/index.php";
-          }, 500); 
-        }else if(res == 12 || res == 2){
+        var result = jQuery.parseJSON(res);
+        let resStatus = result.status;
+
+        alert(res['status']);
+        console.log(res);
+        console.log(res.status);
+        if(resStatus == 11 || resStatus == 1){
+          if (result.data && result.data.onboarding_url) {
+             setTimeout(function() {
+               window.location.href = result.data.onboarding_url;
+            }, 500); 
+          }else{
+            jQuery("#register-meesg").html('<h5 style="color:red">Something went wrong..</h5>');
+          }
+         
+        }else if(resStatus == 12 || resStatus == 2){
            jQuery("#register-meesg").html('<h5 style="color:red">Invalid OTP.</h5>');
-        }
-        else{
-          jQuery("#register-meesg").html('<h5 style="color:red">'+res+'</h5>');
+        }else{
+          jQuery("#register-meesg").html('<h5 style="color:red">'+result.msg+'</h5>');
         }
       }
   }); 

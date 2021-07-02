@@ -1,4 +1,5 @@
 <?php     
+session_start();
 include(dirname(__FILE__).'/header-staff.php');
 include(dirname(dirname(__FILE__)) ."/objects/class_payments.php");
 include(dirname(dirname(__FILE__)) ."/admin/user_session_check.php");
@@ -11,6 +12,7 @@ include(dirname(dirname(__FILE__))."/objects/class_rating_review.php");
 include(dirname(dirname(__FILE__)) . "/objects/class_dayweek_avail.php");
 include(dirname(dirname(__FILE__)) . "/objects/class_offbreaks.php");
 include(dirname(dirname(__FILE__))."/objects/class_offtimes.php");
+include(dirname(dirname(__FILE__))."/objects/class_stripe_utils.php");
 if ( is_file(dirname(dirname(__FILE__)).'/extension/GoogleCalendar/google-api-php-client/src/Google_Client.php')) {
 	require_once dirname(dirname(__FILE__)).'/extension/GoogleCalendar/google-api-php-client/src/Google_Client.php';
 }
@@ -63,6 +65,17 @@ if($time_format == "24"){
 $staff_id = $_SESSION['ct_staffid'];
 ?>
 
+<style>
+
+.stipe_onboard_btn{
+	padding: 15px;
+    width: 20%;
+    margin: 0 40%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+</style>
+
 <div class="cta-panel-default" id="ct-staff-dashboard">
 	<div class="staff-dashboard ct-left-menu col-md-12 col-sm-12 col-xs-12 col-lg-12 navbar-collapse collapse" id="navbarCollapseMain">
 		<ul class="nav nav-tab nav-stacked" id="cta-staff-nav">
@@ -80,7 +93,16 @@ $staff_id = $_SESSION['ct_staffid'];
 		</ul>
 	</div>
   <div class="panel-body">
+
+
 		<div class="tab-content staff-right-content col-md-12 col-sm-12 col-lg-12 col-xs-12">
+
+		<?php
+  $objadmin->id = $staff_id;
+  $staff_read = $objadmin->readone();
+if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_status"]==1 ) {
+	
+?>
 			<div class="company-details tab-pane fade in active" id="my-bookings">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -107,7 +129,7 @@ $staff_id = $_SESSION['ct_staffid'];
 								</thead>
 								<tbody>
 									<?php   
-									/*echo $today_date = date('Y-m-d H:i:s');*/
+									$today_date = date('Y-m-d H:i:s');
 								$staff_service_details=$staff_commision->staff_service_details($staff_id);
 								if(sizeof((array)$staff_service_details) > 0){
 									foreach($staff_service_details as $arr_staff){
@@ -970,8 +992,7 @@ $staff_id = $_SESSION['ct_staffid'];
 							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 								<div class="ct-clean-service-image-uploader staff_profile_image">
 									<?php     
-										$objadmin->id = $staff_id;
-										$staff_read = $objadmin->readone();
+									
 									if($staff_read['image']==''){
 										$imagepath=SITE_URL."assets/images/user.png";
 									}else{
@@ -1279,7 +1300,54 @@ $staff_id = $_SESSION['ct_staffid'];
 					</div>
 				</div>
 			</div>
+
+
+
+			<?php
+		} else{
+			$stripeObj = new cleanto_stripe_utils();
+			$objadmininfo = new cleanto_adminprofile();
+			$con = new cleanto_db();
+			$conn = $con->connect();
+			$stripeId = $staff_read["stripe_account_id"];
+			$objadmininfo->email = $staff_read["email"];
+			$objadmininfo->conn = $conn;
+			if (empty($stripeId)) {
+				$stripeId = $stripeObj->createStripeAccount($staff_read["email"]);	
+			}
+			$_SESSION['stripe_account_id'] = $stripeId;
+			$objadmininfo->updateStripeAccountId($stripeId);
+			$onboardingUrl = $stripeObj->getStripeOnboardingLink($stripeId);						
+		?>
+		<div class="company-details tab-pane fade in active" id="stripe-onboard">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title text-left"><?php echo "Stripe Onboard";?></h1>
+				</div>
+				<div class="panel-body" style="height: 400px;">
+
+				<div class="text-center">
+				<div class="row">
+					<div class="col-md-12" style="margin-top: 8%;">
+					<a href="<?=$onboardingUrl?>" class="btn btn-warning btn-block stipe_onboard_btn">
+					Onboard on Stripe
+		</a>
+					<p class="text-danger" style="font-size: 18px;">Please onboard yourself, you will not get your earning until you onboard yourself on Stripe. </p>
+					</div>
+				</div>
+
+				</div>
+            
+          		</div>                   
+			</div>
 		</div>
+
+	<?php	}
+		?>
+
+
+		</div>
+		
 	</div>
 </div>
 <?php 

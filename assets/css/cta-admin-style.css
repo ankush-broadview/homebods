@@ -1866,13 +1866,12 @@ td.fc-widget-content hr.fc-divider.fc-widget-header {
 #cta #cta-staff-panel .ct-staff-list .ct-left-staff li.staff-list a:hover,
 #cta #cta-staff-panel .ct-staff-list .ct-left-staff li.staff-list:hover,
 #cta #cta-staff-panel .ct-staff-list .ct-left-staff li.staff-list.active {
-	background: #fff;
+	background: #dctctb;
 	-webkit-transition: all 300ms ease-in-out 0s;
 	-moz-transition: all 300ms ease-in-out 0s;
 	-o-transition: all 300ms ease-in-out 0s;
 	-ms-transition: all 300ms ease-in-out 0s;
 	transition: all 300ms ease-in-out 0s;
-	/* #fff */
 }
 
 
@@ -2379,8 +2378,7 @@ tr.details td.details-control {
 #cta #cta-clean-services-panel .ct-service-list .ct-left-services li.ct-left-service-menu-li:hover,
 #cta #cta-clean-services-panel .ct-service-list .ct-left-services li.ct-left-service-menu-li,
 #cta #cta-clean-services-panel .ct-service-list .ct-left-service li.ct-left-service-menu-li.active {
-	background: #fff;
-	/* #fff */
+	background: #dctctb;
 }
 
 #cta #cta-clean-services-panel .ct-service-list .ct-left-services li.ct-left-service-menu-li .ct-service-sort-icon,
@@ -2941,7 +2939,7 @@ tr.details td.details-control {
 #cta #cta-services-panel .ct-service-list .ct-left-services li.ct-left-service-menu-li:hover,
 #cta #cta-services-panel .ct-service-list .ct-left-services li.ct-left-service-menu-li,
 #cta #cta-services-panel .ct-service-list .ct-left-service li.ct-left-service-menu-li.active {
-	background: #fff;
+	background: #dctctb;
 }
 
 #cta #cta-services-panel .ct-service-list .ct-left-services li.ct-left-service-menu-li .ct-service-sort-icon,
@@ -3272,7 +3270,7 @@ tr.details td.details-control {
 
 #cta #ct-staff-dashboard .staff-dashboard.ct-left-menu,
 #cta #ct-settings .ct-left-menu {
-	background: #000;
+	background: #E1E7EB none repeat scroll 0% 0%;
 	position: relative;
 	height: calc(100vh - 120px);
 	overflow: auto;
@@ -3301,7 +3299,7 @@ tr.details td.details-control {
 }
 
 #cta #ct-staff-dashboard .ct-left-menu ul li a {
-	font-size: 12px !important;
+	font-size: 15px !important;
 }
 
 #cta #ct-staff-dashboard .ct-left-menu ul li a,
@@ -3309,7 +3307,7 @@ tr.details td.details-control {
 	font-family: inherit;
 	font-size: 12px;
 	font-weight: 400;
-	color: #fff;
+	color: #8D8D8D;
 	line-height: 20px;
 	padding: 30px 0px;
 	text-align: center;
@@ -3320,8 +3318,8 @@ tr.details td.details-control {
 #cta #ct-staff-dashboard .ct-left-menu ul li.active a,
 #cta #ct-settings .ct-left-menu ul li a:hover,
 #cta #ct-staff-dashboard .ct-left-menu ul li a:hover {
-	background-color: red ;
-	color: #495861;
+	background-color: #F1F5F7 !important;
+	color: #495861 !important;
 	border-radius: 0px;
 	font-family: inherit;
 	font-size: 12px;
@@ -4952,42 +4950,35 @@ div.dataTables_wrapper div.dataTables_info {
 
 #cta #ct-staff-dashboard .staff-dashboard.ct-left-menu ul li {
 	float: left;
-	width: 125px;
-	height: 100px;
+	width: 140px;
+	height: 130px;
 	padding: 0;
 	margin: 0;
 	text-align: center;
 	list-style: none;
-	border-right: 1px solid #fff;
+	border-right: 1px solid #292929;
 }
 
 #cta #ct-settings .ct-left-menu ul#cta-staff-nav li.active a,
 #cta #ct-staff-dashboard .ct-left-menu ul#cta-staff-nav li.active a,
 #cta #ct-settings .ct-left-menu ul#cta-staff-nav li a:hover,
 #cta #ct-staff-dashboard .ct-left-menu ul#cta-staff-nav li a:hover {
-	padding: 14px 0px;
-	background-color: #8b29fc!important;
-	color: #ffffff!important;
-	
+	padding: 40px 0px;
 }
 
 #cta #ct-staff-dashboard .ct-left-menu ul#cta-staff-nav li a {
-	padding: 14px 0px;
-	line-height: 36px;
+	padding: 40px 0px;
 }
 
 #cta #ct-staff-dashboard .ct-left-menu ul#cta-staff-nav li a.sot-form-fields {
-	padding-bottom: 4px;
-	line-height: 20px !important;
+	padding-bottom: 20px;
+	height: 130px;
 }
-#cta #ct-staff-dashboard .ct-left-menu ul#cta-staff-nav li a.sot-form-fields i{
-	margin-bottom: 18px;
-}
+
 #cta #ct-staff-dashboard .staff-dashboard.ct-left-menu{
 	height: auto;
 	padding-bottom: 0px;
 	margin-bottom: 30px;
-	width: 100%;
 }
 #cta #ct-settings .ct-left-menu {
 	height: calc(100vh - 120px);

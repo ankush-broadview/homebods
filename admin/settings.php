@@ -4328,7 +4328,7 @@ if(isset($_POST['btn_submit_app_labels']))
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <a id="promo_code" name="promo_code" class="btn btn-success mt-20 " ><?php echo $label_language_values['create'];?></a>
+                                                    <a id="promo_code" name="promo_code" class="btn btn-success mt-20" ><?php echo $label_language_values['create'];?></a>
                                                 </td>
                                             </tr>
                                             

@@ -303,7 +303,7 @@
                                               {
                                                   $booking_start_datetime = strtotime(date('Y-m-d H:i:s', strtotime($dd['booking_date_time'])));
                                                   $reschedule_buffer_time = $setting->get_option('ct_reshedule_buffer_time');
-                                                  $cancellation_buffer_time = 1;
+                                                  $cancellation_buffer_time = $setting->get_option('ct_cancellation_buffer_time');
                                                   $t_zone_value = $setting->get_option('ct_timezone');
                                                   $server_timezone = date_default_timezone_get();
                                                   if (isset($t_zone_value) && $t_zone_value != '')
