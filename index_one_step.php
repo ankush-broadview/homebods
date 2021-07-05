@@ -1097,19 +1097,6 @@ function date_format_js($date_Format) {
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/bootstrap/bootstrap.min.css" type="text/css" media="all">
 
   
-
-  <?php   if($settings->get_option('ct_stripe_payment_form_status') == 'on'){  ?>
-
-  <script src="https://js.stripe.com/v2/" type="text/javascript"></script>  
-
-  <?php   } ?>
-
-  <?php   if($settings->get_option('ct_2checkout_status') == 'Y'){  ?>
-
-  <script src="https://www.2checkout.com/checkout/api/2co.min.js" type="text/javascript"></script>  
-
-  <?php   } ?>
-
     <script src="<?php  echo BASE_URL; ?>/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 
   <script src="<?php  echo BASE_URL; ?>/assets/js/jquery.mask.js" type="text/javascript"></script>
@@ -1124,7 +1111,7 @@ function date_format_js($date_Format) {
 
   ?>
   <script src="<?php  echo BASE_URL; ?>/assets/js/ct-common-jquery.js?<?php    echo time(); ?>" type="text/javascript"></script>
-  <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/stripe.js"></script>
+  
 
   
 
@@ -4617,7 +4604,7 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
  <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/firestore-config.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/main.js"></script>
-
+<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/stripe.js"></script>
 
 </body>
 

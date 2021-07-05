@@ -1442,7 +1442,7 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
   var stripe_status = baseurlObj.stripe_status;   
 
-  if(stripe_status=="on"){  Stripe.setPublishableKey(stripe_pubkey);  }
+
 
   var terms_condition_setting_value=termsconditionObj.terms_condition;
 
@@ -1532,8 +1532,8 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
   var notes = jQuery("#ct-notes").val();
 
-  var payment_method = jQuery(".payment_gateway:checked").val();
-  /** new **/
+  //var payment_method = jQuery(".payment_gateway:checked").val();
+  var payment_method = "stripe-payment";
 
   var staff_id = jQuery(".provider_disable:checked").attr("data-staff_id");
 
@@ -1666,15 +1666,8 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
 
 
-  if(payment_method=="Wallet-payment"){
-
-    var current_amount = jQuery('#wallet').attr('data-wallet');
-
-  }else{
 
     var current_amount = "";
-
-  }
 
 
 
@@ -1704,17 +1697,9 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
   var no_units_in_cart_err_count= jQuery("#no_units_in_cart_err_count").val();
 
-  var cc_card_num = jQuery(".cc-number").val();
+ 
 
-  var cc_exp_month = jQuery(".cc-exp-month").val();
-
-  var cc_exp_year = jQuery(".cc-exp-year").val();
-
-  var cc_card_code = jQuery(".cc-cvc").val();
-
-  var braintree_nonce = jQuery("#nonce").val();
-
-  dataString={staff_id_status:staff_id_status,braintree_nonce:braintree_nonce,existing_username:existing_username,existing_password:existing_password,password:password,firstname:firstname,username:username,lastname:lastname,email:email,phone:phone,user_address:user_address,user_zipcode:user_zipcode,user_city:user_city,user_state:user_state,address:address,zipcode:zipcode,city:city,state:state,notes:notes,vc_status:vc_status,p_status:p_status,contact_status:contact_status,payment_method:payment_method,staff_id:staff_id,amount:amount,discount:discount,taxes:taxes,partial_amount:partial_amount,net_amount:net_amount,booking_date_time:booking_date_time,frequently_discount:frequently_discount_id,frequent_discount_amount:frequent_discount_amount,coupon_code:coupon_code,user_coupon_val:user_coupon_val,cc_card_num:cc_card_num,cc_exp_month:cc_exp_month,cc_exp_year:cc_exp_year,cc_card_code:cc_card_code,guest_user_status:guest_user_status,recurrence_booking:recurrence_booking_1,current_amount:current_amount,is_login_user:is_login_user,special_days:special_days,custom_rate:custom_rate, action:"complete_booking"};
+  dataString={staff_id_status:staff_id_status,existing_username:existing_username,existing_password:existing_password,password:password,firstname:firstname,username:username,lastname:lastname,email:email,phone:phone,user_address:user_address,user_zipcode:user_zipcode,user_city:user_city,user_state:user_state,address:address,zipcode:zipcode,city:city,state:state,notes:notes,vc_status:vc_status,p_status:p_status,contact_status:contact_status,payment_method:payment_method,staff_id:staff_id,amount:amount,discount:discount,taxes:taxes,partial_amount:partial_amount,net_amount:net_amount,booking_date_time:booking_date_time,frequently_discount:frequently_discount_id,frequent_discount_amount:frequent_discount_amount,coupon_code:coupon_code,user_coupon_val:user_coupon_val,guest_user_status:guest_user_status,recurrence_booking:recurrence_booking_1,current_amount:current_amount,is_login_user:is_login_user,special_days:special_days,custom_rate:custom_rate, action:"complete_booking"};
   
   if(jQuery("#user_details_form").valid()){
 
@@ -1839,8 +1824,7 @@ jQuery(document).on("click","#complete_bookings",function(e){
           jQuery(this).attr("href","javascript:void(0);");
 
           clicked=true;
-
-          if(payment_method == "paypal"){
+      if(payment_method == "stripe-payment"){ 
 
             jQuery(".ct-loading-main-complete_booking").show();
 
@@ -1854,98 +1838,6 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
               success:function(response){
 
-                var response_detail = jQuery.parseJSON(response);
-
-                if(response_detail.status=="success"){
-
-                  jQuery(".ct-loading-main-complete_booking").hide();
-
-                  window.location = response_detail.value; 
-
-                }
-
-                if(response_detail.status=="error"){
-
-                  clicked=false; 
-
-                  jQuery(".ct-loading-main-complete_booking").hide();
-
-                  jQuery("#paypal_error").show();
-
-                  jQuery("#paypal_error").text(response_detail.value);
-
-                }
-
-              }
-
-            });
-
-          }
-
-          if(payment_method == "Wallet-payment"){
-
-            if(current_amount >= net_amount){						
-
-              jQuery(".ct-loading-main-complete_booking").show();
-
-              jQuery.ajax({
-
-                type:"POST",
-
-                url:front_url+"checkout.php",
-
-                data:dataString,
-
-                success:function(response){
-
-                 
-
-                  var response_detail = jQuery.parseJSON(response);
-
-                  if(response_detail.status=="success"){
-
-                    jQuery(".ct-loading-main-complete_booking").hide();
-
-                    window.location=thankyou_page_setting_value;  
-
-                  }
-
-                  if(response_detail.status=="error"){
-
-                    clicked=false; 
-
-                    jQuery(".ct-loading-main-complete_booking").hide();
-
-                    jQuery("#paypal_error").show();
-
-                    jQuery("#paypal_error").text(response_detail.value);
-
-                  }
-
-                }
-
-              });
-
-            }else{
-
-              jQuery("#ct-pay-methods").html("<div id='walletamount' style='color:red'>Sorry! Not Sufficient Wallet Amount</div>");
-
-            }
-
-          }else if (payment_method == "braintree") {
-            
-            jQuery(".ct-loading-main-complete_booking").show();
-
-            jQuery.ajax({
-
-              type:"POST",
-
-              url:front_url+"checkout.php",
-
-              data:dataString,
-
-              success:function(response){
-                
                 if(jQuery.trim(response) == "ok"){
 
                   jQuery(".ct-loading-main-complete_booking").hide();
@@ -1968,353 +1860,7 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
             });
 
-          }else if(payment_method == "card-payment"){
-
-            jQuery(".ct-loading-main-complete_booking").show();
-
-            jQuery.ajax({
-
-              type:"POST",
-
-              url:front_url+"checkout.php",
-
-              data:dataString,
-
-              success:function(response){
-
-                var response_detail = jQuery.parseJSON(response);
-
-                if(response_detail.success==false){
-
-                  clicked=false; 
-
-                  jQuery(".ct-loading-main-complete_booking").hide();
-
-                  jQuery("#ct-card-payment-error").show();
-
-                  jQuery("#ct-card-payment-error").text(response_detail.error);
-
-                  } else {
-
-                   jQuery.ajax({
-
-                    type:"POST",
-
-                    url:front_url+"booking_complete.php",
-
-                    data:{transaction_id:response_detail.transaction_id},
-
-                    success:function(response){
-
-                      if(jQuery.trim(response) == "ok"){
-
-                        jQuery(".ct-loading-main-complete_booking").hide();
-
-                        window.location=thankyou_page_setting_value; 
-
-                      }else{
-
-                        clicked=false; 
-
-                        jQuery(".ct-loading-main-complete_booking").hide();
-
-                        jQuery("#ct-card-payment-error").show();
-
-                        jQuery("#ct-card-payment-error").text(response);
-
-                      }
-
-                    }
-
-                    
-
-                    /*{
-
-                      if(jQuery.trim(response) == "ok"){
-
-                        jQuery(".ct-loading-main-complete_booking").hide();
-
-                        window.location=thankyou_page_setting_value; 
-
-                      }
-
-                    }*/
-
-                  })            
-
-                }
-
-              }
-
-            });
-
-          }else if(payment_method == "stripe-payment"){ 
-
-            jQuery(".ct-loading-main-complete_booking").show();
-
-            var stripeResponseHandler = function(status, response) {              
-
-                  if (response.error) {
-
-                    /* Show the errors on the form*/
-
-                    clicked=false; 
-
-                    jQuery(".ct-loading-main-complete_booking").hide();
-
-                    jQuery("#ct-card-payment-error").show();
-
-                    jQuery("#ct-card-payment-error").text(response.error.message);        
-
-                  } else {
-
-                  /* token contains id, last4, and card type*/
-
-                  var token = response.id;
-
-                  function waitForElement(){ 
-
-                  if(typeof token !== "undefined" && token != ""){ 
-
-                    var st_token = token;                 
-
-                    dataString["st_token"] = st_token;
-
-                    jQuery.ajax({
-
-                      type:"POST",
-
-                      url:front_url+"checkout.php",
-
-                      data:dataString,
-
-                      success:function(response){
-
-                        if(jQuery.trim(response) == "ok"){
-
-                          jQuery(".ct-loading-main-complete_booking").hide();
-
-                          window.location=thankyou_page_setting_value; 
-
-                        }else{
-
-                          clicked=false; 
-
-                          jQuery(".ct-loading-main-complete_booking").hide();
-
-                          jQuery("#ct-card-payment-error").show();
-
-                          jQuery("#ct-card-payment-error").text(response);
-
-                        }
-
-                      }
-
-                    });
-
-                    } else{ 
-
-                      setTimeout(function(){ waitForElement(); },2000); 
-
-                      } 
-
-                    }
-
-                    waitForElement();
-
-                     }
-
-                    };
-
-                /*Disable the submit button to prevent repeated clicks*/
-
-                Stripe.card.createToken({
-
-                            number: jQuery(".ct-card-number").val(),
-
-                            cvc: jQuery(".ct-cvc-code").val(),
-
-                            exp_month: jQuery(".ct-exp-month").val(),
-
-                            exp_year: jQuery(".ct-exp-year").val()
-
-                          }, stripeResponseHandler); 
-
-          }else if(payment_method == "2checkout-payment"){
-
-            var seller_id = twocheckout_Obj.sellerId;
-
-            var publishable_Key = twocheckout_Obj.publishKey;
-
-            /*  Called when token created successfully. */
-
-            jQuery(".ct-loading-main-complete_booking").show();
-
-            function successCallback(data) {
-
-              /* Set the token as the value for the token input */
-
-              var twoctoken = data.response.token.token;
-
-              dataString["twoctoken"] = twoctoken;
-
-                jQuery.ajax({
-
-                  type:"POST",
-
-                  url:front_url+"checkout.php",
-
-                  data:dataString,
-
-                  success:function(response){
-
-                    if(jQuery.trim(response) == "ok"){
-
-                      jQuery(".ct-loading-main-complete_booking").hide();
-
-                      window.location=thankyou_page_setting_value; 
-
-                    }else{
-
-                      clicked=false; 
-
-                      jQuery(".ct-loading-main-complete_booking").hide();
-
-                      jQuery("#ct-card-payment-error").show();
-
-                      jQuery("#ct-card-payment-error").text(response);
-
-                    } 
-
-                  }
-
-                }); 
-
-            };
-
-            /*  Called when token creation fails. */
-
-            function errorCallback(data) {
-
-              if (data.errorCode === 200) {
-
-                clicked=false; 
-
-                jQuery(".ct-loading-main-complete_booking").hide();
-
-                tokenRequest();
-
-              } else {
-
-                clicked=false; 
-
-                jQuery(".ct-loading-main-complete_booking").hide();
-
-                jQuery("#ct-card-payment-error").show();
-
-                jQuery("#ct-card-payment-error").text(response.error.message);
-
-              }
-
-            };
-
-            function tokenRequest() {
-
-              /* Setup token request arguments */
-
-              var args = {
-
-                sellerId: seller_id,
-
-                publishableKey: publishable_Key,
-
-                ccNo: jQuery(".ct-card-number").val(),
-
-                cvv: jQuery(".ct-cvc-code").val(),
-
-                expMonth: jQuery(".ct-exp-month").val(),
-
-                expYear: jQuery(".ct-exp-year").val()
-
-              };
-
-              /* Make the token request */
-
-              TCO.requestToken(successCallback, errorCallback, args);
-
-            };
-
-            tokenRequest();
-
-          }else if(payment_method == "payumoney"){
-
-            jQuery.ajax({
-
-              type:"POST",
-
-              url:front_url+"checkout.php",
-
-              data:dataString,
-
-              success:function(response){
-
-                var pm = jQuery.parseJSON(response);
-
-                jQuery("#payu_key").val(pm.merchant_key);
-
-                jQuery("#payu_hash").val(pm.hash);
-
-                jQuery("#payu_txnid").val(pm.txnid);
-
-                jQuery("#payu_amount").val(pm.amt);
-
-                jQuery("#payu_fname").val(pm.fname);
-
-                jQuery("#payu_email").val(pm.email);
-
-                jQuery("#payu_phone").val(pm.phone);
-
-                jQuery("#payu_productinfo").val(pm.productinfo);
-
-                jQuery("#payu_surl").val(pm.payu_surl);
-
-                jQuery("#payu_furl").val(pm.payu_furl);
-
-                jQuery("#payu_service_provider").val(pm.service_provider);
-
-                jQuery("#payuForm").submit();
-
-              }
-
-            });
-
-          }else if(payment_method == "pay at venue" || payment_method == "bank transfer" || payment_method == ""){
-
-            jQuery(".ct-loading-main-complete_booking").show();
-
-            jQuery.ajax({
-
-              type:"POST",
-
-              url:front_url+"checkout.php",
-
-              data:dataString,
-
-              success:function(response){
-				 
-                if(jQuery.trim(response) == "ok"){
-
-                  jQuery(".ct-loading-main-complete_booking").hide();
-
-                  window.location=thankyou_page_setting_value; 
-
-                }
-
-              }
-
-            })
-
-          }
+   
 
           payment_process_js(payment_method,thankyou_page_setting_value,dataString,front_url);
 
@@ -2344,7 +1890,7 @@ jQuery(document).on("click","#complete_bookings",function(e){
       }
 
     }
-
+  }
   }
 
   jQuery(".add_show_error_class").each(function(){
@@ -5948,7 +5494,6 @@ jQuery(".custom_item_error").html("");
   var m_name = jQuery(this).attr("data-mnamee");
 
 var staff_id=jQuery("input[name=provider-radio]:checked").attr("data-staff_id");
-
   jQuery.ajax({
 
     type : "post",

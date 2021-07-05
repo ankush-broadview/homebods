@@ -193,8 +193,8 @@ if(isset($_POST['action']) && $_POST['action']=='complete_booking'){
   
   $random_string = substr(str_shuffle(str_repeat($x='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 10)),1,10);
 
-  $array_value = array('existing_username' => $_POST['existing_username'], 'existing_password' => $_POST['existing_password'], 'password' => $_POST['password'], 'firstname' => $firstname, 'username' => $username, 'lastname' => $lastname, 'email' => $email, 'phone' => $phone, 'user_address' => $user_address, 'user_zipcode' => $user_zipcode, 'user_city' => $user_city, 'user_state' => $user_state, 'address' => $address, 'zipcode' => $zipcode, 'city' => $city, 'state' => $state, 'notes' => $notes, 'vc_status' => $_POST['vc_status'],'staff_id' => $staff_id, 'p_status' => $_POST['p_status'], 'contact_status' => $_POST['contact_status'], 'payment_method' => $_POST['payment_method'], 'amount' => $_POST['amount'], 'discount' => abs(number_format($total_discount, 2, ".", ',')), 'taxes' => $tax, 'partial_amount' => $_POST['partial_amount'], 'net_amount' => $_POST['net_amount'], 'booking_date_time' => $_POST['booking_date_time'],'booking_date_time_end' => $_POST['booking_date_time_end'], 'frequently_discount' => $_POST['frequently_discount'], 'frequent_discount_amount' => abs($_POST['frequent_discount_amount']), 'action' => "complete_booking", 'coupon_discount' => $_POST['discount'], 'cc_card_num' => $_POST['cc_card_num'],'cc_exp_month' => $_POST['cc_exp_month'],'cc_exp_year' => $_POST['cc_exp_year'],'cc_card_code' => $_POST['cc_card_code'],'guest_user_status' => $_POST['guest_user_status'],'is_login_user' => $_POST['is_login_user'],'service_name' => $service_name,'coupon_code'=> $coupon_code,
-    'user_coupon_val'=> $user_coupon_val,'recurrence_booking_status'=> $recurrence_booking_status,'random_string'=> $random_string,'custom_rate'=> $_POST['custom_rate'],'staff_id_status'=>$_POST['staff_id_status']);
+  $array_value = array('existing_username' => $_POST['existing_username'], 'existing_password' => $_POST['existing_password'], 'password' => $_POST['password'], 'firstname' => $firstname, 'username' => $username, 'lastname' => $lastname, 'email' => $email, 'phone' => $phone, 'user_address' => $user_address, 'user_zipcode' => $user_zipcode, 'user_city' => $user_city, 'user_state' => $user_state, 'address' => $address, 'zipcode' => $zipcode, 'city' => $city, 'state' => $state, 'notes' => $notes, 'vc_status' => $_POST['vc_status'],'staff_id' => $staff_id, 'p_status' => $_POST['p_status'], 'contact_status' => $_POST['contact_status'], 'payment_method' => $_POST['payment_method'], 'amount' => $_POST['amount'], 'discount' => abs(number_format($total_discount, 2, ".", ',')), 'taxes' => $tax, 'partial_amount' => $_POST['partial_amount'], 'net_amount' => $_POST['net_amount'], 'booking_date_time' => $_POST['booking_date_time'],'booking_date_time_end' => @$_POST['booking_date_time_end'], 'frequently_discount' => $_POST['frequently_discount'], 'frequent_discount_amount' => abs($_POST['frequent_discount_amount']), 'action' => "complete_booking", 'coupon_discount' => $_POST['discount'],'guest_user_status' => $_POST['guest_user_status'],'is_login_user' => $_POST['is_login_user'],'service_name' => $service_name,'coupon_code'=> $coupon_code,
+    'user_coupon_val'=> @$user_coupon_val,'recurrence_booking_status'=> $recurrence_booking_status,'random_string'=> $random_string,'custom_rate'=> @$_POST['custom_rate'],'staff_id_status'=>$_POST['staff_id_status']);
   
   $_SESSION['ct_details']=$array_value;
   
@@ -203,12 +203,12 @@ if(isset($_POST['action']) && $_POST['action']=='complete_booking'){
  
   
   /*Stripe payment method single*/
-  if($_POST['payment_method'] == 'stripe' && ($setting->get_option('ct_stripe_create_plan') == "N" || $_POST["guest_user_status"] == "on" || $recurrence_booking_status == "N")){
+  if($_POST['payment_method'] == 'stripe-payment' && ($setting->get_option('ct_stripe_create_plan') == "N" || $_POST["guest_user_status"] == "on" || $recurrence_booking_status == "N")){
     $_SESSION['ct_details']['stripe_trans_id'] = $stripe_trans_id;
     header('location:'.FRONT_URL.'booking_complete.php');
     exit(0);
   }
-  if($_POST['payment_method'] == 'stripe' && ($setting->get_option('ct_stripe_create_plan') == "Y" || $_POST["guest_user_status"] == "off" || $recurrence_booking_status == "Y")){
+  if($_POST['payment_method'] == 'stripe-payment' && ($setting->get_option('ct_stripe_create_plan') == "Y" || $_POST["guest_user_status"] == "off" || $recurrence_booking_status == "Y")){
     $_SESSION['ct_details']['stripe_token'] = $_POST["st_token"];
     header('location:'.FRONT_URL.'booking_complete.php');
     exit(0);
