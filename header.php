@@ -36,13 +36,4 @@ if(sizeof((array)$dots)>2 && $dots[0]!='www' && strlen($dots[1])>3){
 
 define("STRIPE_LIB_PATH", (dirname(__FILE__).'/assets/stripe/init.php'));
 
-if(STRIPE_MODE == "LIVE"){
-	define("STRIPE_PUBLISHABLE_KEY", "pk_test_51IYW3FFrFlJEtRYQZ87m6EdlxJhLQMmwhiAomLTTwR3VWdSOFGNTK7VLWPzwiAzJIGM4ezfdbw6d3ZRAarXfnnX400iGVoB1sh");
-	define("STRIPE_SECRET_KEY", "sk_test_51IYW3FFrFlJEtRYQATAOJIHkWAFO8CfzwuTgeSmNCz0oWLlEAJAC2ableXfXC4V3Y3o8wWvwEZHzVRSzjBPqF3Bp00tMWQmyYX");
-	define("STRIPE_CONNECT_KEY", "sk_test_51IYW3FFrFlJEtRYQATAOJIHkWAFO8CfzwuTgeSmNCz0oWLlEAJAC2ableXfXC4V3Y3o8wWvwEZHzVRSzjBPqF3Bp00tMWQmyYX");
-} else {
-	define("STRIPE_PUBLISHABLE_KEY", "pk_test_51IYW3FFrFlJEtRYQZ87m6EdlxJhLQMmwhiAomLTTwR3VWdSOFGNTK7VLWPzwiAzJIGM4ezfdbw6d3ZRAarXfnnX400iGVoB1sh");
-	define("STRIPE_SECRET_KEY", "sk_test_51IYW3FFrFlJEtRYQATAOJIHkWAFO8CfzwuTgeSmNCz0oWLlEAJAC2ableXfXC4V3Y3o8wWvwEZHzVRSzjBPqF3Bp00tMWQmyYX");
-}
-
 ?>

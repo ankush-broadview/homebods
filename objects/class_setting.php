@@ -318,7 +318,7 @@ class cleanto_setting{
 		return $result;
 	}
 	public function __construct(){
-		$this->chk_pc();
+	//	$this->chk_pc();
 	}
     
 	/* Function for Read and Display Settings */

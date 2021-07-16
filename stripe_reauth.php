@@ -46,7 +46,7 @@ $stripe_account_status = isset($_SESSION['stripe_account_status']) ? $_SESSION['
 #die;
 #echo "<pre>";
 $stripeAcntId = ""; 
-$_SESSION['stripe_onboard_success'] = false;
+	$_SESSION['stripe_onboard_success'] = false;
 if(isset($_SESSION['stripe_account_id']) && !empty($_SESSION['stripe_account_id'])) {
  	$stripeAcntId = $_SESSION['stripe_account_id'];
 }
@@ -85,8 +85,8 @@ if ($stripe_account_status) {
 				<h2>Stripe Account is not complete yet. To get payment the account has to be complete and verified.</h2>
 				<div style="padding: 5%;text-align: center;">
 					<input id="stripe_id" type="hidden" name="stripe_id" value="<?php echo $stripeAcntId; ?>">
-					<button id="stripe-connect-btn" type="button" href="javascript:void(0);"
-					class="stripe-connect-btn">Complete it now</button>
+					<a id="stripe-connect-btn" type="button" href="<?=$stripeObj->getStripeOnboardingLink($stripeAcntId);?>"
+					class="stripe-connect-btn">Complete it now</a>
 					<div id="register-meesg" style="display: none;text-align: center;padding-top: 10px;">
 						
 					</div>

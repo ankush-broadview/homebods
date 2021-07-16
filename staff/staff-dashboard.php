@@ -1,5 +1,4 @@
-<?php     
-session_start();
+<?php
 include(dirname(__FILE__).'/header-staff.php');
 include(dirname(dirname(__FILE__)) ."/objects/class_payments.php");
 include(dirname(dirname(__FILE__)) ."/admin/user_session_check.php");
@@ -123,8 +122,7 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 										<th><?php echo $label_language_values['net_total'];?></th>
 										<th><?php echo $label_language_values['staff_booking_status']; ?></th>
 										<th><?php echo $label_language_values['payment_status'];?></th>									
-										<th><?php echo "Rating & Review";?></th>	
-										<th>Action</th>
+										<th><?php echo "Rating & Review";?></th>											
 									</tr>
 								</thead>
 								<tbody>
@@ -133,7 +131,10 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 								$staff_service_details=$staff_commision->staff_service_details($staff_id);
 								if(sizeof((array)$staff_service_details) > 0){
 									foreach($staff_service_details as $arr_staff){
-										$get_booking_nettotal = $staff_commision->get_booking_nettotal($staff_id, $arr_staff['order_id']);
+										$objpayment->order_id = $arr_staff['order_id'];
+										$payment_details = $objpayment->readone_payment_details();
+									//	$get_booking_nettotal = $staff_commision->get_booking_nettotal($staff_id, $arr_staff['order_id']);
+										$get_booking_nettotal = $payment_details["net_amount"];
 										$service_name = $staff_commision->get_service_name($arr_staff['service_id']);
 										$bookings->staff_id=$staff_id;
 										$bookings->order_id=$arr_staff['order_id'];
@@ -171,7 +172,8 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 											<td><?php  echo $order_client_detail[4]; ?></td>
 											<td><?php  echo $general->ct_price_format($get_booking_nettotal,$symbol_position,$decimal); ?></td>
 											<td>
-											<?php  $rec_status_details =$bookings->readone_bookings_details_by_order_id_s_id();
+											<?php  
+											$rec_status_details =$bookings->readone_bookings_details_by_order_id_s_id();
 											
 											$appdate = $arr_staff['booking_date_time'];
 									
@@ -211,8 +213,7 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 											</td>
 											<td>
 												<?php
-												$objpayment->order_id = $arr_staff['order_id'];
-												$payment_details = $objpayment->readone_payment_details();
+											
 												if($payment_details['payment_status']=='Completed'){
 												?>
 												<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['completed'];?>><?php echo $label_language_values['completed'];?></a>
@@ -250,10 +251,7 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 											<input id="staff_ratings" name="staff_ratings" class="rating staff_ratings_class staff_ratings<?php   echo $arr_staff['order_id']; ?>" data-order_id="<?php    echo $arr_staff['order_id']; ?>" data-min="0" data-max="5" data-step="0.1" value="<?php    echo $rating_order_detail['rating']; ?>" />
 											<?php    echo $rating_order_detail['review'];
 											} ?>
-											</td>
-											<td>
-												
-											</td>
+											</td>										
 										</tr>
 									<?php  
 									}

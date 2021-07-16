@@ -1,5 +1,6 @@
 <?php
 include_once(dirname(__DIR__).'/header.php');
+include_once(dirname(__DIR__).'/env.php');
 require_once STRIPE_LIB_PATH;
 \Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
 
@@ -93,12 +94,12 @@ class cleanto_stripe_utils {
 		
 		$amount =  $input["amount"];              
 		     
-		$email = $input["ct_email"];
+		$email = $input["email"];
 		$paymentMethodId = $data["paymentMethodId"];
 		
  
 		$intentParams = [
-			 "amount" => $amount,
+			 "amount" => $amount*100,
 			 "currency" => "USD",
 			 "receipt_email" => $email,
 			 "payment_method" =>$paymentMethodId,            

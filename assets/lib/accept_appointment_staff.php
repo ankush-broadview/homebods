@@ -1,11 +1,23 @@
 <?php
 include(dirname(dirname(dirname(__FILE__))).'/objects/class_connection.php');
 include(dirname(dirname(dirname(__FILE__))).'/objects/class_booking.php');
-include(dirname(dirname(dirname(__FILE__)))."/header.php");	
+include(dirname(dirname(dirname(__FILE__))).'/objects/class_payments.php');
+include(dirname(dirname(dirname(__FILE__))).'/objects/class_adminprofile.php');
+include(dirname(dirname(dirname(__FILE__)))."/header.php");
+include_once(dirname(__DIR__).'/env.php');
+require_once STRIPE_LIB_PATH;
+\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
 $con = new cleanto_db();
 $conn = $con->connect();
 $booking= new cleanto_booking();
+$admin= new cleanto_adminprofile();
+$payment= new cleanto_payments();
 $booking->conn=$conn;
+$admin->conn=$conn;
+$payment->conn=$conn;
+$stripe = new \Stripe\StripeClient(
+	STRIPE_SECRET_KEY
+  );
 if(isset($_GET['id'])){
 	$booking->id=$_GET['id'];
 	$booking->status=$_GET['status'];
@@ -49,11 +61,76 @@ if(isset($_POST['action']) && $_POST['action']=='accept_appointment_staff'){
 	$booking->id=$_POST['idd'];
 	$booking->status=$_POST['staff_status'];
 	$result=$booking->update_staff_status();
+
+	$orderId = $_POST['order_id'];
+	$bookingResult = $booking->getdatabyorder_id($orderId);
+
+	$bookingData=mysqli_fetch_array($bookingResult);
+	try {
+		$resp = $stripe->paymentIntents->capture(
+			$bookingData["payment_intent_id"]			
+		  );
+		if ($resp) {
+			$paymentCaptureStatus = $resp["status"];
+			if ($resp["status"]=="succeeded") {
+				$paymentStatus = 1;
+				$payment->update_payment_status($orderId,"Completed");
+			}			
+		}
+		$id = $bookingData["id"];
+		$booking->updateCaptureStatus($paymentStatus,$paymentCaptureStatus,$id);
+	  } catch (\Throwable $th) {
+		 // throw $th;
+	  }
 }
 if(isset($_POST['action']) && $_POST['action']=='complete_appointment_staff'){
 	$booking->id=$_POST['idd'];
 	$booking->status=$_POST['staff_status'];
 	$result=$booking->update_staff_status();
+	$orderId = $_POST['order_id'];
+	$bookingResult = $booking->getdatabyorder_id($orderId);
+	$bookingData=mysqli_fetch_array($bookingResult);
+
+
+	if (!empty($bookingData["staff_ids"])) {
+		$admin->id = $bookingData["staff_ids"];
+		$adminDetails = $admin->readone();
+		if (!empty($adminDetails["stripe_account_id"]) && $adminDetails["stripe_account_status"]==1) {
+			try {
+				$resp = $stripe->paymentIntents->retrieve(
+					$bookingData["payment_intent_id"]
+				);
+
+				$proCommision = round($resp["amount"]* 0.8);
+
+				if ($resp) {
+					$charge = $resp->charges->data[0];
+					try {
+						$transfer = \Stripe\Transfer::create([
+							"amount" => $proCommision,
+							"currency" => "usd",
+							"source_transaction" => $charge->id,
+							"destination" => $adminDetails["stripe_account_id"],
+							['metadata' => [
+								'order_id' => $orderId ,
+								'merchant_name' => $adminDetails["pro_user_id"]						
+							]]
+						]);
+					} catch (\Throwable $th) {
+						throw $th;
+					}
+					
+				}
+			} catch (\Throwable $th) {
+				throw $th;
+			}			
+		}
+	}
+
+
+
+
+
 }
 if(isset($_POST['action']) && $_POST['action']=='decline_appointmentt_staff'){
 	$booking->id=$_POST['idd'];
@@ -77,5 +154,21 @@ if(isset($_POST['action']) && $_POST['action']=='decline_appointmentt_staff'){
 	$booking->booking_id=$result['order_id'];
 	$booking->staff_id=$s_id;
 	$result=$booking->update_staff_id_bookings_details_by_order_id();
+
+
+	$bookingResult = $booking->getdatabyorder_id($ord_id);
+	$bookingData = mysqli_fetch_array($bookingResult);
+	try {
+		$resp = $stripe->paymentIntents->cancel(
+			$bookingData["payment_intent_id"]			
+		  );
+		if ($resp) {						
+			// cancelled by service provider
+			$booking->updateBookingStatus("CS",$bookingData["id"]);						
+		}				
+	  } catch (\Throwable $th) {
+		  throw $th;
+	  }
+
 }
 ?>

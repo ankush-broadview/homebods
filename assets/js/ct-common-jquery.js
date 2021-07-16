@@ -896,7 +896,7 @@ jQuery(document).ready(function() {
 
     var existing_password = jQuery("#ct-user-pass").val();
 
-    if(!jQuery("#user_login_form").valid()){ return false; }
+   // if(!jQuery("#user_login_form").valid()){ return false; }
 
     dataString={action:"get_login_user_data"};
 
@@ -1826,6 +1826,12 @@ jQuery(document).on("click","#complete_bookings",function(e){
           clicked=true;
       if(payment_method == "stripe-payment"){ 
 
+            let paymentIntentId = $("#payment_intent_id").val();
+            if (!paymentIntentId) {
+                $("#stripePayBtn").trigger("click");
+                return;
+            }
+            dataString.payment_intent_id = paymentIntentId;
             jQuery(".ct-loading-main-complete_booking").show();
 
             jQuery.ajax({
@@ -1939,10 +1945,10 @@ jQuery(document).on("click","#login_existing_user",function(){
   var existing_username = jQuery("#ct-user-name").val();
 
   var existing_password = jQuery("#ct-user-pass").val();
-
+debugger
   dataString={existing_username:existing_username,existing_password:existing_password,action:"get_existing_user_data"};
 
-  if(!jQuery("#user_login_form").valid()){ return false; }
+  //if(!jQuery("#user_login_form").valid()){ return false; }
 
   jQuery.ajax({
 
@@ -2749,8 +2755,8 @@ jQuery(document).on("click",".provider_select",function(){
     success : function(res){
 		
        /*  var details=jQuery.parseJSON(res); */
-  	  var currency_symbol = jQuery(this).attr("data-currency_symbol");
-
+  	  var currency_symbol = jQuery("#complete_bookings").attr("data-currency_symbol");
+debugger
       if (res.rate_type == 'Single Customer') {
           var cart_sub_totals = res.new_staff.single_customer_rate;
       }else{
@@ -2770,6 +2776,9 @@ jQuery(document).on("click",".provider_select",function(){
       var cart_tax_val = cart_tax.replace(currency_symbol, "");
       var sub_total = parseInt(cart_sub_total_val);
       var cart_total = parseInt(cart_tax_val)+parseInt(sub_total);
+      if (isNaN(cart_total)) {
+        cart_total = sub_total;
+      }
 	  
       jQuery(".cart_sub_total").html(sub_total.toFixed(price_format_decimal_places));
       jQuery(".cart_total").html(price_format_with_symbol(cart_total));

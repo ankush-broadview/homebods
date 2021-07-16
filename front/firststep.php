@@ -1283,7 +1283,7 @@ elseif (isset($_POST['referral_reversed'])){
 elseif (isset($_POST['get_staff_sess'])){
 	
 	$staff_detail = [];
-	if ($_SESSION['staff_id_cal'] !== '') {
+	if (isset($_SESSION['staff_id_cal']) && !empty($_SESSION['staff_id_cal'])) {
 		$staff_detail['pre_staff_detail'] = $objadmin->get_search_staff_detail_byid($_SESSION['staff_id_cal']);
 	}
 	

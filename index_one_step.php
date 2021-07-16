@@ -4252,7 +4252,7 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
                 <!-- This button will be clicked after booking -->
                 <button type="button" id="stripePayBtn" style="display:none"></button>
-
+<input type="hidden" name="payment_intent_id" id="payment_intent_id">
                         <a href="javascript:void(0)" type='submit' data-currency_symbol="<?php  echo $settings->get_option('ct_currency_symbol'); ?>" id='complete_bookings' class="ct-button scroll_top_complete ct-btn-big ct_remove_id complete_bookings "><?php  echo $label_language_values['complete_booking'];?></a>
 
                       </div>

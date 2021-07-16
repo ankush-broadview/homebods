@@ -224,13 +224,13 @@ if(isset($_SESSION["ct_details"]) && $_SESSION["ct_details"]!=""){
   $payment_method = ucwords($_SESSION["ct_details"]["payment_method"]);
   $transaction_id = "";
   $payment_status = "Pending";
-  if(isset($_POST["transaction_id"])){
-    $payment_status = "Completed";
-    $transaction_id = $_POST["transaction_id"];
-  }elseif(isset($_SESSION["ct_details"]["stripe_trans_id"]) && $_SESSION["ct_details"]["payment_method"] == "stripe-payment"){
-    $payment_status = "Completed";
-    $transaction_id = $_SESSION["ct_details"]["stripe_trans_id"];
-  }
+  // if(isset($_POST["transaction_id"])){
+  //   $payment_status = "Completed";
+  // //  $transaction_id = $_POST["transaction_id"];
+  // }elseif(isset($_SESSION["ct_details"]["stripe_trans_id"]) && $_SESSION["ct_details"]["payment_method"] == "stripe-payment"){
+  //   $payment_status = "Completed";
+  // //  $transaction_id = $_SESSION["ct_details"]["stripe_trans_id"];
+  // }
   
   $last_order_id=$booking->last_booking_id();
   if($last_order_id=="0" || $last_order_id==null){
@@ -247,6 +247,8 @@ if(isset($_SESSION["ct_details"]) && $_SESSION["ct_details"]!=""){
     $rec_id = $last_recurring_id+1;
   }
   $booking_date_time = date("Y-m-d H:i:s", strtotime($_SESSION["ct_details"]["booking_date_time"]));
+  $payment_intent_id = $_SESSION["ct_details"]["payment_intent_id"];
+  $transaction_id = $payment_intent_id;
   $client_id = 0;
   $stripe_cus_id = "";
   if($_SESSION["ct_details"]["guest_user_status"] == "on"){
@@ -306,67 +308,7 @@ if(isset($_SESSION["ct_details"]) && $_SESSION["ct_details"]!=""){
     $_SESSION["ct_login_user_id"] = $client_id;
     $_SESSION["ct_useremail"] = $_SESSION["ct_details"]["email"];
   }
-  
-  // if($_SESSION["ct_details"]["guest_user_status"] == "off" && $settings->get_option("ct_stripe_create_plan") == "Y" && $_SESSION["ct_details"]["payment_method"] == "stripe-payment" && $_SESSION["ct_details"]["recurrence_booking_status"] == "Y"){
-  //   require_once(dirname(dirname(__FILE__))."/assets/stripe/stripe.php");
-  //   $secret_key = $settings->get_option("ct_stripe_secretkey");
-  //   try{
-  //     \Stripe\Stripe::setApiKey($secret_key);
-  //     $objcustomer = new \Stripe\Customer;
-  //     if($stripe_cus_id == ""){
-  //       $create_customer = $objcustomer::Create(array(
-  //         "email"    => $_SESSION["ct_details"]["email"],
-  //         "description" => "This id name is ".ucwords($_SESSION["ct_details"]["firstname"])." ".ucwords($_SESSION["ct_details"]["lastname"]),
-  //         "source" => $_SESSION["ct_details"]["stripe_token"]
-  //       ));
-  //       $stripe_cus_id = $create_customer->id;
-  //       $user->user_id = $client_id;
-  //       $user->stripe_id = $stripe_cus_id;
-  //       $user->update_user_stripe_id();
-  //     }else{
-  //       $objcustomer::Update($stripe_cus_id,array(
-  //         "source" => $_SESSION["ct_details"]["stripe_token"]
-  //       ));
-  //     }
-  //     $frequently_discount->id = $_SESSION["ct_details"]["frequently_discount"];
-  //     $frequently_discount_detail = $frequently_discount->readone();
-  //     $product_name = $frequently_discount_detail["discount_typename"];
-  //     $stripe_product_id = $frequently_discount_detail["stripe_plan_id"];
-  //     $days = $frequently_discount_detail["days"];
-      
-  //     $objplan = new \Stripe\Plan;
-  //     $one_plan_create = $objplan::Create(array(
-  //       "amount" => ((double)$_SESSION["ct_details"]["net_amount"])*100,
-  //       "interval" => "day",
-  //       "product" => $stripe_product_id,
-  //       "currency" => $settings->get_option("ct_currency"),
-  //       "interval_count" => $days,
-  //       "nickname" => $product_name." For ".$days." days"
-  //     ));
-  //     $stripe_plan_id = $one_plan_create->id;
-      
-  //     $start_date = date_create(date("Y-m-d",strtotime($current_time)));
-  //     $end_date = date_create(date("Y-m-d",strtotime($booking_date_time)));
-  //     $diff = date_diff($start_date,$end_date);
-  //     $total_difference = $diff->format("%a");
-      
-  //     $objsubscription = new \Stripe\Subscription;
-      
-  //     $create_subscription = $objsubscription::Create(array(
-  //       "customer" => $stripe_cus_id,
-  //       "items" => array(
-  //       array(  "plan" => $stripe_plan_id,    ),
-  //       ),
-  //       "billing" => "charge_automatically",
-  //       "trial_period_days" => $total_difference
-  //     ));
-  //     $payment_method = "Stripe-Reccurance";
-  //     $transaction_id = $create_subscription->id;
-  //     $payment_status = "Pending";
-  //   } catch (Exception $e) {
-  //     echo "error:-".$e->getMessage();die();
-  //   }
-  // }
+
   
   if(count((array)$_SESSION["ct_cart"]) != 0) {
     if($_SESSION["ct_details"]["recurrence_booking_status"] == "Y"){
@@ -389,6 +331,7 @@ if(isset($_SESSION["ct_details"]) && $_SESSION["ct_details"]!=""){
             $booking->order_date=$current_time;
             $booking->booking_date_time=$booking_date_time;
 						$booking->booking_date_time_end=$booking_date_time_end;																								 
+						$booking->payment_intent_id=$payment_intent_id;																								 
             $booking->method_id=$_SESSION["ct_cart"]["method"][$i]["method_id"];
             $booking->method_unit_id=$_SESSION["ct_cart"]["method"][$i]["units_id"];
             $booking->method_unit_qty=$_SESSION["ct_cart"]["method"][$i]["s_m_qty"];
@@ -472,6 +415,7 @@ if(isset($_SESSION["ct_details"]) && $_SESSION["ct_details"]!=""){
           $booking->client_id=$client_id;
           $booking->order_date=$current_time;
           $booking->booking_date_time=$booking_date_time;
+          $booking->payment_intent_id=$payment_intent_id;		
           $booking->method_id=$_SESSION["ct_cart"]["method"][$i]["method_id"];
           $booking->method_unit_id=$_SESSION["ct_cart"]["method"][$i]["units_id"];
           $booking->method_unit_qty=$_SESSION["ct_cart"]["method"][$i]["s_m_qty"];

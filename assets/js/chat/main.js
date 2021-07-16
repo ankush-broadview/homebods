@@ -50,8 +50,8 @@ $(".register-btn").on('click', function(e){
 			data : form_data,
 			success : function(resp){
 
-				
-				var response = JSON.parse(resp);
+				try {
+					var response = JSON.parse(resp);
 
 				console.log(response);
 
@@ -75,6 +75,10 @@ $(".register-btn").on('click', function(e){
 				}else{
 					alert(response.message);
 				}
+				} catch (error) {
+					jQuery(".ct-loading-main").hide();
+				}
+				
 
 				
 

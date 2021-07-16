@@ -28,6 +28,7 @@ var setupElements = function () {
     });
     card.mount("#stripeElement");
     var submit_btn = document.getElementById('stripePayBtn');
+    
     submit_btn.addEventListener('click', function (event) {
         event.preventDefault();      
         showLoader();
@@ -100,8 +101,9 @@ var orderComplete = function (clientSecret) {
         var paymentIntent = result.paymentIntent;
         var paymentIntentJson = JSON.stringify(paymentIntent, null, 2);
         changeLoadingState(false);
-        $("#paymentIntentId").val(paymentIntent.id)
-        alert("Payment completed successfully.")        
+        $("#payment_intent_id").val(paymentIntent.id);
+        $("#complete_bookings").trigger("click");
+        // alert("Payment completed successfully.")        
     });
 };
 
@@ -127,7 +129,7 @@ var createPaymentIntent = function (paymentMethodId) {
     if (paymentMethodId) {        
         orderData.paymentMethodId = paymentMethodId
     }
-    orderData.amount = net_amount;
+    orderData.amount = parseFloat(net_amount);
     orderData.user_id = $("#logout").attr("data-id");
     orderData.route = "getClientSecret";
     orderData.email = document.getElementById("ct-email").value;
