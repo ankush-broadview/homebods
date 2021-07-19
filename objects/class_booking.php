@@ -156,6 +156,11 @@ class cleanto_booking{
 		$result=mysqli_query($this->conn,$query);
 		return $result;
 	}
+	public function update_booking_status(){
+		$query="update `".$this->table_name."` set `booking_status`='".$this->booking_status."' where `id`='".$this->id."'";
+		$result=mysqli_query($this->conn,$query);
+		return $result;
+	}
 	/* Used in booking_ajax */
 	public function count_order_id_bookings(){
 		$query="select count(`order_id`) as `ordercount` from `".$this->table_name."` where `id`='".$this->order_id."'";

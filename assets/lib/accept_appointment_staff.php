@@ -151,9 +151,13 @@ if(isset($_POST['action']) && $_POST['action']=='decline_appointmentt_staff'){
 	}	
 	$ord_id=$result['order_id'];
 	$s_id=implode(',',$x);
+	
 	$booking->booking_id=$result['order_id'];
 	$booking->staff_id=$s_id;
 	$result=$booking->update_staff_id_bookings_details_by_order_id();
+
+	$booking->booking_status="CC";
+	$result=$booking->update_booking_status();
 
 
 	$bookingResult = $booking->getdatabyorder_id($ord_id);

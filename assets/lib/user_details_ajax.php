@@ -1069,7 +1069,11 @@ if(isset($_POST['update_booking_users'])){
 	$lastmodify = date('Y-m-d H:i:s');
     $cancel_reson_book = $_POST['cancel_reson_book'];
 
-    $objuserdetails->update_booking_of_user($order,$cancel_reson_book,$lastmodify);
+    $objuserdetails->update_booking_of_user($order,$cancel_reson_book,$lastmodify,"CS");
+
+	$booking->booking_id=$id;
+	$booking->staff_id="";
+	$result=$booking->update_staff_id_bookings_details_by_order_id();
 
     $orderdetail = $objdashboard->getclientorder($id);
     $clientdetail = $objdashboard->clientemailsender($id);
