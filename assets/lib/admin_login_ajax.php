@@ -37,9 +37,13 @@ else
     }
 }
 $mail = new cleanto_phpmailer();
-$mail->Host = $settings->get_option('ct_smtp_hostname');
-$mail->Username = $settings->get_option('ct_smtp_username');
-$mail->Password = $settings->get_option('ct_smtp_password');
+// $mail->Host = $settings->get_option('ct_smtp_hostname');
+// $mail->Username = $settings->get_option('ct_smtp_username');
+// $mail->Password = $settings->get_option('ct_smtp_password');
+// $mail->Port = $settings->get_option('ct_smtp_port');
+$mail->Host ="smtp.gmail.com";
+$mail->Username = "vikramdev94551207@gmail.com";
+$mail->Password = "vhrnmvoouwpxfeon";
 $mail->Port = $settings->get_option('ct_smtp_port');
 $mail->SMTPSecure = $settings->get_option('ct_smtp_encryption');
 $mail->SMTPAuth = $mail_SMTPAuth;
@@ -48,7 +52,8 @@ $objlogin = new cleanto_login_check();
 $objlogin->conn = $conn;
 $objadmininfo = new cleanto_adminprofile();
 $objadmininfo->conn = $conn;
-$company_email = $settings->get_option('ct_company_email');
+//$company_email = $settings->get_option('ct_company_email');
+$company_email = "vikramdev94551207@gmail.com";
 $company_name = $settings->get_option('ct_company_name');
 if (isset($_POST['checkadmin']))
 {

@@ -162,35 +162,35 @@ if(isset($_POST['s_m_units_maxlimit_5'])){
 
         // $resp = $chat_user->loginUser($existing_login[3],$existing_login[1],$existing_login[22]);
 
-        $_SESSION['ct_login_user_id']=$existing_login[0];
-        $_SESSION['ct_useremail'] = $existing_login[1];
-        $_SESSION['ct_name'] = $existing_login[3].' '.$existing_login[4];
-        $_SESSION['fullname'] = $existing_login[3].' '.$existing_login[4];
-        $_SESSION['user_uuid'] = $existing_login[22];
+        $_SESSION['ct_login_user_id']=$existing_login["id"];
+        $_SESSION['ct_useremail'] = $existing_login["user_email"];
+        $_SESSION['ct_name'] = $existing_login['first_name'].' '.$existing_login['last_name'];
+        $_SESSION['fullname'] = $existing_login['first_name'].' '.$existing_login['last_name'];
+        $_SESSION['user_uuid'] = $existing_login["grinders_id"];
 
         $u_msg=array();
         $u_msg['status']="Login Sucessfull";
-        $u_msg['id']=$existing_login[0];
-        $u_msg['email']=$existing_login[1];
+        $u_msg['id']=$existing_login["id"];
+        $u_msg['email']=$existing_login["user_email"];
         $u_msg['password']=$_POST['existing_password'];
         $u_msg['username']=$_POST['existing_username'];
-        $u_msg['firstname'] = $existing_login[3];
-        $u_msg['lastname']=$existing_login[4];
-        $u_msg['phone']=$existing_login[5];
-        $u_msg['zip']=$existing_login[6];
-        $u_msg['address']=$existing_login[7];
-        $u_msg['city']=$existing_login[8];
-        $u_msg['state']=$existing_login[9];
-        $u_msg['notes']=$existing_login[10];
-        $u_msg['vc_status']=$existing_login[11];
-        $u_msg['p_status']=$existing_login[12];
-        $u_msg['contact_status']=$existing_login[13]; 
+        $u_msg['firstname'] = $existing_login['first_name'];
+        $u_msg['lastname']=$existing_login['last_name'];
+        $u_msg['phone']=$existing_login["phone"];
+        $u_msg['zip']=$existing_login["zip"];
+        $u_msg['address']=$existing_login["address"];
+        $u_msg['city']=$existing_login["city"];
+        $u_msg['state']=$existing_login["state"];
+        $u_msg['notes']=$existing_login["notes"];
+        $u_msg['vc_status']=$existing_login["vc_status"];
+        $u_msg['p_status']=$existing_login["p_status"];
+        $u_msg['contact_status']=$existing_login["contact_status"]; 
 				
 				
 				
-        $u_msg['wallet_amount']='<input type="radio" name="payment-methods" value="Wallet-payment" class="input-radio payment_gateway user_wallet_amount_value wallet_amount" data-wallet="'.$existing_login[19].'" id="wallet"  />
+        $u_msg['wallet_amount']='<input type="radio" name="payment-methods" value="Wallet-payment" class="input-radio payment_gateway user_wallet_amount_value wallet_amount" data-wallet="'.$existing_login["wallet_amount"].'" id="wallet"  />
 
-			<label for="wallet"  class="locally-radio"><span class="user_wallet_amount" ><p style="margin-left: 25px;line-height: 0.9;">Wallet('.$settings->get_option('ct_currency_symbol').$existing_login[19].')</p></span></label>';
+			<label for="wallet"  class="locally-radio"><span class="user_wallet_amount" ><p style="margin-left: 25px;line-height: 0.9;">Wallet('.$settings->get_option('ct_currency_symbol').$existing_login["wallet_amount"].')</p></span></label>';
 
         echo json_encode($u_msg);die();
     }
@@ -209,28 +209,28 @@ elseif(isset($_POST['action']) && $_POST['action']=='get_login_user_data'){
         echo json_encode($u_msg);die();
     }else{
         unset($_SESSION['ct_adminid']);
-        $_SESSION['ct_login_user_id']=$existing_login[0];
-        $_SESSION['ct_useremail']=$existing_login[1];
-        $_SESSION['ct_name'] = $existing_login[3].' '.$existing_login[4];
-        $_SESSION['fullname'] = $existing_login[3].' '.$existing_login[4];
-        $_SESSION['user_uuid'] = $existing_login[22];
+        $_SESSION['ct_login_user_id']=$existing_login["id"];;
+        $_SESSION['ct_useremail']=$existing_login["user_email"];
+        $_SESSION['ct_name'] = $existing_login['first_name'].' '.$existing_login['last_name'];
+        $_SESSION['fullname'] = $existing_login['first_name'].' '.$existing_login['last_name'];
+        $_SESSION['user_uuid'] = $existing_login["grinders_id"];
 
         $u_msg=array();
         $u_msg['status']="Login Sucessfull";
-        $u_msg['id']=$existing_login[0];
-        $u_msg['email']=$existing_login[1];
-        $u_msg['password']=$existing_login[2];
-        $u_msg['firstname']=$existing_login[3];
-        $u_msg['lastname']=$existing_login[4];
-        $u_msg['phone']=$existing_login[5];
-        $u_msg['zip']=$existing_login[6];
-        $u_msg['address']=$existing_login[7];
-        $u_msg['city']=$existing_login[8];
-        $u_msg['state']=$existing_login[9];
-        $u_msg['notes']=$existing_login[10];
-        $u_msg['vc_status']=$existing_login[11];
-        $u_msg['p_status']=$existing_login[12];
-        $u_msg['contact_status']=$existing_login[13];
+        $u_msg['id']=$existing_login["id"];
+        $u_msg['email']=$existing_login["user_email"];
+        $u_msg['password']=$existing_login["user_pwd"];
+        $u_msg['firstname']=$existing_login['first_name'];
+        $u_msg['lastname']=$existing_login['last_name'];
+        $u_msg['phone']=$existing_login["phone"];
+        $u_msg['zip']=$existing_login["zip"];
+        $u_msg['address']=$existing_login["address"];
+        $u_msg['city']=$existing_login["city"];
+        $u_msg['state']=$existing_login["state"];
+        $u_msg['notes']=$existing_login["notes"];
+        $u_msg['vc_status']=$existing_login["vc_status"];
+        $u_msg['p_status']=$existing_login["p_status"];
+        $u_msg['contact_status']=$existing_login["contact_status"];
 
         echo json_encode($u_msg);die();
     }

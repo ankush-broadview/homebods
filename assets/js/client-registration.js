@@ -537,15 +537,11 @@ jQuery(document).on("click",".staff_register_otp",function() {
         action:"pre_staff_otp_check" 
       },
       url: ajax_url + "admin_login_ajax.php",
-      success: function (res) {        
+      success: function (res) {   
         jQuery(".ct-loading-main").hide();
         jQuery("#register-meesg").css('display','block');
         var result = jQuery.parseJSON(res);
         let resStatus = result.status;
-
-        alert(res['status']);
-        console.log(res);
-        console.log(res.status);
         if(resStatus == 11 || resStatus == 1){
           if (result.data && result.data.onboarding_url) {
              setTimeout(function() {

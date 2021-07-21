@@ -17,6 +17,10 @@ include(dirname(dirname(dirname(__FILE__)))."/objects/class_nexmo.php");
 include(dirname(dirname(dirname(__FILE__)))."/objects/class_gc_hook.php");
 include(dirname(dirname(dirname(__FILE__))).'/objects/class_users.php');
 include(dirname(dirname(dirname(__FILE__)))."/objects/class_eml_sms.php");
+include(dirname(dirname(dirname(__FILE__))).'/objects/class_payments.php');
+include_once(dirname(__DIR__).'/env.php');
+require_once STRIPE_LIB_PATH;
+\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
 
 $database= new cleanto_db();
 $conn=$database->connect();
@@ -36,7 +40,10 @@ $emailtemplate->conn=$conn;
 
 $objdashboard = new cleanto_dashboard();
 $objdashboard->conn = $conn;
-$objadminprofile = new cleanto_adminprofile();$objadminprofile->conn = $conn;
+
+$objadminprofile = new cleanto_adminprofile();
+$objadminprofile->conn = $conn;
+
 $first_step=new cleanto_first_step();
 $first_step->conn=$conn;
 
@@ -45,6 +52,17 @@ $emlsms->conn=$conn;
 
 $booking = new cleanto_booking();
 $booking->conn = $conn;
+
+$admin= new cleanto_adminprofile();
+$admin->conn=$conn;
+
+$payment= new cleanto_payments();
+$payment->conn=$conn;
+
+
+$stripe = new \Stripe\StripeClient(
+	STRIPE_SECRET_KEY
+  );
 
 $setting = new cleanto_setting();
 $setting->conn = $conn;
@@ -1062,19 +1080,88 @@ if(isset($_POST['reschedulebooking'])){
     }
 }
 if(isset($_POST['update_booking_users'])){
-  $id=$order = $_POST['id'];
+  	$id=$order = $_POST['id'];
 	$gc_event_id = $_POST['gc_event_id'];
 	$gc_staff_event_id = $_POST['gc_staff_event_id'];
 	$pid = $_POST['pid'];
 	$lastmodify = date('Y-m-d H:i:s');
     $cancel_reson_book = $_POST['cancel_reson_book'];
-
-    $objuserdetails->update_booking_of_user($order,$cancel_reson_book,$lastmodify,"CS");
-
+   	$objuserdetails->update_booking_of_user($order,$cancel_reson_book,$lastmodify,"CC");
+	// Share Refund or transfers after Booking Cancel
+	// Start	
+	$bookingResult = $booking->getdatabyorder_id($id);
+	$bookingData=mysqli_fetch_array($bookingResult);
 	$booking->booking_id=$id;
 	$booking->staff_id="";
 	$result=$booking->update_staff_id_bookings_details_by_order_id();
+	$paymentIntentId = $bookingData["payment_intent_id"];
+	$paymentIntentObj = $stripe->paymentIntents->retrieve(
+		$paymentIntentId 
+	);
+	$bookingDateTime = $bookingData["booking_date_time"];
+	$datetime1 = new DateTime($bookingDateTime);
+	$datetime2 = new DateTime(date('Y-m-d H:i:s'));
+	$interval = $datetime1->diff($datetime2);
+	$diff = $interval->format('%h').".".$interval->format('%i');
 
+	$hoursMinDiff = (float) $diff;
+	if ($bookingData["payment_status"]=="1") {
+		// If pro accepted the order request then it means payment is captured and so we can refund the amount
+		$admin->id = $bookingData["staff_ids"];
+			$adminDetails = $admin->readone();
+			if (!empty($adminDetails["stripe_account_id"]) && $adminDetails["stripe_account_status"]==1) {
+				try {
+					if ($hoursMinDiff>48) {
+						// Refund 100%
+						// Nothing will be shared
+						$amount = $paymentIntentObj["amount"];
+					}elseif($hoursMinDiff<=48 && $hoursMinDiff>24){
+						// Refund after 25$ application fee deduction
+						// Share 50% from cancellation charge(25$)
+						$amount = $paymentIntentObj["amount"]-2500;
+						$proCommision = round(2500*0.5);
+					}elseif($hoursMinDiff<=24){
+						// Refund 50%
+						// Share 80% to pro and 20% admin from left amount after refund
+						$amount = $paymentIntentObj["amount"]/2;
+						$proCommision = round($amount*0.8);
+					}
+					if ($paymentIntentObj) {
+						$charge = $paymentIntentObj->charges->data[0];
+						try {
+							$refund = \Stripe\Refund::create([
+								'charge' => $charge->id,
+								'amount' => $amount,
+							]);
+							$transfer = \Stripe\Transfer::create([
+								"amount" => $proCommision,
+								"currency" => "usd",
+								"source_transaction" => $charge->id,
+								"destination" => $adminDetails["stripe_account_id"],
+								['metadata' => [
+									'order_id' => $id,
+									"cancel_commision"=>true,
+									"cancel_reason"=>$cancel_reson_book,
+									'merchant_name' => $adminDetails["pro_user_id"]						
+								]]
+							]);
+						} catch (\Throwable $th) {
+							throw $th;
+						}
+						
+					}
+				} catch (\Throwable $th) {
+					throw $th;
+				}			
+			}
+		
+	}else{
+		// Cancel the payment intent
+		$resp = $stripe->paymentIntents->cancel(
+			$paymentIntentId 			
+		);
+	}
+	// End
     $orderdetail = $objdashboard->getclientorder($id);
     $clientdetail = $objdashboard->clientemailsender($id);
 	

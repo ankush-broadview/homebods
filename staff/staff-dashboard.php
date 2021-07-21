@@ -113,6 +113,7 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 							<table id="staff-bookings-table" class="display responsive nowrap table table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
 									<tr>
+										<th>Order Id</th>
 										<th><?php echo $label_language_values['service'];?></th>
 										<th><?php echo $label_language_values['app_date'];?></th>
 										<th><?php echo $label_language_values['customer'];?></th>
@@ -159,6 +160,7 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 										}
 									?>
 									<tr>
+											<td><?php echo  $arr_staff['order_id']; ?></td>
 											<td><?php  echo $service_name; ?></td>
 											<td><?php  											
 											$book_datetime_array = explode(" ",$arr_staff['booking_date_time']);
@@ -188,7 +190,10 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 											?>
 											<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['accepted'];?>><?php echo $label_language_values['accepted'];?></a>
 										
-										<?php if (date('Y-m-d H:i:s',strtotime($appdate)) < date('Y-m-d H:i:s',strtotime($current_date))) { ?>
+
+											<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
+
+										<?php if (true) { ?>
 											
 												<a name="" id="complete_appointment"  data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='C' class="btn btn-info ct-btn-width"  <?php echo $label_language_values['complete'];?>><?php echo $label_language_values['complete'];?></a>
 	
@@ -206,7 +211,7 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 												?>
 											<a id="accept_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='A'  value="" name="" class="btn btn-info ct-btn-width" type="submit" title="<?php echo $label_language_values['accept'];?>"><?php echo $label_language_values['accept'];?></a>
 											<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
-											<?php //}else{}  
+											<?php
 										}
 											}
 											?>

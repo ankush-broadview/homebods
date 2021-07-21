@@ -1819,7 +1819,7 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
       if(tc_check=="Y"){
 
-        if(clicked===false){
+     //   if(clicked===false){
 
           jQuery(this).attr("href","javascript:void(0);");
 
@@ -1875,25 +1875,25 @@ jQuery(document).on("click","#complete_bookings",function(e){
 
         }
 
-      }else{
+      // }else{
 
-        if(terms_condition_setting_value == "Y" || privacy_policy_setting_value == "Y"){
+      //   if(terms_condition_setting_value == "Y" || privacy_policy_setting_value == "Y"){
 
-        jQuery(this).attr("href","javascript:void(0);");
+      //   jQuery(this).attr("href","javascript:void(0);");
 
-        clicked=false;
+      //   clicked=false;
 
-        jQuery(".ct-loading-main-complete_booking").hide();
+      //   jQuery(".ct-loading-main-complete_booking").hide();
 
-          jQuery(".terms_and_condition").show();
+      //     jQuery(".terms_and_condition").show();
 
-          jQuery(".terms_and_condition").css("color","red");
+      //     jQuery(".terms_and_condition").css("color","red");
 
-          jQuery(".terms_and_condition").html(errorobj_please_accept_terms_and_conditions);
+      //     jQuery(".terms_and_condition").html(errorobj_please_accept_terms_and_conditions);
 
-        }
+      //   }
 
-      }
+      // }
 
     }
   }

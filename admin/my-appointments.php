@@ -360,11 +360,32 @@
                                           <div class="arrow"></div>
                                           <table class="form-horizontal" cellspacing="0">
                                              <tbody>
+                                                <?php
+$datetime1 = new DateTime($bdt);
+$datetime2 = new DateTime(date('Y-m-d H:i:s'));
+$interval = $datetime1->diff($datetime2);
+$diff = $interval->format('%h').".".$interval->format('%i');
+
+$hoursMinDiff = (float) $diff;
+$alertmsg = "";
+if ($hoursMinDiff>48) {
+ $alertmsg = "You will get the refunded amount that is left after stripe fees.";
+}elseif($hoursMinDiff<=48 && $hoursMinDiff>24){
+   $alertmsg = "You are cancelling within 48 to 24 hours. We will deduct $25 and refund the rest.";
+}elseif($hoursMinDiff<=24){
+   $alertmsg = "You are cancelling with less than 24 hours left. We will refund only 50%.";
+}
+                                                
+                                                
+                                                
+                                                ?>
                                                 <tr>
                                                    <td>																			<textarea class="form-control" id="reason_cancel<?php echo $dd['order_id'] ?>" name="" placeholder="<?php echo $label_language_values['booking_cancel_reason']; ?>" required="required" ></textarea>																		</td>
                                                 </tr>
                                                 <tr>
-                                                   <td>																			<a data-id="<?php echo $dd['order_id'] ?>" data-gc_event="<?php echo $dd['gc_event_id']; ?>" data-gc_staff_event="<?php echo $dd['gc_staff_event_id']; ?>" data-pid="<?php echo $dd['staff_ids']; ?>" value="Delete" class="btn btn-danger btn-sm mybtncancel_booking_user_details"><?php echo $label_language_values['yes']; ?></a>																			<a id="ct-close-user-cancel-appointment" class="btn btn-default btn-sm" href="javascript:void(0)"><?php echo $label_language_values['cancel']; ?></a>																		</td>
+                                                   <td>
+                                                      <a data-alert-msg="<?=$alertmsg?>" data-id="<?php echo $dd['order_id'] ?>" data-gc_event="<?php echo $dd['gc_event_id']; ?>" data-gc_staff_event="<?php echo $dd['gc_staff_event_id']; ?>" data-pid="<?php echo $dd['staff_ids']; ?>" value="Delete" class="btn btn-danger btn-sm mybtncancel_booking_user_details"><?php echo $label_language_values['yes']; ?></a>														<a id="ct-close-user-cancel-appointment" class="btn btn-default btn-sm" href="javascript:void(0)"><?php echo $label_language_values['cancel']; ?></a>
+                                                   </td>
                                                 </tr>
                                              </tbody>
                                           </table>
