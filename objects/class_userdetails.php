@@ -45,7 +45,7 @@ class cleanto_userdetails {
 	}
 	/* GET USER DETAIL FOR MY_APPOINTMENT PAGE */
 	public function get_user_details(){
-		$query="select DISTINCT `p`.`order_id`, `p`.`frequently_discount`, `p`.`recurrence_status`, `b`.`booking_date_time`, `b`.`booking_status`, `b`.`reject_reason`,`s`.`title`,`p`.`net_amount` as `total_payment`,`b`.`gc_event_id`,`b`.`gc_staff_event_id`,`b`.`staff_ids` from `ct_bookings` as `b`,`ct_payments` as `p`,`ct_services` as `s`,`ct_users` as `u` where `b`.`client_id` = `u`.`id` and `b`.`service_id` = `s`.`id` and `b`.`order_id` = `p`.`order_id` and `u`.`id` = $this->id  order by `b`.`order_id` desc";
+		$query="select DISTINCT `p`.`order_id`, `p`.`frequently_discount`, `p`.`recurrence_status`, `b`.`payment_status`,`b`.`booking_date_time`, `b`.`booking_status`, `b`.`reject_reason`,`s`.`title`,`p`.`net_amount` as `total_payment`,`b`.`gc_event_id`,`b`.`gc_staff_event_id`,`b`.`staff_ids` from `ct_bookings` as `b`,`ct_payments` as `p`,`ct_services` as `s`,`ct_users` as `u` where `b`.`client_id` = `u`.`id` and `b`.`service_id` = `s`.`id` and `b`.`order_id` = `p`.`order_id` and `u`.`id` = $this->id  order by `b`.`order_id` desc";
 		$result=mysqli_query($this->conn,$query);
 		return $result;
 	}

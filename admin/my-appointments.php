@@ -361,6 +361,9 @@
                                           <table class="form-horizontal" cellspacing="0">
                                              <tbody>
                                                 <?php
+
+$paymentStatus = $dd['payment_status'];
+
 $datetime1 = new DateTime($bdt);
 $datetime2 = new DateTime(date('Y-m-d H:i:s'));
 $interval = $datetime1->diff($datetime2);
@@ -374,6 +377,10 @@ if ($hoursMinDiff>48) {
    $alertmsg = "You are cancelling within 48 to 24 hours. We will deduct $25 and refund the rest.";
 }elseif($hoursMinDiff<=24){
    $alertmsg = "You are cancelling with less than 24 hours left. We will refund only 50%.";
+}
+
+if ($paymentStatus=="0") {
+   $alertmsg = "";
 }
                                                 
                                                 

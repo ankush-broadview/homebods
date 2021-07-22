@@ -37,13 +37,9 @@ else
     }
 }
 $mail = new cleanto_phpmailer();
-// $mail->Host = $settings->get_option('ct_smtp_hostname');
-// $mail->Username = $settings->get_option('ct_smtp_username');
-// $mail->Password = $settings->get_option('ct_smtp_password');
-// $mail->Port = $settings->get_option('ct_smtp_port');
-$mail->Host ="smtp.gmail.com";
-$mail->Username = "vikramdev94551207@gmail.com";
-$mail->Password = "vhrnmvoouwpxfeon";
+$mail->Host = $settings->get_option('ct_smtp_hostname');
+$mail->Username = $settings->get_option('ct_smtp_username');
+$mail->Password = $settings->get_option('ct_smtp_password');
 $mail->Port = $settings->get_option('ct_smtp_port');
 $mail->SMTPSecure = $settings->get_option('ct_smtp_encryption');
 $mail->SMTPAuth = $mail_SMTPAuth;
@@ -52,8 +48,7 @@ $objlogin = new cleanto_login_check();
 $objlogin->conn = $conn;
 $objadmininfo = new cleanto_adminprofile();
 $objadmininfo->conn = $conn;
-//$company_email = $settings->get_option('ct_company_email');
-$company_email = "vikramdev94551207@gmail.com";
+$company_email = $settings->get_option('ct_company_email');
 $company_name = $settings->get_option('ct_company_name');
 if (isset($_POST['checkadmin']))
 {
@@ -305,26 +300,6 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 			$mail->Body = $body;			
 			$mail->send();			
 			$mail->ClearAllRecipients();		
-
-			if($settings->get_option('ct_smtp_hostname') != '' && 
-				$settings->get_option('ct_email_sender_name') != '' && $settings->get_option('ct_email_sender_address') != '' && $settings->get_option('ct_smtp_username') != '' && 
-				$settings->get_option('ct_smtp_password') != '' && 
-				$settings->get_option('ct_smtp_port') != ''){		
-
-				$mail->IsSMTP();		
-			}else{			
-				$mail->IsMail();		
-			}		
-			// $mail->SMTPDebug  = 0;		
-			// $mail->IsHTML(true);		
-			// $mail->From = $company_email;		
-			// $mail->FromName = $company_name;		
-			// $mail->Sender = $company_email;		
-			// $mail->AddAddress($to,"Staff");		
-			// $mail->Subject = $reg_subject;		
-			// $mail->Body = $reg_body;		
-			// $mail->send();		
-			// $mail->ClearAllRecipients();		
 			echo 1;exit();		
 		} else {			
 			echo "not";exit();		
