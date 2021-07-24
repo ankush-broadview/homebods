@@ -417,8 +417,7 @@ class cleanto_adminprofile {
 	    $uuid = $res['uuid'];
 
     	$query="insert into `".$this->tablename."` (`id`, `password`, `email`, `fullname`, `phone`, `address`, `city`, `state`, `zip`, `country`,`role`, `description`, `enable_booking`, `service_commission`, `commision_value`, `schedule_type`, `image`, `service_ids`, `otp`,`online_offered`,`trainer_for`,`price_for_single`,`price_for_3`,`price_for_5`,`staff_bio`,`pro_user_id`,`zoom_link`,`custom_rate`, `last_name`,`uuid`) values(NULL,'".$this->pass."','".$this->email."','".$this->first_name."','".$this->phone."', '".$this->address."', '".$this->city."', '".$this->state."', '".$this->zip_code."', '".$this->country."', 'staff', '', 'N', 'F', '0', 'W', '".$this->image."', '".$this->service_ids."', '".$this->otp."','".$this->offered."','".$this->trainer_type."','".$this->price_for_single."','".$this->price_for_3."','".$this->price_for_5."','".$this->staff_bio."','".$this->pro_user_id."','".$this->zoom_link."','".$this->custom_rate."','".$this->last_name."','".$uuid."')";
-    	// var_dump($query);die;
-		echo $query;
+    	// var_dump($query);die;		
     	$result = mysqli_query($this->conn,$query); 
 
     	$value = mysqli_insert_id($this->conn);
