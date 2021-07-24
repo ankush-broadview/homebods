@@ -139,7 +139,7 @@ var createPaymentIntent = function (paymentMethodId) {
     $.extend(indexed_array, orderData);
     var bodyData = JSON.stringify(indexed_array);
     bodyData.route = "getClientSecret";    
-    let apiUrl = baseurlObj.base_url + 'objects/class_stripe_utils.php'
+    let apiUrl = baseurlObj.base_url + '/objects/class_stripe_utils.php'
     return fetch(apiUrl, {
         method: "post",
         credentials: "same-origin",
