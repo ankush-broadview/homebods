@@ -200,10 +200,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
   	$objadmininfo->country = isset($_POST['country'])? $_POST['country'] : '';    
 	$objadmininfo->zoom_link = isset($_POST['zoom_link'])? $_POST['zoom_link'] : '';  	
 	$objadmininfo->offered = isset($_POST['offered'])? $_POST['offered'] : '';  
-	$objadmininfo->price_for_single = isset($_POST['price_for_single'])? $_POST['price_for_single'] : 0;  
-	$objadmininfo->single_customer_rate = isset($_POST['single_customer_rate'])? $_POST['single_customer_rate'] :'';  
-	$objadmininfo->price_for_3 = isset($_POST['price_for_3'])? $_POST['price_for_3'] : 0;  
-	$objadmininfo->price_for_5 = isset($_POST['price_for_5'])? $_POST['price_for_5'] : 0;   
+	$objadmininfo->price_for_single = isset($_POST['price_for_single']) && !empty($_POST['price_for_single']) ? $_POST['price_for_single'] : 0;  
+	$objadmininfo->single_customer_rate = isset($_POST['single_customer_rate'])  ? $_POST['single_customer_rate'] :'';  
+	$objadmininfo->price_for_3 = isset($_POST['price_for_3']) && !empty($_POST['price_for_3']) ? $_POST['price_for_3'] : 0;  
+	$objadmininfo->price_for_5 = isset($_POST['price_for_5']) && !empty($_POST['price_for_5']) ? $_POST['price_for_5'] : 0;   
   	$objadmininfo->staff_bio = isset($_POST['staff_bio'])? $_POST['staff_bio'] : '';  
 	$objadmininfo->pro_user_id = isset($_POST['pro_user_id'])? $_POST['pro_user_id'] : '';  
 	$objadmininfo->custom_rate = isset($_POST['custom_rate'])? $_POST['custom_rate'] : '';
