@@ -362,14 +362,17 @@
                                              <tbody>
                                                 <?php
 
+
+date_default_timezone_set("Europe/Berlin");
+
 $paymentStatus = $dd['payment_status'];
 
 $datetime1 = new DateTime($bdt);
 $datetime2 = new DateTime(date('Y-m-d H:i:s'));
 $interval = $datetime1->diff($datetime2);
-$diff = $interval->format('%h').".".$interval->format('%i');
-
-$hoursMinDiff = (float) $diff;
+//$diff = $interval->format('%h').".".$interval->format('%i');
+$hours = $interval->h + ($interval->days * 24);
+$hoursMinDiff = (float) $hours;
 $alertmsg = "";
 if ($hoursMinDiff>48) {
  $alertmsg = "You will get the refunded amount that is left after stripe fees.";
