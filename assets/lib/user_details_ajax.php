@@ -1102,13 +1102,13 @@ if(isset($_POST['update_booking_users'])){
 	$datetime1 = new DateTime($bookingDateTime);
 	$datetime2 = new DateTime(date('Y-m-d H:i:s'));
 	$interval = $datetime1->diff($datetime2);
-	$diff = $interval->format('%h').".".$interval->format('%i');
-
+	//	$diff = $interval->format('%h').".".$interval->format('%i');
 	$hoursMinDiff = (float) $diff;
-
+	$hours = $interval->h + ($interval->days * 24);
+	$hoursMinDiff = (float) $hours;
     $emailSubject = "";
 
-	
+
 
 	if ($bookingData["payment_status"]=="1") {
 		// If pro accepted the order request then it means payment is captured and so we can refund the amount
