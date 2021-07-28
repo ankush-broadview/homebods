@@ -1108,6 +1108,8 @@ if(isset($_POST['update_booking_users'])){
 
     $emailSubject = "";
 
+	
+
 	if ($bookingData["payment_status"]=="1") {
 		// If pro accepted the order request then it means payment is captured and so we can refund the amount
 		$admin->id = $bookingData["staff_ids"];
@@ -1118,7 +1120,7 @@ if(isset($_POST['update_booking_users'])){
 						// Refund 100%
 						// Nothing will be shared
 						$amount = $paymentIntentObj["amount"];
-                        $emailSubject = "Appointment Cancelled within 48 Hours";
+                        $emailSubject = "Appointment Cancelled with more than 48 hours remaining.";
 					}elseif($hoursMinDiff<=48 && $hoursMinDiff>24){
 						// Refund after 25$ application fee deduction
 						// Share 50% from cancellation charge(25$)
