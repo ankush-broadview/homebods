@@ -1103,7 +1103,6 @@ if(isset($_POST['update_booking_users'])){
 	$datetime2 = new DateTime(date('Y-m-d H:i:s'));
 	$interval = $datetime1->diff($datetime2);
 	//	$diff = $interval->format('%h').".".$interval->format('%i');
-	$hoursMinDiff = (float) $diff;
 	$hours = $interval->h + ($interval->days * 24);
 	$hoursMinDiff = (float) $hours;
     $emailSubject = "";
