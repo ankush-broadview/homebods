@@ -91,6 +91,19 @@ $staff_id = $_SESSION['ct_staffid'];
 			<li><a id="logout" href="javascript:void(0)"><i class="fa fa-power-off fa-2x"></i><br /><span><?php echo $label_language_values['logout'];?></span></a></li>
 		</ul>
 	</div>
+
+	<?php
+	if (isset($_SESSION['stripe_onboard_success']) && $_SESSION['stripe_onboard_success']===true) { 
+		unset($_SESSION['stripe_onboard_success']);
+		?>
+	
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			Success! You are successfully onboarded.
+		</div>
+		</div>
+	<?php } ?>
+	
   <div class="panel-body">
 
 
@@ -100,9 +113,10 @@ $staff_id = $_SESSION['ct_staffid'];
   $objadmin->id = $staff_id;
   $staff_read = $objadmin->readone();
 if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_status"]==1 ) {
-	
 ?>
-			<div class="company-details tab-pane fade in active" id="my-bookings">
+	
+	
+	<div class="company-details tab-pane fade in active" id="my-bookings">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h1 class="panel-title text-left"><?php echo $label_language_values['bookings'];?></h1>
