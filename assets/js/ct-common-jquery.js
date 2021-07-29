@@ -1945,7 +1945,6 @@ jQuery(document).on("click","#login_existing_user",function(){
   var existing_username = jQuery("#ct-user-name").val();
 
   var existing_password = jQuery("#ct-user-pass").val();
-debugger
   dataString={existing_username:existing_username,existing_password:existing_password,action:"get_existing_user_data"};
 
   //if(!jQuery("#user_login_form").valid()){ return false; }
@@ -2756,7 +2755,6 @@ jQuery(document).on("click",".provider_select",function(){
 		
        /*  var details=jQuery.parseJSON(res); */
   	  var currency_symbol = jQuery("#complete_bookings").attr("data-currency_symbol");
-debugger
       if (res.rate_type == 'Single Customer') {
           var cart_sub_totals = res.new_staff.single_customer_rate;
       }else{

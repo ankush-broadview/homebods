@@ -374,7 +374,7 @@ $alertmsg = "";
 if ($hoursMinDiff>48) {
  $alertmsg = "You will get the refunded amount that is left after stripe fees.";
 }elseif($hoursMinDiff<=48 && $hoursMinDiff>24){
-   $alertmsg = "You are cancelling within 48 to 24 hours. We will deduct $25 and refund the rest.";
+   $alertmsg = "You are cancelling b/w 24 to 48 hours. We will deduct $25 and refund the rest.";
 }elseif($hoursMinDiff<=24){
    $alertmsg = "You are cancelling with less than 24 hours left. We will refund only 50%.";
 }

@@ -193,8 +193,7 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 
 											<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
 
-										<?php if (true) { ?>
-											
+											<?php if (date('Y-m-d H:i:s',strtotime($appdate)) < date('Y-m-d H:i:s',strtotime($current_date))) { ?>
 												<a name="" id="complete_appointment"  data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='C' class="btn btn-info ct-btn-width"  <?php echo $label_language_values['complete'];?>><?php echo $label_language_values['complete'];?></a>
 	
 											

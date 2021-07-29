@@ -190,7 +190,7 @@ if(isset($_POST['action']) && $_POST['action']=='decline_appointmentt_staff'){
 			if ($refund) {				
 				$balanceTxnObj = $stripe->balanceTransactions->retrieve($charge->balance_transaction);	
 				$balancelogs->booking_id = $_POST['idd'];
-				$balancelogs->pro_id = $s_id;
+				$balancelogs->pro_id = $s_idd;
 				$balancelogs->amount = $balanceTxnObj->fee;
 				$balancelogs->insert();
 			}
