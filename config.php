@@ -1,9 +1,8 @@
-
 <?php
 	class cleanto_myvariable{
 	public $hostnames = "localhost";
-	public $username = "homebods_cleanto";
-	public $passwords = "Ucanwin007))&";
+	public $username = "root";
+	public $passwords = "";
 	public $database = "homebods_cleanto";
 	public $epcode = "VinodAhuja";
 } ?>
