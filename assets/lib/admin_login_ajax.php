@@ -1,5 +1,11 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+ob_start();
 session_start();
+
 include (dirname(dirname(dirname(__FILE__))) . '/header.php');
 include (dirname(dirname(dirname(__FILE__))) . "/objects/class_connection.php");
 include (dirname(dirname(dirname(__FILE__))) . "/objects/class_login_check.php");
@@ -9,6 +15,9 @@ include (dirname(dirname(dirname(__FILE__))) . '/objects/class.phpmailer.php');
 include (dirname(dirname(dirname(__FILE__))) . '/objects/class_setting.php');
 include (dirname(dirname(dirname(__FILE__))) . '/objects/class_users.php');
 include (dirname(dirname(dirname(__FILE__))) . '/objects/class_front_first_step.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $con = new cleanto_db();
 $conn = $con->connect();
 $settings = new cleanto_setting();
@@ -56,6 +65,7 @@ if (isset($_POST['checkadmin']))
     $objlogin->remember = $_POST['remember'];
     $objlogin->cookie_passwords = $_POST['password'];
     $t = $objlogin->checkadmin($name, $password);
+	
 }
 elseif (isset($_POST['logout']))
 {
@@ -278,29 +288,6 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 					</div>				
 				</body>			
 			</html>';			
-
-			if($settings->get_option('ct_smtp_hostname') != '' && 
-				$settings->get_option('ct_email_sender_name') != '' && 
-				$settings->get_option('ct_email_sender_address') != '' && 
-				$settings->get_option('ct_smtp_username') != '' && 
-				$settings->get_option('ct_smtp_password') != '' && 
-				$settings->get_option('ct_smtp_port') != ''){				
-					$mail->IsSMTP();			
-			}else{				
-				$mail->IsMail();			
-			}			
-
-			$mail->SMTPDebug  = 0;			
-			$mail->IsHTML(true);			
-			$mail->From = $company_email;			
-			$mail->FromName = $company_name;			
-			$mail->Sender = $company_email;			
-			$mail->AddAddress($to,"Staff");			
-			$mail->Subject = $subject;			
-			$mail->Body = $body;			
-			$mail->send();			
-			$mail->ClearAllRecipients();		
-
 			if($settings->get_option('ct_smtp_hostname') != '' && 
 				$settings->get_option('ct_email_sender_name') != '' && $settings->get_option('ct_email_sender_address') != '' && $settings->get_option('ct_smtp_username') != '' && 
 				$settings->get_option('ct_smtp_password') != '' && 
@@ -316,16 +303,16 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 			$mail->FromName = $company_name;		
 			$mail->Sender = $company_email;		
 			$mail->AddAddress($to,"Staff");		
-			$mail->Subject = $reg_subject;		
-			$mail->Body = $reg_body;		
-			$mail->send();		
+			$mail->Subject = $subject;		
+			$mail->Body = $body;		
+			$mail->send();
 			$mail->ClearAllRecipients();		
-			echo 1;exit();		
+			echo 1;
 		} else {			
-			echo "not";exit();		
+			echo "not";
 		} 	
 	}else{		
-		echo "email id already exists.";exit();	
+		echo "email id already exists.";
 	}
 		
 }elseif (isset($_POST['action']) && $_POST['action'] == 'pre_client_reg_himself') {
@@ -367,7 +354,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
   $users->user_bio = $_POST['fitness_goal'];
 	$users->status = 'E';
 
-	$filename = basename( $_POST['file']);
+	@$filename = basename( $_POST['file']);
 	$users->image = $filename;
 
 	$staff_register=$users->pre_reg_user();	
@@ -409,7 +396,8 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 						</div>				
 					</div>			
 				</body>		
-			</html>';		
+			</html>';
+		
 		if($settings->get_option('ct_smtp_hostname') != '' && 
 			$settings->get_option('ct_email_sender_name') != '' && $settings->get_option('ct_email_sender_address') != '' && $settings->get_option('ct_smtp_username') != '' && 
 			$settings->get_option('ct_smtp_password') != '' && 

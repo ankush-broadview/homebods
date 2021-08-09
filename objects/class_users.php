@@ -644,17 +644,17 @@ class cleanto_users{
 
 	
 
-		public function pre_reg_user(){
-			$query1 = "SELECT uuid() as uuid";
+	public function pre_reg_user(){
+		$query1 = "SELECT uuid() as uuid";
 	    $result=mysqli_query($this->conn,$query1);
 	    $res = mysqli_fetch_array($result);
 	    $uuid = $res['uuid'];
 
 		$dftdt=date('Y-m-d H:m:s');
 
-    $random_string = substr(str_shuffle(str_repeat($x='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 10)),1,10);
-
-    /* $query="insert into `".$this->table_name."` (`id`,`user_email`,`user_pwd`,`first_name`,`zip`,`usertype`,`cus_dt`,`referal_code`,`wallet_amount`) values(NULL,'".$this->user_email."','".$this->user_pwd."','".$this->first_name."','".$this->zip."','".$this->usertype."','".$dftdt."','".$random_string."','0')"; */
+        $random_string = substr(str_shuffle(str_repeat($x='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 10)),1,10);
+    
+        /* $query="insert into `".$this->table_name."` (`id`,`user_email`,`user_pwd`,`first_name`,`zip`,`usertype`,`cus_dt`,`referal_code`,`wallet_amount`) values(NULL,'".$this->user_email."','".$this->user_pwd."','".$this->first_name."','".$this->zip."','".$this->usertype."','".$dftdt."','".$random_string."','0')"; */
 
 		
 

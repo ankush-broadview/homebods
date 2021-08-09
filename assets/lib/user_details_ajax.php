@@ -200,6 +200,11 @@ else
 include(dirname(dirname(dirname(__FILE__))).'/assets/lib/date_translate_array.php');
 
 if(isset($_POST['updatepass'])){
+    $_SESSION['user_img'] = $_POST['user_image'];
+    $_SESSION['ct_name'] = $_POST['firstname'].' '.$_POST['lastname'];
+    $_SESSION['fullname'] =  $_POST['firstname'].' '.$_POST['lastname'];
+    $_SESSION['ct_useremail'] = $_POST['email'];
+    $_SESSION['ct_username'] = $_POST['grinders_id'];
     $objuserdetails->firstname = $_POST['firstname'];
     $objuserdetails->lastname = $_POST['lastname'];
     $objuserdetails->email = $_POST['email'];

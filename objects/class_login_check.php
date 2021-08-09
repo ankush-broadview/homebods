@@ -9,13 +9,14 @@
     public $cookie_passwords; /* check the admin */
 
     public function checkadmin($name, $password)
-
+	
+	
     {
 
         $query = "select * from `ct_admin_info` where `email` = '" . $name . "' and `password` = '" . $password . "' and `role` = 'admin' and `enable_booking` = 'Y' ";
 
         $result = mysqli_query($this->conn, $query);
-
+		
         if($result->num_rows <= 0) {
 
           $query = "select * from `ct_admin_info` where `pro_user_id` = '" . $name . "' and `password` = '" . $password . "' and `role` = 'staff' and `enable_booking` = 'Y' ";
@@ -24,23 +25,22 @@
 
         }
 
-        /*print_r($result);
-
-        die();*/
-
         $value = mysqli_fetch_assoc($result);
-
+		
         if (isset($value['id']) && $value['id'] != 0)
 
         {
-
             if ($value['role'] == "admin")
 
             {
-
+			
                 $_SESSION['ct_adminid'] = $value['id'];
 
                 $_SESSION['ct_useremail'] = $value['email'];
+                
+                $_SESSION['ct_username'] = $value['pro_user_id'];
+				
+				echo "yesadmin";
 
             }
 
@@ -51,9 +51,12 @@
                 $_SESSION['ct_staffid'] = $value['id'];
 
                 $_SESSION['ct_useremail'] = $value['email'];
+                
+                $_SESSION['ct_username'] = $value['pro_user_id'];
 
                 $_SESSION['ct_image'] = $value['image'];
-
+				
+				echo "yesstaff";
             }
 
             if ($this->remember == "true")
@@ -84,22 +87,21 @@
 
                 setcookie('cleanto_remember', null, -1, '/');
 
-            }
-
-            echo "yesadmin";
+            } 
+            
 
         }
 
         else
 
         {
-
+			
             $query = "select * from `ct_users` where `grinders_id` = '" . $name . "' and `user_pwd` = '" . $password . "'";
 
             $result = mysqli_query($this->conn, $query);
 
             $value = mysqli_fetch_assoc($result);
-
+			
             if (isset($value['id']) && $value['id'] != 0)
 
             {
@@ -107,6 +109,8 @@
                 $_SESSION['ct_login_user_id'] = $value['id'];
 
                 $_SESSION['ct_useremail'] = $value['user_email'];
+                
+                $_SESSION['ct_username'] = $value['grinders_id'];
 
                 $_SESSION['ct_image'] = $value['image'];
 
@@ -138,7 +142,7 @@
 
                     setcookie('cleanto_remember', null, -1, '/');
 
-                }
+                } 
 
                 echo "yesuser";
 

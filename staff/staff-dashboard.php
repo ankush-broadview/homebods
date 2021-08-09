@@ -1071,7 +1071,7 @@ $staff_id = $_SESSION['ct_staffid'];
 										</div>
 					                    <div class="form-group col-xs-12 col-md-12">
 					                      <div class="col-xs-4 col-md-2"><label for="ct-member-user-id">Fitness Pro User ID </label></div>
-					                      <div class="col-xs-8 col-md-10"><input type="text" class="form-control" id="ct-member-user-id" value="<?php echo $staff_read[33]; ?>" name="u_member_user_id" readonly/></div>
+					                      <div class="col-xs-8 col-md-10"><input type="text" class="form-control staffuserid" id="ct-member-user-id" value="<?php echo $staff_read[33]; ?>" name="u_member_user_id"/></div>
 					                    </div>
 										<div class="form-group col-xs-12 col-md-12">
 											<div class="col-xs-4 col-md-2"><label for="ct-member-name"><?php echo $label_language_values['email'];?></label></div>

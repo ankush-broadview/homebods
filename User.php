@@ -123,8 +123,8 @@ class User
 			// if (password_verify($password, $row['password'])) {
 				
 				$_SESSION['user_uuid'] = $row['uuid'];
-				$_SESSION['username'] = $row['user_email'];
-				$_SESSION['fullname'] = $row['first_name'];
+				$_SESSION['username'] = $row['grinders_id'];
+				$_SESSION['fullname'] = $row['first_name'].' '.$row['last_name'];
 
 				$ar = [];
 				$ar['message'] =  'User Logged in Successfully';

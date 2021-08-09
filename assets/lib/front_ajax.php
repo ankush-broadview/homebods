@@ -153,21 +153,21 @@ if(isset($_POST['s_m_units_maxlimit_5'])){
     $existing_login=$user->check_login();
     if(!$existing_login){
         $u_msg=array();
-        $u_msg['status']="Incorrect Email Address or Password";
+        $u_msg['status']="Incorrect Username or Password";
         echo json_encode($u_msg);die();
     }else{
         unset($_SESSION['ct_adminid']);
-
         
-
         // $resp = $chat_user->loginUser($existing_login[3],$existing_login[1],$existing_login[22]);
 
         $_SESSION['ct_login_user_id']=$existing_login[0];
         $_SESSION['ct_useremail'] = $existing_login[1];
+        $_SESSION['ct_username'] = $existing_login[21];
         $_SESSION['ct_name'] = $existing_login[3].' '.$existing_login[4];
         $_SESSION['fullname'] = $existing_login[3].' '.$existing_login[4];
-        $_SESSION['user_uuid'] = $existing_login[22];
-
+        $_SESSION['user_uuid'] = $existing_login[23];
+        $_SESSION['user_img'] = $existing_login[16];
+        
         $u_msg=array();
         $u_msg['status']="Login Sucessfull";
         $u_msg['id']=$existing_login[0];
@@ -184,10 +184,8 @@ if(isset($_POST['s_m_units_maxlimit_5'])){
         $u_msg['notes']=$existing_login[10];
         $u_msg['vc_status']=$existing_login[11];
         $u_msg['p_status']=$existing_login[12];
-        $u_msg['contact_status']=$existing_login[13]; 
-				
-				
-				
+        $u_msg['contact_status']=$existing_login[13];
+        
         $u_msg['wallet_amount']='<input type="radio" name="payment-methods" value="Wallet-payment" class="input-radio payment_gateway user_wallet_amount_value wallet_amount" data-wallet="'.$existing_login[19].'" id="wallet"  />
 
 			<label for="wallet"  class="locally-radio"><span class="user_wallet_amount" ><p style="margin-left: 25px;line-height: 0.9;">Wallet('.$settings->get_option('ct_currency_symbol').$existing_login[19].')</p></span></label>';
@@ -205,16 +203,18 @@ elseif(isset($_POST['action']) && $_POST['action']=='get_login_user_data'){
     $existing_login=$user->check_login_user();
     if(!$existing_login){
         $u_msg=array();
-        $u_msg['status']="Incorrect Email Address or Password";
+        $u_msg['status']="Incorrect Username or Password";
         echo json_encode($u_msg);die();
     }else{
         unset($_SESSION['ct_adminid']);
-        $_SESSION['ct_login_user_id']=$existing_login[0];
-        $_SESSION['ct_useremail']=$existing_login[1];
+        $_SESSION['ct_login_user_id'] = $existing_login[0];
+        $_SESSION['ct_useremail'] = $existing_login[1];
+        $_SESSION['ct_username'] = $existing_login[21];
         $_SESSION['ct_name'] = $existing_login[3].' '.$existing_login[4];
         $_SESSION['fullname'] = $existing_login[3].' '.$existing_login[4];
-        $_SESSION['user_uuid'] = $existing_login[22];
-
+        $_SESSION['user_uuid'] = $existing_login[23];
+        $_SESSION['user_img'] = $existing_login[16];
+        
         $u_msg=array();
         $u_msg['status']="Login Sucessfull";
         $u_msg['id']=$existing_login[0];
@@ -240,10 +240,12 @@ elseif(isset($_POST['action']) && $_POST['action']=='logout'){
     if(isset($_SESSION['ct_login_user_id'])){
         unset($_SESSION['ct_login_user_id']);
         unset($_SESSION['ct_useremail']);
+        unset($_SESSION['ct_username']);
         unset($_SESSION['ct_name']);
         unset($_SESSION['fullname']);
         unset($_SESSION['user_uuid']);
         unset($_SESSION['username']);
+        unset($_SESSION['user_img']);
         echo "logout successful";
     }
 }
@@ -1213,6 +1215,8 @@ if(isset($_POST['get_search_staff_detail'])){
 	foreach($get_staff as $value){
 		if($value!=""){ 
     		$postal_code_staff_detail =$objadmin->get_search_staff_detail_byid($value);
+    		$standard = $currency_symbol.''.$postal_code_staff_detail['single_customer_rate'];
+    		$rate = $currency_symbol.''.$postal_code_staff_detail['custom_rate'];
     		if($postal_code_staff_detail[1]!=''){
     			$staff_image = "./assets/images/services/".$postal_code_staff_detail[1];
     			$staff_image_mb = "../assets/images/services/".$postal_code_staff_detail[1];
@@ -1226,17 +1230,17 @@ if(isset($_POST['get_search_staff_detail'])){
                 $zoom_link = 'No';
             }
     		echo '<li class="ct-sm-6 ct-md-4 ct-lg-3 ct-xs-12 remove_provider_class" data-id="'.$value.'">
-    				<input type="radio" name="provider-radio" data-staff_id ="'.$value.'" id="ct-provider-'.$value.'" class="provider_disable" style="display: none;">
-    				<label class="ct-provider border-c img-circle provider_select" for="ct-provider-'.$value.'" data-id="'.$value.'">
-        				<div class="ct-provider-img">
-        					<img class="ct-image img-circle ct-mb-show" src="'.$staff_image.'">
-        					<img class="ct-image img-circle ct-mb-hidden" src="'.$staff_image_mb.'">
-        				</div>
-    				</label>
+                    <input type="radio" name="provider-radio" data-staff_id ="'.$value.'" id="ct-provider-'.$value.'" class="provider_disable" style="display: none;">
+                    <label class="ct-provider border-c img-circle provider_select" for="ct-provider-'.$value.'" data-id="'.$value.'">
+                        <div class="ct-provider-img">
+                            <img class="ct-image img-circle ct-mb-show" src="'.$staff_image.'">
+                            <img class="ct-image img-circle ct-mb-hidden" src="'.$staff_image_mb.'">
+                        </div>
+                    </label>
                     <div class="provider-name fl ta-c">'.$postal_code_staff_detail[0].'</div>
                     <a class="ct-button nm rate_data" style="width: 128px;margin: auto;text-align: center;" data-toggle="modal" data-target="#myModal'.$value.'" >view</a>
                     <div class="modal fade" id="myModal'.$value.'" role="dialog">
-                        <div class="modal-dialog ">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content staff-details-wrap">
                                 <div class="modal-header">
                                     <h4 class="modal-title" style="font-weight: 700;">Fitness Pro Details</h4>
@@ -1248,19 +1252,27 @@ if(isset($_POST['get_search_staff_detail'])){
                                     </div>
                                     <div class="ct-staff-name">
                                         <div class="row mx-auto"> 
-                                            <lable> Name :<span>'.$postal_code_staff_detail['fullname'].'</span> </lable>
+                                            <lable> <span> Name: </span> '.$postal_code_staff_detail['fullname'].' </lable>
                                         </div>
                                         <div class="row mx-auto"> 
-                                            <lable> Online Sessions :<span>'.$zoom_link.'</span> </lable>
+                                            <lable> <span> Online Sessions : </span>'.$zoom_link.' </lable>
                                         </div>
                                         <div class="row mx-auto"> 
-                                            <lable> City, State :<span>'.$postal_code_staff_detail['city'].', '.$postal_code_staff_detail['state'].'.</span> </lable>
+                                            <lable>  <span> City, State :</span>'.$postal_code_staff_detail['city'].', '.$postal_code_staff_detail['state'].'.</lable>
                                         </div>
                                         <div class="row mx-auto"> 
-                                            <lable> Bio :<span>'.$postal_code_staff_detail['staff_bio'].'</span> </lable>
+                                            <lable> <span> Bio : </span>'.$postal_code_staff_detail['staff_bio'].'</lable>
                                         </div>
                                         <div class="row mx-auto"> 
-						                    <lable> 1-on-1 Fitness Session:<span><span id="rate">'.$currency_symbol.''.$postal_code_staff_detail['custom_rate'].'</span> per person / Custom Training&Class Sizes Available Upon Request </span>
+                                            <lable> <span> Rates: </span> 
+                                            </lable>
+                                        </div> 
+										<div class="row mx-auto ml-14"> 
+                                            <lable> <span> Standard: </span> <span id="rate" class="rate-main">'.$standard.'</span> 
+                                            </lable>
+                                        </div> 
+										<div class="row mx-auto ml-14"> 
+                                            <lable> <span> Custom: </span> <span id="rate" class="rate-main">'.$rate.'</span> 
                                             </lable>
                                         </div> 
                                     </div>

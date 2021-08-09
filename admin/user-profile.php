@@ -51,7 +51,7 @@ $objuserdetails->conn = $conn;
 									<?php 
 									if( $userinfo[16] !==''){
 										?>
-										<a id="ct-remove-staff-imagepppp<?php  echo $user_id; ?>" data-pclsid="<?php echo $user_id; ?>" data-staff_id="<?php echo $user_id; ?>" class="delete_staff_image pull-left br-100 btn-danger bt-remove-staff-img btn-xs ser_new_del<?php  echo $user_id; ?>" rel="popover" data-placement='left' title="<?php echo $label_language_values['remove_image'];?>"> <i class="fa fa-trash" title="<?php echo $label_language_values['remove_service_image'];?>"></i></a>
+										<a id="ct-remove-staff-imagepppp<?php  echo $user_id; ?>" data-pclsid="<?php echo $user_id; ?>" data-staff_id="<?php echo $user_id; ?>" class="delete_staff_image pull-left br-100 btn-danger bt-remove-staff-img btn-xs ser_new_del<?php  echo $user_id; ?>" rel="popover" data-placement='left' title="<?php echo $label_language_values['remove_image'];?>"> <i class="fa fa-trash" title="<?php echo "Remove profile image";?>"></i></a>
 									<?php 
 									}
 									?>
@@ -125,7 +125,7 @@ $objuserdetails->conn = $conn;
           </div>
           <div class="form-group col-md-6 col-sm-6 col-xs-12">
             <label for="grinderid">Grinder User ID</label>
-            <input class="form-control" name="usergrinderid" id="usergrinderid" value="<?php echo $userinfo[21]; ?>" type="text" readonly>
+            <input class="form-control usergrinderid" name="usergrinderid" id="usergrinderid" value="<?php echo $userinfo[21]; ?>" type="text">
           </div>
           <div class="form-group col-md-6 col-sm-6 col-xs-12">
             <label for="inputEmail"><?php echo $label_language_values['email']; ?></label>

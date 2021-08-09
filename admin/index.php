@@ -13,6 +13,8 @@ include (dirname(dirname(__FILE__)) . "/objects/class_setting.php");
 include (dirname(dirname(__FILE__)) . "/objects/class_version_update.php");
 include (dirname(dirname(__FILE__)) . "/objects/class_staff_commision.php");
 session_start();
+/* print_r($_SESSION);
+die; */
 $con = new cleanto_db();
 $conn = $con->connect();
 if (isset($_SESSION['ct_adminid'])) {

@@ -1,4 +1,5 @@
 <?php  
+
 $filename =  dirname(dirname(__FILE__)).'/config.php';
 $file = file_exists($filename);
 if($file){   if(!filesize($filename) > 0){    
@@ -21,13 +22,17 @@ if($file){   if(!filesize($filename) > 0){
                ob_start();session_start();
                include(dirname(dirname(__FILE__)).'/header.php');
 
-               if(!isset($_SESSION['ct_adminid']) && !isset($_SESSION['ct_login_user_id'])){    ?>    
+               if(!isset($_SESSION['ct_adminid']) && !isset($_SESSION['ct_login_user_id'])){  
+			   ?>    
+			   
                   <script>        
-                     var loginObj={'site_url':'<?php echo SITE_URL;?>'};        
-                     var login_url=loginObj.site_url;        
-                     window.location=login_url+"admin/";    
+                     var loginObj={'site_url':'<?php echo SITE_URL;?>'};    
+                     var login_url=loginObj.site_url;  
+                     window.location=login_url+"admin/";   
+						
                   </script>
                   <?php  }
+				 
                   include(dirname(dirname(__FILE__)) . '/class_configure.php');
                   include(dirname(dirname(__FILE__))."/objects/class_dashboard.php");
                   include(dirname(dirname(__FILE__))."/objects/class_setting.php");
@@ -35,7 +40,7 @@ if($file){   if(!filesize($filename) > 0){
                   include(dirname(dirname(__FILE__))."/objects/class_off_days.php");
                   include(dirname(dirname(__FILE__))."/objects/class_version_update.php");
                   include(dirname(dirname(__FILE__))."/objects/class_gc_hook.php");
-
+					
                   $cvars = new cleanto_myvariable();
                   $host = trim($cvars->hostnames);
                   $un = trim($cvars->username);
@@ -43,7 +48,7 @@ if($file){   if(!filesize($filename) > 0){
                   $db = trim($cvars->database);
                   $con = new cleanto_db();$conn = 
                   $con->connect();
-
+					
                   if(($conn->connect_errno=='0' && ($host=='' || $db=='')) || $conn->connect_errno!='0' ) 
                      {  
                         header('Location: '.BASE_URL.'/config_index.php');    
@@ -298,7 +303,8 @@ if($file){   if(!filesize($filename) > 0){
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <link rel="shortcut icon" type="image/png" href="<?php echo BASE_URL; ?>/assets/images/backgrounds/<?php echo $setting->get_option('ct_favicon_image');?>"/>
    <title><?php echo $setting->get_option("ct_page_title"); ?> |        
-   <?php              
+   <?php   
+
       if(strpos($_SERVER['SCRIPT_NAME'],'my-appointments.php')!=false)            
       {                
           echo 'My Appointments';            

@@ -44,7 +44,8 @@ jQuery(document).ready(function(){
 
   jQuery.validator.addMethod("pattern_phone", function (value, element) {
 
-    return this.optional(element) || /^\+([0-9]){10,14}[0-9]$/.test(value);
+    //return this.optional(element) || /^\+([0-9]){10,14}[0-9]$/.test(value);
+    return this.optional(element) || /^\d*(?:\.\d{1,2})?$/.test(value);
 
   }, errorobj_please_enter_only_numerics);
 
@@ -3107,6 +3108,46 @@ jQuery(document).ajaxComplete(function () {
       u_member_user_id: {
 
         required: "Please Enter Fitness Prp User ID",
+
+      },
+
+    }
+
+  });
+  
+  jQuery("#user_info_form").validate({
+
+    rules: {
+
+      useremail:{
+
+        required: true,
+
+        email:true
+
+      },
+      
+      usergrinderid:{
+
+        required: true,
+
+      },
+
+    },
+
+    messages: {
+
+      useremail:{
+
+        required:errorobj_please_enter_email,
+
+        email:errorobj_please_enter_valid_email_address 
+
+      },
+      
+      usergrinderid:{
+
+        required:"Please Enter Grinder User ID",
 
       },
 
@@ -9226,7 +9267,7 @@ jQuery(document).on("click", ".mybtnadminprofile_save", function () {
 
   jQuery("#adminphone").rules("add",{
 
-    pattern_phone: true, minlength: 12, maxlength: 15,
+    pattern_phone: true, minlength: 10, maxlength: 10,
 
     messages: { pattern_phone : errorobj_please_enter_valid_number_with_country_code, minlength: errorobj_please_enter_valid_number, maxlength: errorobj_please_enter_valid_number }
 
@@ -9321,185 +9362,182 @@ jQuery(document).on("click",".u_op",function(){
 /* Change profile USER */
 
 jQuery(document).on("click", ".mybtnuserprofile_save", function () {
-
-  var userid = jQuery(this).attr("data-id");
-
-  var oldpass = jQuery("#oldpass").val();
-
-  var dboldpass = jQuery("#dboldpass").val();
-
-  var zip_status_check = jQuery(this).attr("data-zip");
-  
-  var user_image = jQuery("#pppp"+userid+"ctimagename").val();
-  
-  jQuery("#user_info_form").validate();
-
-  jQuery("#userfirstname").rules("add",{
-
-    required: true,
-
-    messages: {required: errorobj_please_enter_firstname}
-
-  });
-
-  if (jQuery(".ct-change-password").is(":visible")) {
-
-    jQuery("#useroldpass").rules("add",{
-
-      required: true, user_profile_pattern_password: true,minlength: 8,
-
-      messages: {required: errorobj_please_enter_old_password,minlength: errorobj_password_must_be_8_character_long}
-
-    });
-
-    jQuery("#usernewpasswrd").rules("add",{
-
-      required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
-
-      messages: {required: errorobj_please_enter_new_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
-
-    });
-
-    jQuery("#userrenewpasswrd").rules("add",{
-
-      required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
-
-      messages: {required: errorobj_please_enter_confirm_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
-
-    });
-
-  }
-
-  jQuery("#userlastname").rules("add",{
-
-    required: true,
-
-    messages: {required: errorobj_please_enter_lastname}
-
-  });
-  
-
-  jQuery("#useremail").rules("add",{
-
-      required: true,
-
-      email:true,
-
-      messages: {required:errorobj_please_enter_email,
-
-          email:errorobj_please_enter_valid_email_address}
-
-  });
-
-
-
-  jQuery("#usercity").rules("add",{
-
-    required: true, 
-
-    messages: {required: errorobj_please_enter_city}
-
-  });
-
-  jQuery("#userstate").rules("add",{
-
-    required: true, 
-
-    messages: {required: errorobj_please_enter_state}
-
-  });
-
-  jQuery("#usergrinderid").rules("add",{
-
-    required: true, 
-
-    messages: {required: 'Please Enter Grinder User ID'}
-
-  });
-
-  jQuery("#userfitnessbio").rules("add",{
-
-    required: true, 
-
-    messages: {required: 'Please Enter Bio/Fitness Goal'}
-
-  });
-
-  if(zip_status_check == "Y"){
-
-    jQuery("#userzip").rules("add",{
-
-      required: true, minlength: 3, maxlength: 7,
-
-      messages: {required: errorobj_please_enter_zipcode,minlength: errorobj_please_enter_minimum_3_chars,maxlength: errorobj_please_enter_only_7_chars_maximum}
-
-    });
-
-  }
-
-  jQuery("#userphone").rules("add",{
-
-    required: true, pattern_phone: true, minlength: 12, maxlength: 15,
-
-    messages: { required: errorobj_please_enter_phone_number, pattern_phone : errorobj_please_enter_valid_number_with_country_code, minlength: errorobj_please_enter_valid_number, maxlength: errorobj_please_enter_valid_number }
-
-  });
-
-  if (!jQuery("#user_info_form").valid()) { return false; }
-
-  if(zip_status_check == "Y"){
-
-    var datastring={user_image:user_image,"user_bio": jQuery("#userfitnessbio").val(),"grinders_id": jQuery("#usergrinderid").val(),"firstname": jQuery("#userfirstname").val(),"lastname": jQuery("#userlastname").val(),"email": jQuery("#useremail").val(),"phone": jQuery("#userphone").val(),"address": jQuery("#useraddress").val(),  "city": jQuery("#usercity").val(),"state": jQuery("#userstate").val(),"zip": jQuery("#userzip").val(),"dboldpassword" : jQuery("#userdboldpass").val(),"oldpassword" : jQuery("#useroldpass").val(), "newpassword" : jQuery("#usernewpasswrd").val(),"retypepassword" : jQuery("#userrenewpasswrd").val(),"id": userid,"updatepass": 1};  
-
-  } else {
-
-    var datastring={user_image:user_image,"user_bio": jQuery("#userfitnessbio").val(),"grinders_id": jQuery("#usergrinderid").val(),"firstname": jQuery("#userfirstname").val(),"lastname": jQuery("#userlastname").val(),"email": jQuery("#useremail").val(),"phone": jQuery("#userphone").val(),"address": jQuery("#useraddress").val(),  "city": jQuery("#usercity").val(),"state": jQuery("#userstate").val(),"dboldpassword" : jQuery("#userdboldpass").val(),"oldpassword" : jQuery("#useroldpass").val(), "newpassword" : jQuery("#usernewpasswrd").val(),"retypepassword" : jQuery("#userrenewpasswrd").val(),"id": userid,"updatepass": 1};
-
-  }
-
-  jQuery.ajax(  {
-
-    type: "post",
-
-    data: datastring,
-
-    url: ajax_url + "user_details_ajax.php",
-
-    success: function (res) {
-	
-      if(jQuery.trim(res) == "Your Old Password Incorrect..."){
-
-        jQuery(".old_pass_msg").css("display","block");
-
-        jQuery(".old_pass_msg").addClass("error");
-
-        jQuery(".old_pass_msg").html(errorobj_your_old_password_incorrect+"...");
-
-      } else if(jQuery.trim(res) == "Please Retype Correct Password..."){
-
-        jQuery(".retype_pass_msg").css("display","block");
-
-        jQuery(".retype_pass_msg").addClass("error");
-
-        jQuery(".retype_pass_msg").html(errorobj_please_retype_correct_password+"...");
-
-      } else{
-
-        jQuery(".mainheader_message").show();
-
-        jQuery(".mainheader_message_inner").css("display","inline");
-
-        jQuery("#ct_sucess_message").html(errorobj_profile_updated_successfully);
-
-        jQuery(".mainheader_message").fadeOut(3000);
-
-        location.reload();
-
+  if(jQuery("#user_info_form").valid()){
+      var userid = jQuery(this).attr("data-id");
+    
+      var oldpass = jQuery("#oldpass").val();
+    
+      var dboldpass = jQuery("#dboldpass").val();
+    
+      var zip_status_check = jQuery(this).attr("data-zip");
+      
+      var user_image = jQuery("#pppp"+userid+"ctimagename").val();
+    
+      jQuery("#userfirstname").rules("add",{
+    
+        required: true,
+    
+        messages: {required: errorobj_please_enter_firstname}
+    
+      });
+    
+      if (jQuery(".ct-change-password").is(":visible")) {
+    
+        jQuery("#useroldpass").rules("add",{
+    
+          required: true, user_profile_pattern_password: true,minlength: 8,
+    
+          messages: {required: errorobj_please_enter_old_password,minlength: errorobj_password_must_be_8_character_long}
+    
+        });
+    
+        jQuery("#usernewpasswrd").rules("add",{
+    
+          required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
+    
+          messages: {required: errorobj_please_enter_new_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
+    
+        });
+    
+        jQuery("#userrenewpasswrd").rules("add",{
+    
+          required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
+    
+          messages: {required: errorobj_please_enter_confirm_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
+    
+        });
+    
       }
-
-    }
-
-  });
+    
+      jQuery("#userlastname").rules("add",{
+    
+        required: true,
+    
+        messages: {required: errorobj_please_enter_lastname}
+    
+      });
+      
+    
+      /*jQuery("#useremail").rules("add",{
+    
+          required: true,
+    
+          email:true,
+          
+          messages: {required:errorobj_please_enter_email,
+    
+              email:errorobj_please_enter_valid_email_address}
+    
+      });*/
+    
+    
+    
+      jQuery("#usercity").rules("add",{
+    
+        required: true, 
+    
+        messages: {required: errorobj_please_enter_city}
+    
+      });
+    
+      jQuery("#userstate").rules("add",{
+    
+        required: true, 
+    
+        messages: {required: errorobj_please_enter_state}
+    
+      });
+    
+      /*jQuery("#usergrinderid").rules("add",{
+    
+        required: true, 
+    
+        messages: {required: 'Please Enter Grinder User ID'}
+    
+      });*/
+    
+      jQuery("#userfitnessbio").rules("add",{
+    
+        required: true, 
+    
+        messages: {required: 'Please Enter Bio/Fitness Goal'}
+    
+      });
+    
+      if(zip_status_check == "Y"){
+    
+        jQuery("#userzip").rules("add",{
+    
+          required: true, minlength: 3, maxlength: 7,
+    
+          messages: {required: errorobj_please_enter_zipcode,minlength: errorobj_please_enter_minimum_3_chars,maxlength: errorobj_please_enter_only_7_chars_maximum}
+    
+        });
+    
+      }
+    
+      jQuery("#userphone").rules("add",{
+    
+        required: true, pattern_phone: true, minlength: 10, maxlength: 10,
+    
+        messages: { required: errorobj_please_enter_phone_number, pattern_phone : errorobj_please_enter_valid_number_with_country_code, minlength: errorobj_please_enter_valid_number, maxlength: errorobj_please_enter_valid_number }
+    
+      });
+    
+      if(zip_status_check == "Y"){
+    
+        var datastring={user_image:user_image,"user_bio": jQuery("#userfitnessbio").val(),"grinders_id": jQuery("#usergrinderid").val(),"firstname": jQuery("#userfirstname").val(),"lastname": jQuery("#userlastname").val(),"email": jQuery("#useremail").val(),"phone": jQuery("#userphone").val(),"address": jQuery("#useraddress").val(),  "city": jQuery("#usercity").val(),"state": jQuery("#userstate").val(),"zip": jQuery("#userzip").val(),"dboldpassword" : jQuery("#userdboldpass").val(),"oldpassword" : jQuery("#useroldpass").val(), "newpassword" : jQuery("#usernewpasswrd").val(),"retypepassword" : jQuery("#userrenewpasswrd").val(),"id": userid,"updatepass": 1};  
+    
+      } else {
+    
+        var datastring={user_image:user_image,"user_bio": jQuery("#userfitnessbio").val(),"grinders_id": jQuery("#usergrinderid").val(),"firstname": jQuery("#userfirstname").val(),"lastname": jQuery("#userlastname").val(),"email": jQuery("#useremail").val(),"phone": jQuery("#userphone").val(),"address": jQuery("#useraddress").val(),  "city": jQuery("#usercity").val(),"state": jQuery("#userstate").val(),"dboldpassword" : jQuery("#userdboldpass").val(),"oldpassword" : jQuery("#useroldpass").val(), "newpassword" : jQuery("#usernewpasswrd").val(),"retypepassword" : jQuery("#userrenewpasswrd").val(),"id": userid,"updatepass": 1};
+    
+      }
+    
+      jQuery.ajax(  {
+    
+        type: "post",
+    
+        data: datastring,
+    
+        url: ajax_url + "user_details_ajax.php",
+    
+        success: function (res) {
+    	
+          if(jQuery.trim(res) == "Your Old Password Incorrect..."){
+    
+            jQuery(".old_pass_msg").css("display","block");
+    
+            jQuery(".old_pass_msg").addClass("error");
+    
+            jQuery(".old_pass_msg").html(errorobj_your_old_password_incorrect+"...");
+    
+          } else if(jQuery.trim(res) == "Please Retype Correct Password..."){
+    
+            jQuery(".retype_pass_msg").css("display","block");
+    
+            jQuery(".retype_pass_msg").addClass("error");
+    
+            jQuery(".retype_pass_msg").html(errorobj_please_retype_correct_password+"...");
+    
+          } else{
+    
+            jQuery(".mainheader_message").show();
+    
+            jQuery(".mainheader_message_inner").css("display","inline");
+    
+            jQuery("#ct_sucess_message").html(errorobj_profile_updated_successfully);
+    
+            jQuery(".mainheader_message").fadeOut(3000);
+    
+            location.reload();
+    
+          }
+    
+        }
+    
+      }); 
+  }
 
 });
 
@@ -16263,7 +16301,7 @@ $('.tab a').on('click', function (e) {
 
 
 jQuery(document).on("keyup",".useremail",function(){
-  jQuery("#useremail").rules("add",{
+  jQuery(".useremail").rules("add",{
 
             remote: {
 
@@ -16274,6 +16312,20 @@ jQuery(document).on("keyup",".useremail",function(){
             },
 
         messages: {remote:errorobj_email_already_exists}
+  });
+});
+jQuery(document).on("keyup",".usergrinderid",function(){
+  jQuery(".usergrinderid").rules("add",{
+
+            remote: {
+
+              url:ajax_url+"staff_ajax.php",
+
+              type: "POST"
+
+            },
+
+        messages: {remote:"User ID already exist"}
   });
 });
 jQuery(document).on("keyup",".staffemail",function(){
@@ -16288,5 +16340,19 @@ jQuery(document).on("keyup",".staffemail",function(){
             },
 
         messages: {remote:errorobj_email_already_exists}
+  });
+});
+jQuery(document).on("keyup",".staffuserid",function(){
+  jQuery(".staffuserid").rules("add",{
+
+            remote: {
+
+              url:ajax_url+"staff_ajax.php",
+
+              type: "POST"
+
+            },
+
+        messages: {remote:"User ID already exist"}
   });
 });

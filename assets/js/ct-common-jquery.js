@@ -488,7 +488,7 @@ jQuery(document).ready(function() {
 
     jQuery("#ct-username").rules("add", 
 
-    { required: true,minlength:us_check.min,maxlength:us_check.max,pattern_name:true,
+    { required: true,minlength:us_check.min,maxlength:us_check.max,
 
     messages: { required: "Username is required", minlength:"Please enter minimum 3 Characters", maxlength:"Please enter minimum 15 Characters"}});
 
@@ -2407,10 +2407,10 @@ jQuery(document).on("click","#login_existing_user",function(){
     data:dataString,
 
     success:function(response){
-
+    
       var userdata=jQuery.parseJSON(response);
 
-      if(userdata.status == "Incorrect Email Address or Password"){
+      if(userdata.status == "Incorrect Username or Password"){
 
         jQuery(".login_unsuccessfull").css("display","block");
 
@@ -2553,7 +2553,9 @@ jQuery(document).on("change",".existing-user",function() {
     var country_flag = jQuery(".selected-flag").attr("title");
     var site_url = siteurlObj.site_url;
     var country_alpha_code = countrycodeObj.alphacode;
-
+    var allowed_country_alpha_code = countrycodeObj.allowed;
+    var array = allowed_country_alpha_code.split(",");
+    
   if(jQuery(".existing-user").is(":checked")) {
 
 		jQuery(".login_unsuccessfull").html("");
@@ -2615,7 +2617,9 @@ jQuery(document).on("change",".new-user",function() {
     var country_flag = jQuery(".selected-flag").attr("title");
     var site_url = siteurlObj.site_url;
     var country_alpha_code = countrycodeObj.alphacode;
-
+    var allowed_country_alpha_code = countrycodeObj.allowed;
+    var array = allowed_country_alpha_code.split(",");
+    
   if(jQuery(".new-user").is(":checked")) {
 
 		jQuery(".login_unsuccessfull").html("");
@@ -7084,7 +7088,7 @@ if(ct_postalcode_status_check == "Y"){
 
     }
 
-        var country_flag = jQuery(".selected-flag").attr("title");
+        /* var country_flag = jQuery(".selected-flag").attr("title");
         var site_url = siteurlObj.site_url;
         var country_alpha_code = countrycodeObj.alphacode;
         jQuery('#ct-user-phone').intlTelInput({
@@ -7096,7 +7100,7 @@ if(ct_postalcode_status_check == "Y"){
             });
 
           jQuery('.selected-flag .iti-flag').addClass(country_alpha_code);
-          jQuery('.selected-flag').attr('title', country_flag);
+          jQuery('.selected-flag').attr('title', country_flag); */
     jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
 
 		

@@ -24,3 +24,235 @@ Stack trace:
 #1 /home1/homebods/public_html/booking/process.php(93): User->getUsers()
 #2 {main}
   thrown in /home1/homebods/public_html/booking/User.php on line 200
+[25-Jun-2021 22:54:48 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/homebods/public_html/booking/objects/class_connection.php on line 30
+[25-Jun-2021 22:54:48 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/grinders.php:1) in /home1/homebods/public_html/booking/grinders.php on line 22
+[25-Jun-2021 22:54:48 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/homebods/public_html/booking/objects/class_connection.php on line 30
+[25-Jun-2021 22:54:48 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/homebods/public_html/booking/objects/class_connection.php on line 30
+[25-Jun-2021 22:54:48 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home1/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[25-Jun-2021 22:54:48 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home1/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[25-Jun-2021 22:54:48 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home1/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[25-Jun-2021 22:55:13 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/homebods/public_html/booking/objects/class_connection.php on line 30
+[25-Jun-2021 22:55:13 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/grinders.php:1) in /home1/homebods/public_html/booking/grinders.php on line 22
+[25-Jun-2021 22:55:13 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/homebods/public_html/booking/objects/class_connection.php on line 30
+[25-Jun-2021 22:55:13 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/homebods/public_html/booking/objects/class_connection.php on line 30
+[25-Jun-2021 22:55:13 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home1/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[25-Jun-2021 22:55:13 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home1/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[25-Jun-2021 22:55:13 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home1/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[25-Jun-2021 23:00:54 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:00:54 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:09:49 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:09:49 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:10:17 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:10:17 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:10:36 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:10:36 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:12:52 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:12:52 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:17:10 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:17:10 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:37:49 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:37:49 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:39:41 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:39:42 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:41:11 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:41:11 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[25-Jun-2021 23:42:53 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home1/homebods/public_html/booking/index.php on line 28
+[25-Jun-2021 23:42:53 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:1) in /home1/homebods/public_html/booking/index.php on line 343
+[26-Jun-2021 06:15:30 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:15:30 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:15:41 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:15:41 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:17:52 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:17:52 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:18:04 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:18:04 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:18:04 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:18:11 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:18:11 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:18:11 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:19:01 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:19:01 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:19:12 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:19:12 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:19:24 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:19:24 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:19:35 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:19:35 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:19:35 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:20:19 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:20:19 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:20:19 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:20:28 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:20:28 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:20:28 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:20:37 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:20:37 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index.php on line 28
+[26-Jun-2021 06:20:37 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:20:42 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:20:42 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:20:42 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:23:13 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:23:13 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:23:13 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:26:53 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:26:53 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:26:53 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:27:00 America/Boise] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:27:00 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/homebods/public_html/booking/config.php:2) in /home1/homebods/public_html/booking/index_one_step.php on line 53
+[26-Jun-2021 06:27:00 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:28:10 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[26-Jun-2021 06:31:27 America/Boise] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.3.0". You are running 5.6.40. in /home1/homebods/public_html/booking/assets/braintree/vendor/composer/platform_check.php on line 25
+[03-Aug-2021 03:26:08 America/Boise] PHP Fatal error:  Uncaught Kreait\Firebase\Exception\InvalidArgumentException: A uid must be a non-empty string with at most 128 characters. in /home2/homebods/public_html/booking/vendor/kreait/firebase-php/src/Firebase/Value/Uid.php:21
+Stack trace:
+#0 /home2/homebods/public_html/booking/vendor/kreait/firebase-php/src/Firebase/Auth.php(538): Kreait\Firebase\Value\Uid->__construct('')
+#1 /home2/homebods/public_html/booking/User.php(134): Kreait\Firebase\Auth->createCustomToken('', Array)
+#2 /home2/homebods/public_html/booking/process.php(73): User->loginUser('contact.aman91@...', '')
+#3 {main}
+  thrown in /home2/homebods/public_html/booking/vendor/kreait/firebase-php/src/Firebase/Value/Uid.php on line 21
+[04-Aug-2021 02:22:14 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 02:22:14 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 02:22:14 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 02:22:14 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 02:22:14 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 02:22:24 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 02:22:32 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 02:22:32 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 02:22:35 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:12:06 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:12:14 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:12:15 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 03:12:25 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:12:25 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:12:26 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 03:12:34 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 03:12:45 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:12:45 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:12:45 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 03:12:45 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 03:12:45 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 03:38:22 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:38:29 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:38:31 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 03:38:34 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 06:10:50 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 06:56:29 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 06:56:29 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 06:56:29 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 06:56:29 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 06:56:29 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 06:56:30 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 06:56:48 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 06:56:48 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 06:56:48 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 06:56:48 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 06:56:48 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 06:56:50 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 06:56:58 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 06:56:58 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:10:51 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:11:31 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:12:03 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:12:04 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:12:09 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php on line 374
+[04-Aug-2021 07:13:18 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php on line 375
+[04-Aug-2021 07:26:21 America/Boise] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/homebods/public_html/booking/User.php:116
+Stack trace:
+#0 /home2/homebods/public_html/booking/process.php(73): User->loginUser(NULL, '')
+#1 {main}
+  thrown in /home2/homebods/public_html/booking/User.php on line 116
+[04-Aug-2021 07:26:38 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:26:42 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 07:27:28 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:27:37 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:27:37 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:27:47 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:30:11 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:30:14 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:30:17 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 07:30:28 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:35:01 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:55:20 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:55:20 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:55:21 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 07:56:34 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 07:56:35 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:04:52 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:04:52 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:05:53 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:05:53 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/homebods/public_html/booking/grinders.php:1) in /home2/homebods/public_html/booking/grinders.php on line 22
+[04-Aug-2021 08:05:53 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:05:53 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:05:53 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 08:05:53 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 08:05:53 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 08:06:27 America/Boise] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:06:27 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/homebods/public_html/booking/grinders.php:1) in /home2/homebods/public_html/booking/grinders.php on line 22
+[04-Aug-2021 08:06:27 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:06:27 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:06:27 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 08:06:27 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 08:06:27 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 08:06:38 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:06:38 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/homebods/public_html/booking/grinders.php:1) in /home2/homebods/public_html/booking/grinders.php on line 22
+[04-Aug-2021 08:06:38 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:06:38 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 08:06:38 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 08:06:38 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 08:06:38 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 09:10:40 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 in /home2/homebods/public_html/booking/User.php:220
+Stack trace:
+#0 /home2/homebods/public_html/booking/User.php(220): PDO->query('SELECT uuid, co...')
+#1 /home2/homebods/public_html/booking/process.php(93): User->getUsers()
+#2 {main}
+  thrown in /home2/homebods/public_html/booking/User.php on line 220
+[04-Aug-2021 09:14:00 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 09:14:02 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 09:14:02 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 09:14:02 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 09:14:02 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 09:14:02 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 09:14:03 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/config_index.php on line 24
+[04-Aug-2021 10:09:39 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 10:09:39 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/homebods/public_html/booking/pros.php:1) in /home2/homebods/public_html/booking/pros.php on line 22
+[04-Aug-2021 10:09:39 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 10:09:39 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[04-Aug-2021 10:09:39 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[04-Aug-2021 10:09:39 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[04-Aug-2021 10:09:39 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[04-Aug-2021 10:48:31 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 in /home2/homebods/public_html/booking/User.php:200
+Stack trace:
+#0 /home2/homebods/public_html/booking/User.php(200): PDO->query('SELECT uuid, fu...')
+#1 /home2/homebods/public_html/booking/process.php(93): User->getUsers()
+#2 {main}
+  thrown in /home2/homebods/public_html/booking/User.php on line 200
+[06-Aug-2021 01:23:05 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1 in /home2/homebods/public_html/booking/User.php:220
+Stack trace:
+#0 /home2/homebods/public_html/booking/User.php(220): PDO->query('SELECT uuid, co...')
+#1 /home2/homebods/public_html/booking/process.php(93): User->getUsers()
+#2 {main}
+  thrown in /home2/homebods/public_html/booking/User.php on line 220
+[06-Aug-2021 05:00:32 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[06-Aug-2021 05:00:41 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[06-Aug-2021 05:00:42 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[06-Aug-2021 05:00:42 America/Boise] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 11
+[06-Aug-2021 05:00:42 America/Boise] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 12
+[06-Aug-2021 05:00:42 America/Boise] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home2/homebods/public_html/booking/objects/class_setting.php(392) : eval()'d code on line 13
+[06-Aug-2021 05:00:47 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[06-Aug-2021 05:00:51 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30
+[06-Aug-2021 05:00:51 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home2/homebods/public_html/booking/objects/class_connection.php on line 30

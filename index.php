@@ -1171,7 +1171,7 @@ function date_format_js($date_Format) {
                     <div class="top-zip-code">
                         <div class="input-group mb-3 ct-sm-8 ct-md-4 ct-xs-12">
                           <i class="fa fa-map-marker custom-set-zip" aria-hidden="true"></i>
-                            <input type="text" class="form-control common-fc" name="ct_postal_code" id="ct_postal_code" placeholder="Zip or Postal Code" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control common-fc" name="ct_postal_code" id="ct_postal_code" placeholder="Zip or Postal Code" aria-label="Username" aria-describedby="basic-addon1" data-id="<?php echo $settings->get_option_postal("ct_postal_code"); ?>" placeholder="<?php  echo $postalcode_placeholder[0]; ?>">
                              <label style="color: red;" class="custom_postal_error"></label>
                         </div>
                       </div>
