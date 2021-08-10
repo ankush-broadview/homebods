@@ -88,10 +88,8 @@ if (!isset($_SESSION['ct_useremail']) ) {
 	</div>
 </div>
 
-
-	<script type="text/javascript" src="assets/js/chat/firestore-config.js"></script>
-	<script type="text/javascript" src="assets/js/chat/chat.js"></script>
-
+<script type="text/javascript" src="assets/js/chat/firestore-config.js"></script>
+<script type="text/javascript" src="assets/js/chat/chat.js"></script>
 
 </body>
 </html>

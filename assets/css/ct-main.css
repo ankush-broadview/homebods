@@ -65,14 +65,6 @@ body{ font-family: 'Montserrat' !important;overflow: scroll !important;}
     align-items: center;
     justify-content: center;
 }
-#ct .ct-provider-list ul.provders-list li{
-	    display: flex;
-    flex-direction: column;
-    margin-bottom: 14px;
-}
-#ct .ct-provider-list ul.provders-list li .ct-button{
-	margin-bottom: 12px !important;
-}
 #ct .ct-provider-list ul.provders-list li .provider-name{float:left;width:100%;line-height:18px;height:30px;margin-bottom:5px;font-size:14px;word-wrap:break-word;overflow:hidden;text-overflow:ellipsis;position:relative;top:4px;cursor:pointer;font-weight:600;}
 #ct .ct-extra-services-list ul.addon-service-list li .addon-name{float:left;width:100%;line-height:18px;height:auto;margin-bottom:5px;font-size:13px;word-wrap:break-word;overflow:hidden;text-overflow:ellipsis;position:relative;top:4px;cursor:pointer;}
 #ct .ct-no-service-box{box-shadow:0px 1px 8px #aeaeae;padding:5px 10px;font-size:15px;}
@@ -1083,7 +1075,6 @@ font-size: 30px;}
  width: 75%;
     margin-right: 10px;
 }
-
 .staff-details-wrap .main-staff{
    display: flex;
     align-items: center;
@@ -1097,31 +1088,15 @@ font-size: 30px;}
     /* color: #003b46; */
     letter-spacing: 0.8px;
     margin-bottom: 4px;
-   display: flex;
+    display: block;
 }
 .staff-details-wrap .ct-staff-name lable span{
-    color: #c124d6;
+    color: #8d8d8d;
     font-size: 14px;
     margin-left: 6px;
-	font-weight: 600;
-		    display: flex;
-    min-width: 24%;
-
-}
-.staff-details-wrap .ct-staff-name .rate-main{
-	    min-width: auto;
-    display: contents;
-    font-weight: 700;
-    font-size: 16px;
-    color: #000000;
-    letter-spacing: 0.8px;
-    margin-bottom: 4px;
-	
+		font-weight: 600;
 }
 .fitness_rate input[type="radio"] {
 	display:block;
 }
 .fitness-radio{display:block !important; }
-.ml-14{
-	    margin-left: 14px !important;
-}

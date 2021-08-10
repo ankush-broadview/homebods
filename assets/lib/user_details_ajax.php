@@ -17,6 +17,10 @@ include(dirname(dirname(dirname(__FILE__)))."/objects/class_nexmo.php");
 include(dirname(dirname(dirname(__FILE__)))."/objects/class_gc_hook.php");
 include(dirname(dirname(dirname(__FILE__))).'/objects/class_users.php');
 include(dirname(dirname(dirname(__FILE__)))."/objects/class_eml_sms.php");
+include(dirname(dirname(dirname(__FILE__))).'/objects/class_payments.php');
+include_once(dirname(__DIR__).'/env.php');
+require_once STRIPE_LIB_PATH;
+\Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
 
 $database= new cleanto_db();
 $conn=$database->connect();
@@ -36,7 +40,10 @@ $emailtemplate->conn=$conn;
 
 $objdashboard = new cleanto_dashboard();
 $objdashboard->conn = $conn;
-$objadminprofile = new cleanto_adminprofile();$objadminprofile->conn = $conn;
+
+$objadminprofile = new cleanto_adminprofile();
+$objadminprofile->conn = $conn;
+
 $first_step=new cleanto_first_step();
 $first_step->conn=$conn;
 
@@ -45,6 +52,17 @@ $emlsms->conn=$conn;
 
 $booking = new cleanto_booking();
 $booking->conn = $conn;
+
+$admin= new cleanto_adminprofile();
+$admin->conn=$conn;
+
+$payment= new cleanto_payments();
+$payment->conn=$conn;
+
+
+$stripe = new \Stripe\StripeClient(
+	STRIPE_SECRET_KEY
+  );
 
 $setting = new cleanto_setting();
 $setting->conn = $conn;
@@ -1067,15 +1085,101 @@ if(isset($_POST['reschedulebooking'])){
     }
 }
 if(isset($_POST['update_booking_users'])){
-  $id=$order = $_POST['id'];
+  	$id=$order = $_POST['id'];
 	$gc_event_id = $_POST['gc_event_id'];
 	$gc_staff_event_id = $_POST['gc_staff_event_id'];
 	$pid = $_POST['pid'];
 	$lastmodify = date('Y-m-d H:i:s');
     $cancel_reson_book = $_POST['cancel_reson_book'];
+   	$objuserdetails->update_booking_of_user($order,$cancel_reson_book,$lastmodify,"CC");
+	// Share Refund or transfers after Booking Cancel
+	// Start	
+	$bookingResult = $booking->getdatabyorder_id($id);
+	$bookingData=mysqli_fetch_array($bookingResult);
+	$booking->booking_id=$id;
+	$booking->staff_id="";
+	$result=$booking->update_staff_id_bookings_details_by_order_id();
+	$paymentIntentId = $bookingData["payment_intent_id"];
+	$paymentIntentObj = $stripe->paymentIntents->retrieve(
+		$paymentIntentId 
+	);
+	$bookingDateTime = $bookingData["booking_date_time"];
+	$datetime1 = new DateTime($bookingDateTime);
+	$datetime2 = new DateTime(date('Y-m-d H:i:s'));
+	$interval = $datetime1->diff($datetime2);
+	//	$diff = $interval->format('%h').".".$interval->format('%i');
+	$hours = $interval->h + ($interval->days * 24);
+	$hoursMinDiff = (float) $hours;
+    $emailSubject = "";
 
-    $objuserdetails->update_booking_of_user($order,$cancel_reson_book,$lastmodify);
 
+
+	if ($bookingData["payment_status"]=="1") {
+		// If pro accepted the order request then it means payment is captured and so we can refund the amount
+		$admin->id = $bookingData["staff_ids"];
+			$adminDetails = $admin->readone();
+			if (!empty($adminDetails["stripe_account_id"]) && $adminDetails["stripe_account_status"]==1) {
+				try {
+					if ($hoursMinDiff>48) {
+						// Refund 100%
+						// Nothing will be shared
+						$amount = $paymentIntentObj["amount"];
+                        $emailSubject = "Appointment Cancelled with more than 48 hours remaining.";
+					}elseif($hoursMinDiff<=48 && $hoursMinDiff>24){
+						// Refund after 25$ application fee deduction
+						// Share 50% from cancellation charge(25$)
+						$amount = $paymentIntentObj["amount"]-2500;
+						$proCommision = round(2500*0.5);
+                        $emailSubject = "Appointment Cancelled b/w 24 and 48 Hours";
+					}elseif($hoursMinDiff<=24){
+						// Refund 50%
+						// Share 80% to pro and 20% admin from left amount after refund
+						$amount = $paymentIntentObj["amount"]/2;
+						$proCommision = round($amount*0.8);
+                        $emailSubject = "Appointment Cancelled within 24 Hours";
+
+					}
+					if ($paymentIntentObj) {
+						$charge = $paymentIntentObj->charges->data[0];
+						try {
+							$refund = \Stripe\Refund::create([
+								'charge' => $charge->id,
+								'amount' => $amount,
+							]);
+							$transfer = \Stripe\Transfer::create([
+								"amount" => $proCommision,
+								"currency" => "usd",
+								"source_transaction" => $charge->id,
+								"destination" => $adminDetails["stripe_account_id"],
+								['metadata' => [
+									'order_id' => $id,
+									"cancel_commision"=>true,
+									"cancel_reason"=>$cancel_reson_book,
+									'merchant_name' => $adminDetails["pro_user_id"]
+								]]
+							]);
+						} catch (\Throwable $th) {
+						//	throw $th;
+						}
+						
+					}
+				} catch (\Throwable $th) {
+					//throw $th;
+				}			
+			}
+		
+	}else{
+		// Cancel the payment intent
+		try {
+			$resp = $stripe->paymentIntents->cancel(
+				$paymentIntentId 			
+			);
+		} catch (\Throwable $th) {
+			//throw $th;
+		}
+		
+	}
+	// End
     $orderdetail = $objdashboard->getclientorder($id);
     $clientdetail = $objdashboard->clientemailsender($id);
 	
@@ -1104,8 +1208,6 @@ if(isset($_POST['update_booking_users'])){
 	if($admin_email == ""){
 		$admin_email = $clientdetail['email'];	
 	}
-    /* $admin_name = $clientdetail['fullname']; */
-
 
     $price=$general->ct_price_format($orderdetail[2],$symbol_position,$decimal);
 
@@ -1218,10 +1320,7 @@ if(isset($_POST['update_booking_users'])){
 			}else{
 				$client_phone = "N/A";
 			}
-			
-		/* $client_name_value= explode(" ",$c[2]);
-			$client_first_name = $client_name_value[0];
-			$client_last_name =	$client_name_value[1]; */
+	
 			
 			$client_namess= explode(" ",$c[2]);
 			$cnamess = array_filter($client_namess);
@@ -1266,17 +1365,12 @@ if(isset($_POST['update_booking_users'])){
 						$client_status = "N/A";
 					}		
 			
-        /* $client_name=$c[2];
-        $firstname=$client_name;
-        $lastname=''; */
+      
         $client_email=$c[3];
-       /*  $client_phone=$c[4]; */
         $payment_status=$orderdetail[5];
         $final_vc_status;
         $final_p_status;
-        $client_address=$temp['address'];
-      /*   $client_notes=$temp['notes'];
-        $client_status=$temp['contact_status'];	 */
+        $client_address=$temp['address'];     
 		$client_city = $temp['city'];	
 		$client_state = $temp['state'];	
 		$client_zip	= $temp['zip'];
@@ -1292,7 +1386,7 @@ if(isset($_POST['update_booking_users'])){
     $replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name);
 
     /* Client template */
-    $emailtemplate->email_subject="Appointment Cancelled by you";
+    $emailtemplate->email_subject=$emailSubject;
     $emailtemplate->user_type="C";
     $clientemailtemplate=$emailtemplate->readone_client_email_template_body();
 
@@ -1320,41 +1414,41 @@ if(isset($_POST['update_booking_users'])){
         $mail->Subject = $subject;
         $mail->Body = $client_email_body;
         $mail->send();
-				$mail->ClearAllRecipients();
+		$mail->ClearAllRecipients();
 
     }
     /* Admin Template */
-    $emailtemplate->email_subject="Appointment Cancelled By Customer";
-    $emailtemplate->user_type="A";
-    $adminemailtemplate=$emailtemplate->readone_client_email_template_body();
+    // $emailtemplate->email_subject=$emailSubject;
+    // $emailtemplate->user_type="A";
+    // $adminemailtemplate=$emailtemplate->readone_client_email_template_body();
 
-    if($adminemailtemplate[2] != ''){
-        $admintemplate = base64_decode($adminemailtemplate[2]);
-    }else{
-        $admintemplate = base64_decode($adminemailtemplate[3]);
-    }
-		$adminsubject=$label_language_values[strtolower(str_replace(" ","_",$adminemailtemplate[1]))];
+    // if($adminemailtemplate[2] != ''){
+    //     $admintemplate = base64_decode($adminemailtemplate[2]);
+    // }else{
+    //     $admintemplate = base64_decode($adminemailtemplate[3]);
+    // }
+	// 	$adminsubject=$label_language_values[strtolower(str_replace(" ","_",$adminemailtemplate[1]))];
 
-    if($setting->get_option('ct_admin_email_notification_status')=='Y' && $adminemailtemplate[4]=='E'){
-        echo $admin_email_body = str_replace($searcharray,$replacearray,$admintemplate);
+    // if($setting->get_option('ct_admin_email_notification_status')=='Y' && $adminemailtemplate[4]=='E'){
+    //     echo $admin_email_body = str_replace($searcharray,$replacearray,$admintemplate);
 
-        if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
-            $mail_a->IsSMTP();
-        }else{
-            $mail_a->IsMail();
-        }
+    //     if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
+    //         $mail_a->IsSMTP();
+    //     }else{
+    //         $mail_a->IsMail();
+    //     }
 
-        $mail_a->SMTPDebug  = 0;
-        $mail_a->IsHTML(true);
-        $mail_a->From = $company_email;
-        $mail_a->FromName = $company_name;
-        $mail_a->Sender = $company_email;
-        $mail_a->AddAddress($admin_email, $get_admin_name);
-        $mail_a->Subject = $adminsubject;
-        $mail_a->Body = $admin_email_body;
-        $mail_a->send();
-		$mail_a->ClearAllRecipients();
-    }
+    //     $mail_a->SMTPDebug  = 0;
+    //     $mail_a->IsHTML(true);
+    //     $mail_a->From = $company_email;
+    //     $mail_a->FromName = $company_name;
+    //     $mail_a->Sender = $company_email;
+    //     $mail_a->AddAddress($admin_email, $get_admin_name);
+    //     $mail_a->Subject = $adminsubject;
+    //     $mail_a->Body = $admin_email_body;
+    //     $mail_a->send();
+	// 	$mail_a->ClearAllRecipients();
+    // }
     /*SMS SENDING CODE*/
     /*GET APPROVED SMS TEMPLATE*/
 	/* TEXTLOCAL CODE */
@@ -1533,7 +1627,7 @@ if(isset($_POST['update_booking_users'])){
 	/* staff sms sending code */
 		
 		/* staff details */
-		$staff_ids = $orderdetail[9];
+		$staff_ids = empty($orderdetail[9]) ? $bookingData["staff_ids"] : $orderdetail[9];
 		if(isset($staff_ids) && !empty($staff_ids))
 		{
 			$staff_id = array();
@@ -1557,7 +1651,7 @@ if(isset($_POST['update_booking_users'])){
         $replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,stripslashes($get_staff_name),stripslashes($get_staff_email));
 				
 				/* Client template */
-				$emailtemplate->email_subject="Appointment Cancelled By Customer";
+				$emailtemplate->email_subject=$emailSubject;
 				$emailtemplate->user_type="S";
 				$clientemailtemplate=$emailtemplate->readone_client_email_template_body();
 
@@ -1566,7 +1660,7 @@ if(isset($_POST['update_booking_users'])){
 				}else{
 						$clienttemplate = base64_decode($clientemailtemplate[3]);
 				}
-				$subject=$label_language_values[strtolower(str_replace(" ","_",$clientemailtemplate[1]))];
+				$subject= isset($label_language_values[strtolower(str_replace(" ","_",$clientemailtemplate[1]))]) ? $label_language_values[strtolower(str_replace(" ","_",$clientemailtemplate[1]))] : $clientemailtemplate[1];
 
 				if($setting->get_option('ct_staff_email_notification_status') == 'Y' && $clientemailtemplate[4]=='E' ){
 					$client_email_body = str_replace($searcharray,$replacearray,$clienttemplate);

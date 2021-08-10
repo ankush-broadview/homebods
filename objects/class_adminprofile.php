@@ -65,10 +65,14 @@ class cleanto_adminprofile {
 	public $conn;
 
 	public $otp;
+
 	public $trainer_type;
-  public $staff_bio;
-  public $pro_user_id;
-  public $zoom_link;
+
+	public $staff_bio;
+	
+	public $pro_user_id;
+	
+	public $zoom_link;
 
 
 
@@ -345,11 +349,11 @@ class cleanto_adminprofile {
 	public function verify_staff_otp_for_email(){
 	
 
-        $query="select * from ct_admin_info where email ='".$this->email."' and otp  = '".$this->otp."'";
-        $result=mysqli_query($this->conn,$query); 
+        $query = "select * from ct_admin_info where email ='".$this->email."' and otp  = '".$this->otp."'";
+        $result = mysqli_query($this->conn,$query); 
         $res = mysqli_fetch_row($result);
-        // var_dump($res);die;
-         return $value = isset($res[0])? $res[0] : 0 ;
+        //var_dump($res);die;
+        return $value = isset($res[0])? $res[0] : 0 ;
     }
 
     public function staff_update_otp_for_email(){
@@ -436,21 +440,19 @@ class cleanto_adminprofile {
 	public function pre_reg_staff(){
     	
 		$query1 = "SELECT uuid() as uuid";
-	    $result=mysqli_query($this->conn,$query1);
+	    $result = mysqli_query($this->conn,$query1);
 	    $res = mysqli_fetch_array($result);
 	    $uuid = $res['uuid'];
 
-    	$query="insert into `".$this->tablename."` (`id`, `password`, `email`, `fullname`, `phone`, `address`, `city`, `state`, `zip`, `country`,`role`, `description`, `enable_booking`, `service_commission`, `commision_value`, `schedule_type`, `image`, `service_ids`, `otp`,`online_offered`,`trainer_for`,`price_for_single`,`price_for_3`,`price_for_5`,`staff_bio`,`pro_user_id`,`zoom_link`,`custom_rate`, `last_name`,`uuid`,`single_customer_rate`) values(NULL,'".$this->pass."','".$this->email."','".$this->first_name."','".$this->phone."', '".$this->address."', '".$this->city."', '".$this->state."', '".$this->zip_code."', '".$this->country."', 'staff', '', 'N', 'F', '0', 'W', '".$this->image."', '".$this->service_ids."', '".$this->otp."','".$this->offered."','".$this->trainer_type."','".$this->price_for_single."','".$this->price_for_3."','".$this->price_for_5."','".$this->staff_bio."','".$this->pro_user_id."','".$this->zoom_link."','".$this->custom_rate."','".$this->last_name."','".$uuid."','".$this->single_customer_rate."')";
-    	// var_dump($query);die;
-    	$result=mysqli_query($this->conn,$query); 
+    	$query="insert into `".$this->tablename."` (`id`, `password`, `email`, `fullname`, `phone`, `address`, `city`, `state`, `zip`, `country`,`role`, `description`, `enable_booking`, `service_commission`, `commision_value`, `schedule_type`, `image`, `service_ids`, `otp`,`online_offered`,`trainer_for`,`price_for_single`,`price_for_3`,`price_for_5`,`staff_bio`,`pro_user_id`,`zoom_link`,`custom_rate`, `last_name`,`uuid`) values(NULL,'".$this->pass."','".$this->email."','".$this->first_name."','".$this->phone."', '".$this->address."', '".$this->city."', '".$this->state."', '".$this->zip_code."', '".$this->country."', 'staff', '', 'N', 'F', '0', 'W', '".$this->image."', '".$this->service_ids."', '".$this->otp."','".$this->offered."','".$this->trainer_type."','".$this->price_for_single."','".$this->price_for_3."','".$this->price_for_5."','".$this->staff_bio."','".$this->pro_user_id."','".$this->zoom_link."','".$this->custom_rate."','".$this->last_name."','".$uuid."')";
+    	// var_dump($query);die;		
+    	$result = mysqli_query($this->conn,$query); 
 
-    	$value=mysqli_insert_id($this->conn);
+    	$value = mysqli_insert_id($this->conn);
 
     	return $value;
 
   	}
-
-
 
   	public function update_staff_details_staffsection(){
 
@@ -562,17 +564,58 @@ class cleanto_adminprofile {
 
 	}
 	
-	 public function get_staff_details(){
+	public function get_staff_details(){
 
-    $query="select `price_for_single`,`price_for_3`,`price_for_5` from `".$this->tablename."` where `id`='".$this->id."'";
+		$query = "select `price_for_single`,`price_for_3`,`price_for_5` from `".$this->tablename."` where `id`='".$this->id."'";
 
-    $result=mysqli_query($this->conn,$query);
+		$result = mysqli_query($this->conn,$query);
 
-    $value=mysqli_fetch_row($result);
+		$value = mysqli_fetch_row($result);
 
-    return $value;
+		return $value;
 
-  }
+	}
+
+	public function getStripeAccountIdByEmail() {
+
+		$query = "SELECT stripe_account_id FROM `".$this->tablename."` WHER `email`='".$this->email."'";
+		
+		$result = mysqli_query($this->conn,$query);
+
+		$value = mysqli_fetch_row($result);
+
+		return $value;
+	}
+
+	public function getStripeAccountIdById() {
+
+		$query = "SELECT stripe_account_id FROM `".$this->tablename."` WHERE `email`='".$this->email."'";
+
+		$value = [];
+
+		$result = mysqli_query($this->conn,$query);
+
+		if($result)
+			$value = mysqli_fetch_row($result);
+
+		return $value;
+	}
+
+	public function updateStripeAccountId($accntId) {
+
+		$query = "update `".$this->tablename."` set `stripe_account_id`='$accntId' where `email`='".$this->email."'";
+		$result=mysqli_query($this->conn,$query);
+
+		return $result;
+	}
+
+	public function updateStripeAccountStatus($stripe_account_id, $status = 0) {
+
+		$query = "UPDATE `".$this->tablename."` set `stripe_account_status`= $status where `stripe_account_id`='".$stripe_account_id."'";
+		$result = mysqli_query($this->conn,$query);
+
+		return $result;
+	}
 	
 
 }

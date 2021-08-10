@@ -2828,8 +2828,16 @@ if(isset($_POST['btn_submit_app_labels']))
                                 <input type="hidden" name="hdntemplate<?php  echo $ti;?>" value="<?php echo $readall_client['id']; ?>">
                               
                                 <a id="default_email_contents" name="" data-id="<?php echo $readall_client['id']; ?>" class="btn btn-primary ct-btn-width cb ml-15 mt-20" type="submit"><?php echo $label_language_values['default_template'];?></a>
+
+                                <?php
+if(!isset($label_language_values[strtolower(str_replace(" ","_",$readall_client['email_subject']))])){
+  $email_subject = $readall_client['email_subject'];
+}else{
+  $email_subject = $label_language_values[strtolower(str_replace(" ","_",$readall_client['email_subject']))];
+}
+                                ?>
                                 
-                                <a name="" data-id="<?php  echo $readall_client['id']; ?>" class="btn btn-warning ct-btn-width cb ml-15 mt-20 preview_email_contents" data-title="<?php echo $label_language_values[strtolower(str_replace(" ","_",$readall_client['email_subject']))]; ?>" type="submit"><?php echo $label_language_values['preview_template'];?></a>
+                                <a name="" data-id="<?php  echo $readall_client['id']; ?>" class="btn btn-warning ct-btn-width cb ml-15 mt-20 preview_email_contents" data-title="<?php echo $email_subject; ?>" type="submit"><?php echo $label_language_values['preview_template'];?></a>
                               </div>
                               <div class="col-md-4 col-sm-4 col-xs-12">
                                 <div class="ct-email-content-tags">
@@ -3013,7 +3021,15 @@ if(isset($_POST['btn_submit_app_labels']))
                                 </label>
                               </div>
                             </div>  
-                            <span class="ct-template-name"><?php echo $label_language_values[strtolower(str_replace(" ","_",$readall_staff['email_subject']))]; ?></span>
+                            <?php
+                            if(!isset($label_language_values[strtolower(str_replace(" ","_",$readall_staff['email_subject']))])){
+                              $email_subject = $readall_staff['email_subject'];
+                            }else{
+                              $email_subject = $label_language_values[strtolower(str_replace(" ","_",$readall_staff['email_subject']))];
+                            }
+
+                            ?>
+                            <span class="ct-template-name"><?php echo $email_subject ; ?></span>
                           </div>
                           <div class="pull-right cta-col1">
                             <div class="pull-right">
@@ -3038,7 +3054,7 @@ if(isset($_POST['btn_submit_app_labels']))
                                 <input type="hidden" name="hdntemplate<?php  echo $ti;?>" value="<?php echo $readall_staff['id']; ?>">
                                 <a id="default_email_contents" name="" data-id="<?php echo $readall_staff['id']; ?>" class="btn btn-primary ct-btn-width cb ml-15 mt-20" type="submit"><?php echo $label_language_values['default_template'];?></a>
                                 
-                                <a name="" data-id="<?php  echo $readall_staff['id']; ?>" class="btn btn-warning ct-btn-width cb ml-15 mt-20 preview_email_contents" data-title="<?php echo $label_language_values[strtolower(str_replace(" ","_",$readall_staff['email_subject']))]; ?>" type="submit"><?php echo $label_language_values['preview_template'];?></a>
+                                <a name="" data-id="<?php  echo $readall_staff['id']; ?>" class="btn btn-warning ct-btn-width cb ml-15 mt-20 preview_email_contents" data-title="<?php echo $email_subject; ?>" type="submit"><?php echo $label_language_values['preview_template'];?></a>
                               </div>
                               <div class="col-md-4 col-sm-4 col-xs-12">
                                 <div class="ct-email-content-tags">
@@ -4328,7 +4344,7 @@ if(isset($_POST['btn_submit_app_labels']))
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <a id="promo_code" name="promo_code" class="btn btn-success mt-20 " ><?php echo $label_language_values['create'];?></a>
+                                                    <a id="promo_code" name="promo_code" class="btn btn-success mt-20" ><?php echo $label_language_values['create'];?></a>
                                                 </td>
                                             </tr>
                                             

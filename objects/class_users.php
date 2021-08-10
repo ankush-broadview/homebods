@@ -152,7 +152,7 @@ class cleanto_users{
 
 		$result=mysqli_query($this->conn,$query);
 
-		$res=mysqli_fetch_row($result);
+		$res=mysqli_fetch_array($result);
 
 		return $res;
 
@@ -166,7 +166,7 @@ class cleanto_users{
 
 		$result=mysqli_query($this->conn,$query);
 
-		$res=mysqli_fetch_row($result);
+		$res=mysqli_fetch_array($result);
 
 		return $res;
 
