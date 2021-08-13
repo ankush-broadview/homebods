@@ -148,13 +148,12 @@ $actions = [
 ];
 $payload = file_get_contents('php://input');
 $data = json_decode($payload,true);
-$route = $data["route"];
-$obj = new cleanto_stripe_utils();
-if (in_array($route,$actions)) {
-	$obj->{$route}();
+if (!empty($data) && isset($data["route"])) {
+	$route = $data["route"];
+	$obj = new cleanto_stripe_utils();
+	if (in_array($route,$actions)) {
+		$obj->{$route}();
+	}
 }
-// else{	
-// 	$obj->jsonResponse(["status" =>false, "message" =>"Route not found", "data" =>[]]);
-// }
 
 ?>
