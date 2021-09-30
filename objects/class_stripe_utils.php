@@ -31,8 +31,8 @@ class cleanto_stripe_utils {
 	public function getStripeOnboardingLink ($account_id){
 		$linkParams = [
 			'account' => $account_id,
-			'refresh_url' => SITE_URL.'stripe_reauth.php',
-			'return_url' => SITE_URL.'stripe_reauth.php',
+			'refresh_url' => SITE_URL.'staff/staff-dashboard.php',
+			'return_url' => SITE_URL.'staff/staff-dashboard.php',
 			'type' => 'account_onboarding',
 		];
 		//var_dump($linkParams);

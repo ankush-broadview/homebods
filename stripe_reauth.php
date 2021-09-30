@@ -9,6 +9,7 @@ $file = file_exists($filename);
 if($file){
   if(!filesize($filename) > 0){
     header('location:ct_install.php');
+	return;
   }
   else{
   	include(dirname(__FILE__) . "/objects/class_connection.php");
@@ -23,6 +24,7 @@ if($file){
     
     if(($conn->connect_errno=='0' && ($host=='' || $db=='')) || $conn->connect_errno!='0' ) {
       header('Location: ./config_index.php');
+	  return;
     }
   }
 }else{
@@ -61,6 +63,7 @@ if(!$stripe_account_status && !empty($stripeAcntId) ){
 	}
 } else if (empty($stripeAcntId)) {
 	header("Location:".SITE_URL);
+	return;
 }
 
 if ($stripe_account_status) {

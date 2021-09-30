@@ -64,6 +64,35 @@ if($time_format == "24"){
 $staff_id = $_SESSION['ct_staffid'];
 ?>
 
+
+
+<?php
+
+$stripe_account_status = isset($_SESSION['stripe_account_status']) ? $_SESSION['stripe_account_status'] :  false;
+$stripeAcntId = ""; 
+$_SESSION['stripe_onboard_success'] = false;
+if(isset($_SESSION['stripe_account_id']) && !empty($_SESSION['stripe_account_id'])) {
+ 	$stripeAcntId = $_SESSION['stripe_account_id'];
+}
+if(!$stripe_account_status && !empty($stripeAcntId) ){
+	$stripeObj = new cleanto_stripe_utils();
+	$accnt = $stripeObj->getStripeAccountDetails($stripeAcntId);
+	if($accnt->charges_enabled && $accnt->payouts_enabled) {
+		$objadmininfo = new cleanto_adminprofile();
+		$objadmininfo->conn = $conn;
+		$objadmininfo->updateStripeAccountStatus($stripeAcntId,1);
+		$stripe_account_status  = $_SESSION['stripe_account_status'] = true;
+	}
+}
+if ($stripe_account_status) {
+	unset($_SESSION['stripe_account_id']);
+	unset($_SESSION['stripe_account_status']);
+	$_SESSION['stripe_onboard_success'] = true;	
+}
+?>
+
+
+
 <style>
 
 .stipe_onboard_btn{
@@ -93,7 +122,7 @@ $staff_id = $_SESSION['ct_staffid'];
 	</div>
 
 	<?php
-	if (isset($_SESSION['stripe_onboard_success']) && $_SESSION['stripe_onboard_success']===true) { 
+	if (isset($_SESSION['stripe_onboard_success']) && $_SESSION['stripe_onboard_success']===true) {
 		unset($_SESSION['stripe_onboard_success']);
 		?>
 	
