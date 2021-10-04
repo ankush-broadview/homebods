@@ -4,3 +4,4 @@ config.php
 /assets/lib/error_log
 error_log
 env.php
+.vscode

@@ -1405,6 +1405,11 @@ if(isset($_POST['update_booking_users'])){
         }else{
             $mail->IsMail();
         }
+
+		if (!empty($emailSubject)) {
+			$subject = $emailSubject;
+		}
+
         $mail->SMTPDebug  = 0;
         $mail->IsHTML(true);
         $mail->From = $company_email;
