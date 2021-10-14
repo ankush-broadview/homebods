@@ -70,6 +70,7 @@ if (isset($_POST['checkadmin']))
 elseif (isset($_POST['logout']))
 {
     session_destroy();
+	echo "user";
 }
 elseif (isset($_GET['resetpassword']))
 {

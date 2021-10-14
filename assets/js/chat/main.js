@@ -27,7 +27,7 @@ $(".register-btn").on('click', function(e){
 	$(document).on('click', '.login-btn', function(){
 	    
 		jQuery(".ct-loading-main").show();
-		console.log("chat login");
+		
 		var btnHTML = $(this).html();
 		// $(this).html("<img id='loader' src='images/loader.svg' alt='Loading...!' />");
 		var form_data = $("#login-form").serialize();
@@ -52,8 +52,6 @@ $(".register-btn").on('click', function(e){
 
 				
 				var response = JSON.parse(resp);
-
-				console.log(response);
 
 				if (response.status == 200) {
 					var token = response.message.token;

@@ -3,6 +3,6 @@
 	public $hostnames = "localhost";
 	public $username = "root";
 	public $passwords = "";
-	public $database = "homebods";
+	public $database = "homebods_cleanto";
 	public $epcode = "VinodAhuja";
 } ?>

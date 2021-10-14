@@ -9372,7 +9372,7 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
       var zip_status_check = jQuery(this).attr("data-zip");
       
       var user_image = jQuery("#pppp"+userid+"ctimagename").val();
-    
+	  
       jQuery("#userfirstname").rules("add",{
     
         required: true,
@@ -9502,8 +9502,7 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
     
         url: ajax_url + "user_details_ajax.php",
     
-        success: function (res) {
-    	
+        success: function (res) { 
           if(jQuery.trim(res) == "Your Old Password Incorrect..."){
     
             jQuery(".old_pass_msg").css("display","block");
