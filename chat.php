@@ -33,8 +33,8 @@ if (!isset($_SESSION['ct_useremail']) ) {
  	<sidebar class="messenger">
     	<span class="logo">
     	    <?php
-    	    if($_SESSION['user_img'] != '' || $_SESSION['user_img'] != null){
-    	        $user_image = 'https://homebods.co/booking/assets/images/services/'.$_SESSION['user_img'];
+    	    if(isset($_SESSION['ct_image']) && ($_SESSION['ct_image'] != '' || $_SESSION['ct_image'] != null)){
+    	        $user_image = 'https://homebods.co/booking/assets/images/services/'.$_SESSION['ct_image'];
     	    }else{
     	        $user_image = 'https://homebods.co/booking/assets/images/user.png';
     	    }

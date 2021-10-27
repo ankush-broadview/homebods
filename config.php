@@ -1,4 +1,5 @@
 <?php
+
 require_once('env.php');	
 	class cleanto_myvariable {
 		public $hostnames = DB_HOST;
@@ -9,3 +10,4 @@ require_once('env.php');
 	}
 
 ?>
+
