@@ -546,13 +546,13 @@ jQuery(document).on("click",".staff_register_otp",function() {
              setTimeout(function() {
                window.location.href = result.data.onboarding_url;
             }, 500); 
-          }else{
+          } else {
             jQuery("#register-meesg").html('<h5 style="color:red">Something went wrong..</h5>');
           }
          
         }else if(resStatus == 12 || resStatus == 2){
            jQuery("#register-meesg").html('<h5 style="color:red">Invalid OTP.</h5>');
-        }else{
+        } else {
           jQuery("#register-meesg").html('<h5 style="color:red">'+result.msg+'</h5>');
         }
       }

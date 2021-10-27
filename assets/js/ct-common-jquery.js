@@ -2106,6 +2106,7 @@ jQuery(document).on("change",".existing-user",function() {
     var country_alpha_code = countrycodeObj.alphacode;
     var allowed_country_alpha_code = countrycodeObj.allowed;
     var array = allowed_country_alpha_code.split(",");
+
   if(jQuery(".existing-user").is(":checked")) {
 
 		jQuery(".login_unsuccessfull").html("");
@@ -2169,6 +2170,7 @@ jQuery(document).on("change",".new-user",function() {
     var country_alpha_code = countrycodeObj.alphacode;
     var allowed_country_alpha_code = countrycodeObj.allowed;
     var array = allowed_country_alpha_code.split(",");
+
   if(jQuery(".new-user").is(":checked")) {
 
 		jQuery(".login_unsuccessfull").html("");

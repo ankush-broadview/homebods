@@ -2,6 +2,6 @@
 config.php
 /.vscode/
 /assets/lib/error_log
-error_log
+*error_log
 env.php
 .vscode
