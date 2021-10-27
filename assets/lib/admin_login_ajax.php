@@ -1,5 +1,11 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+ob_start();
 session_start();
+
 include (dirname(dirname(dirname(__FILE__))) . '/header.php');
 include (dirname(dirname(dirname(__FILE__))) . "/objects/class_connection.php");
 include (dirname(dirname(dirname(__FILE__))) . "/objects/class_login_check.php");
@@ -57,10 +63,12 @@ if (isset($_POST['checkadmin']))
     $objlogin->remember = $_POST['remember'];
     $objlogin->cookie_passwords = $_POST['password'];
     $t = $objlogin->checkadmin($name, $password);
+	
 }
 elseif (isset($_POST['logout']))
 {
     session_destroy();
+	echo "user";
 }
 elseif (isset($_GET['resetpassword']))
 {
@@ -303,10 +311,10 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 			$mail->ClearAllRecipients();		
 			echo 1;exit();		
 		} else {			
-			echo "not";exit();		
+			echo "not";
 		} 	
 	}else{		
-		echo "email id already exists.";exit();	
+		echo "email id already exists.";
 	}
 		
 }elseif (isset($_POST['action']) && $_POST['action'] == 'pre_client_reg_himself') {
@@ -348,7 +356,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	$users->user_bio = $_POST['fitness_goal'];
 	$users->status = 'E';
 
-	$filename = basename( $_POST['file']);
+	@$filename = basename( $_POST['file']);
 	$users->image = $filename;
 
 	$staff_register=$users->pre_reg_user();	
@@ -390,7 +398,8 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 						</div>				
 					</div>			
 				</body>		
-			</html>';		
+			</html>';
+		
 		if($settings->get_option('ct_smtp_hostname') != '' && 
 			$settings->get_option('ct_email_sender_name') != '' && $settings->get_option('ct_email_sender_address') != '' && $settings->get_option('ct_smtp_username') != '' && 
 			$settings->get_option('ct_smtp_password') != '' && 

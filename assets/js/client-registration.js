@@ -58,7 +58,7 @@ var jcrop_api, boundx, boundy;
 
   var file_size = jQuery(this)[0].files[0].size;
 
-  var maxfilesize = 1048576 * 2;
+  var maxfilesize = 1048576 * 4;
 
   /*  Here 2 repersent MB  */
 
@@ -66,7 +66,7 @@ var jcrop_api, boundx, boundy;
 
     jQuery(".error_image").addClass("error");
     jQuery(".error_image").show();
-    jQuery(".error_image").html("Maximum file upload size is 2 MB");
+    jQuery(".error_image").html("Maximum file upload size is 4 MB");
 
     return;
 
@@ -481,7 +481,6 @@ jQuery(document).on("click",".staff_register_front",function() {
     }, 
     url: ajax_url + "admin_login_ajax.php",
     success: function (res) { 
-      //console.log(res);
       if (res == 2) {
         jQuery(".ct-loading-main").hide();
         jQuery("#staff_email_exist").show();
@@ -540,18 +539,11 @@ jQuery(document).on("click",".staff_register_otp",function() {
       success: function (res) {   
         jQuery(".ct-loading-main").hide();
         jQuery("#register-meesg").css('display','block');
-        var result = jQuery.parseJSON(res);
-        let resStatus = result.status;
-        if(resStatus == 11 || resStatus == 1){
-          if (result.data && result.data.onboarding_url) {
-             setTimeout(function() {
-               window.location.href = result.data.onboarding_url;
-            }, 500); 
-          }else{
-            jQuery("#register-meesg").html('<h5 style="color:red">Something went wrong..</h5>');
-          }
-         
-        }else if(resStatus == 12 || resStatus == 2){
+        if(res == 11 || res == 1){
+          setTimeout(function() {
+             window.location.href = site_url + "admin/index.php";
+          }, 500); 
+        }else if(res == 12 || res == 2){
            jQuery("#register-meesg").html('<h5 style="color:red">Invalid OTP.</h5>');
         }else{
           jQuery("#register-meesg").html('<h5 style="color:red">'+result.msg+'</h5>');
@@ -560,8 +552,6 @@ jQuery(document).on("click",".staff_register_otp",function() {
   }); 
   
 });
-
-
 
 jQuery(document).on("click",".client_register_front",function() {
   jQuery("#grinder_registration_form").validate({

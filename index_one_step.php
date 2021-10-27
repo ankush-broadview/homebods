@@ -2122,7 +2122,7 @@ function date_format_js($date_Format) {
                     <div class="ct-list-header">
 
                         <h3 class="header3">
-                           Enter your zip code to find fitness pros near you!
+                           Find Your Fitness Pro
                           <?php // echo $label_language_values['where_would_you_like_us_to_provide_service']; ?></h3>
 
                         <!--<p class="ct-sub">Choose your service and property size</p>-->
@@ -2135,9 +2135,7 @@ function date_format_js($date_Format) {
 
                         <div class="ct-postal-code">
 
-                            <h6 class="header6">
-
-                              <?php  echo $label_language_values['your_postal_code']; ?>
+                            <h6 class="header6"> Enter Zip or "Online"
 
               <?php   if($settings->get_option("ct_front_tool_tips_status")=='on' && $settings->get_option("ct_front_tool_tips_postal_code")!=''){?>
 
@@ -2969,7 +2967,7 @@ function date_format_js($date_Format) {
 
                                         <span class="bar"></span>
 
-                                    <label for="ct-username" class="fancy_label"><?php  echo "Username"; ?></label>
+                                    <label for="ct-username" class="fancy_label"><?php  echo "Username/Grinder User Id"; ?></label>
 
                 </div>
                 <!-- <input type="hidden" name="ct_username" id="ct-username" class="add_show_error_class error" value=""/> -->

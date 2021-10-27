@@ -112,10 +112,8 @@ jQuery(document).on('click','.mybtnloginadmin',function(){
 
 		url : ajax_url+"admin_login_ajax.php",            
 
-		success : function(res){                
-
-			//alert(res.trim());                
-
+		success : function(res){     
+			
 			if(res.trim() == "yesuser"){
 
 				window.location.replace(base_url+"/admin/my-appointments.php");                
@@ -133,7 +131,7 @@ jQuery(document).on('click','.mybtnloginadmin',function(){
 				jQuery('.login-error').show();                
 
 			}            
-
+			
 		}        
 
 	});    

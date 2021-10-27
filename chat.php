@@ -31,7 +31,16 @@ if (!isset($_SESSION['ct_useremail']) ) {
 
 <div class="container">
  	<sidebar class="messenger">
-    	<span class="logo"><a href= "#"><img style="max-height: 50px; max-width: 50px;" src="<?php echo 'https://homebods.co/booking/assets/images/services/'.$_SESSION['ct_image'];?>" /></a></span>
+    	<span class="logo">
+    	    <?php
+    	    if(isset($_SESSION['ct_image']) && ($_SESSION['ct_image'] != '' || $_SESSION['ct_image'] != null)){
+    	        $user_image = 'https://homebods.co/booking/assets/images/services/'.$_SESSION['ct_image'];
+    	    }else{
+    	        $user_image = 'https://homebods.co/booking/assets/images/user.png';
+    	    }
+    	    ?>
+    	    <a href= "#"><img style="max-height: 80px;max-width: 80px;border-radius: 50%;" src="<?php echo $user_image;?>" /></a>
+    	</span>
 		<div class="list-wrap  users">
 			<!-- <div class="list">
           		<img src="https://www.cheatsheet.com/wp-content/uploads/2019/10/taylor-swift-1024x681.jpg" alt="" />
@@ -45,8 +54,8 @@ if (!isset($_SESSION['ct_useremail']) ) {
 		</div>
 	</sidebar>
 	<div class="content"> 
-		<header>
-         	<img id="default_image" src="https://homebods.co/booking/assets/images/services/company_1894.png" alt="">
+		<header style="height: 85px">
+         	<img id="default_image" src="https://homebods.co/booking/assets/images/services/company_74315.png" alt="" style="width: 80px;height: 80px;">
          	<div class="info">
             	<span class="user"><i class="fas fa-user"></i>&nbsp;<span class="name"></span></span>
             	<!-- <span class="time">Online</span> -->

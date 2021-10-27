@@ -109,7 +109,7 @@ class User
 
 	public function loginUser($user_email, $password){
 		if(isset($_SESSION['ct_staffid'])){ 
-			$stmt = $this->conn->prepare("SELECT email as user_email,uuid,pro_user_id as first_name FROM ct_admin_info WHERE email = :user_email LIMIT 1");
+			$stmt = $this->conn->prepare("SELECT email as user_email,uuid,pro_user_id,fullname FROM ct_admin_info WHERE email = :user_email LIMIT 1");
 			$stmt->bindParam(':user_email', $user_email, PDO::PARAM_STR);
 			$stmt->execute();
 		}else{
@@ -121,16 +121,18 @@ class User
 		if ($stmt->rowCount() == 1) {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			// if (password_verify($password, $row['password'])) {
+				if($_SESSION['ct_staffid']){ $username = $row['pro_user_id'];} else {$username = $row['grinders_id'];}
+				if($_SESSION['ct_staffid']){ $fullname = $row['fullname'];} else {$fullname = $row['first_name'].' '.$row['last_name'];}
 				
 				$_SESSION['user_uuid'] = $row['uuid'];
-				$_SESSION['username'] = $row['user_email'];
-				$_SESSION['fullname'] = $row['first_name'];
+				$_SESSION['username'] = $username;
+				$_SESSION['fullname'] = $fullname;
 
 				$ar = [];
 				$ar['message'] =  'User Logged in Successfully';
 				$ar['user_uuid'] = $row['uuid'];
 
-				$additionalClaims = ['username'=> $row['user_email'], 'email'=> $row['user_email']];
+				$additionalClaims = ['username'=> $username, 'email'=> $row['user_email']];
 				$customToken = $this->firebase->getAuth()->createCustomToken($ar['user_uuid'], $additionalClaims);
 				
 

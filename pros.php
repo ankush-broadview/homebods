@@ -65,9 +65,9 @@
     <div class="cont s--signup" style="height: 95%;">
       <div class="sub-cont pros-main">
         <div class="form sign-up">
-          <h2><a href="https://www.homebods.club/"><img src="assets/images/services/company_1894.png" style="width: 130px;border-radius: 50%;"></a></h2> 
-          <h2>FITNESS PRO REGISTRATION</h2> 
-          <form  id="pros_registration_form" class="" method="post">
+          <h2><a href="https://www.homebods.club/"><img src="assets/images/services/company_74315.png" style="width: 130px;border-radius: 50%;"></a></h2> 
+          <h3 style="text-align: center;font-weight: bolder;color: #8b29fc;">FITNESS PRO REGISTRATION</h3> 
+          <form id="pros_registration_form" class="" method="post">
             <label>
               <span>First Name</span>
               <input type="text" name="first_name" placeholder="" id="first_name" />
@@ -90,9 +90,9 @@
            	<label>
            		<span>Password</span>
            		<input type="password" name="staff_password" placeholder="" id="staff_password" />
-           	</label> 
-            <label>
-              <span>Re-Password</span>
+           	</label>
+           	<label>
+              <span>Re-Enter Password</span>
               <input type="password" name="staff_repassword" placeholder="" id="staff_repassword" />
             </label>
             <label>
@@ -149,7 +149,7 @@
               </select>
             </label>
   			    <label>
-              <span>Standard Rate</span>
+              <span>Custom Rate</span>
               <input type="text" placeholder="" name="custom_rate" id="custom_rate" />
             </label>
            	<label class="w-100 image-upload-main">

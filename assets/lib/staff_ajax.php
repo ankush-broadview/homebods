@@ -261,6 +261,21 @@ if(isset($_POST['u_member_email'])){
 		}
 	}
 }
+if(isset($_POST['u_member_user_id'])){
+	$objadmin->username = trim(strip_tags(mysqli_real_escape_string($conn, $_POST['u_member_user_id'])));
+	
+	if ($_POST['u_member_user_id'] == $_SESSION['ct_username']) {
+		echo 'true';
+		die();
+	}else{
+		$check_staff_username_existing = $objadmin->check_staff_username_existing();
+		if($check_staff_username_existing > 0){
+			echo 'false';
+		}else{
+			echo "true";
+		}
+	}
+}
 if(isset($_POST['useremail'])){
 	$objadmin->email = trim(strip_tags(mysqli_real_escape_string($conn, $_POST['useremail'])));
 	
@@ -270,6 +285,21 @@ if(isset($_POST['useremail'])){
 	}else{
 		$check_client_email_existing = $objadmin->check_client_email_existing();
 		if($check_client_email_existing > 0){
+			echo "false";
+		}else{
+			echo "true";
+		}
+	}
+}
+if(isset($_POST['usergrinderid'])){
+	$objadmin->username = trim(strip_tags(mysqli_real_escape_string($conn, $_POST['usergrinderid'])));
+	
+	if ($_POST['usergrinderid'] == $_SESSION['ct_username']) {
+		echo "true";
+		die();
+	}else{
+		$check_client_username_existing = $objadmin->check_client_username_existing();
+		if($check_client_username_existing > 0){
 			echo "false";
 		}else{
 			echo "true";
@@ -529,7 +559,7 @@ elseif(isset($_POST['staff_detail']))
 
 									<div class="form-group col-xs-12 col-md-12">
 										<div class="col-xs-4 col-md-2"><label for="ct-member-name"><?php echo "Pro user id";?></label></div>
-										<div class="col-xs-8 col-md-10"><input type="text" readonly class="form-control" id="ct-member-user-id" value="<?php echo ucfirst($staff_read['pro_user_id']);?>" name="u_pro_user_id" /></div>
+										<div class="col-xs-8 col-md-10"><input type="text" readonly class="form-control" id="ct-member-user-id" value="<?php echo ucfirst($staff_read['pro_user_id']);?>" name="u_member_user_id" /></div>
 									</div>
 
 									<div class="form-group col-xs-12 col-md-12">
@@ -686,8 +716,9 @@ elseif(isset($_POST['staff_detail']))
 											<td>
 												<?php  
 												$p_client_name = $objpayment->getclientname($arr_staff['order_id']);
-												$p_client_name_res = str_split($p_client_name,5);
-												echo str_replace(","," ",implode(",",$p_client_name_res));
+												/*$p_client_name_res = str_split($p_client_name,5);
+												echo str_replace(","," ",implode(",",$p_client_name_res));*/
+												echo $p_client_name;
 												?>
 											</td>
 											<td>

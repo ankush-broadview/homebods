@@ -304,6 +304,34 @@ class cleanto_adminprofile {
     	return $value= isset($value[0])? $value[0] : '' ;
 
 	}
+	
+	/*check staff username if exist or not*/
+	
+	public function check_staff_username_existing(){
+
+		$query="select count(`id`) as `c` from `".$this->tablename."` where `pro_user_id`='".$this->username."'";
+
+    	$result=mysqli_query($this->conn,$query);
+
+		$value = mysqli_fetch_array($result);
+
+    	return $value= isset($value[0])? $value[0] : '' ;
+
+	}
+	
+	/*check staff username if exist or not*/
+	
+	public function check_client_username_existing(){
+
+		$query="select count(`id`) as `c` from `".$this->tablename_user."` where `grinders_id`='".$this->username."'";
+
+    	$result=mysqli_query($this->conn,$query);
+
+		$value = mysqli_fetch_array($result);
+
+    	return $value= isset($value[0])? $value[0] : '' ;
+
+	}
 
 	/*new code*/
 	public function check_client_email_existing(){

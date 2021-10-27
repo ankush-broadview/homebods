@@ -218,12 +218,17 @@ else
 include(dirname(dirname(dirname(__FILE__))).'/assets/lib/date_translate_array.php');
 
 if(isset($_POST['updatepass'])){
+    $_SESSION['user_img'] = $_POST['user_image'];
+    $_SESSION['ct_name'] = $_POST['firstname'].' '.$_POST['lastname'];
+    $_SESSION['fullname'] =  $_POST['firstname'].' '.$_POST['lastname'];
+    $_SESSION['ct_useremail'] = $_POST['email'];
+    $_SESSION['ct_username'] = $_POST['grinders_id'];
     $objuserdetails->firstname = $_POST['firstname'];
     $objuserdetails->lastname = $_POST['lastname'];
     $objuserdetails->email = $_POST['email'];
     $objuserdetails->address = $_POST['address'];
     $objuserdetails->city = $_POST['city'];
-    $objuserdetails->zip = $_POST['zip'];
+    if(isset($_POST['zip'])){ $objuserdetails->zip = $_POST['zip']; }
     $objuserdetails->state = $_POST['state'];
     $objuserdetails->phone = $_POST['phone'];
     $objuserdetails->id = $_POST['id'];
@@ -231,7 +236,7 @@ if(isset($_POST['updatepass'])){
     $objuserdetails->user_bio = $_POST['user_bio'];
     $objuserdetails->user_image = $_POST['user_image'];
 
-    $op=md5($_POST['oldpassword']);
+    $op=$_POST['oldpassword'];
     $dp=$_POST['dboldpassword'];
     $np=$_POST['newpassword'];
     $rp=$_POST['retypepassword'];
@@ -244,22 +249,20 @@ if(isset($_POST['updatepass'])){
         }
         else {
             $operation = 3;
-            if ($np == $rp) {
+            if ($np == $rp && $np != "") { 
                 $objuserdetails->password=md5($rp);
                 $update=$objuserdetails->update_profile();
                 if($update){
                 }
 
-            }
-            else{
+            }else if($np == ""){
+				 $objuserdetails->password=$dp;
+				 $update=$objuserdetails->update_profile();
+				 if($update){
+				 }
+			}else{
                 echo "Please Retype Correct Password...";
             }
-        }
-    }
-    if ($operation == 1) {
-        $objuserdetails->password=$dp;
-        $update=$objuserdetails->update_profile();
-        if($update){
         }
     }
 }

@@ -51,7 +51,7 @@ $objuserdetails->conn = $conn;
 									<?php 
 									if( $userinfo[16] !==''){
 										?>
-										<a id="ct-remove-staff-imagepppp<?php  echo $user_id; ?>" data-pclsid="<?php echo $user_id; ?>" data-staff_id="<?php echo $user_id; ?>" class="delete_staff_image pull-left br-100 btn-danger bt-remove-staff-img btn-xs ser_new_del<?php  echo $user_id; ?>" rel="popover" data-placement='left' title="<?php echo $label_language_values['remove_image'];?>"> <i class="fa fa-trash" title="<?php echo $label_language_values['remove_service_image'];?>"></i></a>
+										<a id="ct-remove-staff-imagepppp<?php  echo $user_id; ?>" data-pclsid="<?php echo $user_id; ?>" data-staff_id="<?php echo $user_id; ?>" class="delete_staff_image pull-left br-100 btn-danger bt-remove-staff-img btn-xs ser_new_del<?php  echo $user_id; ?>" rel="popover" data-placement='left' title="<?php echo $label_language_values['remove_image'];?>"> <i class="fa fa-trash" title="<?php echo "Remove profile image";?>"></i></a>
 									<?php 
 									}
 									?>
@@ -103,7 +103,7 @@ $objuserdetails->conn = $conn;
 															<input type="hidden" id="pppp<?php  echo $user_id; ?>id" name="id" value="<?php echo $user_id; ?>" />
 															<input id="ppppctimage<?php  echo $user_id; ?>" type="hidden" name="ctimage" />
 															<input type="hidden" id="recordid" value="<?php echo $user_id; ?>">
-															<input type="hidden" id="pppp<?php  echo $user_id; ?>ctimagename" class="ppppimg" name="ctimagename" value="<?php echo $staff_read['image'];?>" />
+															<input type="hidden" id="pppp<?php  echo $user_id; ?>ctimagename" class="ppppimg" name="ctimagename" value="<?php echo $userinfo[16];?>" />
 															<input type="hidden" id="pppp<?php  echo $user_id; ?>newname" value="staff_" />
 														</div>
 													</div>
@@ -125,7 +125,7 @@ $objuserdetails->conn = $conn;
           </div>
           <div class="form-group col-md-6 col-sm-6 col-xs-12">
             <label for="grinderid">Grinder User ID</label>
-            <input class="form-control" name="usergrinderid" id="usergrinderid" value="<?php echo $userinfo[21]; ?>" type="text" readonly>
+            <input class="form-control usergrinderid" name="usergrinderid" id="usergrinderid" value="<?php echo $userinfo[21]; ?>" type="text">
           </div>
           <div class="form-group col-md-6 col-sm-6 col-xs-12">
             <label for="inputEmail"><?php echo $label_language_values['email']; ?></label>
@@ -165,7 +165,7 @@ $objuserdetails->conn = $conn;
             <div class="form-group col-md-12 col-sm-12 col-xs-12 mb-0">
               <label for="useroldpass"><?php echo $label_language_values['old_password']; ?></label>
               <input name="userdboldpass" value="<?php echo $userinfo[2]; ?>" class="form-control" id="userdboldpass" type="hidden">
-              <input name="useroldpass" class="form-control u_op" id="useroldpass" type="password">
+              <input name="useroldpass" class="form-control u_op" id="useroldpass" type="password" value="<?php echo $userinfo[2]; ?>">
               <label id="msg_oldps" class="old_pass_msg"></label>
             </div>
             <div class="form-group col-md-12 col-sm-12 col-xs-12">

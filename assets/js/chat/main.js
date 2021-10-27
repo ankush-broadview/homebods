@@ -27,7 +27,7 @@ $(".register-btn").on('click', function(e){
 	$(document).on('click', '.login-btn', function(){
 	    
 		jQuery(".ct-loading-main").show();
-		console.log("chat login");
+		
 		var btnHTML = $(this).html();
 		// $(this).html("<img id='loader' src='images/loader.svg' alt='Loading...!' />");
 		var form_data = $("#login-form").serialize();
@@ -53,8 +53,6 @@ $(".register-btn").on('click', function(e){
 				try {
 					var response = JSON.parse(resp);
 
-				console.log(response);
-
 				if (response.status == 200) {
 					var token = response.message.token;
 					firebase.auth().signInWithCustomToken(token).catch(function(error) {
@@ -62,7 +60,7 @@ $(".register-btn").on('click', function(e){
 					  var errorCode = error.code;
 					  var errorMessage = error.message;
 					  
-					  alert(errorMessage);
+					  //alert(errorMessage);
 
 					}).then(function(data){
 						jQuery(".ct-loading-main").hide();
@@ -73,7 +71,7 @@ $(".register-btn").on('click', function(e){
 						}
 					});
 				}else{
-					alert(response.message);
+					//alert(response.message);
 				}
 				} catch (error) {
 					jQuery(".ct-loading-main").hide();
@@ -85,8 +83,6 @@ $(".register-btn").on('click', function(e){
 				
 			}
 		})
-
-
 	});
 
 		
