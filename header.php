@@ -7,7 +7,8 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") {
 	define("STRIPE_MODE", 'TEST');
     $protocol = 'http';
 }
- $cur_dirname = basename(__DIR__);
+
+$cur_dirname = basename(__DIR__);
  
 if($cur_dirname=='public_html'){
 	$cur_dirname = '';
