@@ -9114,7 +9114,7 @@ jQuery(document).on("click", "#logout", function () {
 
       if(user=="user"){
 
-        window.location=site_url;
+        window.location=site_url+"admin/";
 
       } else{
 

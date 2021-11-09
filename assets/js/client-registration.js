@@ -538,15 +538,16 @@ jQuery(document).on("click",".staff_register_otp",function() {
       url: ajax_url + "admin_login_ajax.php",
       success: function (res) {   
         jQuery(".ct-loading-main").hide();
-        jQuery("#register-meesg").css('display','block');
-        if(res == 11 || res == 1){
+        jQuery("#register-meesg").css('display','block');        
+        let resp = JSON.parse(res);
+        if(resp.status == 11 || resp.status == 1){
           setTimeout(function() {
              window.location.href = site_url + "admin/index.php";
           }, 500); 
-        }else if(res == 12 || res == 2){
+        }else if(resp.status == 12 || resp.status == 2){
            jQuery("#register-meesg").html('<h5 style="color:red">Invalid OTP.</h5>');
         }else{
-          jQuery("#register-meesg").html('<h5 style="color:red">'+result.msg+'</h5>');
+          jQuery("#register-meesg").html('<h5 style="color:red">'+resp.msg+'</h5>');
         }
       }
   }); 

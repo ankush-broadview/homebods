@@ -1106,61 +1106,71 @@ if(isset($_POST['get_updated_staff_detail'])){
             }else{
                 $zoom_link = 'No';
             }
-            if (isset($_SESSION['rate_type'])) {
-                if ($_SESSION['rate_type'] == 'Single Customer') {
-                    $rate = $currency_symbol.''.$postal_code_staff_detail['single_customer_rate'];
-                }else{
-                    $rate = $currency_symbol.''.$postal_code_staff_detail['custom_rate'];
-                }
-            }else{
-                $rate = $currency_symbol.''.$postal_code_staff_detail['single_customer_rate'];
-            }
+            $standard = $currency_symbol.''.$postal_code_staff_detail['single_customer_rate'];
+            $rate = $currency_symbol.''.$postal_code_staff_detail['custom_rate'];
+            // if (isset($_SESSION['rate_type'])) {
+            //     if ($_SESSION['rate_type'] == 'Single Customer') {
+            //         $rate = $currency_symbol.''.$postal_code_staff_detail['single_customer_rate'];
+            //     }else{
+            //         $rate = $currency_symbol.''.$postal_code_staff_detail['custom_rate'];
+            //     }
+            // }else{
+            //     $rate = $currency_symbol.''.$postal_code_staff_detail['single_customer_rate'];
+            // }
             echo '<li class="ct-sm-6 ct-md-4 ct-lg-3 ct-xs-12 remove_provider_class" data-id="'.$value.'">
-                    <input type="radio" name="provider-radio" data-staff_id ="'.$value.'" id="ct-provider-'.$value.'" class="provider_disable" style="display: none;">
-                    <label class="ct-provider border-c img-circle provider_select" for="ct-provider-'.$value.'" data-id="'.$value.'">
-                        <div class="ct-provider-img">
-                            <img class="ct-image img-circle ct-mb-show" src="'.$staff_image.'">
-                            <img class="ct-image img-circle ct-mb-hidden" src="'.$staff_image_mb.'">
+            <input type="radio" name="provider-radio" data-staff_id ="'.$value.'" id="ct-provider-'.$value.'" class="provider_disable" style="display: none;">
+            <label class="ct-provider border-c img-circle provider_select" for="ct-provider-'.$value.'" data-id="'.$value.'">
+                <div class="ct-provider-img">
+                    <img class="ct-image img-circle ct-mb-show" src="'.$staff_image.'">
+                    <img class="ct-image img-circle ct-mb-hidden" src="'.$staff_image_mb.'">
+                </div>
+            </label>
+            <div class="provider-name fl ta-c">'.$postal_code_staff_detail[0].'</div>
+            <a class="ct-button nm rate_data" style="width: 128px;margin: auto;text-align: center;" data-toggle="modal" data-target="#myModal'.$value.'" >view</a>
+            <div class="modal fade" id="myModal'.$value.'" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content staff-details-wrap">
+                        <div class="modal-header">
+                            <h4 class="modal-title" style="font-weight: 700;">Fitness Pro Details</h4>
                         </div>
-                    </label>
-                    <div class="provider-name fl ta-c">'.$postal_code_staff_detail[0].'</div>
-                    <a class="ct-button nm rate_data  ct-lg-offset-1" style="width: 128px;margin: auto;text-align: center;" data-toggle="modal" data-target="#myModal'.$value.'" >view</a>
-                    <div class="modal fade" id="myModal'.$value.'" role="dialog">
-                        <div class="modal-dialog ">
-                            <div class="modal-content staff-details-wrap">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" style="font-weight: 700;">Fitness Pro Details</h4>
+                        <div class="modal-body main-staff">
+                            <div class="ct-provider-img">
+                                <img class="ct-image img-circle ct-mb-show" src="'.$staff_image.'">
+                                <img class="ct-image img-circle ct-mb-hidden" src="'.$staff_image_mb.'">
+                            </div>
+                            <div class="ct-staff-name">
+                                <div class="row mx-auto"> 
+                                    <lable> <span> Name: </span> '.$postal_code_staff_detail['fullname'].' </lable>
                                 </div>
-                                <div class="modal-body main-staff">
-                                    <div class="ct-provider-img">
-                                        <img class="ct-image img-circle ct-mb-show" src="'.$staff_image.'">
-                                        <img class="ct-image img-circle ct-mb-hidden" src="'.$staff_image_mb.'">
-                                    </div>
-                                    <div class="ct-staff-name">
-                                        <div class="row mx-auto"> 
-                                            <lable> Name :<span>'.$postal_code_staff_detail['fullname'].'</span> </lable>
-                                        </div>
-                                        <div class="row mx-auto"> 
-                                            <lable> Online Sessions :<span>'.$zoom_link.'</span> </lable>
-                                        </div>
-                                        <div class="row mx-auto"> 
-                                            <lable> City, State :<span>'.$postal_code_staff_detail['city'].', '.$postal_code_staff_detail['state'].'.</span> </lable>
-                                        </div>
-                                        <div class="row mx-auto"> 
-                                            <lable> Bio :<span>'.$postal_code_staff_detail['staff_bio'].'</span> </lable>
-                                        </div>
-                                        <div class="row mx-auto"> 
-                                            <lable> 1-on-1 Fitness Session:<span><span id="rate">'.$rate.'</span> per person / Custom Training&Class Sizes Available Upon Request </span>
-                                            </lable>
-                                        </div> 
-                                    </div>
+                                <div class="row mx-auto"> 
+                                    <lable> <span> Online Sessions : </span>'.$zoom_link.' </lable>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="ct-button nm " style="margin:0px;float: initial;" data-dismiss="modal">Close</button>
+                                <div class="row mx-auto"> 
+                                    <lable>  <span> City, State :</span>'.$postal_code_staff_detail['city'].', '.$postal_code_staff_detail['state'].'.</lable>
                                 </div>
+                                <div class="row mx-auto"> 
+                                    <lable> <span> Bio : </span>'.$postal_code_staff_detail['staff_bio'].'</lable>
+                                </div>
+                                <div class="row mx-auto"> 
+                                    <lable> <span> Rates: </span> 
+                                    </lable>
+                                </div> 
+                                <div class="row mx-auto ml-14"> 
+                                    <lable> <span> Standard: </span> <span id="rate" class="rate-main">'.$standard.'</span> 
+                                    </lable>
+                                </div> 
+                                <div class="row mx-auto ml-14"> 
+                                    <lable> <span> Custom: </span> <span id="rate" class="rate-main">'.$rate.'</span> 
+                                    </lable>
+                                </div> 
                             </div>
                         </div>
-                    </div>';
+                        <div class="modal-footer">
+                            <button type="button" class="ct-button nm " style="margin:0px;float: initial;" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>';
                     if($settings->get_option("ct_star_show_on_front") == "Y"){
                         $objrating_review->staff_id = $value;
                         $rating_details = $objrating_review->readall_by_staff_id();

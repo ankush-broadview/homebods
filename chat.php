@@ -1,7 +1,13 @@
 <?php 
-session_start(); 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+//include (dirname(__FILE__) . '/header.php');
 if (!isset($_SESSION['ct_useremail']) ) {
 	header("location:index.php");
+}
+if(isset($_SESSION['ct_login_user_id'])){
+	include ("admin/header.php");
 }
 ?>
 
@@ -12,7 +18,7 @@ if (!isset($_SESSION['ct_useremail']) ) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<!-- new css -->
-	<link rel="stylesheet" href="assets/css/chat.css">
+	<link rel="stylesheet" href="https://homebods.co/booking/assets/css/chat.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- Firebase App is always required and must be first -->
@@ -29,7 +35,7 @@ if (!isset($_SESSION['ct_useremail']) ) {
 </head>
 <body>
 
-<div class="container">
+<div class="main-chat-wrap">
  	<sidebar class="messenger">
     	<span class="logo">
     	    <?php
@@ -88,8 +94,10 @@ if (!isset($_SESSION['ct_useremail']) ) {
 	</div>
 </div>
 
-<script type="text/javascript" src="assets/js/chat/firestore-config.js"></script>
-<script type="text/javascript" src="assets/js/chat/chat.js"></script>
+
+	<script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/firestore-config.js"></script>
+	<script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/chat.js"></script>
+
 
 </body>
 </html>
