@@ -116,7 +116,7 @@ if ($stripe_account_status) {
 			}
 			?>
 			<li><a href="#my-profile" class="my-profile" data-toggle="pill"><i class="fa fa-user fa-2x"></i><br /> <?php  echo $label_language_values['profile'];?> </a></li>
-			<li><a  href="javascript:void(0)" data-autologin-id="1" class="my-chat login-btn" data-toggle="pill"><i class="fa fa-comments-o fa-2x"></i><br /> <?php  echo "Chat";?> </a></li>
+			<li><a href="#my-chat" data-autologin-id="1" class="my-chat login-btn" data-toggle="pill"><i class="fa fa-comments-o fa-2x"></i><br /> <?php  echo "Chat";?> </a></li>
 			<li><a id="logout" href="javascript:void(0)"><i class="fa fa-power-off fa-2x"></i><br /><span><?php echo $label_language_values['logout'];?></span></a></li>
 		</ul>
 	</div>
@@ -1345,7 +1345,9 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 					</div>
 				</div>
 			</div>
-
+			<div class="company-details tab-pane fade" id="my-chat">
+				<?php include_once(dirname(dirname(__FILE__)) ."/chat.php"); ?>
+			</div>
 
 
 			<?php
