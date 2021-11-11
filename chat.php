@@ -61,7 +61,7 @@ if(isset($_SESSION['ct_login_user_id'])){
 	</sidebar>
 	<div class="content"> 
 		<header style="height: 85px">
-         	<img id="default_image" src="https://homebods.co/booking/assets/images/services/company_74315.png" alt="" style="width: 80px;height: 80px;">
+         	<img id="default_image" src="https://homebods.co/booking/assets/images/services/default_service.png" alt="" style="width: 80px;height: 80px;">
          	<div class="info">
             	<span class="user"><i class="fas fa-user"></i>&nbsp;<span class="name"></span></span>
             	<!-- <span class="time">Online</span> -->
