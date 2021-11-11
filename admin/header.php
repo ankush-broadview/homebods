@@ -19,7 +19,10 @@ if($file){   if(!filesize($filename) > 0){
             }}else{  
                echo "Config file does not exist";
             }
-               ob_start();session_start();
+               ob_start();
+               if (session_status() === PHP_SESSION_NONE) {
+                  session_start();
+              }              
                include(dirname(dirname(__FILE__)).'/header.php');
 
                if(!isset($_SESSION['ct_adminid']) && !isset($_SESSION['ct_login_user_id'])){  
