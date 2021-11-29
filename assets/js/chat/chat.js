@@ -37,20 +37,22 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 	function getUsers(){
 		
 		$.ajax({
-			url :   "process.php",
+			url :   base_url+"/process.php",
 			// url :  ajax_url + "front_ajax.php",
 			method : 'POST',
 			data : {getUsers:1},
 			success : function(response){
 
-				//console.log(response);
 				var resp = JSON.parse(response);
+				
 				if(resp.status == 200){
 					var users = resp.message.users;
 					var usersHTML = '';
 					var messageCount = '';
 					var src = '';
+					console.log(users);
 					$.each(users, function(index, value){
+						console.log(user_uuid +"!="+ value.uuid +"data"+value);
 						if (user_uuid != value.uuid && value.uuid != '') {
 							
 							// usersHTML += '<div class="user" uuid="'+value.uuid+'">'+
@@ -66,9 +68,9 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 								jQuery('#default_image').show();
 							}*/
 							if(value.image != '' && value.image != undefined){
-								src= "https://homebods.co/booking/assets/images/services/"+value.image;
+								src= base_url+"/assets/images/services/"+value.image;
 							}else{
-								src="https://homebods.co/booking/assets/images/default.png";
+								src= base_url+"/assets/images/default.png";
 							}
 							
 
@@ -133,7 +135,7 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 		$("header img").attr('src',img);
 
 		$.ajax({
-			url : 'process.php',
+			url : base_url+'/process.php',
 			// url :  ajax_url + "front_ajax.php",
 			method : 'POST',
 			data : {connectUser:1, user_1:user_1, user_2: user_2},

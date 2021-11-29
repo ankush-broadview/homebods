@@ -50,8 +50,8 @@ $(".register-btn").on('click', function(e){
 			data : form_data,
 			success : function(resp){
 
-				try {
-					var response = JSON.parse(resp);
+				
+				var response = JSON.parse(resp);
 
 				if (response.status == 200) {
 					var token = response.message.token;
@@ -74,14 +74,6 @@ $(".register-btn").on('click', function(e){
 					//alert(response.message);
 				}
                 jQuery(".ct-loading-main").hide();
-				} catch (error) {
-					jQuery(".ct-loading-main").hide();
-				}
-				
-
-				
-
-				
 			}
 		})
 	});
