@@ -36,13 +36,13 @@ if(isset($_SESSION['ct_login_user_id'])){
 <body>
 
 <div class="main-chat-wrap">
- 	<sidebar class="messenger">
+ 	<sidebar class="messenger" style="width: 20% !important;float: left;">
     	<span class="logo">
     	    <?php
     	    if(isset($_SESSION['ct_image']) && ($_SESSION['ct_image'] != '' || $_SESSION['ct_image'] != null)){
-    	        $user_image = 'https://homebods.co/booking/assets/images/services/'.$_SESSION['ct_image'];
+    	        $user_image = SITE_URL.'/assets/images/services/'.$_SESSION['ct_image'];
     	    }else{
-    	        $user_image = 'https://homebods.co/booking/assets/images/user.png';
+    	        $user_image = SITE_URL.'/assets/images/user.png';
     	    }
     	    ?>
     	    <a href= "#"><img style="max-height: 80px;max-width: 80px;border-radius: 50%;" src="<?php echo $user_image;?>" /></a>
@@ -59,7 +59,7 @@ if(isset($_SESSION['ct_login_user_id'])){
        		</div> -->
 		</div>
 	</sidebar>
-	<div class="content"> 
+	<div class="content" style="width: 80% !important;float: right;"> 
 		<header style="height: 85px">
          	<img id="default_image" src="https://homebods.co/booking/assets/images/services/default_service.png" alt="" style="width: 80px;height: 80px;">
          	<div class="info">
@@ -96,7 +96,7 @@ if(isset($_SESSION['ct_login_user_id'])){
 
 
 	<script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/firestore-config.js"></script>
-	<script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/chat.js"></script>
+	<script type="text/javascript" src="<?php echo  SITE_URL.'/assets/js/chat/chat.js'; ?>"></script>
 
 
 </body>
