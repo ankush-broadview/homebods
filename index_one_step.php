@@ -4601,7 +4601,7 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
  <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/firestore-config.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/main.js"></script>
-
+<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/stripe.js"></script>
 </body>
 
 </html>
