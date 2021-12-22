@@ -4596,6 +4596,7 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+
 <!-- Add additional services that you want to use -->
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
