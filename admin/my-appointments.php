@@ -168,7 +168,7 @@
                   <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>									
-                        <h4 class="modal-title"><?php echo $label_language_values['my_appointments']; ?></h4>
+                        <h4 class="modal-title"><?php echo $label_language_values['my_appointments']; echo date('d-m-Y H:i:s') ?></h4>
                      </div>
                      <div class="modal-body">
                         <div class="table-responsive">
@@ -303,7 +303,7 @@
                                               {
                                                   $booking_start_datetime = strtotime(date('Y-m-d H:i:s', strtotime($dd['booking_date_time'])));
                                                   $reschedule_buffer_time = $setting->get_option('ct_reshedule_buffer_time');
-                                                  $cancellation_buffer_time = 1;
+                                                  $cancellation_buffer_time = $setting->get_option('ct_cancellation_buffer_time');
                                                   $t_zone_value = $setting->get_option('ct_timezone');
                                                   $server_timezone = date_default_timezone_get();
                                                   if (isset($t_zone_value) && $t_zone_value != '')
@@ -360,11 +360,39 @@
                                           <div class="arrow"></div>
                                           <table class="form-horizontal" cellspacing="0">
                                              <tbody>
+                                                <?php
+
+$paymentStatus = $dd['payment_status'];
+
+$datetime1 = new DateTime($bdt);
+$datetime2 = new DateTime(date('Y-m-d H:i:s'));
+$interval = $datetime1->diff($datetime2);
+//$diff = $interval->format('%h').".".$interval->format('%i');
+$hours = $interval->h + ($interval->days * 24);
+$hoursMinDiff = (float) $hours;
+$alertmsg = "";
+if ($hoursMinDiff>48) {
+ $alertmsg = "You will get the refunded amount that is left after stripe fees.";
+}elseif($hoursMinDiff<=48 && $hoursMinDiff>24){
+   $alertmsg = "You are cancelling b/w 24 to 48 hours. We will deduct $25 and refund the rest.";
+}elseif($hoursMinDiff<=24){
+   $alertmsg = "You are cancelling with less than 24 hours left. We will refund only 50%.";
+}
+
+if ($paymentStatus=="0") {
+   $alertmsg = "";
+}
+                                                
+                                                
+                                                
+                                                ?>
                                                 <tr>
                                                    <td>																			<textarea class="form-control" id="reason_cancel<?php echo $dd['order_id'] ?>" name="" placeholder="<?php echo $label_language_values['booking_cancel_reason']; ?>" required="required" ></textarea>																		</td>
                                                 </tr>
                                                 <tr>
-                                                   <td>																			<a data-id="<?php echo $dd['order_id'] ?>" data-gc_event="<?php echo $dd['gc_event_id']; ?>" data-gc_staff_event="<?php echo $dd['gc_staff_event_id']; ?>" data-pid="<?php echo $dd['staff_ids']; ?>" value="Delete" class="btn btn-danger btn-sm mybtncancel_booking_user_details"><?php echo $label_language_values['yes']; ?></a>																			<a id="ct-close-user-cancel-appointment" class="btn btn-default btn-sm" href="javascript:void(0)"><?php echo $label_language_values['cancel']; ?></a>																		</td>
+                                                   <td>
+                                                      <a data-alert-msg="<?=$alertmsg?>" data-id="<?php echo $dd['order_id'] ?>" data-gc_event="<?php echo $dd['gc_event_id']; ?>" data-gc_staff_event="<?php echo $dd['gc_staff_event_id']; ?>" data-pid="<?php echo $dd['staff_ids']; ?>" value="Delete" class="btn btn-danger btn-sm mybtncancel_booking_user_details"><?php echo $label_language_values['yes']; ?></a>														<a id="ct-close-user-cancel-appointment" class="btn btn-default btn-sm" href="javascript:void(0)"><?php echo $label_language_values['cancel']; ?></a>
+                                                   </td>
                                                 </tr>
                                              </tbody>
                                           </table>

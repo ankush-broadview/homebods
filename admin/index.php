@@ -272,7 +272,13 @@ if ($loginimage != '') {
          <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery-2.1.4.min.js"></script>   
          <script src="<?php echo BASE_URL; ?>/assets/js/jquery.validate.min.js"></script>    
          <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>    
-         <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/login.js"></script>    
+		<!-- Firebase App is always required and must be first -->
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+        <!-- Add additional services that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+         <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/firestore-config.js"></script>
+		 <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/login.js"></script>    
          <script type="text/javascript">        
           var ajax_url = '<?php echo AJAX_URL;?>';        
           var base_url = '<?php echo BASE_URL;?>';   

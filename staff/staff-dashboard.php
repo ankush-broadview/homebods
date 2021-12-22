@@ -1,4 +1,4 @@
-<?php     
+<?php
 include(dirname(__FILE__).'/header-staff.php');
 include(dirname(dirname(__FILE__)) ."/objects/class_payments.php");
 include(dirname(dirname(__FILE__)) ."/admin/user_session_check.php");
@@ -11,6 +11,7 @@ include(dirname(dirname(__FILE__))."/objects/class_rating_review.php");
 include(dirname(dirname(__FILE__)) . "/objects/class_dayweek_avail.php");
 include(dirname(dirname(__FILE__)) . "/objects/class_offbreaks.php");
 include(dirname(dirname(__FILE__))."/objects/class_offtimes.php");
+include(dirname(dirname(__FILE__))."/objects/class_stripe_utils.php");
 if ( is_file(dirname(dirname(__FILE__)).'/extension/GoogleCalendar/google-api-php-client/src/Google_Client.php')) {
 	require_once dirname(dirname(__FILE__)).'/extension/GoogleCalendar/google-api-php-client/src/Google_Client.php';
 }
@@ -63,6 +64,46 @@ if($time_format == "24"){
 $staff_id = $_SESSION['ct_staffid'];
 ?>
 
+
+
+<?php
+
+$stripe_account_status = isset($_SESSION['stripe_account_status']) ? $_SESSION['stripe_account_status'] :  false;
+$stripeAcntId = ""; 
+$_SESSION['stripe_onboard_success'] = false;
+if(isset($_SESSION['stripe_account_id']) && !empty($_SESSION['stripe_account_id'])) {
+ 	$stripeAcntId = $_SESSION['stripe_account_id'];
+}
+if(!$stripe_account_status && !empty($stripeAcntId) ){
+	$stripeObj = new cleanto_stripe_utils();
+	$accnt = $stripeObj->getStripeAccountDetails($stripeAcntId);
+	if($accnt->charges_enabled && $accnt->payouts_enabled) {
+		$objadmininfo = new cleanto_adminprofile();
+		$objadmininfo->conn = $conn;
+		$objadmininfo->updateStripeAccountStatus($stripeAcntId,1);
+		$stripe_account_status  = $_SESSION['stripe_account_status'] = true;
+	}
+}
+if ($stripe_account_status) {
+	unset($_SESSION['stripe_account_id']);
+	unset($_SESSION['stripe_account_status']);
+	$_SESSION['stripe_onboard_success'] = true;	
+}
+?>
+
+
+
+<style>
+
+.stipe_onboard_btn{
+	padding: 15px;
+    width: 20%;
+    margin: 0 40%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+</style>
+
 <div class="cta-panel-default" id="ct-staff-dashboard">
 	<div class="staff-dashboard ct-left-menu col-md-12 col-sm-12 col-xs-12 col-lg-12 navbar-collapse collapse" id="navbarCollapseMain">
 		<ul class="nav nav-tab nav-stacked" id="cta-staff-nav">
@@ -75,13 +116,36 @@ $staff_id = $_SESSION['ct_staffid'];
 			}
 			?>
 			<li><a href="#my-profile" class="my-profile" data-toggle="pill"><i class="fa fa-user fa-2x"></i><br /> <?php  echo $label_language_values['profile'];?> </a></li>
-			<li><a  href="javascript:void(0)" data-autologin-id="1" class="my-chat login-btn" data-toggle="pill"><i class="fa fa-comments-o fa-2x"></i><br /> <?php  echo "Chat";?> </a></li>
+			<li><a href="#my-chat" data-autologin-id="1" class="my-chat " data-toggle="pill"><i class="fa fa-comments-o fa-2x"></i><br /> <?php  echo "Chat";?> </a></li>
 			<li><a id="logout" href="javascript:void(0)"><i class="fa fa-power-off fa-2x"></i><br /><span><?php echo $label_language_values['logout'];?></span></a></li>
 		</ul>
 	</div>
+
+	<?php
+	if (isset($_SESSION['stripe_onboard_success']) && $_SESSION['stripe_onboard_success']===true) {
+		unset($_SESSION['stripe_onboard_success']);
+		?>
+	
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			Success! You are successfully onboarded.
+		</div>
+		</div>
+	<?php } ?>
+	
   <div class="panel-body">
+
+
 		<div class="tab-content staff-right-content col-md-12 col-sm-12 col-lg-12 col-xs-12">
-			<div class="company-details tab-pane fade in active" id="my-bookings">
+
+		<?php
+  $objadmin->id = $staff_id;
+  $staff_read = $objadmin->readone();
+if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_status"]==1 ) {
+?>
+	
+	
+	<div class="company-details tab-pane fade in active" id="my-bookings">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h1 class="panel-title text-left"><?php echo $label_language_values['bookings'];?></h1>
@@ -92,6 +156,7 @@ $staff_id = $_SESSION['ct_staffid'];
 							<table id="staff-bookings-table" class="display responsive nowrap table table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
 									<tr>
+										<th>Order Id</th>
 										<th><?php echo $label_language_values['service'];?></th>
 										<th><?php echo $label_language_values['app_date'];?></th>
 										<th><?php echo $label_language_values['customer'];?></th>
@@ -101,17 +166,19 @@ $staff_id = $_SESSION['ct_staffid'];
 										<th><?php echo $label_language_values['net_total'];?></th>
 										<th><?php echo $label_language_values['staff_booking_status']; ?></th>
 										<th><?php echo $label_language_values['payment_status'];?></th>									
-										<th><?php echo "Rating & Review";?></th>	
-										<th>Action</th>
+										<th><?php echo "Rating & Review";?></th>											
 									</tr>
 								</thead>
 								<tbody>
 									<?php   
-									/*echo $today_date = date('Y-m-d H:i:s');*/
+									$today_date = date('Y-m-d H:i:s');
 								$staff_service_details=$staff_commision->staff_service_details($staff_id);
 								if(sizeof((array)$staff_service_details) > 0){
 									foreach($staff_service_details as $arr_staff){
-										$get_booking_nettotal = $staff_commision->get_booking_nettotal($staff_id, $arr_staff['order_id']);
+										$objpayment->order_id = $arr_staff['order_id'];
+										$payment_details = $objpayment->readone_payment_details();
+									//	$get_booking_nettotal = $staff_commision->get_booking_nettotal($staff_id, $arr_staff['order_id']);
+										$get_booking_nettotal = $payment_details["net_amount"];
 										$service_name = $staff_commision->get_service_name($arr_staff['service_id']);
 										$bookings->staff_id=$staff_id;
 										$bookings->order_id=$arr_staff['order_id'];
@@ -136,6 +203,7 @@ $staff_id = $_SESSION['ct_staffid'];
 										}
 									?>
 									<tr>
+											<td><?php echo  $arr_staff['order_id']; ?></td>
 											<td><?php  echo $service_name; ?></td>
 											<td><?php  											
 											$book_datetime_array = explode(" ",$arr_staff['booking_date_time']);
@@ -149,7 +217,8 @@ $staff_id = $_SESSION['ct_staffid'];
 											<td><?php  echo $order_client_detail[4]; ?></td>
 											<td><?php  echo $general->ct_price_format($get_booking_nettotal,$symbol_position,$decimal); ?></td>
 											<td>
-											<?php  $rec_status_details =$bookings->readone_bookings_details_by_order_id_s_id();
+											<?php  
+											$rec_status_details =$bookings->readone_bookings_details_by_order_id_s_id();
 											
 											$appdate = $arr_staff['booking_date_time'];
 									
@@ -162,14 +231,23 @@ $staff_id = $_SESSION['ct_staffid'];
 											if($status_insert_id != ""){
 											if($rec_status_details=='A'){
 											?>
-											<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['accepted'];?>><?php echo $label_language_values['accepted'];?></a>
-										
-										<?php if (date('Y-m-d H:i:s',strtotime($appdate)) < date('Y-m-d H:i:s',strtotime($current_date))) { ?>
-											
-												<a name="" id="complete_appointment"  data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='C' class="btn btn-info ct-btn-width"  <?php echo $label_language_values['complete'];?>><?php echo $label_language_values['complete'];?></a>
-	
-											
-											<?php } }elseif($rec_status_details=='C'){ ?>
+												<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['accepted'];?>><?php echo $label_language_values['accepted'];?></a>
+
+												<?php
+												//if ($arr_staff['booking_status'] != 'CO') {
+													?>
+														<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
+													<?php
+												//}
+
+												if (date('Y-m-d H:i:s',strtotime($appdate)) < date('Y-m-d H:i:s',strtotime($current_date))) { 
+													//if ($arr_staff['booking_status'] != 'CO') {
+														?>
+															<a name="" id="complete_appointment"  data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='C' class="btn btn-info ct-btn-width"  <?php echo $label_language_values['complete'];?>><?php echo $label_language_values['complete'];?></a>
+														<?php
+													//}
+												} 
+											}elseif($rec_status_details=='C'){ ?>
 												<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['completed'];?>><?php echo $label_language_values['completed'];?></a>
 											<?php }else{
 											$lastmodifyy = $arr_staff['lastmodify'];
@@ -181,16 +259,20 @@ $staff_id = $_SESSION['ct_staffid'];
 											//if($timedeff > 0 && $timedeff <= 12){
 												?>
 											<a id="accept_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='A'  value="" name="" class="btn btn-info ct-btn-width" type="submit" title="<?php echo $label_language_values['accept'];?>"><?php echo $label_language_values['accept'];?></a>
-											<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
-											<?php //}else{}  
+											<?php
+											//if ($arr_staff['booking_status'] != 'CO') {
+												?>
+													<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
+												<?php
+											//}
+											
 										}
 											}
 											?>
 											</td>
 											<td>
 												<?php
-												$objpayment->order_id = $arr_staff['order_id'];
-												$payment_details = $objpayment->readone_payment_details();
+											
 												if($payment_details['payment_status']=='Completed'){
 												?>
 												<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['completed'];?>><?php echo $label_language_values['completed'];?></a>
@@ -228,10 +310,7 @@ $staff_id = $_SESSION['ct_staffid'];
 											<input id="staff_ratings" name="staff_ratings" class="rating staff_ratings_class staff_ratings<?php   echo $arr_staff['order_id']; ?>" data-order_id="<?php    echo $arr_staff['order_id']; ?>" data-min="0" data-max="5" data-step="0.1" value="<?php    echo $rating_order_detail['rating']; ?>" />
 											<?php    echo $rating_order_detail['review'];
 											} ?>
-											</td>
-											<td>
-												
-											</td>
+											</td>										
 										</tr>
 									<?php  
 									}
@@ -970,8 +1049,7 @@ $staff_id = $_SESSION['ct_staffid'];
 							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 								<div class="ct-clean-service-image-uploader staff_profile_image">
 									<?php     
-										$objadmin->id = $staff_id;
-										$staff_read = $objadmin->readone();
+									
 									if($staff_read['image']==''){
 										$imagepath=SITE_URL."assets/images/user.png";
 									}else{
@@ -1279,7 +1357,58 @@ $staff_id = $_SESSION['ct_staffid'];
 					</div>
 				</div>
 			</div>
+			<div class="tab-pane fade" id="my-chat">
+				<?php 
+					include(dirname(dirname(__FILE__)) . '/chat.php');
+				?>
+			</div>
+
+
+			<?php
+		} else{
+			$stripeObj = new cleanto_stripe_utils();
+			$objadmininfo = new cleanto_adminprofile();
+			$con = new cleanto_db();
+			$conn = $con->connect();
+			$stripeId = $staff_read["stripe_account_id"];
+			$objadmininfo->email = $staff_read["email"];
+			$objadmininfo->conn = $conn;
+			if (empty($stripeId)) {
+				$stripeId = $stripeObj->createStripeAccount($staff_read["email"]);	
+			}
+			$_SESSION['stripe_account_id'] = $stripeId;
+			$objadmininfo->updateStripeAccountId($stripeId);
+			$onboardingUrl = $stripeObj->getStripeOnboardingLink($stripeId);						
+		?>
+		<div class="company-details tab-pane fade in active" id="stripe-onboard">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title text-left"><?php echo "Stripe Onboard";?></h1>
+				</div>
+				<div class="panel-body" style="height: 400px;">
+
+				<div class="text-center">
+				<div class="row">
+					<div class="col-md-12" style="margin-top: 8%;">
+					<a href="<?=$onboardingUrl?>" class="btn btn-warning btn-block stipe_onboard_btn">
+					Onboard on Stripe
+		</a>
+					<p class="text-danger" style="font-size: 18px;">Please onboard yourself, you will not get your earning until you onboard yourself on Stripe. </p>
+					</div>
+				</div>
+
+				</div>
+            
+          		</div>                   
+			</div>
 		</div>
+
+	<?php	}
+		?>
+
+
+		</div>
+		
 	</div>
 </div>
 <?php 
@@ -1313,7 +1442,7 @@ include(dirname(dirname(__FILE__)).'/admin/footer.php');
   <!-- Add additional services that you want to use -->
   <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
-   <script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/firestore-config.js?v=<?php echo time(); ?>"></script>
-  <script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/main.js?v=<?php echo time(); ?>"></script>
+   <script type="text/javascript" src="https://leuys-cleanto.bi-team.in/assets/js/chat/firestore-config.js?v=<?php echo time(); ?>"></script>
+  <script type="text/javascript" src="https://leuys-cleanto.bi-team.in/assets/js/chat/main.js?v=<?php echo time(); ?>"></script>
 
  

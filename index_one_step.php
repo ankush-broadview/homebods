@@ -92,7 +92,6 @@ include(dirname(__FILE__).  "/objects/class_front_first_step.php");
 
 include(dirname(__FILE__).  "/objects/class_userdetails.php"); 
 
-include(dirname(__FILE__).  "/assets/braintree/includes/braintree_init.php");
 
 $cvars = new cleanto_myvariable();
 
@@ -963,11 +962,15 @@ strtoupper($label_language_values['pm']));
 
      </script>
 
+
+
+
     <?php  
 
-  }
+}
 
-  ?>
+?>
+<script src="https://js.stripe.com/v3/"></script>
 
   <link rel="stylesheet" href="<?php  echo BASE_URL; ?>/assets/css/ct-main.css" type="text/css" media="all" />
 
@@ -1093,19 +1096,6 @@ function date_format_js($date_Format) {
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/bootstrap/bootstrap.min.css" type="text/css" media="all">
 
   
-
-  <?php   if($settings->get_option('ct_stripe_payment_form_status') == 'on'){  ?>
-
-  <script src="https://js.stripe.com/v2/" type="text/javascript"></script>  
-
-  <?php   } ?>
-
-  <?php   if($settings->get_option('ct_2checkout_status') == 'Y'){  ?>
-
-  <script src="https://www.2checkout.com/checkout/api/2co.min.js" type="text/javascript"></script>  
-
-  <?php   } ?>
-
     <script src="<?php  echo BASE_URL; ?>/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 
   <script src="<?php  echo BASE_URL; ?>/assets/js/jquery.mask.js" type="text/javascript"></script>
@@ -1119,8 +1109,8 @@ function date_format_js($date_Format) {
   include(dirname(__FILE__) . '/extension/ct-common-front-extension-js.php');
 
   ?>
-
-    <script src="<?php  echo BASE_URL; ?>/assets/js/ct-common-jquery.js?<?php    echo time(); ?>" type="text/javascript"></script>
+  <script src="<?php  echo BASE_URL; ?>/assets/js/ct-common-jquery.js?<?php    echo time(); ?>" type="text/javascript"></script>
+  
 
   
 
@@ -1164,6 +1154,12 @@ function date_format_js($date_Format) {
 
             color: red;
 
+        }
+        #stripeElement{          
+          padding: 15px !important;
+          width: 50% !important;
+          border: 2px solid #ddd !important;
+          border-radius: 5px !important;
         }
 
     #ct, a, h1, h2, h3, h4, h5, h6, span, p, div, label, li, ul{
@@ -2685,7 +2681,7 @@ function date_format_js($date_Format) {
             Please select trainers
             <?php  //echo $label_language_values['please_select_provider'];;?></h3>
             <label class="date_time_error1" id="date_time_error_id1" for="complete_bookings"></label>
-			
+			      <input type="hidden" name="selected_provider_id" id="selected_provider_id">
             <ul class="provders-list show_select_staff_title" style="display:none;"></ul>
             
           </div>
@@ -3678,13 +3674,11 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
               <div class="ct-list-header mt-10">
 
-                                <h3 class="header3"><?php  echo $label_language_values['preferred_payment_method']; ?>
+                                <h3 class="header3"><?php  
+                             //   echo $label_language_values['preferred_payment_method'];
+                               echo "Pay by your card details(Credit/Debit)";
+                                ?>
 
-                  <?php   if($settings->get_option("ct_front_tool_tips_status")=='on' && $settings->get_option("ct_front_tool_payment_method")!=''){?>
-
-                <a class="ct-tooltip" href="#" data-toggle="tooltip" title="<?php  echo $settings->get_option("ct_front_tool_payment_method");?>"><i class="fa fa-info-circle fa-lg"></i></a> 
-
-                <?php   } ?>
 
                 </h3>
 
@@ -3696,532 +3690,10 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
                         <div class="ct-main-payments fl padding10">
 
-                            <div class="payments-container f-l" id="ct-payments">
-
-                                <label class="ct-error-msg"><?php  echo $label_language_values['please_select_one_payment_method']; ?></label>
-
-                                <label class="ct-error-msg ct-paypal-error" id="paypal_error"></label>
-
-
-
-                                <div class="ct-custom-radio ct-payment-methods f-l">
-
-                                    <ul class="ct-radio-list ct-all-pay-methods">
-
-                    <?php    if ($settings->get_option('ct_pay_locally_status') == 'on') { ?>
-
-                    <li class="ct-md-3 ct-sm-6 ct-xs-12" id="pay-at-venue">
-
-                      <input type="radio" name="payment-methods" value="pay at venue" class="input-radio payment_gateway pay-cash" id="pay-cash"  checked="checked"/>
-
-                      <label for="pay-cash" class="locally-radio"><span></span><?php  echo $label_language_values['pay_locally']; ?></label>
-
-                                        </li>
-                    
-
-                    
-
-                    <?php   } ?>  
-
-                    
-
-                    <!-- bank transfer -->
-
-                    <?php    if ($settings->get_option('ct_bank_transfer_status') == 'Y' && ($settings->get_option('ct_bank_name') != '' || $settings->get_option('ct_account_name') != ''  || $settings->get_option('ct_account_number') != '' || $settings->get_option('ct_branch_code') != '' || $settings->get_option('ct_ifsc_code') != '' || $settings->get_option('ct_bank_description') != '')) { ?>
-
-                    <li class="ct-md-3 ct-sm-6 ct-xs-12" id="ct-bank-transer">
-
-                      <input type="radio" name="payment-methods" value="bank transfer" class="input-radio bank_transfer payment_gateway" id="bank-transer"  />
-
-                      <label for="bank-transer" class="locally-radio"><span></span><?php  echo $label_language_values['bank_transfer']; ?></label>
-
-                                        </li>
-
-                    <?php   }?>
-
-                
-
-                    <?php if ($settings->get_option('ct_paypal_express_checkout_status') == 'on') {
-
-                    ?>
-
-                      <li class="ct-md-3 ct-sm-6 ct-xs-12" id="pay-at-venue">
-
-                        <input type="radio" name="payment-methods" value="paypal" class="input-radio payment_gateway" id="pay-paypal" checked="checked" />
-
-                        <label for="pay-paypal"  class="locally-radio"><span></span><?php  echo $label_language_values['paypal']; ?><img src="<?php  echo SITE_URL; ?>/assets/images/cards/paypal.png" class="ct-paypal-image" alt="PayPal"></label>
-
-                      </li>
-
-                    <?php  
-
-                    } ?>
-
-
-
-                     
-<?php
-
- $wallet_status = $settings->get_option('ct_wallet_section');
-
- if($wallet_status=='on'){
-   
-  
-                if(isset($_SESSION['ct_login_user_id']) && $_SESSION['ct_login_user_id'] !=""){
-                        $id = $_SESSION['ct_login_user_id'];
-                        $objuserdetails->id = $id;
-                        $wallet_details = $objuserdetails->get_user_wallet_details();
+                        <div id="stripeElement">
                         
-                        if(isset($wallet_details)){
-                          $wallet_amount =  $wallet_details[0];
-                        }else{
-                          $wallet_amount =  '';
-                        }
-                      ?>                     
-
-                      <li class="ct-md-3 ct-sm-6 ct-xs-12 wallet_amount_display" id="pay-at-venue" style="<?php if($wallet_amount==''){ echo "display:none";}else{ echo "display:block"; } ?>">
-
-                        <input type="radio" name="payment-methods" value="Wallet-payment" class="input-radio payment_gateway user_wallet_amount_value wallet_amount Wallet_payment" data-wallet="<?php echo $wallet_amount; ?>" id="wallet" checked="checked" />
-
-                        <label for="wallet"  class="locally-radio"><?php echo "<span class='user_wallet_amount'><p style='margin-left: 25px;line-height: 1.2;'>".$label_language_values['wallet']."(".$settings->get_option('ct_currency_symbol').$wallet_amount.")</p></span>"; ?></label>
-
-                      </li>
-
-                    <?php  
-                    }else{ ?>
-                      <li class="ct-md-3 ct-sm-6 ct-xs-12 wallet_amount_display" id="pay-at-venue" style="display:none">
-
-                        
-
-                      </li>
-                  <?php   }
-                     
-                    } ?>
-
-                    
-
-                    <?php  
-
-                    if ($settings->get_option('ct_payumoney_status') == 'Y') {
-
-                    ?>            
-
-                      <li class="ct-md-3 ct-sm-6 ct-xs-12" id="pay-at-venue">
-
-                        <input type="radio" name="payment-methods" value="payumoney" class="input-radio payment_gateway" id="payumoney" checked="checked" />
-
-                        <label for="payumoney"  class="locally-radio"><span></span> <?php   echo $label_language_values['payumoney']; ?></label>
-
-                      </li>
-
-                    <?php  
-
-                    } ?>
-
-
-                    <?php   if ($settings->get_option('ct_braintree_status') == 'Y') {
-
-                    ?>
-
-                      <li class="ct-md-3 ct-sm-6 ct-xs-12" id="card-paymente">
-
-                        <input type="radio" name="payment-methods" value="braintree" class="input-radio payment_gateway" id="braintree" checked="checked" />
-
-                        <label for="braintree"  class="locally-radio"><span></span> <?php   echo "Braintree"; ?></label>
-
-                      </li>
-
-                    <?php
-
-                    } ?>
-
-                     <?php   if($settings->get_option('ct_authorizenet_status') == 'on' && $settings->get_option('ct_stripe_payment_form_status') != 'on' && $settings->get_option('ct_2checkout_status') != 'Y'){  ?>
-
-                    <!-- new added -->
-
-                    <li class="ct-md-3 ct-sm-6 ct-xs-12" id="card-payment">
-
-                      <input type="radio" name="payment-methods" value="card-payment" class="input-radio payment_gateway cccard" id="pay-card" checked="checked"/>
-
-                      <label for="pay-card" class="card-radio"><span></span><?php  echo $label_language_values['card_payment']; ?></label>
-
-                    </li>
-
-                    <?php    }  ?>
-
-                    <?php   if ($settings->get_option('ct_authorizenet_status') != 'on' && $settings->get_option('ct_stripe_payment_form_status') == 'on' && $settings->get_option('ct_2checkout_status') != 'Y'){  ?>
-
-                    <!-- new added -->
-
-                    <li class="ct-md-3 ct-sm-6 ct-xs-12" id="card-payment">
-
-                      <input type="radio" name="payment-methods" value="stripe-payment" class="input-radio payment_gateway cccard" id="pay-card" checked="checked"/>
-
-                      <label for="pay-card" class="card-radio"><span></span><?php  echo $label_language_values['card_payment']; ?></label>
-
-                    </li>
-
-                    <?php    }  ?>
-
-                    <?php   if ($settings->get_option('ct_authorizenet_status') != 'on' && $settings->get_option('ct_stripe_payment_form_status') != 'on' && $settings->get_option('ct_2checkout_status') == 'Y'){  ?>
-
-                    <!-- new added -->
-
-                    <li class="ct-md-3 ct-sm-6 ct-xs-12" id="card-payment">
-
-                      <input type="radio" name="payment-methods" value="2checkout-payment" class="input-radio payment_gateway cccard" id="pay-card" checked="checked"/>
-
-                      <label for="pay-card" class="card-radio"><span></span><?php  echo $label_language_values['card_payment']; ?></label>
-
-                    </li>
-
-                    <?php    } ?>
-
-                    <!-- Payment Start -->
-
-                    <?php  
-
-                    if(sizeof((array)$purchase_check)>0){
-
-                      foreach($purchase_check as $key=>$val){
-
-                        if($val == 'Y'){
-
-                          echo $payment_hook->payment_payment_selection_hook($key);
-
-                        }
-
-                      }
-
-                    }
-
-                    ?>
-
-                    <!-- Payment End -->
-
-                                    </ul>
-
-                                </div>
-
-                            </div>
-
-              
-
-              
-
-              
-
-              <div id="ct-pay-methods" class="payment-method-container f-l">
-
-                                <?php
-                                if ($settings->get_option('ct_braintree_status') == 'Y') {
-                                ?>
-                                <div class="wrapper" id="braintree-payment-form" style="display: none;">
-                                    <div class="checkout container">
-                                            <section>
-                                                <div class="bt-drop-in-wrapper" style="width: 67%;">
-                                                    <div id="bt-dropin"></div>
-                                                </div>
-                                            </section>
-                                            <a href="javascript:void(0)" type="button" class="ct-button" id="submit_card">Verify</a>
-                                            <input id="nonce" name="payment_method_nonce" type="hidden" />
-                                            <input id="client_token" name="client_token" type="hidden" />
-                                        </form>
-                                    </div>
-                                </div>
-                                <?php
-                                }
-                                ?>
-
-                                <div class="card-type-center f-l">
-
-                                    <div class="common-payment-style ct_hidden" <?php   
-
-                    if ($settings->get_option('ct_authorizenet_status') == 'on' || $settings->get_option('ct_stripe_payment_form_status') == 'on' || $settings->get_option('ct_2checkout_status') == 'Y') {
-
-                      echo " style='display:block;' ";
-
-                    }
-
-                    elseif(sizeof((array)$purchase_check)>0){
-
-                      $check_pay = 'N';
-
-                      $display_check = '';
-
-                      foreach($purchase_check as $key=>$val){
-
-                        if($val == 'Y'){
-
-                          if($payment_hook->payment_display_cardbox_condition_hook($key) == true){
-
-                            if($display_check == ''){
-
-                              $display_check = " style='display:block;' ";
-
-                              $check_pay = 'Y';
-
-                            }elseif($display_check == " style='display:none;' "){
-
-                              $display_check = " style='display:block;' ";
-
-                              $check_pay = 'Y';
-
-                            }
-
-                          }else{
-
-                            if($display_check == ''){
-
-                              $display_check = " style='display:none;' ";
-
-                              $check_pay = 'Y';
-
-                            }elseif($display_check == " style='display:block;' "){
-
-                              $display_check = " style='display:none;' ";
-
-                              $check_pay = 'Y';
-
-                            }
-
-                          }
-
-                        }
-
-                      }
-
-                      echo $display_check;
-
-                    } ?> >
-
-                                        <div class="payment-inner">
-
-                      <?php   if($settings->get_option('ct_2checkout_status') == 'Y'){ ?>
-
-                      <input id="token" name="token" type="hidden" value="">
-
-                      <?php   } ?>
-
-                                            <div id="card-payment-fields" class="ct-md-12 ct-sm-12">
-
-                                                <div class="ct-md-12 ct-xs-12 ct-header-bg">
-
-                                                    <h4 class="header4"><?php  echo $label_language_values['card_details']; ?></h4>
-
-                                                    
-
-                                                </div>
-
-                                                <div class="ct-md-12">
-
-                                                    <label id="ct-card-payment-error" class="ct-error-msg ct-payment-error"><?php  echo $label_language_values['invalid_card_number']; ?><?php  echo $label_language_values['expiry_date_or_csv']; ?></label>  
-
                         </div>
-
-                                                <div class="ct-md-12 ct-sm-12 ct-xs-12 ct-card-details">
-
-                                                    <div class="ct-form-row ct-md-6 ct-xs-12 ct-sm-12">
-
-                                                        <label><?php  echo $label_language_values['card_number']; ?></label>
-
-                                                        <i class="icon-credit-card icons"></i>
-
-                                                        <input class="cc-number ct-card-number ct-card-number1 common-fc" maxlength="20" size="20" data-stripe="number" type="tel">
-
-                                                        <span class="card" aria-hidden="true"></span>
-
-
-
-                                                    </div>
-
-
-
-                                                    <div class="ct-form-row ct-md-4 ct-sm-10 ct-xs-12 ct-exp-mnyr">
-
-                                                      <div class="ex-month-set">
-                                                        <!-- <label><?php //echo $label_language_values['expiry']; ?><?php  //echo $label_language_values['mm_yyyy']; ?></label> -->
-
-                                                        <!-- <i class="icon-calendar icons"></i> -->
-                                                        <label>Exp. Month</label>
-                                                        <input data-stripe="exp-month" class="cc-exp-month ct-exp-month common-fc" maxlength="2" type="tel" placeholder="<?php    echo date('m'); ?>" />
-                                                      </div>
-
-                                                      <div> <label>Exp. Year</label>
-                                                        <input data-stripe="exp-year" class="cc-exp-year ct-exp-year common-fc-2" maxlength="4" type="tel" placeholder="<?php    echo date('Y'); ?>" />
-                                                      </div>
-
-                                                    </div>
-
-                                                    <div class="ct-form-row ct-md-2 ct-sm-2 ct-xs-12 ct-stripe-cvc">
-
-                                                        <label><?php  echo $label_language_values['cvc']; ?></label>
-
-                                                        <i class="icon-lock icons"></i>
-
-                                                        <input type="password" placeholder="●●●" maxlength="4" size="4" data-stripe="cvc" class="cc-cvc ct-cvc-code common-fc" type="tel"/>
-
-
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="ct-lock-image">
-
-                                                  <div class="float-left">
-
-                                                    <img src="<?php  echo SITE_URL; ?>/assets/images/cards/card-images.png" class="ct-stripe-image" alt="Stripe" />
-
-                                                  </div>
-
-                                                  <div class="float-left ml-50">
-
-                                                    <div class="ct-lock-img"></div>
-
-                                                    <div class="debit-lock-text">SAFE AND SECURE 256-BIT<br/> SSL ENCRYPTED PAYMENT</div>
-
-                                                  </div>
-
-                                                </div>
-
-
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-              </div>  
-
-              <!--  bank details popup -->
-
-              <div id="ct-bank-transfer-box" class="payment-method-container f-l">
-
-                <div class="card-type-center f-l">
-
-                                    <div class="common-payment-style-bank-transfer ct_hidden">
-
-                                        <div class="payment-inner">
-
-                      <div id="card-payment-fields" style="">
-
-                                                <div class="ct-md-12 ct-xs-12 ct-header-bg">
-
-                                                    <h4 class="header4"><?php  echo $label_language_values['bank_details']; ?></h4>
-
-                                                </div>
-
-                                                <div class="ct-md-12">
-
-                                                    <table>
-
-                            <tbody>
-
-                              <?php   if($settings->get_option('ct_bank_name') != "")
-
-                {?>
-
-                <tr class="dc_acc_name">
-
-                 <th><i class="fa fa-university b-icon" aria-hidden="true"></i><strong><?php  echo $label_language_values['bank_name']; ?></strong></th>
-
-                 <td><span class="amount"><?php  echo $settings->get_option('ct_bank_name');?></span></td>
-
-                </tr>
-
-               <?php   } 
-
-               if($settings->get_option('ct_account_name') != "")
-
-                {?>
-
-                <tr class="dc_acc_name">
-
-                 <th><i class="fa fa-address-card b-icon" aria-hidden="true"></i><strong><?php  echo $label_language_values['account_name']; ?></strong></th>
-
-                 <td><span class="amount"><?php  echo $settings->get_option('ct_account_name');?></span></td>
-
-                </tr>
-
-               <?php   }
-
-               if($settings->get_option('ct_account_number') != "")
-
-                {?>
-
-                <tr class="dc_acc_number">
-
-                 <th><i class="fa fa-sort-numeric-asc b-icon" aria-hidden="true"></i><strong><?php  echo $label_language_values['account_number']; ?></strong></th>
-
-                 <td><span class="amount"><?php  echo $settings->get_option('ct_account_number');?></span></td>
-
-                </tr>
-
-               <?php   } 
-
-               if($settings->get_option('ct_branch_code') != "")
-
-                {?>
-
-                <tr class="dc_branch_code">
-
-                 <th><i class="fa fa-building b-icon" aria-hidden="true"></i><strong><?php  echo $label_language_values['branch_code']; ?></strong></th>
-
-                 <td><span class="amount"><?php  echo $settings->get_option('ct_branch_code');?></span></td>
-
-                </tr>
-
-               <?php   }
-
-               if($settings->get_option('ct_ifsc_code') != "")
-
-                {?>
-
-                <tr class="dc_ifc_code">
-
-                 <th><i class="fa fa-code b-icon" aria-hidden="true"></i><strong><?php  echo $label_language_values['ifsc_code']; ?></strong></th>
-
-                 <td><span class="amount"><?php  echo $settings->get_option('ct_ifsc_code');?></span></td>
-
-                </tr>
-
-               <?php   }
-
-               if($settings->get_option('ct_bank_description') != "")
-
-                {?>
-
-                <tr class="dc_ifc_code">
-
-                 <th><strong><i class="fa fa-pencil-square-o b-icon" aria-hidden="true"></i><?php  echo $label_language_values['bank_description']; ?></strong></th>
-
-                 <td><span class="amount"><?php  echo $settings->get_option('ct_bank_description');?></span></td>
-
-                </tr>
-
-                <?php   } ?>        
-
-                            </tbody>
-
-                          </table>
-
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>  
-
-                </div>
-
-              </div>  
-
-                         
+             
 
                         </div>
 
@@ -4775,8 +4247,9 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
                 <?php   } ?>          
 
-                
-
+                <!-- This button will be clicked after booking -->
+                <button type="button" id="stripePayBtn" style="display:none"></button>
+<input type="hidden" name="payment_intent_id" id="payment_intent_id">
                         <a href="javascript:void(0)" type='submit' data-currency_symbol="<?php  echo $settings->get_option('ct_currency_symbol'); ?>" id='complete_bookings' class="ct-button scroll_top_complete ct-btn-big ct_remove_id complete_bookings "><?php  echo $label_language_values['complete_booking'];?></a>
 
                       </div>
@@ -4799,34 +4272,7 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
       ?>
 
-      <!--form action="https://sandboxsecure.payu.in/_payment" method="post" name="payuForm" id="payuForm"-->
-
-      <form action="https://secure.payu.in/_payment" method="post" name="payuForm" id="payuForm">
-
-        <input type="hidden" name="key" id="payu_key" value="" />
-
-        <input type="hidden" name="hash" id="payu_hash" value=""/>
-
-        <input type="hidden" name="txnid" id="payu_txnid" value="" />
-
-        <input type="hidden" name="amount" id="payu_amount" value="" />
-
-        <input type="hidden" name="firstname" id="payu_fname" value="" />
-
-        <input type="hidden" name="email" id="payu_email" value="" />
-
-        <input type="hidden" name="phone" id="payu_phone" value="" />
-
-        <input type="hidden" name="productinfo" id="payu_productinfo" value="" />
-
-        <input type="hidden" name="surl" id="payu_surl" value="" />
-
-        <input type="hidden" name="furl" id="payu_furl" value="" />
-
-        <input type="hidden" name="service_provider" id="payu_service_provider" value="" />
-
-      </form>
-
+  
       <?php  
 
       }
@@ -5025,7 +4471,8 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
   
 
-    var baseurlObj = {'base_url': '<?php  echo BASE_URL;?>','stripe_publishkey':'<?php  echo $settings->get_option('ct_stripe_publishablekey');?>','stripe_status':'<?php  echo $settings->get_option('ct_stripe_payment_form_status');?>'};
+    var baseurlObj = {'base_url': '<?php  echo BASE_URL;?>','stripe_publishkey':'<?=STRIPE_PUBLISHABLE_KEY;?>','stripe_status':'on'};
+    console.log(baseurlObj);
 
     var siteurlObj = {'site_url': '<?php  echo SITE_URL;?>'};
 
@@ -5146,49 +4593,16 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
 </script>
 
-<script src="https://js.braintreegateway.com/web/dropin/1.26.0/js/dropin.min.js"></script>
+
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+
 <!-- Add additional services that you want to use -->
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
- <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/firestore-config.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/main.js"></script>
-
-<script>
-    var client_token = "<?php echo($gateway->ClientToken()->generate()); ?>";
-    jQuery('#client_token').val(client_token);
-    braintree.dropin.create({
-      authorization: client_token,
-      selector: '#bt-dropin',
-      paypal: {
-        flow: 'vault'
-      }
-    }, function (createErr, instance) {
-      if (createErr) {
-        console.log('Create Error', createErr);
-        return;   
-      }
-      jQuery('#submit_card').on('click', function (event) {
-        event.preventDefault();
-
-        instance.requestPaymentMethod(function (err, payload) {
-          if (err) {
-            console.log('Request Payment Method Error', err);
-            jQuery('#ct-complete-booking-main').hide();
-            jQuery('#submit_card').show();
-            return;
-          }
-
-          // Add the nonce to the form and submit
-          jQuery('#ct-complete-booking-main').show();
-          jQuery('#submit_card').hide();
-          document.querySelector('#nonce').value = payload.nonce;
-        });
-      });
-    });
-</script>
-
+ <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/firestore-config.js?v=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/chat/main.js?v=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/stripe.js"></script>
 </body>
 
 </html>

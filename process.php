@@ -69,7 +69,7 @@ if (isset($_POST['login_user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		//user input validation required here -- end
 	
-
+    
 	$resp = $user->loginUser($username, $password);
 	echo json_encode($resp);
 	exit();

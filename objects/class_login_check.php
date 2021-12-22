@@ -49,12 +49,13 @@
             {
 
                 $_SESSION['ct_staffid'] = $value['id'];
-
                 $_SESSION['ct_useremail'] = $value['email'];
                 
                 $_SESSION['ct_username'] = $value['pro_user_id'];
-
+                $_SESSION['user_uuid'] = $value['uuid'];
                 $_SESSION['ct_image'] = $value['image'];
+                $_SESSION['username'] = $value['pro_user_id'];
+                $_SESSION['fullname'] = $value['fullname'];
 				
 				echo "yesstaff";
             }
@@ -107,12 +108,13 @@
             {
 
                 $_SESSION['ct_login_user_id'] = $value['id'];
-
                 $_SESSION['ct_useremail'] = $value['user_email'];
                 
                 $_SESSION['ct_username'] = $value['grinders_id'];
-
+                $_SESSION['user_uuid'] = $value['uuid'];
                 $_SESSION['ct_image'] = $value['image'];
+                $_SESSION['username'] = $value['grinders_id'];
+                $_SESSION['fullname'] = $value['first_name']." ".$value['last_name'];
 
                 if ($this->remember == "true")
 

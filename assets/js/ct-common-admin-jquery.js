@@ -8545,7 +8545,7 @@ jQuery(document).on("click", "#promo_code", function () {
   jQuery(".ct-loading-main").show();
 
   var datastring = { coupon_code: coupon_code, coupon_type: coupon_type, value: value, limit: limit, expiry_date: expiry_date, action: "add_promo_code" };
-  
+
   jQuery.ajax({
 
     type: "POST",
@@ -8555,6 +8555,7 @@ jQuery(document).on("click", "#promo_code", function () {
     data: datastring,
 
     success: function (response) {
+
       if(parseInt(response) == 1){
 
         jQuery(".mainheader_message_fail").show();
@@ -8658,7 +8659,7 @@ jQuery(document).on("click", ".mybtnupdatepromocode", function () {
   jQuery(".ct-loading-main").show();
 
   var datastring = { recordid: id, edit_coupon_code: edit_coupon_code, edit_coupon_type: edit_coupon_type, edit_value: edit_value, edit_limit: edit_limit, edit_expiry_date: edit_expiry_date, action: "edit_promo_code" };
-  
+
   jQuery.ajax({
 
     type: "POST",
@@ -9363,6 +9364,9 @@ jQuery(document).on("click",".u_op",function(){
 
 jQuery(document).on("click", ".mybtnuserprofile_save", function () {
   if(jQuery("#user_info_form").valid()){
+
+      jQuery(".ct-loading-main").show();
+
       var userid = jQuery(this).attr("data-id");
     
       var oldpass = jQuery("#oldpass").val();
@@ -9372,7 +9376,7 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
       var zip_status_check = jQuery(this).attr("data-zip");
       
       var user_image = jQuery("#pppp"+userid+"ctimagename").val();
-    
+	  
       jQuery("#userfirstname").rules("add",{
     
         required: true,
@@ -9502,10 +9506,12 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
     
         url: ajax_url + "user_details_ajax.php",
     
-        success: function (res) {
-    	
+        success: function (res) { 
+          
+          jQuery(".ct-loading-main").hide();
+
           if(jQuery.trim(res) == "Your Old Password Incorrect..."){
-    
+
             jQuery(".old_pass_msg").css("display","block");
     
             jQuery(".old_pass_msg").addClass("error");
@@ -9513,7 +9519,7 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
             jQuery(".old_pass_msg").html(errorobj_your_old_password_incorrect+"...");
     
           } else if(jQuery.trim(res) == "Please Retype Correct Password..."){
-    
+
             jQuery(".retype_pass_msg").css("display","block");
     
             jQuery(".retype_pass_msg").addClass("error");
@@ -9521,12 +9527,12 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
             jQuery(".retype_pass_msg").html(errorobj_please_retype_correct_password+"...");
     
           } else{
-    
+
             jQuery(".mainheader_message").show();
     
             jQuery(".mainheader_message_inner").css("display","inline");
     
-            jQuery("#ct_sucess_message").html(errorobj_profile_updated_successfully);
+            jQuery("#ct_sucess_message").html("Your Profile has been successfully updated.");
     
             jQuery(".mainheader_message").fadeOut(3000);
     
@@ -10045,57 +10051,66 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
 jQuery(document).on("click",".mybtncancel_booking_user_details",function(e){
 
-  jQuery(".ct-loading-main").show();
 
-  var order = jQuery(this).attr("data-id");
 
-  var gc_event_id = jQuery(this).attr("data-gc_event");
 
-  var gc_staff_event_id = jQuery(this).attr("data-gc_staff_event");
+  var alert_msg = jQuery(this).attr("data-alert-msg");
 
-  var pid = jQuery(this).attr("data-pid");
+  let cnf = confirm(`Are you sure, you want to cancel this appointment? ${alert_msg}`);
+  if (cnf) {
+    jQuery(".ct-loading-main").show();
+    var order = jQuery(this).attr("data-id");
 
-  var cancel_reson_book = jQuery("#reason_cancel" + order).val();
-
-  if(check_update_if_btn == "0"){
-
-    check_update_if_btn = "1";
-
-    e.preventDefault();
-
-    jQuery.ajax({
-
-      type: "POST",
-
-      data: { id: order, gc_event_id: gc_event_id, gc_staff_event_id: gc_staff_event_id, pid: pid, cancel_reson_book: cancel_reson_book, update_booking_users: 1 },
-
-      url: ajax_url + "user_details_ajax.php",
-
-      success: function (response) {
-
-        check_update_if_btn = "0";
-
-        jQuery(".mainheader_message").show();
-
-        jQuery(".mainheader_message_inner").css("display", "inline");
-
-        jQuery("#ct_sucess_message").text(errorobj_booking_cancel);
-
-        jQuery(".mainheader_message").fadeOut(3000);
-
-        jQuery("#info_modal_close").trigger("click");
-
-        jQuery("#updateinfo_modal_close").trigger("click");
-
-        jQuery(".closesss").trigger("click");
-
-        location.reload();
-
-      }
-
-    });
-
+    var gc_event_id = jQuery(this).attr("data-gc_event");
+  
+    var gc_staff_event_id = jQuery(this).attr("data-gc_staff_event");
+  
+    var pid = jQuery(this).attr("data-pid");
+  
+    var cancel_reson_book = jQuery("#reason_cancel" + order).val();
+  
+    if(check_update_if_btn == "0"){
+  
+      check_update_if_btn = "1";
+  
+      e.preventDefault();
+  
+      jQuery.ajax({
+  
+        type: "POST",
+  
+        data: { id: order, gc_event_id: gc_event_id, gc_staff_event_id: gc_staff_event_id, pid: pid, cancel_reson_book: cancel_reson_book, update_booking_users: 1 },
+  
+        url: ajax_url + "user_details_ajax.php",
+  
+        success: function (response) {
+  
+          check_update_if_btn = "0";
+  
+          jQuery(".mainheader_message").show();
+  
+          jQuery(".mainheader_message_inner").css("display", "inline");
+  
+          jQuery("#ct_sucess_message").text(errorobj_booking_cancel);
+  
+          jQuery(".mainheader_message").fadeOut(3000);
+  
+          jQuery("#info_modal_close").trigger("click");
+  
+          jQuery("#updateinfo_modal_close").trigger("click");
+  
+          jQuery(".closesss").trigger("click");
+  
+          location.reload();
+  
+        }
+  
+      });
+  
+    }
   }
+
+
 
 });
 
@@ -11761,6 +11776,14 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
       success : function(res){
 
         jQuery(".ct-loading-main").hide();
+
+        jQuery(".mainheader_message").show();
+    
+        jQuery(".mainheader_message_inner").css("display","inline");
+
+        jQuery("#ct_sucess_message").html("Your Profile has been successfully updated.");
+    
+        jQuery(".mainheader_message").fadeOut(3000);
 
         location.reload();
 
@@ -14987,31 +15010,36 @@ jQuery(document).on("click",".referral_setting",function(){
 
 jQuery(document).on("click", "#decline_appointment", function (e) {
 
-  var ajaxurl = ajax_url;
+  let cnf  = confirm("Are you sure? You want to cancel this order.");
+  if (cnf) {
+    jQuery(".ct-loading-main").show();
+    var ajaxurl = ajax_url;
 
-  var idd = jQuery(this).attr("data-idd");
-
-  var staff_status = jQuery(this).attr("data-status");
-
-  var order_id = jQuery(this).attr("data-id");
-
-  var datast = { idd:idd,staff_status:staff_status,order_id:order_id,action:"decline_appointmentt_staff" };
-
-  jQuery.ajax({
-
-    type: "post",
-
-    url: ajaxurl + "accept_appointment_staff.php",
-
-    data: datast,
-
-    success: function (response) {
-
-      location.reload();
-
-    }
-
-  });
+    var idd = jQuery(this).attr("data-idd");
+  
+    var staff_status = jQuery(this).attr("data-status");
+  
+    var order_id = jQuery(this).attr("data-id");
+  
+    var datast = { idd:idd,staff_status:staff_status,order_id:order_id,action:"decline_appointmentt_staff" };
+  
+    jQuery.ajax({
+  
+      type: "post",
+  
+      url: ajaxurl + "accept_appointment_staff.php",
+  
+      data: datast,
+  
+      success: function (response) {
+  
+        location.reload();
+  
+      }
+  
+    });
+  }
+ 
 
 });
 

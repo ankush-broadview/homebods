@@ -3320,8 +3320,8 @@ tr.details td.details-control {
 #cta #ct-staff-dashboard .ct-left-menu ul li.active a,
 #cta #ct-settings .ct-left-menu ul li a:hover,
 #cta #ct-staff-dashboard .ct-left-menu ul li a:hover {
-	background-color: #8b29fc ;
-	color: #495861;
+	background-color: #F1F5F7 !important;
+	color: #495861 !important;
 	border-radius: 0px;
 	font-family: inherit;
 	font-size: 12px;

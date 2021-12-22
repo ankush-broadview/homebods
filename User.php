@@ -108,8 +108,9 @@ class User
 	}
 
 	public function loginUser($user_email, $password){
+
 		if(isset($_SESSION['ct_staffid'])){ 
-			$stmt = $this->conn->prepare("SELECT email as user_email,uuid,pro_user_id as first_name FROM ct_admin_info WHERE email = :user_email LIMIT 1");
+			$stmt = $this->conn->prepare("SELECT email as user_email,uuid,pro_user_id,fullname FROM ct_admin_info WHERE email = :user_email LIMIT 1");
 			$stmt->bindParam(':user_email', $user_email, PDO::PARAM_STR);
 			$stmt->execute();
 		}else{
@@ -121,16 +122,18 @@ class User
 		if ($stmt->rowCount() == 1) {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			// if (password_verify($password, $row['password'])) {
+				if($_SESSION['ct_staffid']){ $username = $row['pro_user_id'];} else {$username = $row['grinders_id'];}
+				if($_SESSION['ct_staffid']){ $fullname = $row['fullname'];} else {$fullname = $row['first_name'].' '.$row['last_name'];}
 				
 				$_SESSION['user_uuid'] = $row['uuid'];
-				$_SESSION['username'] = $row['grinders_id'];
-				$_SESSION['fullname'] = $row['first_name'].' '.$row['last_name'];
+				$_SESSION['username'] = $username;
+				$_SESSION['fullname'] = $fullname;
 
 				$ar = [];
 				$ar['message'] =  'User Logged in Successfully';
 				$ar['user_uuid'] = $row['uuid'];
 
-				$additionalClaims = ['username'=> $row['user_email'], 'email'=> $row['user_email']];
+				$additionalClaims = ['username'=> $username, 'email'=> $row['user_email']];
 				$customToken = $this->firebase->getAuth()->createCustomToken($ar['user_uuid'], $additionalClaims);
 				
 
@@ -209,7 +212,8 @@ class User
 				$query1 = $this->conn->query("SELECT chat_uuid FROM chat_record WHERE (user_1_uuid = '".$user_1_uuid."' AND user_2_uuid = '".$user_2_uuid."') OR (user_1_uuid = '".$user_22_uuid."' AND user_2_uuid = '".$user_11_uuid."') LIMIT 1");
 				$row1 = $query1->fetch(PDO::FETCH_ASSOC);
 				
-				$ar[] = array("uuid" => $row['uuid'],"fullname" =>$row['fullname'],"username" => $row['username'],"image" =>$row['image'], "chat_uuid" => $row1['chat_uuid']);
+				// $ar[] = array("uuid" => $row['uuid'],"fullname" =>$row['fullname'],"username" => $row['username'],"image" =>$row['image'], "chat_uuid" => $row1['chat_uuid']);
+				$ar[] = array("loginuser_uuid"=>$_SESSION['user_uuid'],"uuid" => $row['uuid'],"fullname" =>$row['fullname'],"username" => $row['username'],"image" =>$row['image'], "chat_uuid" => isset($row1['chat_uuid'])? $row1['chat_uuid'] : '');
 			}
 			
 		}else if(isset($_SESSION['ct_staffid'])){
@@ -225,10 +229,14 @@ class User
 				$user_2_uuid = $row['uuid'];
 				$user_22_uuid = $row['uuid'];
 				$user_11_uuid = $_SESSION['user_uuid'];
+
 				$query1 = $this->conn->query("SELECT chat_uuid FROM chat_record WHERE (user_1_uuid = '".$user_1_uuid."' AND user_2_uuid = '".$user_2_uuid."') OR (user_1_uuid = '".$user_22_uuid."' AND user_2_uuid = '".$user_11_uuid."') LIMIT 1");
+				
+				// echo "SELECT chat_uuid FROM chat_record WHERE (user_1_uuid = '".$user_1_uuid."' AND user_2_uuid = '".$user_2_uuid."') OR (user_1_uuid = '".$user_22_uuid."' AND user_2_uuid = '".$user_11_uuid."') LIMIT 1";die;
 				$row1 = $query1->fetch(PDO::FETCH_ASSOC);
 				
-				$ar[] = array("uuid" => $row['uuid'],"fullname" =>$row['fullname'],"username" => $row['username'],"image" =>$row['image'], "chat_uuid" => $row1['chat_uuid']);
+				// $ar[] = array("uuid" => $row['uuid'],"fullname" =>$row['fullname'],"username" => $row['username'],"image" =>$row['image'], "chat_uuid" => $row1['chat_uuid']);
+				$ar[] = array("loginuser_uuid"=>$_SESSION['user_uuid'],"uuid" => $row['uuid'],"fullname" =>$row['fullname'],"username" => $row['username'],"image" =>$row['image'], "chat_uuid" => isset($row1['chat_uuid'])? $row1['chat_uuid'] : '');
 			}
 		}
 		return array('status'=>200, 'message'=>['users'=>$ar]);
