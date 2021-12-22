@@ -116,7 +116,7 @@ if ($stripe_account_status) {
 			}
 			?>
 			<li><a href="#my-profile" class="my-profile" data-toggle="pill"><i class="fa fa-user fa-2x"></i><br /> <?php  echo $label_language_values['profile'];?> </a></li>
-			<li><a href="#my-chat" data-autologin-id="1" class="my-chat login-btn" data-toggle="pill"><i class="fa fa-comments-o fa-2x"></i><br /> <?php  echo "Chat";?> </a></li>
+			<li><a href="#my-chat" data-autologin-id="1" class="my-chat " data-toggle="pill"><i class="fa fa-comments-o fa-2x"></i><br /> <?php  echo "Chat";?> </a></li>
 			<li><a id="logout" href="javascript:void(0)"><i class="fa fa-power-off fa-2x"></i><br /><span><?php echo $label_language_values['logout'];?></span></a></li>
 		</ul>
 	</div>
@@ -231,16 +231,23 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 											if($status_insert_id != ""){
 											if($rec_status_details=='A'){
 											?>
-											<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['accepted'];?>><?php echo $label_language_values['accepted'];?></a>
-										
+												<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['accepted'];?>><?php echo $label_language_values['accepted'];?></a>
 
-											<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
+												<?php
+												//if ($arr_staff['booking_status'] != 'CO') {
+													?>
+														<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
+													<?php
+												//}
 
-											<?php if (date('Y-m-d H:i:s',strtotime($appdate)) < date('Y-m-d H:i:s',strtotime($current_date))) { ?>
-												<a name="" id="complete_appointment"  data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='C' class="btn btn-info ct-btn-width"  <?php echo $label_language_values['complete'];?>><?php echo $label_language_values['complete'];?></a>
-	
-											
-											<?php } }elseif($rec_status_details=='C'){ ?>
+												if (date('Y-m-d H:i:s',strtotime($appdate)) < date('Y-m-d H:i:s',strtotime($current_date))) { 
+													//if ($arr_staff['booking_status'] != 'CO') {
+														?>
+															<a name="" id="complete_appointment"  data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='C' class="btn btn-info ct-btn-width"  <?php echo $label_language_values['complete'];?>><?php echo $label_language_values['complete'];?></a>
+														<?php
+													//}
+												} 
+											}elseif($rec_status_details=='C'){ ?>
 												<a name="" class="btn btn-success ct-btn-width" disabled <?php echo $label_language_values['completed'];?>><?php echo $label_language_values['completed'];?></a>
 											<?php }else{
 											$lastmodifyy = $arr_staff['lastmodify'];
@@ -252,8 +259,13 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 											//if($timedeff > 0 && $timedeff <= 12){
 												?>
 											<a id="accept_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='A'  value="" name="" class="btn btn-info ct-btn-width" type="submit" title="<?php echo $label_language_values['accept'];?>"><?php echo $label_language_values['accept'];?></a>
-											<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
 											<?php
+											//if ($arr_staff['booking_status'] != 'CO') {
+												?>
+													<a id="decline_appointment" data-id="<?php echo $arr_staff['order_id'];?>" data-idd="<?php echo $status_insert_id;?>" data-status='D'  value="" name="" class="btn btn-danger ct-btn-width" type="submit" <?php echo $label_language_values['decline'];?>><?php echo $label_language_values['decline'];?></a>
+												<?php
+											//}
+											
 										}
 											}
 											?>
@@ -1345,8 +1357,10 @@ if (!empty($staff_read["stripe_account_id"]) && $staff_read["stripe_account_stat
 					</div>
 				</div>
 			</div>
-			<div class="company-details tab-pane fade" id="my-chat">
-				<?php include_once(dirname(dirname(__FILE__)) ."/chat.php"); ?>
+			<div class="tab-pane fade" id="my-chat">
+				<?php 
+					include(dirname(dirname(__FILE__)) . '/chat.php');
+				?>
 			</div>
 
 
@@ -1428,7 +1442,7 @@ include(dirname(dirname(__FILE__)).'/admin/footer.php');
   <!-- Add additional services that you want to use -->
   <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
-   <script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/firestore-config.js?v=<?php echo time(); ?>"></script>
-  <script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/main.js?v=<?php echo time(); ?>"></script>
+   <script type="text/javascript" src="https://leuys-cleanto.bi-team.in/assets/js/chat/firestore-config.js?v=<?php echo time(); ?>"></script>
+  <script type="text/javascript" src="https://leuys-cleanto.bi-team.in/assets/js/chat/main.js?v=<?php echo time(); ?>"></script>
 
  

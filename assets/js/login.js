@@ -115,8 +115,42 @@ jQuery(document).on('click','.mybtnloginadmin',function(){
 		success : function(res){     
 			
 			if(res.trim() == "yesuser"){
+				var url_data = base_url+'/process.php';
+				var redirect_url = base_url+"/admin/my-appointments.php";
+				$.ajax({
+					url : url_data,
+					method : 'POST',
+					data : {login_user : 1,password: '',autologin : 2},
+					success : function(resp){
+						
+						var response = JSON.parse(resp);
+						// console.log(response);
+						
 
-				window.location.replace(base_url+"/admin/my-appointments.php");                
+						if (response.status == 200) {
+							var token = response.message.token;
+							firebase.auth().signInWithCustomToken(token).catch(function(error) {
+							  // Handle Errors here.
+							  var errorCode = error.code;
+							  var errorMessage = error.message;
+							  
+							  //alert(errorMessage);
+
+							}).then(function(data){
+								// jQuery(".ct-loading-main").hide();
+								// $("#login-btn").html(btnHTML);
+								// alert(redirect_url);
+								// if (data.user.uid != "" && autologin != 2) {
+									window.location.href = redirect_url;
+								// }
+							});
+						}else{
+							//alert(response.message);
+						}
+		                jQuery(".ct-loading-main").hide();
+					}
+				});
+				// window.location.replace(base_url+"/admin/my-appointments.php");                
 
 			}else if(res.trim() == "yesadmin"){                    
 
@@ -127,7 +161,6 @@ jQuery(document).on('click','.mybtnloginadmin',function(){
 				var redirect_url = base_url+"/staff/staff-dashboard.php";
 
 				
-				alert("seecond ajax call");
 				$.ajax({
 					url : url_data,
 					method : 'POST',

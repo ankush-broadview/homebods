@@ -797,3 +797,8 @@
 .braintree-large-button{
 	display: none;
 }
+.provider_class_center{
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

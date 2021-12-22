@@ -162,9 +162,10 @@ if(isset($_POST['s_m_units_maxlimit_5'])){
 
         $_SESSION['ct_login_user_id']=$existing_login["id"];
         $_SESSION['ct_useremail'] = $existing_login["user_email"];
+        $_SESSION['ct_username'] = $existing_login['grinders_id'];
+        $_SESSION['user_uuid'] = $existing_login["uuid"];
         $_SESSION['ct_name'] = $existing_login['first_name'].' '.$existing_login['last_name'];
         $_SESSION['fullname'] = $existing_login['first_name'].' '.$existing_login['last_name'];
-        $_SESSION['user_uuid'] = $existing_login["grinders_id"];
 
         $u_msg=array();
         $u_msg['status']="Login Sucessfull";
@@ -209,9 +210,10 @@ elseif(isset($_POST['action']) && $_POST['action']=='get_login_user_data'){
         unset($_SESSION['ct_adminid']);
         $_SESSION['ct_login_user_id']=$existing_login["id"];;
         $_SESSION['ct_useremail']=$existing_login["user_email"];
+        $_SESSION['ct_username'] = $existing_login["grinders_id"];
+        $_SESSION['user_uuid'] = $existing_login["uuid"];
         $_SESSION['ct_name'] = $existing_login['first_name'].' '.$existing_login['last_name'];
-        $_SESSION['fullname'] = $existing_login['first_name'].' '.$existing_login['last_name'];
-        $_SESSION['user_uuid'] = $existing_login["grinders_id"];
+        $_SESSION['fullname'] = $existing_login['first_name'].' '.$existing_login['last_name'];  
 
         $u_msg=array();
         $u_msg['status']="Login Sucessfull";
@@ -1117,7 +1119,7 @@ if(isset($_POST['get_updated_staff_detail'])){
             // }else{
             //     $rate = $currency_symbol.''.$postal_code_staff_detail['single_customer_rate'];
             // }
-            echo '<li class="ct-sm-6 ct-md-4 ct-lg-3 ct-xs-12 remove_provider_class" data-id="'.$value.'">
+            echo '<li class="ct-sm-6 ct-md-4 ct-lg-3 ct-xs-12 remove_provider_class provider_class_center" data-id="'.$value.'">
             <input type="radio" name="provider-radio" data-staff_id ="'.$value.'" id="ct-provider-'.$value.'" class="provider_disable" style="display: none;">
             <label class="ct-provider border-c img-circle provider_select" for="ct-provider-'.$value.'" data-id="'.$value.'">
                 <div class="ct-provider-img">
@@ -1227,7 +1229,7 @@ if(isset($_POST['get_search_staff_detail'])){
             }else{
                 $zoom_link = 'No';
             }
-    		echo '<li class="ct-sm-6 ct-md-4 ct-lg-3 ct-xs-12 remove_provider_class" data-id="'.$value.'">
+    		echo '<li class="ct-sm-6 ct-md-4 ct-lg-3 ct-xs-12 remove_provider_class provider_class_center" data-id="'.$value.'">
                     <input type="radio" name="provider-radio" data-staff_id ="'.$value.'" id="ct-provider-'.$value.'" class="provider_disable" style="display: none;">
                     <label class="ct-provider border-c img-circle provider_select" for="ct-provider-'.$value.'" data-id="'.$value.'">
                         <div class="ct-provider-img">

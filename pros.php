@@ -155,7 +155,7 @@
 			</label>
   			    <label>
               <span>Single Customer Rate</span>
-              <input type="text" placeholder="" name="single_custom_rate" id="single_custom_rate" />
+              <input type="text" placeholder="" name="single_customer_rate" id="single_customer_rate" />
             </label>
            	<label class="w-100 image-upload-main">
            		<span>Photo Upload</span>

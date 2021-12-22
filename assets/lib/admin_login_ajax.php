@@ -215,6 +215,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
   	$objadmininfo->staff_bio = isset($_POST['staff_bio'])? $_POST['staff_bio'] : '';  
 	$objadmininfo->pro_user_id = isset($_POST['pro_user_id'])? $_POST['pro_user_id'] : '';  
 	$objadmininfo->custom_rate = isset($_POST['custom_rate'])? $_POST['custom_rate'] : '';
+	$objadmininfo->single_customer_rate = isset($_POST['single_customer_rate'])? $_POST['single_customer_rate'] : '';
 	/*if($_POST['trainer_type']=='general'){
 		$objadmininfo->service_ids = 9;
 		
@@ -437,7 +438,16 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 	if ($check_staff_email_existing) {		
    		$objadmininfo->update_staff_validate();
        	$_SESSION['ct_staffid'] = $_SESSION['staff_tem_id'];
-		$_SESSION['ct_useremail'] = $_SESSION['staff_tem_email'];	
+		$_SESSION['ct_useremail'] = $_SESSION['staff_tem_email'];
+
+		$objadmininfo->id = $check_staff_email_existing;
+		$staff_data = $objadmininfo->readone();
+		
+		$_SESSION['ct_username'] = $staff_data['pro_user_id'];	
+		$_SESSION['user_uuid'] = $staff_data['uuid'];
+		$_SESSION['ct_image'] = $staff_data['image'];
+		$_SESSION['username'] = $staff_data['pro_user_id'];
+    	$_SESSION['fullname'] = $staff_data['fullname'];
 
 		$objadmininfo->otp ='';	     
 		$data = $objadmininfo->staff_update_otp_for_email();

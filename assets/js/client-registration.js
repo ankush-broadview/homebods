@@ -389,8 +389,8 @@ jQuery(document).on("click",".staff_register_front",function() {
       staff_zip:{ required:true,digits: true },
       staff_country:{ required:true },
       zoom_link:{ required:true },
-	    custom_rate:{ required:true },
-      //price_for_single:{ required:true,digits: true },
+	    custom_rate:{ required:true,digits: true },
+      single_customer_rate:{ required:true,digits: true },
       //price_for_3:{ required:true,digits: true },
       //price_for_5:{ required:true,digits: true }
     },
@@ -411,7 +411,8 @@ jQuery(document).on("click",".staff_register_front",function() {
       staff_zip:{ required:'Please Enter Zip Code',digits:'Only Digits Allow' },
       staff_country:{ required:'Please Enter Country' },
       zoom_link:{ required:'Please Enter Zoom Link' },
-	    custom_rate:{ required:'Please Enter Custom Rate' },
+      custom_rate:{ required:'Please Enter Custom Rate',digits:'Only Digits Allow' },
+	    single_customer_rate:{ required:'Please Enter Customer Rate',digits:'Only Digits Allow' },
       //price_for_single:{ required:'Please Enter Price',digits:'Only Digits Allow' },
       //price_for_3:{ required:'Please Enter Price',digits:'Only Digits Allow' },
       //price_for_5:{ required:'Please Enter Price',digits:'Only Digits Allow' }
@@ -447,6 +448,7 @@ jQuery(document).on("click",".staff_register_front",function() {
   var fileInput =jQuery("#pcasctimagename").val();
   var term_condition = jQuery("#term_condition").prop("checked");
   var custom_rate = jQuery("#custom_rate").val();
+  var single_customer_rate = jQuery("#single_customer_rate").val();
 
   if(term_condition == false){
     jQuery(".spacial_class").show();
@@ -477,6 +479,7 @@ jQuery(document).on("click",".staff_register_front",function() {
       "pro_user_id":pro_user_id,
       "file" : fileInput,
 	    "custom_rate" : custom_rate,
+      "single_customer_rate" : single_customer_rate,
       action:"pre_staff_reg_himself" 
     }, 
     url: ajax_url + "admin_login_ajax.php",

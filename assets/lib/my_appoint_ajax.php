@@ -1949,6 +1949,9 @@ if(isset($_POST['getcleintdetailwith_updatereadstatus'])){
 elseif(isset($_POST['confirm_booking_cal'])){
 	$id = $_POST['id']; /*here id ==order id*/
 	$orderdetail = $objdashboard->getclientorder($id);
+	$client_ids = $orderdetail[3];
+	$client_id = $objdashboard->getgriderid($client_ids);
+	$grinders_id = $client_id[21];
 	$lastmodify = date('Y-m-d H:i:s');
 	/* Update Confirm status in bookings */
 	$objdashboard->confirm_bookings($id,$lastmodify);
@@ -2016,7 +2019,7 @@ elseif(isset($_POST['confirm_booking_cal'])){
 		}else{
 			$final_p_status = "N/A";
 		}
-
+		
 		$client_name=$gc[2];
 		$client_email=$gc[3];
 		$phone_length = strlen($gc[4]);
@@ -2110,8 +2113,18 @@ elseif(isset($_POST['confirm_booking_cal'])){
 	}else{
 		$payment_status = ucwords($payment_status);
 	}
-	$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}');
-	$replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name);
+	$staff_ids = $booking->get_staff_ids_from_bookings($id);
+	if($staff_ids != ''){
+		$staff_idss = explode(',',$staff_ids);
+		if(sizeof((array)$staff_idss) > 0){
+			foreach($staff_idss as $sid){
+				$staffdetails = $booking->get_staff_detail_for_email($sid);
+				$pro_user_id = $staffdetails['pro_user_id'];
+				$staff_name = $staffdetails['fullname'];
+				$staff_email = $staffdetails['email'];		
+				$staff_phone = $staffdetails['phone'];		
+	$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_user_id}}');
+	$replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$pro_user_id);
 	$emailtemplate->email_subject="Appointment Approved";
 	$emailtemplate->user_type="C";
 	$clientemailtemplate=$emailtemplate->readone_client_email_template_body();
@@ -2166,17 +2179,9 @@ elseif(isset($_POST['confirm_booking_cal'])){
 		$mail_a->send();
 		$mail_a->ClearAllRecipients();
 	}
-	$staff_ids = $booking->get_staff_ids_from_bookings($id);
-	if($staff_ids != ''){
-		$staff_idss = explode(',',$staff_ids);
-		if(sizeof((array)$staff_idss) > 0){
-			foreach($staff_idss as $sid){
-				$staffdetails = $booking->get_staff_detail_for_email($sid);
-				$staff_name = $staffdetails['fullname'];
-				$staff_email = $staffdetails['email'];		
-				$staff_phone = $staffdetails['phone'];			
-				$staff_searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_name}}','{{staff_email}}');
-				$staff_replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$staff_name,$staff_email);
+		
+				$staff_searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_name}}','{{staff_email}}','{{client_user_id}}');
+				$staff_replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$staff_name,$staff_email,$grinders_id);
 				$emailtemplate->email_subject="Appointment Approved";
 				$emailtemplate->user_type="S";
 				$staffemailtemplate=$emailtemplate->readone_client_email_template_body();
@@ -2726,6 +2731,9 @@ elseif(isset($_POST['confirm_booking_cal'])){
 	$objdashboard->reject_bookings($id,$reason,$lastmodify);
 	$client_name = "";
 	$orderdetail = $objdashboard->getclientorder($id);
+	$client_ids = $orderdetail[3];
+	$client_id = $objdashboard->getgriderid($client_ids);
+	$grinders_id = $client_id[21];
   $clientdetail = $objdashboard->clientemailsender($id);
 	$pid = $_POST['pid'];
 	$gc_staff_event_id = $_POST['gc_staff_event_id'];
@@ -2895,8 +2903,18 @@ elseif(isset($_POST['confirm_booking_cal'])){
 	}else{
 		$payment_status = ucwords($payment_status);
 	}
-	$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}'); 
-	$replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'',$reason,$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name);
+		$staff_ids = $orderdetail[9];
+	if($staff_ids != ''){
+		$staff_idss = explode(',',$staff_ids);
+		if(sizeof((array)$staff_idss) > 0){
+			foreach($staff_idss as $sid){
+				$staffdetails = $booking->get_staff_detail_for_email($sid);
+				$pro_user_id = $staffdetails['pro_user_id'];
+				$staff_name = $staffdetails['fullname'];
+				$staff_email = $staffdetails['email'];		
+				$staff_phone = $staffdetails['phone'];
+	$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_user_id}}'); 
+	$replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'',$reason,$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$pro_user_id);
 	/* Client Email Template */
 	/* $emailtemplate->email_subject=$label_language_values[strtolower(str_replace(" ","_","Appointment Rejected"))]; */
 	$emailtemplate->email_subject="Appointment Rejected";
@@ -2955,17 +2973,9 @@ elseif(isset($_POST['confirm_booking_cal'])){
 		$mail_a->send();
 		$mail_a->ClearAllRecipients();
 	}
-	$staff_ids = $orderdetail[9];
-	if($staff_ids != ''){
-		$staff_idss = explode(',',$staff_ids);
-		if(sizeof((array)$staff_idss) > 0){
-			foreach($staff_idss as $sid){
-				$staffdetails = $booking->get_staff_detail_for_email($sid);
-				$staff_name = $staffdetails['fullname'];
-				$staff_email = $staffdetails['email'];		
-				$staff_phone = $staffdetails['phone'];
-				$staff_searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_name}}','{{staff_email}}');
-				$staff_replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$staff_name,$staff_email);
+
+				$staff_searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_name}}','{{staff_email}}','{{client_user_id}}');
+				$staff_replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$staff_name,$staff_email,$grinders_id);
 				$emailtemplate->email_subject="Appointment Rejected";
 				$emailtemplate->user_type="S";
 				$staffemailtemplate=$emailtemplate->readone_client_email_template_body();

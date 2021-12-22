@@ -1,4 +1,5 @@
 var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
+var site_url=site_ur.site_url;
 
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
@@ -37,7 +38,7 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 	function getUsers(){
 		
 		$.ajax({
-			url :   base_url+"/process.php",
+			url :   site_url+"process.php", 
 			// url :  ajax_url + "front_ajax.php",
 			method : 'POST',
 			data : {getUsers:1},
@@ -53,7 +54,7 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 					console.log(users);
 					$.each(users, function(index, value){
 						console.log(user_uuid +"!="+ value.uuid +"data"+value);
-						if (user_uuid != value.uuid && value.uuid != '') {
+						if (value.loginuser_uuid != value.uuid && value.uuid != '') {
 							
 							// usersHTML += '<div class="user" uuid="'+value.uuid+'">'+
 							// 			'<div class="user-image"></div>'+
@@ -68,14 +69,14 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 								jQuery('#default_image').show();
 							}*/
 							if(value.image != '' && value.image != undefined){
-								src= base_url+"/assets/images/services/"+value.image;
+								src= site_url+"assets/images/services/"+value.image;
 							}else{
-								src= base_url+"/assets/images/default.png";
+								src= site_url+"assets/images/default.png";
 							}
 							
 
 								var count = 0;
-							usersHTML = '<div class="list user" uuid1="'+user_uuid+'" uuid="'+value.uuid+'" id="'+value.uuid+'">'+
+							usersHTML = '<div class="list user" uuid1="'+value.loginuser_uuid+'" uuid="'+value.uuid+'" id="'+value.uuid+'">'+
               								'<img src="'+src+'" alt="" />'+
               								'<div class="info">'+
                  								'<span class="user">'+ value.username+'</span>'+
@@ -121,13 +122,13 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 	
 
 	$(document.body).on('click', '.list', function(){
-		// console.log($(this).attr('uuid'));
+		console.log("connect to user :",$(this).attr('uuid1'),$(this).attr('uuid'));
 		// var name = $(this).find("strong").text();
 		var name = $(this).find(".user").text();
 		var img = $(this).find("img").attr('src');
 		
-		var user_1 = user_uuid;
-		// var user_1 = $(this).attr('uuid1');
+		// var user_1 = user_uuid;
+		var user_1 = $(this).attr('uuid1');
 		var user_2 = $(this).attr('uuid');
 		$('.message-container').html('Connecting...!');
 
@@ -135,7 +136,7 @@ var chat_data = {}, user_uuid, chatHTML = '', chat_uuid = "", userList = [];
 		$("header img").attr('src',img);
 
 		$.ajax({
-			url : base_url+'/process.php',
+			url : site_url+"process.php",
 			// url :  ajax_url + "front_ajax.php",
 			method : 'POST',
 			data : {connectUser:1, user_1:user_1, user_2: user_2},

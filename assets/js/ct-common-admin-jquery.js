@@ -9364,6 +9364,9 @@ jQuery(document).on("click",".u_op",function(){
 
 jQuery(document).on("click", ".mybtnuserprofile_save", function () {
   if(jQuery("#user_info_form").valid()){
+
+      jQuery(".ct-loading-main").show();
+
       var userid = jQuery(this).attr("data-id");
     
       var oldpass = jQuery("#oldpass").val();
@@ -9504,8 +9507,11 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
         url: ajax_url + "user_details_ajax.php",
     
         success: function (res) { 
+          
+          jQuery(".ct-loading-main").hide();
+
           if(jQuery.trim(res) == "Your Old Password Incorrect..."){
-    
+
             jQuery(".old_pass_msg").css("display","block");
     
             jQuery(".old_pass_msg").addClass("error");
@@ -9513,7 +9519,7 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
             jQuery(".old_pass_msg").html(errorobj_your_old_password_incorrect+"...");
     
           } else if(jQuery.trim(res) == "Please Retype Correct Password..."){
-    
+
             jQuery(".retype_pass_msg").css("display","block");
     
             jQuery(".retype_pass_msg").addClass("error");
@@ -9521,12 +9527,12 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
             jQuery(".retype_pass_msg").html(errorobj_please_retype_correct_password+"...");
     
           } else{
-    
+
             jQuery(".mainheader_message").show();
     
             jQuery(".mainheader_message_inner").css("display","inline");
     
-            jQuery("#ct_sucess_message").html(errorobj_profile_updated_successfully);
+            jQuery("#ct_sucess_message").html("Your Profile has been successfully updated.");
     
             jQuery(".mainheader_message").fadeOut(3000);
     
@@ -11770,6 +11776,14 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
       success : function(res){
 
         jQuery(".ct-loading-main").hide();
+
+        jQuery(".mainheader_message").show();
+    
+        jQuery(".mainheader_message_inner").css("display","inline");
+
+        jQuery("#ct_sucess_message").html("Your Profile has been successfully updated.");
+    
+        jQuery(".mainheader_message").fadeOut(3000);
 
         location.reload();
 

@@ -724,7 +724,7 @@ if($file){   if(!filesize($filename) > 0){
                   <ul class="nav navbar-nav user-nav-bar">
                      <li class="<?php if(strpos($_SERVER['SCRIPT_NAME'],'my-appointments.php')!=false){ echo 'active';} ?>"><a href="<?php echo BASE_URL; ?>/admin/my-appointments.php"><i class="fa fa-calendar"></i><span><?php echo $label_language_values['my_appointments'];?></span></a></li>
                      <li class="<?php if(strpos($_SERVER['SCRIPT_NAME'],'user-profile.php')!=false){ echo 'active';} ?>"><a href="<?php echo BASE_URL; ?>/admin/user-profile.php"><i class="fa fa-user"></i><span><?php echo $label_language_values['profile'];?></span></a></li>
-                     <li><a href="<?php echo BASE_URL; ?>/chat.php" data-autologin-id="1" class="<?php if(strpos($_SERVER['SCRIPT_NAME'],'chat.php')!=false){ echo 'active';} ?> login-btn"><i class="fa fa-comments-o"></i><span><?php echo "Chat";?></span></a></li>
+                     <li><a href="<?php echo BASE_URL; ?>/chat.php" data-autologin-id="1" class="<?php if(strpos($_SERVER['SCRIPT_NAME'],'chat.php')!=false){ echo 'active';} ?> "><i class="fa fa-comments-o"></i><span><?php echo "Chat";?></span></a></li>
                      <?php if ($setting->get_option('ct_wallet_section') == 'on') { ?>            
                      <?php if ($setting->get_option('ct_referral_status') == 'Y') { ?>                        
 										<li class="<?php if(strpos($_SERVER['SCRIPT_NAME'],'user_referral_code.php')!=false){ echo 'active';} ?>"><a href="<?php echo BASE_URL; ?>/admin/user_referral_code.php"><i class="fa fa-usd"></i><span>Invite and earn</span>

@@ -9,6 +9,9 @@ if (!isset($_SESSION['ct_useremail']) ) {
 if(isset($_SESSION['ct_login_user_id'])){
 	include ("admin/header.php");
 }
+/*if(isset($_SESSION['ct_staffid'])){
+  include ("staff/header-staff.php");
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +21,7 @@ if(isset($_SESSION['ct_login_user_id'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<!-- new css -->
-	<link rel="stylesheet" href="https://homebods.co/booking/assets/css/chat.css">
+	<link rel="stylesheet" href="<?php echo SITE_URL.'assets/css/chat.css'; ?>">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- Firebase App is always required and must be first -->
@@ -61,9 +64,9 @@ if(isset($_SESSION['ct_login_user_id'])){
 	</sidebar>
 	<div class="content" style="width: 80% !important;float: right;"> 
 		<header style="height: 85px">
-         	<img id="default_image" src="https://homebods.co/booking/assets/images/services/default_service.png" alt="" style="width: 80px;height: 80px;">
+         	<img id="default_image" src="<?php echo SITE_URL.'assets/images/services/default_service.png'; ?>" alt="" style="width: 80px;height: 80px;">
          	<div class="info">
-            	<span class="user"><i class="fas fa-user"></i>&nbsp;<span class="name"></span></span>
+            	<span class="user"><span class="name"></span></span>
             	<!-- <span class="time">Online</span> -->
          	</div>
          	<div class="open">
@@ -95,8 +98,8 @@ if(isset($_SESSION['ct_login_user_id'])){
 </div>
 
 
-	<script type="text/javascript" src="https://homebods.co/booking/assets/js/chat/firestore-config.js"></script>
-	<script type="text/javascript" src="<?php echo  SITE_URL.'/assets/js/chat/chat.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo SITE_URL.'assets/js/chat/firestore-config.js';?>"></script>
+	<script type="text/javascript" src="<?php echo SITE_URL.'assets/js/chat/chat.js';?>"></script>
 
 
 </body>
