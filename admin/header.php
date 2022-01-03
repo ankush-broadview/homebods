@@ -369,37 +369,31 @@ if($file){   if(!filesize($filename) > 0){
    <!-- ** Google Fonts **  -->  
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
    <!-- ** Jquery ** -->   
-   <script src="<?php echo BASE_URL; ?>/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script> <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-multiselect.js" type="text/javascript" >
-   </script>  
+   <script src="<?php echo BASE_URL; ?>/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>    <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-multiselect.js" type="text/javascript" > </script>  
    <script src="<?php echo BASE_URL; ?>/assets/js/jquery-ui.min.js" type="text/javascript" ></script> 
    <script src="<?php echo BASE_URL; ?>/assets/js/moment.min.js" type="text/javascript" ></script>    
-   <script src="<?php echo BASE_URL; ?>/assets/js/jquery.Jcrop.min.js" type="text/javascript" ></script><script src="<?php echo BASE_URL; ?>/assets/js/jquery.color.js" type="text/javascript" ></script>  
-   <script src="<?php echo BASE_URL; ?>/assets/js/fullcalendar.min.js" type="text/javascript" ></script><script src="<?php echo BASE_URL; ?>/assets/js/lang-all.js" type="text/javascript" ></script>   
+   <script src="<?php echo BASE_URL; ?>/assets/js/jquery.Jcrop.min.js" type="text/javascript" ></script>   <script src="<?php echo BASE_URL; ?>/assets/js/jquery.color.js" type="text/javascript" ></script>  
+   <script src="<?php echo BASE_URL; ?>/assets/js/fullcalendar.min.js" type="text/javascript" ></script>   <script src="<?php echo BASE_URL; ?>/assets/js/lang-all.js" type="text/javascript" ></script>   
    <script src="<?php echo BASE_URL; ?>/assets/js/intlTelInput.js" type="text/javascript" ></script>  
-   <script src="<?php echo BASE_URL; ?>/assets/js/jquery.nicescroll.min.js" type="text/javascript" >
-   </script>  
+   <script src="<?php echo BASE_URL; ?>/assets/js/jquery.nicescroll.min.js" type="text/javascript" > </script>  
    <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js" type="text/javascript" ></script>
-
     <?php   if(strpos($_SERVER['SCRIPT_NAME'],'service-extra-addons.php')==false && strpos($_SERVER['SCRIPT_NAME'],'service-manage-unit-price.php')==false && strpos($_SERVER['SCRIPT_NAME'],'service-manage-calculation-methods.php')==false )
     { ?>     
-      <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-toggle.min.js" type="text/javascript" >
-      </script>  <?php   } ?>   
-      <script src="<?php echo BASE_URL; ?>/assets/js/vue.min.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-select.min.js" type="text/javascript" >
-      </script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/daterangepicker.js" type="text/javascript">
-      </script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/Chart.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/jquery.minicolors.min.js" type="text/javascript" ></script>    
-      <!-- data tables all js inlcude pdf,csv, and excel -->    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/jquery.dataTables.min.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/dataTables.responsive.min.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/dataTables.bootstrap.min.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/dataTables.buttons.min.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/jszip.min.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/pdfmake.min.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/vfs_fonts.js" type="text/javascript" ></script>    
-      <script src="<?php echo BASE_URL; ?>/assets/js/datatable/buttons.html5.min.js" type="text/javascript" ></script>        
+      <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-toggle.min.js" type="text/javascript" > </script>    <?php   } ?>   
+  <script src="<?php echo BASE_URL; ?>/assets/js/vue.min.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-select.min.js" type="text/javascript" > </script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/daterangepicker.js" type="text/javascript"> </script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/Chart.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/jquery.minicolors.min.js" type="text/javascript" ></script>    
+  <!-- data tables all js inlcude pdf,csv, and excel -->    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/jquery.dataTables.min.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/dataTables.responsive.min.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/dataTables.bootstrap.min.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/dataTables.buttons.min.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/jszip.min.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/pdfmake.min.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/vfs_fonts.js" type="text/javascript" ></script>    
+  <script src="<?php echo BASE_URL; ?>/assets/js/datatable/buttons.html5.min.js" type="text/javascript" ></script>        
       <!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>  HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->    <!--[if lt IE 9]>    <script src="js/html5shiv.js"></script>    <script src="js/respond.min.js"></script>    <![endif]-->  
       <script src="<?php echo BASE_URL; ?>/assets/js/star_rating_min.js" type="text/javascript">
       </script>   

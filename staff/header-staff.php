@@ -337,20 +337,11 @@ else
 	<!-- ** Google Fonts **  -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
-    <!-- ** Jquery ** -->
-    <script src="<?php echo BASE_URL; ?>/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <script src="<?php echo BASE_URL; ?>/assets/js/jquery-ui.min.js" type="text/javascript" ></script>
-    <script src="<?php echo BASE_URL; ?>/assets/js/moment.min.js" type="text/javascript" ></script>   
-    <script src="<?php echo BASE_URL; ?>/assets/js/jquery.Jcrop.min.js" type="text/javascript" ></script>
-    <script src="<?php echo BASE_URL; ?>/assets/js/jquery.color.js" type="text/javascript" ></script>
-    <script src="<?php echo BASE_URL; ?>/assets/js/fullcalendar.min.js" type="text/javascript" ></script>
-    <script src="<?php echo BASE_URL; ?>/assets/js/lang-all.js" type="text/javascript" ></script>
-    <script src="<?php echo BASE_URL; ?>/assets/js/intlTelInput.js" type="text/javascript" ></script>
-	<script src="<?php echo BASE_URL; ?>/assets/js/jquery.nicescroll.min.js" type="text/javascript" ></script>
-    <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js" type="text/javascript" ></script>
+    <!-- ** Jquery ** -->   	<script src="<?php echo BASE_URL; ?>/assets/js/jquery-2.1.4.min.js" type="text/javascript"></script>    	<script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-multiselect.js" type="text/javascript" ></script>     	<script src="<?php echo BASE_URL; ?>/assets/js/jquery-ui.min.js" type="text/javascript" ></script>    	<script src="<?php echo BASE_URL; ?>/assets/js/moment.min.js" type="text/javascript" ></script>       	<script src="<?php echo BASE_URL; ?>/assets/js/jquery.Jcrop.min.js" type="text/javascript" ></script>	<script src="<?php echo BASE_URL; ?>/assets/js/jquery.color.js" type="text/javascript" ></script>     	<script src="<?php echo BASE_URL; ?>/assets/js/fullcalendar.min.js" type="text/javascript" ></script>	<script src="<?php echo BASE_URL; ?>/assets/js/lang-all.js" type="text/javascript" ></script>      	<script src="<?php echo BASE_URL; ?>/assets/js/intlTelInput.js" type="text/javascript" ></script>     	<script src="<?php echo BASE_URL; ?>/assets/js/jquery.nicescroll.min.js" type="text/javascript" >   </script>     	<script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js" type="text/javascript" ></script>
 	<?php   if(strpos($_SERVER['SCRIPT_NAME'],'service-extra-addons.php')==false && strpos($_SERVER['SCRIPT_NAME'],'service-manage-unit-price.php')==false && strpos($_SERVER['SCRIPT_NAME'],'service-manage-calculation-methods.php')==false ){ ?>	
     <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-toggle.min.js" type="text/javascript" ></script>
 	<?php   } ?>
+  <script src="<?php echo BASE_URL; ?>/assets/js/vue.min.js" type="text/javascript" ></script>    	
     <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap-select.min.js" type="text/javascript" ></script>
     <script src="<?php echo BASE_URL; ?>/assets/js/daterangepicker.js" type="text/javascript" ></script>
     <script src="<?php echo BASE_URL; ?>/assets/js/Chart.js" type="text/javascript" ></script>

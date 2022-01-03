@@ -8,7 +8,6 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") {
     $protocol = 'http';
 }
 
-
 $cur_dirname = basename(__DIR__);
  
 if($cur_dirname=='public_html'){

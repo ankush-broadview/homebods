@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
 
   jQuery(".error_postal_code").hide();
 
-  jQuery("html").niceScroll({cursorborder:"none" ,cursorwidth :"12px",autohidemode:"true"});
+  jQuery("html").niceScroll({cursorborder:"none" ,cursorwidth :"12px",autohidemode:"true",passive:false});
 
   /* FORM VALIDATION METHODS */
 
@@ -235,7 +235,7 @@ jQuery(document).ready(function(){
 
   jQuery(".hide_badges").hide();
 
-  var nice = jQuery("body").niceScroll();
+  // var nice = jQuery("body").niceScroll();
 
   var nice_left_navs = jQuery(".ct-left-menu").niceScroll();
 
@@ -3187,9 +3187,14 @@ jQuery(document).on("click",".country",function() {
 
 });
 
+jQuery(document).ready(function(){
+  jQuery("#staff-bookings-table, #ct-staff-member-offtime-list").DataTable({   responsive:true,  });
+});
+
+
 jQuery(document).bind("ready ajaxComplete", function () {
 
-  jQuery("#ct-staff-member-offtime-list, #ct-staff-service-details-list, #staff-bookings-table, #user-profile-booking-table").DataTable();
+  jQuery("#ct-staff-service-details-list").DataTable({   responsive:true,  });
 
    jQuery(".selectpicker").selectpicker({
 
@@ -4219,7 +4224,7 @@ jQuery(document).on("click", ".ct_upload_img1", function (e) {
 
 
 
-	
+  
 
   var img_id = jQuery("#" + ctus + "id").val();
 
@@ -8204,7 +8209,7 @@ jQuery(document).on("click", "#payment_setting", function () {
 
   var bank_description = jQuery("#ct_bank_description").val();
 
-	 
+   
 
   /*end*/
 
@@ -9376,7 +9381,7 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
       var zip_status_check = jQuery(this).attr("data-zip");
       
       var user_image = jQuery("#pppp"+userid+"ctimagename").val();
-	  
+    
       jQuery("#userfirstname").rules("add",{
     
         required: true,
@@ -10994,7 +10999,7 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-	var wallet_section = jQuery("#ct_wallet_section").prop("checked");
+  var wallet_section = jQuery("#ct_wallet_section").prop("checked");
 
   var wallet_section_display = "off";
 
@@ -11004,9 +11009,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-	
+  
 
-	
+  
 
   var company_logo_status = jQuery("#show_company_logo").prop("checked");
 
@@ -11611,9 +11616,9 @@ jQuery(document).on("click","#update_staff_details",function(){
     localStorage["trigger_user"] = id;
 
     var name = jQuery("#ct-member-name").val();
-	
-	var last_name = jQuery("#ct-member-last-name").val();
-	
+  
+  var last_name = jQuery("#ct-member-last-name").val();
+  
     var email = jQuery("#ct-member-email").val();
 
     var pro_user_id = jQuery("#ct-member-user-id").val();
@@ -11690,8 +11695,8 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
     localStorage["trigger_user"] = id;
 
     var name = jQuery("#ct-member-name").val();
-	
-	 var last_name = jQuery("#ct-member-last-name").val();
+  
+   var last_name = jQuery("#ct-member-last-name").val();
 
     var pro_user_id = jQuery("#ct-member-user-id").val();
 
@@ -12844,7 +12849,7 @@ jQuery(document).on("click",".send_inovoice",function () {
 
     success: function (res) {
 
-			
+      
 
       jQuery(".ct-loading-main").hide();
 
@@ -15589,37 +15594,37 @@ jQuery(document).on('click','.add_client_money',function(){
 
   var add_amount = jQuery('#add_amount').val();
 
-	var payment_method = jQuery(".payment_gateway:checked").val();
+  var payment_method = jQuery(".payment_gateway:checked").val();
 
-	var cc_card_num = jQuery(".cc-number").val();
+  var cc_card_num = jQuery(".cc-number").val();
 
-		var cc_exp_month = jQuery(".cc-exp-month").val();
+    var cc_exp_month = jQuery(".cc-exp-month").val();
 
-		var cc_exp_year = jQuery(".cc-exp-year").val();
+    var cc_exp_year = jQuery(".cc-exp-year").val();
 
-		var cc_card_code = jQuery(".cc-cvc").val();
+    var cc_card_code = jQuery(".cc-cvc").val();
 
-	
+  
 
-	
+  
 
-	
+  
 
-	var stripe_pubkey = baseurlObj.stripe_publishkey;
+  var stripe_pubkey = baseurlObj.stripe_publishkey;
 
   var stripe_status = baseurlObj.stripe_status;   
 
-	if(stripe_status=="on"){ 
+  if(stripe_status=="on"){ 
 
-		Stripe.setPublishableKey(stripe_pubkey);  
+    Stripe.setPublishableKey(stripe_pubkey);  
 
-	}
+  }
 
 
 
-		
+    
 
-		var dataString={'email_id': email_id,
+    var dataString={'email_id': email_id,
 
       'add_amount': add_amount,
 
@@ -15627,21 +15632,21 @@ jQuery(document).on('click','.add_client_money',function(){
 
       'payment_method': payment_method,
 
-			 cc_card_num:cc_card_num,
+       cc_card_num:cc_card_num,
 
-			 cc_exp_month:cc_exp_month,
+       cc_exp_month:cc_exp_month,
 
-			 cc_exp_year:cc_exp_year,
+       cc_exp_year:cc_exp_year,
 
-			 cc_card_code:cc_card_code,
+       cc_card_code:cc_card_code,
 
       'action':'add_money_client_wallet'};
 
-	
+  
 
-	if(payment_method == "stripe-payment"){
+  if(payment_method == "stripe-payment"){
 
-	
+  
 
     jQuery("#cart_submit").validate({
 
@@ -15715,183 +15720,183 @@ jQuery(document).on('click','.add_client_money',function(){
 
     });
 
-		
+    
 
-		if(jQuery("#cart_submit").valid()){ 
+    if(jQuery("#cart_submit").valid()){ 
 
-			jQuery(".ct-loading-main-complete_booking").show();
+      jQuery(".ct-loading-main-complete_booking").show();
 
-			var stripeResponseHandler = function(status, response) {   
+      var stripeResponseHandler = function(status, response) {   
 
-			
+      
 
-				if (response.error) {
+        if (response.error) {
 
-					/* Show the errors on the form*/
+          /* Show the errors on the form*/
 
-					clicked=false; 
+          clicked=false; 
 
-					jQuery(".ct-loading-main-complete_booking").hide();
+          jQuery(".ct-loading-main-complete_booking").hide();
 
-					jQuery("#ct-card-payment-error").show();
+          jQuery("#ct-card-payment-error").show();
 
-					jQuery("#ct-card-payment-error").text(response.error.message);        
+          jQuery("#ct-card-payment-error").text(response.error.message);        
 
-				} else {
+        } else {
 
-					/* token contains id, last4, and card type*/
+          /* token contains id, last4, and card type*/
 
-					var token = response.id;
+          var token = response.id;
 
-					
+          
 
-					function waitForElement(){ 
+          function waitForElement(){ 
 
-						if(typeof token !== "undefined" && token != ""){ 
+            if(typeof token !== "undefined" && token != ""){ 
 
-							var st_token = token;                 
+              var st_token = token;                 
 
-							dataString["st_token"] = st_token;
+              dataString["st_token"] = st_token;
 
-							jQuery.ajax({
+              jQuery.ajax({
 
-								type:"POST",
+                type:"POST",
 
-								url:site_url+"front/checkout.php",
+                url:site_url+"front/checkout.php",
 
-								data:dataString,
+                data:dataString,
 
-								success:function(response){
+                success:function(response){
 
 
 
-									if(jQuery.trim(response) == "ok"){
+                  if(jQuery.trim(response) == "ok"){
 
-										jQuery(".ct-loading-main-complete_booking").hide();
+                    jQuery(".ct-loading-main-complete_booking").hide();
 
-										window.location=site_url+"admin/wallet-history.php"; 
+                    window.location=site_url+"admin/wallet-history.php"; 
 
-									}else{
+                  }else{
 
-										clicked=false; 
+                    clicked=false; 
 
-										jQuery(".ct-loading-main-complete_booking").hide();
+                    jQuery(".ct-loading-main-complete_booking").hide();
 
-										jQuery("#ct-card-payment-error").show();
+                    jQuery("#ct-card-payment-error").show();
 
-										jQuery("#ct-card-payment-error").text(response);
+                    jQuery("#ct-card-payment-error").text(response);
 
-									}
+                  }
 
-								}
+                }
 
-							});
+              });
 
-						} else{ 
+            } else{ 
 
-							setTimeout(function(){ waitForElement(); },2000); 
+              setTimeout(function(){ waitForElement(); },2000); 
 
-						} 
-
-					}
-
-					waitForElement();
-
-				}
-
-			};
-
-			
-
-	}
-
-			/*Disable the submit button to prevent repeated clicks*/
-
-			Stripe.card.createToken({
-
-			number: jQuery(".ct-card-number").val(),
-
-			cvc: jQuery(".ct-cvc-code").val(),
-
-			exp_month: jQuery(".ct-exp-month").val(),
-
-			exp_year: jQuery(".ct-exp-year").val()
-
-			}, stripeResponseHandler); 
-
-          }else if(payment_method == "paypal"){ 
-
-					
-
-						jQuery("#cart_submit").validate({
-
-							rules: {
-
-							add_amount: {
-
-							required: true,
-
-						}
-
-						},
-
-							messages: {
-
-							add_amount: {
-
-							required:"The amount is required field", 
-
-						},
-
-						}
-
-						});
-
-			      if(jQuery("#cart_submit").valid()){ 
-
-            jQuery('.ct-loading-main').show();
-
-							jQuery.ajax({
-
-							type: 'post',
-
-							data: dataString,
-
-							url: site_url + "front/checkout.php",
-
-							success: function (res) {
-
-								var response_detail = jQuery.parseJSON(res);
-
-									if (response_detail.status == 'success') {
-
-										window.location = response_detail.value;
-
-									}
-
-									if (response_detail.status == 'error') {
-
-										clicked = false;
-
-										jQuery('.ld-loading-main-complete_booking').hide();
-
-										jQuery('#paypal_error').show();
-
-										jQuery('#paypal_error').text(response_detail.value);
-
-									}
-
-								}
-
-							});
-
-					 }
+            } 
 
           }
 
-	
+          waitForElement();
 
-	 
+        }
+
+      };
+
+      
+
+  }
+
+      /*Disable the submit button to prevent repeated clicks*/
+
+      Stripe.card.createToken({
+
+      number: jQuery(".ct-card-number").val(),
+
+      cvc: jQuery(".ct-cvc-code").val(),
+
+      exp_month: jQuery(".ct-exp-month").val(),
+
+      exp_year: jQuery(".ct-exp-year").val()
+
+      }, stripeResponseHandler); 
+
+          }else if(payment_method == "paypal"){ 
+
+          
+
+            jQuery("#cart_submit").validate({
+
+              rules: {
+
+              add_amount: {
+
+              required: true,
+
+            }
+
+            },
+
+              messages: {
+
+              add_amount: {
+
+              required:"The amount is required field", 
+
+            },
+
+            }
+
+            });
+
+            if(jQuery("#cart_submit").valid()){ 
+
+            jQuery('.ct-loading-main').show();
+
+              jQuery.ajax({
+
+              type: 'post',
+
+              data: dataString,
+
+              url: site_url + "front/checkout.php",
+
+              success: function (res) {
+
+                var response_detail = jQuery.parseJSON(res);
+
+                  if (response_detail.status == 'success') {
+
+                    window.location = response_detail.value;
+
+                  }
+
+                  if (response_detail.status == 'error') {
+
+                    clicked = false;
+
+                    jQuery('.ld-loading-main-complete_booking').hide();
+
+                    jQuery('#paypal_error').show();
+
+                    jQuery('#paypal_error').text(response_detail.value);
+
+                  }
+
+                }
+
+              });
+
+           }
+
+          }
+
+  
+
+   
 
 /*   jQuery.ajax({
 
@@ -16019,39 +16024,39 @@ jQuery(document).ready(function () {
 
     jQuery(document).on("change", ".payment_gateway", function() {
 
-				
+        
 
         
 
         if(jQuery(this).is(":checked")){
 
-				
+        
 
-					jQuery(this).prop( "checked", true );
+          jQuery(this).prop( "checked", true );
 
-					if(jQuery(this).val() == "2checkout-payment"){
+          if(jQuery(this).val() == "2checkout-payment"){
 
-						jQuery('#card-payment-fields').show();
+            jQuery('#card-payment-fields').show();
 
-					}else{
+          }else{
 
-						jQuery('#card-payment-fields').hide();
+            jQuery('#card-payment-fields').hide();
 
-					}
+          }
 
-				}else
+        }else
 
-				{
+        {
 
-					jQuery('.payment_gateway').prop( "checked", false );
+          jQuery('.payment_gateway').prop( "checked", false );
 
-				}
+        }
 
     });
 
-		jQuery(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) { 
+    jQuery(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) { 
 
-					
+          
 
            jQuery(this).val(jQuery(this).val().replace(/[^\d].+/, ""));
 
@@ -16065,39 +16070,39 @@ jQuery(document).ready(function () {
 
 });
 
-		
+    
 
 
 
-		
+    
 
-	jQuery(document).ready(function () {
+  jQuery(document).ready(function () {
 
-	jQuery(document).on("change", ".payment_gateway", function() {
+  jQuery(document).on("change", ".payment_gateway", function() {
 
-			if(jQuery("#pay-card").is(":checked")){
+      if(jQuery("#pay-card").is(":checked")){
 
-				jQuery('#card-payment-fields').show();
+        jQuery('#card-payment-fields').show();
 
-			}else{
+      }else{
 
-				jQuery('#card-payment-fields').hide();
+        jQuery('#card-payment-fields').hide();
 
-			}
+      }
 
-	});
+  });
 
-	jQuery(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) { 
+  jQuery(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) { 
 
-		jQuery(this).val(jQuery(this).val().replace(/[^\d].+/, ""));
+    jQuery(this).val(jQuery(this).val().replace(/[^\d].+/, ""));
 
-		if ((event.which < 48 || event.which > 57)) {
+    if ((event.which < 48 || event.which > 57)) {
 
-			event.preventDefault();
+      event.preventDefault();
 
-		}
+    }
 
-	});
+  });
 
 });
 
@@ -16107,9 +16112,9 @@ jQuery(document).on('click','#genrate_embed',function(){
 
   /* jQuery('.ld-loading-main').show(); */
 
-  var site_url=site_ur.site_url;	
+  var site_url=site_ur.site_url;  
 
-	var service_ids = jQuery(".service_name").val();
+  var service_ids = jQuery(".service_name").val();
 
 
 
@@ -16123,19 +16128,19 @@ jQuery(document).on('click','#genrate_embed',function(){
 
     success: function (res) {
 
-			alert(res)
+      alert(res)
 
-		var response_detail = jQuery.parseJSON(res);
+    var response_detail = jQuery.parseJSON(res);
 
-			jQuery('.ld-loading-main-complete_booking').hide();
+      jQuery('.ld-loading-main-complete_booking').hide();
 
-			/* jQuery("#cta-user-embedd-code-service").css("display","block");
+      /* jQuery("#cta-user-embedd-code-service").css("display","block");
 
-			jQuery(".ct-embed-code-help-service").css("display","block"); */
+      jQuery(".ct-embed-code-help-service").css("display","block"); */
 
-			alert(response_detail.embed);
+      alert(response_detail.embed);
 
-			jQuery('#cta-user-embedd-code-service').text(response_detail.embed);									
+      jQuery('#cta-user-embedd-code-service').text(response_detail.embed);                  
 
     }
 
@@ -16171,23 +16176,23 @@ jQuery(document).on("focusout", "#ct-member-country", function () {
 
     success: function (res) {
 
-		
+    
 
-		 var response_detail = jQuery.parseJSON(res);
+     var response_detail = jQuery.parseJSON(res);
 
-		  /* 	jQuery('.ld-loading-main-complete_booking').hide();
+      /*  jQuery('.ld-loading-main-complete_booking').hide();
 
-			 jQuery("#cta-user-embedd-code-service").css("display","block");
+       jQuery("#cta-user-embedd-code-service").css("display","block");
 
-			jQuery(".ct-embed-code-help-service").css("display","block"); 
+      jQuery(".ct-embed-code-help-service").css("display","block"); 
 
-			alert(response_detail.embed);
+      alert(response_detail.embed);
 
-			jQuery('#cta-user-embedd-code-service').text(response_detail.embed);	*/	
+      jQuery('#cta-user-embedd-code-service').text(response_detail.embed);  */  
 
-			jQuery('#ct-member-latitude').attr('value',response_detail.latitude);
+      jQuery('#ct-member-latitude').attr('value',response_detail.latitude);
 
-			jQuery('#ct-member-longitude').attr('value',response_detail.longitude);
+      jQuery('#ct-member-longitude').attr('value',response_detail.longitude);
 
     }
 
@@ -16217,9 +16222,9 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
 
 
-	  if (e.type === 'keyup') {
+    if (e.type === 'keyup') {
 
-			if ($this.val() === '') {
+      if ($this.val() === '') {
 
           label.removeClass('active highlight');
 
@@ -16231,15 +16236,15 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
     } else if (e.type === 'blur') {
 
-    	if( $this.val() === '' ) {
+      if( $this.val() === '' ) {
 
-    		label.removeClass('active highlight'); 
+        label.removeClass('active highlight'); 
 
-			} else {
+      } else {
 
-		    label.removeClass('highlight');   
+        label.removeClass('highlight');   
 
-			}   
+      }   
 
     } else if (e.type === 'focus') {
 
@@ -16247,15 +16252,15 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
       if( $this.val() === '' ) {
 
-    		label.removeClass('highlight'); 
+        label.removeClass('highlight'); 
 
-			} 
+      } 
 
       else if( $this.val() !== '' ) {
 
-		    label.addClass('highlight');
+        label.addClass('highlight');
 
-			}
+      }
 
     }
 
@@ -16296,7 +16301,7 @@ $('.tab a').on('click', function (e) {
  /* Booking Complete Button in staff dashboard */
  
   jQuery(document).on("click", "#complete_appointment", function (e) {
-	
+  
   var ajaxurl = ajax_url;
 
   var idd = jQuery(this).attr("data-idd");

@@ -5409,3 +5409,5 @@ table.dataTable tbody td {
 }
 
 
+.main-chat-wrap sidebar{	width: 20% !important;    float: left;}
+.main-chat-wrap .content{	width: 80% !important;    float: right;}

@@ -1149,15 +1149,20 @@ function date_format_js($date_Format) {
     <script src="<?php  echo BASE_URL; ?>/assets/js/jquery.validate.min.js"></script>
 
   <style>
-
         .error {
-
             color: red;
-
         }
+        
+        @media (max-width:768px){
+          #stripeElement{         
+            width: 100% !important;          
+          }
+        }
+
+
         #stripeElement{          
           padding: 15px !important;
-          width: 50% !important;
+          width: 50% ;
           border: 2px solid #ddd !important;
           border-radius: 5px !important;
         }
@@ -4596,7 +4601,6 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
-
 <!-- Add additional services that you want to use -->
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>

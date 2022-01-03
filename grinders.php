@@ -57,7 +57,7 @@
     </div>
 		<div class="cont grinder-main" style="height: 95%;">
 		  <div class="form sign-in" >
-			  <h2><a href="https://www.homebods.club/"><img src="assets/images/services/company_74315.png" style="width: 130px;border-radius: 50%;"></a></h2>
+			  <h2><a href="https://www.homebods.club/"><img src="assets/images/homebods_logo.png" style="width: 130px;border-radius: 50%;"></a></h2>
 			  <h3 style="text-align: center;font-weight: bolder;color: #8b29fc;">LET’S GRIND!</h3>
 			  <!-- <h6 style="text-align: center;">Client Registration</h6> -->
         <form id="grinder_registration_form" class="" method="post">

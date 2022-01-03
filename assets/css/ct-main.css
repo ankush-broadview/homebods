@@ -1102,3 +1102,4 @@ font-size: 30px;}
 	display:block;
 }
 .fitness-radio{display:block !important; }
+@media only screen and (max-width : 767px){	.staff-details-wrap .ct-staff-name lable span{		width:100%;		margin-left:0;	}.staff-details-wrap .ct-staff-name lable{flex-wrap:wrap;}.staff-details-wrap .main-staff{flex-wrap:wrap;}}

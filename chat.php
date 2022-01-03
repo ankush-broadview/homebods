@@ -23,7 +23,7 @@ if(isset($_SESSION['ct_login_user_id'])){
 	<!-- new css -->
 	<link rel="stylesheet" href="<?php echo SITE_URL.'assets/css/chat.css'; ?>">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<!-- Firebase App is always required and must be first -->
 	<!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script> -->
   	<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
@@ -39,7 +39,7 @@ if(isset($_SESSION['ct_login_user_id'])){
 <body>
 
 <div class="main-chat-wrap">
- 	<sidebar class="messenger" style="width: 20% !important;float: left;">
+ 	<sidebar class="messenger">
     	<span class="logo">
     	    <?php
     	    if(isset($_SESSION['ct_image']) && ($_SESSION['ct_image'] != '' || $_SESSION['ct_image'] != null)){
@@ -62,9 +62,9 @@ if(isset($_SESSION['ct_login_user_id'])){
        		</div> -->
 		</div>
 	</sidebar>
-	<div class="content" style="width: 80% !important;float: right;"> 
+	<div class="content"> 
 		<header style="height: 85px">
-         	<img id="default_image" src="<?php echo SITE_URL.'assets/images/services/default_service.png'; ?>" alt="" style="width: 80px;height: 80px;">
+         	<img id="default_image" src="<?php echo SITE_URL.'assets/images/homebods_logo.png'; ?>" alt="" style="width: 80px;height: 80px;">
          	<div class="info">
             	<span class="user"><span class="name"></span></span>
             	<!-- <span class="time">Online</span> -->
