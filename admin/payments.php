@@ -83,7 +83,6 @@ $decimal=$settings->get_option('ct_price_format_decimal_places');
 						<th><?php echo $label_language_values['tax'];?></th>
 						<th><?php echo $label_language_values['net_total'];?></th>
 						<th><?php echo $label_language_values['partial_amount'];?></th>
-						<th><?php echo $label_language_values['Recurrence'];?></th>
 						<th><?php echo $label_language_values['status'];?></th>
 						<th><?php echo $label_language_values['email'];?></th>
 					</tr>
@@ -193,7 +192,6 @@ $decimal=$settings->get_option('ct_price_format_decimal_places');
 								<td><?php echo  $rs['taxes']==0?"-":$general->ct_price_format($rs['taxes'],$symbol_position,$decimal);?></td>
 								<td><?php echo  $rs['net_amount']==0?"-":$general->ct_price_format($rs['net_amount'],$symbol_position,$decimal);?></td>
 								<td><?php echo  $rs['partial_amount']==0?"-":$general->ct_price_format($rs['partial_amount'],$symbol_position,$decimal);?></td>
-								<td><?php echo $rs['recurrence_status'];?></td>
 								<td><?php echo $rs['payment_status'];?>   <a class="btn btn-primary update_payment_status" href="javascript:void(0);" id="update_payment_status" data-status="<?php echo $rs['payment_status'];?>" data-order_id="<?php echo $rs['order_id']; ?>"><?php  echo $label_language_values['update']; ?></a></td>
 								<?php 
 								$p_client_email = $objpayment->getclientemail($rs['order_id']);

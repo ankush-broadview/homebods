@@ -51,7 +51,7 @@ $objuserdetails->conn = $conn;
 									<?php 
 									if( $userinfo[16] !==''){
 										?>
-										<a id="ct-remove-staff-imagepppp<?php  echo $user_id; ?>" data-pclsid="<?php echo $user_id; ?>" data-staff_id="<?php echo $user_id; ?>" class="delete_staff_image pull-left br-100 btn-danger bt-remove-staff-img btn-xs ser_new_del<?php  echo $user_id; ?>" rel="popover" data-placement='left' title="<?php echo $label_language_values['remove_image'];?>"> <i class="fa fa-trash" title="<?php echo "Remove profile image";?>"></i></a>
+										<a id="ct-remove-staff-imagepppp<?php  echo $user_id; ?>" data-pclsid="<?php echo $user_id; ?>" data-staff_id="<?php echo $user_id; ?>" class="delete_staff_image pull-left br-100 btn-danger bt-remove-staff-img btn-xs ser_new_del<?php  echo $user_id; ?>" rel="popover" data-placement='right' title="<?php echo $label_language_values['remove_image'];?>"> <i class="fa fa-trash" title="<?php echo "Remove profile image";?>"></i></a>
 									<?php 
 									}
 									?>

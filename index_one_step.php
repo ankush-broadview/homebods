@@ -1149,20 +1149,15 @@ function date_format_js($date_Format) {
     <script src="<?php  echo BASE_URL; ?>/assets/js/jquery.validate.min.js"></script>
 
   <style>
+
         .error {
+
             color: red;
-        }
-        
-        @media (max-width:768px){
-          #stripeElement{         
-            width: 100% !important;          
-          }
-        }
 
-
+        }
         #stripeElement{          
           padding: 15px !important;
-          width: 50% ;
+          width: 50% !important;
           border: 2px solid #ddd !important;
           border-radius: 5px !important;
         }
@@ -3421,7 +3416,7 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
                       
 
-                      <input type="text" name="app_zip_code" id="app-zip-code" class="add_show_error_class error fancy_input"  <?php   if($settings->get_option('ct_postalcode_status') == 'Y'){echo "readonly";} ?>/>
+                      <input type="text" name="app_zip_code" id="app-zip-code" class="add_show_error_class error fancy_input"  <?php   /*if($settings->get_option('ct_postalcode_status') == 'Y'){echo "readonly";}*/ ?>/>
 
                           <span class="highlight"></span>
 

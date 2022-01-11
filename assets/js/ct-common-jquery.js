@@ -7072,6 +7072,8 @@ jQuery(document).on("change","#retype_status",function() {
 
   var user_state = jQuery("#ct-state").val();
 
+  var postal_code = jQuery("#ct_postal_code").val();
+
   if(jQuery("#retype_status").prop("checked")) {
 
     jQuery("#app-street-address").val(user_address);
@@ -7086,6 +7088,10 @@ jQuery(document).on("change","#retype_status",function() {
 
     jQuery("#app-state").val(user_state);
 
+    if (postal_code != "") {
+      jQuery("#app-zip-code").attr("readonly", true);
+    }
+
   }else{
 
     jQuery("#app-street-address").val("");
@@ -7099,6 +7105,8 @@ jQuery(document).on("change","#retype_status",function() {
     jQuery("#app-city").val("");
 
     jQuery("#app-state").val("");
+
+    jQuery("#app-zip-code").removeAttr("readonly");
 
   }
 
