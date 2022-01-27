@@ -1114,7 +1114,7 @@ if(isset($_POST['update_booking_users'])){
 
 	if ($bookingData["payment_status"]=="1") {
 		// If pro accepted the order request then it means payment is captured and so we can refund the amount
-		$admin->id = $bookingData["staff_ids"];
+			$admin->id = $bookingData["staff_ids"];
 			$adminDetails = $admin->readone();
 			if (!empty($adminDetails["stripe_account_id"]) && $adminDetails["stripe_account_status"]==1) {
 				try {

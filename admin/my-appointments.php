@@ -168,7 +168,7 @@
                   <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>									
-                        <h4 class="modal-title"><?php echo $label_language_values['my_appointments']; echo date('d-m-Y H:i:s') ?></h4>
+                        <h4 class="modal-title"><?php echo $label_language_values['my_appointments'];?></h4>
                      </div>
                      <div class="modal-body">
                         <div class="table-responsive">

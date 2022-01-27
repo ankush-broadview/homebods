@@ -196,7 +196,7 @@ class User
 		$ar = [];
 		if(isset($_SESSION['ct_login_user_id'])){
 
-			$query1 = $this->conn->query("SELECT staff_ids FROM ct_bookings WHERE  client_id=".$_SESSION['ct_login_user_id']);
+			$query1 = $this->conn->query("SELECT staff_ids FROM ct_bookings WHERE  client_id=".$_SESSION['ct_login_user_id']." and staff_ids!=''");
 			$row1 = $query1->fetchAll(PDO::FETCH_ASSOC);
 			$staff_ids = implode(",", array_column($row1,"staff_ids")) ;
 			
