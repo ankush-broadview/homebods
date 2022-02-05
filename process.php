@@ -56,7 +56,7 @@ if (isset($_POST['login_user']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 	$user = new User();
 
 	if(isset($_POST['autologin'])){
-		$username = $_SESSION['ct_useremail'];
+		$username = @$_SESSION['ct_useremail'];
 		$password = '';
 	}else{
 		$username = $_POST['username'];

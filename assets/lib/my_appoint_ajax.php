@@ -2123,63 +2123,63 @@ elseif(isset($_POST['confirm_booking_cal'])){
 				$staff_name = $staffdetails['fullname'];
 				$staff_email = $staffdetails['email'];		
 				$staff_phone = $staffdetails['phone'];		
-	$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_user_id}}');
-	$replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$pro_user_id);
-	$emailtemplate->email_subject="Appointment Approved";
-	$emailtemplate->user_type="C";
-	$clientemailtemplate=$emailtemplate->readone_client_email_template_body();
-	if($clientemailtemplate[2] != ''){
-		$clienttemplate = base64_decode($clientemailtemplate[2]);
-	}else{
-		$clienttemplate = base64_decode($clientemailtemplate[3]);
-	}
-	$subject=$label_language_values[strtolower(str_replace(" ","_",$clientemailtemplate[1]))];
-  if($setting->get_option('ct_client_email_notification_status') == 'Y' && $clientemailtemplate[4]=='E' ){
-		$client_email_body = str_replace($searcharray,$replacearray,$clienttemplate);
-		if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
-			$mail->IsSMTP();
-		}else{
-			$mail->IsMail();
-		}
-		$mail->SMTPDebug  = 0;
-		$mail->IsHTML(true);
-		$mail->From = $company_email;
-		$mail->FromName = $company_name;
-		$mail->Sender = $company_email;
-		$mail->AddAddress($client_email, $client_name);
-		$mail->Subject = $subject;
-		$mail->Body = $client_email_body;
-		$mail->send();
-		$mail->ClearAllRecipients();
-  }
-	$emailtemplate->email_subject="Appointment Approved";
-	$emailtemplate->user_type="A";
-	$adminemailtemplate=$emailtemplate->readone_client_email_template_body();
-	if($adminemailtemplate[2] != ''){
-		$admintemplate = base64_decode($adminemailtemplate[2]);
-	}else{
-		$admintemplate = base64_decode($adminemailtemplate[3]);
-	}
-	$adminsubject=$label_language_values[strtolower(str_replace(" ","_",$adminemailtemplate[1]))];
-	if($setting->get_option('ct_admin_email_notification_status')=='Y' && $adminemailtemplate[4]=='E'){
-		$admin_email_body = str_replace($searcharray,$replacearray,$admintemplate);
-		if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
-			$mail_a->IsSMTP();
-		}else{
-			$mail_a->IsMail();
-		}
-		$mail_a->SMTPDebug  = 0;
-		$mail_a->IsHTML(true);
-		$mail_a->From = $company_email;
-		$mail_a->FromName = $company_name;
-		$mail_a->Sender = $company_email;
-		$mail_a->AddAddress($admin_email, $get_admin_name);
-		$mail_a->Subject = $adminsubject;
-		$mail_a->Body = $admin_email_body;
-		$mail_a->send();
-		$mail_a->ClearAllRecipients();
-	}
-		
+				$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_user_id}}');
+				$replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$pro_user_id);
+				$emailtemplate->email_subject="Appointment Approved";
+				$emailtemplate->user_type="C";
+				$clientemailtemplate=$emailtemplate->readone_client_email_template_body();
+				if($clientemailtemplate[2] != ''){
+					$clienttemplate = base64_decode($clientemailtemplate[2]);
+				}else{
+					$clienttemplate = base64_decode($clientemailtemplate[3]);
+				}
+				$subject=$label_language_values[strtolower(str_replace(" ","_",$clientemailtemplate[1]))];
+				if($setting->get_option('ct_client_email_notification_status') == 'Y' && $clientemailtemplate[4]=='E' ){
+						$client_email_body = str_replace($searcharray,$replacearray,$clienttemplate);
+						if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
+							$mail->IsSMTP();
+						}else{
+							$mail->IsMail();
+						}
+						$mail->SMTPDebug  = 0;
+						$mail->IsHTML(true);
+						$mail->From = $company_email;
+						$mail->FromName = $company_name;
+						$mail->Sender = $company_email;
+						$mail->AddAddress($client_email, $client_name);
+						$mail->Subject = $subject;
+						$mail->Body = $client_email_body;
+						$mail->send();
+						$mail->ClearAllRecipients();
+				}
+				$emailtemplate->email_subject="Appointment Approved";
+				$emailtemplate->user_type="A";
+				$adminemailtemplate=$emailtemplate->readone_client_email_template_body();
+				if($adminemailtemplate[2] != ''){
+					$admintemplate = base64_decode($adminemailtemplate[2]);
+				}else{
+					$admintemplate = base64_decode($adminemailtemplate[3]);
+				}
+				$adminsubject=$label_language_values[strtolower(str_replace(" ","_",$adminemailtemplate[1]))];
+				if($setting->get_option('ct_admin_email_notification_status')=='Y' && $adminemailtemplate[4]=='E'){
+					$admin_email_body = str_replace($searcharray,$replacearray,$admintemplate);
+					if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
+						$mail_a->IsSMTP();
+					}else{
+						$mail_a->IsMail();
+					}
+					$mail_a->SMTPDebug  = 0;
+					$mail_a->IsHTML(true);
+					$mail_a->From = $company_email;
+					$mail_a->FromName = $company_name;
+					$mail_a->Sender = $company_email;
+					$mail_a->AddAddress($admin_email, $get_admin_name);
+					$mail_a->Subject = $adminsubject;
+					$mail_a->Body = $admin_email_body;
+					$mail_a->send();
+					$mail_a->ClearAllRecipients();
+				}
+					
 				$staff_searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_name}}','{{staff_email}}','{{client_user_id}}');
 				$staff_replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,$staff_name,$staff_email,$grinders_id);
 				$emailtemplate->email_subject="Appointment Approved";

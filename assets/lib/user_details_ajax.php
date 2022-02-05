@@ -1172,6 +1172,7 @@ if(isset($_POST['update_booking_users'])){
 			$resp = $stripe->paymentIntents->cancel(
 				$paymentIntentId 			
 			);
+			$emailSubject = 'Appointment Cancelled By Customer';
 		} catch (\Throwable $th) {
 			//throw $th;
 		}
@@ -1373,15 +1374,23 @@ if(isset($_POST['update_booking_users'])){
 		$client_state = $temp['state'];	
 		$client_zip	= $temp['zip'];
     }
+				$staff_ids = empty($orderdetail[9]) ? $bookingData["staff_ids"] : $orderdetail[9];
+				$objadminprofile->id = $staff_ids;
+				$staff_details = $objadminprofile->readone();
+				$get_staff_name = "";
+				if(isset($staff_details) && !empty($staff_details))
+				{
+					$get_staff_name = $staff_details["fullname"];
+				}
 	$payment_status = strtolower($payment_status);
 	if($payment_status == "pay at venue"){
 		$payment_status = ucwords($label_language_values['pay_locally']);
 	}else{
 		$payment_status = ucwords($payment_status);
 	}
-    $searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}');
+    $searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_user_id}}');
 
-    $replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name);
+    $replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,stripslashes($get_staff_name));
 
     /* Client template */
     $emailtemplate->email_subject=$emailSubject;
@@ -1421,37 +1430,37 @@ if(isset($_POST['update_booking_users'])){
 
     }
     /* Admin Template */
-    // $emailtemplate->email_subject=$emailSubject;
-    // $emailtemplate->user_type="A";
-    // $adminemailtemplate=$emailtemplate->readone_client_email_template_body();
+    $emailtemplate->email_subject = 'Appointment Cancelled By Customer';
+    $emailtemplate->user_type="A";
+    $adminemailtemplate=$emailtemplate->readone_client_email_template_body();
 
-    // if($adminemailtemplate[2] != ''){
-    //     $admintemplate = base64_decode($adminemailtemplate[2]);
-    // }else{
-    //     $admintemplate = base64_decode($adminemailtemplate[3]);
-    // }
-	// 	$adminsubject=$label_language_values[strtolower(str_replace(" ","_",$adminemailtemplate[1]))];
+    if($adminemailtemplate[2] != ''){
+        $admintemplate = base64_decode($adminemailtemplate[2]);
+    }else{
+        $admintemplate = base64_decode($adminemailtemplate[3]);
+    }
+		$adminsubject=$label_language_values[strtolower(str_replace(" ","_",$adminemailtemplate[1]))];
 
-    // if($setting->get_option('ct_admin_email_notification_status')=='Y' && $adminemailtemplate[4]=='E'){
-    //     echo $admin_email_body = str_replace($searcharray,$replacearray,$admintemplate);
+    if($setting->get_option('ct_admin_email_notification_status')=='Y' && $adminemailtemplate[4]=='E'){
+        echo $admin_email_body = str_replace($searcharray,$replacearray,$admintemplate);
 
-    //     if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
-    //         $mail_a->IsSMTP();
-    //     }else{
-    //         $mail_a->IsMail();
-    //     }
+        if($setting->get_option('ct_smtp_hostname') != '' && $setting->get_option('ct_email_sender_name') != '' && $setting->get_option('ct_email_sender_address') != '' && $setting->get_option('ct_smtp_username') != '' && $setting->get_option('ct_smtp_password') != '' && $setting->get_option('ct_smtp_port') != ''){
+            $mail_a->IsSMTP();
+        }else{
+            $mail_a->IsMail();
+        }
 
-    //     $mail_a->SMTPDebug  = 0;
-    //     $mail_a->IsHTML(true);
-    //     $mail_a->From = $company_email;
-    //     $mail_a->FromName = $company_name;
-    //     $mail_a->Sender = $company_email;
-    //     $mail_a->AddAddress($admin_email, $get_admin_name);
-    //     $mail_a->Subject = $adminsubject;
-    //     $mail_a->Body = $admin_email_body;
-    //     $mail_a->send();
-	// 	$mail_a->ClearAllRecipients();
-    // }
+        $mail_a->SMTPDebug  = 0;
+        $mail_a->IsHTML(true);
+        $mail_a->From = $company_email;
+        $mail_a->FromName = $company_name;
+        $mail_a->Sender = $company_email;
+        $mail_a->AddAddress($admin_email, $get_admin_name);
+        $mail_a->Subject = $adminsubject;
+        $mail_a->Body = $admin_email_body;
+        $mail_a->send();
+		$mail_a->ClearAllRecipients();
+    }
     /*SMS SENDING CODE*/
     /*GET APPROVED SMS TEMPLATE*/
 	/* TEXTLOCAL CODE */
@@ -1649,9 +1658,9 @@ if(isset($_POST['update_booking_users'])){
 					$staff_phone = $staff_details["phone"];
 				}
 				
-				$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_name}}','{{staff_email}}');
+				$searcharray = array('{{service_name}}','{{booking_date}}','{{business_logo}}','{{business_logo_alt}}','{{client_name}}','{{methodname}}','{{units}}','{{addons}}','{{client_email}}','{{phone}}','{{payment_method}}','{{vaccum_cleaner_status}}','{{parking_status}}','{{notes}}','{{contact_status}}','{{address}}','{{price}}','{{admin_name}}','{{firstname}}','{{lastname}}','{{app_remain_time}}','{{reject_status}}','{{company_name}}','{{booking_time}}','{{client_city}}','{{client_state}}','{{client_zip}}','{{company_city}}','{{company_state}}','{{company_zip}}','{{company_country}}','{{company_phone}}','{{company_email}}','{{company_address}}','{{admin_name}}','{{staff_name}}','{{staff_email}}','{{client_user_id}}');
 
-        $replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,stripslashes($get_staff_name),stripslashes($get_staff_email));
+        $replacearray = array($service_name, $booking_date , $business_logo, $business_logo_alt, $client_name,$methodname, $units, $addons,$client_email, $client_phone, $payment_status, $final_vc_status, $final_p_status, $client_notes, $client_status,$client_address,$price,$get_admin_name,$firstname,$lastname,'','',$admin_company_name,$booking_time,$client_city,$client_state,$client_zip,$company_city,$company_state,$company_zip,$company_country,$company_phone,$company_email,$company_address,$get_admin_name,stripslashes($get_staff_name),stripslashes($get_staff_email),$client_name);
 				
 				/* Client template */
 				$emailtemplate->email_subject=$emailSubject;
