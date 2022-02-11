@@ -246,7 +246,7 @@ class cleanto_booking{
 		return $result;
 	}
 	public function email_reminder(){
-		$query="select `id`,`order_id`,`client_id`,`order_date`,`booking_date_time`,`service_id`,`method_id`,`method_unit_id`,`method_unit_qty`,`method_unit_qty_rate`,`booking_status`,`reject_reason`,`reminder_status`,`lastmodify`,`read_status`,`staff_ids`,`gc_event_id`,`gc_staff_event_id` from `".$this->table_name."` where (`reminder_status`='0' OR `reminder_status`='') and `booking_status`='C' ";
+		$query="select `id`,`order_id`,`client_id`,`order_date`,`booking_date_time`,`service_id`,`method_id`,`method_unit_id`,`method_unit_qty`,`method_unit_qty_rate`,`booking_status`,`reject_reason`,`reminder_status`,`lastmodify`,`read_status`,`staff_ids`,`gc_event_id`,`gc_staff_event_id` from `".$this->table_name."` where (`reminder_status`='0' OR `reminder_status`='') and `booking_status`='A' ";
 		$result=mysqli_query($this->conn,$query);
 		return $result;
 	}
