@@ -1,4 +1,25 @@
 <?php 
+
+
+createErrorTextLog("ok tested");
+function createErrorTextLog($text, $key = "INFO")
+{
+
+	if (!is_dir('logs')) {
+		mkdir('logs');
+	}
+
+	$today = date('Y-m-d');
+	$filePath = "logs/".$today . ".log";
+	$text = "[".date('Y-m-d H:i:s'). "][".$text."][".$key."]";
+	// if($this->mode == "live") {
+		file_put_contents($filePath, $text . PHP_EOL, FILE_APPEND | LOCK_EX);
+	// } else {
+	// 	echo $text . "</br>";
+	// }
+}
+die;
+
 session_start();
 include_once(dirname(dirname(dirname(__FILE__))).'/header.php');	
 include(dirname(dirname(dirname(__FILE__))).'/objects/class_connection.php');
