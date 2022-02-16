@@ -18,7 +18,6 @@ function createErrorTextLog($text, $key = "INFO")
 	// 	echo $text . "</br>";
 	// }
 }
-die;
 
 session_start();
 include_once(dirname(dirname(dirname(__FILE__))).'/header.php');	
