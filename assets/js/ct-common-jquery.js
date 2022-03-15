@@ -2,29 +2,29 @@ var ct_postalcode_status_check = ct_postalcode_statusObj.ct_postalcode_status;
 
 var ct_postalcode_zip_status = ct_postalcode_statusObj.zip_show_status;
 
-var guest_user_status ="off";
+var guest_user_status = "off";
 
 var get_all_postal_code = [];
 
 /* front language dropdown show hide list */
 
-jQuery(document).on("click",".select-custom",function() {
+jQuery(document).on("click", ".select-custom", function() {
 
-  jQuery(".common-selection-main").addClass("clicked");
+    jQuery(".common-selection-main").addClass("clicked");
 
-  jQuery(".custom-dropdown").slideDown();
+    jQuery(".custom-dropdown").slideDown();
 
 });
 
 /* front language select on click on custom */
 
-jQuery(document).on("click",".select_custom",function() {
+jQuery(document).on("click", ".select_custom", function() {
 
-  jQuery("#selected_custom").html(jQuery(this).html());
+    jQuery("#selected_custom").html(jQuery(this).html());
 
-  jQuery(".common-selection-main").removeClass("clicked");
+    jQuery(".common-selection-main").removeClass("clicked");
 
-  jQuery(".custom-dropdown").slideUp();
+    jQuery(".custom-dropdown").slideUp();
 
 });
 
@@ -32,2349 +32,638 @@ jQuery(document).on("click",".select_custom",function() {
 
 jQuery(document).ready(function() {
 
-  jQuery(document).on("click", "#otp_model_close", function() {
+    jQuery(document).on("click", "#otp_model_close", function() {
 
-    jQuery('#verify_otp').modal('hide');
+        jQuery('#verify_otp').modal('hide');
 
-    jQuery(".checkmark").hide();
-
-  });
-
-
-
-  jQuery(".fancy_input").on("keyup", function() {
-
-    if (jQuery(this).val().length > 0) {
-
-      jQuery(this).parent().addClass("focused_label_wrap");
-
-    } else if (jQuery(this).val().length <= 0) {
-
-      jQuery(this).parent().removeClass("focused_label_wrap");
-
-    }
-
-  });
-
-  jQuery(".phone_no_wrap .fancy_input").on("keyup", function() {
-
-    if (jQuery(this).val().length > 0) {
-
-      jQuery(".phone_no_wrap").addClass("focused_label_wrap");
-
-    } else if (jQuery(this).val().length <= 0) {
-
-      jQuery(".phone_no_wrap").removeClass("focused_label_wrap");
-
-    }
-
-  });
-
-  jQuery(".ct-tooltip").tooltipster({
-
-    animation: "grow",
-
-    delay: 20,
-
-    theme: "tooltipster-shadow",
-
-    trigger: "hover"
-
-  });
-
-  jQuery(".ct-tooltipss").tooltipster({
-
-    animation: "grow",
-
-    delay: 20,
-
-    theme: "tooltipster-shadow",
-
-    trigger: "hover"
-
-  });
-
-  jQuery(".ct-tooltip-services").tooltipster({
-
-    animation: "grow",
-
-    side: "bottom",
-
-    interactive : "true",
-
-    theme: "tooltipster-shadow",
-
-    trigger: "hover",
-
-    delayTouch : 300,
-
-    maxWidth:400,
-
-    functionPosition: function(instance, helper, position){
-
-      position.coord.top -= 25;
-
-      return position;
-
-    },
-
-    contentAsHTML : "true"
-
-  });
-
-
-
-  jQuery(".ct-tooltip-services-addons").tooltipster({
-
-    animation: "grow",
-
-    side: "bottom",
-
-    interactive : "true",
-
-    theme: "tooltipster-shadow",
-
-    trigger: "hover",
-
-    delayTouch : 300,
-
-    maxWidth:400,
-
-    functionPosition: function(instance, helper, position){
-
-      position.coord.top -= 25;
-
-      return position;
-
-    },
-
-    contentAsHTML : "true"
-
-  });
-
-
-
-  
-
-  /* card payment validations */
-
-  jQuery("input.cc-number").payment("formatCardNumber");
-
-  jQuery("input.cc-cvc").payment("formatCardCVC");  
-
-  jQuery("input.cc-exp-month").payment("restrictNumeric");
-
-  jQuery("input.cc-exp-year").payment("restrictNumeric");
-
-  jQuery("body").niceScroll();
-
-  jQuery(".common-data-dropdown").niceScroll();
-
-  jQuery(".ct-services-dropdown").niceScroll();
-
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
-
-  var frequently_discount_name=jQuery("input[name=frequently_discount_radio]:checked").attr("data-name");
-
-  if(frequently_discount_id == 0){
-
-    jQuery(".f_dis_img").hide();
-
-  }else{
-
-    jQuery(".f_dis_img").show();
-
-    jQuery(".f_discount_name").text(frequently_discount_name);
-
-  }
-
-  jQuery(".ct-loading-main").hide();
-
-    var subheader_status=subheaderObj.subheader_status;
-
-    if(subheader_status == "Y"){
-
-      jQuery(".ct-sub").show();
-
-    }else{
-
-      jQuery(".ct-sub").hide();
-
-    }
-
-  if(ct_postalcode_status_check == "Y"){
-
-    jQuery(".ct_remove_id").attr("id","");
-
-    jQuery(document).on("click",".ct_remove_id",function(){
-
-      jQuery("#ct_postal_code").focus();
-
-      jQuery("#ct_postal_code").keyup();
+        jQuery(".checkmark").hide();
 
     });
 
-  }
-
-  jQuery(".ct-sub").show();
-
-  jQuery(".ct-loading-main-complete_booking").hide();
-
-  jQuery(".remove_guest_user_preferred_email").hide();
-
-  jQuery(".show_methods_after_service_selection").hide();
-
-  jQuery(".freq_discount_display").hide();
-
-  jQuery(".hide_allsss_addons").hide();
-
-  jQuery(".partial_amount_hide_on_load").hide();
-
-  jQuery(".hide_right_side_box").hide();
-
-  jQuery(".client_logout").hide();
-
-  jQuery(".postal_code_error").show();
-
-  jQuery(".postal_code_error").html(errorobj_please_enter_postal_code);
-
-  jQuery(".hideservice_name").hide();
-
-  jQuery(".hidedatetime_value").hide();
-
-  jQuery(".hideduration_value").hide();
-
-  jQuery(".s_m_units_design_1").hide();
-
-  jQuery(".s_m_units_design_2").hide();
-
-  jQuery(".s_m_units_design_3").hide();
-
-  jQuery(".s_m_units_design_4").hide();
-
-  jQuery(".s_m_units_design_5").hide();
-
-  jQuery(".ct-provider-list").hide();
-
-  /*Coupon Apply*/
-
-  jQuery(".ct-display-coupon-code").hide();
-
-  jQuery(".coupon_display").hide();
 
 
+    jQuery(".fancy_input").on("keyup", function() {
 
-  /* Jay */
+        if (jQuery(this).val().length > 0) {
 
-  jQuery(".user_coupon_display").hide();
+            jQuery(this).parent().addClass("focused_label_wrap");
 
-  jQuery(".ct-display-user-coupon-code").hide();
+        } else if (jQuery(this).val().length <= 0) {
 
-  /* */
+            jQuery(this).parent().removeClass("focused_label_wrap");
+
+        }
+
+    });
+
+    jQuery(".phone_no_wrap .fancy_input").on("keyup", function() {
+
+        if (jQuery(this).val().length > 0) {
+
+            jQuery(".phone_no_wrap").addClass("focused_label_wrap");
+
+        } else if (jQuery(this).val().length <= 0) {
+
+            jQuery(".phone_no_wrap").removeClass("focused_label_wrap");
+
+        }
+
+    });
+
+    jQuery(".ct-tooltip").tooltipster({
+
+        animation: "grow",
+
+        delay: 20,
+
+        theme: "tooltipster-shadow",
+
+        trigger: "hover"
+
+    });
+
+    jQuery(".ct-tooltipss").tooltipster({
+
+        animation: "grow",
+
+        delay: 20,
+
+        theme: "tooltipster-shadow",
+
+        trigger: "hover"
+
+    });
+
+    jQuery(".ct-tooltip-services").tooltipster({
+
+        animation: "grow",
+
+        side: "bottom",
+
+        interactive: "true",
+
+        theme: "tooltipster-shadow",
+
+        trigger: "hover",
+
+        delayTouch: 300,
+
+        maxWidth: 400,
+
+        functionPosition: function(instance, helper, position) {
+
+            position.coord.top -= 25;
+
+            return position;
+
+        },
+
+        contentAsHTML: "true"
+
+    });
 
 
 
-  /* Jay */
+    jQuery(".ct-tooltip-services-addons").tooltipster({
 
-  jQuery(".ct-display-referral-code").hide();
+        animation: "grow",
 
-  /* */
+        side: "bottom",
+
+        interactive: "true",
+
+        theme: "tooltipster-shadow",
+
+        trigger: "hover",
+
+        delayTouch: 300,
+
+        maxWidth: 400,
+
+        functionPosition: function(instance, helper, position) {
+
+            position.coord.top -= 25;
+
+            return position;
+
+        },
+
+        contentAsHTML: "true"
+
+    });
 
 
 
-  /* user contact no. */
 
-  var site_url=siteurlObj.site_url;
 
-  var country_alpha_code = countrycodeObj.alphacode;
+    /* card payment validations */
 
-  var allowed_country_alpha_code = countrycodeObj.allowed;
+    jQuery("input.cc-number").payment("formatCardNumber");
 
-  var array = allowed_country_alpha_code.split(",");
+    jQuery("input.cc-cvc").payment("formatCardCVC");
 
-  var phone_visi = phone_status.statuss;
+    jQuery("input.cc-exp-month").payment("restrictNumeric");
 
-  if(phone_visi == "on"){
+    jQuery("input.cc-exp-year").payment("restrictNumeric");
 
-    if(allowed_country_alpha_code = ""){
+    jQuery("body").niceScroll();
 
-      jQuery("#ct-user-phone").intlTelInput({
+    jQuery(".common-data-dropdown").niceScroll();
 
-        onlyCountries: array,
+    jQuery(".ct-services-dropdown").niceScroll();
 
-        autoPlaceholder: false,
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-        utilsScript: site_url+"assets/js/utils.js"
+    var frequently_discount_name = jQuery("input[name=frequently_discount_radio]:checked").attr("data-name");
 
-      });
+    if (frequently_discount_id == 0) {
 
-      jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
-
-      jQuery(".selected-flag").attr("title",countrycodeObj.countrytitle);
+        jQuery(".f_dis_img").hide();
 
     } else {
 
-      jQuery("#ct-user-phone").intlTelInput({
+        jQuery(".f_dis_img").show();
 
-        autoPlaceholder: false,
-
-        utilsScript: site_url+"assets/js/utils.js"
-
-      });
-
-      jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
-
-      jQuery(".selected-flag").attr("title",countrycodeObj.countrytitle);
+        jQuery(".f_discount_name").text(frequently_discount_name);
 
     }
 
-  }
+    jQuery(".ct-loading-main").hide();
 
-  /*  create the back to top button */
+    var subheader_status = subheaderObj.subheader_status;
 
-  jQuery("body").prepend('<a href="javascript:void(0)" class="ct-back-to-top"></a>');
+    if (subheader_status == "Y") {
 
-  var amountScrolled = 500;
-
-  jQuery(window).scroll(function() {
-
-    if ( jQuery(window).scrollTop() > amountScrolled ) {
-
-      jQuery("a.ct-back-to-top").fadeIn("slow");
+        jQuery(".ct-sub").show();
 
     } else {
-
-      jQuery("a.ct-back-to-top").fadeOut("slow");
-
-    }
-
-  });
-
-  jQuery("a.ct-back-to-top, a.ct-simple-back-to-top").click(function() {
-
-    jQuery("html, body").animate({ scrollTop: 0 }, 2000);
-
-    return false;
-
-  });
-
-  var us_check =check_us;
-
-  var password_check = check_password;
-
-  jQuery("#user_login_form").validate({
-
-    rules: {
-
-      ct_user_name:{ required:true,maxlength:us_check.max},
-
-      ct_user_pass:{ required: true,minlength:password_check.min,maxlength:password_check.max}
-
-    },
-
-    messages: {
-
-      ct_user_name:{ required:"Please Enter Username"},
-
-      ct_user_pass:{ required: errorobj_please_enter_password, minlength:errorobj_min_ps, maxlength:errorobj_max_ps}
-
-    }
-
-  });
-
-  var front_url=fronturlObj.front_url;
-
-  jQuery.validator.addMethod("pattern_phone", function(value, element) {
-
-    return this.optional(element) || /^[0-9+]*$/.test(value);
-
-  }, "Enter Only Numerics");
-
-  jQuery.validator.addMethod("pattern_zip", function(value, element) {
-
-    return this.optional(element) || /^[a-zA-Z 0-9\-\ ]*$/.test(value);
-
-  }, "Enter Only Alphabets");
-
-  jQuery.validator.addMethod("pattern_name", function(value, element) {
-
-    return this.optional(element) || /^[a-zA-Z ']+$/.test(value);
-
-  }, "Enter Only Alphabets");
-
-  jQuery.validator.addMethod("pattern_city_state", function(value, element) {
-
-    return this.optional(element) || /^[a-zA-Z &]+$/.test(value);
-
-  }, "Enter Only Alphabets");
-
-  var phone_check =phone_status;
-
-  var password_check =check_password;
-
-  var fn_check =check_fn;
-
-  var us_check =check_us;
-
-  var ln_check =check_ln;
-
-  var address_check =check_addresss;
-
-  var zip_check =check_zip_code;
-
-  var city_check =check_city;
-
-  var state_check =check_state;
-
-  var notes_check =check_notes;
-
-  /* validaition condition*/
-
-  jQuery("#user_details_form").validate();
-
-  if(appoint_details.status == "on"){
-
-    if(check_addresss.statuss=="on" &&  check_addresss.required=="Y"){ 
-
-      jQuery("#app-street-address").rules("add", 
-
-      { required: true,minlength:check_addresss.min,maxlength:check_addresss.max,
-
-      messages: { required: errorobj_req_sa, minlength:errorobj_min_sa, maxlength:errorobj_max_sa}});
-
-    }
-
-    if(check_zip_code.statuss=="on" &&  check_zip_code.required=="Y"){ 
-
-      jQuery("#app-zip-code").rules("add", { required: true,minlength:check_zip_code.min,maxlength:check_zip_code.max, messages: { required: errorobj_req_zc, minlength:errorobj_min_zc, maxlength:errorobj_max_zc}});
-
-    }
-
-    if(check_city.statuss=="on" &&  check_city.required=="Y"){ 
-
-      jQuery("#app-city").rules("add", 
-
-      { required: true,minlength:check_city.min,maxlength:check_city.max,
-
-      messages: { required: errorobj_req_ct, minlength:errorobj_min_ct, maxlength:errorobj_max_ct}});
-
-    }
-
-    if(check_state.statuss=="on" &&  check_state.required=="Y"){ 
-
-      jQuery("#app-state").rules("add", 
-
-      { required: true,minlength:check_state.min,maxlength:check_state.max,
-
-      messages: { required: errorobj_req_st, minlength:errorobj_min_st, maxlength:errorobj_max_st
-
-      }});
-
-    }
-
-  }
-
-  if(fn_check.statuss=="on" &&  fn_check.required=="Y"){ 
-
-    jQuery("#ct-first-name").rules("add", 
-
-    { required: true,minlength:fn_check.min,maxlength:fn_check.max,pattern_name:true,
-
-    messages: { required: errorobj_req_fn, minlength:errorobj_min_fn, maxlength:errorobj_max_fn}});
-
-  }
-
-  if(us_check.statuss=="on" &&  us_check.required=="Y"){ 
-
-    jQuery("#ct-username").rules("add", 
-
-    { required: true,minlength:us_check.min,maxlength:us_check.max,
-
-    messages: { required: "Username is required", minlength:"Please enter minimum 3 Characters", maxlength:"Please enter minimum 15 Characters"}});
-
-  }
-
-  if(ln_check.statuss=="on" &&  ln_check.required=="Y"){ 
-
-    jQuery("#ct-last-name").rules("add", 
-
-    { required: true,minlength:ln_check.min,maxlength:ln_check.max,pattern_name:true,
-
-    messages: { required: errorobj_req_ln, minlength:errorobj_min_ln, maxlength:errorobj_max_ln}});
-
-  }
-
-  if(phone_check.statuss=="on" &&  phone_check.required=="Y"){ 
-
-    jQuery("#ct-user-phone").rules("add", 
-
-    { required: true,minlength:phone_check.min,maxlength:phone_check.max,
-
-    messages: { required: errorobj_req_ph, minlength:errorobj_min_ph, maxlength:errorobj_max_ph}});
-
-  }
-
-  if(address_check.statuss=="on" &&  address_check.required=="Y"){ 
-
-    jQuery("#ct-street-address").rules("add", 
-
-    { required: true,minlength:address_check.min,maxlength:address_check.max,
-
-    messages: { required: errorobj_req_sa, minlength:errorobj_min_sa, maxlength:errorobj_max_sa}});
-
-  }
-
-  if(zip_check.statuss=="on" &&  zip_check.required=="Y"){ 
-
-    jQuery("#ct-zip-code").rules("add", 
-
-    { required: true,minlength:zip_check.min,maxlength:zip_check.max,
-
-    messages: { required: errorobj_req_zc, minlength:errorobj_min_zc, maxlength:errorobj_max_zc}});
-
-  }
-
-  if(city_check.statuss=="on" &&  city_check.required=="Y"){ 
-
-    jQuery("#ct-city").rules("add", 
-
-    { required: true,minlength:city_check.min,maxlength:city_check.max,
-
-    messages: { required: errorobj_req_ct, minlength:errorobj_min_ct, maxlength:errorobj_max_ct}});
-
-  }
-
-  if(state_check.statuss=="on" &&  state_check.required=="Y"){ 
-
-    jQuery("#ct-state").rules("add", 
-
-    { required: true,minlength:state_check.min,maxlength:state_check.max,
-
-    messages: { required: errorobj_req_st, minlength:errorobj_min_st, maxlength:errorobj_max_st}});
-
-  }
-
-  if(notes_check.statuss=="on" &&  notes_check.required=="Y"){ 
-
-    jQuery("#ct-notes").rules("add", 
-
-    { required: true,minlength:notes_check.min,maxlength:notes_check.max,
-
-    messages: { required: errorobj_req_srn, minlength:errorobj_min_srn, maxlength:errorobj_max_srn}});
-
-  }
-
-  if(password_check.statuss=="on" &&  password_check.required=="Y"){
-
-    jQuery("#ct-preffered-pass").rules("add", 
-
-    { required: true,minlength:password_check.min,maxlength:password_check.max,
-
-    messages: { required: errorobj_please_enter_password, minlength:errorobj_min_ps, maxlength:errorobj_max_ps}});
-
-    
-
-    jQuery("#ct-email").rules("add", 
-
-    { required:true, email:true, remote: {
-
-      url:front_url+"firststep.php",
-
-      type: "POST",
-
-      async:false,
-
-      data: {
-
-        email: function(){ return jQuery("#ct-email").val(); },
-
-        action:"check_user_email"
-
-      }
-
-    },
-
-    messages: { required:errorobj_please_enter_email_address,email: errorobj_please_enter_valid_email_address,remote: errorobj_email_already_exists}});
-
-  }
-
-  /* end validaition condition*/
-
-  if(jQuery(".guest-user").is(":checked")) {
-
-    jQuery("#ct-email-guest").val("");
-
-    jQuery("#ct-user-name").val("");
-
-    jQuery("#ct-user-pass").val("");
-
-    jQuery("#ct-preffered-name").val("");
-
-    jQuery("#ct-preffered-pass").val("");
-
-    jQuery("#ct-first-name").val("");
-
-    jQuery("#ct-last-name").val("");
-
-    jQuery("#ct-email").val("");
-
-    jQuery("#ct-user-phone").val("");
-
-    jQuery("#ct-street-address").val("");
-
-    jQuery("#ct-zip-code").val("");
-
-    jQuery("#ct-city").val("");
-
-    jQuery("#ct-state").val("");
-
-    jQuery("#ct-notes").val("");
-
-    jQuery(".ct-new-user-details").show( "blind", {direction: "vertical"}, 700);
-
-    jQuery(".ct-login-existing").hide( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".ct-peronal-details").show( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".remove_preferred_password_and_preferred_email").hide( "blind", {direction: "vertical"}, 300);    
-
-    jQuery(".remove_guest_user_preferred_email").show( "blind", {direction: "vertical"}, 300);
-
-    if(jQuery( ".remove_zip_code_class" ).hasClass( "ct-md-4" )){
-
-      jQuery(".remove_zip_code_class").removeClass("ct-md-4");
-
-      jQuery(".remove_zip_code_class").addClass("ct-md-6");
-
-    }
-
-    if(jQuery( ".remove_city_class" ).hasClass( "ct-md-4" )){
-
-      jQuery(".remove_city_class").removeClass("ct-md-4");
-
-      jQuery(".remove_city_class").addClass("ct-md-6");
-
-    }
-
-    if(jQuery( ".remove_state_class" ).hasClass( "ct-md-4" )){
-
-      jQuery(".remove_state_class").removeClass("ct-md-4");
-
-      jQuery(".remove_state_class").addClass("ct-md-6");
-
-    }
-
-    guest_user_status ="on";
-
-  }
-
-  jQuery(".space_between_date_time").hide();
-
-  jQuery(".special_day").hide();                           
-
-  var site_url=siteurlObj.site_url;
-
-  var ajax_url=ajaxurlObj.ajax_url;
-
-  jQuery.ajax({
-
-    type:"POST",
-
-    url: ajax_url+"calendar_ajax.php",
-
-    data : { "get_calendar_on_page_load" : 1 },
-
-    success: function(res){
-
-      jQuery(".cal_info").html(res);
-
-      var d = new Date();
-
-      var month = d.getMonth()+1;
-
-      var day = d.getDate();
-
-      var year = d.getFullYear();
-
-      var output = day + "-" +(month<10 ? "0" : "") + month + "-" +  year;
-
-      var selected_dates = jQuery(".selected_date").data("selected_dates");
-
-      var cur_dates = jQuery(".selected_date").data("cur_dates");
-
-      if(output == cur_dates){
-
-        jQuery(".by_default_today_selected").addClass("active_today");
-
-      }
-
-      cleanto_sidebar_scroll();
-
-    }
-
-  });
-
-  jQuery.ajax({
-
-    type:"POST",
-
-    url: ajax_url+"front_ajax.php",
-
-    data : { "get_postal_code" : 1 },
-
-    success: function(res){
-
-      get_all_postal_code = jQuery.parseJSON(res);
-
-    }
-
-  });
-
-  /* validation for reset_password.php */
-
-  jQuery("#forget_pass").submit(function(event){
-
-    event.preventDefault();
-
-    event.stopImmediatePropagation();
-
-  });
-
-  jQuery("#forget_pass").validate({
-
-    rules: {
-
-      rp_user_email: {
-
-        required: true,
-
-        email: true,
-
-      }
-
-    },
-
-    messages:{
-
-      rp_user_email: {
-
-        required : errorobj_please_enter_email_address,
-
-        email : errorobj_please_enter_valid_email_address
-
-      },
-
-    }
-
-  });
-
-  /* validation for reset_new_password.php */
-
-  jQuery("#reset_new_passwd").submit(function(event){
-
-    event.preventDefault();
-
-    event.stopImmediatePropagation();
-
-  });
-
-  jQuery.validator.addMethod("noSpace", function(value, element) {
-
-    return value.indexOf(" ") < 0 && value != "";
-
-  }, "No space allowed");
-
-  jQuery("#reset_new_passwd").validate({
-
-    rules: {
-
-      n_password: {
-
-        required: true,
-
-        minlength: 8,
-
-        maxlength: 20,
-
-        noSpace: true
-
-      },
-
-      rn_password: {
-
-        required: true,
-
-        minlength: 8,
-
-        maxlength: 20,
-
-        noSpace: true
-
-      }
-
-    },
-
-    messages:{
-
-      n_password: {
-
-        required : errorobj_please_enter_new_password,
-
-        minlength: errorobj_password_must_be_8_character_long,
-
-        maxlength: "Password Must Be Only 20 Characters"
-
-      },
-
-      rn_password: {
-
-        required: errorobj_please_enter_confirm_password,
-
-        minlength: errorobj_password_must_be_8_character_long,
-
-        maxlength: "Password Must Be Only 20 Characters"
-
-      },
-
-    }
-
-  });
-
-  var front_url=fronturlObj.front_url;
-
-  jQuery.ajax({
-
-    type : "post",
-
-    data: { check_for_option : 1 },
-
-    url : front_url+"firststep.php",
-
-    success : function(res){      
-
-      if(jQuery.trim(res) != ""){
-
-        window.location=front_url+"maintainance.php";
-
-      }
-
-    }
-
-  });
-
-  jQuery('[data-toggle="tooltip"]').tooltip({"placement": "right"});
-
-  if(is_login_user == "Y"){
-
-    var site_url=siteurlObj.site_url;
-
-    var ajax_url=ajaxurlObj.ajax_url;
-
-    jQuery(".add_show_error_class_for_login").each(function(){
-
-      jQuery(this).trigger("keyup");
-
-    });
-
-    jQuery(".add_show_error_class").each(function(){
-
-      var id = jQuery(this).attr("id");
-
-      jQuery( this ).removeClass("error");
-
-      jQuery( "#"+id ).parent().removeClass("error");
-
-      jQuery( this ).removeClass("show-error");
-
-      jQuery( "#"+id ).parent().removeClass("show-error");
-
-      jQuery( ".intl-tel-input" ).parent().removeClass("show-error");
-
-    });
-
-    var existing_username = jQuery("#ct-user-name").val();
-
-    var existing_password = jQuery("#ct-user-pass").val();
-
-   // if(!jQuery("#user_login_form").valid()){ return false; }
-
-    dataString={action:"get_login_user_data"};
-
-    jQuery.ajax({
-
-      type:"POST",
-
-      url:ajax_url+"front_ajax.php",
-
-      data:dataString,
-
-      success:function(response){
-
-        var userdata=jQuery.parseJSON(response);
-
-        if(userdata.status == "No Login"){
-
-          is_login_user = "N";
-
-          jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
-
-          return false;
-
-        }else if(userdata.status == "Incorrect Email Address or Password"){
-
-          is_login_user = "N";
-
-          jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
-
-          return false;
-
-        }else{
-
-          is_login_user = "Y";
-
-          jQuery("#check_login_click").val("clicked");
-
-          jQuery(".client_logout").css("display","block");
-
-          jQuery(".client_logout").show();
-
-          jQuery(".fname").text(userdata.firstname);
-
-          jQuery(".lname").text(userdata.lastname);
-
-          jQuery("#ct-email").val(userdata.email);
-
-          jQuery("#ct-user-name").val(userdata.email);
-
-          jQuery("#existing-user").attr("checked", true);
-
-          jQuery(".hide_login_btn").hide();
-
-          jQuery(".hide_radio_btn_after_login").hide();
-
-          jQuery(".hide_email").hide();
-
-          jQuery(".hide_login_email").hide();
-
-          jQuery(".hide_password").hide();
-
-          jQuery(".ct-peronal-details").show();
-
-          jQuery(".login_unsuccessfull").hide();
-
-          jQuery(".ct-new-user-details").hide();
-
-          jQuery(".ct-sub").hide();
-
-          jQuery("#ct-first-name").val(userdata.firstname);
-
-          jQuery("#ct-last-name").val(userdata.lastname);
-
-          jQuery("#ct-user-phone").intlTelInput("setNumber", userdata.phone);
-
-          if(check_addresss.statuss=="on"){ jQuery("#ct-street-address").val(userdata.address); }
-
-          if(check_zip_code.statuss=="on"){  jQuery("#ct-zip-code").val(userdata.zip); }
-
-          if(check_city.statuss=="on"){  jQuery("#ct-city").val(userdata.city); }
-
-          if(check_state.statuss=="on"){  jQuery("#ct-state").val(userdata.state); }
-
-          jQuery("#ct-notes").val(userdata.notes);
-
-          if(userdata.vc_status == "N"){
-
-            jQuery("#vaccum-no").attr("checked", true);
-
-          }else{
-
-            jQuery("#vaccum-yes").attr("checked", true);
-
-          }
-
-          if(userdata.p_status == "N"){
-
-            jQuery("#parking-no").attr("checked", true);
-
-          }else{
-
-            jQuery("#parking-yes").attr("checked", true);
-
-          }
-
-          var con_staatus = userdata.contact_status;
-
-          if(con_staatus == "I'll be at home" || con_staatus == "Please call me" || con_staatus == "The key is with the doorman"){
-
-            jQuery("#contact_status").val(userdata.contact_status);
-
-          }else{
-
-            jQuery("#contact_status").val("Other");
-
-            jQuery(".ct-option-others").show();
-
-            jQuery("#other_contact_status").val(userdata.contact_status);
-
-          }
-          // jQuery(".register-btn").trigger("click");
-          jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
-
-        }
-
-      }
-
-    });
-
-  }
-
-});
-
-
-
-
-
-/* scroll to next step */
-
-jQuery(document).on("click",".ct-service",function() {
-
-  jQuery("html, body").stop().animate({ "scrollTop": jQuery(".ct-scroll-meth-unit").offset().top - 30 }, 800, "swing", function () {});
-
-});
-
-/* forget password */
-
-jQuery(document).on("click","#ct_forget_password",function() {
-
-  jQuery("#rp_user_email").val("");
-
-  jQuery(".forget_pass_correct").hide();
-
-  jQuery(".forget_pass_incorrect").hide();
-
-  jQuery(".ct-front-forget-password").addClass("show-data");
-
-  jQuery(".ct-front-forget-password").removeClass("hide-data");
-
-  jQuery(".main").css("display", "block");
-
-});
-
-jQuery(document).on("click","#ct_login_user",function() {
-
-  jQuery(".ct-front-forget-password").removeClass("show-data");
-
-  jQuery(".ct-front-forget-password").addClass("hide-data");
-
-  jQuery(".main").css("display", "none");
-
-});
-
-/* dropdown services list */
-
-/* services dropdown show hide list */
-
-jQuery(document).on("click",".service-is",function() {
-
-  jQuery(".ct-services-dropdown").toggle( "blind", {direction: "vertical"}, 300 );
-
-});
-
-jQuery(document).on("click",".select_service",function() {
-
-  jQuery("#ct_selected_service").html(jQuery(this).html());
-
-  jQuery(".ct-services-dropdown").hide( "blind", {direction: "vertical"}, 300 );
-
-});
-
-/* select hours based service */
-
-jQuery(document).on("click",".ct-duration-btn",function() {
-
-  jQuery(".ct-duration-btn").each(function(){
-
-    jQuery(this).removeClass("duration-box-selected");
-
-  });
-
-  jQuery(this).addClass("duration-box-selected");
-
-});
-
-/* for show how many addon counting when checked */
-
-jQuery(document).on("click",'input[type="checkbox"]',function() {
-
-	
-
-  if(jQuery(".addon-checkbox").is(":checked")) {
-
-    jQuery(".common-selection-main.addon-select").show();
-
-  } else {
-
-    jQuery(".common-selection-main.addon-select").hide();
-
-  }
-
-});
-
-/* addons */
-
-jQuery(document).on("click",".ct-addon-btn",function() {
-
-  var curr_methodname = jQuery(this).attr("data-method_name");
-
-  jQuery(".ct-addon-btn").each(function(){
-
-    if(jQuery(this).attr("data-method_name") == curr_methodname){
-
-      jQuery(this).removeClass("ct-addon-selected");
-
-    }
-
-  });
-
-  jQuery(this).addClass("ct-addon-selected");
-
-});
-
-/* checkout payment method listing show hide */
-
-jQuery(document).on("click",".cccard",function() {
-
-  var test = jQuery(this).val();
-
-  jQuery(".common-payment-style").show("blind", {direction: "vertical"}, 300);
-
-});
-
-jQuery(document).on("click","input[name=payment-methods]",function() {
-
-  var abc = jQuery(this).val();
-
-  if (abc == 'braintree') {
-    jQuery('#braintree-payment-form').show();
-    jQuery('#ct-complete-booking-main').hide();
-  }else{
-    jQuery('#braintree-payment-form').hide();
-    jQuery('#ct-complete-booking-main').show();
-  }
-
-  if(jQuery(this).hasClass("cccard")) {
-
-    jQuery(".common-payment-style-bank-transfer").hide();
-
-    jQuery(".partial_amount_hide_on_load").hide();
-
-		jQuery("#wallet").removeAttr('checked');
-
-  } else if(jQuery(this).hasClass("pay-cash")){
-
-    jQuery(".common-payment-style").hide();
-
-    jQuery(".common-payment-style-bank-transfer").hide();
-
-    jQuery(".partial_amount_hide_on_load").hide();
-
-    jQuery("#wallet").removeAttr('checked');
-
-  } else {
-
-    jQuery(".common-payment-style").hide();
-
-    jQuery(".common-payment-style-bank-transfer").hide();
-
-    jQuery(".partial_amount_hide_on_load").hide();
-
-    jQuery("#pay-cash").removeAttr('checked');
-
-    jQuery("#pay-card").removeAttr('checked');
-
-  }
-
-});
-
-
-
-/* bank transfer */
-
-jQuery(document).on("click",".bank_transfer",function() {
-
-  jQuery(".common-payment-style-bank-transfer").show("blind", {direction: "vertical"}, 300);
-
-	jQuery("#wallet").removeAttr('checked');
-
-});
-
-jQuery(document).on("click","input[name=payment-methods]",function() {
-
-  if(jQuery(this).hasClass("bank_transfer")) {
-
-    jQuery(".common-payment-style").hide();
-
-  } else {
-
-    jQuery(".common-payment-style-bank-transfer").hide();
-
-  }
-
-});
-
-/* see more instructions in service popup */
-
-jQuery(document).on("click",".show-more-toggler",function() {
-
-  jQuery(".bullet-more").toggle( "blind", {direction: "vertical"}, 500);
-
-  jQuery(".show-more-toggler:after").addClass("rotate");
-
-});
-
-/* right side scrolling cart */
-
-var scrollable_cart_value=scrollable_cartObj.scrollable_cart;
-
-if(scrollable_cart_value == "Y"){
-
-  function cleanto_sidebar_scroll(){
-
-    var $sidebar   = jQuery(".ct-price-scroll"),
-
-      $window    = jQuery(window),
-
-      offset     = $sidebar.offset(),
-
-      sel_service = jQuery(".sel-service").text();
-
-      
-
-    if(sel_service != ""){
-
-      $window.scroll(function() {
-
-        if(offset.top > $window.scrollTop()){
-
-          $sidebar.stop().animate({
-
-            marginTop: 20
-
-          });
-
-        }else{
-
-          $sidebar.stop().animate({
-
-            marginTop: ($window.scrollTop() - offset.top) + 40
-
-          });
-
-        }
-
-      });
-
-    }else{
-
-      $window.scroll(function() {
-
-        if(offset.top > $window.scrollTop()){
-
-          $sidebar.stop().animate({
-
-            marginTop: 20
-
-          });
-
-        }else{
-
-          $sidebar.stop().animate({
-
-            marginTop: ($window.scrollTop() - offset.top) + 20
-
-          });
-
-        }
-
-      });
-
-    }
-
-  }
-
-}else{
-
-  function cleanto_sidebar_scroll(){}
-
-}
-
-/************* Code by developer side --- ****************/
-
-jQuery(document).on("keyup keydown blur",".add_show_error_class",function(event){
-
-  var id = jQuery(this).attr("id");
-
-  var Number = /(?:\(?\+\d{2}\)?\s*)?\d+(?:[ -]*\d+)*$/;
-
-  if(jQuery(this).hasClass("error")){
-
-    jQuery( this ).removeClass("error");
-
-    jQuery( "#"+id ).parent().removeClass("error");
-
-    jQuery( this ).addClass("show-error");
-
-    jQuery( "#"+id ).parent().addClass("show-error");
-
-    if(jQuery("#ct-user-phone").val() != ""){
-
-      if(!jQuery("#ct-user-phone").val().match(Number)){
-
-        jQuery( ".intl-tel-input" ).parent().addClass("show-error");
-
-      }
-
-    }
-
-  }else{
-
-    jQuery( this ).removeClass("error");
-
-    jQuery( "#"+id ).parent().removeClass("error");
-
-    jQuery( this ).removeClass("show-error");
-
-    jQuery( "#"+id ).parent().removeClass("show-error");
-
-    if(jQuery("#ct-user-phone").val() != ""){
-
-      if(jQuery("#ct-user-phone").val().match(Number)){
-
-        jQuery( ".intl-tel-input" ).parent().removeClass("show-error");
-
-      }
-
-    }
-
-  }
-
-});
-
-jQuery(document).on("keyup keydown blur",".add_show_error_class_for_login",function(event){
-
-  var id = jQuery(this).attr("id");
-
-  if(jQuery(this).hasClass("error")){
-
-    jQuery( this ).removeClass("error");
-
-    jQuery( "#"+id ).parent().removeClass("error");
-
-    jQuery( this ).addClass("show-error");
-
-    jQuery( "#"+id ).parent().addClass("show-error");
-
-  }else{
-
-    jQuery( this ).removeClass("error");
-
-    jQuery( "#"+id ).parent().removeClass("error");
-
-    jQuery( this ).removeClass("show-error");
-
-    jQuery( "#"+id ).parent().removeClass("show-error");
-
-  }
-
-});
-
-jQuery(document).ready(function(){
-
-  var two_checkout_status = twocheckout_Obj.twocheckout_status;
-
-  if(two_checkout_status == "Y"){
-
-    TCO.loadPubKey("sandbox");
-
-  }
-
-});
-
-var clicked = false;
-
-jQuery(document).ready(function () {
-
-  jQuery(document).on("change","#recurrence-booking",function () {
-
-    var recurrence_booking = jQuery("#recurrence-booking").prop("checked");
-
-    if(recurrence_booking == true){
-
-      jQuery(".recurrence_type_dropdown").show();
-
-      jQuery(".recurrence_type_dropdown").show();
-
-    } else{
-
-      jQuery(".recurrence_type_dropdown").hide();
-
-      jQuery(".recurrence_type_dropdown").hide();
-
-    }
-
-  });
-
-});
-
-jQuery(document).on("click",".ct-provider-img",function(e){
-    jQuery(".date_time_error1").hide();
-});
-
-jQuery(document).on("click","#complete_bookings",function(e){
-
-  var site_url=siteurlObj.site_url;
-
-  var ajax_url=ajaxurlObj.ajax_url;
-
-  var front_url=fronturlObj.front_url;
-
-  var stripe_pubkey = baseurlObj.stripe_publishkey;
-
-  var stripe_status = baseurlObj.stripe_status;   
-
-
-
-  var terms_condition_setting_value=termsconditionObj.terms_condition;
-
-  var privacy_policy_setting_value=privacypolicyObj.privacy_policy;
-
-  var thankyou_page_setting_value=thankyoupageObj.thankyou_page;
-
-  var existing_username = jQuery("#ct-user-name").val();
-
-  var existing_password = jQuery("#ct-user-pass").val();
-
-  var password = jQuery("#ct-preffered-pass").val();
-
-  var firstname = jQuery("#ct-first-name").val();
-
-  var username = jQuery("#ct-username").val();
-
-  var lastname = jQuery("#ct-last-name").val();
-
-  var custom_rate = jQuery("#custom_rate").val();
-  
-  var staff_id_status = jQuery('.provider_disable').attr('data-staff_id');
-
-  var email = "";
-
-  if(guest_user_status == "on"){
-
-    email = jQuery("#ct-email-guest").val();
-
-  }else{
-
-    if(is_login_user == "Y"){
-
-      email = jQuery("#ct-email").val();
-
-    }else{
-
-      email = jQuery("#ct-email").val();
-
-    }
-
-  }
-
-  var phone = jQuery("#ct-user-phone").val();
-
-  /***newly added start***/
-
-  var user_address = jQuery("#ct-street-address").val();
-
-  var user_zipcode = jQuery("#ct-zip-code").val();
-
-  var user_city = jQuery("#ct-city").val();
-
-  var user_state = jQuery("#ct-state").val();
-
-  if(appoint_details.status == "on"){
-
-    if(check_addresss.status="on"){ var address = jQuery("#app-street-address").val(); }
-
-    else { var address = jQuery("#ct-street-address").val(); }
-
-    if(check_zip_code.status="on"){ var zipcode = jQuery("#app-zip-code").val(); }
-
-    else { var zipcode = jQuery("#ct-zip-code").val(); }
-
-    if(check_city.status="on"){ var city = jQuery("#app-city").val(); }
-
-    else { var city = jQuery("#ct-city").val(); }
-
-    if(check_state.status="on"){ var state = jQuery("#app-state").val(); }
-
-    else { var state = jQuery("#ct-state").val(); }
-
-  }
-
-  else {
-
-    var address = jQuery("#ct-street-address").val();
-
-    var zipcode = jQuery("#ct-zip-code").val();
-
-    var city = jQuery("#ct-city").val();
-
-    var state = jQuery("#ct-state").val();
-
-  }
-
-  var notes = jQuery("#ct-notes").val();
-
-  //var payment_method = jQuery(".payment_gateway:checked").val();
-  var payment_method = "stripe-payment";
-
-  var staff_id = jQuery(".provider_disable:checked").attr("data-staff_id");
-
-
-  if(staff_id == undefined){
-
-    var staff_id = "";
-
-  } else {
-
-    var staff_id = staff_id;
-
-  }
-
-  var v_c_status = jQuery(".vc_status").prop("checked");
-
-  var vc_status = "";
-
-   if(v_c_status == undefined){
-
-    vc_status = "-";
-
-  }else{
-
-    if(v_c_status == true){ vc_status = "Y"; }else{ vc_status = "N"; }
-
-  }
-
-  var prkng_status = jQuery(".p_status").prop("checked");
-
-  var p_status = "";
-
-  if(prkng_status == undefined){
-
-    p_status = "-";
-
-  }else{
-
-    if(prkng_status == true){ p_status = "Y"; }else{ p_status = "N"; }
-
-  }
-
-  var con_status = jQuery("#contact_status").val();
-
-  var contact_status = "";
-
-  if(con_status == "Other"){
-
-    contact_status = jQuery("#other_contact_status").val();
-
-  }else if(con_status == undefined){
-
-    contact_status = "";
-
-  }
-
-  else{
-
-    contact_status = jQuery("#contact_status").val();
-
-  }
-
-  var terms_condition = jQuery("#accept-conditions").prop("checked");
-
-  var tc_check="N";
-
-  if(terms_condition_setting_value == "Y" || privacy_policy_setting_value == "Y"){
-
-    if(terms_condition == true){
-
-      tc_check="Y";
-
-    }
-
-  }else{
-
-    tc_check="Y";
-
-  }
-
-  var booking_date_text = jQuery(".cart_date").text();
-
-  var booking_date = jQuery(".cart_date").attr("data-date_val");
-
-  var booking_time = jQuery(".cart_time").attr("data-time_val");
-
-  var booking_time_text = jQuery(".cart_time").text();
-
-  var booking_date_time = booking_date+" "+booking_time;
-
-  var currency_symbol = jQuery(this).attr("data-currency_symbol");
-
-  var cart_sub_total=jQuery(".cart_sub_total").text();
-
-  var amount = cart_sub_total.replace(currency_symbol, "");
-
-  var cart_discount=jQuery(".cart_discount").text().substring(2);
-
-  var discount = cart_discount.replace(currency_symbol, "");
-
-  var cart_tax=jQuery(".cart_tax").text();
-
-  var taxes = cart_tax.replace(currency_symbol, "");
-
-  var cart_special_days=jQuery(".cart_special_days").text();
-
-  var special_days = cart_special_days.replace(currency_symbol, "");
-
-  var partialamount=jQuery(".partial_amount").text();
-
-  var partial_amount = partialamount.replace(currency_symbol, "");
-
-  var cart_total=jQuery(".cart_total").text();
-
-  var net_amount = cart_total.replace(currency_symbol, "");
-
-	
-
-	if(net_amount<minimum_booking_price){
-
-		jQuery(".minimum_price_show").css("display","block");	
-
-		return false;
-
-	}else{
-
-		jQuery(".minimum_price_show").css("display","none");
-
-	}
-
-
-
-
-    var current_amount = "";
-
-
-
-  var cart_counting = jQuery("#total_cart_count").val();
-
-  var coupon_code=jQuery("#coupon_val").val();
-
-  var user_coupon_val=jQuery("#user_coupon_val").val();
-
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
-
-  var frequent_discount_amount = 0;
-
-  var recurrence_booking_1 = "N";
-
-  if(frequently_discount_id != "1"){
-
-    recurrence_booking_1 ="Y";
-
-    var frequent_discount_text=jQuery(".frequent_discount").text();
-
-    frequent_discount_amount = frequent_discount_text.replace(currency_symbol, "");
-
-  }
-
-  var no_units_in_cart_err= jQuery("#no_units_in_cart_err").val();
-
-  var no_units_in_cart_err_count= jQuery("#no_units_in_cart_err_count").val();
-
- 
-
-  dataString={staff_id_status:staff_id_status,existing_username:existing_username,existing_password:existing_password,password:password,firstname:firstname,username:username,lastname:lastname,email:email,phone:phone,user_address:user_address,user_zipcode:user_zipcode,user_city:user_city,user_state:user_state,address:address,zipcode:zipcode,city:city,state:state,notes:notes,vc_status:vc_status,p_status:p_status,contact_status:contact_status,payment_method:payment_method,staff_id:staff_id,amount:amount,discount:discount,taxes:taxes,partial_amount:partial_amount,net_amount:net_amount,booking_date_time:booking_date_time,frequently_discount:frequently_discount_id,frequent_discount_amount:frequent_discount_amount,coupon_code:coupon_code,user_coupon_val:user_coupon_val,guest_user_status:guest_user_status,recurrence_booking:recurrence_booking_1,current_amount:current_amount,is_login_user:is_login_user,special_days:special_days,custom_rate:custom_rate, action:"complete_booking"};
-  
-  if(jQuery("#user_details_form").valid()){
-
-    if(jQuery("input[name='service-radio']:checked").val() != "on" && jQuery("#ct-service-0").val() != "off" && cart_counting == 1){
-
-      clicked=false;
-
-      jQuery(".ct-loading-main-complete_booking").hide();
-
-      jQuery(".service_not_selected_error").css("display","block");
-
-      jQuery(".service_not_selected_error").css("color","red");
-
-      jQuery(".service_not_selected_error").html(errorobj_please_select_a_service);
-
-      jQuery(this).attr("href","#service_not_selected_error");
-
-      /*}*/
-
-    }else if(jQuery(".ser_name_for_error").text() == "Cleaning Service" && cart_counting == 1){
-
-      clicked=false;
-
-      jQuery(".ct-loading-main-complete_booking").hide();
-
-      jQuery(".service_not_selected_error_d2").css("color","red");
-
-      jQuery(".service_not_selected_error_d2").html(errorobj_please_select_a_service);
-
-      jQuery(this).attr("href","#service_not_selected_error_d2");
-
-    }else if(jQuery("#ct_selected_servic_method .service-method-name").text() == "Service Usage Methods" && cart_counting == 1){
-
-      clicked=false;
-
-      jQuery(".method_not_selected_error").css("display","block");
-
-      jQuery(".method_not_selected_error").css("color","red");
-
-      jQuery(".method_not_selected_error").html("Please Select Method");
-
-      jQuery(this).attr("href","#method_not_selected_error");
-
-    }else if(cart_counting == 1){
-
-      clicked=false;
-
-      jQuery(".ct-loading-main-complete_booking").hide();
-
-      jQuery(".empty_cart_error").css("display","block");
-
-      jQuery(".empty_cart_error").css("color","red");
-
-      jQuery(".empty_cart_error").html(errorobj_please_select_units_or_addons);
-
-      jQuery(this).attr("href","#empty_cart_error");
-
-    
-
-    }else if(staff_id < 0 || staff_id == ""){
-      clicked=false;
-
-      jQuery(".ct-loading-main-complete_booking").hide();
-
-      jQuery(".date_time_error1").css("display","block");
-     
-      jQuery(".date_time_error1").css("color","red");
-
-      jQuery(".date_time_error1").html("Please select trainer");
-
-      jQuery(this).attr("href","#date_time_error_id1");
-    }else if(booking_date_text == "" && booking_time_text == ""){
-
-      clicked=false;
-
-      jQuery(".ct-loading-main-complete_booking").hide();
-
-      jQuery(".date_time_error").css("display","block");
-
-      jQuery(".date_time_error").css("color","red");
-
-      jQuery(".date_time_error").html(errorobj_please_select_appointment_date);
-
-      jQuery(this).attr("href","#date_time_error_id");
-
-    }else if(no_units_in_cart_err == "units_and_addons_both_exists" && no_units_in_cart_err_count == "unit_not_added"){
-
-      clicked=false;
-
-      jQuery(".ct-loading-main-complete_booking").hide();
-
-      jQuery(".no_units_in_cart_error").show();
-
-      jQuery(".no_units_in_cart_error").css("color","red");
-
-      jQuery(".no_units_in_cart_error").html(errorobj_please_select_atleast_one_unit);
-
-      jQuery(this).attr("href","#no_units_in_cart_error");
-
-    }else if(jQuery("#check_login_click").val() == "not" && jQuery("#existing-user").prop("checked") == true){
-
-      clicked=false;
-
-      jQuery(".ct-loading-main-complete_booking").hide();
-
-      jQuery(".login_unsuccessfull").css("display","block");
-
-      jQuery(".login_unsuccessfull").css("color","red");
-
-      jQuery(".login_unsuccessfull").css("margin-left","15px");
-
-      jQuery(".login_unsuccessfull").html(errorobj_please_login_to_complete_booking);
-
-      jQuery(this).attr("href","#login_unsuccessfull");
-
-    }else{
-
-      if(tc_check=="Y"){
-
-     //   if(clicked===false){
-
-          jQuery(this).attr("href","javascript:void(0);");
-
-          clicked=true;
-      if(payment_method == "stripe-payment"){ 
-
-            let paymentIntentId = $("#payment_intent_id").val();
-            if (!paymentIntentId) {
-                $("#stripePayBtn").trigger("click");
-                return;
-            }
-            dataString.payment_intent_id = paymentIntentId;
-            jQuery(".ct-loading-main-complete_booking").show();
-
-            jQuery.ajax({
-
-              type:"POST",
-
-              url:front_url+"checkout.php",
-
-              data:dataString,
-
-              success:function(response){
-
-                if(jQuery.trim(response) == "ok"){
-
-                  jQuery(".ct-loading-main-complete_booking").hide();
-
-                  window.location=thankyou_page_setting_value; 
-
-                }else{
-
-                  clicked=false; 
-
-                  jQuery(".ct-loading-main-complete_booking").hide();
-
-                  jQuery("#ct-card-payment-error").show();
-
-                  jQuery("#ct-card-payment-error").text(response);
-
-                }
-
-              }
-
-            });
-
-   
-
-          payment_process_js(payment_method,thankyou_page_setting_value,dataString,front_url);
-
-        }else{
-          e.preventDefault();
-
-        }
-
-      // }else{
-
-      //   if(terms_condition_setting_value == "Y" || privacy_policy_setting_value == "Y"){
-
-      //   jQuery(this).attr("href","javascript:void(0);");
-
-      //   clicked=false;
-
-      //   jQuery(".ct-loading-main-complete_booking").hide();
-
-      //     jQuery(".terms_and_condition").show();
-
-      //     jQuery(".terms_and_condition").css("color","red");
-
-      //     jQuery(".terms_and_condition").html(errorobj_please_accept_terms_and_conditions);
-
-      //   }
-
-      // }
-
-    }
-  }
-  }
-
-  jQuery(".add_show_error_class").each(function(){
-
-    jQuery(this).trigger("keyup");
-
-  });
-
-});
-
-
-jQuery(document).on("click","#accept-conditions",function(){
-
-  jQuery(".terms_and_condition").hide();
-
-});
-
-jQuery(document).on("click","#login_existing_user",function(){
-
-  jQuery(".add_show_error_class_for_login").each(function(){
-
-    jQuery(this).trigger("keyup");
-
-  });
-
-  jQuery(".add_show_error_class").each(function(){
-
-    var id = jQuery(this).attr("id");
-
-    jQuery( this ).removeClass("error");
-
-    jQuery( "#"+id ).parent().removeClass("error");
-
-    jQuery( this ).removeClass("show-error");
-
-    jQuery( "#"+id ).parent().removeClass("show-error");
-
-    jQuery( ".intl-tel-input" ).parent().removeClass("show-error");
-
-  });
-
-  var site_url=siteurlObj.site_url;
-
-  var ajax_url=ajaxurlObj.ajax_url;
-
-  var existing_username = jQuery("#ct-user-name").val();
-
-  var existing_password = jQuery("#ct-user-pass").val();
-  dataString={existing_username:existing_username,existing_password:existing_password,action:"get_existing_user_data"};
-
-  //if(!jQuery("#user_login_form").valid()){ return false; }
-
-  jQuery.ajax({
-
-    type:"POST",
-
-    url:ajax_url+"front_ajax.php",
-
-    data:dataString,
-
-    success:function(response){
-    
-      var userdata=jQuery.parseJSON(response);
-
-      if(userdata.status == "Incorrect Username or Password"){
-
-        jQuery(".login_unsuccessfull").css("display","block");
-
-        jQuery(".login_unsuccessfull").css("color","red");
-
-        jQuery(".login_unsuccessfull").css("margin-left","15px");
-
-        jQuery("#check_login_click").val("not");
-
-        jQuery(".login_unsuccessfull").html("Sorry Wrong Username Or Password");
-
-        is_login_user = "N";
-
-        jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
-
-      }else{
-
-        is_login_user = "Y";
-
-				
-
-        jQuery("#check_login_click").val("clicked");
-
-        jQuery("#pay-cash").removeAttr('checked');
-
-        jQuery(".client_logout").css("display","block");
-
-        jQuery(".client_logout").show();
-
-        jQuery("#ct-email").val(userdata.email);
-
-        jQuery(".fname").text(userdata.firstname);
-
-        jQuery(".lname").text(userdata.lastname);
-
-        jQuery(".hide_login_btn").hide();
-
-        jQuery(".hide_radio_btn_after_login").hide();
-
-        jQuery(".hide_email").hide();
-
-        jQuery(".hide_login_email").hide();
-
-        jQuery(".hide_password").hide();
-
-        jQuery(".ct-peronal-details").show();
-
-        jQuery(".login_unsuccessfull").hide();
 
         jQuery(".ct-sub").hide();
 
-        
+    }
 
-        jQuery("#ct-first-name").val(userdata.firstname);
+    if (ct_postalcode_status_check == "Y") {
 
-        jQuery("#ct-username").val(userdata.username);
+        jQuery(".ct_remove_id").attr("id", "");
 
-        jQuery("#ct-last-name").val(userdata.lastname);
+        jQuery(document).on("click", ".ct_remove_id", function() {
 
-        jQuery("#ct-user-phone").intlTelInput("setNumber", userdata.phone);
+            jQuery("#ct_postal_code").focus();
 
-        if(check_addresss.statuss=="on"){ jQuery("#ct-street-address").val(userdata.address); }
+            jQuery("#ct_postal_code").keyup();
 
-        if(check_zip_code.statuss=="on"){  jQuery("#ct-zip-code").val(userdata.zip); }
-
-        if(check_city.statuss=="on"){  jQuery("#ct-city").val(userdata.city); }
-
-        if(check_state.statuss=="on"){  jQuery("#ct-state").val(userdata.state); }
-
-        jQuery("#ct-notes").val(userdata.notes);
-
-        if(userdata.vc_status == "N"){
-
-          jQuery("#vaccum-no").attr("checked", true);
-
-        }else{
-
-          jQuery("#vaccum-yes").attr("checked", true);
-
-        }
-
-        if(userdata.p_status == "N"){
-
-          jQuery("#parking-no").attr("checked", true);
-
-        }else{
-
-          jQuery("#parking-yes").attr("checked", true);
-
-        }
-
-        var con_staatus = userdata.contact_status;
-
-        if(con_staatus == "I'll be at home" || con_staatus == "Please call me" || con_staatus == "The key is with the doorman"){
-
-          jQuery("#contact_status").val(userdata.contact_status);
-
-        }else{
-
-          jQuery("#contact_status").val("Other");
-
-          jQuery(".ct-option-others").show();
-
-          jQuery("#other_contact_status").val(userdata.contact_status);
-
-        }
-
-        jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
-
-				
-
-				jQuery(".wallet_amount_display").css("display","block");
-
-				jQuery(".wallet_amount_display").html(userdata.wallet_amount);
-
-        /* jQuery(".user_wallet_amount_value").attr('data-wallet', userdata.wallet_amount); */
-
-      }
+        });
 
     }
 
-  });
+    jQuery(".ct-sub").show();
 
-});
+    jQuery(".ct-loading-main-complete_booking").hide();
 
-jQuery(document).on("click","#ct-user-name",function(){
+    jQuery(".remove_guest_user_preferred_email").hide();
 
-  jQuery(".login_unsuccessfull").hide();
+    jQuery(".show_methods_after_service_selection").hide();
 
-});
+    jQuery(".freq_discount_display").hide();
 
-jQuery(document).on("click","#ct-user-pass",function(){
+    jQuery(".hide_allsss_addons").hide();
 
-  jQuery(".login_unsuccessfull").hide();
+    jQuery(".partial_amount_hide_on_load").hide();
 
-});
+    jQuery(".hide_right_side_box").hide();
 
-jQuery(document).on("change",".existing-user",function() {
+    jQuery(".client_logout").hide();
 
-    var country_flag = jQuery(".selected-flag").attr("title");
+    jQuery(".postal_code_error").show();
+
+    jQuery(".postal_code_error").html(errorobj_please_enter_postal_code);
+
+    jQuery(".hideservice_name").hide();
+
+    jQuery(".hidedatetime_value").hide();
+
+    jQuery(".hideduration_value").hide();
+
+    jQuery(".s_m_units_design_1").hide();
+
+    jQuery(".s_m_units_design_2").hide();
+
+    jQuery(".s_m_units_design_3").hide();
+
+    jQuery(".s_m_units_design_4").hide();
+
+    jQuery(".s_m_units_design_5").hide();
+
+    jQuery(".ct-provider-list").hide();
+
+    /*Coupon Apply*/
+
+    jQuery(".ct-display-coupon-code").hide();
+
+    jQuery(".coupon_display").hide();
+
+
+
+    /* Jay */
+
+    jQuery(".user_coupon_display").hide();
+
+    jQuery(".ct-display-user-coupon-code").hide();
+
+    /* */
+
+
+
+    /* Jay */
+
+    jQuery(".ct-display-referral-code").hide();
+
+    /* */
+
+
+
+    /* user contact no. */
+
     var site_url = siteurlObj.site_url;
+
     var country_alpha_code = countrycodeObj.alphacode;
+
     var allowed_country_alpha_code = countrycodeObj.allowed;
+
     var array = allowed_country_alpha_code.split(",");
 
-  if(jQuery(".existing-user").is(":checked")) {
+    var phone_visi = phone_status.statuss;
 
-		jQuery(".login_unsuccessfull").html("");
+    if (phone_visi == "on") {
 
-    jQuery("#ct-email-guest").val("");
+        if (allowed_country_alpha_code = "") {
 
-    jQuery("#ct-user-name").val("");
+            jQuery("#ct-user-phone").intlTelInput({
 
-    jQuery("#ct-user-pass").val("");
+                onlyCountries: array,
 
-    jQuery("#ct-preffered-name").val("");
+                autoPlaceholder: false,
 
-    jQuery("#ct-preffered-pass").val("");
+                utilsScript: site_url + "assets/js/utils.js"
 
-    jQuery("#ct-first-name").val("");
+            });
 
-    jQuery("#ct-last-name").val("");
+            jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
 
-    jQuery("#ct-email").val("");
+            jQuery(".selected-flag").attr("title", countrycodeObj.countrytitle);
 
-    jQuery("#ct-user-phone").val("");
+        } else {
 
-    jQuery("#ct-street-address").val("");
+            jQuery("#ct-user-phone").intlTelInput({
 
-    jQuery("#ct-zip-code").val("");
+                autoPlaceholder: false,
 
-    jQuery("#ct-city").val("");
+                utilsScript: site_url + "assets/js/utils.js"
 
-    jQuery("#ct-state").val("");
+            });
 
-    jQuery("#ct-notes").val("");
+            jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
 
-		jQuery(".spaical_referral_class").css("display","none");
+            jQuery(".selected-flag").attr("title", countrycodeObj.countrytitle);
 
-    jQuery(".ct-login-existing").show( "blind", {direction: "vertical"}, 700);
-
-    jQuery(".ct-new-user-details").hide( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".ct-peronal-details").hide( "blind", {direction: "vertical"}, 300);
-
-    guest_user_status ="off";
-
-    jQuery('#ct-user-phone').intlTelInput({
-        onlyCountries: array,
-
-        autoPlaceholder: false,
-
-        utilsScript: site_url + 'assets/js/utils.js',
-      });
-
-    jQuery('.selected-flag .iti-flag').addClass(country_alpha_code);
-    jQuery('.selected-flag').attr('title', country_flag);
-  }
-
-});
-
-jQuery(document).on("change",".new-user",function() {
-
-    var country_flag = jQuery(".selected-flag").attr("title");
-    var site_url = siteurlObj.site_url;
-    var country_alpha_code = countrycodeObj.alphacode;
-    var allowed_country_alpha_code = countrycodeObj.allowed;
-    var array = allowed_country_alpha_code.split(",");
-  if(jQuery(".new-user").is(":checked")) {
-
-		jQuery(".login_unsuccessfull").html("");
-
-    jQuery("#ct-email-guest").val("");
-
-    jQuery("#ct-user-name").val("");
-
-    jQuery("#ct-user-pass").val("");
-
-    jQuery("#ct-preffered-name").val("");
-
-    jQuery("#ct-preffered-pass").val("");
-
-    jQuery("#ct-first-name").val("");
-
-    jQuery("#ct-last-name").val("");
-
-    jQuery("#ct-email").val("");
-
-    jQuery("#ct-user-phone").val("");
-
-    jQuery("#ct-street-address").val("");
-
-    jQuery("#ct-zip-code").val("");
-
-    jQuery("#ct-city").val("");
-
-    jQuery("#ct-state").val("");
-
-    jQuery("#ct-notes").val("");
-
-    jQuery(".spaical_referral_class").css("display","block");
-
-    jQuery(".ct-new-user-details").show( "blind", {direction: "vertical"}, 700);
-
-    jQuery(".ct-login-existing").hide( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".ct-peronal-details").show( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".remove_preferred_password_and_preferred_email").show( "blind", {direction: "vertical"}, 300);    
-
-    jQuery(".remove_guest_user_preferred_email").hide( "blind", {direction: "vertical"}, 300);  
-
-    if(jQuery( ".remove_zip_code_class" ).hasClass( "ct-md-6" )){
-
-      jQuery(".remove_zip_code_class").removeClass("ct-md-6");
-
-      jQuery(".remove_zip_code_class").addClass("ct-md-4");
+        }
 
     }
 
-    if(jQuery( ".remove_city_class" ).hasClass( "ct-md-6" )){
+    /*  create the back to top button */
 
-      jQuery(".remove_city_class").removeClass("ct-md-6");
+    jQuery("body").prepend('<a href="javascript:void(0)" class="ct-back-to-top"></a>');
 
-      jQuery(".remove_city_class").addClass("ct-md-4");
+    var amountScrolled = 500;
+
+    jQuery(window).scroll(function() {
+
+        if (jQuery(window).scrollTop() > amountScrolled) {
+
+            jQuery("a.ct-back-to-top").fadeIn("slow");
+
+        } else {
+
+            jQuery("a.ct-back-to-top").fadeOut("slow");
+
+        }
+
+    });
+
+    jQuery("a.ct-back-to-top, a.ct-simple-back-to-top").click(function() {
+
+        jQuery("html, body").animate({ scrollTop: 0 }, 2000);
+
+        return false;
+
+    });
+
+    var us_check = check_us;
+
+    var password_check = check_password;
+
+    jQuery("#user_login_form").validate({
+
+        rules: {
+
+            ct_user_name: { required: true, maxlength: us_check.max },
+
+            ct_user_pass: { required: true, minlength: password_check.min, maxlength: password_check.max }
+
+        },
+
+        messages: {
+
+            ct_user_name: { required: "Please Enter Username" },
+
+            ct_user_pass: { required: errorobj_please_enter_password, minlength: errorobj_min_ps, maxlength: errorobj_max_ps }
+
+        }
+
+    });
+
+    var front_url = fronturlObj.front_url;
+
+    jQuery.validator.addMethod("pattern_phone", function(value, element) {
+
+        return this.optional(element) || /^[0-9+]*$/.test(value);
+
+    }, "Enter Only Numerics");
+
+    jQuery.validator.addMethod("pattern_zip", function(value, element) {
+
+        return this.optional(element) || /^[a-zA-Z 0-9\-\ ]*$/.test(value);
+
+    }, "Enter Only Alphabets");
+
+    jQuery.validator.addMethod("pattern_name", function(value, element) {
+
+        return this.optional(element) || /^[a-zA-Z ']+$/.test(value);
+
+    }, "Enter Only Alphabets");
+
+    jQuery.validator.addMethod("pattern_city_state", function(value, element) {
+
+        return this.optional(element) || /^[a-zA-Z &]+$/.test(value);
+
+    }, "Enter Only Alphabets");
+
+    var phone_check = phone_status;
+
+    var password_check = check_password;
+
+    var fn_check = check_fn;
+
+    var us_check = check_us;
+
+    var ln_check = check_ln;
+
+    var address_check = check_addresss;
+
+    var zip_check = check_zip_code;
+
+    var city_check = check_city;
+
+    var state_check = check_state;
+
+    var notes_check = check_notes;
+
+    /* validaition condition*/
+
+    jQuery("#user_details_form").validate();
+
+    if (appoint_details.status == "on") {
+
+        if (check_addresss.statuss == "on" && check_addresss.required == "Y") {
+
+            jQuery("#app-street-address").rules("add",
+
+                {
+                    required: true,
+                    minlength: check_addresss.min,
+                    maxlength: check_addresss.max,
+
+                    messages: { required: errorobj_req_sa, minlength: errorobj_min_sa, maxlength: errorobj_max_sa }
+                });
+
+        }
+
+        if (check_zip_code.statuss == "on" && check_zip_code.required == "Y") {
+
+            jQuery("#app-zip-code").rules("add", { required: true, minlength: check_zip_code.min, maxlength: check_zip_code.max, messages: { required: errorobj_req_zc, minlength: errorobj_min_zc, maxlength: errorobj_max_zc } });
+
+        }
+
+        if (check_city.statuss == "on" && check_city.required == "Y") {
+
+            jQuery("#app-city").rules("add",
+
+                {
+                    required: true,
+                    minlength: check_city.min,
+                    maxlength: check_city.max,
+
+                    messages: { required: errorobj_req_ct, minlength: errorobj_min_ct, maxlength: errorobj_max_ct }
+                });
+
+        }
+
+        if (check_state.statuss == "on" && check_state.required == "Y") {
+
+            jQuery("#app-state").rules("add",
+
+                {
+                    required: true,
+                    minlength: check_state.min,
+                    maxlength: check_state.max,
+
+                    messages: {
+                        required: errorobj_req_st,
+                        minlength: errorobj_min_st,
+                        maxlength: errorobj_max_st
+
+                    }
+                });
+
+        }
 
     }
 
-    if(jQuery( ".remove_state_class" ).hasClass( "ct-md-6" )){
+    if (fn_check.statuss == "on" && fn_check.required == "Y") {
 
-      jQuery(".remove_state_class").removeClass("ct-md-6");
+        jQuery("#ct-first-name").rules("add",
 
-      jQuery(".remove_state_class").addClass("ct-md-4");
+            {
+                required: true,
+                minlength: fn_check.min,
+                maxlength: fn_check.max,
+                pattern_name: true,
 
-    }
-
-    guest_user_status ="off";
-
-  }
-  jQuery('#ct-user-phone').intlTelInput({
-        onlyCountries: array,
-
-        autoPlaceholder: false,
-
-        utilsScript: site_url + 'assets/js/utils.js',
-      });
-
-    jQuery('.selected-flag .iti-flag').addClass(country_alpha_code);
-    jQuery('.selected-flag').attr('title', country_flag);
-
-});
-
-
-
-jQuery(document).on("change",".guest-user",function() {
-
-  if(jQuery(".guest-user").is(":checked")) {
-
-    jQuery("#ct-email-guest").val("");
-
-    jQuery("#ct-user-name").val("");
-
-    jQuery("#ct-user-pass").val("");
-
-    jQuery("#ct-preffered-name").val("");
-
-    jQuery("#ct-preffered-pass").val("");
-
-    jQuery("#ct-first-name").val("");
-
-    jQuery("#ct-last-name").val("");
-
-    jQuery("#ct-email").val("");
-
-    jQuery("#ct-user-phone").val("");
-
-    jQuery("#ct-street-address").val("");
-
-    jQuery("#ct-zip-code").val("");
-
-    jQuery("#ct-city").val("");
-
-    jQuery("#ct-state").val("");
-
-    jQuery("#ct-notes").val("");
-
-    jQuery(".ct-new-user-details").show( "blind", {direction: "vertical"}, 700);
-
-    jQuery(".ct-login-existing").hide( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".ct-peronal-details").show( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".remove_preferred_password_and_preferred_email").hide( "blind", {direction: "vertical"}, 300);    
-
-    jQuery(".remove_guest_user_preferred_email").show( "blind", {direction: "vertical"}, 300);
-
-    if(jQuery( ".remove_zip_code_class" ).hasClass( "ct-md-4" )){
-
-      jQuery(".remove_zip_code_class").removeClass("ct-md-4");
-
-      jQuery(".remove_zip_code_class").addClass("ct-md-6");
+                messages: { required: errorobj_req_fn, minlength: errorobj_min_fn, maxlength: errorobj_max_fn }
+            });
 
     }
 
-    if(jQuery( ".remove_city_class" ).hasClass( "ct-md-4" )){
+    if (us_check.statuss == "on" && us_check.required == "Y") {
 
-      jQuery(".remove_city_class").removeClass("ct-md-4");
+        jQuery("#ct-username").rules("add",
 
-      jQuery(".remove_city_class").addClass("ct-md-6");
+            {
+                required: true,
+                minlength: us_check.min,
+                maxlength: us_check.max,
 
-    }
-
-    if(jQuery( ".remove_state_class" ).hasClass( "ct-md-4" )){
-
-      jQuery(".remove_state_class").removeClass("ct-md-4");
-
-      jQuery(".remove_state_class").addClass("ct-md-6");
+                messages: { required: "Username is required", minlength: "Please enter minimum 3 Characters", maxlength: "Please enter minimum 15 Characters" }
+            });
 
     }
 
-    guest_user_status ="on";
+    if (ln_check.statuss == "on" && ln_check.required == "Y") {
 
-  }
+        jQuery("#ct-last-name").rules("add",
 
-  jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
+            {
+                required: true,
+                minlength: ln_check.min,
+                maxlength: ln_check.max,
+                pattern_name: true,
 
-});
+                messages: { required: errorobj_req_ln, minlength: errorobj_min_ln, maxlength: errorobj_max_ln }
+            });
 
-jQuery(document).on("click","#logout",function() {
+    }
 
-  var site_url=siteurlObj.site_url;
+    if (phone_check.statuss == "on" && phone_check.required == "Y") {
 
-  var ajax_url=ajaxurlObj.ajax_url;
+        jQuery("#ct-user-phone").rules("add",
 
-  var id = jQuery(this).attr("data-id");
+            {
+                required: true,
+                minlength: phone_check.min,
+                maxlength: phone_check.max,
 
-	jQuery(".wallet_amount_display").css("display","none");
+                messages: { required: errorobj_req_ph, minlength: errorobj_min_ph, maxlength: errorobj_max_ph }
+            });
 
-  dataString={id:id,action:"logout"};
+    }
 
-  jQuery.ajax({
+    if (address_check.statuss == "on" && address_check.required == "Y") {
 
-    type:"POST",
+        jQuery("#ct-street-address").rules("add",
 
-    url:ajax_url+"front_ajax.php",
+            {
+                required: true,
+                minlength: address_check.min,
+                maxlength: address_check.max,
 
-    data:dataString,
+                messages: { required: errorobj_req_sa, minlength: errorobj_min_sa, maxlength: errorobj_max_sa }
+            });
 
-    success:function(response){
+    }
 
-      if(jQuery.trim(response)=="logout successful"){
+    if (zip_check.statuss == "on" && zip_check.required == "Y") {
 
-        jQuery("#check_login_click").val("not");
+        jQuery("#ct-zip-code").rules("add",
 
-        jQuery(".client_logout").hide();
+            {
+                required: true,
+                minlength: zip_check.min,
+                maxlength: zip_check.max,
 
-        jQuery(".client_logout").css("display","none");
+                messages: { required: errorobj_req_zc, minlength: errorobj_min_zc, maxlength: errorobj_max_zc }
+            });
 
-        jQuery("#other_contact_status").hide();
+    }
 
-        jQuery(".hide_login_btn").show();
+    if (city_check.statuss == "on" && city_check.required == "Y") {
 
-        jQuery(".ct-peronal-details").hide();
+        jQuery("#ct-city").rules("add",
 
-        jQuery(".hide_radio_btn_after_login").show();
+            {
+                required: true,
+                minlength: city_check.min,
+                maxlength: city_check.max,
 
-        jQuery(".hide_email").show();
+                messages: { required: errorobj_req_ct, minlength: errorobj_min_ct, maxlength: errorobj_max_ct }
+            });
 
-        jQuery(".hide_login_email").show();
+    }
 
-        jQuery(".hide_password").show();
+    if (state_check.statuss == "on" && state_check.required == "Y") {
 
-        jQuery(".ct-sub").show();
+        jQuery("#ct-state").rules("add",
+
+            {
+                required: true,
+                minlength: state_check.min,
+                maxlength: state_check.max,
+
+                messages: { required: errorobj_req_st, minlength: errorobj_min_st, maxlength: errorobj_max_st }
+            });
+
+    }
+
+    if (notes_check.statuss == "on" && notes_check.required == "Y") {
+
+        jQuery("#ct-notes").rules("add",
+
+            {
+                required: true,
+                minlength: notes_check.min,
+                maxlength: notes_check.max,
+
+                messages: { required: errorobj_req_srn, minlength: errorobj_min_srn, maxlength: errorobj_max_srn }
+            });
+
+    }
+
+    if (password_check.statuss == "on" && password_check.required == "Y") {
+
+        jQuery("#ct-preffered-pass").rules("add",
+
+            {
+                required: true,
+                minlength: password_check.min,
+                maxlength: password_check.max,
+
+                messages: { required: errorobj_please_enter_password, minlength: errorobj_min_ps, maxlength: errorobj_max_ps }
+            });
+
+
+
+        jQuery("#ct-email").rules("add",
+
+            {
+                required: true,
+                email: true,
+                remote: {
+
+                    url: front_url + "firststep.php",
+
+                    type: "POST",
+
+                    async: false,
+
+                    data: {
+
+                        email: function() { return jQuery("#ct-email").val(); },
+
+                        action: "check_user_email"
+
+                    }
+
+                },
+
+                messages: { required: errorobj_please_enter_email_address, email: errorobj_please_enter_valid_email_address, remote: errorobj_email_already_exists }
+            });
+
+    }
+
+    /* end validaition condition*/
+
+    if (jQuery(".guest-user").is(":checked")) {
+
+        jQuery("#ct-email-guest").val("");
 
         jQuery("#ct-user-name").val("");
 
@@ -2402,27 +691,1787 @@ jQuery(document).on("click","#logout",function() {
 
         jQuery("#ct-notes").val("");
 
-        jQuery("#vaccum-yes").prop("checked",true);
+        jQuery(".ct-new-user-details").show("blind", { direction: "vertical" }, 700);
 
-        jQuery("#parking-yes").prop("checked",true);
+        jQuery(".ct-login-existing").hide("blind", { direction: "vertical" }, 300);
 
-        jQuery("#contact_status").val("I'll be at home");
+        jQuery(".ct-peronal-details").show("blind", { direction: "vertical" }, 300);
 
-        jQuery("#other_contact_status").val("");
+        jQuery(".remove_preferred_password_and_preferred_email").hide("blind", { direction: "vertical" }, 300);
 
-        jQuery("#existing-user").prop("checked",true);
+        jQuery(".remove_guest_user_preferred_email").show("blind", { direction: "vertical" }, 300);
 
-        jQuery(".existing-user").trigger("change");
+        if (jQuery(".remove_zip_code_class").hasClass("ct-md-4")) {
 
-        is_login_user = "N";
+            jQuery(".remove_zip_code_class").removeClass("ct-md-4");
 
-      }
+            jQuery(".remove_zip_code_class").addClass("ct-md-6");
 
-      jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
+        }
+
+        if (jQuery(".remove_city_class").hasClass("ct-md-4")) {
+
+            jQuery(".remove_city_class").removeClass("ct-md-4");
+
+            jQuery(".remove_city_class").addClass("ct-md-6");
+
+        }
+
+        if (jQuery(".remove_state_class").hasClass("ct-md-4")) {
+
+            jQuery(".remove_state_class").removeClass("ct-md-4");
+
+            jQuery(".remove_state_class").addClass("ct-md-6");
+
+        }
+
+        guest_user_status = "on";
 
     }
 
-  })
+    jQuery(".space_between_date_time").hide();
+
+    jQuery(".special_day").hide();
+
+    var site_url = siteurlObj.site_url;
+
+    var ajax_url = ajaxurlObj.ajax_url;
+
+    jQuery.ajax({
+
+        type: "POST",
+
+        url: ajax_url + "calendar_ajax.php",
+
+        data: { "get_calendar_on_page_load": 1 },
+
+        success: function(res) {
+
+            jQuery(".cal_info").html(res);
+
+            var d = new Date();
+
+            var month = d.getMonth() + 1;
+
+            var day = d.getDate();
+
+            var year = d.getFullYear();
+
+            var output = day + "-" + (month < 10 ? "0" : "") + month + "-" + year;
+
+            var selected_dates = jQuery(".selected_date").data("selected_dates");
+
+            var cur_dates = jQuery(".selected_date").data("cur_dates");
+
+            if (output == cur_dates) {
+
+                jQuery(".by_default_today_selected").addClass("active_today");
+
+            }
+
+            cleanto_sidebar_scroll();
+
+        }
+
+    });
+
+    jQuery.ajax({
+
+        type: "POST",
+
+        url: ajax_url + "front_ajax.php",
+
+        data: { "get_postal_code": 1 },
+
+        success: function(res) {
+
+            get_all_postal_code = jQuery.parseJSON(res);
+
+        }
+
+    });
+
+    /* validation for reset_password.php */
+
+    jQuery("#forget_pass").submit(function(event) {
+
+        event.preventDefault();
+
+        event.stopImmediatePropagation();
+
+    });
+
+    jQuery("#forget_pass").validate({
+
+        rules: {
+
+            rp_user_email: {
+
+                required: true,
+
+                email: true,
+
+            }
+
+        },
+
+        messages: {
+
+            rp_user_email: {
+
+                required: errorobj_please_enter_email_address,
+
+                email: errorobj_please_enter_valid_email_address
+
+            },
+
+        }
+
+    });
+
+    /* validation for reset_new_password.php */
+
+    jQuery("#reset_new_passwd").submit(function(event) {
+
+        event.preventDefault();
+
+        event.stopImmediatePropagation();
+
+    });
+
+    jQuery.validator.addMethod("noSpace", function(value, element) {
+
+        return value.indexOf(" ") < 0 && value != "";
+
+    }, "No space allowed");
+
+    jQuery("#reset_new_passwd").validate({
+
+        rules: {
+
+            n_password: {
+
+                required: true,
+
+                minlength: 8,
+
+                maxlength: 20,
+
+                noSpace: true
+
+            },
+
+            rn_password: {
+
+                required: true,
+
+                minlength: 8,
+
+                maxlength: 20,
+
+                noSpace: true
+
+            }
+
+        },
+
+        messages: {
+
+            n_password: {
+
+                required: errorobj_please_enter_new_password,
+
+                minlength: errorobj_password_must_be_8_character_long,
+
+                maxlength: "Password Must Be Only 20 Characters"
+
+            },
+
+            rn_password: {
+
+                required: errorobj_please_enter_confirm_password,
+
+                minlength: errorobj_password_must_be_8_character_long,
+
+                maxlength: "Password Must Be Only 20 Characters"
+
+            },
+
+        }
+
+    });
+
+    var front_url = fronturlObj.front_url;
+
+    jQuery.ajax({
+
+        type: "post",
+
+        data: { check_for_option: 1 },
+
+        url: front_url + "firststep.php",
+
+        success: function(res) {
+
+            if (jQuery.trim(res) != "") {
+
+                window.location = front_url + "maintainance.php";
+
+            }
+
+        }
+
+    });
+
+    jQuery('[data-toggle="tooltip"]').tooltip({ "placement": "right" });
+
+    if (is_login_user == "Y") {
+
+        var site_url = siteurlObj.site_url;
+
+        var ajax_url = ajaxurlObj.ajax_url;
+
+        jQuery(".add_show_error_class_for_login").each(function() {
+
+            jQuery(this).trigger("keyup");
+
+        });
+
+        jQuery(".add_show_error_class").each(function() {
+
+            var id = jQuery(this).attr("id");
+
+            jQuery(this).removeClass("error");
+
+            jQuery("#" + id).parent().removeClass("error");
+
+            jQuery(this).removeClass("show-error");
+
+            jQuery("#" + id).parent().removeClass("show-error");
+
+            jQuery(".intl-tel-input").parent().removeClass("show-error");
+
+        });
+
+        var existing_username = jQuery("#ct-user-name").val();
+
+        var existing_password = jQuery("#ct-user-pass").val();
+
+        // if(!jQuery("#user_login_form").valid()){ return false; }
+
+        dataString = { action: "get_login_user_data" };
+
+        jQuery.ajax({
+
+            type: "POST",
+
+            url: ajax_url + "front_ajax.php",
+
+            data: dataString,
+
+            success: function(response) {
+
+                var userdata = jQuery.parseJSON(response);
+
+                if (userdata.status == "No Login") {
+
+                    is_login_user = "N";
+
+                    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+                    return false;
+
+                } else if (userdata.status == "Incorrect Email Address or Password") {
+
+                    is_login_user = "N";
+
+                    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+                    return false;
+
+                } else {
+
+                    is_login_user = "Y";
+
+                    jQuery("#check_login_click").val("clicked");
+
+                    jQuery(".client_logout").css("display", "block");
+
+                    jQuery(".client_logout").show();
+
+                    jQuery(".fname").text(userdata.firstname);
+
+                    jQuery(".lname").text(userdata.lastname);
+
+                    jQuery("#ct-email").val(userdata.email);
+
+                    jQuery("#ct-user-name").val(userdata.email);
+
+                    jQuery("#existing-user").attr("checked", true);
+
+                    jQuery(".hide_login_btn").hide();
+
+                    jQuery(".hide_radio_btn_after_login").hide();
+
+                    jQuery(".hide_email").hide();
+
+                    jQuery(".hide_login_email").hide();
+
+                    jQuery(".hide_password").hide();
+
+                    jQuery(".ct-peronal-details").show();
+
+                    jQuery(".login_unsuccessfull").hide();
+
+                    jQuery(".ct-new-user-details").hide();
+
+                    jQuery(".ct-sub").hide();
+
+                    jQuery("#ct-first-name").val(userdata.firstname);
+
+                    jQuery("#ct-last-name").val(userdata.lastname);
+
+                    jQuery("#ct-user-phone").intlTelInput("setNumber", userdata.phone);
+
+                    if (check_addresss.statuss == "on") { jQuery("#ct-street-address").val(userdata.address); }
+
+                    if (check_zip_code.statuss == "on") { jQuery("#ct-zip-code").val(userdata.zip); }
+
+                    if (check_city.statuss == "on") { jQuery("#ct-city").val(userdata.city); }
+
+                    if (check_state.statuss == "on") { jQuery("#ct-state").val(userdata.state); }
+
+                    jQuery("#ct-notes").val(userdata.notes);
+
+                    if (userdata.vc_status == "N") {
+
+                        jQuery("#vaccum-no").attr("checked", true);
+
+                    } else {
+
+                        jQuery("#vaccum-yes").attr("checked", true);
+
+                    }
+
+                    if (userdata.p_status == "N") {
+
+                        jQuery("#parking-no").attr("checked", true);
+
+                    } else {
+
+                        jQuery("#parking-yes").attr("checked", true);
+
+                    }
+
+                    var con_staatus = userdata.contact_status;
+
+                    if (con_staatus == "I'll be at home" || con_staatus == "Please call me" || con_staatus == "The key is with the doorman") {
+
+                        jQuery("#contact_status").val(userdata.contact_status);
+
+                    } else {
+
+                        jQuery("#contact_status").val("Other");
+
+                        jQuery(".ct-option-others").show();
+
+                        jQuery("#other_contact_status").val(userdata.contact_status);
+
+                    }
+                    // jQuery(".register-btn").trigger("click");
+                    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+                }
+
+            }
+
+        });
+
+    }
+
+});
+
+
+
+
+
+/* scroll to next step */
+
+jQuery(document).on("click", ".ct-service", function() {
+
+    jQuery("html, body").stop().animate({ "scrollTop": jQuery(".ct-scroll-meth-unit").offset().top - 30 }, 800, "swing", function() {});
+
+});
+
+/* forget password */
+
+jQuery(document).on("click", "#ct_forget_password", function() {
+
+    jQuery("#rp_user_email").val("");
+
+    jQuery(".forget_pass_correct").hide();
+
+    jQuery(".forget_pass_incorrect").hide();
+
+    jQuery(".ct-front-forget-password").addClass("show-data");
+
+    jQuery(".ct-front-forget-password").removeClass("hide-data");
+
+    jQuery(".main").css("display", "block");
+
+});
+
+jQuery(document).on("click", "#ct_login_user", function() {
+
+    jQuery(".ct-front-forget-password").removeClass("show-data");
+
+    jQuery(".ct-front-forget-password").addClass("hide-data");
+
+    jQuery(".main").css("display", "none");
+
+});
+
+/* dropdown services list */
+
+/* services dropdown show hide list */
+
+jQuery(document).on("click", ".service-is", function() {
+
+    jQuery(".ct-services-dropdown").toggle("blind", { direction: "vertical" }, 300);
+
+});
+
+jQuery(document).on("click", ".select_service", function() {
+
+    jQuery("#ct_selected_service").html(jQuery(this).html());
+
+    jQuery(".ct-services-dropdown").hide("blind", { direction: "vertical" }, 300);
+
+});
+
+/* select hours based service */
+
+jQuery(document).on("click", ".ct-duration-btn", function() {
+
+    jQuery(".ct-duration-btn").each(function() {
+
+        jQuery(this).removeClass("duration-box-selected");
+
+    });
+
+    jQuery(this).addClass("duration-box-selected");
+
+});
+
+/* for show how many addon counting when checked */
+
+jQuery(document).on("click", 'input[type="checkbox"]', function() {
+
+
+
+    if (jQuery(".addon-checkbox").is(":checked")) {
+
+        jQuery(".common-selection-main.addon-select").show();
+
+    } else {
+
+        jQuery(".common-selection-main.addon-select").hide();
+
+    }
+
+});
+
+/* addons */
+
+jQuery(document).on("click", ".ct-addon-btn", function() {
+
+    var curr_methodname = jQuery(this).attr("data-method_name");
+
+    jQuery(".ct-addon-btn").each(function() {
+
+        if (jQuery(this).attr("data-method_name") == curr_methodname) {
+
+            jQuery(this).removeClass("ct-addon-selected");
+
+        }
+
+    });
+
+    jQuery(this).addClass("ct-addon-selected");
+
+});
+
+/* checkout payment method listing show hide */
+
+jQuery(document).on("click", ".cccard", function() {
+
+    var test = jQuery(this).val();
+
+    jQuery(".common-payment-style").show("blind", { direction: "vertical" }, 300);
+
+});
+
+jQuery(document).on("click", "input[name=payment-methods]", function() {
+
+    var abc = jQuery(this).val();
+
+    if (abc == 'braintree') {
+        jQuery('#braintree-payment-form').show();
+        jQuery('#ct-complete-booking-main').hide();
+    } else {
+        jQuery('#braintree-payment-form').hide();
+        jQuery('#ct-complete-booking-main').show();
+    }
+
+    if (jQuery(this).hasClass("cccard")) {
+
+        jQuery(".common-payment-style-bank-transfer").hide();
+
+        jQuery(".partial_amount_hide_on_load").hide();
+
+        jQuery("#wallet").removeAttr('checked');
+
+    } else if (jQuery(this).hasClass("pay-cash")) {
+
+        jQuery(".common-payment-style").hide();
+
+        jQuery(".common-payment-style-bank-transfer").hide();
+
+        jQuery(".partial_amount_hide_on_load").hide();
+
+        jQuery("#wallet").removeAttr('checked');
+
+    } else {
+
+        jQuery(".common-payment-style").hide();
+
+        jQuery(".common-payment-style-bank-transfer").hide();
+
+        jQuery(".partial_amount_hide_on_load").hide();
+
+        jQuery("#pay-cash").removeAttr('checked');
+
+        jQuery("#pay-card").removeAttr('checked');
+
+    }
+
+});
+
+
+
+/* bank transfer */
+
+jQuery(document).on("click", ".bank_transfer", function() {
+
+    jQuery(".common-payment-style-bank-transfer").show("blind", { direction: "vertical" }, 300);
+
+    jQuery("#wallet").removeAttr('checked');
+
+});
+
+jQuery(document).on("click", "input[name=payment-methods]", function() {
+
+    if (jQuery(this).hasClass("bank_transfer")) {
+
+        jQuery(".common-payment-style").hide();
+
+    } else {
+
+        jQuery(".common-payment-style-bank-transfer").hide();
+
+    }
+
+});
+
+/* see more instructions in service popup */
+
+jQuery(document).on("click", ".show-more-toggler", function() {
+
+    jQuery(".bullet-more").toggle("blind", { direction: "vertical" }, 500);
+
+    jQuery(".show-more-toggler:after").addClass("rotate");
+
+});
+
+/* right side scrolling cart */
+
+var scrollable_cart_value = scrollable_cartObj.scrollable_cart;
+
+if (scrollable_cart_value == "Y") {
+
+    function cleanto_sidebar_scroll() {
+
+        var $sidebar = jQuery(".ct-price-scroll"),
+
+            $window = jQuery(window),
+
+            offset = $sidebar.offset(),
+
+            sel_service = jQuery(".sel-service").text();
+
+
+
+        if (sel_service != "") {
+
+            $window.scroll(function() {
+
+                if (offset.top > $window.scrollTop()) {
+
+                    $sidebar.stop().animate({
+
+                        marginTop: 20
+
+                    });
+
+                } else {
+
+                    $sidebar.stop().animate({
+
+                        marginTop: ($window.scrollTop() - offset.top) + 40
+
+                    });
+
+                }
+
+            });
+
+        } else {
+
+            $window.scroll(function() {
+
+                if (offset.top > $window.scrollTop()) {
+
+                    $sidebar.stop().animate({
+
+                        marginTop: 20
+
+                    });
+
+                } else {
+
+                    $sidebar.stop().animate({
+
+                        marginTop: ($window.scrollTop() - offset.top) + 20
+
+                    });
+
+                }
+
+            });
+
+        }
+
+    }
+
+} else {
+
+    function cleanto_sidebar_scroll() {}
+
+}
+
+/************* Code by developer side --- ****************/
+
+jQuery(document).on("keyup keydown blur", ".add_show_error_class", function(event) {
+
+    var id = jQuery(this).attr("id");
+
+    var Number = /(?:\(?\+\d{2}\)?\s*)?\d+(?:[ -]*\d+)*$/;
+
+    if (jQuery(this).hasClass("error")) {
+
+        jQuery(this).removeClass("error");
+
+        jQuery("#" + id).parent().removeClass("error");
+
+        jQuery(this).addClass("show-error");
+
+        jQuery("#" + id).parent().addClass("show-error");
+
+        if (jQuery("#ct-user-phone").val() != "") {
+
+            if (!jQuery("#ct-user-phone").val().match(Number)) {
+
+                jQuery(".intl-tel-input").parent().addClass("show-error");
+
+            }
+
+        }
+
+    } else {
+
+        jQuery(this).removeClass("error");
+
+        jQuery("#" + id).parent().removeClass("error");
+
+        jQuery(this).removeClass("show-error");
+
+        jQuery("#" + id).parent().removeClass("show-error");
+
+        if (jQuery("#ct-user-phone").val() != "") {
+
+            if (jQuery("#ct-user-phone").val().match(Number)) {
+
+                jQuery(".intl-tel-input").parent().removeClass("show-error");
+
+            }
+
+        }
+
+    }
+
+});
+
+jQuery(document).on("keyup keydown blur", ".add_show_error_class_for_login", function(event) {
+
+    var id = jQuery(this).attr("id");
+
+    if (jQuery(this).hasClass("error")) {
+
+        jQuery(this).removeClass("error");
+
+        jQuery("#" + id).parent().removeClass("error");
+
+        jQuery(this).addClass("show-error");
+
+        jQuery("#" + id).parent().addClass("show-error");
+
+    } else {
+
+        jQuery(this).removeClass("error");
+
+        jQuery("#" + id).parent().removeClass("error");
+
+        jQuery(this).removeClass("show-error");
+
+        jQuery("#" + id).parent().removeClass("show-error");
+
+    }
+
+});
+
+jQuery(document).ready(function() {
+
+    var two_checkout_status = twocheckout_Obj.twocheckout_status;
+
+    if (two_checkout_status == "Y") {
+
+        TCO.loadPubKey("sandbox");
+
+    }
+
+});
+
+var clicked = false;
+
+jQuery(document).ready(function() {
+
+    jQuery(document).on("change", "#recurrence-booking", function() {
+
+        var recurrence_booking = jQuery("#recurrence-booking").prop("checked");
+
+        if (recurrence_booking == true) {
+
+            jQuery(".recurrence_type_dropdown").show();
+
+            jQuery(".recurrence_type_dropdown").show();
+
+        } else {
+
+            jQuery(".recurrence_type_dropdown").hide();
+
+            jQuery(".recurrence_type_dropdown").hide();
+
+        }
+
+    });
+
+});
+
+jQuery(document).on("click", ".ct-provider-img", function(e) {
+    jQuery(".date_time_error1").hide();
+});
+
+jQuery(document).on("click", "#complete_bookings", function(e) {
+
+    var site_url = siteurlObj.site_url;
+
+    var ajax_url = ajaxurlObj.ajax_url;
+
+    var front_url = fronturlObj.front_url;
+
+    var stripe_pubkey = baseurlObj.stripe_publishkey;
+
+    var stripe_status = baseurlObj.stripe_status;
+
+
+
+    var terms_condition_setting_value = termsconditionObj.terms_condition;
+
+    var privacy_policy_setting_value = privacypolicyObj.privacy_policy;
+
+    var thankyou_page_setting_value = thankyoupageObj.thankyou_page;
+
+    var existing_username = jQuery("#ct-user-name").val();
+
+    var existing_password = jQuery("#ct-user-pass").val();
+
+    var password = jQuery("#ct-preffered-pass").val();
+
+    var firstname = jQuery("#ct-first-name").val();
+
+    var username = jQuery("#ct-username").val();
+
+    var lastname = jQuery("#ct-last-name").val();
+
+    var custom_rate = jQuery("#custom_rate").val();
+
+    var staff_id_status = jQuery('.provider_disable').attr('data-staff_id');
+
+    var email = "";
+
+    if (guest_user_status == "on") {
+
+        email = jQuery("#ct-email-guest").val();
+
+    } else {
+
+        if (is_login_user == "Y") {
+
+            email = jQuery("#ct-email").val();
+
+        } else {
+
+            email = jQuery("#ct-email").val();
+
+        }
+
+    }
+
+    var phone = jQuery("#ct-user-phone").val();
+
+    /***newly added start***/
+
+    var user_address = jQuery("#ct-street-address").val();
+
+    var user_zipcode = jQuery("#ct-zip-code").val();
+
+    var user_city = jQuery("#ct-city").val();
+
+    var user_state = jQuery("#ct-state").val();
+
+    if (appoint_details.status == "on") {
+
+        if (check_addresss.status = "on") { var address = jQuery("#app-street-address").val(); } else { var address = jQuery("#ct-street-address").val(); }
+
+        if (check_zip_code.status = "on") { var zipcode = jQuery("#app-zip-code").val(); } else { var zipcode = jQuery("#ct-zip-code").val(); }
+
+        if (check_city.status = "on") { var city = jQuery("#app-city").val(); } else { var city = jQuery("#ct-city").val(); }
+
+        if (check_state.status = "on") { var state = jQuery("#app-state").val(); } else { var state = jQuery("#ct-state").val(); }
+
+    } else {
+
+        var address = jQuery("#ct-street-address").val();
+
+        var zipcode = jQuery("#ct-zip-code").val();
+
+        var city = jQuery("#ct-city").val();
+
+        var state = jQuery("#ct-state").val();
+
+    }
+
+    var notes = jQuery("#ct-notes").val();
+
+    //var payment_method = jQuery(".payment_gateway:checked").val();
+    var payment_method = "stripe-payment";
+
+    var staff_id = jQuery(".provider_disable:checked").attr("data-staff_id");
+
+
+    if (staff_id == undefined) {
+
+        var staff_id = "";
+
+    } else {
+
+        var staff_id = staff_id;
+
+    }
+
+    var v_c_status = jQuery(".vc_status").prop("checked");
+
+    var vc_status = "";
+
+    if (v_c_status == undefined) {
+
+        vc_status = "-";
+
+    } else {
+
+        if (v_c_status == true) { vc_status = "Y"; } else { vc_status = "N"; }
+
+    }
+
+    var prkng_status = jQuery(".p_status").prop("checked");
+
+    var p_status = "";
+
+    if (prkng_status == undefined) {
+
+        p_status = "-";
+
+    } else {
+
+        if (prkng_status == true) { p_status = "Y"; } else { p_status = "N"; }
+
+    }
+
+    var con_status = jQuery("#contact_status").val();
+
+    var contact_status = "";
+
+    if (con_status == "Other") {
+
+        contact_status = jQuery("#other_contact_status").val();
+
+    } else if (con_status == undefined) {
+
+        contact_status = "";
+
+    } else {
+
+        contact_status = jQuery("#contact_status").val();
+
+    }
+
+    var terms_condition = jQuery("#accept-conditions").prop("checked");
+
+    var tc_check = "N";
+
+    if (terms_condition_setting_value == "Y" || privacy_policy_setting_value == "Y") {
+
+        if (terms_condition == true) {
+
+            tc_check = "Y";
+
+        }
+
+    } else {
+
+        tc_check = "Y";
+
+    }
+
+    var booking_date_text = jQuery(".cart_date").text();
+
+    var booking_date = jQuery(".cart_date").attr("data-date_val");
+
+    var booking_time = jQuery(".cart_time").attr("data-time_val");
+
+    var booking_time_text = jQuery(".cart_time").text();
+
+    var booking_date_time = booking_date + " " + booking_time;
+
+    var currency_symbol = jQuery(this).attr("data-currency_symbol");
+
+    var cart_sub_total = jQuery(".cart_sub_total").text();
+
+    var amount = cart_sub_total.replace(currency_symbol, "");
+
+    var cart_discount = jQuery(".cart_discount").text().substring(2);
+
+    var discount = cart_discount.replace(currency_symbol, "");
+
+    var cart_tax = jQuery(".cart_tax").text();
+
+    var taxes = cart_tax.replace(currency_symbol, "");
+
+    var cart_special_days = jQuery(".cart_special_days").text();
+
+    var special_days = cart_special_days.replace(currency_symbol, "");
+
+    var partialamount = jQuery(".partial_amount").text();
+
+    var partial_amount = partialamount.replace(currency_symbol, "");
+
+    var cart_total = jQuery(".cart_total").text();
+
+    var net_amount = cart_total.replace(currency_symbol, "");
+
+
+
+    if (net_amount < minimum_booking_price) {
+
+        jQuery(".minimum_price_show").css("display", "block");
+
+        return false;
+
+    } else {
+
+        jQuery(".minimum_price_show").css("display", "none");
+
+    }
+
+
+
+
+    var current_amount = "";
+
+
+
+    var cart_counting = jQuery("#total_cart_count").val();
+
+    var coupon_code = jQuery("#coupon_val").val();
+
+    var user_coupon_val = jQuery("#user_coupon_val").val();
+
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+
+    var frequent_discount_amount = 0;
+
+    var recurrence_booking_1 = "N";
+
+    if (frequently_discount_id != "1") {
+
+        recurrence_booking_1 = "Y";
+
+        var frequent_discount_text = jQuery(".frequent_discount").text();
+
+        frequent_discount_amount = frequent_discount_text.replace(currency_symbol, "");
+
+    }
+
+    var no_units_in_cart_err = jQuery("#no_units_in_cart_err").val();
+
+    var no_units_in_cart_err_count = jQuery("#no_units_in_cart_err_count").val();
+
+
+
+    dataString = { staff_id_status: staff_id_status, existing_username: existing_username, existing_password: existing_password, password: password, firstname: firstname, username: username, lastname: lastname, email: email, phone: phone, user_address: user_address, user_zipcode: user_zipcode, user_city: user_city, user_state: user_state, address: address, zipcode: zipcode, city: city, state: state, notes: notes, vc_status: vc_status, p_status: p_status, contact_status: contact_status, payment_method: payment_method, staff_id: staff_id, amount: amount, discount: discount, taxes: taxes, partial_amount: partial_amount, net_amount: net_amount, booking_date_time: booking_date_time, frequently_discount: frequently_discount_id, frequent_discount_amount: frequent_discount_amount, coupon_code: coupon_code, user_coupon_val: user_coupon_val, guest_user_status: guest_user_status, recurrence_booking: recurrence_booking_1, current_amount: current_amount, is_login_user: is_login_user, special_days: special_days, custom_rate: custom_rate, action: "complete_booking" };
+
+    if (jQuery("#user_details_form").valid()) {
+
+        if (jQuery("input[name='service-radio']:checked").val() != "on" && jQuery("#ct-service-0").val() != "off" && cart_counting == 1) {
+
+            clicked = false;
+
+            jQuery(".ct-loading-main-complete_booking").hide();
+
+            jQuery(".service_not_selected_error").css("display", "block");
+
+            jQuery(".service_not_selected_error").css("color", "red");
+
+            jQuery(".service_not_selected_error").html(errorobj_please_select_a_service);
+
+            jQuery(this).attr("href", "#service_not_selected_error");
+
+            /*}*/
+
+        } else if (jQuery(".ser_name_for_error").text() == "Cleaning Service" && cart_counting == 1) {
+
+            clicked = false;
+
+            jQuery(".ct-loading-main-complete_booking").hide();
+
+            jQuery(".service_not_selected_error_d2").css("color", "red");
+
+            jQuery(".service_not_selected_error_d2").html(errorobj_please_select_a_service);
+
+            jQuery(this).attr("href", "#service_not_selected_error_d2");
+
+        } else if (jQuery("#ct_selected_servic_method .service-method-name").text() == "Service Usage Methods" && cart_counting == 1) {
+
+            clicked = false;
+
+            jQuery(".method_not_selected_error").css("display", "block");
+
+            jQuery(".method_not_selected_error").css("color", "red");
+
+            jQuery(".method_not_selected_error").html("Please Select Method");
+
+            jQuery(this).attr("href", "#method_not_selected_error");
+
+        } else if (cart_counting == 1) {
+
+            clicked = false;
+
+            jQuery(".ct-loading-main-complete_booking").hide();
+
+            jQuery(".empty_cart_error").css("display", "block");
+
+            jQuery(".empty_cart_error").css("color", "red");
+
+            jQuery(".empty_cart_error").html(errorobj_please_select_units_or_addons);
+
+            jQuery(this).attr("href", "#empty_cart_error");
+
+
+
+        } else if (staff_id < 0 || staff_id == "") {
+            clicked = false;
+
+            jQuery(".ct-loading-main-complete_booking").hide();
+
+            jQuery(".date_time_error1").css("display", "block");
+
+            jQuery(".date_time_error1").css("color", "red");
+
+            jQuery(".date_time_error1").html("Please select trainer");
+
+            jQuery(this).attr("href", "#date_time_error_id1");
+        } else if (booking_date_text == "" && booking_time_text == "") {
+
+            clicked = false;
+
+            jQuery(".ct-loading-main-complete_booking").hide();
+
+            jQuery(".date_time_error").css("display", "block");
+
+            jQuery(".date_time_error").css("color", "red");
+
+            jQuery(".date_time_error").html(errorobj_please_select_appointment_date);
+
+            jQuery(this).attr("href", "#date_time_error_id");
+
+        } else if (no_units_in_cart_err == "units_and_addons_both_exists" && no_units_in_cart_err_count == "unit_not_added") {
+
+            clicked = false;
+
+            jQuery(".ct-loading-main-complete_booking").hide();
+
+            jQuery(".no_units_in_cart_error").show();
+
+            jQuery(".no_units_in_cart_error").css("color", "red");
+
+            jQuery(".no_units_in_cart_error").html(errorobj_please_select_atleast_one_unit);
+
+            jQuery(this).attr("href", "#no_units_in_cart_error");
+
+        } else if (jQuery("#check_login_click").val() == "not" && jQuery("#existing-user").prop("checked") == true) {
+
+            clicked = false;
+
+            jQuery(".ct-loading-main-complete_booking").hide();
+
+            jQuery(".login_unsuccessfull").css("display", "block");
+
+            jQuery(".login_unsuccessfull").css("color", "red");
+
+            jQuery(".login_unsuccessfull").css("margin-left", "15px");
+
+            jQuery(".login_unsuccessfull").html(errorobj_please_login_to_complete_booking);
+
+            jQuery(this).attr("href", "#login_unsuccessfull");
+
+        } else {
+
+            if (tc_check == "Y") {
+
+                //   if(clicked===false){
+
+                jQuery(this).attr("href", "javascript:void(0);");
+
+                clicked = true;
+                if (payment_method == "stripe-payment") {
+
+                    let paymentIntentId = $("#payment_intent_id").val();
+                    if (!paymentIntentId) {
+                        $("#stripePayBtn").trigger("click");
+                        return;
+                    }
+                    dataString.payment_intent_id = paymentIntentId;
+                    jQuery(".ct-loading-main-complete_booking").show();
+
+                    jQuery.ajax({
+
+                        type: "POST",
+
+                        url: front_url + "checkout.php",
+
+                        data: dataString,
+
+                        success: function(response) {
+
+                            if (jQuery.trim(response) == "ok") {
+
+                                jQuery(".ct-loading-main-complete_booking").hide();
+
+                                window.location = thankyou_page_setting_value;
+
+                            } else {
+
+                                clicked = false;
+
+                                jQuery(".ct-loading-main-complete_booking").hide();
+
+                                jQuery("#ct-card-payment-error").show();
+
+                                jQuery("#ct-card-payment-error").text(response);
+
+                            }
+
+                        }
+
+                    });
+
+
+
+                    payment_process_js(payment_method, thankyou_page_setting_value, dataString, front_url);
+
+                } else {
+                    e.preventDefault();
+
+                }
+
+                // }else{
+
+                //   if(terms_condition_setting_value == "Y" || privacy_policy_setting_value == "Y"){
+
+                //   jQuery(this).attr("href","javascript:void(0);");
+
+                //   clicked=false;
+
+                //   jQuery(".ct-loading-main-complete_booking").hide();
+
+                //     jQuery(".terms_and_condition").show();
+
+                //     jQuery(".terms_and_condition").css("color","red");
+
+                //     jQuery(".terms_and_condition").html(errorobj_please_accept_terms_and_conditions);
+
+                //   }
+
+                // }
+
+            }
+        }
+    }
+
+    jQuery(".add_show_error_class").each(function() {
+
+        jQuery(this).trigger("keyup");
+
+    });
+
+});
+
+
+jQuery(document).on("click", "#accept-conditions", function() {
+
+    jQuery(".terms_and_condition").hide();
+
+});
+
+jQuery(document).on("click", "#login_existing_user", function() {
+
+    jQuery(".add_show_error_class_for_login").each(function() {
+
+        jQuery(this).trigger("keyup");
+
+    });
+
+    jQuery(".add_show_error_class").each(function() {
+
+        var id = jQuery(this).attr("id");
+
+        jQuery(this).removeClass("error");
+
+        jQuery("#" + id).parent().removeClass("error");
+
+        jQuery(this).removeClass("show-error");
+
+        jQuery("#" + id).parent().removeClass("show-error");
+
+        jQuery(".intl-tel-input").parent().removeClass("show-error");
+
+    });
+
+    var site_url = siteurlObj.site_url;
+
+    var ajax_url = ajaxurlObj.ajax_url;
+
+    var existing_username = jQuery("#ct-user-name").val();
+
+    var existing_password = jQuery("#ct-user-pass").val();
+    dataString = { existing_username: existing_username, existing_password: existing_password, action: "get_existing_user_data" };
+
+    //if(!jQuery("#user_login_form").valid()){ return false; }
+
+    jQuery.ajax({
+
+        type: "POST",
+
+        url: ajax_url + "front_ajax.php",
+
+        data: dataString,
+
+        success: function(response) {
+
+            var userdata = jQuery.parseJSON(response);
+
+            if (userdata.status == "Incorrect Username or Password") {
+
+                jQuery(".login_unsuccessfull").css("display", "block");
+
+                jQuery(".login_unsuccessfull").css("color", "red");
+
+                jQuery(".login_unsuccessfull").css("margin-left", "15px");
+
+                jQuery("#check_login_click").val("not");
+
+                jQuery(".login_unsuccessfull").html("Sorry Wrong Username Or Password");
+
+                is_login_user = "N";
+
+                jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+            } else {
+
+                is_login_user = "Y";
+
+
+
+                jQuery("#check_login_click").val("clicked");
+
+                jQuery("#pay-cash").removeAttr('checked');
+
+                jQuery(".client_logout").css("display", "block");
+
+                jQuery(".client_logout").show();
+
+                jQuery("#ct-email").val(userdata.email);
+
+                jQuery(".fname").text(userdata.firstname);
+
+                jQuery(".lname").text(userdata.lastname);
+
+                jQuery(".hide_login_btn").hide();
+
+                jQuery(".hide_radio_btn_after_login").hide();
+
+                jQuery(".hide_email").hide();
+
+                jQuery(".hide_login_email").hide();
+
+                jQuery(".hide_password").hide();
+
+                jQuery(".ct-peronal-details").show();
+
+                jQuery(".login_unsuccessfull").hide();
+
+                jQuery(".ct-sub").hide();
+
+
+
+                jQuery("#ct-first-name").val(userdata.firstname);
+
+                jQuery("#ct-username").val(userdata.username);
+
+                jQuery("#ct-last-name").val(userdata.lastname);
+
+                jQuery("#ct-user-phone").intlTelInput("setNumber", userdata.phone);
+
+                if (check_addresss.statuss == "on") { jQuery("#ct-street-address").val(userdata.address); }
+
+                if (check_zip_code.statuss == "on") { jQuery("#ct-zip-code").val(userdata.zip); }
+
+                if (check_city.statuss == "on") { jQuery("#ct-city").val(userdata.city); }
+
+                if (check_state.statuss == "on") { jQuery("#ct-state").val(userdata.state); }
+
+                jQuery("#ct-notes").val(userdata.notes);
+
+                if (userdata.vc_status == "N") {
+
+                    jQuery("#vaccum-no").attr("checked", true);
+
+                } else {
+
+                    jQuery("#vaccum-yes").attr("checked", true);
+
+                }
+
+                if (userdata.p_status == "N") {
+
+                    jQuery("#parking-no").attr("checked", true);
+
+                } else {
+
+                    jQuery("#parking-yes").attr("checked", true);
+
+                }
+
+                var con_staatus = userdata.contact_status;
+
+                if (con_staatus == "I'll be at home" || con_staatus == "Please call me" || con_staatus == "The key is with the doorman") {
+
+                    jQuery("#contact_status").val(userdata.contact_status);
+
+                } else {
+
+                    jQuery("#contact_status").val("Other");
+
+                    jQuery(".ct-option-others").show();
+
+                    jQuery("#other_contact_status").val(userdata.contact_status);
+
+                }
+
+                jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+
+
+                jQuery(".wallet_amount_display").css("display", "block");
+
+                jQuery(".wallet_amount_display").html(userdata.wallet_amount);
+
+                /* jQuery(".user_wallet_amount_value").attr('data-wallet', userdata.wallet_amount); */
+
+            }
+
+        }
+
+    });
+
+});
+
+jQuery(document).on("click", "#ct-user-name", function() {
+
+    jQuery(".login_unsuccessfull").hide();
+
+});
+
+jQuery(document).on("click", "#ct-user-pass", function() {
+
+    jQuery(".login_unsuccessfull").hide();
+
+});
+
+jQuery(document).on("change", ".existing-user", function() {
+
+    var country_flag = jQuery(".selected-flag").attr("title");
+    var site_url = siteurlObj.site_url;
+    var country_alpha_code = countrycodeObj.alphacode;
+    var allowed_country_alpha_code = countrycodeObj.allowed;
+    var array = allowed_country_alpha_code.split(",");
+
+    if (jQuery(".existing-user").is(":checked")) {
+
+        jQuery(".login_unsuccessfull").html("");
+
+        jQuery("#ct-email-guest").val("");
+
+        jQuery("#ct-user-name").val("");
+
+        jQuery("#ct-user-pass").val("");
+
+        jQuery("#ct-preffered-name").val("");
+
+        jQuery("#ct-preffered-pass").val("");
+
+        jQuery("#ct-first-name").val("");
+
+        jQuery("#ct-last-name").val("");
+
+        jQuery("#ct-email").val("");
+
+        jQuery("#ct-user-phone").val("");
+
+        jQuery("#ct-street-address").val("");
+
+        jQuery("#ct-zip-code").val("");
+
+        jQuery("#ct-city").val("");
+
+        jQuery("#ct-state").val("");
+
+        jQuery("#ct-notes").val("");
+
+        jQuery(".spaical_referral_class").css("display", "none");
+
+        jQuery(".ct-login-existing").show("blind", { direction: "vertical" }, 700);
+
+        jQuery(".ct-new-user-details").hide("blind", { direction: "vertical" }, 300);
+
+        jQuery(".ct-peronal-details").hide("blind", { direction: "vertical" }, 300);
+
+        guest_user_status = "off";
+
+        jQuery('#ct-user-phone').intlTelInput({
+            onlyCountries: array,
+
+            autoPlaceholder: false,
+
+            utilsScript: site_url + 'assets/js/utils.js',
+        });
+
+        jQuery('.selected-flag .iti-flag').addClass(country_alpha_code);
+        jQuery('.selected-flag').attr('title', country_flag);
+    }
+
+});
+
+jQuery(document).on("change", ".new-user", function() {
+
+    var country_flag = jQuery(".selected-flag").attr("title");
+    var site_url = siteurlObj.site_url;
+    var country_alpha_code = countrycodeObj.alphacode;
+    var allowed_country_alpha_code = countrycodeObj.allowed;
+    var array = allowed_country_alpha_code.split(",");
+    if (jQuery(".new-user").is(":checked")) {
+
+        jQuery(".login_unsuccessfull").html("");
+
+        jQuery("#ct-email-guest").val("");
+
+        jQuery("#ct-user-name").val("");
+
+        jQuery("#ct-user-pass").val("");
+
+        jQuery("#ct-preffered-name").val("");
+
+        jQuery("#ct-preffered-pass").val("");
+
+        jQuery("#ct-first-name").val("");
+
+        jQuery("#ct-last-name").val("");
+
+        jQuery("#ct-email").val("");
+
+        jQuery("#ct-user-phone").val("");
+
+        jQuery("#ct-street-address").val("");
+
+        jQuery("#ct-zip-code").val("");
+
+        jQuery("#ct-city").val("");
+
+        jQuery("#ct-state").val("");
+
+        jQuery("#ct-notes").val("");
+
+        jQuery(".spaical_referral_class").css("display", "block");
+
+        jQuery(".ct-new-user-details").show("blind", { direction: "vertical" }, 700);
+
+        jQuery(".ct-login-existing").hide("blind", { direction: "vertical" }, 300);
+
+        jQuery(".ct-peronal-details").show("blind", { direction: "vertical" }, 300);
+
+        jQuery(".remove_preferred_password_and_preferred_email").show("blind", { direction: "vertical" }, 300);
+
+        jQuery(".remove_guest_user_preferred_email").hide("blind", { direction: "vertical" }, 300);
+
+        if (jQuery(".remove_zip_code_class").hasClass("ct-md-6")) {
+
+            jQuery(".remove_zip_code_class").removeClass("ct-md-6");
+
+            jQuery(".remove_zip_code_class").addClass("ct-md-4");
+
+        }
+
+        if (jQuery(".remove_city_class").hasClass("ct-md-6")) {
+
+            jQuery(".remove_city_class").removeClass("ct-md-6");
+
+            jQuery(".remove_city_class").addClass("ct-md-4");
+
+        }
+
+        if (jQuery(".remove_state_class").hasClass("ct-md-6")) {
+
+            jQuery(".remove_state_class").removeClass("ct-md-6");
+
+            jQuery(".remove_state_class").addClass("ct-md-4");
+
+        }
+
+        guest_user_status = "off";
+
+    }
+    jQuery('#ct-user-phone').intlTelInput({
+        onlyCountries: array,
+
+        autoPlaceholder: false,
+
+        utilsScript: site_url + 'assets/js/utils.js',
+    });
+
+    jQuery('.selected-flag .iti-flag').addClass(country_alpha_code);
+    jQuery('.selected-flag').attr('title', country_flag);
+
+});
+
+
+
+jQuery(document).on("change", ".guest-user", function() {
+
+    if (jQuery(".guest-user").is(":checked")) {
+
+        jQuery("#ct-email-guest").val("");
+
+        jQuery("#ct-user-name").val("");
+
+        jQuery("#ct-user-pass").val("");
+
+        jQuery("#ct-preffered-name").val("");
+
+        jQuery("#ct-preffered-pass").val("");
+
+        jQuery("#ct-first-name").val("");
+
+        jQuery("#ct-last-name").val("");
+
+        jQuery("#ct-email").val("");
+
+        jQuery("#ct-user-phone").val("");
+
+        jQuery("#ct-street-address").val("");
+
+        jQuery("#ct-zip-code").val("");
+
+        jQuery("#ct-city").val("");
+
+        jQuery("#ct-state").val("");
+
+        jQuery("#ct-notes").val("");
+
+        jQuery(".ct-new-user-details").show("blind", { direction: "vertical" }, 700);
+
+        jQuery(".ct-login-existing").hide("blind", { direction: "vertical" }, 300);
+
+        jQuery(".ct-peronal-details").show("blind", { direction: "vertical" }, 300);
+
+        jQuery(".remove_preferred_password_and_preferred_email").hide("blind", { direction: "vertical" }, 300);
+
+        jQuery(".remove_guest_user_preferred_email").show("blind", { direction: "vertical" }, 300);
+
+        if (jQuery(".remove_zip_code_class").hasClass("ct-md-4")) {
+
+            jQuery(".remove_zip_code_class").removeClass("ct-md-4");
+
+            jQuery(".remove_zip_code_class").addClass("ct-md-6");
+
+        }
+
+        if (jQuery(".remove_city_class").hasClass("ct-md-4")) {
+
+            jQuery(".remove_city_class").removeClass("ct-md-4");
+
+            jQuery(".remove_city_class").addClass("ct-md-6");
+
+        }
+
+        if (jQuery(".remove_state_class").hasClass("ct-md-4")) {
+
+            jQuery(".remove_state_class").removeClass("ct-md-4");
+
+            jQuery(".remove_state_class").addClass("ct-md-6");
+
+        }
+
+        guest_user_status = "on";
+
+    }
+
+    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+});
+
+jQuery(document).on("click", "#logout", function() {
+
+    var site_url = siteurlObj.site_url;
+
+    var ajax_url = ajaxurlObj.ajax_url;
+
+    var id = jQuery(this).attr("data-id");
+
+    jQuery(".wallet_amount_display").css("display", "none");
+
+    dataString = { id: id, action: "logout" };
+
+    jQuery.ajax({
+
+        type: "POST",
+
+        url: ajax_url + "front_ajax.php",
+
+        data: dataString,
+
+        success: function(response) {
+
+            if (jQuery.trim(response) == "logout successful") {
+
+                jQuery("#check_login_click").val("not");
+
+                jQuery(".client_logout").hide();
+
+                jQuery(".client_logout").css("display", "none");
+
+                jQuery("#other_contact_status").hide();
+
+                jQuery(".hide_login_btn").show();
+
+                jQuery(".ct-peronal-details").hide();
+
+                jQuery(".hide_radio_btn_after_login").show();
+
+                jQuery(".hide_email").show();
+
+                jQuery(".hide_login_email").show();
+
+                jQuery(".hide_password").show();
+
+                jQuery(".ct-sub").show();
+
+                jQuery("#ct-user-name").val("");
+
+                jQuery("#ct-user-pass").val("");
+
+                jQuery("#ct-preffered-name").val("");
+
+                jQuery("#ct-preffered-pass").val("");
+
+                jQuery("#ct-first-name").val("");
+
+                jQuery("#ct-last-name").val("");
+
+                jQuery("#ct-email").val("");
+
+                jQuery("#ct-user-phone").val("");
+
+                jQuery("#ct-street-address").val("");
+
+                jQuery("#ct-zip-code").val("");
+
+                jQuery("#ct-city").val("");
+
+                jQuery("#ct-state").val("");
+
+                jQuery("#ct-notes").val("");
+
+                jQuery("#vaccum-yes").prop("checked", true);
+
+                jQuery("#parking-yes").prop("checked", true);
+
+                jQuery("#contact_status").val("I'll be at home");
+
+                jQuery("#other_contact_status").val("");
+
+                jQuery("#existing-user").prop("checked", true);
+
+                jQuery(".existing-user").trigger("change");
+
+                is_login_user = "N";
+
+            }
+
+            jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+        }
+
+    })
 
 });
 
@@ -2430,1134 +2479,1134 @@ jQuery(document).on("click","#logout",function() {
 
 /* services methods dropdown show hide list */
 
-jQuery(document).on("click",".service-method-is",function() {
+jQuery(document).on("click", ".service-method-is", function() {
 
-    jQuery(".ct-services-method-dropdown").toggle( "blind", {direction: "vertical"}, 300 );
-
-});
-
-jQuery(document).on("click",".select_service_method",function() {
-
-  jQuery("#ct_selected_servic_method").html(jQuery(this).html());
-
-  jQuery(".ct-services-method-dropdown").hide( "blind", {direction: "vertical"}, 300 );
-
-  jQuery("#ct_selected_servic_method h3").removeClass("s_m_units_design");
+    jQuery(".ct-services-method-dropdown").toggle("blind", { direction: "vertical" }, 300);
 
 });
 
-jQuery(document).on("click",".ser_details",function(){
+jQuery(document).on("click", ".select_service_method", function() {
 
-  jQuery(".scart_totals").hide();
-	jQuery(".custom_service_error").hide();
+    jQuery("#ct_selected_servic_method").html(jQuery(this).html());
 
-jQuery(".custom_item_error").html("");
- 
-  jQuery(":input",this).prop("checked",true);
+    jQuery(".ct-services-method-dropdown").hide("blind", { direction: "vertical" }, 300);
 
-  jQuery(".ct-loading-main").show();
-	
-  jQuery(".hideduration_value").hide();
+    jQuery("#ct_selected_servic_method h3").removeClass("s_m_units_design");
 
-  jQuery(".total_time_duration_text").html("");
+});
 
-  jQuery(".show_methods_after_service_selection").show();
+jQuery(document).on("click", ".ser_details", function() {
 
+    jQuery(".scart_totals").hide();
+    jQuery(".custom_service_error").hide();
 
-  jQuery(".ct_method_tab-slider-tabs").removeClass("ct_methods_slide");
+    jQuery(".custom_item_error").html("");
 
-  jQuery(".service_not_selected_error_d2").removeAttr("style","");
+    jQuery(":input", this).prop("checked", true);
 
-  jQuery(".service_not_selected_error_d2").html(errorobj_please_select_a_service);
-  
-  jQuery('.freq_discount_display').hide();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".add_addon_in_cart_for_multipleqty").data("status","2");
+    jQuery(".hideduration_value").hide();
 
-  jQuery(".service_not_selected_error").hide();
+    jQuery(".total_time_duration_text").html("");
 
-  jQuery(".partial_amount_hide_on_load").hide();
+    jQuery(".show_methods_after_service_selection").show();
 
-  jQuery(".hide_right_side_box").hide();
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".ct_method_tab-slider-tabs").removeClass("ct_methods_slide");
 
-  jQuery(".s_m_units_design_1").hide();
+    jQuery(".service_not_selected_error_d2").removeAttr("style", "");
 
-  jQuery(".s_m_units_design_2").hide();
+    jQuery(".service_not_selected_error_d2").html(errorobj_please_select_a_service);
 
-  jQuery(".s_m_units_design_3").hide();
+    jQuery('.freq_discount_display').hide();
 
-  jQuery(".s_m_units_design_4").hide();
+    jQuery(".add_addon_in_cart_for_multipleqty").data("status", "2");
 
-  jQuery(".s_m_units_design_5").hide();
+    jQuery(".service_not_selected_error").hide();
 
-  jQuery(".hideservice_name").show();
+    jQuery(".partial_amount_hide_on_load").hide();
 
-  jQuery("#apply_coupon").show();
+    jQuery(".hide_right_side_box").hide();
 
-  jQuery("#coupon_val").show();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  jQuery(".ct-display-coupon-code").hide();
+    jQuery(".s_m_units_design_1").hide();
 
-  jQuery(".show_select_staff_title").show();
+    jQuery(".s_m_units_design_2").hide();
 
-  jQuery(".empty_cart_error").hide();
+    jQuery(".s_m_units_design_3").hide();
 
-  jQuery(".no_units_in_cart_error").hide();
+    jQuery(".s_m_units_design_4").hide();
 
-  jQuery( ".cart_item_listing" ).empty();
+    jQuery(".s_m_units_design_5").hide();
 
-  jQuery( ".frequent_discount" ).empty();
+    jQuery(".hideservice_name").show();
 
-  jQuery( ".cart_sub_total" ).empty();
+    jQuery("#apply_coupon").show();
 
-  jQuery( ".cart_empty_msg" ).show();
+    jQuery("#coupon_val").show();
 
-  jQuery( ".cart_tax" ).empty();
+    jQuery(".ct-display-coupon-code").hide();
 
-  jQuery( ".cart_special_days" ).empty();                                  
+    jQuery(".show_select_staff_title").show();
 
-  jQuery( ".cart_total" ).empty();
+    jQuery(".empty_cart_error").hide();
 
-  jQuery( ".remain_amount" ).empty();
+    jQuery(".no_units_in_cart_error").hide();
 
-  jQuery( ".partial_amount" ).empty();
+    jQuery(".cart_item_listing").empty();
 
-  jQuery( ".cart_discount" ).empty();
+    jQuery(".frequent_discount").empty();
 
-  var site_url=siteurlObj.site_url;
+    jQuery(".cart_sub_total").empty();
 
-  var ajax_url=ajaxurlObj.ajax_url;
-  var postal_code = jQuery('#ct_postal_code').val().toLowerCase();
-  var id = jQuery(this).attr("data-id");
+    jQuery(".cart_empty_msg").show();
 
-  var name = jQuery(this).attr("data-servicetitle");
+    jQuery(".cart_tax").empty();
 
-  jQuery(".sel-service").html(name);
+    jQuery(".cart_special_days").empty();
 
-  jQuery(".addon_qty").each(function(){
+    jQuery(".cart_total").empty();
 
-    jQuery(this).val(0);
+    jQuery(".remain_amount").empty();
 
-    jQuery(".add_minus_button").hide();
+    jQuery(".partial_amount").empty();
 
-  });
+    jQuery(".cart_discount").empty();
 
-  if(jQuery(".ser_name_for_error").text() != "Cleaning Service" && jQuery(".service-method-name").text() == "Service Usage Methods"){
+    var site_url = siteurlObj.site_url;
 
-    jQuery(".method_not_selected_error").css("display","block");
+    var ajax_url = ajaxurlObj.ajax_url;
+    var postal_code = jQuery('#ct_postal_code').val().toLowerCase();
+    var id = jQuery(this).attr("data-id");
 
-    jQuery(".method_not_selected_error").css("color","red");
+    var name = jQuery(this).attr("data-servicetitle");
 
-    jQuery(".method_not_selected_error").html("Please Select Method");
+    jQuery(".sel-service").html(name);
 
-  }else if(jQuery("input[name='service-radio']:checked").val() == "on" && jQuery(".service-method-name").text() == "Service Usage Methods"){
+    jQuery(".addon_qty").each(function() {
 
-    jQuery(".method_not_selected_error").css("display","block");
+        jQuery(this).val(0);
 
-    jQuery(".method_not_selected_error").css("color","red");
+        jQuery(".add_minus_button").hide();
 
-    jQuery(".method_not_selected_error").html("Please Select Method");
+    });
 
-  }
+    if (jQuery(".ser_name_for_error").text() != "Cleaning Service" && jQuery(".service-method-name").text() == "Service Usage Methods") {
 
-  /* display all methods of the selected services */
+        jQuery(".method_not_selected_error").css("display", "block");
 
-  jQuery.ajax({
+        jQuery(".method_not_selected_error").css("color", "red");
 
-    type : "post",
+        jQuery(".method_not_selected_error").html("Please Select Method");
 
-    data : { "service_id" : id, "operationgetmethods" : 1 },
+    } else if (jQuery("input[name='service-radio']:checked").val() == "on" && jQuery(".service-method-name").text() == "Service Usage Methods") {
 
-    url : ajax_url+"front_ajax.php",
+        jQuery(".method_not_selected_error").css("display", "block");
 
-    success : function(res){
+        jQuery(".method_not_selected_error").css("color", "red");
 
-      jQuery(".ct-loading-main").hide();
-
-      var methods_data=jQuery.parseJSON(res);
-
-      if(methods_data.status == "single"){
-
-        jQuery(".services-method-list-dropdown").hide();
-
-        jQuery(".show_single_service_method").html(methods_data.m_html);
-
-        jQuery(".s_m_units_design").trigger("click");
-
-        jQuery("#method_not_selected_error").hide();
-
-        jQuery.ajax({
-          type : "post",
-          data : { "service_id" : id,"postal_code" : postal_code, "staff_select_according_service" : 1 },
-          url : ajax_url+"front_ajax.php",
-          success : function(res){
-            var search_session_data=jQuery.parseJSON(res);
-            if(search_session_data.found_status == "found"){
-              //jQuery('#staff_count_forservice').attr('value','');
-              jQuery(".ct-provider-list").show();
-              var search_staff_id = search_session_data.staff_id;
-              jQuery.ajax({
-                type:"POST",
-                url: ajax_url+"front_ajax.php",
-                data : { "staff_search" : search_staff_id, "get_search_staff_detail" : 1 },
-                success: function(res){
-                  jQuery(".provders-list").html(res);
-                }
-              });
-            }else if(search_session_data.found_status == "not found"){
-              jQuery(".ct-provider-list").hide();
-              jQuery('#staff_count_forservice').attr('value','0');
-            } 
-          }
-        });
-
-      }else{
-
-        jQuery(".show_single_service_method").html(methods_data.m_html);
-
-        jQuery(".ct_method_tab-slider-tabs li:first").trigger("click");
-
-         jQuery.ajax({
-
-          type : "post",
-
-          data : { "service_id" : id,"postal_code" : postal_code, "staff_select_according_service" : 1 },
-
-          url : ajax_url+"front_ajax.php",
-
-          success : function(res){
-
-          var search_session_data=jQuery.parseJSON(res);
-
-            if(search_session_data.found_status == "found"){
-              //jQuery('#staff_count_forservice').attr('value','');
-              jQuery(".ct-provider-list").show();
-
-              var search_staff_id = search_session_data.staff_id;
-
-              jQuery.ajax({
-
-              type:"POST",
-
-              url: ajax_url+"front_ajax.php",
-
-              data : { "staff_search" : search_staff_id, "get_search_staff_detail" : 1 },
-
-              success: function(res){
-
-                jQuery(".provders-list").html(res);
-
-              }
-
-              });
-
-            }else if(search_session_data.found_status == "not found"){
-
-              jQuery(".ct-provider-list").hide();
-
-							jQuery('#staff_count_forservice').attr('value','0');
-
-            }
-
-          }
-
-        }); 
-
-      }
+        jQuery(".method_not_selected_error").html("Please Select Method");
 
     }
 
-  });
+    /* display all methods of the selected services */
 
-  /* display all add-on of the selected services */
+    jQuery.ajax({
 
-  jQuery.ajax({
+        type: "post",
 
-      type : "post",
+        data: { "service_id": id, "operationgetmethods": 1 },
 
-      data : { "service_id" : id, "get_service_addons" : 1 },
+        url: ajax_url + "front_ajax.php",
 
-      url : ajax_url+"front_ajax.php",
+        success: function(res) {
 
-      success : function(res){
+            jQuery(".ct-loading-main").hide();
 
-        jQuery(".ct-loading-main").hide();
+            var methods_data = jQuery.parseJSON(res);
 
-          if(res=="Extra Services Not Available"){
+            if (methods_data.status == "single") {
 
-            jQuery(".hide_allsss_addons").hide();
+                jQuery(".services-method-list-dropdown").hide();
 
-          }else{
+                jQuery(".show_single_service_method").html(methods_data.m_html);
 
-            jQuery(".hide_allsss_addons").show();
+                jQuery(".s_m_units_design").trigger("click");
 
-            jQuery(".add_on_lists").html(res);
+                jQuery("#method_not_selected_error").hide();
 
-            jQuery(".add_minus_button").hide();
+                jQuery.ajax({
+                    type: "post",
+                    data: { "service_id": id, "postal_code": postal_code, "staff_select_according_service": 1 },
+                    url: ajax_url + "front_ajax.php",
+                    success: function(res) {
+                        var search_session_data = jQuery.parseJSON(res);
+                        if (search_session_data.found_status == "found") {
+                            //jQuery('#staff_count_forservice').attr('value','');
+                            jQuery(".ct-provider-list").show();
+                            var search_staff_id = search_session_data.staff_id;
+                            jQuery.ajax({
+                                type: "POST",
+                                url: ajax_url + "front_ajax.php",
+                                data: { "staff_search": search_staff_id, "get_search_staff_detail": 1 },
+                                success: function(res) {
+                                    jQuery(".provders-list").html(res);
+                                }
+                            });
+                        } else if (search_session_data.found_status == "not found") {
+                            jQuery(".ct-provider-list").hide();
+                            jQuery('#staff_count_forservice').attr('value', '0');
+                        }
+                    }
+                });
 
-            jQuery(".add_addon_in_cart_for_multipleqty").each(function(){
+            } else {
 
-              var multiqty_addon_id = jQuery(this).attr("data-id");
+                jQuery(".show_single_service_method").html(methods_data.m_html);
 
-              var value = jQuery(this).prop("checked");
+                jQuery(".ct_method_tab-slider-tabs li:first").trigger("click");
 
-              if(value == true){
+                jQuery.ajax({
 
-                jQuery("#ct-addon-"+multiqty_addon_id).attr("checked", false);
+                    type: "post",
 
-              }
+                    data: { "service_id": id, "postal_code": postal_code, "staff_select_according_service": 1 },
 
-            });
+                    url: ajax_url + "front_ajax.php",
 
-          }
+                    success: function(res) {
 
-        cleanto_sidebar_scroll();
+                        var search_session_data = jQuery.parseJSON(res);
 
-      }
+                        if (search_session_data.found_status == "found") {
+                            //jQuery('#staff_count_forservice').attr('value','');
+                            jQuery(".ct-provider-list").show();
 
-  });
+                            var search_staff_id = search_session_data.staff_id;
 
-  jQuery(".remove_service_class").each(function() {
+                            jQuery.ajax({
 
-    jQuery(this).addClass("ser_details");
+                                type: "POST",
 
-  });
+                                url: ajax_url + "front_ajax.php",
 
-  jQuery(this).removeClass("ser_details");
+                                data: { "staff_search": search_staff_id, "get_search_staff_detail": 1 },
 
-  return false;
+                                success: function(res) {
+
+                                    jQuery(".provders-list").html(res);
+
+                                }
+
+                            });
+
+                        } else if (search_session_data.found_status == "not found") {
+
+                            jQuery(".ct-provider-list").hide();
+
+                            jQuery('#staff_count_forservice').attr('value', '0');
+
+                        }
+
+                    }
+
+                });
+
+            }
+
+        }
+
+    });
+
+    /* display all add-on of the selected services */
+
+    jQuery.ajax({
+
+        type: "post",
+
+        data: { "service_id": id, "get_service_addons": 1 },
+
+        url: ajax_url + "front_ajax.php",
+
+        success: function(res) {
+
+            jQuery(".ct-loading-main").hide();
+
+            if (res == "Extra Services Not Available") {
+
+                jQuery(".hide_allsss_addons").hide();
+
+            } else {
+
+                jQuery(".hide_allsss_addons").show();
+
+                jQuery(".add_on_lists").html(res);
+
+                jQuery(".add_minus_button").hide();
+
+                jQuery(".add_addon_in_cart_for_multipleqty").each(function() {
+
+                    var multiqty_addon_id = jQuery(this).attr("data-id");
+
+                    var value = jQuery(this).prop("checked");
+
+                    if (value == true) {
+
+                        jQuery("#ct-addon-" + multiqty_addon_id).attr("checked", false);
+
+                    }
+
+                });
+
+            }
+
+            cleanto_sidebar_scroll();
+
+        }
+
+    });
+
+    jQuery(".remove_service_class").each(function() {
+
+        jQuery(this).addClass("ser_details");
+
+    });
+
+    jQuery(this).removeClass("ser_details");
+
+    return false;
 
 });
 
 /* display all Provider of selected service */
 
-jQuery(document).on("click",".provider_select",function(){
+jQuery(document).on("click", ".provider_select", function() {
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var staff_id = jQuery(this).attr("data-id");
+    var staff_id = jQuery(this).attr("data-id");
 
-  $("#selected_provider_id").val(staff_id);
-  jQuery.ajax({
+    $("#selected_provider_id").val(staff_id);
+    jQuery.ajax({
 
-    type : "post",
+        type: "post",
 
-    data : { "staff_id" : staff_id, "get_staff_sess" : 1 },
-    dataType : "json",
-    url : site_url+"front/firststep.php",
+        data: { "staff_id": staff_id, "get_staff_sess": 1 },
+        dataType: "json",
+        url: site_url + "front/firststep.php",
 
-    success : function(res){
-		
-       /*  var details=jQuery.parseJSON(res); */
-  	  var currency_symbol = jQuery("#complete_bookings").attr("data-currency_symbol");
-      if (res.rate_type == 'Single Customer') {
-          var cart_sub_totals = res.new_staff.single_customer_rate;
-      }else{
-          var cart_sub_totals = res.new_staff.custom_rate;
-      }
-  	  
-  	  var cart_sub_total_val = cart_sub_totals.replace(currency_symbol, "");
-    
-      if (res.new_staff !== null) {
-      	var current_cart_sub_total = jQuery(".cart_sub_total").html();
-      	var cart_sub_total = parseInt(current_cart_sub_total)-parseInt(cart_sub_total_val);
-      }else{
-      	var cart_sub_total = jQuery(".cart_sub_total").html();
-      }
-	  
-      var cart_tax = jQuery(".cart_tax").html();
-      var cart_tax_val = cart_tax.replace(currency_symbol, "");
-      var sub_total = parseInt(cart_sub_total_val);
-      var cart_total = parseInt(cart_tax_val)+parseInt(sub_total);
-      if (isNaN(cart_total)) {
-        cart_total = sub_total;
-      }
-	  
-      jQuery(".cart_sub_total").html(sub_total.toFixed(price_format_decimal_places));
-      jQuery(".cart_total").html(price_format_with_symbol(cart_total));
-      
-      jQuery.ajax({
+        success: function(res) {
+            debugger
+            /*  var details=jQuery.parseJSON(res); */
+            var currency_symbol = jQuery("#complete_bookings").attr("data-currency_symbol");
+            if (res.rate_type == 'Single Customer') {
+                var cart_sub_totals = res.new_staff.single_customer_rate;
+            } else {
+                var cart_sub_totals = res.new_staff.custom_rate;
+            }
 
-        type:"POST",
+            var cart_sub_total_val = cart_sub_totals.replace(currency_symbol, "");
 
-        url: ajax_url+"calendar_ajax.php",
+            if (res.new_staff !== null) {
+                var current_cart_sub_total = jQuery(".cart_sub_total").html();
+                var cart_sub_total = parseFloat(current_cart_sub_total) - parseFloat(cart_sub_total_val);
+            } else {
+                var cart_sub_total = jQuery(".cart_sub_total").html();
+            }
 
-        data : { "get_calendar_on_page_load" : 1 },
+            var cart_tax = jQuery(".cart_tax").html();
+            var cart_tax_val = cart_tax.replace(currency_symbol, "");
+            var sub_total = parseFloat(cart_sub_total_val);
+            var cart_total = parseFloat(cart_tax_val) + parseFloat(sub_total);
+            if (isNaN(cart_total)) {
+                cart_total = sub_total;
+            }
 
-        success: function(res){
+            jQuery(".cart_sub_total").html(sub_total.toFixed(price_format_decimal_places));
+            jQuery(".cart_total").html(price_format_with_symbol(cart_total));
 
-          jQuery(".cal_info").html(res);
+            jQuery.ajax({
 
-          var d = new Date();
+                type: "POST",
 
-          var month = d.getMonth()+1;
+                url: ajax_url + "calendar_ajax.php",
 
-          var day = d.getDate();
+                data: { "get_calendar_on_page_load": 1 },
 
-          var year = d.getFullYear();
+                success: function(res) {
 
-          var output = day + "-" +(month<10 ? "0" : "") + month + "-" +  year;
+                    jQuery(".cal_info").html(res);
 
-          var selected_dates = jQuery(".selected_date").data("selected_dates");
+                    var d = new Date();
 
-          var cur_dates = jQuery(".selected_date").attr("data-cur_dates");
+                    var month = d.getMonth() + 1;
 
-          if(output == cur_dates){
+                    var day = d.getDate();
 
-            jQuery(".by_default_today_selected").addClass("active_today");
+                    var year = d.getFullYear();
 
-          }
-					//jQuery(".select_m_u_btn").trigger("click");
+                    var output = day + "-" + (month < 10 ? "0" : "") + month + "-" + year;
+
+                    var selected_dates = jQuery(".selected_date").data("selected_dates");
+
+                    var cur_dates = jQuery(".selected_date").attr("data-cur_dates");
+
+                    if (output == cur_dates) {
+
+                        jQuery(".by_default_today_selected").addClass("active_today");
+
+                    }
+                    //jQuery(".select_m_u_btn").trigger("click");
+
+                }
+
+            });
 
         }
 
-      });
+    });
 
-    }
+    jQuery("#ct-provider-" + staff_id).prop("checked", true);
 
-  });
-
-  jQuery("#ct-provider-"+staff_id).prop("checked",true);
-
-  return false;
+    return false;
 
 });
 
-jQuery(document).on("click",".addons_servicess_2",function(){
+jQuery(document).on("click", ".addons_servicess_2", function() {
 
-  var id = jQuery(this).attr("data-id");
+    var id = jQuery(this).attr("data-id");
 
-  jQuery(".add_minus_buttonid"+id).show();
+    jQuery(".add_minus_buttonid" + id).show();
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  var value = jQuery(this).prop("checked");
+    var value = jQuery(this).prop("checked");
 
-  if(value == false){
+    if (value == false) {
 
-    jQuery(".qtyyy_"+m_name).val("1");
+        jQuery(".qtyyy_" + m_name).val("1");
 
-    var addon_id = jQuery(this).attr("data-id");
+        var addon_id = jQuery(this).attr("data-id");
 
-    jQuery("#minus"+addon_id).trigger("click");
+        jQuery("#minus" + addon_id).trigger("click");
 
-  }else if(value == true){
+    } else if (value == true) {
 
-    var addon_id = jQuery(this).attr("data-id");
+        var addon_id = jQuery(this).attr("data-id");
 
-    jQuery("#add"+addon_id).trigger("click");
+        jQuery("#add" + addon_id).trigger("click");
 
-  }
+    }
 
 });
 
 /* bedroom and bathroom counting for addons */
 
-jQuery(document).on("click",".add",function(){
+jQuery(document).on("click", ".add", function() {
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var ids = jQuery(this).attr("data-ids");
+    var ids = jQuery(this).attr("data-ids");
 
-  var db_qty = jQuery(this).attr("data-db-qty");
+    var db_qty = jQuery(this).attr("data-db-qty");
 
-  var service_id = jQuery(this).attr("data-service_id");
+    var service_id = jQuery(this).attr("data-service_id");
 
-  var method_id = jQuery(this).attr("data-method_id");
+    var method_id = jQuery(this).attr("data-method_id");
 
-  var method_name = jQuery(this).attr("data-method_name");
+    var method_name = jQuery(this).attr("data-method_name");
 
-  var units_id=jQuery(this).attr("data-units_id");
+    var units_id = jQuery(this).attr("data-units_id");
 
-  var type=jQuery(this).attr("data-type");
+    var type = jQuery(this).attr("data-type");
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  jQuery(".coupon_display").hide();
+    jQuery(".coupon_display").hide();
 
-  jQuery(".hide_coupon_textbox").show();
+    jQuery(".hide_coupon_textbox").show();
 
-  jQuery(".ct-display-coupon-code").hide();
-
-  
-
-  /* */
+    jQuery(".ct-display-coupon-code").hide();
 
 
 
-  jQuery(".user_coupon_display").hide();
-
-  jQuery(".hide_user_coupon_textbox").show();
-
-  jQuery(".ct-display-user-coupon-code").hide();  
+    /* */
 
 
 
-  /* */
+    jQuery(".user_coupon_display").hide();
+
+    jQuery(".hide_user_coupon_textbox").show();
+
+    jQuery(".ct-display-user-coupon-code").hide();
 
 
 
-  /* */
+    /* */
 
 
 
-  jQuery(".hide_referral_textbox").show();
-
-  jQuery(".ct-display-referral-code").hide();  
+    /* */
 
 
 
-  /* */
+    jQuery(".hide_referral_textbox").show();
+
+    jQuery(".ct-display-referral-code").hide();
 
 
 
-  jQuery(".coupon_invalid_error").hide();
+    /* */
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  var qty_val = parseInt(jQuery(".qtyyy_"+m_name).val());
 
-  var qty_vals = qty_val+1;
+    jQuery(".coupon_invalid_error").hide();
 
-  if(qty_val < db_qty){
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-    jQuery(".qtyyy_"+m_name).val(qty_vals);
+    var qty_val = parseInt(jQuery(".qtyyy_" + m_name).val());
 
-    var final_qty_val = qty_vals;
+    var qty_vals = qty_val + 1;
 
-    jQuery.ajax({
+    if (qty_val < db_qty) {
 
-      type : "post",
+        jQuery(".qtyyy_" + m_name).val(qty_vals);
 
-      data : { "addon_id" : ids, "qty_vals" : final_qty_val, "s_addon_units_maxlimit_4_ratesss" : 1 },
-
-      url : ajax_url+"front_ajax.php",
-
-      success : function(res){
-
-        jQuery(".data_addon_qtyrate").attr("data-rate",res);
+        var final_qty_val = qty_vals;
 
         jQuery.ajax({
 
-          type : "post",
+            type: "post",
 
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : final_qty_val, "s_m_rate" : res, "method_name" : method_name, "units_id" : units_id, "frequently_discount_id" : frequently_discount_id, "type" : type, "add_to_cart" : 1 },
+            data: { "addon_id": ids, "qty_vals": final_qty_val, "s_addon_units_maxlimit_4_ratesss": 1 },
 
-          url : site_url+"front/firststep.php",
+            url: ajax_url + "front_ajax.php",
 
-          success : function(res){
+            success: function(res) {
 
-            jQuery(".freq_discount_display").show();
+                jQuery(".data_addon_qtyrate").attr("data-rate", res);
 
-            jQuery(".hide_right_side_box").show();
+                jQuery.ajax({
 
-            jQuery(".partial_amount_hide_on_load").show();
+                    type: "post",
 
-            jQuery(".empty_cart_error").hide();
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_qty": final_qty_val, "s_m_rate": res, "method_name": method_name, "units_id": units_id, "frequently_discount_id": frequently_discount_id, "type": type, "add_to_cart": 1 },
 
-            var cart_session_data=jQuery.parseJSON(res);
+                    url: site_url + "front/firststep.php",
 
-            jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+                    success: function(res) {
 
-            jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+                        jQuery(".freq_discount_display").show();
 
-            jQuery("#total_cart_count").val("2");
+                        jQuery(".hide_right_side_box").show();
 
-            jQuery(".coupon_invalid_error").hide();
+                        jQuery(".partial_amount_hide_on_load").show();
 
-            if(cart_session_data.status == "update"){
+                        jQuery(".empty_cart_error").hide();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                        var cart_session_data = jQuery.parseJSON(res);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
+                        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-service_id",service_id);
+                        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-method_id",method_id);
+                        jQuery("#total_cart_count").val("2");
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-units_id",units_id);
+                        jQuery(".coupon_invalid_error").hide();
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                        if (cart_session_data.status == "update") {
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-service_id", service_id);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-method_id", method_id);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                 
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-units_id", units_id);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "insert"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "insert") {
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                 
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "firstinsert"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "firstinsert") {
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                   
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "empty calculation"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").hide();
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".total_time_duration_text").html("");
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".freq_discount_display").hide();
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount_hide_on_load").hide();
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".hide_right_side_box").hide();
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery( ".cart_empty_msg" ).show();
+                        } else if (cart_session_data.status == "empty calculation") {
 
-              jQuery( ".cart_item_listing" ).empty();
+                            jQuery(".hideduration_value").hide();
 
-              jQuery( ".cart_sub_total" ).empty();
+                            jQuery(".total_time_duration_text").html("");
 
-              jQuery( ".cart_tax" ).empty();
+                            jQuery(".freq_discount_display").hide();
 
-              jQuery( ".cart_special_days" ).empty();                               
+                            jQuery(".partial_amount_hide_on_load").hide();
 
-              jQuery( ".cart_total" ).empty();
+                            jQuery(".hide_right_side_box").hide();
 
-              jQuery(".frequent_discount").empty();
+                            jQuery(".cart_empty_msg").show();
 
-              jQuery( ".remain_amount" ).empty();
+                            jQuery(".cart_item_listing").empty();
 
-              jQuery( ".partial_amount" ).empty();
+                            jQuery(".cart_sub_total").empty();
 
-              jQuery( ".cart_discount" ).empty();
+                            jQuery(".cart_tax").empty();
 
-            }else if(cart_session_data.status == "delete particuler"){
+                            jQuery(".cart_special_days").empty();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_total").empty();
 
-              jQuery( ".update_qty_of_s_m_"+cart_session_data.method_name_without_space).remove();
+                            jQuery(".frequent_discount").empty();
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".remain_amount").empty();
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".partial_amount").empty();
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".cart_discount").empty();
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                        } else if (cart_session_data.status == "delete particuler") {
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).remove();
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        }
+
+                    }
+
+                });
 
             }
 
-          }
-
         });
 
-      }
+    } else {
 
-    });
+        jQuery(".ct-loading-main").hide();
 
-  }else{
+        jQuery(".qtyyy_" + m_name).val(db_qty);
 
-  jQuery(".ct-loading-main").hide();
-
-    jQuery(".qtyyy_"+m_name).val(db_qty);
-
-  }
+    }
 
 });
 
-jQuery(document).on("click",".minus",function(){
+jQuery(document).on("click", ".minus", function() {
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var ids = jQuery(this).attr("data-ids");
+    var ids = jQuery(this).attr("data-ids");
 
-  var service_id = jQuery(this).attr("data-service_id");
+    var service_id = jQuery(this).attr("data-service_id");
 
-  var method_id = jQuery(this).attr("data-method_id");
+    var method_id = jQuery(this).attr("data-method_id");
 
-  var method_name = jQuery(this).attr("data-method_name");
+    var method_name = jQuery(this).attr("data-method_name");
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  var units_id=jQuery(this).attr("data-units_id");
+    var units_id = jQuery(this).attr("data-units_id");
 
-  jQuery(".coupon_display").hide();
+    jQuery(".coupon_display").hide();
 
-  jQuery(".hide_coupon_textbox").show();
+    jQuery(".hide_coupon_textbox").show();
 
-  jQuery(".ct-display-coupon-code").hide();
-
-
-
-  /* */
-
-  jQuery(".user_coupon_display").hide();
-
-  jQuery(".hide_user_coupon_textbox").show();
-
-  jQuery(".ct-display-user-coupon-code").hide(); 
-
-  /* */
+    jQuery(".ct-display-coupon-code").hide();
 
 
 
-   /* */
+    /* */
+
+    jQuery(".user_coupon_display").hide();
+
+    jQuery(".hide_user_coupon_textbox").show();
+
+    jQuery(".ct-display-user-coupon-code").hide();
+
+    /* */
 
 
 
-  jQuery(".hide_referral_textbox").show();
-
-  jQuery(".ct-display-referral-code").hide();  
+    /* */
 
 
 
-  /* */
+    jQuery(".hide_referral_textbox").show();
+
+    jQuery(".ct-display-referral-code").hide();
 
 
 
-  jQuery(".coupon_invalid_error").hide();
+    /* */
 
-  var type=jQuery(this).attr("data-type");
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  var qty_val = parseInt(jQuery(".qtyyy_"+m_name).val());
+    jQuery(".coupon_invalid_error").hide();
 
-  var qty_vals = qty_val-1;
+    var type = jQuery(this).attr("data-type");
 
-  var currentVal = parseInt(jQuery(".qtyyy_"+m_name).val());
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  if(currentVal <= 0){
+    var qty_val = parseInt(jQuery(".qtyyy_" + m_name).val());
 
-  jQuery(".add_minus_buttonid"+units_id).hide();
+    var qty_vals = qty_val - 1;
 
-    jQuery(".qtyyy_"+m_name).val("0");
+    var currentVal = parseInt(jQuery(".qtyyy_" + m_name).val());
 
-    jQuery( ".update_qty_of_s_m_"+m_name).remove();
+    if (currentVal <= 0) {
 
-    jQuery("#ct-addon-"+units_id).attr("checked", false);
+        jQuery(".add_minus_buttonid" + units_id).hide();
 
-  }else if(currentVal > 0){
+        jQuery(".qtyyy_" + m_name).val("0");
 
-    jQuery(".qtyyy_"+m_name).val(qty_vals);
+        jQuery(".update_qty_of_s_m_" + m_name).remove();
 
-    jQuery.ajax({
+        jQuery("#ct-addon-" + units_id).attr("checked", false);
 
-      type : "post",
+    } else if (currentVal > 0) {
 
-      data : { "addon_id" : ids, "qty_vals" : qty_vals, "s_addon_units_maxlimit_4_ratesss" : 1 },
-
-      url : ajax_url+"front_ajax.php",
-
-      success : function(res){
-
-        jQuery(".data_addon_qtyrate").attr("data-rate",res);
+        jQuery(".qtyyy_" + m_name).val(qty_vals);
 
         jQuery.ajax({
 
-          type : "post",
+            type: "post",
 
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : qty_vals, "s_m_rate" : res, "method_name" : method_name, "units_id" : units_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
+            data: { "addon_id": ids, "qty_vals": qty_vals, "s_addon_units_maxlimit_4_ratesss": 1 },
 
-          url : site_url+"front/firststep.php",
+            url: ajax_url + "front_ajax.php",
 
-          success : function(res){
+            success: function(res) {
 
-            jQuery(".freq_discount_display").show();
+                jQuery(".data_addon_qtyrate").attr("data-rate", res);
 
-            jQuery(".hide_right_side_box").show();
+                jQuery.ajax({
 
-            jQuery(".partial_amount_hide_on_load").show();
+                    type: "post",
 
-            jQuery(".empty_cart_error").hide();
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_qty": qty_vals, "s_m_rate": res, "method_name": method_name, "units_id": units_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
 
-            jQuery("#total_cart_count").val("2");
+                    url: site_url + "front/firststep.php",
 
-            jQuery(".coupon_invalid_error").hide();
+                    success: function(res) {
 
-            var cart_session_data=jQuery.parseJSON(res);
+                        jQuery(".freq_discount_display").show();
 
-            jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+                        jQuery(".hide_right_side_box").show();
 
-            jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+                        jQuery(".partial_amount_hide_on_load").show();
 
-            if(cart_session_data.status == "update"){
+                        jQuery(".empty_cart_error").hide();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                        jQuery("#total_cart_count").val("2");
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
+                        jQuery(".coupon_invalid_error").hide();
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-service_id",service_id);
+                        var cart_session_data = jQuery.parseJSON(res);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-method_id",method_id);
+                        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-units_id",units_id);
+                        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                        if (cart_session_data.status == "update") {
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-service_id", service_id);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-method_id", method_id);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-units_id", units_id);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                 
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-            }else if(cart_session_data.status == "insert"){
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "insert") {
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                 
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "firstinsert"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "firstinsert") {
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                 
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "empty calculation"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").hide();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".total_time_duration_text").html("");
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".freq_discount_display").hide();
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".partial_amount_hide_on_load").hide();
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".hide_right_side_box").hide();
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".add_minus_button").hide();
+                        } else if (cart_session_data.status == "empty calculation") {
 
-              jQuery("#ct-addon-"+units_id).attr("checked", false);
+                            jQuery(".hideduration_value").hide();
 
-              jQuery( ".cart_empty_msg" ).show();
+                            jQuery(".total_time_duration_text").html("");
 
-              jQuery( ".cart_item_listing" ).empty();
+                            jQuery(".freq_discount_display").hide();
 
-              jQuery( ".cart_sub_total" ).empty();
+                            jQuery(".partial_amount_hide_on_load").hide();
 
-              jQuery( ".cart_tax" ).empty();
+                            jQuery(".hide_right_side_box").hide();
 
-              jQuery( ".cart_special_days" ).empty();                               
+                            jQuery(".add_minus_button").hide();
 
-              jQuery( ".frequent_discount" ).empty();
+                            jQuery("#ct-addon-" + units_id).attr("checked", false);
 
-              jQuery( ".cart_total" ).empty();
+                            jQuery(".cart_empty_msg").show();
 
-              jQuery( ".remain_amount" ).empty();
+                            jQuery(".cart_item_listing").empty();
 
-              jQuery( ".partial_amount" ).empty();
+                            jQuery(".cart_sub_total").empty();
 
-              jQuery( ".cart_discount" ).empty();
+                            jQuery(".cart_tax").empty();
 
-            }else if(cart_session_data.status == "delete particuler"){
+                            jQuery(".cart_special_days").empty();
 
-              jQuery(".add_minus_buttonid"+units_id).hide();
+                            jQuery(".frequent_discount").empty();
 
-              jQuery("#ct-addon-"+units_id).attr("checked", false);
+                            jQuery(".cart_total").empty();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".remain_amount").empty();
 
-              jQuery( ".update_qty_of_s_m_"+cart_session_data.method_name_without_space).remove();
+                            jQuery(".partial_amount").empty();
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_discount").empty();
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                        } else if (cart_session_data.status == "delete particuler") {
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".add_minus_buttonid" + units_id).hide();
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery("#ct-addon-" + units_id).attr("checked", false);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                 
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).remove();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        }
+
+                    }
+
+                });
 
             }
 
-          }
-
         });
 
-      }
-
-  });
-
-  }
+    }
 
 });
 
-jQuery(document).on("click",".addons_servicess",function(){
+jQuery(document).on("click", ".addons_servicess", function() {
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var addon_id = jQuery(this).attr("data-id");
+    var addon_id = jQuery(this).attr("data-id");
 
-  var status = jQuery(this).attr("data-status");
+    var status = jQuery(this).attr("data-status");
 
-  /*add to cart values */
+    /*add to cart values */
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var service_id=jQuery(this).attr("data-service_id");
+    var service_id = jQuery(this).attr("data-service_id");
 
-  var method_id=jQuery(this).attr("data-method_id");
+    var method_id = jQuery(this).attr("data-method_id");
 
-  var method_name=jQuery(this).attr("data-method_name");
+    var method_name = jQuery(this).attr("data-method_name");
 
-  var type="addon";
+    var type = "addon";
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  /*end cart value */
+    /*end cart value */
 
-  if(parseInt(status) == 2){
+    if (parseInt(status) == 2) {
 
-    jQuery(this).attr("data-status","1");
+        jQuery(this).attr("data-status", "1");
 
-    jQuery.ajax({
+        jQuery.ajax({
 
-      type : "post",
+            type: "post",
 
-      data : { "addon_id" : addon_id, "get_service_addons_qtys" : 1 },
+            data: { "addon_id": addon_id, "get_service_addons_qtys": 1 },
 
-      url : ajax_url+"front_ajax.php",
+            url: ajax_url + "front_ajax.php",
 
-      success : function(res){
+            success: function(res) {
 
-        jQuery(".addons_counting").append(res);
+                jQuery(".addons_counting").append(res);
 
-      }
+            }
 
-    });
+        });
 
-  }else{
+    } else {
 
-    jQuery(this).attr("data-status","2");
+        jQuery(this).attr("data-status", "2");
 
-    jQuery(".remove_addon_intensive"+addon_id).hide();
+        jQuery(".remove_addon_intensive" + addon_id).hide();
 
-    jQuery.ajax({
+        jQuery.ajax({
 
-      type : "post",
+            type: "post",
 
-      data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : 0, "s_m_rate" : 0, "method_name" : method_name, "units_id" : addon_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
+            data: { "method_id": method_id, "service_id": service_id, "s_m_qty": 0, "s_m_rate": 0, "method_name": method_name, "units_id": addon_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
 
-      url : site_url+"front/firststep.php",
+            url: site_url + "front/firststep.php",
 
-      success : function(res){
+            success: function(res) {
 
-        jQuery(".freq_discount_display").show();
+                jQuery(".freq_discount_display").show();
 
-        jQuery(".hide_right_side_box").show();
+                jQuery(".hide_right_side_box").show();
 
-        jQuery(".partial_amount_hide_on_load").show();
+                jQuery(".partial_amount_hide_on_load").show();
 
-        jQuery(".empty_cart_error").hide();
+                jQuery(".empty_cart_error").hide();
 
-        jQuery(".coupon_invalid_error").hide();
+                jQuery(".coupon_invalid_error").hide();
 
-        jQuery("#total_cart_count").val("2");
+                jQuery("#total_cart_count").val("2");
 
-        var cart_session_data=jQuery.parseJSON(res);
+                var cart_session_data = jQuery.parseJSON(res);
 
-        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+                jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+                jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-        if(cart_session_data.status == "empty calculation"){
+                if (cart_session_data.status == "empty calculation") {
 
-          jQuery(".hideduration_value").hide();
+                    jQuery(".hideduration_value").hide();
 
-          jQuery(".total_time_duration_text").html("");
+                    jQuery(".total_time_duration_text").html("");
 
-          jQuery(".partial_amount_hide_on_load").hide();
+                    jQuery(".partial_amount_hide_on_load").hide();
 
-          jQuery(".hide_right_side_box").hide();
+                    jQuery(".hide_right_side_box").hide();
 
-          jQuery( ".cart_empty_msg" ).show();
+                    jQuery(".cart_empty_msg").show();
 
-          jQuery( ".cart_item_listing" ).empty();
+                    jQuery(".cart_item_listing").empty();
 
-          jQuery( ".cart_sub_total" ).empty();
+                    jQuery(".cart_sub_total").empty();
 
-          jQuery( ".cart_tax" ).empty();
+                    jQuery(".cart_tax").empty();
 
-          jQuery( ".cart_special_days" ).empty();                                 
+                    jQuery(".cart_special_days").empty();
 
-          jQuery( ".cart_total" ).empty();
+                    jQuery(".cart_total").empty();
 
-          jQuery( ".frequent_discount" ).empty();
+                    jQuery(".frequent_discount").empty();
 
-          jQuery( ".remain_amount" ).empty();
+                    jQuery(".remain_amount").empty();
 
-          jQuery( ".partial_amount" ).empty();
+                    jQuery(".partial_amount").empty();
 
-          jQuery( ".cart_discount" ).empty();
+                    jQuery(".cart_discount").empty();
 
-        }else if(cart_session_data.status == "delete particuler"){
+                } else if (cart_session_data.status == "delete particuler") {
 
-          jQuery( ".cart_empty_msg" ).hide();
+                    jQuery(".cart_empty_msg").hide();
 
-          jQuery( ".update_qty_of_s_m_"+m_name).remove();
+                    jQuery(".update_qty_of_s_m_" + m_name).remove();
 
-          jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                    jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-          jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                    jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-          jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                    jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-          jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                    jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-          jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                    jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-          jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                           
+                    jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-          jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                    jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-          jQuery(".cart_total").html(cart_session_data.total_amount);
+                    jQuery(".cart_total").html(cart_session_data.total_amount);
 
-          jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                    jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-        }
+                }
 
-      }
+            }
 
-    });
+        });
 
-  }
+    }
 
 });
 
@@ -3565,1693 +3614,1948 @@ jQuery(document).on("click",".addons_servicess",function(){
 
 /* ct_user_radio_group */
 
-jQuery(document).on("change",".existing-user",function() {
+jQuery(document).on("change", ".existing-user", function() {
 
-  if(jQuery(".existing-user").is(":checked")) {
+    if (jQuery(".existing-user").is(":checked")) {
 
-    jQuery(".ct-login-existing").show( "blind", {direction: "vertical"}, 700);
+        jQuery(".ct-login-existing").show("blind", { direction: "vertical" }, 700);
 
-    jQuery(".ct-new-user-details").hide( "blind", {direction: "vertical"}, 300);
+        jQuery(".ct-new-user-details").hide("blind", { direction: "vertical" }, 300);
 
-    jQuery(".ct-peronal-details").hide( "blind", {direction: "vertical"}, 300);
+        jQuery(".ct-peronal-details").hide("blind", { direction: "vertical" }, 300);
 
-  }
+    }
 
-  jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
+    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
 
-  jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
-
-});
-
-jQuery(document).on("change",".new-user",function() {
-
-  if(jQuery(".new-user").is(":checked")) {
-
-    jQuery(".ct-new-user-details").show( "blind", {direction: "vertical"}, 700);
-
-    jQuery(".ct-login-existing").hide( "blind", {direction: "vertical"}, 300);
-
-    jQuery(".ct-peronal-details").show( "blind", {direction: "vertical"}, 300);
-
-  }
-
-  jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
+    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
 
 });
 
-function price_format_with_symbol(ct_amount){
+jQuery(document).on("change", ".new-user", function() {
 
-  var ct_amount = parseFloat(ct_amount);
+    if (jQuery(".new-user").is(":checked")) {
 
-  if(currency_symbol_position == "$100"){
+        jQuery(".ct-new-user-details").show("blind", { direction: "vertical" }, 700);
 
-    return "<span class=ct_total_small>"+currency_symbol+"</span>"+ct_amount.toFixed(price_format_decimal_places);
+        jQuery(".ct-login-existing").hide("blind", { direction: "vertical" }, 300);
 
-  }else{
+        jQuery(".ct-peronal-details").show("blind", { direction: "vertical" }, 300);
 
-    return ct_amount.toFixed(price_format_decimal_places)+"<span class=ct_total_small>"+currency_symbol+"</span>";
+    }
 
-  }
+    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
+
+});
+
+function price_format_with_symbol(ct_amount) {
+
+    var ct_amount = parseFloat(ct_amount);
+
+    if (currency_symbol_position == "$100") {
+
+        return "<span class=ct_total_small>" + currency_symbol + "</span>" + ct_amount.toFixed(price_format_decimal_places);
+
+    } else {
+
+        return ct_amount.toFixed(price_format_decimal_places) + "<span class=ct_total_small>" + currency_symbol + "</span>";
+
+    }
 
 }
 
-function price_format_without_symbol(ct_amount){
+function price_format_without_symbol(ct_amount) {
 
-  var ct_amount = parseFloat(ct_amount);
+    var ct_amount = parseFloat(ct_amount);
 
-  return ct_amount.toFixed(price_format_decimal_places);
+    return ct_amount.toFixed(price_format_decimal_places);
 
 }
 
 /*frequently_discount*/
 
-jQuery(document).on("click",".cart_frequently_discount",function(){
+jQuery(document).on("click", ".cart_frequently_discount", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  var p_d_status = partial_deposit.partial_deposit_status;
+    var p_d_status = partial_deposit.partial_deposit_status;
 
-  var p_d_amount = partial_deposit.partial_deposit_amount;
+    var p_d_amount = partial_deposit.partial_deposit_amount;
 
-  var p_d_type = partial_deposit.partial_deposit_type;
+    var p_d_type = partial_deposit.partial_deposit_type;
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var discountname = jQuery(this).attr("data-name");
+    var discountname = jQuery(this).attr("data-name");
 
-  var discount_type = jQuery(this).attr("data-discount_type");
+    var discount_type = jQuery(this).attr("data-discount_type");
 
-  var discount_value = parseFloat(jQuery(this).attr("data-discount_value"));
+    var discount_value = parseFloat(jQuery(this).attr("data-discount_value"));
 
-  jQuery(".f_discount_name").html(discountname);
+    jQuery(".f_discount_name").html(discountname);
 
-  var index_get_val = 0;
+    var index_get_val = 0;
 
-  if(currency_symbol_position == "$100"){
+    if (currency_symbol_position == "$100") {
 
-    index_get_val = 1;
-
-  }
-
-  if(jQuery(".cart_sub_total").text() != ""){
-
-    var currency_symbol = jQuery(this).attr("data-currency_symbol");
-	var cart_sub_total = jQuery(".cart_sub_total").text();
-	var cart_sub_total_val = cart_sub_total.replace(currency_symbol, "");
-	var cart_tax_val = 0;
-	if(jQuery(".cart_tax").text() != ""){
-	  cart_tax_valss = jQuery(".cart_tax").text();
-	  var cart_tax_val = cart_tax_valss.replace(currency_symbol, "");
-	}
-
-    var freq_discount_amount = 0;
-
-    if(discount_type == "P"){
-
-      freq_discount_amount = cart_sub_total_val * (discount_value / 100);
-
-    }else{
-
-      freq_discount_amount = discount_value;
+        index_get_val = 1;
 
     }
 
-    var cart_total = parseFloat(cart_sub_total_val) - parseFloat(freq_discount_amount) + parseFloat(cart_tax_val);
+    if (jQuery(".cart_sub_total").text() != "") {
 
-    if(cart_total <= 0){
+        var currency_symbol = jQuery(this).attr("data-currency_symbol");
+        var cart_sub_total = jQuery(".cart_sub_total").text();
+        var cart_sub_total_val = cart_sub_total.replace(currency_symbol, "");
+        var cart_tax_val = 0;
+        if (jQuery(".cart_tax").text() != "") {
+            cart_tax_valss = jQuery(".cart_tax").text();
+            var cart_tax_val = cart_tax_valss.replace(currency_symbol, "");
+        }
 
-      cart_total = 0;
+        var freq_discount_amount = 0;
+
+        if (discount_type == "P") {
+
+            freq_discount_amount = cart_sub_total_val * (discount_value / 100);
+
+        } else {
+
+            freq_discount_amount = discount_value;
+
+        }
+
+        var cart_total = parseFloat(cart_sub_total_val) - parseFloat(freq_discount_amount) + parseFloat(cart_tax_val);
+
+        if (cart_total <= 0) {
+
+            cart_total = 0;
+
+        }
+
+        if (p_d_status == "Y") {
+
+            var p_amount = 0;
+
+            var r_amount = 0;
+
+            if (p_d_type == "P") {
+
+                var percentages = ((parseFloat(p_d_amount)) / 100);
+
+                p_amount = parseFloat(cart_total) * parseFloat(percentages);
+
+            } else if (p_d_type == "F") {
+
+                p_amount = p_d_amount;
+
+            }
+
+            r_amount = parseFloat(cart_total) - parseFloat(p_amount);
+
+            jQuery(".partial_amount").html(price_format_without_symbol(p_amount));
+
+            jQuery(".remain_amount").html(price_format_without_symbol(r_amount));
+
+        }
+
+        jQuery(".frequent_discount").html("-" + price_format_without_symbol(freq_discount_amount));
+
+        jQuery(".cart_total").html(price_format_with_symbol(cart_total));
+
+        jQuery(".ct-loading-main").hide();
+
+        var site_url = siteurlObj.site_url;
+
+        jQuery.ajax({
+
+            type: "POST",
+
+            url: site_url + "front/firststep.php",
+
+            data: {
+
+                "freq_discount_amount": freq_discount_amount.toFixed(2),
+
+                "frequently_discount_set": 1
+
+            },
+
+            success: function(res) {}
+
+        });
+
+    } else {
+
+        jQuery(".ct-loading-main").hide();
 
     }
-
-    if(p_d_status == "Y"){
-
-      var p_amount = 0;
-
-      var r_amount = 0;
-
-      if(p_d_type == "P"){
-
-        var percentages = ((parseFloat(p_d_amount)) / 100);
-
-        p_amount = parseFloat(cart_total) * parseFloat(percentages);
-
-      }else if(p_d_type == "F"){
-
-        p_amount = p_d_amount;
-
-      }
-
-      r_amount = parseFloat(cart_total) - parseFloat(p_amount);
-
-      jQuery(".partial_amount").html(price_format_without_symbol(p_amount));
-
-      jQuery(".remain_amount").html(price_format_without_symbol(r_amount));
-
-    }
-
-    jQuery(".frequent_discount").html("-"+price_format_without_symbol(freq_discount_amount));
-
-    jQuery(".cart_total").html(price_format_with_symbol(cart_total));
-
-    jQuery(".ct-loading-main").hide();
-
-    var site_url = siteurlObj.site_url;
-
-    jQuery.ajax({
-
-      type: "POST",
-
-      url: site_url + "front/firststep.php",
-
-      data: {
-
-        "freq_discount_amount": freq_discount_amount.toFixed(2),
-
-        "frequently_discount_set": 1
-
-      },
-
-      success: function(res) {}
-
-    });
-
-  }
-
-  else{
-
-    jQuery(".ct-loading-main").hide();
-
-  }
 
 });
 
-jQuery(document).on("change","#contact_status",function() {
+jQuery(document).on("change", "#contact_status", function() {
 
-  var contact_status = jQuery("#contact_status").val();
+    var contact_status = jQuery("#contact_status").val();
 
-  if(contact_status == "Other"){
+    if (contact_status == "Other") {
 
-    jQuery(".ct-option-others").show();
+        jQuery(".ct-option-others").show();
 
-  }else{
+    } else {
 
-    jQuery(".ct-option-others").hide();
+        jQuery(".ct-option-others").hide();
 
-  }
+    }
 
 });
 
 /******* Service method - display design according to admin selection ******/
 
-jQuery(document).on("click",".s_m_units_design",function(){
+jQuery(document).on("click", ".s_m_units_design", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".hideduration_value").hide();
+    jQuery(".hideduration_value").hide();
 
-  jQuery(".total_time_duration_text").html("");
+    jQuery(".total_time_duration_text").html("");
 
-  jQuery(".addons_servicess").each(function(){
+    jQuery(".addons_servicess").each(function() {
 
-    jQuery(this).attr("data-status","2");
+        jQuery(this).attr("data-status", "2");
 
-    var value = jQuery(this).prop("checked");
+        var value = jQuery(this).prop("checked");
 
-    if(value == true){
+        if (value == true) {
 
-      jQuery("#ct-addon-"+jQuery(this).attr("data-id")).attr("checked", false);
+            jQuery("#ct-addon-" + jQuery(this).attr("data-id")).attr("checked", false);
 
-    }
+        }
 
-    jQuery(".remove_addon_intensive"+jQuery(this).attr("data-id")).hide();
+        jQuery(".remove_addon_intensive" + jQuery(this).attr("data-id")).hide();
 
-  });
+    });
 
-  jQuery(".freq_discount_display").hide();
+    jQuery(".freq_discount_display").hide();
 
-  jQuery( ".cart_empty_msg" ).show();
+    jQuery(".cart_empty_msg").show();
 
-  jQuery(".partial_amount_hide_on_load").hide();
+    jQuery(".partial_amount_hide_on_load").hide();
 
-  jQuery(".hide_right_side_box").hide();
+    jQuery(".hide_right_side_box").hide();
 
-  if(jQuery(".service-method-name").text() != "Service Usage Methods"){
+    if (jQuery(".service-method-name").text() != "Service Usage Methods") {
 
-    jQuery(".method_not_selected_error").attr("style","");
+        jQuery(".method_not_selected_error").attr("style", "");
 
-    jQuery(".empty_cart_error").css("display","none");
+        jQuery(".empty_cart_error").css("display", "none");
 
-    jQuery(".empty_cart_error").html(errorobj_please_select_units_or_addons);
-
-  }
-
-  jQuery(".add_addon_in_cart_for_multipleqty").each(function(){
-
-    var multiqty_addon_id = jQuery(this).attr("data-id");
-
-    var value = jQuery(this).prop("checked");
-
-    if(value == true){
-
-      jQuery("#ct-addon-"+multiqty_addon_id).attr("checked", false);
+        jQuery(".empty_cart_error").html(errorobj_please_select_units_or_addons);
 
     }
 
-  });
+    jQuery(".add_addon_in_cart_for_multipleqty").each(function() {
 
-  jQuery(".addon_qty").each(function(){
+        var multiqty_addon_id = jQuery(this).attr("data-id");
 
-    jQuery(this).val(0);
+        var value = jQuery(this).prop("checked");
 
-    jQuery(".add_minus_button").hide();
+        if (value == true) {
 
-    jQuery(".addons_servicess_2").attr("checked", false);
+            jQuery("#ct-addon-" + multiqty_addon_id).attr("checked", false);
 
-  });
+        }
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    });
 
-  jQuery(".add_addon_in_cart_for_multipleqty").attr("data-status","2");
+    jQuery(".addon_qty").each(function() {
 
-  var site_url=siteurlObj.site_url;
+        jQuery(this).val(0);
 
-  var ajax_url=ajaxurlObj.ajax_url;
+        jQuery(".add_minus_button").hide();
 
-  var id = jQuery(this).attr("data-id");
+        jQuery(".addons_servicess_2").attr("checked", false);
 
-  var method_id = jQuery(this).attr("data-id");
+    });
 
-  var service_id = jQuery(this).attr("data-service_id");
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var rate_type = jQuery(this).attr("data-methoddss");
+    jQuery(".add_addon_in_cart_for_multipleqty").attr("data-status", "2");
 
-  jQuery.ajax({
+    var site_url = siteurlObj.site_url;
 
-    type : "post",
+    var ajax_url = ajaxurlObj.ajax_url;
 
-    data : { "service_methods_id" : id, "select_s_m_units_design" : 1 },
+    var id = jQuery(this).attr("data-id");
 
-    url : ajax_url+"front_ajax.php",
+    var method_id = jQuery(this).attr("data-id");
 
-    success : function(response){
+    var service_id = jQuery(this).attr("data-service_id");
 
-      jQuery(".ct-loading-main").hide();
+    var rate_type = jQuery(this).attr("data-methoddss");
 
-      if(response == 1){
+    jQuery.ajax({
 
-        jQuery( ".cart_item_listing" ).empty();
+        type: "post",
 
-        jQuery( ".cart_sub_total" ).empty();
+        data: { "service_methods_id": id, "select_s_m_units_design": 1 },
 
-        jQuery( ".cart_tax" ).empty();
+        url: ajax_url + "front_ajax.php",
 
-        jQuery( ".cart_special_days" ).empty();                                  
+        success: function(response) {
 
-        jQuery( ".cart_total" ).empty();
+            jQuery(".ct-loading-main").hide();
 
-        jQuery( ".frequent_discount" ).empty();
+            if (response == 1) {
 
-        jQuery( ".remain_amount" ).empty();
+                jQuery(".cart_item_listing").empty();
 
-        jQuery( ".partial_amount" ).empty();
+                jQuery(".cart_sub_total").empty();
 
-        jQuery( ".cart_discount" ).empty();
+                jQuery(".cart_tax").empty();
 
-        jQuery(".coupon_display").hide();
+                jQuery(".cart_special_days").empty();
 
+                jQuery(".cart_total").empty();
 
+                jQuery(".frequent_discount").empty();
 
-        /* */
+                jQuery(".remain_amount").empty();
 
-        jQuery(".user_coupon_display").hide();
+                jQuery(".partial_amount").empty();
 
-        /* */
+                jQuery(".cart_discount").empty();
 
+                jQuery(".coupon_display").hide();
 
 
-        jQuery(".s_m_units_design_1").show();
 
-        jQuery(".s_m_units_design_2").hide();
+                /* */
 
-        jQuery(".s_m_units_design_3").hide();
+                jQuery(".user_coupon_display").hide();
 
-        jQuery(".s_m_units_design_4").hide();
+                /* */
 
-        jQuery(".s_m_units_design_5").hide();
 
-        jQuery.ajax({
 
-          type : "post",
+                jQuery(".s_m_units_design_1").show();
 
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_units_maxlimit" : 1 },
+                jQuery(".s_m_units_design_2").hide();
 
-          url : ajax_url+"front_ajax.php",
+                jQuery(".s_m_units_design_3").hide();
 
-          success : function(response){
+                jQuery(".s_m_units_design_4").hide();
 
-            jQuery(".duration_hrs").html(response);
+                jQuery(".s_m_units_design_5").hide();
 
-          }
+                jQuery.ajax({
 
-        });
+                    type: "post",
 
-      }else if(response == 2){
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_units_maxlimit": 1 },
 
-        jQuery( ".cart_item_listing" ).empty();
+                    url: ajax_url + "front_ajax.php",
 
-        jQuery( ".cart_sub_total" ).empty();
+                    success: function(response) {
 
-        jQuery( ".cart_tax" ).empty();
+                        jQuery(".duration_hrs").html(response);
 
-        jQuery( ".cart_special_days" ).empty();                                  
+                    }
 
-        jQuery( ".cart_total" ).empty();
+                });
 
-        jQuery( ".remain_amount" ).empty();
+            } else if (response == 2) {
 
-        jQuery( ".frequent_discount" ).empty();
+                jQuery(".cart_item_listing").empty();
 
-        jQuery( ".partial_amount" ).empty();
+                jQuery(".cart_sub_total").empty();
 
-        jQuery( ".cart_discount" ).empty();
+                jQuery(".cart_tax").empty();
 
-        jQuery(".coupon_display").hide();
+                jQuery(".cart_special_days").empty();
 
+                jQuery(".cart_total").empty();
 
+                jQuery(".remain_amount").empty();
 
-        /* */
+                jQuery(".frequent_discount").empty();
 
-        jQuery(".user_coupon_display").hide();
+                jQuery(".partial_amount").empty();
 
-        /* */
+                jQuery(".cart_discount").empty();
 
+                jQuery(".coupon_display").hide();
 
 
-        jQuery(".s_m_units_design_1").hide();
 
-        jQuery(".s_m_units_design_2").show();
+                /* */
 
-        jQuery(".s_m_units_design_3").hide();
+                jQuery(".user_coupon_display").hide();
 
-        jQuery(".s_m_units_design_4").hide();
+                /* */
 
-        jQuery(".s_m_units_design_5").hide();
 
-        jQuery.ajax({
 
-          type : "post",
+                jQuery(".s_m_units_design_1").hide();
 
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_units_maxlimit_2" : 1 },
+                jQuery(".s_m_units_design_2").show();
 
-          url : ajax_url+"front_ajax.php",
+                jQuery(".s_m_units_design_3").hide();
 
-          success : function(res){
+                jQuery(".s_m_units_design_4").hide();
 
-            jQuery(".ser_design_2_units").html(res);
+                jQuery(".s_m_units_design_5").hide();
 
-            if(jQuery("#row_tot").val()==1){                          
+                jQuery.ajax({
 
-              jQuery(".select_bedroom").trigger("click");                         
+                    type: "post",
 
-            }  
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_units_maxlimit_2": 1 },
 
-          }
+                    url: ajax_url + "front_ajax.php",
 
-        });
+                    success: function(res) {
 
-      }else if(response == 3){
+                        jQuery(".ser_design_2_units").html(res);
 
-        jQuery( ".cart_item_listing" ).empty();
+                        if (jQuery("#row_tot").val() == 1) {
 
-        jQuery( ".cart_sub_total" ).empty();
+                            jQuery(".select_bedroom").trigger("click");
 
-        jQuery( ".cart_tax" ).empty();
+                        }
 
-        jQuery( ".cart_special_days" ).empty();                                  
+                    }
 
-        jQuery( ".cart_total" ).empty();
+                });
 
-        jQuery( ".remain_amount" ).empty();
+            } else if (response == 3) {
 
-        jQuery( ".partial_amount" ).empty();
+                jQuery(".cart_item_listing").empty();
 
-        jQuery( ".frequent_discount" ).empty();
+                jQuery(".cart_sub_total").empty();
 
-        jQuery( ".cart_discount" ).empty();
+                jQuery(".cart_tax").empty();
 
-        jQuery(".coupon_display").hide();
+                jQuery(".cart_special_days").empty();
 
+                jQuery(".cart_total").empty();
 
+                jQuery(".remain_amount").empty();
 
-        /* */
+                jQuery(".partial_amount").empty();
 
-        jQuery(".user_coupon_display").hide();
+                jQuery(".frequent_discount").empty();
 
-        /* */
+                jQuery(".cart_discount").empty();
 
+                jQuery(".coupon_display").hide();
 
 
-        jQuery(".s_m_units_design_1").hide();
 
-        jQuery(".s_m_units_design_2").hide();
+                /* */
 
-        jQuery(".s_m_units_design_3").show();
+                jQuery(".user_coupon_display").hide();
 
-        jQuery(".s_m_units_design_4").hide();
+                /* */
 
-        jQuery(".s_m_units_design_5").hide();
 
-        jQuery.ajax({
 
-          type : "post",
+                jQuery(".s_m_units_design_1").hide();
 
-          data : { "rate_type" : rate_type, "method_id" : method_id, "service_id" : service_id, "s_m_units_maxlimit_3" : 1 },
+                jQuery(".s_m_units_design_2").hide();
 
-          url : ajax_url+"front_ajax.php",
+                jQuery(".s_m_units_design_3").show();
 
-          success : function(res){
+                jQuery(".s_m_units_design_4").hide();
 
-            jQuery.ajax({
+                jQuery(".s_m_units_design_5").hide();
 
-              type:"POST",
+                jQuery.ajax({
 
-              url: ajax_url+"front_ajax.php",
+                    type: "post",
 
-              data : { "get_updated_staff_detail" : 1 },
+                    data: { "rate_type": rate_type, "method_id": method_id, "service_id": service_id, "s_m_units_maxlimit_3": 1 },
 
-              success: function(staff_res){
+                    url: ajax_url + "front_ajax.php",
 
-                jQuery(".provders-list").html(staff_res);
+                    success: function(res) {
 
-              }
+                        jQuery.ajax({
 
-            });
+                            type: "POST",
 
-            jQuery(".ser_design_3_units").html(res);
+                            url: ajax_url + "front_ajax.php",
 
-            if(jQuery("#row_tot").val()==1){                          
+                            data: { "get_updated_staff_detail": 1 },
 
-              jQuery(".select_m_u_btn").trigger("click");    
-							var staff_id=jQuery("input[name=provider-radio]:checked").attr("data-staff_id");
+                            success: function(staff_res) {
 
-              jQuery(".s_m_units_design_3").hide();		
-              if(staff_id != undefined){
-              	jQuery('.provider_disable[data-staff_id="'+staff_id+'"]').trigger("click");
-              	
-              }							
+                                jQuery(".provders-list").html(staff_res);
+
+                            }
+
+                        });
+
+                        jQuery(".ser_design_3_units").html(res);
+
+                        if (jQuery("#row_tot").val() == 1) {
+
+                            jQuery(".select_m_u_btn").trigger("click");
+                            var staff_id = jQuery("input[name=provider-radio]:checked").attr("data-staff_id");
+
+                            jQuery(".s_m_units_design_3").hide();
+                            if (staff_id != undefined) {
+                                jQuery('.provider_disable[data-staff_id="' + staff_id + '"]').trigger("click");
+
+                            }
+
+                        }
+
+                    }
+
+                });
+
+            } else if (response == 4) {
+
+                jQuery(".cart_item_listing").empty();
+
+                jQuery(".cart_sub_total").empty();
+
+                jQuery(".cart_tax").empty();
+
+                jQuery(".cart_special_days").empty();
+
+                jQuery(".cart_total").empty();
+
+                jQuery(".remain_amount").empty();
+
+                jQuery(".frequent_discount").empty();
+
+                jQuery(".partial_amount").empty();
+
+                jQuery(".cart_discount").empty();
+
+                jQuery(".coupon_display").hide();
+
+
+
+                /* */
+
+                jQuery(".user_coupon_display").hide();
+
+                /* */
+
+
+
+                jQuery(".s_m_units_design_1").hide();
+
+                jQuery(".s_m_units_design_2").hide();
+
+                jQuery(".s_m_units_design_3").hide();
+
+                jQuery(".s_m_units_design_4").show();
+
+                jQuery(".s_m_units_design_5").hide();
+
+                jQuery.ajax({
+
+                    type: "post",
+
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_units_maxlimit_4": 1 },
+
+                    url: ajax_url + "front_ajax.php",
+
+                    success: function(res) {
+
+                        jQuery(".ser_design_4_units").html(res);
+
+                        if (jQuery("#row_tot").val() == 1) {
+
+                            jQuery(".addd").trigger("click");
+
+                        }
+
+                    }
+
+                });
+
+            } else if (response == 5) {
+
+                jQuery(".cart_item_listing").empty();
+
+                jQuery(".cart_sub_total").empty();
+
+                jQuery(".cart_tax").empty();
+
+                jQuery(".cart_special_days").empty();
+
+                jQuery(".cart_total").empty();
+
+                jQuery(".remain_amount").empty();
+
+                jQuery(".frequent_discount").empty();
+
+                jQuery(".partial_amount").empty();
+
+                jQuery(".cart_discount").empty();
+
+                jQuery(".coupon_display").hide();
+
+
+
+                /* */
+
+                jQuery(".user_coupon_display").hide();
+
+                /* */
+
+
+
+                jQuery(".s_m_units_design_1").hide();
+
+                jQuery(".s_m_units_design_2").hide();
+
+                jQuery(".s_m_units_design_3").hide();
+
+                jQuery(".s_m_units_design_4").hide();
+
+                jQuery(".s_m_units_design_5").show();
+
+                jQuery.ajax({
+
+                    type: "post",
+
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_units_maxlimit_5": 1 },
+
+                    url: ajax_url + "front_ajax.php",
+
+                    success: function(res) {
+
+                        jQuery(".ser_design_5_units").html(res);
+
+                    }
+
+                });
 
             }
 
-          }
+        }
 
-        });
-
-      }else if(response == 4){
-
-        jQuery( ".cart_item_listing" ).empty();
-
-        jQuery( ".cart_sub_total" ).empty();
-
-        jQuery( ".cart_tax" ).empty();
-
-        jQuery( ".cart_special_days" ).empty();                                  
-
-        jQuery( ".cart_total" ).empty();
-
-        jQuery( ".remain_amount" ).empty();
-
-        jQuery( ".frequent_discount" ).empty();
-
-        jQuery( ".partial_amount" ).empty();
-
-        jQuery( ".cart_discount" ).empty();
-
-        jQuery(".coupon_display").hide();
-
-
-
-        /* */
-
-        jQuery(".user_coupon_display").hide();
-
-        /* */
-
-
-
-        jQuery(".s_m_units_design_1").hide();
-
-        jQuery(".s_m_units_design_2").hide();
-
-        jQuery(".s_m_units_design_3").hide();
-
-        jQuery(".s_m_units_design_4").show();
-
-        jQuery(".s_m_units_design_5").hide();
-
-        jQuery.ajax({
-
-          type : "post",
-
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_units_maxlimit_4" : 1 },
-
-          url : ajax_url+"front_ajax.php",
-
-          success : function(res){
-
-            jQuery(".ser_design_4_units").html(res);
-
-             if(jQuery("#row_tot").val()==1){                          
-
-               jQuery(".addd").trigger("click");                         
-
-            } 
-
-          }
-
-        });
-
-      }else if(response == 5){
-
-        jQuery( ".cart_item_listing" ).empty();
-
-        jQuery( ".cart_sub_total" ).empty();
-
-        jQuery( ".cart_tax" ).empty();
-
-        jQuery( ".cart_special_days" ).empty();                                  
-
-        jQuery( ".cart_total" ).empty();
-
-        jQuery( ".remain_amount" ).empty();
-
-        jQuery( ".frequent_discount" ).empty();
-
-        jQuery( ".partial_amount" ).empty();
-
-        jQuery( ".cart_discount" ).empty();
-
-        jQuery(".coupon_display").hide();
-
-
-
-        /* */
-
-        jQuery(".user_coupon_display").hide();
-
-        /* */
-
-
-
-        jQuery(".s_m_units_design_1").hide();
-
-        jQuery(".s_m_units_design_2").hide();
-
-        jQuery(".s_m_units_design_3").hide();
-
-        jQuery(".s_m_units_design_4").hide();
-
-        jQuery(".s_m_units_design_5").show();
-
-        jQuery.ajax({
-
-          type : "post",
-
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_units_maxlimit_5" : 1 },
-
-          url : ajax_url+"front_ajax.php",
-
-          success : function(res){
-
-            jQuery(".ser_design_5_units").html(res);
-
-          }
-
-        });
-
-      }
-
-    }
-
-  });
+    });
 
 });
 
 /* bedrooms dropdown show hide list */
 
-jQuery(document).on("click",".select-bedrooms",function() {
+jQuery(document).on("click", ".select-bedrooms", function() {
 
-  var unit_id= jQuery(this).attr("data-un_id");
+    var unit_id = jQuery(this).attr("data-un_id");
 
-  jQuery(".ct-"+unit_id+"-dropdown").toggle( "blind", {direction: "vertical"}, 300 );
+    jQuery(".ct-" + unit_id + "-dropdown").toggle("blind", { direction: "vertical" }, 300);
 
 });
 
 /* select on click on bedroom */
 
-jQuery(document).on("click",".select_bedroom",function() {
+jQuery(document).on("click", ".select_bedroom", function() {
 
-  var units_id= jQuery(this).attr("data-units_id");
+    var units_id = jQuery(this).attr("data-units_id");
 
-  jQuery("#ct_selected_"+units_id).html(jQuery(this).html());
+    jQuery("#ct_selected_" + units_id).html(jQuery(this).html());
 
-  jQuery(".ct-"+units_id+"-dropdown").hide( "blind", {direction: "vertical"}, 300 );
-
-});
-
-jQuery(document).on("click",".select-language",function() {
-
-  jQuery(".ct-language-dropdown").toggle( "blind", {direction: "vertical"}, 300 );
+    jQuery(".ct-" + units_id + "-dropdown").hide("blind", { direction: "vertical" }, 300);
 
 });
 
-jQuery(document).on("click",".select_language_view",function() {
+jQuery(document).on("click", ".select-language", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-language-dropdown").toggle("blind", { direction: "vertical" }, 300);
 
-  var ajax_url=ajaxurlObj.ajax_url;
+});
 
-  jQuery("#ct_selected_language").html(jQuery(this).html());
+jQuery(document).on("click", ".select_language_view", function() {
 
-  jQuery(".ct-language-dropdown").hide( "blind", {direction: "vertical"}, 300 );
+    jQuery(".ct-loading-main").show();
 
-  jQuery.ajax({
+    var ajax_url = ajaxurlObj.ajax_url;
 
-    type : "POST",
+    jQuery("#ct_selected_language").html(jQuery(this).html());
 
-    data : {"select_language" : "yes","set_language" : jQuery(this).attr("data-langs")},
+    jQuery(".ct-language-dropdown").hide("blind", { direction: "vertical" }, 300);
 
-    url : ajax_url+"front_ajax.php",
+    jQuery.ajax({
 
-    success : function(res){
+        type: "POST",
 
-      location.reload();
+        data: { "select_language": "yes", "set_language": jQuery(this).attr("data-langs") },
 
-    }
+        url: ajax_url + "front_ajax.php",
 
-  });
+        success: function(res) {
+
+            location.reload();
+
+        }
+
+    });
 
 });
 
 /* remove item btn-from the cart */
 
-jQuery(document).on("click",".remove_item_from_cart",function() {
+jQuery(document).on("click", ".remove_item_from_cart", function() {
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  var unit_id = jQuery(this).attr("data-units_id");
+    var unit_id = jQuery(this).attr("data-units_id");
 
-  jQuery("#apply_coupon").show();
+    jQuery("#apply_coupon").show();
 
-  jQuery("#coupon_val").show();
+    jQuery("#coupon_val").show();
 
-  jQuery(".ct-display-coupon-code").hide();
+    jQuery(".ct-display-coupon-code").hide();
 
-  jQuery(".coupon_display").hide();
-
-
-
-  /* */
-
-  jQuery(".user_coupon_display").hide();
-
-  /* */
+    jQuery(".coupon_display").hide();
 
 
 
-  var frequently_discount = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    /* */
 
-  jQuery.ajax({
+    jQuery(".user_coupon_display").hide();
 
-    type : "POST",
+    /* */
 
-    data : { "cart_unit_id" : unit_id, "frequently_discount_id" : frequently_discount, "m_name": m_name, "cart_item_remove" : 1 },
 
-    url : ajax_url+"front_ajax.php",
 
-    success : function(res){
+    var frequently_discount = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-      var cart_session_data=jQuery.parseJSON(res);
+    jQuery.ajax({
 
-      jQuery(".select-bedrooms").each( function(){
+        type: "POST",
 
-        if(jQuery(this).attr("data-un_id") == unit_id && jQuery(this).attr("data-mnamee") == m_name){
+        data: { "cart_unit_id": unit_id, "frequently_discount_id": frequently_discount, "m_name": m_name, "cart_item_remove": 1 },
 
-          var dd_default_title = jQuery(this).attr("data-un_title");
+        url: ajax_url + "front_ajax.php",
 
-          jQuery("#ct_selected_"+unit_id+" .ct-count").html(dd_default_title);
+        success: function(res) {
+
+            var cart_session_data = jQuery.parseJSON(res);
+
+            jQuery(".select-bedrooms").each(function() {
+
+                if (jQuery(this).attr("data-un_id") == unit_id && jQuery(this).attr("data-mnamee") == m_name) {
+
+                    var dd_default_title = jQuery(this).attr("data-un_title");
+
+                    jQuery("#ct_selected_" + unit_id + " .ct-count").html(dd_default_title);
+
+                }
+
+            });
+
+            jQuery(".u_" + unit_id + "_btn").removeClass("ct-bed-selected");
+
+            jQuery("#ct_area_m_units").val("");
+
+            jQuery("#qty" + unit_id).val("0");
+
+            if (m_name.indexOf("ad_unit") > -1) {
+
+                jQuery(".add_minus_buttonid" + unit_id).hide();
+
+                jQuery(".qtyyy_ad_unit" + unit_id).val("0");
+
+                jQuery("#ct-addon-" + unit_id).attr("data-status", "2");
+
+                jQuery("#ct-addon-" + unit_id).prop("checked", false);
+
+            }
+
+            if (cart_session_data.status == "empty calculation") {
+
+                jQuery(".hideduration_value").hide();
+
+                jQuery(".total_time_duration_text").html("");
+
+                jQuery("#total_cart_count").val("1");
+
+                jQuery(".freq_discount_display").hide();
+
+                jQuery(".partial_amount_hide_on_load").hide();
+
+                jQuery(".hide_right_side_box").hide();
+
+                jQuery(".cart_empty_msg").show();
+
+                jQuery(".cart_item_listing").empty();
+
+                jQuery(".cart_sub_total").empty();
+
+                jQuery(".cart_tax").empty();
+
+                jQuery(".cart_special_days").empty();
+
+                jQuery(".cart_total").empty();
+
+                jQuery(".remain_amount").empty();
+
+                jQuery(".partial_amount").empty();
+
+                jQuery(".cart_discount").empty();
+
+                jQuery(".frequent_discount").empty();
+
+            } else {
+
+                jQuery("#total_cart_count").val("2");
+
+                jQuery(".cart_empty_msg").hide();
+
+                jQuery(".update_qty_of_s_m_" + m_name).remove();
+
+                jQuery(".partial_amount").html(cart_session_data.partial_amount);
+
+                jQuery(".remain_amount").html(cart_session_data.remain_amount);
+
+                jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+            }
 
         }
 
-      });
-
-      jQuery(".u_"+unit_id+"_btn").removeClass("ct-bed-selected");
-
-      jQuery("#ct_area_m_units").val("");
-
-      jQuery("#qty"+unit_id).val("0");
-
-      if (m_name.indexOf("ad_unit") > -1){
-
-        jQuery(".add_minus_buttonid"+unit_id).hide();
-
-        jQuery(".qtyyy_ad_unit"+unit_id).val("0");
-
-        jQuery("#ct-addon-"+unit_id).attr("data-status","2");
-
-        jQuery("#ct-addon-"+unit_id).prop("checked",false);
-
-      }
-
-      if(cart_session_data.status == "empty calculation"){
-
-        jQuery(".hideduration_value").hide();
-
-        jQuery(".total_time_duration_text").html("");
-
-        jQuery("#total_cart_count").val("1");
-
-        jQuery(".freq_discount_display").hide();
-
-        jQuery(".partial_amount_hide_on_load").hide();
-
-        jQuery(".hide_right_side_box").hide();
-
-        jQuery( ".cart_empty_msg" ).show();
-
-        jQuery( ".cart_item_listing" ).empty();
-
-        jQuery( ".cart_sub_total" ).empty();
-
-        jQuery( ".cart_tax" ).empty();
-
-        jQuery( ".cart_special_days" ).empty();                                  
-
-        jQuery( ".cart_total" ).empty();
-
-        jQuery( ".remain_amount" ).empty();
-
-        jQuery( ".partial_amount" ).empty();
-
-        jQuery( ".cart_discount" ).empty();
-
-        jQuery(".frequent_discount").empty();
-
-      }else{
-
-        jQuery("#total_cart_count").val("2");
-
-        jQuery( ".cart_empty_msg" ).hide();
-
-        jQuery( ".update_qty_of_s_m_"+m_name).remove();
-
-        jQuery(".partial_amount").html(cart_session_data.partial_amount);
-
-        jQuery(".remain_amount").html(cart_session_data.remain_amount);
-
-        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
-
-        jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
-
-        jQuery(".cart_tax").html(cart_session_data.cart_tax);
-
-        jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                                                              
-
-        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-        jQuery(".cart_total").html(cart_session_data.total_amount);
-
-        jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
-
-      }
-
-    }
-
-  });
+    });
 
 });
 
 /* bedroom counting */
 
-jQuery(document).on("click",".select_m_u_btn",function() {
-	
-  var units_id= jQuery(this).attr("data-units_id");
+jQuery(document).on("click", ".select_m_u_btn", function() {
 
-  jQuery(".u_"+units_id+"_btn").each(function(){
+    var units_id = jQuery(this).attr("data-units_id");
 
-    jQuery(this).removeClass("ct-bed-selected");
+    jQuery(".u_" + units_id + "_btn").each(function() {
 
-  });
+        jQuery(this).removeClass("ct-bed-selected");
 
-  jQuery(this).addClass("ct-bed-selected");
+    });
+
+    jQuery(this).addClass("ct-bed-selected");
 
 });
 
 /* bedroom and bathroom counting */
 
-jQuery(document).on("click",".addd",function(){
+jQuery(document).on("click", ".addd", function() {
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-	jQuery(".custom_item_error").hide();
+    jQuery(".custom_item_error").hide();
 
-jQuery(".custom_item_error").html("");
+    jQuery(".custom_item_error").html("");
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var ids = jQuery(this).attr("data-ids");
+    var ids = jQuery(this).attr("data-ids");
 
-  var db_qty = jQuery(this).attr("data-db-qty");
+    var db_qty = jQuery(this).attr("data-db-qty");
 
-  var db_minqty = jQuery(this).attr("data-db-minqty");
+    var db_minqty = jQuery(this).attr("data-db-minqty");
 
-  var service_id = jQuery(this).attr("data-service_id");
+    var service_id = jQuery(this).attr("data-service_id");
 
-  var method_id = jQuery(this).attr("data-method_id");
+    var method_id = jQuery(this).attr("data-method_id");
 
-  var method_name = jQuery(this).attr("data-method_name");
+    var method_name = jQuery(this).attr("data-method_name");
 
-  var units_id=jQuery(this).attr("data-units_id");
+    var units_id = jQuery(this).attr("data-units_id");
 
-  var type=jQuery(this).attr("data-type");
+    var type = jQuery(this).attr("data-type");
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  var hfsec = jQuery(this).attr("data-hfsec");
+    var hfsec = jQuery(this).attr("data-hfsec");
 
-  var unit_symbol = jQuery(this).attr("data-unit_symbol");
+    var unit_symbol = jQuery(this).attr("data-unit_symbol");
 
-  jQuery(".coupon_display").hide();
+    jQuery(".coupon_display").hide();
 
-  jQuery(".hide_coupon_textbox").show();
+    jQuery(".hide_coupon_textbox").show();
 
-  jQuery(".ct-display-coupon-code").hide();
+    jQuery(".ct-display-coupon-code").hide();
 
 
 
-  /* */
+    /* */
 
-  jQuery(".user_coupon_display").hide();
+    jQuery(".user_coupon_display").hide();
 
-  jQuery(".hide_user_coupon_textbox").show();
+    jQuery(".hide_user_coupon_textbox").show();
 
-  jQuery(".ct-display-user-coupon-code").hide(); 
+    jQuery(".ct-display-user-coupon-code").hide();
 
-  /* */
+    /* */
 
 
 
 
 
-   /* */
+    /* */
 
 
 
-  jQuery(".hide_referral_textbox").show();
+    jQuery(".hide_referral_textbox").show();
 
-  jQuery(".ct-display-referral-code").hide();  
+    jQuery(".ct-display-referral-code").hide();
 
 
 
-  /* */
+    /* */
 
 
 
-  jQuery(".coupon_invalid_error").hide();
+    jQuery(".coupon_invalid_error").hide();
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  var qty_val = 0;
+    var qty_val = 0;
 
-  if(unit_symbol != ""){
+    if (unit_symbol != "") {
 
-    var qty_val_orignal = jQuery("#qty"+ids).val();
+        var qty_val_orignal = jQuery("#qty" + ids).val();
 
-    var qty_val_array = qty_val_orignal.split(" ");
+        var qty_val_array = qty_val_orignal.split(" ");
 
-    qty_val = parseFloat(qty_val_array[0]);
+        qty_val = parseFloat(qty_val_array[0]);
 
-  }else{
+    } else {
 
-    qty_val = parseFloat(jQuery("#qty"+ids).val());
+        qty_val = parseFloat(jQuery("#qty" + ids).val());
 
-  }
+    }
 
-  var qty_vals = qty_val;
+    var qty_vals = qty_val;
 
-  if(qty_val == 0){
+    if (qty_val == 0) {
 
-    qty_vals = db_minqty;
+        qty_vals = db_minqty;
 
-  }else if(qty_val <  db_qty){
+    } else if (qty_val < db_qty) {
 
-    qty_vals = parseFloat(qty_val)+parseFloat(hfsec);
+        qty_vals = parseFloat(qty_val) + parseFloat(hfsec);
 
-  }
+    }
 
-  if(qty_val < db_qty){
+    if (qty_val < db_qty) {
 
-    jQuery(".qty"+ids).val(qty_vals + " " + unit_symbol);
+        jQuery(".qty" + ids).val(qty_vals + " " + unit_symbol);
 
-    var final_qty_val = qty_vals;
-
-    jQuery.ajax({
-
-      type : "post",
-
-      data : { "method_id" : method_id, "service_id" : service_id, "units_id" : units_id, "qty_vals" : final_qty_val, "hfsec" : hfsec, "s_m_units_maxlimit_4_ratesss" : 1 },
-
-      url : ajax_url+"front_ajax.php",
-
-      success : function(res){
-
-        jQuery(".data_qtyrate").attr("data-rate",res);
+        var final_qty_val = qty_vals;
 
         jQuery.ajax({
 
-          type : "post",
+            type: "post",
 
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : final_qty_val, "s_m_rate" : res, "method_name" : method_name, "units_id" : units_id, "frequently_discount_id" : frequently_discount_id, "type" : type, "add_to_cart" : 1 },
+            data: { "method_id": method_id, "service_id": service_id, "units_id": units_id, "qty_vals": final_qty_val, "hfsec": hfsec, "s_m_units_maxlimit_4_ratesss": 1 },
 
-          url : site_url+"front/firststep.php",
+            url: ajax_url + "front_ajax.php",
 
-          success : function(res){
+            success: function(res) {
 
-            jQuery(".freq_discount_display").show();
+                jQuery(".data_qtyrate").attr("data-rate", res);
 
-            jQuery(".hide_right_side_box").show();
+                jQuery.ajax({
 
-            jQuery(".partial_amount_hide_on_load").show();
+                    type: "post",
 
-            jQuery(".empty_cart_error").hide();
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_qty": final_qty_val, "s_m_rate": res, "method_name": method_name, "units_id": units_id, "frequently_discount_id": frequently_discount_id, "type": type, "add_to_cart": 1 },
 
-            jQuery(".no_units_in_cart_error").hide();
+                    url: site_url + "front/firststep.php",
 
-            jQuery(".coupon_invalid_error").hide();
+                    success: function(res) {
 
-            jQuery("#total_cart_count").val("2");
+                        jQuery(".freq_discount_display").show();
 
-            var cart_session_data=jQuery.parseJSON(res);
+                        jQuery(".hide_right_side_box").show();
 
-            jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+                        jQuery(".partial_amount_hide_on_load").show();
 
-            jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+                        jQuery(".empty_cart_error").hide();
 
-            if(cart_session_data.status == "update"){
+                        jQuery(".no_units_in_cart_error").hide();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                        jQuery(".coupon_invalid_error").hide();
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
+                        jQuery("#total_cart_count").val("2");
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-service_id",service_id);
+                        var cart_session_data = jQuery.parseJSON(res);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-method_id",method_id);
+                        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-units_id",units_id);
+                        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                        if (cart_session_data.status == "update") {
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-service_id", service_id);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-method_id", method_id);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-units_id", units_id);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                         
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-            }else if(cart_session_data.status == "insert"){
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "insert") {
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                            
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "firstinsert"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "firstinsert") {
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                            
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "empty calculation"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").hide();
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".total_time_duration_text").html("");
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".freq_discount_display").hide();
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount_hide_on_load").hide();
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".hide_right_side_box").hide();
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery( ".cart_empty_msg" ).show();
+                        } else if (cart_session_data.status == "empty calculation") {
 
-              jQuery( ".frequent_discount" ).empty();
+                            jQuery(".hideduration_value").hide();
 
-              jQuery( ".cart_item_listing" ).empty();
+                            jQuery(".total_time_duration_text").html("");
 
-              jQuery( ".cart_sub_total" ).empty();
+                            jQuery(".freq_discount_display").hide();
 
-              jQuery( ".cart_tax" ).empty();
+                            jQuery(".partial_amount_hide_on_load").hide();
 
-              jQuery( ".cart_special_days" ).empty();                               
+                            jQuery(".hide_right_side_box").hide();
 
-              jQuery( ".cart_total" ).empty();
+                            jQuery(".cart_empty_msg").show();
 
-              jQuery( ".remain_amount" ).empty();
+                            jQuery(".frequent_discount").empty();
 
-              jQuery( ".partial_amount" ).empty();
+                            jQuery(".cart_item_listing").empty();
 
-              jQuery( ".cart_discount" ).empty();
+                            jQuery(".cart_sub_total").empty();
 
-            }else if(cart_session_data.status == "delete particuler"){
+                            jQuery(".cart_tax").empty();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_special_days").empty();
 
-              jQuery( ".update_qty_of_s_m_"+m_name).remove();
+                            jQuery(".cart_total").empty();
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".remain_amount").empty();
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".partial_amount").empty();
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".cart_discount").empty();
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                        } else if (cart_session_data.status == "delete particuler") {
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days); 
+                            jQuery(".update_qty_of_s_m_" + m_name).remove();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        }
+
+                    }
+
+                });
 
             }
 
-          }
-
         });
 
-      }
+    } else {
 
-    });
+        jQuery(".ct-loading-main").hide();
 
-  }else{
+        jQuery(".qty" + ids).val(qty_vals + " " + unit_symbol);
 
-  jQuery(".ct-loading-main").hide();
-
-    jQuery(".qty"+ids).val(qty_vals + " " + unit_symbol);
-
-  }
+    }
 
 });
 
-jQuery(document).on("click",".minuss",function(){
+jQuery(document).on("click", ".minuss", function() {
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-	jQuery(".custom_item_error").hide();
+    jQuery(".custom_item_error").hide();
 
-jQuery(".custom_item_error").html("");
+    jQuery(".custom_item_error").html("");
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var ids = jQuery(this).attr("data-ids");
+    var ids = jQuery(this).attr("data-ids");
 
-  var db_qty = jQuery(this).attr("data-db-qty");
+    var db_qty = jQuery(this).attr("data-db-qty");
 
-  var db_minqty = jQuery(this).attr("data-db-minqty");
+    var db_minqty = jQuery(this).attr("data-db-minqty");
 
-  var service_id = jQuery(this).attr("data-service_id");
+    var service_id = jQuery(this).attr("data-service_id");
 
-  var method_id = jQuery(this).attr("data-method_id");
+    var method_id = jQuery(this).attr("data-method_id");
 
-  var method_name = jQuery(this).attr("data-method_name");
+    var method_name = jQuery(this).attr("data-method_name");
 
-  var hfsec = jQuery(this).attr("data-hfsec");
+    var hfsec = jQuery(this).attr("data-hfsec");
 
-  var units_id=jQuery(this).attr("data-units_id");
+    var units_id = jQuery(this).attr("data-units_id");
 
-  var type=jQuery(this).attr("data-type");
+    var type = jQuery(this).attr("data-type");
 
-  var unit_symbol = jQuery(this).attr("data-unit_symbol");
+    var unit_symbol = jQuery(this).attr("data-unit_symbol");
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  jQuery(".coupon_display").hide();
+    jQuery(".coupon_display").hide();
 
-  jQuery(".hide_coupon_textbox").show();
+    jQuery(".hide_coupon_textbox").show();
 
-  jQuery(".ct-display-coupon-code").hide();
+    jQuery(".ct-display-coupon-code").hide();
 
 
 
-  /* */
+    /* */
 
-  jQuery(".user_coupon_display").hide();
+    jQuery(".user_coupon_display").hide();
 
-  jQuery(".hide_user_coupon_textbox").show();
+    jQuery(".hide_user_coupon_textbox").show();
 
-  jQuery(".ct-display-user-coupon-code").hide(); 
+    jQuery(".ct-display-user-coupon-code").hide();
 
-  /* */
+    /* */
 
 
 
-   /* */
+    /* */
 
 
 
-  jQuery(".hide_referral_textbox").show();
+    jQuery(".hide_referral_textbox").show();
 
-  jQuery(".ct-display-referral-code").hide();  
+    jQuery(".ct-display-referral-code").hide();
 
 
 
-  /* */
+    /* */
 
 
 
-  jQuery(".coupon_invalid_error").hide();
+    jQuery(".coupon_invalid_error").hide();
 
-  var currentVal = parseFloat(jQuery(".qty"+ids).val());
+    var currentVal = parseFloat(jQuery(".qty" + ids).val());
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  var qty_val = 0;
+    var qty_val = 0;
 
-  if(unit_symbol != ""){
+    if (unit_symbol != "") {
 
-    var qty_val_orignal = jQuery("#qty"+ids).val();
+        var qty_val_orignal = jQuery("#qty" + ids).val();
 
-    var qty_val_array = qty_val_orignal.split(" ");
+        var qty_val_array = qty_val_orignal.split(" ");
 
-    qty_val = parseFloat(qty_val_array[0]);
+        qty_val = parseFloat(qty_val_array[0]);
 
-  }else{
+    } else {
 
-    qty_val = parseFloat(jQuery("#qty"+ids).val());
+        qty_val = parseFloat(jQuery("#qty" + ids).val());
 
-  }
+    }
 
-  var qty_vals = qty_val;
+    var qty_vals = qty_val;
 
-  if(qty_val >  db_minqty){
+    if (qty_val > db_minqty) {
 
-    qty_vals = qty_val-hfsec;
+        qty_vals = qty_val - hfsec;
 
-  } else {
+    } else {
 
-    qty_vals = 0;
+        qty_vals = 0;
 
-  }
+    }
 
-  if(currentVal <= 0){
+    if (currentVal <= 0) {
 
-    jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-    jQuery(".qty"+ids).val("0 " + unit_symbol);
+        jQuery(".qty" + ids).val("0 " + unit_symbol);
 
-    jQuery( ".update_qty_of_s_m_"+m_name).remove();
+        jQuery(".update_qty_of_s_m_" + m_name).remove();
 
-  }else if(currentVal > 0){
+    } else if (currentVal > 0) {
 
-    jQuery(".qty"+ids).val(qty_vals + " " + unit_symbol);
-
-    jQuery.ajax({
-
-      type : "post",
-
-      data : { "method_id" : method_id, "service_id" : service_id, "qty_vals" : qty_vals, "units_id" : units_id, "hfsec" : hfsec, "s_m_units_maxlimit_4_ratesss" : 1 },
-
-      url : ajax_url+"front_ajax.php",
-
-      success : function(res){
-
-        jQuery(".data_qtyrate").attr("data-rate",res);
+        jQuery(".qty" + ids).val(qty_vals + " " + unit_symbol);
 
         jQuery.ajax({
 
-          type : "post",
+            type: "post",
 
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : qty_vals, "s_m_rate" : res, "method_name" : method_name, "units_id" : units_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
+            data: { "method_id": method_id, "service_id": service_id, "qty_vals": qty_vals, "units_id": units_id, "hfsec": hfsec, "s_m_units_maxlimit_4_ratesss": 1 },
 
-          url : site_url+"front/firststep.php",
+            url: ajax_url + "front_ajax.php",
 
-          success : function(res){
+            success: function(res) {
 
-            jQuery(".freq_discount_display").show();
+                jQuery(".data_qtyrate").attr("data-rate", res);
 
-            jQuery(".hide_right_side_box").show();
+                jQuery.ajax({
 
-            jQuery(".partial_amount_hide_on_load").show();
+                    type: "post",
 
-            jQuery(".empty_cart_error").hide();
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_qty": qty_vals, "s_m_rate": res, "method_name": method_name, "units_id": units_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
 
-            jQuery(".no_units_in_cart_error").hide();
+                    url: site_url + "front/firststep.php",
 
-            jQuery(".coupon_invalid_error").hide();
+                    success: function(res) {
 
-            jQuery("#total_cart_count").val("2");
+                        jQuery(".freq_discount_display").show();
 
-            var cart_session_data=jQuery.parseJSON(res);
+                        jQuery(".hide_right_side_box").show();
 
-            jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+                        jQuery(".partial_amount_hide_on_load").show();
 
-            jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+                        jQuery(".empty_cart_error").hide();
 
-            if(cart_session_data.status == "update"){
+                        jQuery(".no_units_in_cart_error").hide();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                        jQuery(".coupon_invalid_error").hide();
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
+                        jQuery("#total_cart_count").val("2");
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-service_id",service_id);
+                        var cart_session_data = jQuery.parseJSON(res);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-method_id",method_id);
+                        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-units_id",units_id);
+                        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                        if (cart_session_data.status == "update") {
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-service_id", service_id);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-method_id", method_id);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-units_id", units_id);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                         
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-            }else if(cart_session_data.status == "insert"){
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "insert") {
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);       
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "firstinsert"){
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".hideduration_value").show();
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        } else if (cart_session_data.status == "firstinsert") {
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                            jQuery(".hideduration_value").show();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                            
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            }else if(cart_session_data.status == "empty calculation"){
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".hideduration_value").hide();
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".total_time_duration_text").html("");
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".freq_discount_display").hide();
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".partial_amount_hide_on_load").hide();
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".hide_right_side_box").hide();
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery( ".cart_empty_msg" ).show();
+                        } else if (cart_session_data.status == "empty calculation") {
 
-              jQuery( ".cart_item_listing" ).empty();
+                            jQuery(".hideduration_value").hide();
 
-              jQuery( ".cart_sub_total" ).empty();
+                            jQuery(".total_time_duration_text").html("");
 
-              jQuery( ".frequent_discount" ).empty();
+                            jQuery(".freq_discount_display").hide();
 
-              jQuery( ".cart_tax" ).empty();
+                            jQuery(".partial_amount_hide_on_load").hide();
 
-              jQuery( ".cart_special_days" ).empty();                            
+                            jQuery(".hide_right_side_box").hide();
 
-              jQuery( ".cart_total" ).empty();
+                            jQuery(".cart_empty_msg").show();
 
-              jQuery( ".remain_amount" ).empty();
+                            jQuery(".cart_item_listing").empty();
 
-              jQuery( ".partial_amount" ).empty();
+                            jQuery(".cart_sub_total").empty();
 
-              jQuery( ".cart_discount" ).empty();
+                            jQuery(".frequent_discount").empty();
 
-            }else if(cart_session_data.status == "delete particuler"){
+                            jQuery(".cart_tax").empty();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                            jQuery(".cart_special_days").empty();
 
-              jQuery( ".update_qty_of_s_m_"+cart_session_data.method_name_without_space).remove();
+                            jQuery(".cart_total").empty();
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                            jQuery(".remain_amount").empty();
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                            jQuery(".partial_amount").empty();
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                            jQuery(".cart_discount").empty();
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                        } else if (cart_session_data.status == "delete particuler") {
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                            jQuery(".cart_empty_msg").hide();
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).remove();
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        }
+
+                    }
+
+                });
 
             }
 
-          }
-
         });
 
-      }
-
-    });
-
-  }
+    }
 
 });
 
-jQuery(document).on("keyup","#ct_area_m_units",function(event){
+jQuery(document).on("keyup", "#ct_area_m_units", function(event) {
 
-  jQuery(".freq_disc_empty_cart_error").hide();
-
-  jQuery(".error_of_invalid_area").hide();
-
-  jQuery(".error_of_min_limitss").hide();
-
-  var site_url=siteurlObj.site_url;
-
-  var ajax_url=ajaxurlObj.ajax_url;
-
-  var area_uniit = jQuery( "#ct_area_m_units" ).val();
-
-  var service_id = jQuery(this).attr("data-service_id");
-
-  var method_id = jQuery(this).attr("data-method_id");
-
-  var max_limitts = parseFloat(jQuery(this).attr("data-maxx_limit"));
-
-  var min_limitts = parseFloat(jQuery(this).attr("data-minn_limit"));
-
-  var method_name = jQuery(this).attr("data-method_name");
-
-  var units_id=jQuery(this).attr("data-units_id");
-
-  var type=jQuery(this).attr("data-type");
-
-  var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
-
-  jQuery(".coupon_display").hide();
-
-  jQuery(".hide_coupon_textbox").show();
-
-  jQuery(".ct-display-coupon-code").hide();
-
-
-
-  /* */
-
-  jQuery(".user_coupon_display").hide();
-
-  jQuery(".hide_user_coupon_textbox").show();
-
-  jQuery(".ct-display-user-coupon-code").hide(); 
-
-  /* */
-
-
-
-   /* */
-
-
-
-  jQuery(".hide_referral_textbox").show();
-
-  jQuery(".ct-display-referral-code").hide();  
-
-
-
-  /* */
-
-
-
-  jQuery(".coupon_invalid_error").hide();
-
-  var m_name = jQuery(this).attr("data-mnamee");
-
-  if(event.which == 8){
+    jQuery(".freq_disc_empty_cart_error").hide();
 
     jQuery(".error_of_invalid_area").hide();
 
-    jQuery(".error_of_max_limitss").hide();
-
     jQuery(".error_of_min_limitss").hide();
 
-  }
+    var site_url = siteurlObj.site_url;
 
-  if(area_uniit != "" && /^[0-9\.]+$/.test(area_uniit) == false) {
+    var ajax_url = ajaxurlObj.ajax_url;
 
-    jQuery(".error_of_invalid_area").show();
+    var area_uniit = jQuery("#ct_area_m_units").val();
 
-    jQuery(".error_of_invalid_area").html(errorobj_invalid+" "+method_name);
+    var service_id = jQuery(this).attr("data-service_id");
 
-    return false;
+    var method_id = jQuery(this).attr("data-method_id");
 
-  }
+    var max_limitts = parseFloat(jQuery(this).attr("data-maxx_limit"));
 
-  if(area_uniit == ""){
+    var min_limitts = parseFloat(jQuery(this).attr("data-minn_limit"));
 
-    console.log({ "method_id" : method_id, "service_id" : service_id, "s_m_qty" : 0, "s_m_rate" : 0, "method_name" : method_name, "units_id" : units_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 });
+    var method_name = jQuery(this).attr("data-method_name");
 
-    jQuery.ajax({
+    var units_id = jQuery(this).attr("data-units_id");
 
-      type : "post",
+    var type = jQuery(this).attr("data-type");
 
-      data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : 0, "s_m_rate" : 0, "method_name" : method_name, "units_id" : units_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-      url : site_url+"front/firststep.php",
+    jQuery(".coupon_display").hide();
 
-      success : function(res){
+    jQuery(".hide_coupon_textbox").show();
 
-        jQuery(".freq_discount_display").show();
+    jQuery(".ct-display-coupon-code").hide();
 
-        jQuery(".hide_right_side_box").show();
 
-        jQuery(".partial_amount_hide_on_load").show();
 
-        jQuery(".empty_cart_error").hide();
+    /* */
 
-        jQuery(".no_units_in_cart_error").hide();
+    jQuery(".user_coupon_display").hide();
 
-        jQuery(".coupon_invalid_error").hide();
+    jQuery(".hide_user_coupon_textbox").show();
 
-        jQuery("#total_cart_count").val("2");
+    jQuery(".ct-display-user-coupon-code").hide();
 
-        var cart_session_data=jQuery.parseJSON(res);
+    /* */
 
-        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-        if(cart_session_data.status == "empty calculation"){
+    /* */
 
-          jQuery(".hideduration_value").hide();
 
-          jQuery(".total_time_duration_text").html("");
 
-          jQuery(".freq_discount_display").hide();
+    jQuery(".hide_referral_textbox").show();
 
-          jQuery(".partial_amount_hide_on_load").hide();
+    jQuery(".ct-display-referral-code").hide();
 
-          jQuery(".hide_right_side_box").hide();
 
-          jQuery( ".cart_empty_msg" ).show();
 
-          jQuery( ".cart_item_listing" ).empty();
+    /* */
 
-          jQuery( ".frequent_discount" ).empty();
 
-          jQuery( ".cart_sub_total" ).empty();
 
-          jQuery( ".cart_tax" ).empty();
+    jQuery(".coupon_invalid_error").hide();
 
-          jQuery( ".cart_special_days" ).empty();                                 
+    var m_name = jQuery(this).attr("data-mnamee");
 
-          jQuery( ".cart_total" ).empty();
+    if (event.which == 8) {
 
-          jQuery( ".remain_amount" ).empty();
+        jQuery(".error_of_invalid_area").hide();
 
-          jQuery( ".partial_amount" ).empty();
+        jQuery(".error_of_max_limitss").hide();
 
-          jQuery( ".cart_discount" ).empty();
+        jQuery(".error_of_min_limitss").hide();
 
-        }else if(cart_session_data.status == "delete particuler"){
+    }
 
-          jQuery( ".cart_empty_msg" ).hide();
+    if (area_uniit != "" && /^[0-9\.]+$/.test(area_uniit) == false) {
 
-          jQuery( ".update_qty_of_s_m_"+m_name).remove();
+        jQuery(".error_of_invalid_area").show();
 
-          jQuery(".partial_amount").html(cart_session_data.partial_amount);
+        jQuery(".error_of_invalid_area").html(errorobj_invalid + " " + method_name);
 
-          jQuery(".remain_amount").html(cart_session_data.remain_amount);
+        return false;
 
-          jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+    }
 
-          jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+    if (area_uniit == "") {
 
-          jQuery(".cart_tax").html(cart_session_data.cart_tax);
-
-          jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                         
-
-          jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-          jQuery(".cart_total").html(cart_session_data.total_amount);
-
-          jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
-
-        }
-
-      }
-
-    });
-
-  }else if(area_uniit == 0){
-
-    jQuery(".error_of_invalid_area").show();
-
-    jQuery(".error_of_invalid_area").html(errorobj_invalid+" "+method_name);
-
-  }else if(area_uniit > max_limitts){
-
-    jQuery(".error_of_max_limitss").show();
-
-    jQuery(".error_of_max_limitss").html(errorobj_max_limit_reached);
-
-  }else if(area_uniit < min_limitts){
-
-    jQuery(".error_of_min_limitss").show();
-
-    jQuery(".error_of_min_limitss").html(errorobj_min_limit_reached+min_limitts);
-
-  }else if(area_uniit <= max_limitts){
-
-    jQuery.ajax({
-
-      type : "post",
-
-      data : { "method_id" : method_id, "service_id" : service_id, "units_id" : units_id, "qty_vals" : area_uniit, "s_m_units_maxlimit_4_ratesss" : 1 },
-
-      url : ajax_url+"front_ajax.php",
-
-      success : function(res){
-
-        jQuery(".ct_area_m_units_rattee").attr("data-rate",res);
+        console.log({ "method_id": method_id, "service_id": service_id, "s_m_qty": 0, "s_m_rate": 0, "method_name": method_name, "units_id": units_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 });
 
         jQuery.ajax({
 
-          type : "post",
+            type: "post",
 
-          data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : area_uniit, "s_m_rate" : res, "method_name" : method_name, "units_id" : units_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
+            data: { "method_id": method_id, "service_id": service_id, "s_m_qty": 0, "s_m_rate": 0, "method_name": method_name, "units_id": units_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
 
-          url : site_url+"front/firststep.php",
+            url: site_url + "front/firststep.php",
 
-          success : function(res){
+            success: function(res) {
+
+                jQuery(".freq_discount_display").show();
+
+                jQuery(".hide_right_side_box").show();
+
+                jQuery(".partial_amount_hide_on_load").show();
+
+                jQuery(".empty_cart_error").hide();
+
+                jQuery(".no_units_in_cart_error").hide();
+
+                jQuery(".coupon_invalid_error").hide();
+
+                jQuery("#total_cart_count").val("2");
+
+                var cart_session_data = jQuery.parseJSON(res);
+
+                jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+
+                jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+
+                if (cart_session_data.status == "empty calculation") {
+
+                    jQuery(".hideduration_value").hide();
+
+                    jQuery(".total_time_duration_text").html("");
+
+                    jQuery(".freq_discount_display").hide();
+
+                    jQuery(".partial_amount_hide_on_load").hide();
+
+                    jQuery(".hide_right_side_box").hide();
+
+                    jQuery(".cart_empty_msg").show();
+
+                    jQuery(".cart_item_listing").empty();
+
+                    jQuery(".frequent_discount").empty();
+
+                    jQuery(".cart_sub_total").empty();
+
+                    jQuery(".cart_tax").empty();
+
+                    jQuery(".cart_special_days").empty();
+
+                    jQuery(".cart_total").empty();
+
+                    jQuery(".remain_amount").empty();
+
+                    jQuery(".partial_amount").empty();
+
+                    jQuery(".cart_discount").empty();
+
+                } else if (cart_session_data.status == "delete particuler") {
+
+                    jQuery(".cart_empty_msg").hide();
+
+                    jQuery(".update_qty_of_s_m_" + m_name).remove();
+
+                    jQuery(".partial_amount").html(cart_session_data.partial_amount);
+
+                    jQuery(".remain_amount").html(cart_session_data.remain_amount);
+
+                    jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                    jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                    jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                    jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                    jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                    jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                    jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                }
+
+            }
+
+        });
+
+    } else if (area_uniit == 0) {
+
+        jQuery(".error_of_invalid_area").show();
+
+        jQuery(".error_of_invalid_area").html(errorobj_invalid + " " + method_name);
+
+    } else if (area_uniit > max_limitts) {
+
+        jQuery(".error_of_max_limitss").show();
+
+        jQuery(".error_of_max_limitss").html(errorobj_max_limit_reached);
+
+    } else if (area_uniit < min_limitts) {
+
+        jQuery(".error_of_min_limitss").show();
+
+        jQuery(".error_of_min_limitss").html(errorobj_min_limit_reached + min_limitts);
+
+    } else if (area_uniit <= max_limitts) {
+
+        jQuery.ajax({
+
+            type: "post",
+
+            data: { "method_id": method_id, "service_id": service_id, "units_id": units_id, "qty_vals": area_uniit, "s_m_units_maxlimit_4_ratesss": 1 },
+
+            url: ajax_url + "front_ajax.php",
+
+            success: function(res) {
+
+                jQuery(".ct_area_m_units_rattee").attr("data-rate", res);
+
+                jQuery.ajax({
+
+                    type: "post",
+
+                    data: { "method_id": method_id, "service_id": service_id, "s_m_qty": area_uniit, "s_m_rate": res, "method_name": method_name, "units_id": units_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
+
+                    url: site_url + "front/firststep.php",
+
+                    success: function(res) {
+
+                        jQuery(".freq_discount_display").show();
+
+                        jQuery(".hide_right_side_box").show();
+
+                        jQuery(".partial_amount_hide_on_load").show();
+
+                        jQuery(".empty_cart_error").hide();
+
+                        jQuery(".no_units_in_cart_error").hide();
+
+                        jQuery(".coupon_invalid_error").hide();
+
+                        jQuery("#total_cart_count").val("2");
+
+                        var cart_session_data = jQuery.parseJSON(res);
+
+                        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+
+                        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+
+                        if (cart_session_data.status == "update") {
+
+                            jQuery(".cart_empty_msg").hide();
+
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
+
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-service_id", service_id);
+
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-method_id", method_id);
+
+                            jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-units_id", units_id);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
+
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
+
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        } else if (cart_session_data.status == "insert") {
+
+                            jQuery(".hideduration_value").show();
+
+                            jQuery(".cart_empty_msg").hide();
+
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
+
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
+
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        } else if (cart_session_data.status == "firstinsert") {
+
+                            jQuery(".hideduration_value").show();
+
+                            jQuery(".cart_empty_msg").hide();
+
+                            jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
+
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
+
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        } else if (cart_session_data.status == "empty calculation") {
+
+                            jQuery(".hideduration_value").hide();
+
+                            jQuery(".total_time_duration_text").html("");
+
+                            jQuery(".freq_discount_display").hide();
+
+                            jQuery(".partial_amount_hide_on_load").hide();
+
+                            jQuery(".hide_right_side_box").hide();
+
+                            jQuery(".cart_empty_msg").show();
+
+                            jQuery(".cart_item_listing").empty();
+
+                            jQuery(".cart_sub_total").empty();
+
+                            jQuery(".frequent_discount").empty();
+
+                            jQuery(".cart_tax").empty();
+
+                            jQuery(".cart_special_days").empty();
+
+                            jQuery(".cart_total").empty();
+
+                            jQuery(".remain_amount").empty();
+
+                            jQuery(".partial_amount").empty();
+
+                            jQuery(".cart_discount").empty();
+
+                        } else if (cart_session_data.status == "delete particuler") {
+
+                            jQuery(".cart_empty_msg").hide();
+
+                            jQuery(".update_qty_of_s_m_" + m_name).remove();
+
+                            jQuery(".partial_amount").html(cart_session_data.partial_amount);
+
+                            jQuery(".remain_amount").html(cart_session_data.remain_amount);
+
+                            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                            jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                            jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                            jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+
+                        }
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    } else {
+
+        jQuery(".ct-loading-main").hide();
+
+        jQuery(".error_of_invalid_area").show();
+
+        jQuery(".error_of_invalid_area").html(errorobj_invalid + " " + method_name);
+
+    }
+
+});
+
+jQuery(document).on("click", ".add_item_in_cart", function() {
+
+    jQuery(".freq_disc_empty_cart_error").hide();
+
+    jQuery(".custom_item_error").hide();
+
+    jQuery(".custom_item_error").html("");
+
+    var site_url = siteurlObj.site_url;
+
+    var ajax_url = ajaxurlObj.ajax_url;
+
+    jQuery(".coupon_display").hide();
+
+    jQuery(".hide_coupon_textbox").show();
+
+    jQuery(".ct-display-coupon-code").hide();
+
+
+
+    /* */
+
+    jQuery(".user_coupon_display").hide();
+
+    jQuery(".hide_user_coupon_textbox").show();
+
+    jQuery(".ct-display-user-coupon-code").hide();
+
+    /* */
+
+
+
+    /* */
+
+
+
+    jQuery(".hide_referral_textbox").show();
+
+    jQuery(".ct-display-referral-code").hide();
+
+
+
+    /* */
+
+
+
+    jQuery(".coupon_invalid_error").hide();
+
+    var s_m_qty = jQuery(this).attr("data-duration_value");
+
+    var s_m_rate = jQuery(this).attr("data-rate");
+
+    var service_id = jQuery(this).attr("data-service_id");
+
+    var method_id = jQuery(this).attr("data-method_id");
+
+    var method_name = jQuery(this).attr("data-method_name");
+
+    var units_id = jQuery(this).attr("data-units_id");
+
+    var type = jQuery(this).attr("data-type");
+
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+
+    var m_name = jQuery(this).attr("data-mnamee");
+
+    var staff_id = jQuery("input[name=provider-radio]:checked").attr("data-staff_id");
+    jQuery.ajax({
+
+        type: "post",
+
+        data: { "method_id": method_id, "service_id": service_id, "s_m_qty": s_m_qty, "s_m_rate": s_m_rate, "method_name": method_name, "units_id": units_id, "type": type, "staff_id": staff_id, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
+
+        url: site_url + "front/firststep.php",
+
+        success: function(res) {
 
             jQuery(".freq_discount_display").show();
 
@@ -5267,407 +5571,150 @@ jQuery(document).on("keyup","#ct_area_m_units",function(event){
 
             jQuery("#total_cart_count").val("2");
 
-            var cart_session_data=jQuery.parseJSON(res);
+            var cart_session_data = jQuery.parseJSON(res);
 
             jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
             jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-            if(cart_session_data.status == "update"){
+            if (cart_session_data.status == "update") {
 
-              jQuery( ".cart_empty_msg" ).hide();
+                jQuery(".cart_empty_msg").hide();
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
+                jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-service_id",service_id);
+                jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-service_id", service_id);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-method_id",method_id);
+                jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-method_id", method_id);
 
-              jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-units_id",units_id);
+                jQuery(".update_qty_of_s_m_" + cart_session_data.method_name_without_space).val("data-units_id", units_id);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                         
+                jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+            } else if (cart_session_data.status == "insert") {
 
-            }else if(cart_session_data.status == "insert"){
+                jQuery(".hideduration_value").show();
 
-              jQuery(".hideduration_value").show();
+                jQuery(".cart_empty_msg").hide();
 
-              jQuery( ".cart_empty_msg" ).hide();
+                jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                         
+                jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+            } else if (cart_session_data.status == "firstinsert") {
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                jQuery(".hideduration_value").show();
 
-            }else if(cart_session_data.status == "firstinsert"){
+                jQuery(".cart_empty_msg").hide();
 
-              jQuery(".hideduration_value").show();
+                jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                         
+                jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+            } else if (cart_session_data.status == "empty calculation") {
 
-              jQuery(".cart_total").html(cart_session_data.total_amount);
+                jQuery(".hideduration_value").hide();
 
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                jQuery(".total_time_duration_text").html("");
 
-            }else if(cart_session_data.status == "empty calculation"){
+                jQuery(".freq_discount_display").hide();
 
-              jQuery(".hideduration_value").hide();
+                jQuery(".partial_amount_hide_on_load").hide();
 
-              jQuery(".total_time_duration_text").html("");
+                jQuery(".hide_right_side_box").hide();
 
-              jQuery(".freq_discount_display").hide();
+                jQuery(".cart_empty_msg").show();
 
-              jQuery(".partial_amount_hide_on_load").hide();
+                jQuery(".cart_item_listing").empty();
 
-              jQuery(".hide_right_side_box").hide();
+                jQuery(".cart_sub_total").empty();
 
-              jQuery( ".cart_empty_msg" ).show();
+                jQuery(".cart_tax").empty();
 
-              jQuery( ".cart_item_listing" ).empty();
+                jQuery(".cart_special_days").empty();
 
-              jQuery( ".cart_sub_total" ).empty();
+                jQuery(".cart_total").empty();
 
-              jQuery( ".frequent_discount" ).empty();
+                jQuery(".remain_amount").empty();
 
-              jQuery( ".cart_tax" ).empty();
+                jQuery(".partial_amount").empty();
 
-              jQuery( ".cart_special_days" ).empty();                          
+                jQuery(".cart_discount").empty();
 
-              jQuery( ".cart_total" ).empty();
+                jQuery(".frequent_discount").empty();
 
-              jQuery( ".remain_amount" ).empty();
+            } else if (cart_session_data.status == "delete particuler") {
 
-              jQuery( ".partial_amount" ).empty();
+                jQuery(".cart_empty_msg").hide();
 
-              jQuery( ".cart_discount" ).empty();
+                jQuery(".update_qty_of_s_m_" + m_name).remove();
 
-            }else if(cart_session_data.status == "delete particuler"){
+                jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-              jQuery( ".cart_empty_msg" ).hide();
+                jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-              jQuery( ".update_qty_of_s_m_"+m_name).remove();
+                jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-              jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-              jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-              jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-              jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-              jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                jQuery(".cart_total").html(cart_session_data.total_amount);
 
-              jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                         
-
-              jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-              jQuery(".cart_total").html(cart_session_data.total_amount);
-
-              jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
             }
 
-          }
-
-        });
-
-      }
+        }
 
     });
 
-  }else{
-
-    jQuery(".ct-loading-main").hide();
-
-    jQuery(".error_of_invalid_area").show();
-
-    jQuery(".error_of_invalid_area").html(errorobj_invalid+" "+method_name);
-
-  }
-
-});
-
-jQuery(document).on("click",".add_item_in_cart",function(){
-
-  jQuery(".freq_disc_empty_cart_error").hide();
-
-	jQuery(".custom_item_error").hide();
-
-jQuery(".custom_item_error").html("");
-
-  var site_url=siteurlObj.site_url;
-
-  var ajax_url=ajaxurlObj.ajax_url;
-
-  jQuery(".coupon_display").hide();
-
-  jQuery(".hide_coupon_textbox").show();
-
-  jQuery(".ct-display-coupon-code").hide();
-
-
-
-  /* */
-
-  jQuery(".user_coupon_display").hide();
-
-  jQuery(".hide_user_coupon_textbox").show();
-
-  jQuery(".ct-display-user-coupon-code").hide(); 
-
-  /* */
-
-
-
-   /* */
-
-
-
-  jQuery(".hide_referral_textbox").show();
-
-  jQuery(".ct-display-referral-code").hide();  
-
-
-
-  /* */
-
-
-
-  jQuery(".coupon_invalid_error").hide();
-
-  var s_m_qty=jQuery(this).attr("data-duration_value");
-
-  var s_m_rate=jQuery(this).attr("data-rate");
-
-  var service_id=jQuery(this).attr("data-service_id");
-
-  var method_id=jQuery(this).attr("data-method_id");
-
-  var method_name=jQuery(this).attr("data-method_name");
-
-  var units_id=jQuery(this).attr("data-units_id");
-
-  var type=jQuery(this).attr("data-type");
-
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
-
-  var m_name = jQuery(this).attr("data-mnamee");
-
-var staff_id=jQuery("input[name=provider-radio]:checked").attr("data-staff_id");
-  jQuery.ajax({
-
-    type : "post",
-
-    data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : s_m_qty, "s_m_rate" : s_m_rate, "method_name" : method_name, "units_id" : units_id, "type" : type, "staff_id" : staff_id, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
-
-    url : site_url+"front/firststep.php",
-
-    success : function(res){
-
-      jQuery(".freq_discount_display").show();
-
-      jQuery(".hide_right_side_box").show();
-
-      jQuery(".partial_amount_hide_on_load").show();
-
-      jQuery(".empty_cart_error").hide();
-
-      jQuery(".no_units_in_cart_error").hide();
-
-      jQuery(".coupon_invalid_error").hide();
-
-      jQuery("#total_cart_count").val("2");
-
-      var cart_session_data=jQuery.parseJSON(res);
-
-      jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
-
-      jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
-
-      if(cart_session_data.status == "update"){
-
-        jQuery( ".cart_empty_msg" ).hide();
-
-        jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).html(cart_session_data.s_m_html);
-
-        jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-service_id",service_id);
-
-        jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-method_id",method_id);
-
-        jQuery(".update_qty_of_s_m_"+cart_session_data.method_name_without_space).val("data-units_id",units_id);
-
-        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
-
-        jQuery(".partial_amount").html(cart_session_data.partial_amount);
-
-        jQuery(".remain_amount").html(cart_session_data.remain_amount);
-
-        jQuery(".cart_tax").html(cart_session_data.cart_tax);
-
-        jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                                                              
-
-        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-        jQuery(".cart_total").html(cart_session_data.total_amount);
-
-        jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
-
-      }else if(cart_session_data.status == "insert"){
-
-        jQuery(".hideduration_value").show();
-
-        jQuery( ".cart_empty_msg" ).hide();
-
-        jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
-
-        jQuery(".partial_amount").html(cart_session_data.partial_amount);
-
-        jQuery(".remain_amount").html(cart_session_data.remain_amount);
-
-        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
-
-        jQuery(".cart_tax").html(cart_session_data.cart_tax);
-
-        jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                                                           
-
-        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-        jQuery(".cart_total").html(cart_session_data.total_amount);
-
-        jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
-
-      }else if(cart_session_data.status == "firstinsert"){
-
-        jQuery(".hideduration_value").show();
-
-        jQuery( ".cart_empty_msg" ).hide();
-
-        jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
-
-        jQuery(".partial_amount").html(cart_session_data.partial_amount);
-
-        jQuery(".remain_amount").html(cart_session_data.remain_amount);
-
-        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
-
-        jQuery(".cart_tax").html(cart_session_data.cart_tax);
-
-        jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                                                           
-
-        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-        jQuery(".cart_total").html(cart_session_data.total_amount);
-
-        jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
-
-      }else if(cart_session_data.status == "empty calculation"){
-
-        jQuery(".hideduration_value").hide();
-
-        jQuery(".total_time_duration_text").html("");
-
-        jQuery(".freq_discount_display").hide();
-
-        jQuery(".partial_amount_hide_on_load").hide();
-
-        jQuery(".hide_right_side_box").hide();
-
-        jQuery( ".cart_empty_msg" ).show();
-
-        jQuery( ".cart_item_listing" ).empty();
-
-        jQuery( ".cart_sub_total" ).empty();
-
-        jQuery( ".cart_tax" ).empty();
-
-        jQuery( ".cart_special_days" ).empty();                                  
-
-        jQuery( ".cart_total" ).empty();
-
-        jQuery( ".remain_amount" ).empty();
-
-        jQuery( ".partial_amount" ).empty();
-
-        jQuery( ".cart_discount" ).empty();
-
-        jQuery(".frequent_discount").empty();
-
-      }else if(cart_session_data.status == "delete particuler"){
-
-        jQuery( ".cart_empty_msg" ).hide();
-
-        jQuery( ".update_qty_of_s_m_"+m_name).remove();
-
-        jQuery(".partial_amount").html(cart_session_data.partial_amount);
-
-        jQuery(".remain_amount").html(cart_session_data.remain_amount);
-
-        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
-
-        jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
-
-        jQuery(".cart_tax").html(cart_session_data.cart_tax);
-
-        jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                                                              
-
-        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-        jQuery(".cart_total").html(cart_session_data.total_amount);
-
-        jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
-
-      }
-
-    }
-
-  });
-
 });
 
 
@@ -5676,49 +5723,49 @@ var staff_id=jQuery("input[name=provider-radio]:checked").attr("data-staff_id");
 
 
 
-jQuery(document).on("click touchstart","#apply_referral",function(){
+jQuery(document).on("click touchstart", "#apply_referral", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var referral_code = jQuery("#referral_val").val();
+    var referral_code = jQuery("#referral_val").val();
 
-    if(referral_code == ""){
+    if (referral_code == "") {
 
-      jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-      jQuery(".invalid_referral_error").css("display","block");
+        jQuery(".invalid_referral_error").css("display", "block");
 
-      jQuery(".invalid_referral_error").html("Enter referral code");
+        jQuery(".invalid_referral_error").html("Enter referral code");
 
-    }else{
+    } else {
 
-      jQuery.ajax({
+        jQuery.ajax({
 
-        type:"POST",
+            type: "POST",
 
-        url: site_url+"front/firststep.php",
+            url: site_url + "front/firststep.php",
 
-        data : { "referral_code" : referral_code,"referral_check" : 1 },
+            data: { "referral_code": referral_code, "referral_check": 1 },
 
-        success: function(res){
+            success: function(res) {
 
-          jQuery(".ct-loading-main").hide();
+                jQuery(".ct-loading-main").hide();
 
-          jQuery(".freq_discount_display").show();
+                jQuery(".freq_discount_display").show();
 
-          jQuery(".ct-display-referral-code").show();
+                jQuery(".ct-display-referral-code").show();
 
-          jQuery(".hide_referral_textbox").hide();
+                jQuery(".hide_referral_textbox").hide();
 
-        }
+            }
 
-      });
+        });
 
     }
 
@@ -5726,49 +5773,49 @@ jQuery(document).on("click touchstart","#apply_referral",function(){
 
 
 
-jQuery(document).on("click touchstart","#apply_referral",function(){
+jQuery(document).on("click touchstart", "#apply_referral", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var referral_code = jQuery("#referral_val").val();
+    var referral_code = jQuery("#referral_val").val();
 
-  var dataString={referral_code:referral_code,action:"referral_check"};
+    var dataString = { referral_code: referral_code, action: "referral_check" };
 
-    if(referral_code == ""){
+    if (referral_code == "") {
 
-      jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-      jQuery(".invalid_referral_error").css("display","block");
+        jQuery(".invalid_referral_error").css("display", "block");
 
-      jQuery(".invalid_referral_error").html("Enter referral code");
+        jQuery(".invalid_referral_error").html("Enter referral code");
 
-    }else{
+    } else {
 
-      jQuery.ajax({
+        jQuery.ajax({
 
-        type:"POST",
+            type: "POST",
 
-        url: site_url+"front/checkout.php",
+            url: site_url + "front/checkout.php",
 
-        data : dataString,
+            data: dataString,
 
-        success: function(res){
+            success: function(res) {
 
-          jQuery(".freq_discount_display").show();
+                jQuery(".freq_discount_display").show();
 
-          jQuery(".ct-display-referral-code").hide();
+                jQuery(".ct-display-referral-code").hide();
 
-          jQuery(".hide_referral_textbox").show();
+                jQuery(".hide_referral_textbox").show();
 
-        }
+            }
 
-      });
+        });
 
     }
 
@@ -5776,9 +5823,9 @@ jQuery(document).on("click touchstart","#apply_referral",function(){
 
 
 
-jQuery(document).on("click","#apply_referral",function(){
+jQuery(document).on("click", "#apply_referral", function() {
 
-  jQuery(".invalid_referral_error").hide();
+    jQuery(".invalid_referral_error").hide();
 
 });
 
@@ -5824,9 +5871,9 @@ jQuery(document).on("click","#apply_referral",function(){
 
 
 
-jQuery(document).on("click", ".user_referral_coupon", function(){
+jQuery(document).on("click", ".user_referral_coupon", function() {
 
-  jQuery("#referral_val").val('');
+    jQuery("#referral_val").val('');
 
 });
 
@@ -5836,113 +5883,113 @@ jQuery(document).on("click", ".user_referral_coupon", function(){
 
 
 
-jQuery(document).on("click touchstart","#apply_user_coupon",function(){
+jQuery(document).on("click touchstart", "#apply_user_coupon", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var user_coupon_val = jQuery(".user_coupon_val").val();
+    var user_coupon_val = jQuery(".user_coupon_val").val();
 
-  var subtotal = jQuery(".cart_sub_total").text();
+    var subtotal = jQuery(".cart_sub_total").text();
 
 
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  if(subtotal == ""){
+    if (subtotal == "") {
 
-    jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-    jQuery(".user_coupon_invalid_error").css("display","block");
+        jQuery(".user_coupon_invalid_error").css("display", "block");
 
-    jQuery(".user_coupon_invalid_error").html(errorobj_your_cart_is_empty_please_add_cleaning_services);
+        jQuery(".user_coupon_invalid_error").html(errorobj_your_cart_is_empty_please_add_cleaning_services);
 
-  }else{
+    } else {
 
-    if(user_coupon_val == ""){
+        if (user_coupon_val == "") {
 
-      jQuery(".ct-loading-main").hide();
+            jQuery(".ct-loading-main").hide();
 
-      jQuery(".user_coupon_invalid_error").css("display","block");
+            jQuery(".user_coupon_invalid_error").css("display", "block");
 
-      jQuery(".user_coupon_invalid_error").html(errorobj_please_enter_coupon_code);
+            jQuery(".user_coupon_invalid_error").html(errorobj_please_enter_coupon_code);
 
-    }else{
+        } else {
 
-      jQuery.ajax({
+            jQuery.ajax({
 
-        type:"POST",
+                type: "POST",
 
-        url: site_url+"front/firststep.php",
+                url: site_url + "front/firststep.php",
 
-        data : { "user_coupon_val" : user_coupon_val,"frequently_discount_id" : frequently_discount_id,"coupon_code_check" : 1 },
+                data: { "user_coupon_val": user_coupon_val, "frequently_discount_id": frequently_discount_id, "coupon_code_check": 1 },
 
-        success: function(res){
+                success: function(res) {
 
-          jQuery(".ct-loading-main").hide();
+                    jQuery(".ct-loading-main").hide();
 
-          var cart_session_data=jQuery.parseJSON(res);
+                    var cart_session_data = jQuery.parseJSON(res);
 
-          if(cart_session_data.discount_status == "not"){
+                    if (cart_session_data.discount_status == "not") {
 
-            jQuery(".user_coupon_invalid_error").css("display","block");
+                        jQuery(".user_coupon_invalid_error").css("display", "block");
 
-            jQuery(".user_coupon_invalid_error").html(errorobj_coupon_expired);
+                        jQuery(".user_coupon_invalid_error").html(errorobj_coupon_expired);
 
-          } else if (cart_session_data.discount_status == "wrongcode"){
+                    } else if (cart_session_data.discount_status == "wrongcode") {
 
-            jQuery(".user_coupon_invalid_error").css("display","block");
+                        jQuery(".user_coupon_invalid_error").css("display", "block");
 
-            jQuery(".user_coupon_invalid_error").html(errorobj_invalid_coupon);
+                        jQuery(".user_coupon_invalid_error").html(errorobj_invalid_coupon);
 
-          }else if(cart_session_data.discount_status == "available"){
+                    } else if (cart_session_data.discount_status == "available") {
 
-            jQuery(".freq_discount_display").show();
+                        jQuery(".freq_discount_display").show();
 
-            jQuery(".ct-display-user-coupon-code").show();
+                        jQuery(".ct-display-user-coupon-code").show();
 
-            jQuery(".hide_user_coupon_textbox").hide();
+                        jQuery(".hide_user_coupon_textbox").hide();
 
-            jQuery(".user_coupon_display").show();
+                        jQuery(".user_coupon_display").show();
 
-            jQuery(".ct-apply-user-coupon").hide();
+                        jQuery(".ct-apply-user-coupon").hide();
 
-            jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                        jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-            jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                        jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-            jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                        jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-            jQuery(".cart_total").html(cart_session_data.total_amount);
+                        jQuery(".cart_total").html(cart_session_data.total_amount);
 
-            jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                        jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-          }
+                    }
+
+                }
+
+            });
 
         }
 
-      });
-
     }
-
-  }
 
 });
 
 
 
-jQuery(document).on("click","#user_coupon_val",function(){
+jQuery(document).on("click", "#user_coupon_val", function() {
 
-  jQuery(".user_coupon_invalid_error").hide();
+    jQuery(".user_coupon_invalid_error").hide();
 
 });
 
@@ -5950,235 +5997,233 @@ jQuery(document).on("click","#user_coupon_val",function(){
 
 /*Reverse Coupon Code*/
 
-jQuery(document).on("click touchstart",".user_reverse_coupon",function(){
+jQuery(document).on("click touchstart", ".user_reverse_coupon", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var display_user_coupon = jQuery("#display_user_code").text();
+    var display_user_coupon = jQuery("#display_user_code").text();
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  jQuery.ajax({
+    jQuery.ajax({
 
-    type:"POST",
+        type: "POST",
 
-    url: site_url+"front/firststep.php",
+        url: site_url + "front/firststep.php",
 
-    data : { "display_user_coupon" : display_user_coupon, "frequently_discount_id" : frequently_discount_id, "referral_reversed" : 1 },
+        data: { "display_user_coupon": display_user_coupon, "frequently_discount_id": frequently_discount_id, "referral_reversed": 1 },
 
-    success: function(res){
+        success: function(res) {
 
-      jQuery(".ct-loading-main").hide();
+            jQuery(".ct-loading-main").hide();
 
-      var cart_session_data=jQuery.parseJSON(res);
+            var cart_session_data = jQuery.parseJSON(res);
 
-      if(cart_session_data.status == "reversed"){
+            if (cart_session_data.status == "reversed") {
 
-        jQuery(".freq_discount_display").show();
+                jQuery(".freq_discount_display").show();
 
-        jQuery(".ct-display-user-coupon-code").hide();
+                jQuery(".ct-display-user-coupon-code").hide();
 
-        jQuery(".hide_user_coupon_textbox").show();
+                jQuery(".hide_user_coupon_textbox").show();
 
-        jQuery(".user_coupon_display").hide();
+                jQuery(".user_coupon_display").hide();
 
-        jQuery(".ct-apply-user-coupon").show();
+                jQuery(".ct-apply-user-coupon").show();
 
-        jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-        jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-        jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-        jQuery(".cart_total").html(cart_session_data.total_amount);
+                jQuery(".cart_total").html(cart_session_data.total_amount);
 
-      }
-
-    }
-
-  });
-
-}); 
-
-
-
-
-
-jQuery(document).on("click touchstart","#apply_coupon",function(){
-
-  jQuery(".ct-loading-main").show();
-
-  jQuery(".freq_disc_empty_cart_error").hide();
-
-  var site_url=siteurlObj.site_url;
-
-  var ajax_url=ajaxurlObj.ajax_url;
-
-  var coupon_code=jQuery("#coupon_val").val();
-
-  var subtotal=jQuery(".cart_sub_total").text();
-
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
-
-  if(subtotal == ""){
-
-    jQuery(".ct-loading-main").hide();
-
-    jQuery(".coupon_invalid_error").css("display","block");
-
-    jQuery(".coupon_invalid_error").html(errorobj_your_cart_is_empty_please_add_cleaning_services);
-
-  }else{
-
-    if(coupon_code == ""){
-
-      jQuery(".ct-loading-main").hide();
-
-      jQuery(".coupon_invalid_error").css("display","block");
-
-      jQuery(".coupon_invalid_error").html("Invalid coupon code");
-
-    }else{
-
-      jQuery.ajax({
-
-        type:"POST",
-
-        url: site_url+"front/firststep.php",
-
-        data : { "coupon_code" : coupon_code, "frequently_discount_id" : frequently_discount_id, "coupon_check" : 1 },
-
-        success: function(res){
-
-          jQuery(".ct-loading-main").hide();
-
-          var cart_session_data=jQuery.parseJSON(res);
-
-          if(cart_session_data.discount_status == "not"){
-
-            jQuery(".coupon_invalid_error").css("display","block");
-
-            jQuery(".coupon_invalid_error").html(errorobj_coupon_expired);
-
-          }
-
-          else if(cart_session_data.discount_status == "wrongcode"){
-
-            jQuery(".coupon_invalid_error").css("display","block");
-
-            jQuery(".coupon_invalid_error").html(errorobj_invalid_coupon);
-
-          }else if(cart_session_data.discount_status == "available"){
-
-            jQuery(".ct-display-coupon-code").show();
-
-            jQuery(".freq_discount_display").show();
-
-            jQuery(".hide_coupon_textbox").hide();
-
-            jQuery(".coupon_display").show();
-
-            jQuery(".partial_amount").html(cart_session_data.partial_amount);
-
-            jQuery(".remain_amount").html(cart_session_data.remain_amount);
-
-            jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
-
-            jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
-
-            jQuery(".cart_tax").html(cart_session_data.cart_tax);
-
-            jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                          
-
-            jQuery(".cart_total").html(cart_session_data.total_amount);
-
-            jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
-
-          }
+            }
 
         }
 
-      });
-
-    }
-
-  }
+    });
 
 });
 
 
 
-jQuery(document).on("click","#coupon_val",function(){
 
-  jQuery(".coupon_invalid_error").hide();
+
+jQuery(document).on("click touchstart", "#apply_coupon", function() {
+
+    jQuery(".ct-loading-main").show();
+
+    jQuery(".freq_disc_empty_cart_error").hide();
+
+    var site_url = siteurlObj.site_url;
+
+    var ajax_url = ajaxurlObj.ajax_url;
+
+    var coupon_code = jQuery("#coupon_val").val();
+
+    var subtotal = jQuery(".cart_sub_total").text();
+
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+
+    if (subtotal == "") {
+
+        jQuery(".ct-loading-main").hide();
+
+        jQuery(".coupon_invalid_error").css("display", "block");
+
+        jQuery(".coupon_invalid_error").html(errorobj_your_cart_is_empty_please_add_cleaning_services);
+
+    } else {
+
+        if (coupon_code == "") {
+
+            jQuery(".ct-loading-main").hide();
+
+            jQuery(".coupon_invalid_error").css("display", "block");
+
+            jQuery(".coupon_invalid_error").html("Invalid coupon code");
+
+        } else {
+
+            jQuery.ajax({
+
+                type: "POST",
+
+                url: site_url + "front/firststep.php",
+
+                data: { "coupon_code": coupon_code, "frequently_discount_id": frequently_discount_id, "coupon_check": 1 },
+
+                success: function(res) {
+
+                    jQuery(".ct-loading-main").hide();
+
+                    var cart_session_data = jQuery.parseJSON(res);
+
+                    if (cart_session_data.discount_status == "not") {
+
+                        jQuery(".coupon_invalid_error").css("display", "block");
+
+                        jQuery(".coupon_invalid_error").html(errorobj_coupon_expired);
+
+                    } else if (cart_session_data.discount_status == "wrongcode") {
+
+                        jQuery(".coupon_invalid_error").css("display", "block");
+
+                        jQuery(".coupon_invalid_error").html(errorobj_invalid_coupon);
+
+                    } else if (cart_session_data.discount_status == "available") {
+
+                        jQuery(".ct-display-coupon-code").show();
+
+                        jQuery(".freq_discount_display").show();
+
+                        jQuery(".hide_coupon_textbox").hide();
+
+                        jQuery(".coupon_display").show();
+
+                        jQuery(".partial_amount").html(cart_session_data.partial_amount);
+
+                        jQuery(".remain_amount").html(cart_session_data.remain_amount);
+
+                        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+
+                        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+
+                        jQuery(".cart_tax").html(cart_session_data.cart_tax);
+
+                        jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
+
+                        jQuery(".cart_total").html(cart_session_data.total_amount);
+
+                        jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    }
+
+});
+
+
+
+jQuery(document).on("click", "#coupon_val", function() {
+
+    jQuery(".coupon_invalid_error").hide();
 
 });
 
 /*Reverse Coupon Code*/
 
-jQuery(document).on("click touchstart",".reverse_coupon",function(){
+jQuery(document).on("click touchstart", ".reverse_coupon", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var coupon_reverse = jQuery("#display_code").text();
+    var coupon_reverse = jQuery("#display_code").text();
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  jQuery.ajax({
+    jQuery.ajax({
 
-    type:"POST",
+        type: "POST",
 
-    url: site_url+"front/firststep.php",
+        url: site_url + "front/firststep.php",
 
-    data : { "coupon_reverse" : coupon_reverse, "frequently_discount_id" : frequently_discount_id, "coupon_reversed" : 1 },
+        data: { "coupon_reverse": coupon_reverse, "frequently_discount_id": frequently_discount_id, "coupon_reversed": 1 },
 
-    success: function(res){
+        success: function(res) {
 
-      jQuery(".ct-loading-main").hide();
+            jQuery(".ct-loading-main").hide();
 
-      var cart_session_data=jQuery.parseJSON(res);
+            var cart_session_data = jQuery.parseJSON(res);
 
-      if(cart_session_data.status == "reversed"){
+            if (cart_session_data.status == "reversed") {
 
-        jQuery(".freq_discount_display").show();
+                jQuery(".freq_discount_display").show();
 
-        jQuery(".ct-display-coupon-code").hide();
+                jQuery(".ct-display-coupon-code").hide();
 
-        jQuery(".hide_coupon_textbox").show();
+                jQuery(".hide_coupon_textbox").show();
 
-        jQuery(".coupon_display").hide();
+                jQuery(".coupon_display").hide();
 
-        jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-        jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-        jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-        jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-        jQuery(".cart_special_days").html(cart_session_data.cart_special_days);           
+                jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-        jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-        jQuery(".cart_total").html(cart_session_data.total_amount);
+                jQuery(".cart_total").html(cart_session_data.total_amount);
 
-      }
+            }
 
-    }
+        }
 
-  });
+    });
 
 });
 
@@ -6186,323 +6231,323 @@ jQuery(document).on("click touchstart",".reverse_coupon",function(){
 
 /* time slots dropdown show hide list */
 
-jQuery(document).on("click",".time-slot-is",function() {
+jQuery(document).on("click", ".time-slot-is", function() {
 
-  jQuery(".time-slots-dropdown").show( "blind", {direction: "vertical"}, 700 );
-
-});
-
-jQuery(document).on("click",".time-slot",function() {
-
-  jQuery(".time-slot").each(function(){
-
-    jQuery(this).removeClass("selected-time-slot");
-
-  });
-
-  jQuery(this).addClass("selected-time-slot");
-
-  jQuery(".time-slots-dropdown").hide( "blind", {direction: "vertical"}, 300 );
+    jQuery(".time-slots-dropdown").show("blind", { direction: "vertical" }, 700);
 
 });
 
-jQuery(document).on("click",".ct-week", function() {
+jQuery(document).on("click", ".time-slot", function() {
 
-  var valuess = jQuery(this).val();
+    jQuery(".time-slot").each(function() {
 
-  var s_date = jQuery(this).attr("data-s_date");
-
-  var c_date = jQuery(this).attr("data-c_date");
-
-  if(s_date >= c_date){
-
-    jQuery(".ct-week").each(function(){
-
-      jQuery(this).removeClass("active");
-
-      jQuery(".ct-show-time").removeClass("shown");
+        jQuery(this).removeClass("selected-time-slot");
 
     });
 
-    jQuery(this).addClass("active");
+    jQuery(this).addClass("selected-time-slot");
 
-    jQuery(".ct-show-time").addClass("shown");
-
-  }else if(s_date < c_date || valuess == ""){
-
-    jQuery(".time_slot_box").hide();
-
-  }
+    jQuery(".time-slots-dropdown").hide("blind", { direction: "vertical" }, 300);
 
 });
 
-jQuery(document).on("click",".selected_date",function() {
+jQuery(document).on("click", ".ct-week", function() {
 
-  jQuery(".ct-loading-main").show();
+    var valuess = jQuery(this).val();
 
-  var site_url=siteurlObj.site_url;
+    var s_date = jQuery(this).attr("data-s_date");
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var c_date = jQuery(this).attr("data-c_date");
 
-  var selected_dates = jQuery(this).attr("data-selected_dates");
+    if (s_date >= c_date) {
 
-  var s_date = jQuery(this).attr("data-s_date");
+        jQuery(".ct-week").each(function() {
 
-  var cur_dates = jQuery(this).attr("data-cur_dates");
+            jQuery(this).removeClass("active");
 
-  var c_date = jQuery(this).attr("data-c_date");
-
-  var id = jQuery(this).attr("data-id");
-
-  var ct_time_selected = jQuery(".ct-time-selected").text();
-
-  var ct_date = jQuery("#save_selected_date").val();
-
-  jQuery.ajax({
-
-    type:"POST",
-
-    url: ajax_url+"calendar_ajax.php",
-
-    data : { "selected_dates" : selected_dates, "id" : id, "cur_dates" : cur_dates, "get_slots" : 1 },
-
-    success: function(res){
-
-      jQuery(".ct-loading-main").hide();
-
-      jQuery(".time_slot_box").hide();
-
-      jQuery(".display_selected_date_slots_box"+id).html(res);
-
-      jQuery(".display_selected_date_slots_box"+id).show();
-
-      if(ct_time_selected != ""){
-
-        jQuery(".time-slot").each(function(){
-
-          var selectedtime = jQuery(this).attr("data-ct_time_selected");
-
-          var slot_date = jQuery(this).attr("data-slot_date");
-
-          if(selectedtime == ct_time_selected && slot_date == ct_date){
-
-            jQuery(this).addClass("ct-booked");
-
-          }
+            jQuery(".ct-show-time").removeClass("shown");
 
         });
 
-      }
+        jQuery(this).addClass("active");
 
-      /*jQuery.ajax({
+        jQuery(".ct-show-time").addClass("shown");
 
-        type:"POST",
+    } else if (s_date < c_date || valuess == "") {
 
-        url: site_url + "front/firststep.php",
+        jQuery(".time_slot_box").hide();
 
-        data : { "selected_dates" : selected_dates, "cur_dates" : cur_dates },
+    }
 
-        success: function(res){
+});
 
-          jQuery(".ct-loading-main").hide();
+jQuery(document).on("click", ".selected_date", function() {
 
-          jQuery(".time_slot_box").hide();
+    jQuery(".ct-loading-main").show();
 
-          jQuery(".display_selected_date_slots_box"+id).html(res);
+    var site_url = siteurlObj.site_url;
 
-          jQuery(".display_selected_date_slots_box"+id).show();
+    var ajax_url = ajaxurlObj.ajax_url;
 
-          
+    var selected_dates = jQuery(this).attr("data-selected_dates");
 
-          if(ct_time_selected != ""){
+    var s_date = jQuery(this).attr("data-s_date");
 
-            jQuery(".time-slot").each(function(){
+    var cur_dates = jQuery(this).attr("data-cur_dates");
 
-              var selectedtime = jQuery(this).attr("data-ct_time_selected");
+    var c_date = jQuery(this).attr("data-c_date");
 
-              var slot_date = jQuery(this).attr("data-slot_date");
+    var id = jQuery(this).attr("data-id");
 
-              if(selectedtime == ct_time_selected && slot_date == ct_date){
+    var ct_time_selected = jQuery(".ct-time-selected").text();
 
-                jQuery(this).addClass("ct-booked");
+    var ct_date = jQuery("#save_selected_date").val();
+
+    jQuery.ajax({
+
+        type: "POST",
+
+        url: ajax_url + "calendar_ajax.php",
+
+        data: { "selected_dates": selected_dates, "id": id, "cur_dates": cur_dates, "get_slots": 1 },
+
+        success: function(res) {
+
+            jQuery(".ct-loading-main").hide();
+
+            jQuery(".time_slot_box").hide();
+
+            jQuery(".display_selected_date_slots_box" + id).html(res);
+
+            jQuery(".display_selected_date_slots_box" + id).show();
+
+            if (ct_time_selected != "") {
+
+                jQuery(".time-slot").each(function() {
+
+                    var selectedtime = jQuery(this).attr("data-ct_time_selected");
+
+                    var slot_date = jQuery(this).attr("data-slot_date");
+
+                    if (selectedtime == ct_time_selected && slot_date == ct_date) {
+
+                        jQuery(this).addClass("ct-booked");
+
+                    }
+
+                });
+
+            }
+
+            /*jQuery.ajax({
+
+              type:"POST",
+
+              url: site_url + "front/firststep.php",
+
+              data : { "selected_dates" : selected_dates, "cur_dates" : cur_dates },
+
+              success: function(res){
+
+                jQuery(".ct-loading-main").hide();
+
+                jQuery(".time_slot_box").hide();
+
+                jQuery(".display_selected_date_slots_box"+id).html(res);
+
+                jQuery(".display_selected_date_slots_box"+id).show();
+
+                
+
+                if(ct_time_selected != ""){
+
+                  jQuery(".time-slot").each(function(){
+
+                    var selectedtime = jQuery(this).attr("data-ct_time_selected");
+
+                    var slot_date = jQuery(this).attr("data-slot_date");
+
+                    if(selectedtime == ct_time_selected && slot_date == ct_date){
+
+                      jQuery(this).addClass("ct-booked");
+
+                    }
+
+                  });
+
+                }
 
               }
 
-            });
-
-          }
+            });*/
 
         }
 
-      });*/             
-
-    }
-
-  });
+    });
 
 });
 
-jQuery(document).on("click",".previous_next,.today_btttn",function() {
+jQuery(document).on("click", ".previous_next,.today_btttn", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var month = jQuery(this).attr("data-next_month");
+    var month = jQuery(this).attr("data-next_month");
 
-  var year = jQuery(this).attr("data-next_month_year");
+    var year = jQuery(this).attr("data-next_month_year");
 
-  var todaybtn = jQuery(this).attr("data-istoday");
+    var todaybtn = jQuery(this).attr("data-istoday");
 
-  var today_date = jQuery(this).attr("data-cur_dates");
+    var today_date = jQuery(this).attr("data-cur_dates");
 
-  var ct_date_selected = jQuery(".ct-date-selected").text();
+    var ct_date_selected = jQuery(".ct-date-selected").text();
 
-  var ct_time_selected = jQuery(".ct-time-selected").text();
+    var ct_time_selected = jQuery(".ct-time-selected").text();
 
-  var ct_date = jQuery(".ct-date-selected").attr("data-date");
+    var ct_date = jQuery(".ct-date-selected").attr("data-date");
 
-  jQuery.ajax({
+    jQuery.ajax({
 
-    type:"POST",
+        type: "POST",
 
-    url: ajax_url+"calendar_ajax.php",
+        url: ajax_url + "calendar_ajax.php",
 
-    data : { "month" : month, "year" : year, "get_calendar" : 1 },
+        data: { "month": month, "year": year, "get_calendar": 1 },
 
-    success: function(res){
+        success: function(res) {
 
-      jQuery(".ct-loading-main").hide();
+            jQuery(".ct-loading-main").hide();
 
-      jQuery(".cal_info").html(res);
+            jQuery(".cal_info").html(res);
 
-      if(ct_date_selected != ""){
+            if (ct_date_selected != "") {
 
-        jQuery(".add_date").addClass("ct-date-selected");
+                jQuery(".add_date").addClass("ct-date-selected");
 
-        jQuery(".add_time").addClass("ct-time-selected");
+                jQuery(".add_time").addClass("ct-time-selected");
 
-        jQuery(".add_date").html(ct_date_selected);
+                jQuery(".add_date").html(ct_date_selected);
 
-        jQuery(".add_date").attr("data-date",ct_date);
+                jQuery(".add_date").attr("data-date", ct_date);
 
-        jQuery(".add_time").html(ct_time_selected);
+                jQuery(".add_time").html(ct_time_selected);
 
-        jQuery(".ct-week").each(function(){
+                jQuery(".ct-week").each(function() {
 
-          var selecteddate = jQuery(this).attr("data-selected_dates");
+                    var selecteddate = jQuery(this).attr("data-selected_dates");
 
-          if(selecteddate == ct_date){
+                    if (selecteddate == ct_date) {
 
-            jQuery(".selected_datess"+ct_date).addClass("active");
+                        jQuery(".selected_datess" + ct_date).addClass("active");
 
-            jQuery(".time-slot").each(function(){
+                        jQuery(".time-slot").each(function() {
 
-              var selectedtime = jQuery(this).attr("data-ct_time_selected");
+                            var selectedtime = jQuery(this).attr("data-ct_time_selected");
 
-              if(selectedtime == ct_time_selected && selecteddate == ct_date){
+                            if (selectedtime == ct_time_selected && selecteddate == ct_date) {
 
-                jQuery(this).addClass("ct-booked");
+                                jQuery(this).addClass("ct-booked");
 
-              }
+                            }
 
-            });
+                        });
 
-          }
+                    }
 
-        });
+                });
 
-      }
+            }
 
-      var d = new Date();
+            var d = new Date();
 
-      var month = d.getMonth()+1;
+            var month = d.getMonth() + 1;
 
-      var day = d.getDate();
+            var day = d.getDate();
 
-      var output = day + "-" +(month<10 ? "0" : "") + month + "-" +  d.getFullYear();
+            var output = day + "-" + (month < 10 ? "0" : "") + month + "-" + d.getFullYear();
 
-      var selected_dates = jQuery(".selected_date").attr("data-selected_dates");
+            var selected_dates = jQuery(".selected_date").attr("data-selected_dates");
 
-      var cur_dates = jQuery(".selected_date").attr("data-cur_dates");
+            var cur_dates = jQuery(".selected_date").attr("data-cur_dates");
 
-      if(output == cur_dates){
+            if (output == cur_dates) {
 
-        jQuery(".by_default_today_selected").addClass("active_today");
+                jQuery(".by_default_today_selected").addClass("active_today");
 
-      }
+            }
 
-      if(todaybtn=="Y"){
+            if (todaybtn == "Y") {
 
-        jQuery(".dates .selected_datess"+today_date).trigger("click");
+                jQuery(".dates .selected_datess" + today_date).trigger("click");
 
-      }
+            }
 
-    }
+        }
 
-  });
+    });
 
 });
 
-jQuery(document).on("click",".time_slotss",function() {
+jQuery(document).on("click", ".time_slotss", function() {
 
-  jQuery(".ct-selected-date-view").removeClass("pulse");
+    jQuery(".ct-selected-date-view").removeClass("pulse");
 
-  jQuery(".date_time_error").hide();
+    jQuery(".date_time_error").hide();
 
-  jQuery(".time_slot_box").hide();
+    jQuery(".time_slot_box").hide();
 
-  jQuery(".space_between_date_time").show();
+    jQuery(".space_between_date_time").show();
 
-  jQuery(".special_day").show();                                                
+    jQuery(".special_day").show();
 
-  jQuery(".hidedatetime_value").show();
+    jQuery(".hidedatetime_value").show();
 
-  jQuery(".add_date").addClass("ct-date-selected");
+    jQuery(".add_date").addClass("ct-date-selected");
 
-  jQuery(".add_time").addClass("ct-time-selected");
+    jQuery(".add_time").addClass("ct-time-selected");
 
-  var slot_date_to_display = jQuery(this).attr("data-slot_date_to_display");
+    var slot_date_to_display = jQuery(this).attr("data-slot_date_to_display");
 
-  var slot_date = jQuery(this).attr("data-slot_date");
+    var slot_date = jQuery(this).attr("data-slot_date");
 
-  var slotdb_date = jQuery(this).attr("data-slotdb_date");
+    var slotdb_date = jQuery(this).attr("data-slotdb_date");
 
-  var slot_time = jQuery(this).attr("data-slot_time");
+    var slot_time = jQuery(this).attr("data-slot_time");
 
-  var slotdb_time = jQuery(this).attr("data-slotdb_time");
+    var slotdb_time = jQuery(this).attr("data-slotdb_time");
 
-  var ct_date_selected = jQuery(this).attr("data-ct_date_selected");
+    var ct_date_selected = jQuery(this).attr("data-ct_date_selected");
 
-  var ct_time_selected = jQuery(this).attr("data-ct_time_selected");
+    var ct_time_selected = jQuery(this).attr("data-ct_time_selected");
 
-  jQuery(".ct-date-selected").attr("data-date",slot_date);
+    jQuery(".ct-date-selected").attr("data-date", slot_date);
 
-  jQuery("#save_selected_date").val(slot_date); 
+    jQuery("#save_selected_date").val(slot_date);
 
-  jQuery(".ct-date-selected").html(ct_date_selected);
+    jQuery(".ct-date-selected").html(ct_date_selected);
 
-  jQuery(".ct-time-selected").html(ct_time_selected);
+    jQuery(".ct-time-selected").html(ct_time_selected);
 
-  jQuery(".ct-selected-date-view").addClass("pulse");
+    jQuery(".ct-selected-date-view").addClass("pulse");
 
-  jQuery(".cart_date").html(slot_date_to_display);
+    jQuery(".cart_date").html(slot_date_to_display);
 
-  jQuery(".cart_date").attr("data-date_val",slotdb_date);
+    jQuery(".cart_date").attr("data-date_val", slotdb_date);
 
-  jQuery(".cart_time").html(slot_time);
+    jQuery(".cart_time").html(slot_time);
 
-  jQuery(".cart_time").attr("data-time_val",slotdb_time);
+    jQuery(".cart_time").attr("data-time_val", slotdb_time);
 
 });
 
-jQuery(document).on("click",".today_btttn",function() {
+jQuery(document).on("click", ".today_btttn", function() {
 
-  var today_date = jQuery(this).attr("data-cur_dates");
+    var today_date = jQuery(this).attr("data-cur_dates");
 
-  jQuery(".dates .selected_datess"+today_date).trigger("click");
+    jQuery(".dates .selected_datess" + today_date).trigger("click");
 
 });
 
@@ -6510,75 +6555,75 @@ jQuery(document).on("click",".today_btttn",function() {
 
 /* Display Country Code on click flag on phone*/
 
-jQuery(document).on("click",".country",function() {
+jQuery(document).on("click", ".country", function() {
 
-  var country_code=jQuery(this).attr("data-dial-code");
+    var country_code = jQuery(this).attr("data-dial-code");
 
-  jQuery("#ct-user-phone").val("+"+country_code);
+    jQuery("#ct-user-phone").val("+" + country_code);
 
 });
 
 /** Code for area code **/
 
-if(ct_postalcode_status_check == "Y"){
+if (ct_postalcode_status_check == "Y") {
 
-  jQuery(document).on("keyup","#ct_postal_code",function(event){
+    jQuery(document).on("keyup", "#ct_postal_code", function(event) {
 
-    var ajax_url=ajaxurlObj.ajax_url;
+        var ajax_url = ajaxurlObj.ajax_url;
 
-    var postal_code = jQuery(this).val().toLowerCase();
+        var postal_code = jQuery(this).val().toLowerCase();
 
-    if(ct_postalcode_zip_status == "on"){
+        if (ct_postalcode_zip_status == "on") {
 
-      jQuery("#app-zip-code").val(postal_code);
+            jQuery("#app-zip-code").val(postal_code);
 
-    }
-
-    if(postal_code == ""){
-
-      jQuery(".remove_show_error_class").addClass("show-error");
-
-      jQuery("#complete_bookings").addClass("ct_remove_id");
-
-      jQuery(document).on("click",".ct_remove_id",function(){
-
-        jQuery("#ct_postal_code").focus();
-
-      });
-
-      jQuery(".ct_remove_id").attr("id","");
-
-      jQuery(".postal_code_available").hide();
-
-      jQuery(".postal_code_error").show();
-
-      jQuery(".postal_code_error").html(errorobj_please_enter_postal_code);
-
-    }else{
-
-      var postal_arr = jQuery(this).attr('data-id');
-      var p_arr = postal_arr.split(',');
-        //console.log(p_arr);
-        if (jQuery.inArray(postal_code, p_arr) !== -1) {
-          jQuery(".ct_remove_id").attr("id", "complete_bookings");
-          jQuery("#complete_bookings").removeClass("ct_remove_id");
-          jQuery(".remove_show_error_class").removeClass("show-error");
-          jQuery(".postal_code_error").hide();
-          //console.log('match');
-        } else {
-          jQuery(".remove_show_error_class").addClass("show-error");
-          jQuery("#complete_bookings").addClass("ct_remove_id");
-          jQuery(document).on("click", ".ct_remove_id", function() {
-          jQuery("#ct_postal_code").focus();
-          });
-          jQuery(".ct_remove_id").attr("id", "");
-          jQuery(".postal_code_error").show();
-          jQuery(".postal_code_error").html(errorobj_our_service_not_available_at_your_location);
-          
         }
-        
 
-    }
+        if (postal_code == "") {
+
+            jQuery(".remove_show_error_class").addClass("show-error");
+
+            jQuery("#complete_bookings").addClass("ct_remove_id");
+
+            jQuery(document).on("click", ".ct_remove_id", function() {
+
+                jQuery("#ct_postal_code").focus();
+
+            });
+
+            jQuery(".ct_remove_id").attr("id", "");
+
+            jQuery(".postal_code_available").hide();
+
+            jQuery(".postal_code_error").show();
+
+            jQuery(".postal_code_error").html(errorobj_please_enter_postal_code);
+
+        } else {
+
+            var postal_arr = jQuery(this).attr('data-id');
+            var p_arr = postal_arr.split(',');
+            //console.log(p_arr);
+            if (jQuery.inArray(postal_code, p_arr) !== -1) {
+                jQuery(".ct_remove_id").attr("id", "complete_bookings");
+                jQuery("#complete_bookings").removeClass("ct_remove_id");
+                jQuery(".remove_show_error_class").removeClass("show-error");
+                jQuery(".postal_code_error").hide();
+                //console.log('match');
+            } else {
+                jQuery(".remove_show_error_class").addClass("show-error");
+                jQuery("#complete_bookings").addClass("ct_remove_id");
+                jQuery(document).on("click", ".ct_remove_id", function() {
+                    jQuery("#ct_postal_code").focus();
+                });
+                jQuery(".ct_remove_id").attr("id", "");
+                jQuery(".postal_code_error").show();
+                jQuery(".postal_code_error").html(errorobj_our_service_not_available_at_your_location);
+
+            }
+
+
+        }
 
         /* var country_flag = jQuery(".selected-flag").attr("title");
         var site_url = siteurlObj.site_url;
@@ -6595,596 +6640,584 @@ if(ct_postalcode_status_check == "Y"){
 
           jQuery('.selected-flag .iti-flag').addClass(country_alpha_code);
           jQuery('.selected-flag').attr('title', country_flag); */
-    jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
+        jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
 
-		
 
-		 jQuery.ajax({
 
-          type : "post",
+        jQuery.ajax({
 
-          data : { "postal_code" : postal_code, "staff_select_according_postal" : 1 },
+            type: "post",
 
-          url : ajax_url+"front_ajax.php",
+            data: { "postal_code": postal_code, "staff_select_according_postal": 1 },
 
-          success : function(res){
+            url: ajax_url + "front_ajax.php",
 
-          var search_session_data=jQuery.parseJSON(res);
-          
-            if(search_session_data.found_status == "found"){
+            success: function(res) {
 
-              //jQuery('#staff_count_forservice').attr('value','');
+                var search_session_data = jQuery.parseJSON(res);
 
-              jQuery(".ct-provider-list").show();
+                if (search_session_data.found_status == "found") {
 
-              var search_staff_id = search_session_data.staff_id;
+                    //jQuery('#staff_count_forservice').attr('value','');
 
-              jQuery.ajax({
+                    jQuery(".ct-provider-list").show();
 
-              type:"POST",
+                    var search_staff_id = search_session_data.staff_id;
 
-              url: ajax_url+"front_ajax.php",
+                    jQuery.ajax({
 
-              data : { "staff_search" : search_staff_id, "get_search_staff_detail" : 1 },
+                        type: "POST",
 
-              success: function(res){
-               
-                jQuery(".provders-list").html(res);
+                        url: ajax_url + "front_ajax.php",
 
-              }
+                        data: { "staff_search": search_staff_id, "get_search_staff_detail": 1 },
 
-              });
+                        success: function(res) {
 
-            }else if(search_session_data.found_status == "not found"){
+                            jQuery(".provders-list").html(res);
 
-            //  jQuery(".ct-provider-list").hide();
-            jQuery(".provders-list").html('Trainer not avaliable');
+                        }
 
-							jQuery('#staff_count_forservice').attr('value','0');
+                    });
+
+                } else if (search_session_data.found_status == "not found") {
+
+                    //  jQuery(".ct-provider-list").hide();
+                    jQuery(".provders-list").html('Trainer not avaliable');
+
+                    jQuery('#staff_count_forservice').attr('value', '0');
+
+                }
 
             }
 
-          }
-
         });
 
-				
 
-  });
+
+    });
 
 }
 
-jQuery(document).on("click",".add_addon_in_cart_for_multipleqty",function(){
+jQuery(document).on("click", ".add_addon_in_cart_for_multipleqty", function() {
 
-  jQuery(".freq_disc_empty_cart_error").hide();
+    jQuery(".freq_disc_empty_cart_error").hide();
 
-  var site_url=siteurlObj.site_url;
+    var site_url = siteurlObj.site_url;
 
-  var ajax_url=ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  jQuery(".coupon_display").hide();
+    jQuery(".coupon_display").hide();
 
-  jQuery(".hide_coupon_textbox").show();
+    jQuery(".hide_coupon_textbox").show();
 
-  jQuery(".ct-display-coupon-code").hide();
+    jQuery(".ct-display-coupon-code").hide();
 
-  jQuery(".coupon_invalid_error").hide();
+    jQuery(".coupon_invalid_error").hide();
 
-  var s_m_qty=jQuery(this).attr("data-duration_value");
+    var s_m_qty = jQuery(this).attr("data-duration_value");
 
-  var s_m_rate=jQuery(this).attr("data-rate");
+    var s_m_rate = jQuery(this).attr("data-rate");
 
-  var service_id=jQuery(this).attr("data-service_id");
+    var service_id = jQuery(this).attr("data-service_id");
 
-  var method_id=jQuery(this).attr("data-method_id");
+    var method_id = jQuery(this).attr("data-method_id");
 
-  var method_name=jQuery(this).attr("data-method_name");
+    var method_name = jQuery(this).attr("data-method_name");
 
-  var units_id=jQuery(this).attr("data-units_id");
+    var units_id = jQuery(this).attr("data-units_id");
 
-  var type=jQuery(this).attr("data-type");
+    var type = jQuery(this).attr("data-type");
 
-  var frequently_discount_id=jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
+    var frequently_discount_id = jQuery("input[name=frequently_discount_radio]:checked").attr("data-id");
 
-  var m_name = jQuery(this).attr("data-mnamee");
+    var m_name = jQuery(this).attr("data-mnamee");
 
-  var status = jQuery(this).attr("data-status");
+    var status = jQuery(this).attr("data-status");
 
-  if(parseInt(status) == 2){
+    if (parseInt(status) == 2) {
 
-    jQuery(this).attr("data-status","1");
+        jQuery(this).attr("data-status", "1");
 
-    jQuery.ajax({
+        jQuery.ajax({
 
-      type : "post",
+            type: "post",
 
-      data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : s_m_qty, "s_m_rate" : s_m_rate, "method_name" : method_name, "units_id" : units_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
+            data: { "method_id": method_id, "service_id": service_id, "s_m_qty": s_m_qty, "s_m_rate": s_m_rate, "method_name": method_name, "units_id": units_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
 
-      url : site_url+"front/firststep.php",
+            url: site_url + "front/firststep.php",
 
-      success : function(res){
+            success: function(res) {
 
-        jQuery(".freq_discount_display").show();
+                jQuery(".freq_discount_display").show();
 
-        jQuery(".hide_right_side_box").show();
+                jQuery(".hide_right_side_box").show();
 
-        jQuery(".partial_amount_hide_on_load").show();
+                jQuery(".partial_amount_hide_on_load").show();
 
-        jQuery(".empty_cart_error").hide();
+                jQuery(".empty_cart_error").hide();
 
-        jQuery(".coupon_invalid_error").hide();
+                jQuery(".coupon_invalid_error").hide();
 
-        jQuery("#total_cart_count").val("2");
+                jQuery("#total_cart_count").val("2");
 
-        var cart_session_data=jQuery.parseJSON(res);
+                var cart_session_data = jQuery.parseJSON(res);
 
-        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+                jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+                jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-        if(cart_session_data.status == "insert"){
+                if (cart_session_data.status == "insert") {
 
-          jQuery( ".cart_empty_msg" ).hide();
+                    jQuery(".cart_empty_msg").hide();
 
-          jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
+                    jQuery(".cart_item_listing").append(cart_session_data.s_m_html);
 
-          jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                    jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-          jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                    jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-          jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                    jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-          jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                    jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-          jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                     
+                    jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-          jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                    jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-          jQuery(".cart_total").html(cart_session_data.total_amount);
+                    jQuery(".cart_total").html(cart_session_data.total_amount);
 
-          jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                    jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-        }else if(cart_session_data.status == "empty calculation"){
+                } else if (cart_session_data.status == "empty calculation") {
 
-          jQuery(".hideduration_value").hide();
+                    jQuery(".hideduration_value").hide();
 
-          jQuery(".total_time_duration_text").html("");
+                    jQuery(".total_time_duration_text").html("");
 
-          jQuery(".freq_discount_display").show();
+                    jQuery(".freq_discount_display").show();
 
-          jQuery(".partial_amount_hide_on_load").hide();
+                    jQuery(".partial_amount_hide_on_load").hide();
 
-          jQuery(".hide_right_side_box").hide();
+                    jQuery(".hide_right_side_box").hide();
 
-          jQuery( ".cart_empty_msg" ).show();
+                    jQuery(".cart_empty_msg").show();
 
-          jQuery( ".cart_item_listing" ).empty();
+                    jQuery(".cart_item_listing").empty();
 
-          jQuery( ".cart_sub_total" ).empty();
+                    jQuery(".cart_sub_total").empty();
 
-          jQuery( ".frequent_discount" ).empty();
+                    jQuery(".frequent_discount").empty();
 
-          jQuery( ".cart_tax" ).empty();
+                    jQuery(".cart_tax").empty();
 
-          jQuery( ".cart_special_days" ).empty();                             
+                    jQuery(".cart_special_days").empty();
 
-          jQuery( ".cart_total" ).empty();
+                    jQuery(".cart_total").empty();
 
-          jQuery( ".remain_amount" ).empty();
+                    jQuery(".remain_amount").empty();
 
-          jQuery( ".partial_amount" ).empty();
+                    jQuery(".partial_amount").empty();
 
-          jQuery( ".cart_discount" ).empty();
+                    jQuery(".cart_discount").empty();
 
-        }else if(cart_session_data.status == "delete particuler"){
+                } else if (cart_session_data.status == "delete particuler") {
 
-          jQuery( ".cart_empty_msg" ).hide();
+                    jQuery(".cart_empty_msg").hide();
 
-          jQuery( ".update_qty_of_s_m_"+m_name).remove();
+                    jQuery(".update_qty_of_s_m_" + m_name).remove();
 
-          jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                    jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-          jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                    jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-          jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                    jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-          jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                    jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-          jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                    jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-          jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                    jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-          jQuery(".cart_special_days").html(cart_session_data.cart_special_days);             
+                    jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-          jQuery(".cart_total").html(cart_session_data.total_amount);
+                    jQuery(".cart_total").html(cart_session_data.total_amount);
 
-          jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                    jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-        }
+                }
 
-      }
+            }
 
-    });
+        });
 
-  }else{
+    } else {
 
-    jQuery(this).attr("data-status","2");
+        jQuery(this).attr("data-status", "2");
 
-    jQuery.ajax({
+        jQuery.ajax({
 
-      type : "post",
+            type: "post",
 
-      data : { "method_id" : method_id, "service_id" : service_id, "s_m_qty" : s_m_qty, "s_m_rate" : s_m_rate, "method_name" : method_name, "units_id" : units_id, "type" : type, "frequently_discount_id" : frequently_discount_id, "add_to_cart" : 1 },
+            data: { "method_id": method_id, "service_id": service_id, "s_m_qty": s_m_qty, "s_m_rate": s_m_rate, "method_name": method_name, "units_id": units_id, "type": type, "frequently_discount_id": frequently_discount_id, "add_to_cart": 1 },
 
-      url : site_url+"front/firststep.php",
+            url: site_url + "front/firststep.php",
 
-      success : function(res){
+            success: function(res) {
 
-        jQuery(".freq_discount_display").show();
+                jQuery(".freq_discount_display").show();
 
-        jQuery(".hide_right_side_box").show();
+                jQuery(".hide_right_side_box").show();
 
-        jQuery(".partial_amount_hide_on_load").show();
+                jQuery(".partial_amount_hide_on_load").show();
 
-        jQuery(".empty_cart_error").hide();
+                jQuery(".empty_cart_error").hide();
 
-        jQuery(".coupon_invalid_error").hide();
+                jQuery(".coupon_invalid_error").hide();
 
-        jQuery("#total_cart_count").val("2");
+                jQuery("#total_cart_count").val("2");
 
-        var cart_session_data=jQuery.parseJSON(res);
+                var cart_session_data = jQuery.parseJSON(res);
 
-        jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
+                jQuery("#no_units_in_cart_err").val(cart_session_data.unit_status);
 
-        jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
+                jQuery("#no_units_in_cart_err_count").val(cart_session_data.unit_require);
 
-        if(cart_session_data.status == "empty calculation"){
+                if (cart_session_data.status == "empty calculation") {
 
-          jQuery(".hideduration_value").hide();
+                    jQuery(".hideduration_value").hide();
 
-          jQuery(".total_time_duration_text").html("");
+                    jQuery(".total_time_duration_text").html("");
 
-          jQuery(".partial_amount_hide_on_load").hide();
+                    jQuery(".partial_amount_hide_on_load").hide();
 
-          jQuery(".hide_right_side_box").hide();
+                    jQuery(".hide_right_side_box").hide();
 
-          jQuery( ".cart_empty_msg" ).show();
+                    jQuery(".cart_empty_msg").show();
 
-          jQuery( ".cart_item_listing" ).empty();
+                    jQuery(".cart_item_listing").empty();
 
-          jQuery( ".cart_sub_total" ).empty();
+                    jQuery(".cart_sub_total").empty();
 
-          jQuery( ".cart_tax" ).empty();
+                    jQuery(".cart_tax").empty();
 
-          jQuery( ".cart_special_days" ).empty();                                 
+                    jQuery(".cart_special_days").empty();
 
-          jQuery( ".cart_total" ).empty();
+                    jQuery(".cart_total").empty();
 
-          jQuery( ".frequent_discount" ).empty();
+                    jQuery(".frequent_discount").empty();
 
-          jQuery( ".remain_amount" ).empty();
+                    jQuery(".remain_amount").empty();
 
-          jQuery( ".partial_amount" ).empty();
+                    jQuery(".partial_amount").empty();
 
-          jQuery( ".cart_discount" ).empty();
+                    jQuery(".cart_discount").empty();
 
-        }else if(cart_session_data.status == "delete particuler"){
+                } else if (cart_session_data.status == "delete particuler") {
 
-          jQuery( ".cart_empty_msg" ).hide();
+                    jQuery(".cart_empty_msg").hide();
 
-          jQuery( ".update_qty_of_s_m_"+m_name).remove();
+                    jQuery(".update_qty_of_s_m_" + m_name).remove();
 
-          jQuery(".partial_amount").html(cart_session_data.partial_amount);
+                    jQuery(".partial_amount").html(cart_session_data.partial_amount);
 
-          jQuery(".remain_amount").html(cart_session_data.remain_amount);
+                    jQuery(".remain_amount").html(cart_session_data.remain_amount);
 
-          jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
+                    jQuery(".cart_sub_total").html(cart_session_data.cart_sub_total);
 
-          jQuery(".cart_discount").html("- "+cart_session_data.cart_discount);
+                    jQuery(".cart_discount").html("- " + cart_session_data.cart_discount);
 
-          jQuery(".cart_tax").html(cart_session_data.cart_tax);
+                    jQuery(".cart_tax").html(cart_session_data.cart_tax);
 
-          jQuery(".cart_special_days").html(cart_session_data.cart_special_days);                                                     
+                    jQuery(".cart_special_days").html(cart_session_data.cart_special_days);
 
-          jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
+                    jQuery(".frequent_discount").html(cart_session_data.frequent_discount);
 
-          jQuery(".cart_total").html(cart_session_data.total_amount);
+                    jQuery(".cart_total").html(cart_session_data.total_amount);
 
-          jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
+                    jQuery(".total_time_duration_text").html(cart_session_data.duration_text);
 
-        }
+                }
 
-      }
+            }
 
-    });
+        });
 
-  }
+    }
 
 });
 
 /*Reset Password*/
 
-jQuery(document).on("click","#reset_pass",function(){
+jQuery(document).on("click", "#reset_pass", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery(".add_show_error_class").each(function(){
+    jQuery(".add_show_error_class").each(function() {
 
-    jQuery(this).trigger("keyup");
-
-  });
-
-  var front_url=fronturlObj.front_url;
-
-  var site_url=siteurlObj.site_url;
-
-  var email=jQuery("#rp_user_email").val();
-
-  var dataString={email:email,action:"forget_password"};
-
-  if(jQuery("#forget_pass").valid()){
-
-    jQuery.ajax({
-
-      type:"POST",
-
-      url:front_url+"firststep.php",
-
-      data:dataString,
-
-      success:function(response){
-
-        jQuery(".ct-loading-main").hide();
-
-        if(response=="not"){
-
-          jQuery(".forget_pass_incorrect").css("display","block");
-
-          jQuery(".forget_pass_incorrect").css("color","red");
-
-          jQuery(".forget_pass_incorrect").html(errorobj_invalid_email_id_please_register_first);
-
-        } else {
-
-          jQuery(".forget_pass_correct").css("display","block");
-
-          jQuery(".forget_pass_correct").css("color","green");
-
-          jQuery(".forget_pass_correct").html(errorobj_your_password_send_successfully_at_your_registered_email_id);
-
-          jQuery("#reset_pass").unbind("click");
-
-          jQuery("#reset_pass").css({"pointer-events": "none", "cursor": "default"});
-
-          setTimeout(function() { window.location.href = site_url;  },5000);
-
-          event.preventDefault();
-
-        }
-
-      },
+        jQuery(this).trigger("keyup");
 
     });
 
-  }
+    var front_url = fronturlObj.front_url;
+
+    var site_url = siteurlObj.site_url;
+
+    var email = jQuery("#rp_user_email").val();
+
+    var dataString = { email: email, action: "forget_password" };
+
+    if (jQuery("#forget_pass").valid()) {
+
+        jQuery.ajax({
+
+            type: "POST",
+
+            url: front_url + "firststep.php",
+
+            data: dataString,
+
+            success: function(response) {
+
+                jQuery(".ct-loading-main").hide();
+
+                if (response == "not") {
+
+                    jQuery(".forget_pass_incorrect").css("display", "block");
+
+                    jQuery(".forget_pass_incorrect").css("color", "red");
+
+                    jQuery(".forget_pass_incorrect").html(errorobj_invalid_email_id_please_register_first);
+
+                } else {
+
+                    jQuery(".forget_pass_correct").css("display", "block");
+
+                    jQuery(".forget_pass_correct").css("color", "green");
+
+                    jQuery(".forget_pass_correct").html(errorobj_your_password_send_successfully_at_your_registered_email_id);
+
+                    jQuery("#reset_pass").unbind("click");
+
+                    jQuery("#reset_pass").css({ "pointer-events": "none", "cursor": "default" });
+
+                    setTimeout(function() { window.location.href = site_url; }, 5000);
+
+                    event.preventDefault();
+
+                }
+
+            },
+
+        });
+
+    }
 
 });
 
-jQuery(document).on("click","#rp_user_email",function(){
+jQuery(document).on("click", "#rp_user_email", function() {
 
-  jQuery(".forget_pass_incorrect").hide();
-
-});
-
-jQuery(document).on("click","#rn_password",function(){
-
-  jQuery(".mismatch_password").hide();
+    jQuery(".forget_pass_incorrect").hide();
 
 });
 
-jQuery(document).on("click","#n_password",function(){
+jQuery(document).on("click", "#rn_password", function() {
 
-  jQuery(".mismatch_password").hide();
-
-});
-
-jQuery(document).on("click","#password",function(){
-
-  jQuery(".succ_password").hide();
+    jQuery(".mismatch_password").hide();
 
 });
 
-jQuery(document).on("click","#email",function(){
+jQuery(document).on("click", "#n_password", function() {
 
-  jQuery(".succ_password").hide();
+    jQuery(".mismatch_password").hide();
+
+});
+
+jQuery(document).on("click", "#password", function() {
+
+    jQuery(".succ_password").hide();
+
+});
+
+jQuery(document).on("click", "#email", function() {
+
+    jQuery(".succ_password").hide();
 
 });
 
 /*Reset New Password*/
 
-jQuery(document).on("click","#reset_new_password",function(){
+jQuery(document).on("click", "#reset_new_password", function() {
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  var front_url=fronturlObj.front_url;
+    var front_url = fronturlObj.front_url;
 
-  var new_reset_pass=jQuery("#n_password").val();
+    var new_reset_pass = jQuery("#n_password").val();
 
-  var retype_new_reset_pass=jQuery("#rn_password").val();
+    var retype_new_reset_pass = jQuery("#rn_password").val();
 
-  var dataString={retype_new_reset_pass:retype_new_reset_pass,action:"reset_new_password"};
+    var dataString = { retype_new_reset_pass: retype_new_reset_pass, action: "reset_new_password" };
 
-  if(jQuery("#reset_new_passwd").valid()){
+    if (jQuery("#reset_new_passwd").valid()) {
 
-    if(new_reset_pass == retype_new_reset_pass){
+        if (new_reset_pass == retype_new_reset_pass) {
 
-      jQuery.ajax({
+            jQuery.ajax({
 
-        type:"POST",
+                type: "POST",
 
-        url:front_url+"firststep.php",
+                url: front_url + "firststep.php",
 
-        data:dataString,
+                data: dataString,
 
-        success:function(response){
+                success: function(response) {
 
-          jQuery(".ct-loading-main").hide();
+                    jQuery(".ct-loading-main").hide();
 
-          if(response=="password reset successfully"){
+                    if (response == "password reset successfully") {
 
-            jQuery(".succ_password").css("display","block");
+                        jQuery(".succ_password").css("display", "block");
 
-            jQuery(".succ_password").addClass("txt-success");
+                        jQuery(".succ_password").addClass("txt-success");
 
-            jQuery(".succ_password").html(errorobj_your_password_reset_successfully_please_login);
+                        jQuery(".succ_password").html(errorobj_your_password_reset_successfully_please_login);
 
-          }
+                    }
 
-        },
+                },
 
-      });
+            });
 
-    }else{
+        } else {
 
-      jQuery(".ct-loading-main").hide();
+            jQuery(".ct-loading-main").hide();
 
-      jQuery(".mismatch_password").css("display","block");
+            jQuery(".mismatch_password").css("display", "block");
 
-      jQuery(".mismatch_password").addClass("error");
+            jQuery(".mismatch_password").addClass("error");
 
-      jQuery(".mismatch_password").html(errorobj_new_password_and_retype_new_password_mismatch);
+            jQuery(".mismatch_password").html(errorobj_new_password_and_retype_new_password_mismatch);
+
+        }
 
     }
-
-  }
 
 });
 
 /* same as above details  */
 
-jQuery(document).on("change","#retype_status",function() {
+jQuery(document).on("change", "#retype_status", function() {
 
-  var user_address = jQuery("#ct-street-address").val();
+    var user_address = jQuery("#ct-street-address").val();
 
-  var user_zipcode = jQuery("#ct-zip-code").val();
+    var user_zipcode = jQuery("#ct-zip-code").val();
 
-  var user_city = jQuery("#ct-city").val();
+    var user_city = jQuery("#ct-city").val();
 
-  var user_state = jQuery("#ct-state").val();
+    var user_state = jQuery("#ct-state").val();
 
-  var postal_code = jQuery("#ct_postal_code").val();
+    var postal_code = jQuery("#ct_postal_code").val();
 
-  if(jQuery("#retype_status").prop("checked")) {
+    if (jQuery("#retype_status").prop("checked")) {
 
-    jQuery("#app-street-address").val(user_address);
+        jQuery("#app-street-address").val(user_address);
+        jQuery("#app-zip-code").val(user_zipcode);
+        jQuery("#app-city").val(user_city);
 
-    if(ct_postalcode_status_check != "Y"){
+        jQuery("#app-state").val(user_state);
 
-      jQuery("#app-zip-code").val(user_zipcode);
+        if (postal_code != "") {
+            jQuery("#app-zip-code").attr("readonly", true);
+        }
 
-    }
+    } else {
 
-    jQuery("#app-city").val(user_city);
+        jQuery("#app-street-address").val("");
+        jQuery("#app-zip-code").val("");
+        jQuery("#app-city").val("");
 
-    jQuery("#app-state").val(user_state);
+        jQuery("#app-state").val("");
 
-    if (postal_code != "") {
-      jQuery("#app-zip-code").attr("readonly", true);
-    }
-
-  }else{
-
-    jQuery("#app-street-address").val("");
-
-    if(ct_postalcode_status_check != "Y"){
-
-      jQuery("#app-zip-code").val("");
+        jQuery("#app-zip-code").removeAttr("readonly");
 
     }
 
-    jQuery("#app-city").val("");
-
-    jQuery("#app-state").val("");
-
-    jQuery("#app-zip-code").removeAttr("readonly");
-
-  }
-
-  jQuery(".fancy_input").each(function(){jQuery(this).trigger("keyup");});
+    jQuery(".fancy_input").each(function() { jQuery(this).trigger("keyup"); });
 
 });
 
 
 
-jQuery(document).on("click",".ct_method_tab-slider--nav li,.ct_method_tab-slider--nav li.active", function() {
+jQuery(document).on("click", ".ct_method_tab-slider--nav li,.ct_method_tab-slider--nav li.active", function() {
 
-  if(!jQuery(this).hasClass("ct_method_tab-blank_li")){
+    if (!jQuery(this).hasClass("ct_method_tab-blank_li")) {
 
-    var totallis = 0; 
+        var totallis = 0;
 
-    var selectedli = 0;
+        var selectedli = 0;
 
-    var currentli = jQuery(this).html();
+        var currentli = jQuery(this).html();
 
-    var divid = jQuery(this).attr("data-id");
+        var divid = jQuery(this).attr("data-id");
 
-    var divname = jQuery(this).attr("data-methoddss");
+        var divname = jQuery(this).attr("data-methoddss");
 
-    var maindivid = jQuery(this).attr("data-maindivid");
+        var maindivid = jQuery(this).attr("data-maindivid");
 
-    jQuery(".ct_method_tab-slider--nav").each(function(){
+        jQuery(".ct_method_tab-slider--nav").each(function() {
 
-      var common_id = jQuery(this).attr("data-id");
+            var common_id = jQuery(this).attr("data-id");
 
-      if(jQuery(".ct_method_tab-slider--nav_dynamic"+common_id+" li").length == 2){
+            if (jQuery(".ct_method_tab-slider--nav_dynamic" + common_id + " li").length == 2) {
 
-         jQuery(".ct_method_tab-slider--nav_dynamic"+common_id+" ul li").css('width','50%'); 
+                jQuery(".ct_method_tab-slider--nav_dynamic" + common_id + " ul li").css('width', '50%');
 
-        
 
-      }else if(jQuery(".ct_method_tab-slider--nav_dynamic"+common_id+" li").length == 1){
 
-        jQuery(".ct_method_tab-slider--nav_dynamic"+common_id+" ul").append("<li class='ct_method_tab-slider-trigger ct_method_tab-blank_li'>&nbsp;</li><li class='ct_method_tab-slider-trigger ct_method_tab-blank_li'>&nbsp;</li>");
+            } else if (jQuery(".ct_method_tab-slider--nav_dynamic" + common_id + " li").length == 1) {
 
-      }
+                jQuery(".ct_method_tab-slider--nav_dynamic" + common_id + " ul").append("<li class='ct_method_tab-slider-trigger ct_method_tab-blank_li'>&nbsp;</li><li class='ct_method_tab-slider-trigger ct_method_tab-blank_li'>&nbsp;</li>");
 
-    });
+            }
 
-    jQuery(".ct_method_tab-slider--nav_dynamic"+maindivid+" li").each(function(){
+        });
 
-      if(jQuery(this).html()==currentli){
+        jQuery(".ct_method_tab-slider--nav_dynamic" + maindivid + " li").each(function() {
 
-        selectedli = totallis;
+            if (jQuery(this).html() == currentli) {
 
-      }
+                selectedli = totallis;
 
-      totallis++;
+            }
 
-    });
+            totallis++;
 
-    var leftpercent = 100/totallis;
+        });
 
-    var currentpercent = leftpercent*selectedli;
+        var leftpercent = 100 / totallis;
 
-    jQuery("head").find("style").each(function(){
+        var currentpercent = leftpercent * selectedli;
 
-      var attr = jQuery(this).attr("data-dynmicstyle");
+        jQuery("head").find("style").each(function() {
 
-      if (typeof attr !== typeof undefined && attr !== false) {
+            var attr = jQuery(this).attr("data-dynmicstyle");
 
-        jQuery(this).remove();
+            if (typeof attr !== typeof undefined && attr !== false) {
 
-      }
+                jQuery(this).remove();
 
-    }); 
+            }
 
-    jQuery("<style data-dynmicstyle>.ct_method_tab-slider--nav_dynamic"+maindivid+" .ct_method_tab-slider-tabs.ct_methods_slide:after{width:"+leftpercent+"% !important;left:"+currentpercent+"% !important;}</style>").appendTo("head");   
+        });
 
-    jQuery(".ct_method_tab-slider--nav_dynamic"+maindivid+" li").removeClass("active");
+        jQuery("<style data-dynmicstyle>.ct_method_tab-slider--nav_dynamic" + maindivid + " .ct_method_tab-slider-tabs.ct_methods_slide:after{width:" + leftpercent + "% !important;left:" + currentpercent + "% !important;}</style>").appendTo("head");
 
-    jQuery(".ct_method_tab-slider-trigger_dynamic"+divid).addClass("active");
+        jQuery(".ct_method_tab-slider--nav_dynamic" + maindivid + " li").removeClass("active");
 
-  }
+        jQuery(".ct_method_tab-slider-trigger_dynamic" + divid).addClass("active");
+
+    }
 
 });
 
@@ -7192,765 +7225,751 @@ jQuery(document).on("click",".ct_method_tab-slider--nav li,.ct_method_tab-slider
 
 
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function() {
 
-  
 
-  jQuery("#step_previous").hide();
 
-  jQuery(document).on("click","#step_next",function() {
+    jQuery("#step_previous").hide();
 
-    if(jQuery("#ct-step-two").not(":visible")){
+    jQuery(document).on("click", "#step_next", function() {
 
-      jQuery("#step_previous").show();
+        if (jQuery("#ct-step-two").not(":visible")) {
 
-    }
+            jQuery("#step_previous").show();
 
-    
+        }
 
-    if(jQuery("#ct-step-one").is(":visible")){
 
-			jQuery("#step_previous").hide();
 
-      jQuery("#postalcodefrm").validate({
+        if (jQuery("#ct-step-one").is(":visible")) {
 
-		  rules: {
+            jQuery("#step_previous").hide();
 
-			ct_postal_code:{
+            jQuery("#postalcodefrm").validate({
 
-			  required: true,
-			},
+                rules: {
 
-		  },
+                    ct_postal_code: {
 
-		  messages: {
+                        required: true,
+                    },
 
-			ct_postal_code:{
+                },
 
-			  required:"The zip code is required field", 
+                messages: {
 
-			},
+                    ct_postal_code: {
 
-		  }
+                        required: "The zip code is required field",
 
-		});
+                    },
 
-				
+                }
 
-			
+            });
 
-		if(jQuery("#postalcodefrm").valid() ){ 
 
-			var postal_code = jQuery("#ct_postal_code").val();
 
-			postalcode= 1;
 
-		}else{
 
-			postalcode= 0;
+            if (jQuery("#postalcodefrm").valid()) {
 
-		}
+                var postal_code = jQuery("#ct_postal_code").val();
 
+                postalcode = 1;
 
-		var addon = document.getElementsByName('service-radio');
+            } else {
 
-		if (!jQuery("input[name='service-radio']").is("checked")) {
+                postalcode = 0;
 
-			jQuery(".custom_service_error").first().html("Please select service");
+            }
 
-			service = 0;
 
-		}else{
+            var addon = document.getElementsByName('service-radio');
 
-			jQuery(".custom_service_error").html("");
+            if (!jQuery("input[name='service-radio']").is("checked")) {
 
-			
+                jQuery(".custom_service_error").first().html("Please select service");
 
-		}
+                service = 0;
 
-		if(jQuery(".custom_service_error").css('display') == 'none'){
+            } else {
 
-			service = 1;
+                jQuery(".custom_service_error").html("");
 
-			if( jQuery('.cart-items-main').find('ul').find("li").length == 0){
 
-				jQuery(".custom_item_error").show();
 
-				jQuery(".custom_item_error").first().html("Please select service item");
+            }
 
-				service_item = 0;
+            if (jQuery(".custom_service_error").css('display') == 'none') {
 
-			}else{
+                service = 1;
 
-				service_item = 1;
+                if (jQuery('.cart-items-main').find('ul').find("li").length == 0) {
 
-			}
+                    jQuery(".custom_item_error").show();
 
-		}
+                    jQuery(".custom_item_error").first().html("Please select service item");
 
-		
+                    service_item = 0;
 
-	
-		if(postalcode  && service && service_item && jQuery(".custom_item_error").css('display') != 'block'){
+                } else {
 
-			var staff_count_forservice = jQuery("#staff_count_forservice").val();
+                    service_item = 1;
 
-			if(frequency_status.status=='N' && staff_count_forservice=='0'){
+                }
 
-				
+            }
 
-				jQuery("#ct-step-one").slideUp(300);
 
-				jQuery("#ct-step-three").slideDown(300);
 
-				jQuery("#step_previous").show();
 
-			}else{
+            if (postalcode && service && service_item && jQuery(".custom_item_error").css('display') != 'block') {
 
-				jQuery("#ct-step-one").slideUp(300);
+                var staff_count_forservice = jQuery("#staff_count_forservice").val();
 
-				jQuery("#ct-step-two").slideDown(300);
+                if (frequency_status.status == 'N' && staff_count_forservice == '0') {
 
-				jQuery("#step_previous").show();
 
-			}
 
-		}else{
+                    jQuery("#ct-step-one").slideUp(300);
 
-			return false;
+                    jQuery("#ct-step-three").slideDown(300);
 
-		}
+                    jQuery("#step_previous").show();
 
-    }
+                } else {
 
+                    jQuery("#ct-step-one").slideUp(300);
 
+                    jQuery("#ct-step-two").slideDown(300);
 
-    else if(jQuery("#ct-step-two").is(":visible")){
+                    jQuery("#step_previous").show();
 
-			
+                }
 
-      
-      var staff_id = jQuery(".provider_disable:checked").attr("data-staff_id");
-      if(staff_id == undefined){
+            } else {
 
-        var staff_id = "";
+                return false;
 
-      } else {
+            }
 
-        var staff_id = staff_id;
+        } else if (jQuery("#ct-step-two").is(":visible")) {
 
-      }
 
-      if(staff_id < 0 || staff_id == ""){
 
-        clicked=false;
 
-        jQuery('.ct-loading-main-complete_booking').hide();
+            var staff_id = jQuery(".provider_disable:checked").attr("data-staff_id");
+            if (staff_id == undefined) {
 
-        jQuery('.date_time_error1').css('display','block');
+                var staff_id = "";
 
-        jQuery('.date_time_error1').css('color','red');
+            } else {
 
-        jQuery('.date_time_error1').html("Please select trainer");
+                var staff_id = staff_id;
 
-        jQuery(this).attr("href",'#date_time_error_id1');
+            }
 
-        return false;
+            if (staff_id < 0 || staff_id == "") {
 
-      }
-      jQuery("#ct-step-two").slideUp(300);
+                clicked = false;
 
-      jQuery("#ct-step-three").slideDown(300);
+                jQuery('.ct-loading-main-complete_booking').hide();
 
-    }
+                jQuery('.date_time_error1').css('display', 'block');
 
-    
+                jQuery('.date_time_error1').css('color', 'red');
 
-    else if(jQuery("#ct-step-three").is(":visible")){
+                jQuery('.date_time_error1').html("Please select trainer");
 
-      var booking_date_text = jQuery(".cart_date").text();
+                jQuery(this).attr("href", '#date_time_error_id1');
 
-      var booking_date = jQuery(".cart_date").attr('data-date_val');
+                return false;
 
-      var booking_time = jQuery(".cart_time").attr('data-time_val');
+            }
+            jQuery("#ct-step-two").slideUp(300);
 
-      var booking_time_text = jQuery(".cart_time").text();
+            jQuery("#ct-step-three").slideDown(300);
 
+        } else if (jQuery("#ct-step-three").is(":visible")) {
 
+            var booking_date_text = jQuery(".cart_date").text();
 
-      if(booking_date_text == '' && booking_time_text == ''){
+            var booking_date = jQuery(".cart_date").attr('data-date_val');
 
-        clicked=false;
+            var booking_time = jQuery(".cart_time").attr('data-time_val');
 
-        jQuery('.ct-loading-main-complete_booking').hide();
+            var booking_time_text = jQuery(".cart_time").text();
 
-        jQuery('.date_time_error').css('display','block');
 
-        jQuery('.date_time_error').css('color','red');
 
-        jQuery('.date_time_error').html(errorobj_please_select_appointment_date);
+            if (booking_date_text == '' && booking_time_text == '') {
 
-        jQuery(this).attr("href",'#date_time_error_id');
+                clicked = false;
 
-        return false;
+                jQuery('.ct-loading-main-complete_booking').hide();
 
-      }
+                jQuery('.date_time_error').css('display', 'block');
 
-      jQuery("#ct-step-three").slideUp(300);
+                jQuery('.date_time_error').css('color', 'red');
 
-      jQuery("#ct-step-four").slideDown(300);
+                jQuery('.date_time_error').html(errorobj_please_select_appointment_date);
 
-    }
+                jQuery(this).attr("href", '#date_time_error_id');
 
-    
+                return false;
 
-    else if(jQuery("#ct-step-four").is(":visible")){
+            }
 
-				var exitinguser_data = 0;
+            jQuery("#ct-step-three").slideUp(300);
 
-				jQuery(".login_unsuccessfull").hide();
+            jQuery("#ct-step-four").slideDown(300);
 
-				jQuery(".login_unsuccessfull").html("");
+        } else if (jQuery("#ct-step-four").is(":visible")) {
 
-				if(jQuery(".ct-login-existing").css('display') == 'block'){
+            var exitinguser_data = 0;
 
-					jQuery("#user_login_form").validate({
+            jQuery(".login_unsuccessfull").hide();
 
-						rules: {
+            jQuery(".login_unsuccessfull").html("");
 
-						ct_user_name:{
+            if (jQuery(".ct-login-existing").css('display') == 'block') {
 
-							required: true,
+                jQuery("#user_login_form").validate({
 
-							
+                    rules: {
 
-						},
+                        ct_user_name: {
 
-						ct_user_pass:{
+                            required: true,
 
-							required: true,
 
-						}
 
-						},
+                        },
 
-						messages: {
+                        ct_user_pass: {
 
-						ct_user_name:{
+                            required: true,
 
-							required:"The Username is required field", 
+                        }
 
-						 
+                    },
 
-						},
+                    messages: {
 
-						ct_user_pass:{
+                        ct_user_name: {
 
-							required:"The password is required field", 
+                            required: "The Username is required field",
 
-						 
 
-						}
 
-						}
+                        },
 
-					});
+                        ct_user_pass: {
 
-						if(jQuery("#user_login_form").valid()){
+                            required: "The password is required field",
 
-							jQuery(".login_unsuccessfull").hide();
 
-							jQuery(".login_unsuccessfull").html("");
 
-							if(jQuery("#user_details_form").valid() && is_login_user == "Y"){
+                        }
 
-								
-
-								jQuery("#app-street-address").rules("add",{ 
-
-									required: true,
-
-									minlength:check_addresss.min,
-
-									maxlength:check_addresss.max,
-
-									messages: { 
-
-										required: errorobj_req_sa,
-
-										minlength:errorobj_min_sa,
-
-										maxlength:errorobj_max_sa
-
-									}
-
-								});
-
-								
-
-								jQuery("#app-zip-code").rules("add", { 
-
-									required: true,
-
-									minlength:check_zip_code.min,
-
-									maxlength:check_zip_code.max, 
-
-									messages: { 
-
-										required: errorobj_req_zc, 
-
-										minlength:errorobj_min_zc, 
-
-										maxlength:errorobj_max_zc
-
-									}
-
-								});
-
-									
-
-								jQuery("#app-city").rules("add",{ 
-
-									required: true,
-
-									minlength:check_city.min,
-
-									maxlength:check_city.max, 
-
-									messages: { 
-
-										required: errorobj_req_ct, 
-
-										minlength:errorobj_min_ct, 
-
-										maxlength:errorobj_max_ct
-
-									}
-
-								});
-
-
-
-								jQuery("#app-state").rules("add", { 
-
-									required: true,
-
-									minlength:check_state.min,
-
-									maxlength:check_state.max, 
-
-									messages: { 
-
-										required: errorobj_req_st, 
-
-										minlength:errorobj_min_st, 
-
-										maxlength:errorobj_max_st
-
-									}
-
-								});
-
-
-
-								jQuery("#ct-first-name").rules("add", { 
-
-									required: true,
-
-									messages: { 
-
-										required: errorobj_req_fn
-
-									}
-
-								});
-
-                jQuery("#ct-username").rules("add", { 
-
-                  required: true,
-
-                  messages: { 
-
-                    required: "Username is required"
-
-                  }
+                    }
 
                 });
 
-									
+                if (jQuery("#user_login_form").valid()) {
 
-								jQuery("#ct-last-name").rules("add", { 
+                    jQuery(".login_unsuccessfull").hide();
 
-									required: true, 
+                    jQuery(".login_unsuccessfull").html("");
 
-									messages: { 
+                    if (jQuery("#user_details_form").valid() && is_login_user == "Y") {
 
-										required: errorobj_req_ln
 
-									}
 
-								});
+                        jQuery("#app-street-address").rules("add", {
 
-								 
+                            required: true,
 
-								jQuery("#ct-street-address").rules("add",{ 
+                            minlength: check_addresss.min,
 
-									required: true, 
+                            maxlength: check_addresss.max,
 
-									messages: { 
+                            messages: {
 
-										required: errorobj_req_sa
+                                required: errorobj_req_sa,
 
-									}
+                                minlength: errorobj_min_sa,
 
-								});
+                                maxlength: errorobj_max_sa
 
-									
+                            }
 
-								jQuery("#ct-zip-code").rules("add", { 
+                        });
 
-									required: true,
 
-									messages: { 
 
-										required: errorobj_req_zc
+                        jQuery("#app-zip-code").rules("add", {
 
-									}
+                            required: true,
 
-								});
+                            minlength: check_zip_code.min,
 
-								 
+                            maxlength: check_zip_code.max,
 
-								jQuery("#ct-city").rules("add", 
+                            messages: {
 
-								{ required: true,
+                                required: errorobj_req_zc,
 
-								messages: { required: errorobj_req_ct}});
+                                minlength: errorobj_min_zc,
 
-								
+                                maxlength: errorobj_max_zc
 
-								jQuery("#ct-state").rules("add", 
+                            }
 
-								{ required: true,
+                        });
 
-								messages: { required: errorobj_req_st}});
 
-								 
 
-								jQuery("#ct-notes").rules("add",{
+                        jQuery("#app-city").rules("add", {
 
-									required: true,
+                            required: true,
 
-									messages: { required: errorobj_req_srn}});
+                            minlength: check_city.min,
 
-								
+                            maxlength: check_city.max,
 
-								jQuery(".login_unsuccessfull").hide();
+                            messages: {
 
-								jQuery(".login_unsuccessfull").html("");
+                                required: errorobj_req_ct,
 
-								jQuery("#ct-step-four").slideUp(300);
+                                minlength: errorobj_min_ct,
 
-								jQuery("#ct-step-five").slideDown(300);
+                                maxlength: errorobj_max_ct
 
-								jQuery("#step_next").hide();
+                            }
 
-								
+                        });
 
-							}else if(is_login_user != "Y"){
 
-								jQuery(".login_unsuccessfull").show();
 
-								jQuery(".login_unsuccessfull").html("<span style='color:red;'>Please do login</span>");
+                        jQuery("#app-state").rules("add", {
 
-							}
+                            required: true,
 
-							
+                            minlength: check_state.min,
 
-						}
+                            maxlength: check_state.max,
 
-			}else{
+                            messages: {
 
-	if(jQuery("#user_details_form").valid() ){
+                                required: errorobj_req_st,
 
-		jQuery(".login_unsuccessfull").hide();
+                                minlength: errorobj_min_st,
 
-		jQuery(".login_unsuccessfull").html("");
+                                maxlength: errorobj_max_st
 
-		jQuery("#app-street-address").rules("add",{ 
+                            }
 
-			required: true,
+                        });
 
-			minlength:check_addresss.min,
 
-			maxlength:check_addresss.max,
 
-			messages: { 
+                        jQuery("#ct-first-name").rules("add", {
 
-				required: errorobj_req_sa,
+                            required: true,
 
-				minlength:errorobj_min_sa,
+                            messages: {
 
-				maxlength:errorobj_max_sa
+                                required: errorobj_req_fn
 
-			}
+                            }
 
-		});
+                        });
 
-	  
+                        jQuery("#ct-username").rules("add", {
 
-		jQuery("#app-zip-code").rules("add", { 
+                            required: true,
 
-			required: true,
+                            messages: {
 
-			minlength:check_zip_code.min,
+                                required: "Username is required"
 
-			maxlength:check_zip_code.max, 
+                            }
 
-			messages: { 
+                        });
 
-				required: errorobj_req_zc, 
 
-				minlength:errorobj_min_zc, 
 
-				maxlength:errorobj_max_zc
+                        jQuery("#ct-last-name").rules("add", {
 
-			}
+                            required: true,
 
-		});
+                            messages: {
 
-		  
+                                required: errorobj_req_ln
 
-		jQuery("#app-city").rules("add",{ 
+                            }
 
-			required: true,
+                        });
 
-			minlength:check_city.min,
 
-			maxlength:check_city.max, 
 
-			messages: { 
+                        jQuery("#ct-street-address").rules("add", {
 
-				required: errorobj_req_ct, 
+                            required: true,
 
-				minlength:errorobj_min_ct, 
+                            messages: {
 
-				maxlength:errorobj_max_ct
+                                required: errorobj_req_sa
 
-			}
+                            }
 
-		});
+                        });
 
 
 
-		jQuery("#app-state").rules("add", { 
+                        jQuery("#ct-zip-code").rules("add", {
 
-			required: true,
+                            required: true,
 
-			minlength:check_state.min,
+                            messages: {
 
-			maxlength:check_state.max, 
+                                required: errorobj_req_zc
 
-			messages: { 
+                            }
 
-				required: errorobj_req_st, 
+                        });
 
-				minlength:errorobj_min_st, 
 
-				maxlength:errorobj_max_st
 
-			}
+                        jQuery("#ct-city").rules("add",
 
-		});
+                            {
+                                required: true,
 
+                                messages: { required: errorobj_req_ct }
+                            });
 
 
-		jQuery("#ct-first-name").rules("add", { 
 
-			required: true,
+                        jQuery("#ct-state").rules("add",
 
-			messages: { 
+                            {
+                                required: true,
 
-				required: errorobj_req_fn
+                                messages: { required: errorobj_req_st }
+                            });
 
-			}
 
-		});
 
+                        jQuery("#ct-notes").rules("add", {
 
-    jQuery("#ct-username").rules("add", { 
+                            required: true,
 
-          required: true,
+                            messages: { required: errorobj_req_srn }
+                        });
 
-          messages: { 
 
-            required: "Username is required"
 
-          }
+                        jQuery(".login_unsuccessfull").hide();
+
+                        jQuery(".login_unsuccessfull").html("");
+
+                        jQuery("#ct-step-four").slideUp(300);
+
+                        jQuery("#ct-step-five").slideDown(300);
+
+                        jQuery("#step_next").hide();
+
+
+
+                    } else if (is_login_user != "Y") {
+
+                        jQuery(".login_unsuccessfull").show();
+
+                        jQuery(".login_unsuccessfull").html("<span style='color:red;'>Please do login</span>");
+
+                    }
+
+
+
+                }
+
+            } else {
+
+                if (jQuery("#user_details_form").valid()) {
+
+                    jQuery(".login_unsuccessfull").hide();
+
+                    jQuery(".login_unsuccessfull").html("");
+
+                    jQuery("#app-street-address").rules("add", {
+
+                        required: true,
+
+                        minlength: check_addresss.min,
+
+                        maxlength: check_addresss.max,
+
+                        messages: {
+
+                            required: errorobj_req_sa,
+
+                            minlength: errorobj_min_sa,
+
+                            maxlength: errorobj_max_sa
+
+                        }
+
+                    });
+
+
+
+                    jQuery("#app-zip-code").rules("add", {
+
+                        required: true,
+
+                        minlength: check_zip_code.min,
+
+                        maxlength: check_zip_code.max,
+
+                        messages: {
+
+                            required: errorobj_req_zc,
+
+                            minlength: errorobj_min_zc,
+
+                            maxlength: errorobj_max_zc
+
+                        }
+
+                    });
+
+
+
+                    jQuery("#app-city").rules("add", {
+
+                        required: true,
+
+                        minlength: check_city.min,
+
+                        maxlength: check_city.max,
+
+                        messages: {
+
+                            required: errorobj_req_ct,
+
+                            minlength: errorobj_min_ct,
+
+                            maxlength: errorobj_max_ct
+
+                        }
+
+                    });
+
+
+
+                    jQuery("#app-state").rules("add", {
+
+                        required: true,
+
+                        minlength: check_state.min,
+
+                        maxlength: check_state.max,
+
+                        messages: {
+
+                            required: errorobj_req_st,
+
+                            minlength: errorobj_min_st,
+
+                            maxlength: errorobj_max_st
+
+                        }
+
+                    });
+
+
+
+                    jQuery("#ct-first-name").rules("add", {
+
+                        required: true,
+
+                        messages: {
+
+                            required: errorobj_req_fn
+
+                        }
+
+                    });
+
+
+                    jQuery("#ct-username").rules("add", {
+
+                        required: true,
+
+                        messages: {
+
+                            required: "Username is required"
+
+                        }
+
+                    });
+
+
+                    jQuery("#ct-last-name").rules("add", {
+
+                        required: true,
+
+                        messages: {
+
+                            required: errorobj_req_ln
+
+                        }
+
+                    });
+
+
+
+                    jQuery("#ct-street-address").rules("add", {
+
+                        required: true,
+
+                        messages: {
+
+                            required: errorobj_req_sa
+
+                        }
+
+                    });
+
+
+
+                    jQuery("#ct-zip-code").rules("add", {
+
+                        required: true,
+
+                        messages: {
+
+                            required: errorobj_req_zc
+
+                        }
+
+                    });
+
+
+
+                    jQuery("#ct-city").rules("add",
+
+                        {
+                            required: true,
+
+                            messages: { required: errorobj_req_ct }
+                        });
+
+
+
+                    jQuery("#ct-state").rules("add",
+
+                        {
+                            required: true,
+
+                            messages: { required: errorobj_req_st }
+                        });
+
+
+
+                    jQuery("#ct-notes").rules("add", {
+
+                        required: true,
+
+                        messages: { required: errorobj_req_srn }
+                    });
+
+
+
+                    jQuery("#ct-step-four").slideUp(300);
+
+                    jQuery("#ct-step-five").slideDown(300);
+
+                    jQuery("#step_next").hide();
+
+
+
+                }
+
+            }
+
+        }
+
+        jQuery(".add_show_error_class").each(function() {
+
+            jQuery(this).trigger("keyup");
 
         });
-			
-
-		jQuery("#ct-last-name").rules("add", { 
-
-			required: true, 
-
-			messages: { 
-
-				required: errorobj_req_ln
-
-			}
-
-		});
-
-	   
-
-		jQuery("#ct-street-address").rules("add",{ 
-
-			required: true, 
-
-			messages: { 
-
-				required: errorobj_req_sa
-
-			}
-
-		});
-
-		  
-
-		jQuery("#ct-zip-code").rules("add", { 
-
-			required: true,
-
-			messages: { 
-
-				required: errorobj_req_zc
-
-			}
-
-		});
-
-	   
-
-		jQuery("#ct-city").rules("add", 
-
-		{ required: true,
-
-		messages: { required: errorobj_req_ct}});
-
-	  
-
-		jQuery("#ct-state").rules("add", 
-
-		{ required: true,
-
-		messages: { required: errorobj_req_st}});
-
-		 
-
-		jQuery("#ct-notes").rules("add",{
-
-			required: true,
-
-			messages: { required: errorobj_req_srn}});
-
-		
-
-		jQuery("#ct-step-four").slideUp(300);
-
-		jQuery("#ct-step-five").slideDown(300);
-
-		jQuery("#step_next").hide();
-
-		
-
-	}
-
-}
-
-		}
-
-    jQuery(".add_show_error_class").each(function(){
-
-      jQuery(this).trigger("keyup");
 
     });
 
-  });
 
-  
 
-  jQuery(document).on("click","#step_previous",function() {
+    jQuery(document).on("click", "#step_previous", function() {
 
-    if(jQuery("#ct-step-one").is(":visible")){ 
+        if (jQuery("#ct-step-one").is(":visible")) {
 
-      jQuery("#step_previous").hide();
+            jQuery("#step_previous").hide();
 
-      jQuery("#step_next").show();
+            jQuery("#step_next").show();
 
-    }
+        } else if (jQuery("#ct-step-two").is(":visible")) {
 
-    else if(jQuery("#ct-step-two").is(":visible")){ 
+            jQuery("#ct-step-two").slideUp(300);
 
-      jQuery("#ct-step-two").slideUp(300); 
+            jQuery("#ct-step-one").slideDown(300);
 
-      jQuery("#ct-step-one").slideDown(300); 
+            jQuery("#step_previous").hide();
 
-      jQuery("#step_previous").hide();
-
-    }
-
-    else if(jQuery("#ct-step-three").is(":visible")){ 
-
-		
-
-		var staff_count_forservice = jQuery("#staff_count_forservice").val();
-
-			if(frequency_status.status=='N' && staff_count_forservice=='0'){
-
-				
-
-				jQuery("#ct-step-one").slideDown(300); 
-
-        jQuery("#ct-step-three").slideUp(300); 
-
-			}else{
-
-				jQuery("#ct-step-two").slideDown(300); 
-
-        jQuery("#ct-step-three").slideUp(300); 
-
-			}
-
-      
-
-    }
-
-    
-
-    else if(jQuery("#ct-step-four").is(":visible")){ 
-
-      jQuery("#ct-step-three").slideDown(300); 
-
-      jQuery("#ct-step-four").slideUp(300); 
-
-    }
+        } else if (jQuery("#ct-step-three").is(":visible")) {
 
 
 
-    else if(jQuery("#ct-step-five").is(":visible")){ 
+            var staff_count_forservice = jQuery("#staff_count_forservice").val();
 
-      jQuery("#ct-step-four").slideDown(300); 
+            if (frequency_status.status == 'N' && staff_count_forservice == '0') {
 
-      jQuery("#ct-step-five").slideUp(300); 
 
-      jQuery("#step_next").show();
 
-    }
+                jQuery("#ct-step-one").slideDown(300);
 
-  });
+                jQuery("#ct-step-three").slideUp(300);
+
+            } else {
+
+                jQuery("#ct-step-two").slideDown(300);
+
+                jQuery("#ct-step-three").slideUp(300);
+
+            }
+
+
+
+        } else if (jQuery("#ct-step-four").is(":visible")) {
+
+            jQuery("#ct-step-three").slideDown(300);
+
+            jQuery("#ct-step-four").slideUp(300);
+
+        } else if (jQuery("#ct-step-five").is(":visible")) {
+
+            jQuery("#ct-step-four").slideDown(300);
+
+            jQuery("#ct-step-five").slideUp(300);
+
+            jQuery("#step_next").show();
+
+        }
+
+    });
 
 });
 
@@ -7962,43 +7981,43 @@ jQuery(document).ready(function(){
 
 jQuery(document).on("click", "#send_otp", function() {
 
-  var ajax_url = ajaxurlObj.ajax_url; 
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var phoneno = jQuery("#ct-user-phone").val();
+    var phoneno = jQuery("#ct-user-phone").val();
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery.ajax({
+    jQuery.ajax({
 
-    type: "post",
+        type: "post",
 
-    data: {
+        data: {
 
-      "phoneno": phoneno,
+            "phoneno": phoneno,
 
-      "sendotp": 1
+            "sendotp": 1
 
-    },
+        },
 
-    url: ajax_url + "staff_ajax.php",
+        url: ajax_url + "staff_ajax.php",
 
-    success: function(response) {
+        success: function(response) {
 
-      jQuery(".ct-loading-main").hide();
+            jQuery(".ct-loading-main").hide();
 
-      var staff_phone = jQuery.parseJSON(response);
+            var staff_phone = jQuery.parseJSON(response);
 
-      jQuery("#phone_number").val(staff_phone);
+            jQuery("#phone_number").val(staff_phone);
 
-      jQuery("#verify_otp").modal('show');
+            jQuery("#verify_otp").modal('show');
 
-    }
+        }
 
-  });
+    });
 
 });
 
-/* Send OTP function end Jay W */ 
+/* Send OTP function end Jay W */
 
 
 
@@ -8006,59 +8025,59 @@ jQuery(document).on("click", "#send_otp", function() {
 
 jQuery(document).on("click", "#input_otp_check", function() {
 
-  var ajax_url = ajaxurlObj.ajax_url;
+    var ajax_url = ajaxurlObj.ajax_url;
 
-  var otp_input = jQuery("#otp_input").val();
+    var otp_input = jQuery("#otp_input").val();
 
-  var phone = jQuery("#phone_number").val();
+    var phone = jQuery("#phone_number").val();
 
-  jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-  jQuery.ajax({
+    jQuery.ajax({
 
-    type: "POST",
+        type: "POST",
 
-    data: {
+        data: {
 
-      "otp_input": otp_input,
+            "otp_input": otp_input,
 
-      "phone": phone,
+            "phone": phone,
 
-      "Verify_otp": 1
+            "Verify_otp": 1
 
-    },
+        },
 
-    url: ajax_url + "staff_ajax.php",
+        url: ajax_url + "staff_ajax.php",
 
-    success: function(res) {
+        success: function(res) {
 
-      jQuery(".ct-loading-main").hide();
+            jQuery(".ct-loading-main").hide();
 
-      if (res == 1) {
+            if (res == 1) {
 
-        jQuery('#verify_otp').modal('hide');
+                jQuery('#verify_otp').modal('hide');
 
-        jQuery('#send_otp').hide();
+                jQuery('#send_otp').hide();
 
-        jQuery('#admin_staff_phno').attr('readonly', true);
+                jQuery('#admin_staff_phno').attr('readonly', true);
 
-        jQuery(".checkmark").show();
+                jQuery(".checkmark").show();
 
-        jQuery('#new_staff_add_admin').prop('disabled', false);
+                jQuery('#new_staff_add_admin').prop('disabled', false);
 
-      } else {
+            } else {
 
-        jQuery("#invalid-otp").css("display", "inline");
+                jQuery("#invalid-otp").css("display", "inline");
 
-        jQuery("#invalid-otp").val("Invalid OTP");
+                jQuery("#invalid-otp").val("Invalid OTP");
 
-        jQuery("#invalid-otp").css("color", "red");
+                jQuery("#invalid-otp").css("color", "red");
 
-      }
+            }
 
-    }
+        }
 
-  });
+    });
 
 });
 
@@ -8066,24 +8085,24 @@ jQuery(document).on("click", "#input_otp_check", function() {
 
 
 
-jQuery(document).ready(function () {
+jQuery(document).ready(function() {
 
-  //called when key is pressed in textbox
+    //called when key is pressed in textbox
 
-  jQuery("#ct-user-phone").keypress(function (e) {
+    jQuery("#ct-user-phone").keypress(function(e) {
 
-     //if the letter is not digit then display error and don't type anything
+        //if the letter is not digit then display error and don't type anything
 
-     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 
-        //display error message
+            //display error message
 
-        jQuery("#errmsg").html("Digits Only").show().fadeOut("slow");
+            jQuery("#errmsg").html("Digits Only").show().fadeOut("slow");
 
-               return false;
+            return false;
 
-    }
+        }
 
-   });
+    });
 
 });

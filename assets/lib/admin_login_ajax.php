@@ -384,7 +384,7 @@ elseif (isset($_POST['action']) && $_POST['action'] == 'pre_staff_reg_himself')
 													<h3 style="color: #606060;font-size: 20px;margin: 15px 0px 0px;font-weight: 400;">Hi '.$_POST['first_name'].' '.$_POST['last_name'].',</h3><br />
 													<p style="color: #606060;font-size: 15px;margin: 10px 0px 15px;">Welcome to HOMEBODS!</p>
 													<p style="color: #606060;font-size: 15px;margin: 10px 0px 15px;">
-													You are now registered as a Grinder! Your username is '.$_POST['grinder_user_id'].' You can now login and edit your profile at <a href="https://homebods.co/booking/admin/my-appointments.php">https://homebods.co/booking/admin/my-appointments.php</a>  by entering your username and password. Do not hesitate to contact us and let’s get to WORK!
+													You are now registered as a Homebod! Your username is '.$_POST['grinder_user_id'].' You can now login and edit your profile at <a href="https://homebods.co/booking/admin/my-appointments.php">https://homebods.co/booking/admin/my-appointments.php</a>  by entering your username and password. Do not hesitate to contact us and let’s get to WORK!
 													</p>
 												</div>											
 												<div style="padding: 15px 0px;float: left;width: 100%;">

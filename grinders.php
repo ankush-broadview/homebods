@@ -70,7 +70,7 @@
   				  <input type="text" name="last_name" placeholder="" id="last_name" />
   			  </label>
           <label>
-            <span>Grinder User ID</span>
+            <span>Homebod User ID</span>
             <input type="text" name="grinder_user_id" placeholder="" id="grinder_user_id" />
             <label for="grinder_user_id" style="display: none;" id="grinder_user_id_exist" generated="true" class="error">User ID Already Exist</label>
           </label>
@@ -150,7 +150,7 @@
             <label class="spacial_class" style="display:none; color:red">Please Agree Terms and Condition for Register</label>
   				</label> 
   			  <div class="before-submit">
-  				  <button type="button" href="javascript:void(0);" class="client_register_front">Grinder Registration</button>
+  				  <button type="button" href="javascript:void(0);" class="client_register_front">Homebod Registration</button>
   			  </div>
         </form>
 			</div>

@@ -35,8 +35,8 @@ class cleanto_userdetails {
 		,`city`='".$this->city."'
 		,`state`='".$this->state."'
 		,`zip`='".$this->zip."'
-    ,`user_pwd`='".$this->password."'
-    ,`grinders_id`='".$this->grinders_id."'
+    	,`user_pwd`='".$this->password."'
+    	,`grinders_id`='".$this->grinders_id."'
 		,`user_bio`='".$this->user_bio."'
 		,`image`='".$this->user_image."'
 		where `id`='".$this->id."' ";

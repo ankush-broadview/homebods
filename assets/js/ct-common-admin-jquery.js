@@ -3147,7 +3147,7 @@ jQuery(document).ajaxComplete(function () {
       
       usergrinderid:{
 
-        required:"Please Enter Grinder User ID",
+        required:"Please Enter Homebod User ID",
 
       },
 
@@ -9461,7 +9461,7 @@ jQuery(document).on("click", ".mybtnuserprofile_save", function () {
     
         required: true, 
     
-        messages: {required: 'Please Enter Grinder User ID'}
+        messages: {required: 'Please Enter Homebod User ID'}
     
       });*/
     

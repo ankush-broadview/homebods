@@ -150,12 +150,12 @@
             </label>
   			    <label>
               <span>Custom Rate</span>
-              <input type="text" placeholder="" name="custom_rate" id="custom_rate" />
+              <input  maxlength="8" onkeypress="return isNumberKey(event,this);"   type="text" placeholder="" name="custom_rate" id="custom_rate" />
             </label>
 			</label>
   			    <label>
               <span>Single Customer Rate</span>
-              <input type="text" placeholder="" name="single_customer_rate" id="single_customer_rate" />
+              <input type="text" placeholder="" onkeypress="return isNumberKey(event,this);ḥ"  maxlength="8"  name="single_customer_rate" id="single_customer_rate" />
             </label>
            	<label class="w-100 image-upload-main">
            		<span>Photo Upload</span>
@@ -291,7 +291,36 @@
 	var imgObj={'img_url':'<?php echo SITE_URL . 'assets/images/'; ?>'};
 	var ajaxurlObj = {'ajax_url': '<?php echo AJAX_URL;?>'};  
 	var siteurlObj = {'site_url': '<?php echo SITE_URL;?>'};
+
+
+	// for customer rate  float validation
+
+	function isNumberKey(evt, element) {
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode > 31 && (charCode < 48 || charCode > 57) && !(charCode == 46 || charCode == 8))
+    return false;
+  else {
+    var len = $(element).val().length;
+    var index = $(element).val().indexOf('.');
+    if (index > 0 && charCode == 46) {
+      return false;
+    }
+    if (index > 0) {
+      var CharAfterdot = (len + 1) - index;
+      if (CharAfterdot > 3) {
+        return false;
+      }
+    }
+
+  }
+  return true;
+}
+
+	//validation for customer rate end here
+
 </script>
+
+
 <?php  
   include(dirname(__FILE__)."/admin/language_js_objects.php");
 ?>

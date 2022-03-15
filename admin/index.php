@@ -387,9 +387,7 @@ if ($loginimage != '') {
 
 												</div>
 
-												<div class="clearfix">                                 
-
-												 <a type="button" class="btn btn-link col-xs-12" id="register_as_staff_btn">Register As Staff </a>                                </div>
+											
 
 										</div>
 
@@ -453,11 +451,14 @@ if ($loginimage != '') {
 
 										<p class="register-meesg" id="register-meesg" style="display:none"> Staff Register Successfully  </p>
 
-											<div class="top-heading-common">
+                                       
+
+                                        
+											<!-- <div class="top-heading-common">
 
 												<h3> Register As Staff </h3>
 
-											</div>
+											</div> -->
 
 											<div class="form-group fl">
 

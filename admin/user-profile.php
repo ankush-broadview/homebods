@@ -124,7 +124,7 @@ $objuserdetails->conn = $conn;
             <input class="form-control" name="userlastname" id="userlastname" value="<?php echo $userinfo[4]; ?>" type="text">
           </div>
           <div class="form-group col-md-6 col-sm-6 col-xs-12">
-            <label for="grinderid">Grinder User ID</label>
+            <label for="grinderid">Homebod User ID</label>
             <input class="form-control usergrinderid" name="usergrinderid" id="usergrinderid" value="<?php echo $userinfo[21]; ?>" type="text">
           </div>
           <div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -180,7 +180,9 @@ $objuserdetails->conn = $conn;
           </div>
           <div class="form-group cb col-md-12 col-sm-12 col-xs-12 mb-0 mt-10">
             <!-- SET SESSION ID IN ID -->
-            <a href="javascript:void(0)" data-zip="<?php echo $setting->get_option('ct_user_zip_code'); ?>" data-id="<?php echo $_SESSION['ct_login_user_id']; ?>" class="btn btn-success ct-btn-width mybtnuserprofile_save"><?php echo $label_language_values['save']; ?></a>
+            <a href="javascript:void(0)" data-zip="<?php echo $setting->get_option('ct_user_zip_code'); ?>" data-id="<?php 
+			echo $_SESSION['ct_login_user_id'];
+			 ?>" class="btn btn-success ct-btn-width mybtnuserprofile_save"><?php echo $label_language_values['save']; ?></a>
           </div>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>

@@ -1155,13 +1155,24 @@ function date_format_js($date_Format) {
             color: red;
 
         }
+        
+        
         #stripeElement{          
           padding: 15px !important;
           width: 50% !important;
           border: 2px solid #ddd !important;
           border-radius: 5px !important;
+          }
+        
+        @media only screen and (max-device-width: 480px){
+        #stripeElement{          
+          padding: 15px !important;
+          width: 100% !important;
+          border: 2px solid #ddd !important;
+          border-radius: 5px !important;
+          }
         }
-
+         
     #ct, a, h1, h2, h3, h4, h5, h6, span, p, div, label, li, ul{
 
       font-family: <?php   echo $settings->get_option('ct_frontend_fonts'); ?>  !important;
@@ -2966,7 +2977,7 @@ function date_format_js($date_Format) {
 
                                         <span class="bar"></span>
 
-                                    <label for="ct-username" class="fancy_label"><?php  echo "Username/Grinder User Id"; ?></label>
+                                    <label for="ct-username" class="fancy_label"><?php  echo "Username/Homebod User Id"; ?></label>
 
                 </div>
                 <!-- <input type="hidden" name="ct_username" id="ct-username" class="add_show_error_class error" value=""/> -->
@@ -3388,16 +3399,17 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
                           <span class="bar"></span>
 
-                      <label for="app-notes" class="fancy_label"><?php  echo $label_language_values['appointment_address']; ?></label>
+                      <label for="app-notes" class="fancy_label">
+                      <?php  echo $label_language_values['appointment_address']; ?>
+                      </label>
 
-                    </div>
+                    </div>      
 
               <?php     } else {
 
                   ?>
 
                   <input type="hidden" name="app_street_address" id="app-street-address" class="add_show_error_class error" value=""/>
-
                   <?php   } ?>
 
                   
@@ -3416,7 +3428,7 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
                       
 
-                      <input type="text" name="app_zip_code" id="app-zip-code" class="add_show_error_class error fancy_input"  <?php   /*if($settings->get_option('ct_postalcode_status') == 'Y'){echo "readonly";}*/ ?>/>
+                      <input type="text" name="app_zip_code" id="app-zip-code" class="add_show_error_class error fancy_input"  <?php   if($settings->get_option('ct_postalcode_status') == 'Y'){echo "readonly";} ?>/>
 
                           <span class="highlight"></span>
 
@@ -3454,7 +3466,9 @@ if( $settings->get_option('ct_appointment_details_display') == 'on' && ($address
 
                           <span class="bar"></span>
 
-                      <label for="app-city" class="fancy_label"><?php  echo $label_language_values['appointment_city']; ?></label>
+                      <label for="app-city" class="fancy_label">
+                        <?php  echo $label_language_values['appointment_city']; ?>
+                      </label>
 
                     </div>
 

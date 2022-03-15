@@ -273,7 +273,7 @@ if ($response['success'] === false) {
             	<input type="text" placeholder="" name="client_country" id="client_country" class="client_email"/>
             </label> 
             <div class="before-submit">
-               <button type="button" href="javascript:void(0);" class="client_register_front">Grinder Registration</button>
+               <button type="button" href="javascript:void(0);" class="client_register_front">Homebod Registration</button>
             </div>
         </div>
         <div class="sub-cont">
