@@ -379,7 +379,7 @@
  jQuery(document).on("click", ".staff_register_front", function() {
      jQuery("#pros_registration_form").validate({
          rules: {
-             first_name: { required: true },
+             first_name: { required: true },        
              last_name: { required: true },
              staff_user_id: { required: true },
              trainer_type: { required: true },
