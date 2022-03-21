@@ -88,7 +88,7 @@
 						<div class="text-center">
 							<a href="https://www.homebods.club/"> <img style="width: 130px;border-radius: 50%;" class="rounded-circle" src="http://localhost/homebods/assets/images/services/company_74315.png" alt="homebods"></a>
 
-							<h3>Let's Grind!</h3>
+							<h3>FITNESS PRO REGISTRATION</h3>
 						</div>
 					</div>
 					<?php
