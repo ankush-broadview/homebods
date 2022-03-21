@@ -6575,7 +6575,7 @@ if (ct_postalcode_status_check == "Y") {
 
         if (ct_postalcode_zip_status == "on") {
 
-            jQuery("#app-zip-code").val(postal_code);
+            //jQuery("#app-zip-code").val(postal_code);
 
         }
 

@@ -424,19 +424,23 @@
          }
      });
 
-     if (!jQuery("#pros_registration_form").valid()) {
-         return false;
-     }
+    
+
+     
      var ajax_url = ajaxurlObj.ajax_url;
      var site_url = siteurlObj.site_url;
 
      jQuery(".ct-load-bar").show();
 
-     var ct_email = jQuery("#staff_email").val();
-     var ct_password = jQuery("#staff_password").val();
-     var ct_staff_bio = jQuery("#staff_bio").val();
      var first_name = jQuery("#first_name").val();
      var last_name = jQuery("#last_name").val();
+     var ct_email = jQuery("#staff_email").val();
+     var pro_user_id = jQuery("#staff_user_id").val();
+     var ct_password = jQuery("#staff_password").val();
+     var ct_staff_bio = jQuery("#staff_bio").val();
+     var custom_rate = jQuery("#custom_rate").val();
+     var single_customer_rate = jQuery("#single_customer_rate").val();
+
      var ct_phone = jQuery("#staff_phone").val();
      var ct_address = jQuery("#staff_address").val();
      var ct_zip_code = jQuery("#staff_zip").val();
@@ -449,18 +453,25 @@
      var price_for_single = '';
      var price_for_3 = '';
      var price_for_5 = '';
-     var pro_user_id = jQuery("#staff_user_id").val();
      var fileInput = jQuery("#pcasctimagename").val();
      var term_condition = jQuery("#term_condition").prop("checked");
-     var custom_rate = jQuery("#custom_rate").val();
-     var single_customer_rate = jQuery("#single_customer_rate").val();
+     
+
+    let clickedId  = $(this).attr('id');    
+    if (first_name && last_name && ct_email && pro_user_id && ct_password && ct_staff_bio && custom_rate && single_customer_rate && clickedId=='form1') {                
+        nextform(clickedId);
+        return false;
+    }
+    if (!jQuery("#pros_registration_form").valid()) {
+        return false;
+    }
 
      if (term_condition == false) {
          jQuery(".spacial_class").show();
          return false;
      }
 
-     jQuery(".ct-loading-main").show();
+     jQuery(".ct-loading-main").show().removeClass('hide');
      jQuery.ajax({
          type: "POST",
          data: {
@@ -602,15 +613,6 @@
          }
      });
 
-     if (!jQuery("#grinder_registration_form").valid()) {
-         return false;
-     }
-
-     var term_condition = jQuery("#term_condition").prop("checked");
-     if (term_condition == false) {
-         jQuery(".spacial_class").show();
-         return false;
-     }
 
      var ct_first_name = jQuery("#first_name").val();
      var ct_last_name = jQuery("#last_name").val();
@@ -625,6 +627,24 @@
      var ct_zip_code = jQuery("#client_zip").val();
      var ct_country = jQuery("#client_country").val();
      var fileInput = jQuery("#pcasserviceimage").attr('data-imagename');
+
+
+     debugger
+    let clickedId  = $(this).attr('id');    
+    if (ct_first_name && ct_last_name && ct_email && ct_grinder_user_id && ct_password && ct_fitness_goal && clickedId=='form1') {                
+        nextform(clickedId);
+        return false;
+    }
+
+     if (!jQuery("#grinder_registration_form").valid()) {
+         return false;
+     }
+
+     var term_condition = jQuery("#term_condition").prop("checked");
+     if (term_condition == false) {
+         jQuery(".spacial_class").show();
+         return false;
+     }
 
      var dataString = {
          "first_name": ct_first_name,

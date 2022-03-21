@@ -1,5 +1,4 @@
-<div id="step1">
-   <form id="step1Form">
+<div id="step1">   
     <div class="form-group mb-3">
         <label class="form-label">First Name</label>
         <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name">
@@ -52,7 +51,7 @@
     </div>
     
     <div class="mb-3">
-        <button type="button" class="form-control btnnext" onclick="nextform(this.id)" id="form1" >Next</button>
+        <button type="button" class="form-control btnnext staff_register_front" id="form1" >Next</button>
     </div>
-    </form>
+    
 </div>

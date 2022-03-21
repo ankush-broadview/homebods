@@ -259,7 +259,7 @@
 		var stateWithCities = [];
 
 		function getStates() {
-			$.getJSON("http://localhost/homebods/assets/us_states.json", function(resp) {
+			$.getJSON(siteurlObj.site_url+"assets/us_states.json", function(resp) {
 				stateWithCities = resp;
 				let states = Object.keys(stateWithCities);
 				$("#staff_state").html('');
@@ -287,9 +287,7 @@
 		}
 
 		
-		function nextform(id) {
-			// $("#step1Form").validate();
-			// if ($("#step1Form").valid()) {
+		function nextform(id) {			
 				if (id == "form1") {
 				step1.style.display = "none";
 				step2.style.display = "block";
@@ -298,12 +296,7 @@
 					step2.style.display = "none";
 					step1.style.display = "block";
 				}
-			}
-			
-			
-
-
-		}
+			}			
 		getStates();
 	</script>
 
