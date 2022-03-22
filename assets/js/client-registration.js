@@ -683,7 +683,7 @@
     let ph_len = ct_phone.length;
     console.log(ph_len);
     
-    if (ct_first_name && ct_last_name && ct_email && ct_grinder_user_id && ct_password && client_repassword && ct_fitness_goal && clickedId=='form1' && ph_len>8) {                
+    if (ct_first_name && ct_last_name && ct_email && ct_grinder_user_id && ct_password && client_repassword && ct_fitness_goal && clickedId=='form1') {                
         nextform(clickedId);
         return false;
     }
