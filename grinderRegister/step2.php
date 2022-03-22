@@ -1,7 +1,7 @@
 <div id="step2">
     <div class="form-group mb-3">
         <label class="form-label">Phone</label>
-        <input type="text" name="client_phone" id="client_phone" class="form-control" placeholder="Enter Phone">
+        <input type="text" name="client_phone" id="client_phone" minlength="10"   maxlength="10" class="form-control" placeholder="Enter Phone">
     </div>
     <div class="form-group mb-3">
         <label class="form-label">Address</label>
@@ -23,7 +23,7 @@
 
     <div class="mb-3">
         <label class="form-label">Zip</label>
-        <input type="text" class="form-control" placeholder="Enter zipcode" name="client_zip" id="client_zip" />
+        <input type="text" class="form-control" maxlength="8"   placeholder="Enter zipcode" name="client_zip" id="client_zip" />
     </div>
    
     

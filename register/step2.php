@@ -18,7 +18,7 @@
 
     <div class="mb-3">
         <label class="form-label">Zip</label>
-        <input type="text" name="staff_zip"  id="staff_zip" class="form-control" placeholder="Enter Zip">
+        <input type="text" name="staff_zip" maxlength=8  id="staff_zip" class="form-control" placeholder="Enter Zip">
     </div>
     <div class="mb-3">
         <label class="form-label">Online video link</label>

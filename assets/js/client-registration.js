@@ -376,26 +376,65 @@
 
  });
 
+//  start here
+
+// jQuery("#step1").validate({
+
+//     rules: {
+
+//         first_name: { required: true, maxlength:20 },        
+//         last_name: { required: true,maxlength:20 },
+//         staff_email: { required: true, email: true,maxlength:20 },
+//         staff_user_id: { required: true },
+//         staff_password: { required: true, minlength: 10 },
+//         staff_repassword: { required: true, equalTo: "#staff_password" },
+//         single_customer_rate: { required: true, number: true },
+//         custom_rate: { required: true, number: true },
+//         staff_bio: { required: true },
+//         staff_phone: { required: true, digits: true },
+//     },
+
+//     messages: {
+//         first_name: { required: 'Please Enter First Name' },
+//         last_name: { required: 'Please Enter Last Name' },
+//         staff_email: { required: 'Please Enter Email', email: 'Please Enter Valid Email' },
+//         staff_user_id: { required: 'Please Enter User ID' },
+//         staff_password: { required: 'Please Enter Password', minlength: 'Password Must be 10 Characters' },
+//         staff_repassword: { required: 'Please Re-Enter Password', equalTo: 'Password Not Matched' },
+//         single_customer_rate: { required: 'Please Enter Single Customer Rate', number: 'Please enter a valid number.' },
+//         custom_rate: { required: 'Please Enter Custom Rate', number: 'Please enter a valid number.' },
+//         trainer_type: { required: 'Please Select Trainer Type' },
+//         staff_phone: { required: 'Please Enter Phone No.', digits: 'Only Digits Allow' },
+//     }
+
+//   });
+
+
+
+//end here
+
  jQuery(document).on("click", ".staff_register_front", function() {
      jQuery("#pros_registration_form").validate({
          rules: {
-             first_name: { required: true },        
-             last_name: { required: true },
+             first_name: { required: true, maxlength:20 },        
+             last_name: { required: true,maxlength:20 },
+             staff_email: { required: true, email: true,maxlength:20 },
              staff_user_id: { required: true },
-             trainer_type: { required: true },
-             staff_email: { required: true, email: true },
              staff_password: { required: true, minlength: 10 },
              staff_repassword: { required: true, equalTo: "#staff_password" },
+             single_customer_rate: { required: true, number: true },
+             custom_rate: { required: true, number: true },
              staff_bio: { required: true },
              staff_phone: { required: true, digits: true },
-             //staff_address:{ required:true },
+             
+             staff_address:{ required:true },
              staff_city: { required: true },
              staff_state: { required: true },
              staff_zip: { required: true, digits: true },
              staff_country: { required: true },
              zoom_link: { required: true },
-             custom_rate: { required: true, number: true },
-             single_customer_rate: { required: true, number: true },
+             trainer_type: { required: true },
+            
              //price_for_3:{ required:true,digits: true },
              //price_for_5:{ required:true,digits: true }
          },
@@ -403,21 +442,26 @@
          messages: {
              first_name: { required: 'Please Enter First Name' },
              last_name: { required: 'Please Enter Last Name' },
-             staff_user_id: { required: 'Please Enter User ID' },
-             trainer_type: { required: 'Please Select Trainer Type' },
              staff_email: { required: 'Please Enter Email', email: 'Please Enter Valid Email' },
+             staff_user_id: { required: 'Please Enter User ID' },
              staff_password: { required: 'Please Enter Password', minlength: 'Password Must be 10 Characters' },
              staff_repassword: { required: 'Please Re-Enter Password', equalTo: 'Password Not Matched' },
-             staff_bio: { required: 'Please Enter Bio/Services Offered' },
+             single_customer_rate: { required: 'Please Enter Single Customer Rate', number: 'Please enter a valid number.' },
+             custom_rate: { required: 'Please Enter Custom Rate', number: 'Please enter a valid number.' },
+             trainer_type: { required: 'Please Select Trainer Type' },
              staff_phone: { required: 'Please Enter Phone No.', digits: 'Only Digits Allow' },
+            
+            
+             staff_bio: { required: 'Please Enter Bio/Services Offered' },
+           
              //staff_address:{ required:'Please Enter Address' },
              staff_city: { required: 'Please Enter City' },
              staff_state: { required: 'Please Enter State' },
              staff_zip: { required: 'Please Enter Zip Code', digits: 'Only Digits Allow' },
              staff_country: { required: 'Please Enter Country' },
              zoom_link: { required: 'Please Enter Zoom Link' },
-             custom_rate: { required: 'Please Enter Custom Rate', number: 'Please enter a valid number.' },
-             single_customer_rate: { required: 'Please Enter Single Customer Rate', number: 'Please enter a valid number.' },
+            
+            
              //price_for_single:{ required:'Please Enter Price',digits:'Only Digits Allow' },
              //price_for_3:{ required:'Please Enter Price',digits:'Only Digits Allow' },
              //price_for_5:{ required:'Please Enter Price',digits:'Only Digits Allow' }
@@ -458,7 +502,7 @@
      
 
     let clickedId  = $(this).attr('id');    
-    if (first_name && last_name && ct_email && pro_user_id && ct_password && ct_staff_bio && custom_rate && single_customer_rate && clickedId=='form1') {                
+    if (first_name && last_name && ct_email && ct_phone && pro_user_id && ct_password && ct_staff_bio && custom_rate && single_customer_rate && clickedId=='form1') {                
         nextform(clickedId);
         return false;
     }
@@ -580,11 +624,15 @@
  });
 
  jQuery(document).on("click", ".client_register_front", function() {
-     jQuery("#grinder_registration_form").validate({
-         rules: {
+    jQuery.validator.addMethod("noSpace", function(value, element) { 
+        return value.indexOf(" ") < 0 && value != ""; 
+      }, "Space are not allowed");
+    jQuery("#grinder_registration_form").validate({
+       
+            rules: {
              first_name: { required: true },
              last_name: { required: true },
-             grinder_user_id: { required: true },
+             grinder_user_id: { required: true , noSpace: true },
              client_email: { required: true, email: true },
              fitness_goal: { required: true },
              client_password: { required: true, minlength: 8 },
@@ -599,7 +647,7 @@
          messages: {
              first_name: { required: 'Please Enter First Name' },
              last_name: { required: 'Please Enter Last Name' },
-             grinder_user_id: { required: 'Please Enter User ID' },
+             grinder_user_id: { required: 'Please Enter User ID', noSpace:"Space is not allowed" },
              client_email: { required: 'Please Enter Email', email: 'Please Enter Valid Email' },
              fitness_goal: { required: 'Please Enter Bio/Fitness Goal' },
              client_password: { required: 'Please Enter Password', minlength: 'Password Must be 8 Characters' },
@@ -620,6 +668,7 @@
      var ct_email = jQuery("#client_email").val();
      var ct_fitness_goal = jQuery("#fitness_goal").val();
      var ct_password = jQuery("#client_password").val();
+     var client_repassword = jQuery("#client_repassword").val();
      var ct_phone = jQuery("#client_phone").val();
      var ct_address = jQuery("#client_address").val();
      var ct_city = jQuery("#client_city").val();
@@ -627,11 +676,9 @@
      var ct_zip_code = jQuery("#client_zip").val();
      var ct_country = jQuery("#client_country").val();
      var fileInput = jQuery("#pcasserviceimage").attr('data-imagename');
-
-
-     debugger
+     
     let clickedId  = $(this).attr('id');    
-    if (ct_first_name && ct_last_name && ct_email && ct_grinder_user_id && ct_password && ct_fitness_goal && clickedId=='form1') {                
+    if (ct_first_name && ct_last_name && ct_email && ct_grinder_user_id && ct_password && client_repassword && ct_fitness_goal && clickedId=='form1') {                
         nextform(clickedId);
         return false;
     }

@@ -1,15 +1,15 @@
 <div id="step1">
     <div class="form-group mb-3">
         <label class="form-label">First Name</label>
-        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name">
+        <input type="text" class="form-control" maxlength="20" name="first_name" id="first_name" placeholder="Enter First Name">
     </div>
     <div class="form-group mb-3">
         <label class="form-label">Last Name</label>
-        <input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Enter Last Name">
+        <input type="text" class="form-control"   maxlength="20" name="last_name" id="last_name"  placeholder="Enter Last Name">
     </div>
     <div class="form-group mb-3">
         <label class="form-label">Homebod User ID</label>
-        <input type="text" class="form-control" name="grinder_user_id" id="grinder_user_id" placeholder="Enter Homebod User ID">
+        <input pattern="/^\S*$/" type="text" class="form-control" name="grinder_user_id" id="grinder_user_id" placeholder="Enter Homebod User ID">
         <label for="grinder_user_id" style="display: none;" id="grinder_user_id_exist" generated="true" class="error">User ID Already Exist</label>
          </label>
     </div>

@@ -8,11 +8,11 @@ var passdata = [];
 
 var vm = "";
 
-var offtime_startDate,reportrange_startDate,offtime_endDate,reportrange_endDate,staff_payment_startDate,staff_payment_endDate;
+var offtime_startDate, reportrange_startDate, offtime_endDate, reportrange_endDate, staff_payment_startDate, staff_payment_endDate;
 
 /* variables for CRM */
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
 
   jQuery(".copied_text").hide();
 
@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
 
   jQuery(".error_postal_code").hide();
 
-  jQuery("html").niceScroll({cursorborder:"none" ,cursorwidth :"12px",autohidemode:"true",passive:false});
+  jQuery("html").niceScroll({ cursorborder: "none", cursorwidth: "12px", autohidemode: "true", passive: false });
 
   /* FORM VALIDATION METHODS */
 
@@ -77,13 +77,13 @@ jQuery(document).ready(function(){
 
   /*  END USER PROFILE */
 
-  jQuery.validator.addMethod("pattern_title", function(value, element) {
+  jQuery.validator.addMethod("pattern_title", function (value, element) {
 
     return this.optional(element) || /^[a-zA-Z '.'_@./#&+-]+$/.test(value);
 
   }, errorobj_enter_alphabets_only);
 
-  jQuery.validator.addMethod("pattern_company_country_code", function(value, element) {
+  jQuery.validator.addMethod("pattern_company_country_code", function (value, element) {
 
     return this.optional(element) || /^\+[0-9]{1,4}$/.test(value);
 
@@ -121,7 +121,7 @@ jQuery(document).ready(function(){
 
   /* ADMIN PHONE PROFILE */
 
-  var site_url=site_ur.site_url;
+  var site_url = site_ur.site_url;
 
   var country_alpha_code = countrycodeObj.alphacode;
 
@@ -129,7 +129,7 @@ jQuery(document).ready(function(){
 
   var array = allowed_country_alpha_code.split(",");
 
-  if(allowed_country_alpha_code = ""){
+  if (allowed_country_alpha_code = "") {
 
     jQuery("#adminphone,#ct_phone,#userphone,#admin_cus_phno,#phone-number").intlTelInput({
 
@@ -137,37 +137,37 @@ jQuery(document).ready(function(){
 
       autoPlaceholder: "off",
 
-      utilsScript: site_url+"assets/js/utils.js"
+      utilsScript: site_url + "assets/js/utils.js"
 
     });
 
     jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
 
-    jQuery(".selected-flag").attr("title",countrycodeObj.countrytitle);
+    jQuery(".selected-flag").attr("title", countrycodeObj.countrytitle);
 
-  }else{
+  } else {
 
     jQuery("#adminphone,#ct_phone,#userphone,#admin_cus_phno,#phone-number").intlTelInput({
 
       autoPlaceholder: "off",
 
-      utilsScript: site_url+"assets/js/utils.js"
+      utilsScript: site_url + "assets/js/utils.js"
 
     });
 
     jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
 
-    jQuery(".selected-flag").attr("title",countrycodeObj.countrytitle);
+    jQuery(".selected-flag").attr("title", countrycodeObj.countrytitle);
 
   }
 
   jQuery("#cus-phone-number, #admin_cus_phno").intlTelInput({
 
-    utilsScript: site_url+ "assets/js/utils.js"
+    utilsScript: site_url + "assets/js/utils.js"
 
   });
 
-  if(allowed_country_alpha_code != ""){
+  if (allowed_country_alpha_code != "") {
 
     jQuery("#company_country_code").intlTelInput({
 
@@ -177,7 +177,7 @@ jQuery(document).ready(function(){
 
       autoPlaceholder: "off",
 
-      utilsScript: site_url+"assets/js/utils.js"
+      utilsScript: site_url + "assets/js/utils.js"
 
     });
 
@@ -189,7 +189,7 @@ jQuery(document).ready(function(){
 
       autoPlaceholder: "off",
 
-      utilsScript: site_url+"assets/js/utils.js"
+      utilsScript: site_url + "assets/js/utils.js"
 
     });
 
@@ -201,9 +201,9 @@ jQuery(document).ready(function(){
 
   var amountScrolled = 300;
 
-  jQuery(window).scroll(function() {
+  jQuery(window).scroll(function () {
 
-    if ( jQuery(window).scrollTop() > amountScrolled ) {
+    if (jQuery(window).scrollTop() > amountScrolled) {
 
       jQuery("a.cta-back-to-top").fadeIn("slow");
 
@@ -215,7 +215,7 @@ jQuery(document).ready(function(){
 
   });
 
-  jQuery("a.cta-back-to-top, a.cta-simple-back-to-top").click(function() {
+  jQuery("a.cta-back-to-top, a.cta-simple-back-to-top").click(function () {
 
     jQuery("html, body").animate({ scrollTop: 0 }, 500);
 
@@ -247,9 +247,9 @@ jQuery(document).ready(function(){
 
     var current_url = window.location.href;
 
-    if(current_url.indexOf("staff-dashboard.php") != -1){}else{
+    if (current_url.indexOf("staff-dashboard.php") != -1) { } else {
 
-      jQuery("html, body").stop().animate({ "scrollTop": jQuery(".ct-setting-details").offset().top - 115 }, 500, "swing",  function () {});
+      jQuery("html, body").stop().animate({ "scrollTop": jQuery(".ct-setting-details").offset().top - 115 }, 500, "swing", function () { });
 
     }
 
@@ -291,7 +291,7 @@ jQuery(document).ready(function(){
 
     content: function () {
 
-       return jQuery("#popover-delete-appointment-cal-popup").html();
+      return jQuery("#popover-delete-appointment-cal-popup").html();
 
     }
 
@@ -323,7 +323,7 @@ jQuery(document).ready(function(){
 
   });
 
-    
+
 
   /*  add new staff button and popover  */
 
@@ -355,7 +355,7 @@ jQuery(document).ready(function(){
 
   });
 
-  jQuery( "#sortable-services, #sortable-services-units" ).sortable({ handle: ".fa-th-list" });
+  jQuery("#sortable-services, #sortable-services-units").sortable({ handle: ".fa-th-list" });
 
   /*  add new category button and popover  */
 
@@ -407,7 +407,7 @@ jQuery(document).ready(function(){
 
   });
 
-  jQuery("#sortable-services, #sortable-services-units").sortable({handle: ".fa-th-list"});
+  jQuery("#sortable-services, #sortable-services-units").sortable({ handle: ".fa-th-list" });
 
   jQuery("#sortable-service-list").sortable();
 
@@ -439,7 +439,7 @@ jQuery(document).ready(function(){
 
         if (opacity) value += ", " + opacity;
 
-        if (typeof console === "object") {}
+        if (typeof console === "object") { }
 
       },
 
@@ -467,7 +467,7 @@ jQuery(document).ready(function(){
 
     var toggle_id = jQuery(this).attr("id");
 
-    jQuery(".mycollapse_" + toggle_id).toggle("blind", {direction: "vertical"}, 1000);
+    jQuery(".mycollapse_" + toggle_id).toggle("blind", { direction: "vertical" }, 1000);
 
   });
 
@@ -487,9 +487,9 @@ jQuery(document).ready(function(){
 
     var toggle_id = jQuery(this).attr("id");
 
-    if(toggle_id == "patial-deposit"){}else{
+    if (toggle_id == "patial-deposit") { } else {
 
-      jQuery(".mycollapse_" + toggle_id).toggle("blind", {direction: "vertical"}, 1000);            
+      jQuery(".mycollapse_" + toggle_id).toggle("blind", { direction: "vertical" }, 1000);
 
     }
 
@@ -497,37 +497,37 @@ jQuery(document).ready(function(){
 
   /*  for toggle medium enable disable collapse  */
 
-  jQuery(".cta-toggle-checkbox").change(function () {     
+  jQuery(".cta-toggle-checkbox").change(function () {
 
-    var toggle_id = jQuery(this).attr("id");        
+    var toggle_id = jQuery(this).attr("id");
 
-    if(toggle_id == "patial-deposit"){        
+    if (toggle_id == "patial-deposit") {
 
-      if(jQuery(this).prop("checked")==true){     
+      if (jQuery(this).prop("checked") == true) {
 
-        if(payment_status == "off"){             
+        if (payment_status == "off") {
 
-          jQuery("#ct-partial-depost_error").show();  
+          jQuery("#ct-partial-depost_error").show();
 
-          jQuery(this).attr("checked",false);
+          jQuery(this).attr("checked", false);
 
-          jQuery(this).parent().prop("className","toggle btn btn-danger btn-sm off");
+          jQuery(this).parent().prop("className", "toggle btn btn-danger btn-sm off");
 
-        }else{                  
+        } else {
 
-          jQuery(".mycollapse_" + toggle_id).toggle("blind", {direction: "vertical"}, 1000);
+          jQuery(".mycollapse_" + toggle_id).toggle("blind", { direction: "vertical" }, 1000);
 
-        }            
+        }
 
-      }else{               
+      } else {
 
-        jQuery("#ct-partial-depost_error").hide();     
+        jQuery("#ct-partial-depost_error").hide();
 
-        jQuery(".mycollapse_" + toggle_id).fadeOut();   
+        jQuery(".mycollapse_" + toggle_id).fadeOut();
 
-      }      
+      }
 
-    }   
+    }
 
   });
 
@@ -545,7 +545,7 @@ jQuery(document).ready(function(){
 
   });
 
-  jQuery('[data-toggle="tooltip"]').tooltip({"placement": "right"});
+  jQuery('[data-toggle="tooltip"]').tooltip({ "placement": "right" });
 
   /* *****   settings > Appearance settings  ************ */
 
@@ -597,17 +597,17 @@ jQuery(document).ready(function(){
 
       exportOptions: {
 
-        columns: [ 0, 1]
+        columns: [0, 1]
 
       }
 
-    },{
+    }, {
 
       extend: "pdfHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1]
+        columns: [0, 1]
 
       }
 
@@ -627,17 +627,17 @@ jQuery(document).ready(function(){
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ,3 ,4 ,5 ,6 ]
+        columns: [0, 1, 2, 3, 4, 5, 6]
 
       }
 
-    },{
+    }, {
 
       extend: "pdfHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ,3 ,4 ,5 ,6 ]
+        columns: [0, 1, 2, 3, 4, 5, 6]
 
       }
 
@@ -657,17 +657,17 @@ jQuery(document).ready(function(){
 
       exportOptions: {
 
-       columns: [ 0, 1, 2 ]
+        columns: [0, 1, 2]
 
       }
 
-    },{
+    }, {
 
       extend: "pdfHtml5",
 
       exportOptions: {
 
-       columns: [ 0, 1, 2 ]
+        columns: [0, 1, 2]
 
       }
 
@@ -787,37 +787,37 @@ jQuery(document).ready(function(){
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ,3 ,4 ,5 ,6 ]
+        columns: [0, 1, 2, 3, 4, 5, 6]
 
       }
 
-    },{
+    }, {
 
       extend: "csvHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ,3 ,4 ,5 ,6 ]
+        columns: [0, 1, 2, 3, 4, 5, 6]
 
       }
 
-    },{
+    }, {
 
       extend: "excelHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ,3 ,4 ,5 ,6 ]
+        columns: [0, 1, 2, 3, 4, 5, 6]
 
       }
 
-    },{
+    }, {
 
       extend: "pdfHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ,3 ,4 ,5 ,6 ]
+        columns: [0, 1, 2, 3, 4, 5, 6]
 
       }
 
@@ -917,37 +917,37 @@ jQuery(document).ready(function(){
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
       }
 
-    },{
+    }, {
 
       extend: "csvHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
       }
 
-    },{
+    }, {
 
       extend: "excelHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
       }
 
-    },{
+    }, {
 
       extend: "pdfHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
       }
 
@@ -967,37 +967,37 @@ jQuery(document).ready(function(){
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ]
+        columns: [0, 1, 2]
 
       }
 
-    },{
+    }, {
 
       extend: "csvHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ]
+        columns: [0, 1, 2]
 
       }
 
-    },{
+    }, {
 
       extend: "excelHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ]
+        columns: [0, 1, 2]
 
       }
 
-    },{
+    }, {
 
       extend: "pdfHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1, 2 ]
+        columns: [0, 1, 2]
 
       }
 
@@ -1235,17 +1235,17 @@ jQuery(document).ready(function(){
 
       jQuery.ajax({
 
-          type: "post",
+        type: "post",
 
-          data: { "pos": pos, "ids": ids },
+        data: { "pos": pos, "ids": ids },
 
-          url: ajax_url + "service_method_units_ajax.php",
+        url: ajax_url + "service_method_units_ajax.php",
 
-          success: function (res) {
+        success: function (res) {
 
-            jQuery(".ct-loading-main").hide();
+          jQuery(".ct-loading-main").hide();
 
-          }
+        }
 
       });
 
@@ -1383,7 +1383,7 @@ jQuery(document).ready(function(){
 
   jQuery(".mymessage_assign_design_service").hide();
 
-  jQuery( "#sortable-addons-services" ).sortable({ handle: ".fa-th-list" });
+  jQuery("#sortable-addons-services").sortable({ handle: ".fa-th-list" });
 
   /* CHANGE THE SORTIN POSITION OF THE ADDONS */
 
@@ -1455,13 +1455,13 @@ jQuery(document).ready(function(){
 
         var lastchar = res.substr(res.length - 1);
 
-        if(lastchar == 0){
+        if (lastchar == 0) {
 
           jQuery(".mybtnfrontdesignaddons").hide();
 
         }
 
-        else{
+        else {
 
           jQuery(".mybtnfrontdesignaddons").show();
 
@@ -1503,13 +1503,13 @@ jQuery(document).ready(function(){
 
         jQuery(".myloadednotification").show();
 
-        if(jQuery.trim(res) != ""){
+        if (jQuery.trim(res) != "") {
 
           jQuery(".myloadednotification").html(res);
 
         } else {
 
-          jQuery(".myloadednotification").html("<li>"+errorobj_sorry_no_notification+"</li>");
+          jQuery(".myloadednotification").html("<li>" + errorobj_sorry_no_notification + "</li>");
 
         }
 
@@ -1527,9 +1527,9 @@ jQuery(document).ready(function(){
 
   });
 
-  jQuery( document ).on( "keydown", function ( e ) {
+  jQuery(document).on("keydown", function (e) {
 
-    if ( e.keyCode === 27 ) {
+    if (e.keyCode === 27) {
 
       jQuery(".ct-notifications-inner").removeClass("visible");
 
@@ -1543,17 +1543,17 @@ jQuery(document).ready(function(){
 
     rules: {
 
-      txtcolor: {required: true},
+      txtcolor: { required: true },
 
-      txtservicetitle: {required: true}
+      txtservicetitle: { required: true }
 
     },
 
     messages: {
 
-      txtcolor: {required: errorobj_please_enter_color_code},
+      txtcolor: { required: errorobj_please_enter_color_code },
 
-      txtservicetitle: {required: errorobj_please_enter_service_title}
+      txtservicetitle: { required: errorobj_please_enter_service_title }
 
     }
 
@@ -1563,17 +1563,17 @@ jQuery(document).ready(function(){
 
     rules: {
 
-      admin_optional_email: {email: true},
+      admin_optional_email: { email: true },
 
-      ct_email_sender_address: {email: true}
+      ct_email_sender_address: { email: true }
 
     },
 
     messages: {
 
-      admin_optional_email: {required: errorobj_please_enter_email},
+      admin_optional_email: { required: errorobj_please_enter_email },
 
-      ct_email_sender_address: {required: errorobj_please_enter_email}
+      ct_email_sender_address: { required: errorobj_please_enter_email }
 
     }
 
@@ -1599,15 +1599,15 @@ jQuery(document).ready(function(){
 
   /*  Use for partial deposite */
 
-  jQuery(".partial_radio").click(function(){
+  jQuery(".partial_radio").click(function () {
 
-    if(jQuery(this).val()=="P"){
+    if (jQuery(this).val() == "P") {
 
       jQuery(".ct-partial-deposit-percent").addClass("fa fa-percent");
 
     }
 
-    if(jQuery(this).val()=="F"){
+    if (jQuery(this).val() == "F") {
 
       jQuery(".ct-partial-deposit-percent").removeClass("fa fa-percent");
 
@@ -1623,29 +1623,29 @@ jQuery(document).ready(function(){
 
     rules: {
 
-      ct_company_name: {required: true, maxlength : 36},
+      ct_company_name: { required: true, maxlength: 36 },
 
-      ct_company_email: {required: true},
+      ct_company_email: { required: true },
 
-      ct_company_address: {required: true},
+      ct_company_address: { required: true },
 
-      ct_company_city: {required: true},
+      ct_company_city: { required: true },
 
-      ct_company_state: {required: true},
+      ct_company_state: { required: true },
 
-      ct_company_zip: {required: true, minlength: 3, maxlength: 7},
+      ct_company_zip: { required: true, minlength: 3, maxlength: 7 },
 
-      ct_company_country: {required: true},
+      ct_company_country: { required: true },
 
-      ct_company_country_code: {pattern_company_country_code: true},
+      ct_company_country_code: { pattern_company_country_code: true },
 
-      ct_company_phone: {minlength: 5, maxlength: 14,number:true}
+      ct_company_phone: { minlength: 5, maxlength: 14, number: true }
 
     },
 
     messages: {
 
-      ct_company_name: {required: errorobj_please_enter_name,maxlength :errorobj_please_enter_below_36_characters},
+      ct_company_name: { required: errorobj_please_enter_name, maxlength: errorobj_please_enter_below_36_characters },
 
       ct_company_email: errorobj_please_enter_email,
 
@@ -1659,9 +1659,9 @@ jQuery(document).ready(function(){
 
       ct_company_country: errorobj_please_enter_country,
 
-      ct_company_country_code: {pattern_company_country_code: errorobj_please_enter_valid_country_code},
+      ct_company_country_code: { pattern_company_country_code: errorobj_please_enter_valid_country_code },
 
-      ct_company_phone: {minlength:errorobj_please_enter_minimum_5_digits,maxlength:errorobj_please_enter_maximum_14_digits,number : errorobj_please_enter_only_numerics}
+      ct_company_phone: { minlength: errorobj_please_enter_minimum_5_digits, maxlength: errorobj_please_enter_maximum_14_digits, number: errorobj_please_enter_only_numerics }
 
     }
 
@@ -1671,13 +1671,13 @@ jQuery(document).ready(function(){
 
   jQuery(".cancel_appointment").popover({
 
-    html : true,
+    html: true,
 
-    content: function() {
+    content: function () {
 
       var id = jQuery(this).attr("data-id");
 
-      return jQuery("#popover-user-cancel-appointment"+id).html();
+      return jQuery("#popover-user-cancel-appointment" + id).html();
 
     }
 
@@ -1685,7 +1685,7 @@ jQuery(document).ready(function(){
 
   jQuery("#btn-change-pass").click(function () {
 
-    jQuery(".ct-change-password").show( "blind", {direction: "vertical"}, 1000 );
+    jQuery(".ct-change-password").show("blind", { direction: "vertical" }, 1000);
 
     jQuery("#btn-change-pass").hide();
 
@@ -1693,15 +1693,15 @@ jQuery(document).ready(function(){
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { check_for_option : 1 },
+    data: { check_for_option: 1 },
 
-    url : ajax_url+"admin_profile_ajax.php",
+    url: ajax_url + "admin_profile_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
-      if(jQuery.trim(res) != ""){
+      if (jQuery.trim(res) != "") {
 
         jQuery(".check_options_left_toset").html(errorobj_please_fill_all_the_company_informations_and_add_some_services_and_addons);
 
@@ -1721,9 +1721,9 @@ jQuery(document).ready(function(){
 
   jQuery(".email_template_form").validate({
 
-    rules: { email_message: {required: true} },
+    rules: { email_message: { required: true } },
 
-    messages: { email_message: {required: errorobj_please_enter_email_message} }
+    messages: { email_message: { required: errorobj_please_enter_email_message } }
 
   });
 
@@ -1743,15 +1743,15 @@ jQuery(document).ready(function(){
 
   /* staff availability time */
 
-  if(localStorage["trigger_user"] != ""){
+  if (localStorage["trigger_user"] != "") {
 
-    jQuery(".staff_c_"+localStorage["trigger_user"]).trigger("click");
+    jQuery(".staff_c_" + localStorage["trigger_user"]).trigger("click");
 
   }
 
-  else{
+  else {
 
-    jQuery(".staff_1").trigger("click"); 
+    jQuery(".staff_1").trigger("click");
 
   }
 
@@ -1759,19 +1759,19 @@ jQuery(document).ready(function(){
 
   jQuery("[data-toggle='toggle']").bootstrapToggle();
 
-  
+
 
   /** For Resetting Color-Scheme **/
 
   /* for resetting Color Scheme primary color and Admin Area Color Scheme primary color */
 
-  jQuery("[name = ct_primary_color]").on("focus", function() {
+  jQuery("[name = ct_primary_color]").on("focus", function () {
 
     jQuery("[name = ct_primary_color]").val();
 
   });
 
-  jQuery("[name = ct_primary_color_admin]").on("focus", function() {
+  jQuery("[name = ct_primary_color_admin]").on("focus", function () {
 
     jQuery("[name = ct_primary_color_admin]").val();
 
@@ -1781,13 +1781,13 @@ jQuery(document).ready(function(){
 
   /* for resetting Color Scheme secondary color and Admin Area Color Scheme secondary color*/
 
-  jQuery("[name = ct_secondary_color]").on("focus", function() {
+  jQuery("[name = ct_secondary_color]").on("focus", function () {
 
     jQuery("[name = ct_secondary_color]").val();
 
   });
 
-  jQuery("[name = ct_secondary_color_admin]").on("focus", function() {
+  jQuery("[name = ct_secondary_color_admin]").on("focus", function () {
 
     jQuery("[name = ct_secondary_color_admin]").val(secondary_color_admin);
 
@@ -1795,13 +1795,13 @@ jQuery(document).ready(function(){
 
   /* for resetting Color Scheme text color and Admin Area Color Scheme text color*/
 
-  jQuery("[name = ct_text_color]").on("focus", function() {
+  jQuery("[name = ct_text_color]").on("focus", function () {
 
     jQuery("[name = ct_text_color]").val();
 
   });
 
-  jQuery("[name = ct_text_color_admin]").on("focus", function() {
+  jQuery("[name = ct_text_color_admin]").on("focus", function () {
 
     jQuery("[name = ct_text_color_admin]").val(text_color_admin);
 
@@ -1809,49 +1809,49 @@ jQuery(document).ready(function(){
 
   /* for resetting Color Scheme Text Color on bg */
 
-  jQuery("[name = ct_text_color_on_bg]").on("focus", function() {
+  jQuery("[name = ct_text_color_on_bg]").on("focus", function () {
 
     jQuery("[name = ct_text_color_on_bg]").val();
 
   });
 
-  jQuery("#reset_color").on("click", function(event) {
+  jQuery("#reset_color").on("click", function (event) {
 
     /* for resetting Color Scheme primary color and Admin Area Color Scheme primary color */
 
-    jQuery("[name = ct_primary_color]").minicolors("value","#003b46");
+    jQuery("[name = ct_primary_color]").minicolors("value", "#003b46");
 
-    jQuery("[name = ct_primary_color]").val("#003b46");  
+    jQuery("[name = ct_primary_color]").val("#003b46");
 
-    jQuery("[name = ct_primary_color_admin]").minicolors("value","#003b46");
+    jQuery("[name = ct_primary_color_admin]").minicolors("value", "#003b46");
 
     jQuery("[name = ct_primary_color_admin]").val("#003b46");
 
     /* for resetting Color Scheme secondary color and Admin Area Color Scheme secondary color*/
 
-    jQuery("[name = ct_secondary_color_admin]").minicolors("value","#187d90");
+    jQuery("[name = ct_secondary_color_admin]").minicolors("value", "#187d90");
 
     jQuery("[name = ct_secondary_color_admin]").val("#187d90");
 
-    jQuery("[name = ct_secondary_color]").minicolors("value","#187d90");
+    jQuery("[name = ct_secondary_color]").minicolors("value", "#187d90");
 
     jQuery("[name = ct_secondary_color]").val("#187d90");
 
     /* for resetting Color Scheme text color and Admin Area Color Scheme text color*/
 
-    jQuery("[name = ct_text_color]").minicolors("value","#666666");
+    jQuery("[name = ct_text_color]").minicolors("value", "#666666");
 
-    jQuery("[name = ct_text_color]").val("#666666"); 
+    jQuery("[name = ct_text_color]").val("#666666");
 
-    jQuery("[name = ct_text_color_admin]").minicolors("value","#ffffff");
+    jQuery("[name = ct_text_color_admin]").minicolors("value", "#ffffff");
 
     jQuery("[name = ct_text_color_admin]").val("#ffffff");
 
     /* for resetting Color Scheme Text Color on bg */
 
-    jQuery("[name = ct_text_color_on_bg]").minicolors("value","#ffffff");
+    jQuery("[name = ct_text_color_on_bg]").minicolors("value", "#ffffff");
 
-    jQuery("[name = ct_text_color_on_bg]").val("#ffffff"); 
+    jQuery("[name = ct_text_color_on_bg]").val("#ffffff");
 
   });
 
@@ -1875,21 +1875,21 @@ var multipleqty_for_addon = "N";
 
 /*  service addons list selection  */
 
-jQuery(document).on("click",".insert_id",function() {
+jQuery(document).on("click", ".insert_id", function () {
 
-  jQuery(".cta-addons-dropdown").toggle( "blind", {direction: "vertical"}, 1000 );
+  jQuery(".cta-addons-dropdown").toggle("blind", { direction: "vertical" }, 1000);
 
 });
 
-jQuery(document).on("click",".update_id",function() {
+jQuery(document).on("click", ".update_id", function () {
 
   var id = jQuery(this).attr("data-id");
 
-  jQuery(".display_update_"+id).toggle( "blind", {direction: "vertical"}, 1000 );
+  jQuery(".display_update_" + id).toggle("blind", { direction: "vertical" }, 1000);
 
 });
 
-jQuery(document).on("click",".select_addons",function() {
+jQuery(document).on("click", ".select_addons", function () {
 
   var imagename = jQuery(this).attr("data-name");
 
@@ -1897,17 +1897,17 @@ jQuery(document).on("click",".select_addons",function() {
 
   var id = jQuery(this).attr("data-id");
 
-  jQuery("#addonid_"+id).html(jQuery(this).html());
+  jQuery("#addonid_" + id).html(jQuery(this).html());
 
-  jQuery("#addonid_"+id).attr("data-name",imagename);
+  jQuery("#addonid_" + id).attr("data-name", imagename);
 
-  jQuery("#addonid_"+id).attr("data-p_i_name",p_i_name);
+  jQuery("#addonid_" + id).attr("data-p_i_name", p_i_name);
 
-  jQuery(".display_update_"+id).hide( "blind", {direction: "vertical"}, 500 );
+  jQuery(".display_update_" + id).hide("blind", { direction: "vertical" }, 500);
 
 });
 
-jQuery(document).on("click",".select_addons_insert",function() {
+jQuery(document).on("click", ".select_addons_insert", function () {
 
   var imagename = jQuery(this).attr("data-name");
 
@@ -1915,13 +1915,13 @@ jQuery(document).on("click",".select_addons_insert",function() {
 
   jQuery("#cta_selected_addon").html(jQuery(this).html());
 
-  jQuery("#cta_selected_addon").attr("data-name",imagename);
+  jQuery("#cta_selected_addon").attr("data-name", imagename);
 
-  jQuery("#cta_selected_addon").attr("data-p_i_name",p_i_name);
+  jQuery("#cta_selected_addon").attr("data-p_i_name", p_i_name);
 
-  jQuery("#cta_selected_addon").attr("data-p_i_name",p_i_name);
+  jQuery("#cta_selected_addon").attr("data-p_i_name", p_i_name);
 
-  jQuery(".display_insert").hide( "blind", {direction: "vertical"}, 500 );
+  jQuery(".display_insert").hide("blind", { direction: "vertical" }, 500);
 
 });
 
@@ -1929,33 +1929,33 @@ jQuery(document).on("click",".select_addons_insert",function() {
 
 /* custom form fields min and max length */
 
-jQuery(document).on("click",".ct-addition-btn",function() {
+jQuery(document).on("click", ".ct-addition-btn", function () {
 
   var inputclass = jQuery(this).attr("data-info");
 
-  jQuery("."+inputclass).val(parseInt(jQuery("."+inputclass).val(), 10) + 1);
+  jQuery("." + inputclass).val(parseInt(jQuery("." + inputclass).val(), 10) + 1);
 
 });
 
-jQuery(document).on("click",".ct-subtraction-btn",function() {
+jQuery(document).on("click", ".ct-subtraction-btn", function () {
 
   var inputclass = jQuery(this).attr("data-info");
 
-  if(parseInt(jQuery("."+inputclass).val(), 10) - 1 <= 0){
+  if (parseInt(jQuery("." + inputclass).val(), 10) - 1 <= 0) {
 
-    jQuery("."+inputclass).val(0);
+    jQuery("." + inputclass).val(0);
 
   } else {
 
-    jQuery("."+inputclass).val( parseInt(jQuery("."+inputclass).val(), 10) - 1);
+    jQuery("." + inputclass).val(parseInt(jQuery("." + inputclass).val(), 10) - 1);
 
   }
 
 });
 
-jQuery(document).on("click","#ct-add-new-service",function() {
+jQuery(document).on("click", "#ct-add-new-service", function () {
 
-  jQuery("html, body").stop().animate({"scrollTop": jQuery(".new-service-scroll, .new-addon-scroll").offset().top - 115}, 2000, "swing", function () {});
+  jQuery("html, body").stop().animate({ "scrollTop": jQuery(".new-service-scroll, .new-addon-scroll").offset().top - 115 }, 2000, "swing", function () { });
 
 });
 
@@ -2011,21 +2011,21 @@ jQuery(document).ready(function () {
 
   var ajaxurl = ajax_url;
 
-  var time_format_values=times.time_format_values;
+  var time_format_values = times.time_format_values;
 
-  if(time_format_values==24){
+  if (time_format_values == 24) {
 
-    var tymfrmt="H:mm";
+    var tymfrmt = "H:mm";
 
-  }else{
+  } else {
 
-    var tymfrmt="h:mm a";
+    var tymfrmt = "h:mm a";
 
   }
 
   /* SET LANGUAGE TRANSLATE*/
 
-  var set_language = language_new.selected_language;  
+  var set_language = language_new.selected_language;
 
   var today_nn = titles.selected_today;
 
@@ -2059,7 +2059,7 @@ jQuery(document).ready(function () {
 
     defaultView: ct_calendar_defaultView,
 
-    buttonText: {today: today_nn, month: month_nn, agendaWeek: week_nn, agendaDay: day_nn},
+    buttonText: { today: today_nn, month: month_nn, agendaWeek: week_nn, agendaDay: day_nn },
 
     defaultDate: curdate,
 
@@ -2083,7 +2083,7 @@ jQuery(document).ready(function () {
 
         element.find(".fc-time").hide();
 
-        element.find(".fc-title").before(jQuery("<i class='fa fa-check txt-success' title='"+errorobj_confirmed+"'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-check txt-success' title='" + errorobj_confirmed + "'></i>"));
 
         element.find(".fc-title").after(
 
@@ -2093,115 +2093,115 @@ jQuery(document).ready(function () {
 
       } else if (event_st == "R") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-ban txt-danger' title='"+errorobj_rejected+"'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-ban txt-danger' title='" + errorobj_rejected + "'></i>"));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
 
-          );
+        );
 
       } else if (event_st == "CC") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-times txt-primary' title='"+errorobj_cancelled_by_client+"'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-times txt-primary' title='" + errorobj_cancelled_by_client + "'></i>"));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
 
-          );
+        );
 
       } else if (event_st == "A" || event_st == "") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-info-circle txt-warning' title='"+errorobj_pending+"'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-info-circle txt-warning' title='" + errorobj_pending + "'></i>"));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
 
-          );
+        );
 
       } else if (event_st == "CS") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-times-circle-o txt-info' title='"+errorobj_calcelled_by_client+"'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-times-circle-o txt-info' title='" + errorobj_calcelled_by_client + "'></i>"));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
 
-          );
+        );
 
-      }else if (event_st == "CO") {
+      } else if (event_st == "CO") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-thumbs-o-up txt-completed' title='"+errorobj_appointment_completed+"'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-thumbs-o-up txt-completed' title='" + errorobj_appointment_completed + "'></i>"));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
 
-          );
+        );
 
       } else if (event_st == "MN") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-thumbs-o-down txt-danger' title='"+errorobj_appointment_marked_as_no_show+"'></i> "));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-thumbs-o-down txt-danger' title='" + errorobj_appointment_marked_as_no_show + "'></i> "));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
 
-          );
+        );
 
       } else if (event_st == "RS") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-pencil-square-o txt-info' title='"+errorobj_rescheduled+"'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-pencil-square-o txt-info' title='" + errorobj_rescheduled + "'></i>"));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div> <div><hr id='hr' /></div><div>" + event.client_name + "</div><div>" + event.client_phone + "</div><div>" + event.client_email + "</div>")
 
-          );
+        );
 
       } else if (event_st == "GC") {
 
-          element.find(".fc-title").hide();
+        element.find(".fc-title").hide();
 
-          element.find(".fc-time").hide();
+        element.find(".fc-time").hide();
 
-          element.find(".fc-title").before(jQuery("<i class='fa fa-google txt-primary' title='Google Calendar Event'></i>"));
+        element.find(".fc-title").before(jQuery("<i class='fa fa-google txt-primary' title='Google Calendar Event'></i>"));
 
-          element.find(".fc-title").after(
+        element.find(".fc-title").after(
 
-            jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div>")
+          jQuery("<div><i class='fa fa-clock-o'></i>" + event.start.format(tymfrmt) + "</div><div>" + event.title + "</div>")
 
-          );
+        );
 
       }
 
@@ -2219,13 +2219,13 @@ jQuery(document).ready(function () {
 
         var appointment_id = event.id;
 
-        if(!(appointment_open_popup)){
+        if (!(appointment_open_popup)) {
 
           jQuery.ajax({
 
             type: "post",
 
-            data: {orderid: appointment_id, getgc_event_detail: 1},
+            data: { orderid: appointment_id, getgc_event_detail: 1 },
 
             url: ajaxurl + "my_appoint_ajax.php",
 
@@ -2247,7 +2247,7 @@ jQuery(document).ready(function () {
 
         jQuery("#reject_reason_txt").val("");
 
-        var getdata = {appointment_id: appointment_id};
+        var getdata = { appointment_id: appointment_id };
 
         jQuery.ajax({
 
@@ -2285,11 +2285,11 @@ jQuery(document).ready(function () {
 
               jQuery(".mycompleteclass").hide();
 
-              jQuery(".ct-booking-status").html("<em>"+errorobj_active+"</em>");
+              jQuery(".ct-booking-status").html("<em>" + errorobj_active + "</em>");
 
             } else if (app_details.booking_status == "C") {
 
-              jQuery(".ct-booking-status").html("<i class='fa fa-check txt-success' title='"+errorobj_confirmed+"'><em>"+errorobj_confirmed+"</em></i>");
+              jQuery(".ct-booking-status").html("<i class='fa fa-check txt-success' title='" + errorobj_confirmed + "'><em>" + errorobj_confirmed + "</em></i>");
 
               jQuery(".myconfirmclass").hide();
 
@@ -2305,7 +2305,7 @@ jQuery(document).ready(function () {
 
               jQuery(".myrejectclass").hide();
 
-              jQuery(".ct-booking-status").html("<i class='fa fa-ban txt-danger' title='"+errorobj_rejected+"'><em>"+errorobj_rejected+"</em></i>");
+              jQuery(".ct-booking-status").html("<i class='fa fa-ban txt-danger' title='" + errorobj_rejected + "'><em>" + errorobj_rejected + "</em></i>");
 
               jQuery(".reject_btn_appt").hide();
 
@@ -2317,7 +2317,7 @@ jQuery(document).ready(function () {
 
             } else if (app_details.booking_status == "RS") {
 
-              jQuery(".ct-booking-status").html("<i class='fa fa-pencil-square-o txt-info' title='"+errorobj_rescheduled+"'><em>"+errorobj_rescheduled+"</em></i>");
+              jQuery(".ct-booking-status").html("<i class='fa fa-pencil-square-o txt-info' title='" + errorobj_rescheduled + "'><em>" + errorobj_rescheduled + "</em></i>");
 
               jQuery(".myconfirmclass").show();
 
@@ -2331,7 +2331,7 @@ jQuery(document).ready(function () {
 
             } else if (app_details.booking_status == "CC") {
 
-              jQuery(".ct-booking-status").html("<i class='fa fa-times txt-primary' title='"+errorobj_cancel_by_client+"'><em>"+errorobj_cancel_by_client+"</em></i>");
+              jQuery(".ct-booking-status").html("<i class='fa fa-times txt-primary' title='" + errorobj_cancel_by_client + "'><em>" + errorobj_cancel_by_client + "</em></i>");
 
               jQuery(".myconfirmclass").hide();
 
@@ -2345,7 +2345,7 @@ jQuery(document).ready(function () {
 
             } else if (app_details.booking_status == "CS") {
 
-              jQuery(".ct-booking-status").html("<i class='fa fa-times-circle-o txt-info' title='"+errorobj_cancelled_by_service_provider+"'><em>"+errorobj_cancelled_by_service_provider+"</em></i>");
+              jQuery(".ct-booking-status").html("<i class='fa fa-times-circle-o txt-info' title='" + errorobj_cancelled_by_service_provider + "'><em>" + errorobj_cancelled_by_service_provider + "</em></i>");
 
               jQuery(".myconfirmclass").hide();
 
@@ -2359,7 +2359,7 @@ jQuery(document).ready(function () {
 
             } else if (app_details.booking_status == "CO") {
 
-              jQuery(".ct-booking-status").html("<i class='fa fa-thumbs-o-up txt-success' title='"+errorobj_appointment_completed+"'><em>"+errorobj_appointment_completed+"</em></i>");
+              jQuery(".ct-booking-status").html("<i class='fa fa-thumbs-o-up txt-success' title='" + errorobj_appointment_completed + "'><em>" + errorobj_appointment_completed + "</em></i>");
 
               jQuery(".myconfirmclass").hide();
 
@@ -2373,7 +2373,7 @@ jQuery(document).ready(function () {
 
             } else {
 
-              jQuery(".ct-booking-status").html("<i class='fa fa-thumbs-o-down txt-danger' title='"+errorobj_appointment_marked_as_no_show+"'><em>"+errorobj_appointment_marked_as_no_show+"</em></i>");
+              jQuery(".ct-booking-status").html("<i class='fa fa-thumbs-o-down txt-danger' title='" + errorobj_appointment_marked_as_no_show + "'><em>" + errorobj_appointment_marked_as_no_show + "</em></i>");
 
               jQuery(".myconfirmclass").hide();
 
@@ -2391,13 +2391,13 @@ jQuery(document).ready(function () {
 
             jQuery(".duration").html(app_details.service_duration);
 
-      
 
-            if(app_details.client_name == ""){
+
+            if (app_details.client_name == "") {
 
               jQuery(".client_name").parent("li").hide();
 
-            }else{
+            } else {
 
               jQuery(".client_name").parent("li").show();
 
@@ -2411,11 +2411,11 @@ jQuery(document).ready(function () {
 
             jQuery(".client_email_dis").attr("value", app_details.client_email);
 
-            if(app_details.client_phone == ""){
+            if (app_details.client_phone == "") {
 
               jQuery(".client_phone").parent("li").hide();
 
-            }else{
+            } else {
 
               jQuery(".client_phone").parent("li").show();
 
@@ -2423,11 +2423,11 @@ jQuery(document).ready(function () {
 
             }
 
-            if(app_details.client_address == ""){
+            if (app_details.client_address == "") {
 
               jQuery(".client_address").parent("li").hide();
 
-            }else{
+            } else {
 
               jQuery(".client_address").parent("li").show();
 
@@ -2479,7 +2479,7 @@ jQuery(document).ready(function () {
 
             jQuery(".reject_bookings").attr("data-pid", app_details.staff_ids);
 
-            if(app_details.past == "Yes"){
+            if (app_details.past == "Yes") {
 
               jQuery(".myconfirmclass").hide();
 
@@ -2493,7 +2493,7 @@ jQuery(document).ready(function () {
 
             }
 
-            if(app_details.client_notes == ""){
+            if (app_details.client_notes == "") {
 
               jQuery(".notes").parent("li").hide();
 
@@ -2505,21 +2505,21 @@ jQuery(document).ready(function () {
 
             }
 
-            if(app_details.global_vc_status == "Y" && app_details.vaccum_cleaner != " : -"){
+            if (app_details.global_vc_status == "Y" && app_details.vaccum_cleaner != " : -") {
 
               jQuery(".client_vc_status").html(app_details.vaccum_cleaner);
 
-            } else{
+            } else {
 
               jQuery(".pop_vc_status").hide();
 
             }
 
-            if(app_details.global_p_status == "Y" && app_details.parking != " : -"){
+            if (app_details.global_p_status == "Y" && app_details.parking != " : -") {
 
               jQuery(".client_parking").html(app_details.parking);
 
-            } else{
+            } else {
 
               jQuery(".pop_p_status").hide();
 
@@ -2541,17 +2541,17 @@ jQuery(document).ready(function () {
 
             jQuery(".staff_list").html(app_details.staff);
 
-      
+
 
             var reason_view_status = app_details.reason_view_status;
 
             var reject_reason = app_details.reject_reason;
 
-            if(reason_view_status == "hide" || reject_reason == ""){
+            if (reason_view_status == "hide" || reject_reason == "") {
 
               jQuery(".li_of_reason").hide();
 
-            }else{
+            } else {
 
               jQuery(".li_of_reason").show();
 
@@ -2559,11 +2559,11 @@ jQuery(document).ready(function () {
 
             }
 
-            if(app_details.booking_duration == ""){
+            if (app_details.booking_duration == "") {
 
               jQuery(".li_of_duration").hide();
 
-            }else{
+            } else {
 
               jQuery(".li_of_duration").show();
 
@@ -2591,7 +2591,7 @@ jQuery(document).ready(function () {
 
       var selected_year = selected_datetime.getFullYear();
 
-      var selected_date_with_format = selected_year+"-"+selected_month+"-"+selected_date;
+      var selected_date_with_format = selected_year + "-" + selected_month + "-" + selected_date;
 
       var current_datetime = new Date();
 
@@ -2613,7 +2613,7 @@ jQuery(document).ready(function () {
 
         jQuery(".mainheader_message_fail").fadeOut(10000);
 
-      }else if(new Date(selected_date_with_format).getTime() > new Date(advance_date).getTime()){
+      } else if (new Date(selected_date_with_format).getTime() > new Date(advance_date).getTime()) {
 
         jQuery(".mainheader_message_fail").show();
 
@@ -2623,25 +2623,25 @@ jQuery(document).ready(function () {
 
         jQuery(".mainheader_message_fail").fadeOut(10000);
 
-      } else{
+      } else {
 
         jQuery(".ct-loading-main").show();
 
-        if(selected_month.toString().length == 1){
+        if (selected_month.toString().length == 1) {
 
-          selected_month = "0"+selected_month;
+          selected_month = "0" + selected_month;
 
         }
 
         jQuery.ajax({
 
-          type:"POST",
+          type: "POST",
 
-          url: ajax_url+"calendar_ajax.php",
+          url: ajax_url + "calendar_ajax.php",
 
-          data : {"month" : selected_month,"year" : selected_year,"get_calendar" : 1},
+          data: { "month": selected_month, "year": selected_year, "get_calendar": 1 },
 
-          success: function(res){
+          success: function (res) {
 
             jQuery(".ct-loading-main").hide();
 
@@ -2651,17 +2651,17 @@ jQuery(document).ready(function () {
 
             /* Code For Auto select date start */
 
-            var manual_calendar_class_name = "selected_datess"+selected_date+"-"+selected_month+"-"+selected_year;
+            var manual_calendar_class_name = "selected_datess" + selected_date + "-" + selected_month + "-" + selected_year;
 
-            var selected_dates = jQuery("."+manual_calendar_class_name).attr("data-selected_dates");
+            var selected_dates = jQuery("." + manual_calendar_class_name).attr("data-selected_dates");
 
-            var s_date = jQuery("."+manual_calendar_class_name).attr("data-s_date");
+            var s_date = jQuery("." + manual_calendar_class_name).attr("data-s_date");
 
-            var c_date = jQuery("."+manual_calendar_class_name).attr("data-c_date");
+            var c_date = jQuery("." + manual_calendar_class_name).attr("data-c_date");
 
-            var id = jQuery("."+manual_calendar_class_name).attr("data-id");
+            var id = jQuery("." + manual_calendar_class_name).attr("data-id");
 
-            var cur_dates = jQuery("."+manual_calendar_class_name).attr("data-cur_dates");
+            var cur_dates = jQuery("." + manual_calendar_class_name).attr("data-cur_dates");
 
             var ct_time_selected = jQuery(".ct-time-selected").text();
 
@@ -2669,53 +2669,53 @@ jQuery(document).ready(function () {
 
             jQuery.ajax({
 
-                type:"POST",
+              type: "POST",
 
-                url: ajax_url+"calendar_ajax.php",
+              url: ajax_url + "calendar_ajax.php",
 
-                data : { "selected_dates" : selected_dates,"id" : id,"cur_dates" : cur_dates,"get_slots" : 1 },
+              data: { "selected_dates": selected_dates, "id": id, "cur_dates": cur_dates, "get_slots": 1 },
 
-                success: function(res){
+              success: function (res) {
 
-                  jQuery(".ct-loading-main").hide();
+                jQuery(".ct-loading-main").hide();
 
-                  jQuery(".time_slot_box").hide();
+                jQuery(".time_slot_box").hide();
 
-                  jQuery(".display_selected_date_slots_box"+id).html(res);
+                jQuery(".display_selected_date_slots_box" + id).html(res);
 
-                  jQuery(".display_selected_date_slots_box"+id).show();
+                jQuery(".display_selected_date_slots_box" + id).show();
 
 
 
-                  if(ct_time_selected != ""){
+                if (ct_time_selected != "") {
 
-                    jQuery(".time-slot").each(function(){
+                  jQuery(".time-slot").each(function () {
 
-                      var selectedtime = jQuery("."+manual_calendar_class_name).attr("data-ct_time_selected");
+                    var selectedtime = jQuery("." + manual_calendar_class_name).attr("data-ct_time_selected");
 
-                      var slot_date = jQuery("."+manual_calendar_class_name).attr("data-slot_date");
+                    var slot_date = jQuery("." + manual_calendar_class_name).attr("data-slot_date");
 
-                      
 
-                      if(selectedtime == ct_time_selected && slot_date == ct_date){
 
-                        jQuery("."+manual_calendar_class_name).addClass("ct-booked");
+                    if (selectedtime == ct_time_selected && slot_date == ct_date) {
 
-                      }
+                      jQuery("." + manual_calendar_class_name).addClass("ct-booked");
 
-                    });
+                    }
 
-                  }
+                  });
 
                 }
 
+              }
+
             });
 
-            var valuess = jQuery("."+manual_calendar_class_name).val();
+            var valuess = jQuery("." + manual_calendar_class_name).val();
 
-            if(s_date >= c_date){
+            if (s_date >= c_date) {
 
-              jQuery(".ct-week").each(function(){
+              jQuery(".ct-week").each(function () {
 
                 jQuery(this).removeClass("active");
 
@@ -2723,11 +2723,11 @@ jQuery(document).ready(function () {
 
               });
 
-              jQuery("."+manual_calendar_class_name).addClass("active");
+              jQuery("." + manual_calendar_class_name).addClass("active");
 
               jQuery(".ct-show-time").addClass("shown");
 
-            }else if(s_date < c_date || valuess == ""){
+            } else if (s_date < c_date || valuess == "") {
 
               jQuery(".time_slot_box").hide();
 
@@ -2757,7 +2757,7 @@ jQuery(document).ready(function () {
 
 jQuery("#edit-booking-details").click(function () {
 
-  jQuery("#booking-details-calendar").hide("blind", {direction: "vertical"}, .15);
+  jQuery("#booking-details-calendar").hide("blind", { direction: "vertical" }, .15);
 
   jQuery("#edit-booking-details-view").modal();
 
@@ -2779,13 +2779,13 @@ jQuery(document).ajaxComplete(function () {
 
   });
 
-  var site_url=site_ur.site_url;
+  var site_url = site_ur.site_url;
 
   jQuery("#phone-number").intlTelInput({
 
     autoPlaceholder: "off",
 
-    utilsScript: site_url+"assets/js/utils.js"
+    utilsScript: site_url + "assets/js/utils.js"
 
   });
 
@@ -2823,9 +2823,9 @@ jQuery(document).ajaxComplete(function () {
 
     buttons: [
 
-        "excelHtml5",
+      "excelHtml5",
 
-        "pdfHtml5"
+      "pdfHtml5"
 
     ]
 
@@ -2855,15 +2855,15 @@ jQuery(document).ajaxComplete(function () {
 
     rules: {
 
-      ct_email:{
+      ct_email: {
 
         required: true,
 
-        email:true,
+        email: true,
 
         remote: {
 
-          url:ajax_url+"customer_admin_ajax.php",
+          url: ajax_url + "customer_admin_ajax.php",
 
           type: "POST"
 
@@ -2873,7 +2873,7 @@ jQuery(document).ajaxComplete(function () {
 
       ct_password: {
 
-        required:true,
+        required: true,
 
         minlength: 8,
 
@@ -2881,59 +2881,59 @@ jQuery(document).ajaxComplete(function () {
 
       ct_first_name: {
 
-        required:true,
+        required: true,
 
       },
 
       ct_last_name: {
 
-        required:true,
+        required: true,
 
-      },    
+      },
 
       ct_phone: {
 
-        minlength: 10, maxlength: 10,number:true,
+        minlength: 10, maxlength: 10, number: true,
 
-      },  
+      },
 
       ct_address: {
 
-        required:true,
+        required: true,
 
       },
 
       ct_zip_code: {
 
-        required:true,
+        required: true,
 
       },
 
       ct_city: {
 
-        required:true,
+        required: true,
 
       },
 
       ct_state: {
 
-        required:true,
+        required: true,
 
       },
 
-      
+
 
     },
 
     messages: {
 
-      ct_email:{
+      ct_email: {
 
-        required:errorobj_please_enter_email,
+        required: errorobj_please_enter_email,
 
-        email:errorobj_please_enter_valid_email_address,
+        email: errorobj_please_enter_valid_email_address,
 
-        remote:errorobj_email_already_exists 
+        remote: errorobj_email_already_exists
 
       },
 
@@ -2961,11 +2961,11 @@ jQuery(document).ajaxComplete(function () {
 
         required: errorobj_please_enter_phone_number,
 
-        minlength:errorobj_please_enter_minimum_10_digits,
+        minlength: errorobj_please_enter_minimum_10_digits,
 
-        maxlength:errorobj_please_enter_valid_number,
+        maxlength: errorobj_please_enter_valid_number,
 
-        number : errorobj_please_enter_only_numerics        
+        number: errorobj_please_enter_only_numerics
 
       },
 
@@ -3067,23 +3067,23 @@ jQuery(document).ajaxComplete(function () {
 
     rules: {
 
-      u_member_email:{
+      u_member_email: {
 
         required: true,
 
-        email:true
+        email: true
 
       },
 
       u_member_name: {
 
-        required:true,
+        required: true,
 
       },
 
       u_member_user_id: {
 
-        required:true,
+        required: true,
 
       },
 
@@ -3091,11 +3091,11 @@ jQuery(document).ajaxComplete(function () {
 
     messages: {
 
-      u_member_email:{
+      u_member_email: {
 
-        required:errorobj_please_enter_email,
+        required: errorobj_please_enter_email,
 
-        email:errorobj_please_enter_valid_email_address 
+        email: errorobj_please_enter_valid_email_address
 
       },
 
@@ -3114,93 +3114,83 @@ jQuery(document).ajaxComplete(function () {
     }
 
   });
-  
+
   jQuery("#user_info_form").validate({
 
     rules: {
 
-      useremail:{
-
-        required: true,
-
-        email:true
-
-      },
-      
-      usergrinderid:{
-
-        required: true,
-
-      },
-
+      userfirstname: {  required: true ,maxlength:20},
+      userlastname: {  required: true ,maxlength:20},
+      useremail: { required: true, email: true,maxlength:200},
+      usergrinderid: { required: true ,maxlength:20},
+      // usercity: { required: true },
+      // userstate: { required: true },
+      userzip: { required: true,maxlength:8 ,digits:true},
+      // userphone: { required: true,maxlength:10 ,digits:true},
     },
 
     messages: {
-
-      useremail:{
-
-        required:errorobj_please_enter_email,
-
-        email:errorobj_please_enter_valid_email_address 
-
-      },
-      
-      usergrinderid:{
-
-        required:"Please Enter Homebod User ID",
-
-      },
+      userfirstname: {
+        required: "Please Enter First Name" },
+        userlastname: {required: "Please Enter Last Name" },
+       useremail: {required: "Please Enter Email ID",
+        email: "Please Enter Valid Email ID" },
+        usergrinderid: {required: "Please Enter Homebod User ID" },
+        // usercity: { required: "Please Enter City" },
+        // userstate: { required: "Please Enter State" },
+        userzip: { required: "Please Enter Zip",digits:"Only digits allowed" },
+      //  userphone: { required: "Please Enter Phone No",digits:"Only digits allowed" },
 
     }
 
   });
 
-  jQuery("[data-toggle='toggle']").bootstrapToggle("destroy");                 
+  jQuery("[data-toggle='toggle']").bootstrapToggle("destroy");
 
   jQuery("[data-toggle='toggle']").bootstrapToggle();
 
 });
 
-jQuery(document).on("focusin","#company_country_code",function(){
+jQuery(document).on("focusin", "#company_country_code", function () {
 
-  jQuery(this).blur();  
+  jQuery(this).blur();
 
 });
 
 /*  Display Country Code on click flag on phone */
 
-jQuery(document).on("click",".country",function() {
+jQuery(document).on("click", ".country", function () {
 
-  var country_code=jQuery(this).attr("data-dial-code");
+  var country_code = jQuery(this).attr("data-dial-code");
 
-  jQuery("#company_country_code").val("+"+country_code);
+  jQuery("#company_country_code").val("+" + country_code);
 
-  var num_code=jQuery(this).attr("data-dial-code");
+  var num_code = jQuery(this).attr("data-dial-code");
 
-  var alpha_code=jQuery(this).attr("data-country-code");
+  var alpha_code = jQuery(this).attr("data-country-code");
 
-  jQuery(".numbercode").text("+"+num_code);
+  jQuery(".numbercode").text("+" + num_code);
 
   jQuery(".alphacode").text(alpha_code);
 
-  jQuery(".company_country_code_value").text("+"+num_code);
+  jQuery(".company_country_code_value").text("+" + num_code);
 
 });
 
-jQuery(document).ready(function(){
-  jQuery("#staff-bookings-table, #ct-staff-member-offtime-list").DataTable({   responsive:true,  });
+jQuery(document).ready(function () {
+  jQuery("#staff-bookings-table, #ct-staff-member-offtime-list").DataTable({ responsive: true, });
 });
 
 
 jQuery(document).bind("ready ajaxComplete", function () {
 
-  jQuery("#ct-staff-service-details-list").DataTable({   responsive:true,  });
+  jQuery("#ct-staff-service-details-list").DataTable({ responsive: true, });
 
-   jQuery(".selectpicker").selectpicker({
+  jQuery(".selectpicker").selectpicker({
 
     container: "body",
 
-  }); 
+  });
 
   jQuery(".addon_ser_cam").hide();
 
@@ -3208,13 +3198,13 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
   jQuery(".delete_break").popover({
 
-    html : true,
+    html: true,
 
-    content: function() {
+    content: function () {
 
-      var breakpopup_id=jQuery(this).attr("data-wiwdibi");
+      var breakpopup_id = jQuery(this).attr("data-wiwdibi");
 
-      return jQuery("#popover-delete-breaks"+breakpopup_id).html();
+      return jQuery("#popover-delete-breaks" + breakpopup_id).html();
 
     }
 
@@ -3222,7 +3212,7 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
   /* hide datep[icker on select date */
 
-  var m_jan = month.january;var m_feb = month.feb;var m_mar = month.mar;var m_apr = month.apr;var m_may = month.may;var m_jun = month.jun;var m_jul = month.jul;var m_aug = month.aug;var m_sep = month.sep;var m_oct = month.oct;var m_nov = month.nov;var m_dec = month.dec;var d_sun = days_date.sun;var d_mon = days_date.mon;var d_tue = days_date.tue;var d_wed = days_date.wed;var d_thu = days_date.thu;var d_fri = days_date.fri;var d_sat = days_date.sat;
+  var m_jan = month.january; var m_feb = month.feb; var m_mar = month.mar; var m_apr = month.apr; var m_may = month.may; var m_jun = month.jun; var m_jul = month.jul; var m_aug = month.aug; var m_sep = month.sep; var m_oct = month.oct; var m_nov = month.nov; var m_dec = month.dec; var d_sun = days_date.sun; var d_mon = days_date.mon; var d_tue = days_date.tue; var d_wed = days_date.wed; var d_thu = days_date.thu; var d_fri = days_date.fri; var d_sat = days_date.sat;
 
   jQuery("#expiry_date").datepicker({
 
@@ -3230,9 +3220,9 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
     minDate: 0,
 
-    dayNamesMin: [d_sun,d_mon,d_tue,d_wed,d_thu,d_fri,d_sat],
+    dayNamesMin: [d_sun, d_mon, d_tue, d_wed, d_thu, d_fri, d_sat],
 
-    monthNames: [m_jan,m_feb,m_mar,m_apr,m_may,m_jun,m_jul,m_aug,m_sep,m_oct,m_nov,m_dec,]
+    monthNames: [m_jan, m_feb, m_mar, m_apr, m_may, m_jun, m_jul, m_aug, m_sep, m_oct, m_nov, m_dec,]
 
   });
 
@@ -3242,7 +3232,7 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
   });
 
-  
+
 
   jQuery(".exp_cp_date").datepicker({
 
@@ -3250,9 +3240,9 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
     minDate: 0,
 
-    dayNamesMin: [d_sun,d_mon,d_tue,d_wed,d_thu,d_fri,d_sat],
+    dayNamesMin: [d_sun, d_mon, d_tue, d_wed, d_thu, d_fri, d_sat],
 
-    monthNames: [m_jan,m_feb,m_mar,m_apr,m_may,m_jun,m_jul,m_aug,m_sep,m_oct,m_nov,m_dec,]
+    monthNames: [m_jan, m_feb, m_mar, m_apr, m_may, m_jun, m_jul, m_aug, m_sep, m_oct, m_nov, m_dec,]
 
   });
 
@@ -3272,9 +3262,9 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
     minDate: 0,
 
-    dayNamesMin: [d_sun,d_mon,d_tue,d_wed,d_thu,d_fri,d_sat],
+    dayNamesMin: [d_sun, d_mon, d_tue, d_wed, d_thu, d_fri, d_sat],
 
-    monthNames: [m_jan,m_feb,m_mar,m_apr,m_may,m_jun,m_jul,m_aug,m_sep,m_oct,m_nov,m_dec,]
+    monthNames: [m_jan, m_feb, m_mar, m_apr, m_may, m_jun, m_jul, m_aug, m_sep, m_oct, m_nov, m_dec,]
 
   });
 
@@ -3284,7 +3274,7 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
   });
 
-  
+
 
   jQuery(".special_cp_date").datepicker({
 
@@ -3292,9 +3282,9 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
     minDate: 0,
 
-    dayNamesMin: [d_sun,d_mon,d_tue,d_wed,d_thu,d_fri,d_sat],
+    dayNamesMin: [d_sun, d_mon, d_tue, d_wed, d_thu, d_fri, d_sat],
 
-    monthNames: [m_jan,m_feb,m_mar,m_apr,m_may,m_jun,m_jul,m_aug,m_sep,m_oct,m_nov,m_dec,]
+    monthNames: [m_jan, m_feb, m_mar, m_apr, m_may, m_jun, m_jul, m_aug, m_sep, m_oct, m_nov, m_dec,]
 
   });
 
@@ -3304,7 +3294,7 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
     jQuery(".datepicker").hide();
 
-  }); 
+  });
 
 
 
@@ -3540,7 +3530,7 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
   });
 
-  var site_url=site_ur.site_url;  
+  var site_url = site_ur.site_url;
 
   var country_alpha_code = countrycodeObj.alphacode;
 
@@ -3548,7 +3538,7 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
   var array = allowed_country_alpha_code.split(",");
 
-  if(allowed_country_alpha_code != ""){
+  if (allowed_country_alpha_code != "") {
 
     jQuery(".phone_number").intlTelInput({
 
@@ -3556,13 +3546,13 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
       autoPlaceholder: "off",
 
-      utilsScript: site_url+"assets/js/utils.js"
+      utilsScript: site_url + "assets/js/utils.js"
 
     });
 
     jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
 
-    jQuery(".selected-flag").attr("title",countrycodeObj.countrytitle);
+    jQuery(".selected-flag").attr("title", countrycodeObj.countrytitle);
 
   } else {
 
@@ -3570,13 +3560,13 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
       autoPlaceholder: "off",
 
-      utilsScript: site_url+"assets/js/utils.js"
+      utilsScript: site_url + "assets/js/utils.js"
 
     });
 
     jQuery(".selected-flag .iti-flag").addClass(country_alpha_code);
 
-    jQuery(".selected-flag").attr("title",countrycodeObj.countrytitle);
+    jQuery(".selected-flag").attr("title", countrycodeObj.countrytitle);
 
   }
 
@@ -3584,13 +3574,13 @@ jQuery(document).bind("ready ajaxComplete", function () {
 
   jQuery(".delete_staff_image").popover({
 
-    html : true,
+    html: true,
 
-    content: function() {
+    content: function () {
 
-      var deletestaffimagepopup_id=jQuery(this).attr("data-pclsid");  
+      var deletestaffimagepopup_id = jQuery(this).attr("data-pclsid");
 
-      return jQuery("#popover-ct-remove-staff-imagepppp"+deletestaffimagepopup_id).html();
+      return jQuery("#popover-ct-remove-staff-imagepppp" + deletestaffimagepopup_id).html();
 
     }
 
@@ -3636,7 +3626,7 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
   var toggle_id = jQuery(this).attr("id");
 
-  jQuery(".detail_" + toggle_id).toggle("blind", {direction: "vertical"}, 1000);
+  jQuery(".detail_" + toggle_id).toggle("blind", { direction: "vertical" }, 1000);
 
 });
 
@@ -3666,7 +3656,7 @@ jQuery(document).on("click", ".mybtngetpaymentdate", function () {
 
     type: "post",
 
-    data: {getallpaymentbydate: 1, startdate: startDate, enddate: endDate},
+    data: { getallpaymentbydate: 1, startdate: startDate, enddate: endDate },
 
     url: ajax_url + "admin_payments_ajax.php",
 
@@ -3684,9 +3674,9 @@ jQuery(document).on("click", ".mybtngetpaymentdate", function () {
 
 /*  registered customers add */
 
-jQuery(document).on("click",".ct_register_customer_btn",function(){
+jQuery(document).on("click", ".ct_register_customer_btn", function () {
 
-  jQuery(".cw-loading-main").show();    
+  jQuery(".cw-loading-main").show();
 
   var ct_email = jQuery("#ct_email").val();
 
@@ -3704,21 +3694,21 @@ jQuery(document).on("click",".ct_register_customer_btn",function(){
 
   var ct_city = jQuery("#ct_city").val();
 
-  var ct_state = jQuery("#ct_state").val();         
+  var ct_state = jQuery("#ct_state").val();
 
-  var datastring={ct_email:ct_email,ct_password:ct_password,ct_first_name:ct_first_name,ct_last_name:ct_last_name,ct_phone:ct_phone,ct_address:ct_address,ct_zip_code:ct_zip_code,ct_city:ct_city,ct_state:ct_state,action:"add_customer_registers"};
+  var datastring = { ct_email: ct_email, ct_password: ct_password, ct_first_name: ct_first_name, ct_last_name: ct_last_name, ct_phone: ct_phone, ct_address: ct_address, ct_zip_code: ct_zip_code, ct_city: ct_city, ct_state: ct_state, action: "add_customer_registers" };
 
-  if(jQuery("#registered-client-table1").valid()){
+  if (jQuery("#registered-client-table1").valid()) {
 
     jQuery.ajax({
 
-      type:"POST",
+      type: "POST",
 
-      url:ajax_url + "customer_admin_ajax.php",
+      url: ajax_url + "customer_admin_ajax.php",
 
-      data:datastring,
+      data: datastring,
 
-      success:function(response){
+      success: function (response) {
 
         jQuery(".ct-loading-main").hide();
 
@@ -3736,55 +3726,55 @@ jQuery(document).on("click",".ct_register_customer_btn",function(){
 
 var doughnutData = [{
 
-    value: 80,
+  value: 80,
 
-    color: "#F7464A",
+  color: "#F7464A",
 
-    highlight: "#FF5A5E",
+  highlight: "#FF5A5E",
 
-    label: "<b>dsfkljfkdskfd<br />asaklfsdklfsdakl</b>"
+  label: "<b>dsfkljfkdskfd<br />asaklfsdklfsdakl</b>"
 
-  },{
+}, {
 
-    value: 50,
+  value: 50,
 
-    color: "#46BFBD",
+  color: "#46BFBD",
 
-    highlight: "#5AD3D1",
+  highlight: "#5AD3D1",
 
-    label: "Green"
+  label: "Green"
 
-  },{
+}, {
 
-    value: 100,
+  value: 100,
 
-    color: "#FDB45C",
+  color: "#FDB45C",
 
-    highlight: "#FFC870",
+  highlight: "#FFC870",
 
-    label: "Yellow"
+  label: "Yellow"
 
-  },{
+}, {
 
-    value: 40,
+  value: 40,
 
-    color: "#949FB1",
+  color: "#949FB1",
 
-    highlight: "#A8B3C5",
+  highlight: "#A8B3C5",
 
-    label: "Grey"
+  label: "Grey"
 
-  },{
+}, {
 
-    value: 120,
+  value: 120,
 
-    color: "#4D5360",
+  color: "#4D5360",
 
-    highlight: "#616774",
+  highlight: "#616774",
 
-    label: "Dark Grey"
+  label: "Dark Grey"
 
-  }
+}
 
 ];
 
@@ -3852,7 +3842,7 @@ function storeCoords(c) {
 
 };
 
-/* Create variables (in this scope) to hold the Jcrop API and image size */ 
+/* Create variables (in this scope) to hold the Jcrop API and image size */
 
 var jcrop_api, boundx, boundy;
 
@@ -3916,7 +3906,7 @@ jQuery(document).on("change", ".ct-upload-images", function (e) {
 
   var file_size = jQuery(this)[0].files[0].size;
 
-  var minfilesize = 1048576 * 0.0005; 
+  var minfilesize = 1048576 * 0.0005;
 
   /*  Here 5 repersent KB  */
 
@@ -3988,7 +3978,7 @@ jQuery(document).on("change", ".ct-upload-images", function (e) {
 
           /* onSelect: [0, 0, 150, 180], */
 
-          setSelect: [1000,1000, 180, 200],
+          setSelect: [1000, 1000, 180, 200],
 
           /* aspectRatio: 1, */ /* keep aspect ratio 1:1 */
 
@@ -4028,7 +4018,7 @@ jQuery(document).on("change", ".ct-upload-images", function (e) {
 
           },
 
-        onSelect: function (e) {
+          onSelect: function (e) {
 
             jQuery("#" + ctus + "x1").val(e.x);
 
@@ -4084,15 +4074,15 @@ jQuery(document).on("click", ".service-delete-button", function () {
 
   jQuery(".ct-loading-main").show();
 
-  var deleteid=jQuery(this).attr("data-serviceid");
+  var deleteid = jQuery(this).attr("data-serviceid");
 
-  var imagename=jQuery(this).attr("data-imagename");
+  var imagename = jQuery(this).attr("data-imagename");
 
   jQuery.ajax({
 
     type: "post",
 
-    data: { "deleteid":deleteid, "imagename":imagename },
+    data: { "deleteid": deleteid, "imagename": imagename },
 
     url: ajax_url + "service_ajax.php",
 
@@ -4110,7 +4100,7 @@ jQuery(document).on("click", ".service-delete-button", function () {
 
       jQuery("#ct-close-popover-delete-service").trigger("click");
 
-      jQuery("#servicelist"+deleteid).fadeOut("slow");
+      jQuery("#servicelist" + deleteid).fadeOut("slow");
 
     }
 
@@ -4224,7 +4214,7 @@ jQuery(document).on("click", ".ct_upload_img1", function (e) {
 
 
 
-  
+
 
   var img_id = jQuery("#" + ctus + "id").val();
 
@@ -4286,7 +4276,7 @@ jQuery(document).on("click", ".ct_upload_img1", function (e) {
 
       }
 
-      jQuery("#"+imageids).val("");
+      jQuery("#" + imageids).val("");
 
     }
 
@@ -4304,25 +4294,25 @@ jQuery(document).on("click", ".myserviceaddbtn", function () {
 
   var desc = jQuery(".myservicedesc").val();
 
-  var image =  jQuery("#pcasctimagename").val();
+  var image = jQuery("#pcasctimagename").val();
 
   /*  service edit form validation  */
 
   jQuery("#addservice_form").validate();
 
-  jQuery("#ct-service-title").rules("add",{
+  jQuery("#ct-service-title").rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_service_title}
+    messages: { required: errorobj_please_enter_service_title }
 
   });
 
-  jQuery("#ct-service-color-tag").rules("add",{
+  jQuery("#ct-service-color-tag").rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_color_code}
+    messages: { required: errorobj_please_enter_color_code }
 
   });
 
@@ -4344,7 +4334,7 @@ jQuery(document).on("click", ".myserviceaddbtn", function () {
 
     success: function (res) {
 
-      if(parseInt(res) == 1){
+      if (parseInt(res) == 1) {
 
         jQuery(".mainheader_message_fail").show();
 
@@ -4356,7 +4346,7 @@ jQuery(document).on("click", ".myserviceaddbtn", function () {
 
         jQuery(".ct-loading-main").hide();
 
-      } else{
+      } else {
 
         jQuery(".mainheader_message").show();
 
@@ -4396,17 +4386,17 @@ jQuery(document).on("click", ".edtservicebtn", function () {
 
   jQuery("#editform_service" + i).validate();
 
-  jQuery.validator.addMethod("pattern_title", function(value, element) {
+  jQuery.validator.addMethod("pattern_title", function (value, element) {
 
     return this.optional(element) || /^[a-zA-Z '.'_@./#&+-]+$/.test(value);
 
   }, "Enter Only Alphabets");
 
-  jQuery("#ct-service-title" + i).rules("add",{
+  jQuery("#ct-service-title" + i).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_service_title}
+    messages: { required: errorobj_please_enter_service_title }
 
   });
 
@@ -4414,7 +4404,7 @@ jQuery(document).on("click", ".edtservicebtn", function () {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_color_code}
+    messages: { required: errorobj_please_enter_color_code }
 
   });
 
@@ -4446,39 +4436,39 @@ jQuery(document).on("click", ".edtservicebtn", function () {
 
       jQuery(".ct-loading-main").hide();
 
-      jQuery("#detail_myid"+i).fadeOut();
+      jQuery("#detail_myid" + i).fadeOut();
 
-      jQuery("#myid"+i).prop("checked",false);
+      jQuery("#myid" + i).prop("checked", false);
 
-      jQuery("#color_back"+i).css("background-color",color);
+      jQuery("#color_back" + i).css("background-color", color);
 
       var str_title = title;
 
-      str_title = str_title.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+      str_title = str_title.toLowerCase().replace(/\b[a-z]/g, function (letter) {
 
         return letter.toUpperCase();
 
       });
 
-      jQuery("#title_ser"+i).html(str_title);
+      jQuery("#title_ser" + i).html(str_title);
 
-      jQuery("#ct-service-title"+i).val(str_title);
+      jQuery("#ct-service-title" + i).val(str_title);
 
-      
+
 
       jQuery(".ser_del_icon").hide();
 
-      if (image == "" || image == null) {} else {
+      if (image == "" || image == null) { } else {
 
         jQuery(".ct-clean-service-img-icon-label").hide();
 
         jQuery(".ct-clean-service-img-icon-label").removeClass("show");
 
-        jQuery(".old_cam_ser"+i).hide();
+        jQuery(".old_cam_ser" + i).hide();
 
-        jQuery(".del_btn_popup"+i).show();
+        jQuery(".del_btn_popup" + i).show();
 
-        jQuery(".del_btn_popup"+i).addClass("show");
+        jQuery(".del_btn_popup" + i).addClass("show");
 
         jQuery(".new_del_ser").hide();
 
@@ -4510,7 +4500,7 @@ jQuery(document).on("click", ".design_radio_btn", function () {
 
     url: ajax_url + "service_ajax.php",
 
-    success: function (res) {}
+    success: function (res) { }
 
   });
 
@@ -4582,19 +4572,19 @@ jQuery(document).on("click", ".service-methods-delete-button", function () {
 
   jQuery(".ct-loading-main").show();
 
-  var deletemethoid=jQuery(this).attr("data-servicemethodid");
+  var deletemethoid = jQuery(this).attr("data-servicemethodid");
 
-  var datastring={deletemethoid:deletemethoid,action:"deletemethod"};
+  var datastring = { deletemethoid: deletemethoid, action: "deletemethod" };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url + "service_method_ajax.php",
+    url: ajax_url + "service_method_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -4608,7 +4598,7 @@ jQuery(document).on("click", ".service-methods-delete-button", function () {
 
       jQuery("#ct-close-popover-delete-service").trigger("click");
 
-      jQuery("#service_method_"+deletemethoid).fadeOut(1000);
+      jQuery("#service_method_" + deletemethoid).fadeOut(1000);
 
     }
 
@@ -4628,7 +4618,7 @@ jQuery(document).on("change", ".myservices_methods_status", function () {
 
   if (statuss == false) {
 
-    jQuery(this).prop("checked","");
+    jQuery(this).prop("checked", "");
 
     var st = "D";
 
@@ -4664,7 +4654,7 @@ jQuery(document).on("change", ".myservices_methods_status", function () {
 
   });
 
-  event.preventDefault(); 
+  event.preventDefault();
 
 });
 
@@ -4682,11 +4672,11 @@ jQuery(document).on("click", ".btnservices_method", function () {
 
   jQuery("#service_method_addform").validate();
 
-  jQuery("#txtmethodname").rules("add",{
+  jQuery("#txtmethodname").rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_method_title}
+    messages: { required: errorobj_please_enter_method_title }
 
   });
 
@@ -4708,7 +4698,7 @@ jQuery(document).on("click", ".btnservices_method", function () {
 
     success: function (res) {
 
-      if(parseInt(res) == 1){
+      if (parseInt(res) == 1) {
 
         jQuery(".ct-loading-main").hide();
 
@@ -4754,11 +4744,11 @@ jQuery(document).on("click", ".btnservices_method_update", function () {
 
   jQuery("#service_method_editform" + i).validate();
 
-  jQuery("#txtedtmethodname" + i).rules("add",{
+  jQuery("#txtedtmethodname" + i).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_method_title}
+    messages: { required: errorobj_please_enter_method_title }
 
   });
 
@@ -4790,21 +4780,21 @@ jQuery(document).on("click", ".btnservices_method_update", function () {
 
       jQuery(".ct-loading-main").hide();
 
-      jQuery("#detailmes_sp"+i).fadeOut();
+      jQuery("#detailmes_sp" + i).fadeOut();
 
-      jQuery("#sp"+i).prop("checked",false);
+      jQuery("#sp" + i).prop("checked", false);
 
       var str_title = title;
 
-      str_title = str_title.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+      str_title = str_title.toLowerCase().replace(/\b[a-z]/g, function (letter) {
 
         return letter.toUpperCase();
 
       });
 
-      jQuery("#service_name"+i).html(str_title);
+      jQuery("#service_name" + i).html(str_title);
 
-      jQuery("#txtedtmethodname"+i).val(str_title);
+      jQuery("#txtedtmethodname" + i).val(str_title);
 
     }
 
@@ -4838,19 +4828,19 @@ jQuery(document).on("click", ".mybtnservice_method_unitsave", function () {
 
   jQuery("#service_method_unitaddform").validate();
 
-  jQuery("#txtunitnamess").rules("add",{
+  jQuery("#txtunitnamess").rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_unit_title}
+    messages: { required: errorobj_please_enter_unit_title }
 
   });
 
-  jQuery("#txtbasepricess").rules("add",{
+  jQuery("#txtbasepricess").rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_base_price_for_unit}
+    messages: { required: errorobj_please_assign_base_price_for_unit }
 
   });
 
@@ -4872,7 +4862,7 @@ jQuery(document).on("click", ".mybtnservice_method_unitsave", function () {
 
     success: function (res) {
 
-      if(parseInt(res) == 1){
+      if (parseInt(res) == 1) {
 
         jQuery(".ct-loading-main").hide();
 
@@ -4886,7 +4876,7 @@ jQuery(document).on("click", ".mybtnservice_method_unitsave", function () {
 
       }
 
-      else{
+      else {
 
         jQuery(".mainheader_message").show();
 
@@ -4968,7 +4958,7 @@ jQuery(document).on("change", ".myservices_methods_units_status", function (even
 
         jQuery(".ct-loading-main").hide();
 
-        jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
         jQuery("#ct_sucess_message").html(errorobj_units_status_updated);
 
@@ -4980,7 +4970,7 @@ jQuery(document).on("change", ".myservices_methods_units_status", function (even
 
     });
 
-    event.preventDefault(); 
+    event.preventDefault();
 
   } else {
 
@@ -4990,31 +4980,31 @@ jQuery(document).on("change", ".myservices_methods_units_status", function (even
 
     jQuery.ajax({
 
-        type: "post",
+      type: "post",
 
-        data: { id: id, changestatus: "D" },
+      data: { id: id, changestatus: "D" },
 
-        url: ajax_url + "service_method_units_ajax.php",
+      url: ajax_url + "service_method_units_ajax.php",
 
-        success: function (res) {
+      success: function (res) {
 
-          jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-          jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
-          jQuery("#ct_sucess_message").html(errorobj_units_status_updated);
+        jQuery("#ct_sucess_message").html(errorobj_units_status_updated);
 
-          jQuery(".mainheader_message").show();
+        jQuery(".mainheader_message").show();
 
-          jQuery(".mainheader_message").fadeOut(5000);
+        jQuery(".mainheader_message").fadeOut(5000);
 
-          location.reload();
+        location.reload();
 
-        }
+      }
 
     });
 
-    event.preventDefault(); 
+    event.preventDefault();
 
   }
 
@@ -5044,51 +5034,51 @@ jQuery(document).on("click", ".mybtnservice_method_unitupdate", function () {
 
   jQuery("#service_method_unit_price" + i).validate();
 
-  jQuery("#txtedtunitname" + i).rules("add",{
+  jQuery("#txtedtunitname" + i).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_unit_title}
+    messages: { required: errorobj_please_enter_unit_title }
 
   });
 
-  jQuery("#txtedtunithours" + i).rules("add",{
+  jQuery("#txtedtunithours" + i).rules("add", {
 
-    pattern_onlynumber: true, range:function(element){if (parseInt(jQuery("#txtedtunitmints"+i).val()) > 0){return [0,23];}else {return [0,24];}},
+    pattern_onlynumber: true, range: function (element) { if (parseInt(jQuery("#txtedtunitmints" + i).val()) > 0) { return [0, 23]; } else { return [0, 24]; } },
 
-    messages: {pattern_onlynumber: errorobj_enter_only_digits, range:errorobj_please_enter_hours}
-
-  });
-
-  jQuery("#txtedtunitmints" + i).rules("add",{
-
-    required: function(element) {if (parseInt(jQuery("#txtedtunithours"+i).val()) > 0){return false;}else { return true;}}, pattern_onlynumber: true,range:function(element){if (parseInt(jQuery("#txtedtunithours"+i).val()) > 0){return [0,59];}else {return [5,59];}},
-
-    messages: {required: errorobj_please_enter_minutes, pattern_onlynumber: errorobj_enter_only_digits, range:errorobj_please_enter_minimum_5_minutes_maximum_59_minutes}
+    messages: { pattern_onlynumber: errorobj_enter_only_digits, range: errorobj_please_enter_hours }
 
   });
 
-  jQuery("#txtedtunitbaseprice" + i).rules("add",{
+  jQuery("#txtedtunitmints" + i).rules("add", {
+
+    required: function (element) { if (parseInt(jQuery("#txtedtunithours" + i).val()) > 0) { return false; } else { return true; } }, pattern_onlynumber: true, range: function (element) { if (parseInt(jQuery("#txtedtunithours" + i).val()) > 0) { return [0, 59]; } else { return [5, 59]; } },
+
+    messages: { required: errorobj_please_enter_minutes, pattern_onlynumber: errorobj_enter_only_digits, range: errorobj_please_enter_minimum_5_minutes_maximum_59_minutes }
+
+  });
+
+  jQuery("#txtedtunitbaseprice" + i).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_base_price_for_unit}
+    messages: { required: errorobj_please_assign_base_price_for_unit }
 
   });
 
   jQuery("#txtedtunitminlimit" + i).rules("add", {
 
-    required: true, pattern_onlynumber: true,min:1,
+    required: true, pattern_onlynumber: true, min: 1,
 
-    messages: {required: errorobj_please_enter_minlimit, pattern_onlynumber: errorobj_enter_only_digits}
+    messages: { required: errorobj_please_enter_minlimit, pattern_onlynumber: errorobj_enter_only_digits }
 
-  });   
+  });
 
-  jQuery("#txtedtunitmaxlimit" + i).rules("add",{
+  jQuery("#txtedtunitmaxlimit" + i).rules("add", {
 
-    required: true, pattern_onlynumber: true, min:jQuery("#txtedtunitminlimit1").val(),
+    required: true, pattern_onlynumber: true, min: jQuery("#txtedtunitminlimit1").val(),
 
-    messages: {required: errorobj_please_enter_maxlimit, pattern_onlynumber: errorobj_enter_only_digits,min:errorobj_please_enter_minvalue_for_maxlimit}
+    messages: { required: errorobj_please_enter_maxlimit, pattern_onlynumber: errorobj_enter_only_digits, min: errorobj_please_enter_minvalue_for_maxlimit }
 
   });
 
@@ -5122,17 +5112,17 @@ jQuery(document).on("click", ".mybtnservice_method_unitupdate", function () {
 
       var str = jQuery(".mytxtservice_method_uniteditname" + i).val();
 
-      str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+      str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
 
         return letter.toUpperCase();
 
       });
 
-      jQuery("#method_unit_name"+i).html(str);
+      jQuery("#method_unit_name" + i).html(str);
 
-      jQuery("#detailmes_sp"+i).fadeOut();
+      jQuery("#detailmes_sp" + i).fadeOut();
 
-      jQuery("#sp"+i).prop("checked",false);
+      jQuery("#sp" + i).prop("checked", false);
 
       location.reload();
 
@@ -5194,19 +5184,19 @@ jQuery(document).on("click", ".myaddnewatyrule_units", function () {
 
   jQuery("#mynewaddedform_units" + id).validate();
 
-  jQuery("#mynewaddedqty_units" + id).rules("add",{
+  jQuery("#mynewaddedqty_units" + id).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_enter_some_qty, pattern_price: "Please enter valid unit"}
+    messages: { required: errorobj_please_enter_some_qty, pattern_price: "Please enter valid unit" }
 
   });
 
-  jQuery("#mynewaddedprice_units" + id).rules("add",{
+  jQuery("#mynewaddedprice_units" + id).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
@@ -5296,19 +5286,19 @@ jQuery(document).on("click", ".myloadedbtnsave_units", function () {
 
   jQuery("#myeditform_units" + editid).validate();
 
-  jQuery("#myeditqty_units" + editid).rules("add",{
+  jQuery("#myeditqty_units" + editid).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_enter_some_qty, pattern_price: "Please enter valid unit"}
+    messages: { required: errorobj_please_enter_some_qty, pattern_price: "Please enter valid unit" }
 
   });
 
-  jQuery("#myeditprice_units" + editid).rules("add",{
+  jQuery("#myeditprice_units" + editid).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
@@ -5504,7 +5494,7 @@ jQuery(document).on("click", ".ct_upload_img2", function (e) {
 
       }
 
-      jQuery("#"+imageids).val("");
+      jQuery("#" + imageids).val("");
 
     }
 
@@ -5536,63 +5526,63 @@ jQuery(document).on("click", ".btnaddon_save", function () {
 
   jQuery("#mynewformfor_insertaddons").validate();
 
-  jQuery.validator.addMethod("pattern_title", function(value, element) {
+  jQuery.validator.addMethod("pattern_title", function (value, element) {
 
     return this.optional(element) || /^[a-zA-Z '.'_@./#&+-]+$/.test(value);
 
   }, errorobj_enter_only_alphabets);
 
-  jQuery("#mynewtitlefor_addons").rules("add",{
+  jQuery("#mynewtitlefor_addons").rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_title}
+    messages: { required: errorobj_please_enter_title }
 
   });
 
-  jQuery("#addon_add_hours").rules("add",{
+  jQuery("#addon_add_hours").rules("add", {
 
-    pattern_onlynumber: true, range:function(element){if (parseInt(jQuery("#addon_add_mints").val()) > 0){return [0,23];}else {return [0,24];}},
+    pattern_onlynumber: true, range: function (element) { if (parseInt(jQuery("#addon_add_mints").val()) > 0) { return [0, 23]; } else { return [0, 24]; } },
 
-    messages: {pattern_onlynumber: errorobj_enter_only_digits, range:errorobj_please_enter_hours}
-
-  });
-
-  jQuery("#addon_add_mints").rules("add",{
-
-    required: function(element) {if (parseInt(jQuery("#addon_add_hours").val()) > 0){return false;}else { return true;}}, pattern_onlynumber: true,range:function(element){if (parseInt(jQuery("#addon_add_hours").val()) > 0){return [0,59];}else {return [5,59];}},
-
-    messages: {required: errorobj_please_enter_minutes, pattern_onlynumber: errorobj_enter_only_digits, range:errorobj_please_enter_minimum_5_minutes_maximum_59_minutes}
+    messages: { pattern_onlynumber: errorobj_enter_only_digits, range: errorobj_please_enter_hours }
 
   });
 
-  jQuery("#mynewbasepricefor_addons").rules("add",{
+  jQuery("#addon_add_mints").rules("add", {
+
+    required: function (element) { if (parseInt(jQuery("#addon_add_hours").val()) > 0) { return false; } else { return true; } }, pattern_onlynumber: true, range: function (element) { if (parseInt(jQuery("#addon_add_hours").val()) > 0) { return [0, 59]; } else { return [5, 59]; } },
+
+    messages: { required: errorobj_please_enter_minutes, pattern_onlynumber: errorobj_enter_only_digits, range: errorobj_please_enter_minimum_5_minutes_maximum_59_minutes }
+
+  });
+
+  jQuery("#mynewbasepricefor_addons").rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
-  jQuery("#mynewbasemaxqtyfor_addons").rules("add",{
+  jQuery("#mynewbasemaxqtyfor_addons").rules("add", {
 
     required: true, pattern_onlynumber: true,
 
-    messages: {required: errorobj_please_assign_qty, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_qty, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
-  if (!jQuery("#mynewformfor_insertaddons").valid()) {  return false; }
+  if (!jQuery("#mynewformfor_insertaddons").valid()) { return false; }
 
   jQuery(".ct-loading-main").show();
 
-  if(predefineimage == "none"){
+  if (predefineimage == "none") {
 
     predefineimage = "";
 
   }
 
-  if(typeof predefineimage === "undefined"){
+  if (typeof predefineimage === "undefined") {
 
     predefineimage = "";
 
@@ -5602,13 +5592,13 @@ jQuery(document).on("click", ".btnaddon_save", function () {
 
     type: "post",
 
-    data: { "service_id": localStorage["serviceid"], "addon_service_name": addon_service_name, "addon_hours": addon_hours, "addon_mints": addon_mints, "base_price": base_price, "maxqty": maxqty, "image": image, "predefineimage": predefineimage, "predefineimage_title" : predefine_image_title, "multipleqty": multi, "status": "D", "operationinsert": 1 },
+    data: { "service_id": localStorage["serviceid"], "addon_service_name": addon_service_name, "addon_hours": addon_hours, "addon_mints": addon_mints, "base_price": base_price, "maxqty": maxqty, "image": image, "predefineimage": predefineimage, "predefineimage_title": predefine_image_title, "multipleqty": multi, "status": "D", "operationinsert": 1 },
 
     url: ajax_url + "service_addons_ajax.php",
 
     success: function (res) {
 
-      if(jQuery.trim(res) == 1){
+      if (jQuery.trim(res) == 1) {
 
         jQuery(".ct-loading-main").hide();
 
@@ -5622,7 +5612,7 @@ jQuery(document).on("click", ".btnaddon_save", function () {
 
       }
 
-      else{
+      else {
 
         jQuery(".mainheader_message").show();
 
@@ -5688,7 +5678,8 @@ jQuery(document).on("change", ".myservices_addons_status", function () {
 
       type: "post",
 
-      data: { id: id, changestatus: "D"
+      data: {
+        id: id, changestatus: "D"
 
       },
 
@@ -5742,7 +5733,7 @@ jQuery(document).on("click", ".service-addons-delete-button", function () {
 
       jQuery(".mainheader_message").fadeOut(3000);
 
-      jQuery("#addons_service_"+id).fadeOut(1000);
+      jQuery("#addons_service_" + id).fadeOut(1000);
 
     }
 
@@ -5758,9 +5749,9 @@ jQuery(document).on("click", ".btneditaddon_service", function () {
 
   var image = jQuery("#pcaol" + edtid + "ctimagename").val();
 
-  var predefineimage = jQuery("#addonid_"+edtid).attr("data-name");
+  var predefineimage = jQuery("#addonid_" + edtid).attr("data-name");
 
-  var predefine_image_title = jQuery("#addonid_"+edtid).attr("data-p_i_name");
+  var predefine_image_title = jQuery("#addonid_" + edtid).attr("data-p_i_name");
 
   var addon_hours = jQuery(".txtedtaddon_hours" + edtid).val();
 
@@ -5768,49 +5759,49 @@ jQuery(document).on("click", ".btneditaddon_service", function () {
 
   jQuery("#myformedt_addons_" + edtid).validate();
 
-  jQuery.validator.addMethod("pattern_title", function(value, element) {
+  jQuery.validator.addMethod("pattern_title", function (value, element) {
 
     return this.optional(element) || /^[a-zA-Z '.'_@./#&+-]+$/.test(value);
 
   }, "Enter Only Alphabets");
 
-  jQuery("#myedtaddon_title" + edtid).rules("add",{
+  jQuery("#myedtaddon_title" + edtid).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_title}
+    messages: { required: errorobj_please_enter_title }
 
   });
 
-  jQuery("#addon_edit_hours" + edtid).rules("add",{
+  jQuery("#addon_edit_hours" + edtid).rules("add", {
 
-    pattern_onlynumber: true, range:function(element){if (parseInt(jQuery("#addon_edit_mints"+edtid).val()) > 0){return [0,23];}else {return [0,24];}},
+    pattern_onlynumber: true, range: function (element) { if (parseInt(jQuery("#addon_edit_mints" + edtid).val()) > 0) { return [0, 23]; } else { return [0, 24]; } },
 
-    messages: {pattern_onlynumber: errorobj_enter_only_digits, range:errorobj_please_enter_hours}
-
-  });
-
-  jQuery("#addon_edit_mints" + edtid).rules("add",{
-
-    required: function(element) {if (parseInt(jQuery("#addon_edit_hours"+edtid).val()) > 0){return false;}else { return true;}}, pattern_onlynumber: true,range:function(element){if (parseInt(jQuery("#addon_edit_hours"+edtid).val()) > 0){return [0,59];}else {return [5,59];}},
-
-    messages: {required: errorobj_please_enter_minutes, pattern_onlynumber: errorobj_enter_only_digits, range:errorobj_please_enter_minimum_5_minutes_maximum_59_minutes}
+    messages: { pattern_onlynumber: errorobj_enter_only_digits, range: errorobj_please_enter_hours }
 
   });
 
-  jQuery("#myedtaddon_baseprice" + edtid).rules("add",{
+  jQuery("#addon_edit_mints" + edtid).rules("add", {
+
+    required: function (element) { if (parseInt(jQuery("#addon_edit_hours" + edtid).val()) > 0) { return false; } else { return true; } }, pattern_onlynumber: true, range: function (element) { if (parseInt(jQuery("#addon_edit_hours" + edtid).val()) > 0) { return [0, 59]; } else { return [5, 59]; } },
+
+    messages: { required: errorobj_please_enter_minutes, pattern_onlynumber: errorobj_enter_only_digits, range: errorobj_please_enter_minimum_5_minutes_maximum_59_minutes }
+
+  });
+
+  jQuery("#myedtaddon_baseprice" + edtid).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
-  jQuery("#myedtaddon_maxqty" + edtid).rules("add",{
+  jQuery("#myedtaddon_maxqty" + edtid).rules("add", {
 
     required: true, pattern_onlynumber: true,
 
-    messages: {required: errorobj_please_assign_qty, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_qty, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
@@ -5820,7 +5811,7 @@ jQuery(document).on("click", ".btneditaddon_service", function () {
 
   jQuery(".ct-loading-main").show();
 
-  if(typeof predefineimage === "undefined"){
+  if (typeof predefineimage === "undefined") {
 
     predefineimage = "";
 
@@ -5830,7 +5821,7 @@ jQuery(document).on("click", ".btneditaddon_service", function () {
 
     type: "post",
 
-    data: { "id": jQuery(this).attr("data-id"), "addon_service_name": jQuery(".txtedtaddon_title" + edtid).val(), "addon_hours": addon_hours, "addon_mints": addon_mints, "base_price": jQuery(".txtedtaddon_baseprice" + edtid).val(), "maxqty": jQuery(".txtedtaddon_maxqty" + edtid).val(), "image": image, "predefineimage": predefineimage, "predefineimage_title" : predefine_image_title,"addon_service_description": jQuery(".myedtaddon_titlenamedesc" + edtid).val() ,"operationedit": 1 },
+    data: { "id": jQuery(this).attr("data-id"), "addon_service_name": jQuery(".txtedtaddon_title" + edtid).val(), "addon_hours": addon_hours, "addon_mints": addon_mints, "base_price": jQuery(".txtedtaddon_baseprice" + edtid).val(), "maxqty": jQuery(".txtedtaddon_maxqty" + edtid).val(), "image": image, "predefineimage": predefineimage, "predefineimage_title": predefine_image_title, "addon_service_description": jQuery(".myedtaddon_titlenamedesc" + edtid).val(), "operationedit": 1 },
 
     url: ajax_url + "service_addons_ajax.php",
 
@@ -5846,23 +5837,23 @@ jQuery(document).on("click", ".btneditaddon_service", function () {
 
       jQuery(".mainheader_message").fadeOut(3000);
 
-      jQuery("#addons_service_name"+edtid).text(title);
+      jQuery("#addons_service_name" + edtid).text(title);
 
-      jQuery("#details_sp"+edtid).fadeOut();
+      jQuery("#details_sp" + edtid).fadeOut();
 
-      jQuery("#sp"+edtid).prop("checked",false);
+      jQuery("#sp" + edtid).prop("checked", false);
 
-      if(image==null || image==""){} else {
+      if (image == null || image == "") { } else {
 
-        jQuery(".cam_btn_addon"+edtid).removeClass("show");
+        jQuery(".cam_btn_addon" + edtid).removeClass("show");
 
-        jQuery(".ser_addons"+edtid).hide();
+        jQuery(".ser_addons" + edtid).hide();
 
-        jQuery(".del_btn_addon"+edtid).addClass("show");
+        jQuery(".del_btn_addon" + edtid).addClass("show");
 
-        jQuery(".addons_del_icon"+edtid).removeClass("show");
+        jQuery(".addons_del_icon" + edtid).removeClass("show");
 
-        jQuery(".addons_del_icon"+edtid).hide();
+        jQuery(".addons_del_icon" + edtid).hide();
 
         jQuery(".error_image").hide();
 
@@ -6026,23 +6017,23 @@ jQuery(document).on("click", ".myloadedbtnsave_addons", function () {
 
   jQuery("#myedtform_addonunits" + editid).validate();
 
-  jQuery("#myedtqty_addon" + editid).rules("add",{
+  jQuery("#myedtqty_addon" + editid).rules("add", {
 
     required: true, pattern_onlynumber: true,
 
-    messages: {required: errorobj_please_enter_some_qty}
+    messages: { required: errorobj_please_enter_some_qty }
 
   });
 
-  jQuery("#myedtprice_addon" + editid).rules("add",{
+  jQuery("#myedtprice_addon" + editid).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
-  if (!jQuery("#myedtform_addonunits" + editid).valid()) {return false;}
+  if (!jQuery("#myedtform_addonunits" + editid).valid()) { return false; }
 
   jQuery(".ct-loading-main").show();
 
@@ -6086,25 +6077,25 @@ jQuery(document).on("click", ".mybtnaddnewqty_addon", function () {
 
   /* service edit form validation */
 
-  jQuery("#mynewaddedform_addonunits"+id).validate();
+  jQuery("#mynewaddedform_addonunits" + id).validate();
 
-  jQuery("#mynewaddedqty_addon"+id).rules("add",{
+  jQuery("#mynewaddedqty_addon" + id).rules("add", {
 
     required: true, pattern_onlynumber: true,
 
-    messages: {required: errorobj_please_enter_some_qty}
+    messages: { required: errorobj_please_enter_some_qty }
 
   });
 
-  jQuery("#mynewaddedprice_addon"+id).rules("add",{
+  jQuery("#mynewaddedprice_addon" + id).rules("add", {
 
     required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price}
+    messages: { required: errorobj_please_assign_price, pattern_price: errorobj_please_enter_valid_price }
 
   });
 
-  if (!jQuery("#mynewaddedform_addonunits"+id).valid()) { return false; }
+  if (!jQuery("#mynewaddedform_addonunits" + id).valid()) { return false; }
 
   jQuery(".ct-loading-main").show();
 
@@ -6216,9 +6207,9 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly", function () {
 
   var values = jQuery(".prove_schedule_type").text();
 
-  if(values==""){
+  if (values == "") {
 
-    values="weekly";
+    values = "weekly";
 
   }
 
@@ -6272,9 +6263,9 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly", function () {
 
   var s = 1;
 
-  for(var i = 0;i<=starttimenew.length;i++){
+  for (var i = 0; i <= starttimenew.length; i++) {
 
-    if(starttimenew[i] > endtimenew[i]){
+    if (starttimenew[i] > endtimenew[i]) {
 
       s++;
 
@@ -6282,11 +6273,11 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly", function () {
 
   }
 
-  if(s>1){
+  if (s > 1) {
 
     jQuery(".mainheader_message_fail").show();
 
-    jQuery(".mainheader_message_inner_fail").css("display","inline");
+    jQuery(".mainheader_message_inner_fail").css("display", "inline");
 
     jQuery("#ct_sucess_message_fail").html(errorobj_please_select_porper_time_slots);
 
@@ -6294,7 +6285,7 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly", function () {
 
     jQuery(".ct-loading-main").hide();
 
-  } else{
+  } else {
 
     jQuery.ajax({
 
@@ -6460,7 +6451,7 @@ jQuery(document).on("click", ".myct-add-staff-breaks", function () {
 
 });
 
-jQuery(document).on("change",".selectpickerstart",function(){
+jQuery(document).on("change", ".selectpickerstart", function () {
 
   var id = jQuery(this).attr("data-id");
 
@@ -6474,29 +6465,29 @@ jQuery(document).on("change",".selectpickerstart",function(){
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data : { id : id, weekid : weekid, weekday : weekday, start_new_time : starttime, editstarttime_break : 1 },
+    data: { id: id, weekid: weekid, weekday: weekday, start_new_time: starttime, editstarttime_break: 1 },
 
-    url : ajax_url+"weekday_ajax.php",
+    url: ajax_url + "weekday_ajax.php",
 
-    success  :function(res) {   
+    success: function (res) {
 
-      if(jQuery.trim(res)=="done"){
+      if (jQuery.trim(res) == "done") {
 
         jQuery(".mainheader_message").show();
 
-        jQuery(".mainheader_message_inner").css("display","block");
+        jQuery(".mainheader_message_inner").css("display", "block");
 
         jQuery("#ct_sucess_message").html(errorobj_start_break_time_updated);
 
         jQuery(".mainheader_message").fadeOut(5000);
 
-      }else{
+      } else {
 
         jQuery(".mainheader_message_fail").show();
 
-        jQuery(".mainheader_message_inner_fail").css("display","block");
+        jQuery(".mainheader_message_inner_fail").css("display", "block");
 
         jQuery("#ct_sucess_message_fail").html(errorobj_please_select_time_between_day_availability_time);
 
@@ -6512,7 +6503,7 @@ jQuery(document).on("change",".selectpickerstart",function(){
 
 /* UPDATE THE SELECTED TIME IN THE TABLE OF THE END BREAK TIME */
 
-jQuery(document).on("change",".selectpickerend",function(){
+jQuery(document).on("change", ".selectpickerend", function () {
 
   var id = jQuery(this).attr("data-id");
 
@@ -6522,47 +6513,47 @@ jQuery(document).on("change",".selectpickerend",function(){
 
   var endtime = jQuery(this).val();
 
-  var brstarttime=jQuery("#start_break_"+id+"_"+weekid+"_"+weekday).val();
+  var brstarttime = jQuery("#start_break_" + id + "_" + weekid + "_" + weekday).val();
 
-  if(endtime < brstarttime){
+  if (endtime < brstarttime) {
 
     jQuery(".mainheader_message_fail").show();
 
-    jQuery(".mainheader_message_inner_fail").css("display","inline");
+    jQuery(".mainheader_message_inner_fail").css("display", "inline");
 
     jQuery("#ct_sucess_message_fail").html(errorobj_break_end_time_should_be_greater_than_start_time);
 
     jQuery(".mainheader_message_fail").fadeOut(5000);
 
-  }else{
+  } else {
 
     /* update the time in end time */
 
     jQuery.ajax({
 
-      type : "post",
+      type: "post",
 
-      data : { id : id, weekid : weekid, weekday : weekday, end_new_time : endtime, editendtime_break : 1 },
+      data: { id: id, weekid: weekid, weekday: weekday, end_new_time: endtime, editendtime_break: 1 },
 
-      url : ajax_url+"weekday_ajax.php",
+      url: ajax_url + "weekday_ajax.php",
 
-      success  :function(res) {
+      success: function (res) {
 
-        if(jQuery.trim(res)=="End Break Time Updated"){
+        if (jQuery.trim(res) == "End Break Time Updated") {
 
           jQuery(".mainheader_message").show();
 
-          jQuery(".mainheader_message_inner").css("display","inline");
+          jQuery(".mainheader_message_inner").css("display", "inline");
 
           jQuery("#ct_sucess_message").html(errorobj_end_break_time_updated);
 
           jQuery(".mainheader_message").fadeOut(5000);
 
-        }else{
+        } else {
 
           jQuery(".mainheader_message_fail").show();
 
-          jQuery(".mainheader_message_inner_fail").css("display","inline");
+          jQuery(".mainheader_message_inner_fail").css("display", "inline");
 
           jQuery("#ct_sucess_message_fail").html(errorobj_please_select_time_between_day_availability_time);
 
@@ -6580,7 +6571,7 @@ jQuery(document).on("change",".selectpickerend",function(){
 
 /* DELETE BREAKS */
 
-jQuery(document).on("click",".mybtndelete_breaks",function(){
+jQuery(document).on("click", ".mybtndelete_breaks", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -6588,13 +6579,13 @@ jQuery(document).on("click",".mybtndelete_breaks",function(){
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data : { id : id, delete_off_breaks : 1 },
+    data: { id: id, delete_off_breaks: 1 },
 
-    url : ajax_url+"weekday_ajax.php",
+    url: ajax_url + "weekday_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -6614,13 +6605,13 @@ jQuery(document).on("click", ".notificationli", function () {
 
   var booking_status = jQuery(this).attr("data-booking_status");
 
-  if(booking_status == "GC"){
+  if (booking_status == "GC") {
 
     jQuery.ajax({
 
       type: "post",
 
-      data: {orderid: orderid, getgc_event_detail: 1},
+      data: { orderid: orderid, getgc_event_detail: 1 },
 
       url: ajax_url + "my_appoint_ajax.php",
 
@@ -6636,13 +6627,13 @@ jQuery(document).on("click", ".notificationli", function () {
 
     });
 
-  }else{
+  } else {
 
     jQuery.ajax({
 
       type: "post",
 
-      data: {orderid: orderid, getcleintdetailwith_updatereadstatus: 1},
+      data: { orderid: orderid, getcleintdetailwith_updatereadstatus: 1 },
 
       url: ajax_url + "my_appoint_ajax.php",
 
@@ -6670,7 +6661,7 @@ jQuery(document).on("click", ".notificationli", function () {
 
 jQuery(document).on("click", ".ct-confirm-appointment", function (e) {
 
-  if(check_update_if_btn == "0"){
+  if (check_update_if_btn == "0") {
 
     check_update_if_btn = "1";
 
@@ -6760,7 +6751,7 @@ jQuery(document).on("click", ".ct-confirm-appointment-cal", function (e) {
 
   jQuery(".ct-loading-main").show();
 
-  if(check_update_if_btn == "0"){
+  if (check_update_if_btn == "0") {
 
     check_update_if_btn = "1";
 
@@ -6850,7 +6841,7 @@ jQuery(document).on("click", ".reject_bookings", function (e) {
 
   jQuery(".ct-loading-main").show();
 
-  if(check_update_if_btn == "0"){
+  if (check_update_if_btn == "0") {
 
     check_update_if_btn = "1";
 
@@ -7034,17 +7025,17 @@ jQuery(document).on("click", "#company_setting", function () {
 
   var company_country = jQuery("#company_country").val();
 
-  var company_country_code = jQuery(".numbercode").text()+","+jQuery(".alphacode").text()+","+jQuery(".selected-flag").attr("title");
+  var company_country_code = jQuery(".numbercode").text() + "," + jQuery(".alphacode").text() + "," + jQuery(".selected-flag").attr("title");
 
   var company_logo = jQuery("#ctsictimagename").val();
 
-  var company_phone = jQuery(".company_country_code_value").text()+""+jQuery("#company_phone").val();
+  var company_phone = jQuery(".company_country_code_value").text() + "" + jQuery("#company_phone").val();
 
-  var dataString = { time_zone: time_zone, sel_language: sel_language, company_name: company_name, company_email: company_email, company_address: company_address, company_city: company_city, company_state: company_state, company_zipcode: company_zipcode, company_country: company_country, company_country_code: company_country_code, company_logo: company_logo, company_phone : company_phone, action: "update_company_setting" };
+  var dataString = { time_zone: time_zone, sel_language: sel_language, company_name: company_name, company_email: company_email, company_address: company_address, company_city: company_city, company_state: company_state, company_zipcode: company_zipcode, company_country: company_country, company_country_code: company_country_code, company_logo: company_logo, company_phone: company_phone, action: "update_company_setting" };
 
   if (jQuery(".error_image").is(":visible")) {
 
-    var dataString = { time_zone: time_zone, sel_language: sel_language, company_name: company_name, company_email: company_email, company_address: company_address, company_city: company_city, company_state: company_state, company_zipcode: company_zipcode, company_country: company_country, company_country_code: company_country_code, company_phone : company_phone, action: "update_company_setting" };
+    var dataString = { time_zone: time_zone, sel_language: sel_language, company_name: company_name, company_email: company_email, company_address: company_address, company_city: company_city, company_state: company_state, company_zipcode: company_zipcode, company_country: company_country, company_country_code: company_country_code, company_phone: company_phone, action: "update_company_setting" };
 
     jQuery(".ct-loading-main").show();
 
@@ -7062,17 +7053,17 @@ jQuery(document).on("click", "#company_setting", function () {
 
           jQuery(".ct-loading-main").hide();
 
-          if(jQuery.trim(response)=="updated"){
+          if (jQuery.trim(response) == "updated") {
 
             jQuery(".mainheader_message").show();
 
-            jQuery(".mainheader_message_inner").css("display","inline");
+            jQuery(".mainheader_message_inner").css("display", "inline");
 
             jQuery("#ct_sucess_message").text(errorobj_updated_company_details);
 
             jQuery(".mainheader_message").fadeOut(3000);
 
-            if(company_logo==null || company_logo==""){}else{
+            if (company_logo == null || company_logo == "") { } else {
 
               jQuery(".set_newcam_icon").removeClass("show");
 
@@ -7092,13 +7083,13 @@ jQuery(document).on("click", "#company_setting", function () {
 
       });
 
-    }else{
+    } else {
 
       jQuery(".ct-loading-main").hide();
 
     }
 
-  } else{ 
+  } else {
 
     jQuery(".ct-loading-main").show();
 
@@ -7116,17 +7107,17 @@ jQuery(document).on("click", "#company_setting", function () {
 
           jQuery(".ct-loading-main").hide();
 
-          if(jQuery.trim(response)=="updated"){
+          if (jQuery.trim(response) == "updated") {
 
             jQuery(".mainheader_message").show();
 
-            jQuery(".mainheader_message_inner").css("display","inline");
+            jQuery(".mainheader_message_inner").css("display", "inline");
 
             jQuery("#ct_sucess_message").text(errorobj_updated_company_details);
 
             jQuery(".mainheader_message").fadeOut(3000);
 
-            if(company_logo==null || company_logo==""){}else{
+            if (company_logo == null || company_logo == "") { } else {
 
               jQuery(".set_newcam_icon").removeClass("show");
 
@@ -7146,7 +7137,7 @@ jQuery(document).on("click", "#company_setting", function () {
 
       });
 
-    }else{
+    } else {
 
       jQuery(".ct-loading-main").hide();
 
@@ -7162,13 +7153,13 @@ jQuery(document).on("click", "#patial-deposit", function () {
 
   if (partialamount_check == true) {
 
-    if(payment_status == "off"){
+    if (payment_status == "off") {
 
       jQuery("#ct-partial-depost_error").show();
 
     }
 
-  } else{
+  } else {
 
     jQuery("#ct-partial-depost_error").hide();
 
@@ -7188,7 +7179,7 @@ jQuery(document).on("click", "#general_setting", function () {
 
   var max_advanced_booking = jQuery("#ct_max_advance_booking_time").val();
 
-  if(max_advanced_booking == ""){}
+  if (max_advanced_booking == "") { }
 
   var booking_padding_time = "";
 
@@ -7250,7 +7241,7 @@ jQuery(document).on("click", "#general_setting", function () {
 
   if (partial_deposit == true) {
 
-    if(payment_status == "on"){
+    if (payment_status == "on") {
 
       status_partial = "Y";
 
@@ -7292,25 +7283,25 @@ jQuery(document).on("click", "#general_setting", function () {
 
     rules: {
 
-      ct_thankyou_page_url: {urlss: true},
+      ct_thankyou_page_url: { urlss: true },
 
-      ct_terms_condition_header: {urlss: true},
+      ct_terms_condition_header: { urlss: true },
 
-      ct_privacy_policy_link: {urlss: true},
+      ct_privacy_policy_link: { urlss: true },
 
-      ct_postal_code : {required : true}
+      ct_postal_code: { required: true }
 
     },
 
     messages: {
 
-      ct_thankyou_page_url: {urlss: errorobj_enter_valid_url},
+      ct_thankyou_page_url: { urlss: errorobj_enter_valid_url },
 
-      ct_terms_condition_header: {urlss: errorobj_enter_valid_url},
+      ct_terms_condition_header: { urlss: errorobj_enter_valid_url },
 
-      ct_privacy_policy_link: {urlss: errorobj_enter_valid_url},
+      ct_privacy_policy_link: { urlss: errorobj_enter_valid_url },
 
-      ct_postal_code: {required: errorobj_you_can_only_use_valid_zipcode}
+      ct_postal_code: { required: errorobj_you_can_only_use_valid_zipcode }
 
     }
 
@@ -7413,13 +7404,13 @@ jQuery(document).on("click", "#general_setting", function () {
   var ct_terms_condition_link = encodeURIComponent(jQuery("#ct_terms_condition_header").val());
   var ct_terms_condition_link_for_staff = encodeURIComponent(jQuery("#ct_terms_condition_link_for_staff").val());
   var ct_terms_condition_link_for_customer = encodeURIComponent(jQuery("#ct_terms_condition_link_for_customer").val());
- 
+
 
   var ct_privacy_policy_link = encodeURIComponent(jQuery("#ct_privacy_policy_link").val());
 
   var ct_front_desc = encodeURIComponent(jQuery("#ct_front_desc").val());
 
-  var dataString = { time_interval: time_interval, ct_allow_privacy_policy: allow_privacy_policy, ct_privacy_policy_link: ct_privacy_policy_link, ct_addons_default_design : ct_addons_default_design, ct_method_default_design : ct_method_default_design, ct_service_default_design : ct_service_default_design, ct_cart_scrollable : ct_cart_scrollable, ct_terms_condition_link : ct_terms_condition_link,ct_terms_condition_link_for_staff:ct_terms_condition_link_for_staff,ct_terms_condition_link_for_customer:ct_terms_condition_link_for_customer, min_advanced_booking: min_advanced_booking, ct_allow_front_desc : ct_allow_front_desc, max_advanced_booking: max_advanced_booking, booking_padding_time: booking_padding_time, service_padding_time_before: service_padding_time_before, service_padding_time_after: service_padding_time_after, cancelled_buffer_time: cancelled_buffer_time, reshedule_buffer_time: reshedule_buffer_time, currency: currency, currency_symbol_position: currency_symbol_position,ct_service_design:ct_service_design ,price_format_decimal_places: price_format_decimal_places, tax_vat_1: tax_vat_1, postal_code_1: postal_code_1, percent_flatfree: percent_flatfree, tax_vat_value: tax_vat_value, status_partial: status_partial, partial_percent_flatfree:partial_percent_flatfree, partial_deposit_amount: partial_deposit_amount, partial_deposit_message: partial_deposit_message, thanks_url: thanks_url, cancel_policy_status:cancel_policy_status, cancel_policy_header:cancel_policy_header, cancel_policy_textarea:cancel_policy_textarea, allow_multiple_booking_for_same_timeslot: allow_multiple_booking_for_same_timeslot, appointment_auto_confirmation: appointment_auto_confirmation, star_show_on_frontend: star_show_on_frontend, allow_time_overlap_booking: allow_time_overlap_booking, allow_terms_and_condition: allow_terms_and_condition, ct_postal_code : ct_postal_code, ct_front_desc : ct_front_desc, ct_calculation_policy : calculation_policy, ct_user_zip_code : ct_user_zip_code,ct_booking_page_design : ct_booking_page_design, google_api_key : google_api_key,minimum_booking_price : minimum_booking_price, action: "update_general_setting" };
+  var dataString = { time_interval: time_interval, ct_allow_privacy_policy: allow_privacy_policy, ct_privacy_policy_link: ct_privacy_policy_link, ct_addons_default_design: ct_addons_default_design, ct_method_default_design: ct_method_default_design, ct_service_default_design: ct_service_default_design, ct_cart_scrollable: ct_cart_scrollable, ct_terms_condition_link: ct_terms_condition_link, ct_terms_condition_link_for_staff: ct_terms_condition_link_for_staff, ct_terms_condition_link_for_customer: ct_terms_condition_link_for_customer, min_advanced_booking: min_advanced_booking, ct_allow_front_desc: ct_allow_front_desc, max_advanced_booking: max_advanced_booking, booking_padding_time: booking_padding_time, service_padding_time_before: service_padding_time_before, service_padding_time_after: service_padding_time_after, cancelled_buffer_time: cancelled_buffer_time, reshedule_buffer_time: reshedule_buffer_time, currency: currency, currency_symbol_position: currency_symbol_position, ct_service_design: ct_service_design, price_format_decimal_places: price_format_decimal_places, tax_vat_1: tax_vat_1, postal_code_1: postal_code_1, percent_flatfree: percent_flatfree, tax_vat_value: tax_vat_value, status_partial: status_partial, partial_percent_flatfree: partial_percent_flatfree, partial_deposit_amount: partial_deposit_amount, partial_deposit_message: partial_deposit_message, thanks_url: thanks_url, cancel_policy_status: cancel_policy_status, cancel_policy_header: cancel_policy_header, cancel_policy_textarea: cancel_policy_textarea, allow_multiple_booking_for_same_timeslot: allow_multiple_booking_for_same_timeslot, appointment_auto_confirmation: appointment_auto_confirmation, star_show_on_frontend: star_show_on_frontend, allow_time_overlap_booking: allow_time_overlap_booking, allow_terms_and_condition: allow_terms_and_condition, ct_postal_code: ct_postal_code, ct_front_desc: ct_front_desc, ct_calculation_policy: calculation_policy, ct_user_zip_code: ct_user_zip_code, ct_booking_page_design: ct_booking_page_design, google_api_key: google_api_key, minimum_booking_price: minimum_booking_price, action: "update_general_setting" };
 
   if (jQuery("#general_setting_form").valid()) {
 
@@ -7435,11 +7426,11 @@ jQuery(document).on("click", "#general_setting", function () {
 
         jQuery(".ct-loading-main").hide();
 
-        if(jQuery.trim(response)=="updated"){
+        if (jQuery.trim(response) == "updated") {
 
           jQuery(".mainheader_message").show();
 
-          jQuery(".mainheader_message_inner").css("display","inline");
+          jQuery(".mainheader_message_inner").css("display", "inline");
 
           jQuery("#ct_sucess_message").text(errorobj_updated_general_settings);
 
@@ -7453,7 +7444,7 @@ jQuery(document).on("click", "#general_setting", function () {
 
   }
 
-  else{
+  else {
 
     jQuery(".ct-loading-main").hide();
 
@@ -7569,17 +7560,17 @@ jQuery(document).on("click", "#btnsave_sms_service", function () {
 
   var sms_plivo_sender_number = "";
 
-  if(jQuery("#myplivo_sender_number").val().indexOf(country_phone_code)){
+  if (jQuery("#myplivo_sender_number").val().indexOf(country_phone_code)) {
 
     sms_plivo_sender_number = jQuery("#myplivo_sender_number").val();
 
   } else {
 
-    sms_plivo_sender_number = jQuery(".company_country_code_value_plivo").text()+""+jQuery("#myadmin_phone_number_plivo").val();
+    sms_plivo_sender_number = jQuery(".company_country_code_value_plivo").text() + "" + jQuery("#myadmin_phone_number_plivo").val();
 
   }
 
-  var sms_plivo_admin_phone_number = jQuery(".company_country_code_value_plivo").text()+""+jQuery("#myadmin_phone_number_plivo").val();
+  var sms_plivo_admin_phone_number = jQuery(".company_country_code_value_plivo").text() + "" + jQuery("#myadmin_phone_number_plivo").val();
 
   var sms_twilio_account_sid = jQuery("#mytwilio_account_sid").val();
 
@@ -7587,7 +7578,7 @@ jQuery(document).on("click", "#btnsave_sms_service", function () {
 
   var sms_twilio_sender_number = jQuery("#mytwilio_sender_number").val();
 
-  var sms_twilio_admin_phone_number = jQuery(".company_country_code_value_twilio").text()+""+jQuery("#myadmin_phone_number").val();
+  var sms_twilio_admin_phone_number = jQuery(".company_country_code_value_twilio").text() + "" + jQuery("#myadmin_phone_number").val();
 
   /* Nexmo STATUS */
 
@@ -7701,45 +7692,45 @@ jQuery(document).on("click", "#btnsave_sms_service", function () {
 
     rules: {
 
-      mytwilio_account_sid : {required: true},
+      mytwilio_account_sid: { required: true },
 
-      mytwilio_auth_token : {required: true},
+      mytwilio_auth_token: { required: true },
 
-      myadmin_phone_number : {required: true},
+      myadmin_phone_number: { required: true },
 
-      myplivo_account_sid : {required: true},
+      myplivo_account_sid: { required: true },
 
-      myplivo_auth_token : {required: true},
+      myplivo_auth_token: { required: true },
 
-      myadmin_phone_number_plivo : {required: true},
+      myadmin_phone_number_plivo: { required: true },
 
-      mytextlocal_username : {required : true},
+      mytextlocal_username: { required: true },
 
-      mytextlocal_account_hash_id : {required : true},
+      mytextlocal_account_hash_id: { required: true },
 
-      ct_sms_textlocal_admin_phone : {required : true}
+      ct_sms_textlocal_admin_phone: { required: true }
 
     },
 
     messages: {
 
-      mytwilio_account_sid : {required: errorobj_please_enter_account_sid},
+      mytwilio_account_sid: { required: errorobj_please_enter_account_sid },
 
-      mytwilio_auth_token : {required: errorobj_please_enter_auth_token},
+      mytwilio_auth_token: { required: errorobj_please_enter_auth_token },
 
-      myadmin_phone_number : {required: errorobj_please_enter_admin_number},
+      myadmin_phone_number: { required: errorobj_please_enter_admin_number },
 
-      myplivo_account_sid : {required: errorobj_please_enter_account_sid},
+      myplivo_account_sid: { required: errorobj_please_enter_account_sid },
 
-      myplivo_auth_token : {required: errorobj_please_enter_auth_token},
+      myplivo_auth_token: { required: errorobj_please_enter_auth_token },
 
-      myadmin_phone_number_plivo : {required: errorobj_please_enter_admin_number},
+      myadmin_phone_number_plivo: { required: errorobj_please_enter_admin_number },
 
-      mytextlocal_username : {required : errorobj_please_enter_account_username},
+      mytextlocal_username: { required: errorobj_please_enter_account_username },
 
-      mytextlocal_account_hash_id : {required : errorobj_please_enter_account_hash_id},
+      mytextlocal_account_hash_id: { required: errorobj_please_enter_account_hash_id },
 
-      ct_sms_textlocal_admin_phone : {required : errorobj_please_enter_admin_number}
+      ct_sms_textlocal_admin_phone: { required: errorobj_please_enter_admin_number }
 
     }
 
@@ -7751,7 +7742,7 @@ jQuery(document).on("click", "#btnsave_sms_service", function () {
 
   var ajax_url = settingObj.ajax_url;
 
-  var dataString = { status_sms_service: sms_service_status, account_sid: sms_twilio_account_sid, auth_token: sms_twilio_auth_token, sender_number: sms_twilio_sender_number, status_sms_to_client: send_sms_to_client_status, status_sms_to_admin: send_sms_to_admin_status, status_sms_to_staff: send_sms_to_staff_status, admin_phone: sms_twilio_admin_phone_number, account_sid_p: sms_plivo_account_sid, auth_token_p: sms_plivo_auth_token, sender_number_p: sms_plivo_sender_number, status_sms_to_client_p: send_sms_to_client_plivo_status, status_sms_to_admin_p: send_sms_to_admin_plivo_status, status_sms_to_staff_p: send_sms_to_staff_plivo_status, admin_phone_p: sms_plivo_admin_phone_number, sms_plivo_status: sms_plivo_status, sms_twilio_status: sms_twilio_status, sms_nexmo_status: sms_nexmo_status, sms_nexmo_api_key: sms_nexmo_api_key, sms_nexmo_api_secret: sms_nexmo_api_secret, sms_nexmo_from: sms_nexmo_from, sms_nexmo_statuss: sms_nexmo_statuss, sms_nexmo_statu_send_client: sms_nexmo_statu_send_client, sms_nexmo_statu_send_admin: sms_nexmo_statu_send_admin, sms_nexmo_statu_send_staff: sms_nexmo_statu_send_staff, sms_nexmo_admin_phone: sms_nexmo_admin_phone, sms_textlocal_status : sms_textlocal_status, sms_textlocal_status_send_client : sms_textlocal_status_send_client, sms_textlocal_status_send_admin : sms_textlocal_status_send_admin, sms_textlocal_status_send_staff : sms_textlocal_status_send_staff, sms_textlocal_username : sms_textlocal_username, sms_textlocal_hashid : sms_textlocal_hashid, textlocal_admin_phone : textlocal_admin_phone, action: "sms_reminder" };
+  var dataString = { status_sms_service: sms_service_status, account_sid: sms_twilio_account_sid, auth_token: sms_twilio_auth_token, sender_number: sms_twilio_sender_number, status_sms_to_client: send_sms_to_client_status, status_sms_to_admin: send_sms_to_admin_status, status_sms_to_staff: send_sms_to_staff_status, admin_phone: sms_twilio_admin_phone_number, account_sid_p: sms_plivo_account_sid, auth_token_p: sms_plivo_auth_token, sender_number_p: sms_plivo_sender_number, status_sms_to_client_p: send_sms_to_client_plivo_status, status_sms_to_admin_p: send_sms_to_admin_plivo_status, status_sms_to_staff_p: send_sms_to_staff_plivo_status, admin_phone_p: sms_plivo_admin_phone_number, sms_plivo_status: sms_plivo_status, sms_twilio_status: sms_twilio_status, sms_nexmo_status: sms_nexmo_status, sms_nexmo_api_key: sms_nexmo_api_key, sms_nexmo_api_secret: sms_nexmo_api_secret, sms_nexmo_from: sms_nexmo_from, sms_nexmo_statuss: sms_nexmo_statuss, sms_nexmo_statu_send_client: sms_nexmo_statu_send_client, sms_nexmo_statu_send_admin: sms_nexmo_statu_send_admin, sms_nexmo_statu_send_staff: sms_nexmo_statu_send_staff, sms_nexmo_admin_phone: sms_nexmo_admin_phone, sms_textlocal_status: sms_textlocal_status, sms_textlocal_status_send_client: sms_textlocal_status_send_client, sms_textlocal_status_send_admin: sms_textlocal_status_send_admin, sms_textlocal_status_send_staff: sms_textlocal_status_send_staff, sms_textlocal_username: sms_textlocal_username, sms_textlocal_hashid: sms_textlocal_hashid, textlocal_admin_phone: textlocal_admin_phone, action: "sms_reminder" };
 
   jQuery.ajax({
 
@@ -7765,11 +7756,11 @@ jQuery(document).on("click", "#btnsave_sms_service", function () {
 
       jQuery(".ct-loading-main").hide();
 
-      if(jQuery.trim(response)=="updated"){
+      if (jQuery.trim(response) == "updated") {
 
         jQuery(".mainheader_message").show();
 
-        jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
         jQuery("#ct_sucess_message").text(errorobj_updated_sms_settings);
 
@@ -7811,35 +7802,35 @@ jQuery(document).on("change", ".payment_choice", function () {
 
   var ext_payments = "";
 
-  
 
-  jQuery(".payment_choice").each(function(){
 
-    if(jQuery(this).hasClass("ct_ext_payments_list") ==true){
+  jQuery(".payment_choice").each(function () {
 
-      ext_payments += " "+jQuery(this).prop("checked");
+    if (jQuery(this).hasClass("ct_ext_payments_list") == true) {
+
+      ext_payments += " " + jQuery(this).prop("checked");
 
     }
 
   });
 
-  
 
-  if(cur_button_id == "paypal-checkout" || cur_button_id == "pay-locally" || cur_button_id == "payu-money" || cur_button_id == "brain-tree"){} else if (jQuery(this).hasClass("ct_indirect_paymethod")){}else{
 
-    jQuery(".payment_choice").each(function(){
+  if (cur_button_id == "paypal-checkout" || cur_button_id == "pay-locally" || cur_button_id == "payu-money" || cur_button_id == "brain-tree") { } else if (jQuery(this).hasClass("ct_indirect_paymethod")) { } else {
+
+    jQuery(".payment_choice").each(function () {
 
       var check = jQuery(this).attr("id");
 
-      if(check == "paypal-checkout" || check == "pay-locally" || check == "payu-money" || check == "brain-tree" || cur_button_id==check || jQuery(this).hasClass("ct_indirect_paymethod") ==true){
+      if (check == "paypal-checkout" || check == "pay-locally" || check == "payu-money" || check == "brain-tree" || cur_button_id == check || jQuery(this).hasClass("ct_indirect_paymethod") == true) {
 
-      }else{
+      } else {
 
-        jQuery("#"+check).attr("checked",false);
+        jQuery("#" + check).attr("checked", false);
 
-        jQuery("#"+check).parent().prop("className","toggle btn btn-danger btn-sm off");
+        jQuery("#" + check).parent().prop("className", "toggle btn btn-danger btn-sm off");
 
-        jQuery(".mycollapse_"+check).removeAttr("style");
+        jQuery(".mycollapse_" + check).removeAttr("style");
 
       }
 
@@ -7847,7 +7838,7 @@ jQuery(document).on("change", ".payment_choice", function () {
 
   }
 
-  if(pay_locally!=true && paypal_checkout!=true && authorize_net_enable!=true && stripe_enable!=true && twocheckout_enable!=true &&  bank_enable!=true && paumoney_enable!=true && braintree_enable!=true && ext_payments.toLowerCase().indexOf("true") <= 0) {
+  if (pay_locally != true && paypal_checkout != true && authorize_net_enable != true && stripe_enable != true && twocheckout_enable != true && bank_enable != true && paumoney_enable != true && braintree_enable != true && ext_payments.toLowerCase().indexOf("true") <= 0) {
 
     jQuery(".mainheader_message_fail").show();
 
@@ -7859,11 +7850,11 @@ jQuery(document).on("change", ".payment_choice", function () {
 
     jQuery(".ct-loading-main").hide();
 
-    jQuery("#"+cur_button_id).prop("checked",true) ;
+    jQuery("#" + cur_button_id).prop("checked", true);
 
-    jQuery("#"+cur_button_id).parent().prop("className","toggle btn btn-success btn-sm on");
+    jQuery("#" + cur_button_id).parent().prop("className", "toggle btn btn-success btn-sm on");
 
-    jQuery(".mycollapse_"+cur_button_id).toggle("blind", {direction: "vertical"}, 1000);
+    jQuery(".mycollapse_" + cur_button_id).toggle("blind", { direction: "vertical" }, 1000);
 
   }
 
@@ -7899,31 +7890,31 @@ jQuery(document).on("click", "#payment_setting", function () {
 
   }
 
-  if(payemnt_paypal == "on"){
+  if (payemnt_paypal == "on") {
 
     jQuery("#payment_getway_form").validate();
 
-    jQuery("#ct_paypal_api_username").rules("add",{
+    jQuery("#ct_paypal_api_username").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_api_username}
-
-    });
-
-    jQuery("#ct_paypal_api_password").rules("add",{
-
-      required:true,
-
-      messages:{required:errorobj_please_enter_api_password}
+      messages: { required: errorobj_please_enter_api_username }
 
     });
 
-    jQuery("#ct_paypal_api_signature").rules("add",{
+    jQuery("#ct_paypal_api_password").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_signature}
+      messages: { required: errorobj_please_enter_api_password }
+
+    });
+
+    jQuery("#ct_paypal_api_signature").rules("add", {
+
+      required: true,
+
+      messages: { required: errorobj_please_enter_signature }
 
     });
 
@@ -7965,23 +7956,23 @@ jQuery(document).on("click", "#payment_setting", function () {
 
   }
 
-  if(stripe_payment=="on"){
+  if (stripe_payment == "on") {
 
     jQuery("#payment_getway_form").validate();
 
-    jQuery("#ct_stripe_secretkey").rules("add",{
+    jQuery("#ct_stripe_secretkey").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_secret_key}
+      messages: { required: errorobj_please_enter_secret_key }
 
     });
 
-    jQuery("#ct_stripe_publishablekey").rules("add",{
+    jQuery("#ct_stripe_publishablekey").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_publishable_key}
+      messages: { required: errorobj_please_enter_publishable_key }
 
     });
 
@@ -8005,33 +7996,33 @@ jQuery(document).on("click", "#payment_setting", function () {
 
   var autorize_login_ID = jQuery("#ct-authorizenet-API-login-ID").val();
 
-  var authorize_transaction_key =  jQuery("#ct-authorize-transaction-key").val();
+  var authorize_transaction_key = jQuery("#ct-authorize-transaction-key").val();
 
   var authorize_test_mode = "off";
 
-  if(jQuery("#authorize-sandbox-mode").prop("checked")){
+  if (jQuery("#authorize-sandbox-mode").prop("checked")) {
 
     authorize_test_mode = "on";
 
   }
 
-  if(authorize_net_status=="on"){
+  if (authorize_net_status == "on") {
 
     jQuery("#payment_getway_form").validate();
 
-    jQuery("#ct-authorizenet-API-login-ID").rules("add",{
+    jQuery("#ct-authorizenet-API-login-ID").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_api_login_id}
+      messages: { required: errorobj_please_enter_api_login_id }
 
     });
 
-    jQuery("#ct-authorize-transaction-key").rules("add",{
+    jQuery("#ct-authorize-transaction-key").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_transaction_key}
+      messages: { required: errorobj_please_enter_transaction_key }
 
     });
 
@@ -8049,31 +8040,31 @@ jQuery(document).on("click", "#payment_setting", function () {
 
   }
 
-  if(twocheckout_payment=="Y"){
+  if (twocheckout_payment == "Y") {
 
     jQuery("#payment_getway_form").validate();
 
-    jQuery("#ct_2checkout_privatekey").rules("add",{
+    jQuery("#ct_2checkout_privatekey").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_private_key}
-
-    });
-
-    jQuery("#ct_2checkout_publishkey").rules("add",{
-
-      required:true,
-
-      messages:{required:errorobj_please_publishable_key}
+      messages: { required: errorobj_please_enter_private_key }
 
     });
 
-    jQuery("#ct_2checkout_sellerid").rules("add",{
+    jQuery("#ct_2checkout_publishkey").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_seller_id}
+      messages: { required: errorobj_please_publishable_key }
+
+    });
+
+    jQuery("#ct_2checkout_sellerid").rules("add", {
+
+      required: true,
+
+      messages: { required: errorobj_please_enter_seller_id }
 
     });
 
@@ -8119,23 +8110,23 @@ jQuery(document).on("click", "#payment_setting", function () {
 
   }
 
-  if(payumoney_status=="Y"){
+  if (payumoney_status == "Y") {
 
     jQuery("#payment_getway_form").validate();
 
-    jQuery("#ct_payumoney_merchant_key").rules("add",{
+    jQuery("#ct_payumoney_merchant_key").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_merchant_key}
+      messages: { required: errorobj_please_enter_merchant_key }
 
     });
 
-    jQuery("#ct_payumoney_salt").rules("add",{
+    jQuery("#ct_payumoney_salt").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_salt_key}
+      messages: { required: errorobj_please_enter_salt_key }
 
     });
 
@@ -8156,32 +8147,32 @@ jQuery(document).on("click", "#payment_setting", function () {
     braintree_status = "Y";
 
   }
-  
-  if(braintree_status=="Y"){
+
+  if (braintree_status == "Y") {
 
     jQuery("#payment_getway_form").validate();
 
-    jQuery("#ct_braintree_merchant_id").rules("add",{
+    jQuery("#ct_braintree_merchant_id").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:"Please Enter Merchant Key"}
-
-    });
-
-    jQuery("#ct_braintree_public_key").rules("add",{
-
-      required:true,
-
-      messages:{required:"Please Enter Public Key"}
+      messages: { required: "Please Enter Merchant Key" }
 
     });
 
-    jQuery("#ct_braintree_private_key").rules("add",{
+    jQuery("#ct_braintree_public_key").rules("add", {
 
-      required:true,
+      required: true,
 
-      messages:{required:errorobj_please_enter_private_key}
+      messages: { required: "Please Enter Public Key" }
+
+    });
+
+    jQuery("#ct_braintree_private_key").rules("add", {
+
+      required: true,
+
+      messages: { required: errorobj_please_enter_private_key }
 
     });
 
@@ -8209,17 +8200,17 @@ jQuery(document).on("click", "#payment_setting", function () {
 
   var bank_description = jQuery("#ct_bank_description").val();
 
-   
+
 
   /*end*/
 
-  var dataString = { braintree_status:braintree_status, braintree_merchantid:braintree_merchantid, braintree_publickey:braintree_publickey, braintree_privatekey:braintree_privatekey, payemnt_gateway_all:payemnt_gateway_all, payemnt_locally:payemnt_locally, payemnt_paypal:payemnt_paypal, username:username, password:password, signature:signature, payemnt_guest:payemnt_guest, test_mode:test_mode, stripe_payment:stripe_payment, secretkey:secretkey, publishablekey:publishablekey, authorize_net_status:authorize_net_status, autorize_login_ID:autorize_login_ID, authorize_transaction_key:authorize_transaction_key, authorize_test_mode:authorize_test_mode, twocheckout_testmode:twocheckout_testmode, twocheckout_payment:twocheckout_payment, twocheckout_privatekey:twocheckout_privatekey, twocheckout_publishkey:twocheckout_publishkey, twocheckout_sellerid:twocheckout_sellerid, payumoney_status:payumoney_status, payumoney_merchantkey:payumoney_merchantkey, payumoney_saltkey:payumoney_saltkey, bank_name:bank_name, bank_status:bank_status, account_name:account_name, account_number:account_number, branch_code:branch_code, ifsc_code:ifsc_code, bank_description:bank_description, action: "payment_setting"};
+  var dataString = { braintree_status: braintree_status, braintree_merchantid: braintree_merchantid, braintree_publickey: braintree_publickey, braintree_privatekey: braintree_privatekey, payemnt_gateway_all: payemnt_gateway_all, payemnt_locally: payemnt_locally, payemnt_paypal: payemnt_paypal, username: username, password: password, signature: signature, payemnt_guest: payemnt_guest, test_mode: test_mode, stripe_payment: stripe_payment, secretkey: secretkey, publishablekey: publishablekey, authorize_net_status: authorize_net_status, autorize_login_ID: autorize_login_ID, authorize_transaction_key: authorize_transaction_key, authorize_test_mode: authorize_test_mode, twocheckout_testmode: twocheckout_testmode, twocheckout_payment: twocheckout_payment, twocheckout_privatekey: twocheckout_privatekey, twocheckout_publishkey: twocheckout_publishkey, twocheckout_sellerid: twocheckout_sellerid, payumoney_status: payumoney_status, payumoney_merchantkey: payumoney_merchantkey, payumoney_saltkey: payumoney_saltkey, bank_name: bank_name, bank_status: bank_status, account_name: account_name, account_number: account_number, branch_code: branch_code, ifsc_code: ifsc_code, bank_description: bank_description, action: "payment_setting" };
 
   payment_save_settings_js(dataString);
 
   payment_validation_js();
 
-  if(jQuery("#payment_getway_form").valid()){
+  if (jQuery("#payment_getway_form").valid()) {
 
     jQuery.ajax({
 
@@ -8233,11 +8224,11 @@ jQuery(document).on("click", "#payment_setting", function () {
 
         jQuery(".ct-loading-main").hide();
 
-        if(jQuery.trim(response)=="updated"){
+        if (jQuery.trim(response) == "updated") {
 
           jQuery(".mainheader_message").show();
 
-          jQuery(".mainheader_message_inner").css("display","inline");
+          jQuery(".mainheader_message_inner").css("display", "inline");
 
           jQuery("#ct_sucess_message").text(errorobj_updated_payments_settings);
 
@@ -8249,7 +8240,7 @@ jQuery(document).on("click", "#payment_setting", function () {
 
     });
 
-  }else{
+  } else {
 
     jQuery(".ct-loading-main").hide();
 
@@ -8313,11 +8304,12 @@ jQuery(document).on("click", "#email_setting", function () {
 
     var port = jQuery("#ct_smtp_port").val();
 
-    var encryptiontype=jQuery("#encryption_val").val();
+    var encryptiontype = jQuery("#encryption_val").val();
 
-    var autheticationtype=jQuery("#authentication_val").val();
+    var autheticationtype = jQuery("#authentication_val").val();
 
-    var dataString = { admin_email: admin_email, staff_email: staff_email, client_email: client_email, sender_name: sender_name, sender_email: sender_email, admin_optional_email : admin_optional_email, appointment_reminder: appointment_reminder, hostname : hostname, username : username, password : password, encryptiontype:encryptiontype, autheticationtype:autheticationtype, port : port, action: "email_setting"
+    var dataString = {
+      admin_email: admin_email, staff_email: staff_email, client_email: client_email, sender_name: sender_name, sender_email: sender_email, admin_optional_email: admin_optional_email, appointment_reminder: appointment_reminder, hostname: hostname, username: username, password: password, encryptiontype: encryptiontype, autheticationtype: autheticationtype, port: port, action: "email_setting"
 
     };
 
@@ -8333,11 +8325,11 @@ jQuery(document).on("click", "#email_setting", function () {
 
         jQuery(".ct-loading-main").hide();
 
-        if(jQuery.trim(response)=="updated"){
+        if (jQuery.trim(response) == "updated") {
 
           jQuery(".mainheader_message").show();
 
-          jQuery(".mainheader_message_inner").css("display","inline");
+          jQuery(".mainheader_message_inner").css("display", "inline");
 
           jQuery("#ct_sucess_message").text(errorobj_updated_email_settings);
 
@@ -8353,19 +8345,19 @@ jQuery(document).on("click", "#email_setting", function () {
 
 });
 
-jQuery(document).on("change","#update_labels",function(){
+jQuery(document).on("change", "#update_labels", function () {
 
   var lang = jQuery(this).val();
 
-  if(lang!=""){
+  if (lang != "") {
 
     jQuery(".show_all_labels").slideUp();
 
     jQuery(".ct-loading-main").show();
 
-    jQuery(".error_labels").css("display","none");
+    jQuery(".error_labels").css("display", "none");
 
-    if(lang=="0" || lang=="none"){
+    if (lang == "0" || lang == "none") {
 
       jQuery(".show_all_labels").slideUp();
 
@@ -8383,7 +8375,7 @@ jQuery(document).on("change","#update_labels",function(){
 
         url: ajax_url + "setting_ajax.php",
 
-        data: { get_all_labels : 1, oflang : lang },
+        data: { get_all_labels: 1, oflang: lang },
 
         success: function (response) {
 
@@ -8439,7 +8431,8 @@ jQuery(document).on("click", ".front_tooltips_setting", function () {
 
   var tooltips_payment_method = jQuery("#ct_front_tool_payment_method").val();
 
-  var dataString = { status_front_tooltips: status_front_tooltips, tooltips_my_booking: tooltips_my_booking, tooltips_postal_code: tooltips_postal_code, tooltips_service: tooltips_service,tooltips_frequently_discount : tooltips_frequently_discount, tooltips_time_slots: tooltips_time_slots, tooltips_personal_details : tooltips_personal_details, tooltips_promocode : tooltips_promocode, tooltips_payment_method : tooltips_payment_method, action: "front_tooltips_setting"
+  var dataString = {
+    status_front_tooltips: status_front_tooltips, tooltips_my_booking: tooltips_my_booking, tooltips_postal_code: tooltips_postal_code, tooltips_service: tooltips_service, tooltips_frequently_discount: tooltips_frequently_discount, tooltips_time_slots: tooltips_time_slots, tooltips_personal_details: tooltips_personal_details, tooltips_promocode: tooltips_promocode, tooltips_payment_method: tooltips_payment_method, action: "front_tooltips_setting"
 
   };
 
@@ -8455,11 +8448,11 @@ jQuery(document).on("click", ".front_tooltips_setting", function () {
 
       jQuery(".ct-loading-main").hide();
 
-      if(jQuery.trim(response)=="updated"){
+      if (jQuery.trim(response) == "updated") {
 
         jQuery(".mainheader_message").show();
 
-        jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
         jQuery("#ct_sucess_message").text(errorobj_updated_email_settings);
 
@@ -8477,7 +8470,7 @@ jQuery(document).on("click", ".front_tooltips_setting", function () {
 
 /* Edit Coupon */
 
-jQuery(document).on("ajaxComplete click",".ct-edit-coupon",function(){
+jQuery(document).on("ajaxComplete click", ".ct-edit-coupon", function () {
 
   var promocodeid = jQuery(this).attr("data-id");
 
@@ -8523,23 +8516,23 @@ jQuery(document).on("click", "#promo_code", function () {
 
     rules: {
 
-      coupon_code: {required: true},
+      coupon_code: { required: true },
 
-      coupon_limit: {required: true, pattern_cp: true},
+      coupon_limit: { required: true, pattern_cp: true },
 
-      coupon_value: {required: true, pattern_cp: true},
+      coupon_value: { required: true, pattern_cp: true },
 
-      coupon_expiry_date: {required: true},
+      coupon_expiry_date: { required: true },
 
     }, messages: {
 
-      coupon_code: {required: errorobj_please_enter_coupon_code},
+      coupon_code: { required: errorobj_please_enter_coupon_code },
 
-      coupon_limit: {required: errorobj_please_enter_coupon_limit, pattern_cp: errorobj_please_enter_only_numerics},
+      coupon_limit: { required: errorobj_please_enter_coupon_limit, pattern_cp: errorobj_please_enter_only_numerics },
 
-      coupon_value: {required: errorobj_please_enter_coupon_value, pattern_cp: errorobj_please_enter_only_numerics},
+      coupon_value: { required: errorobj_please_enter_coupon_value, pattern_cp: errorobj_please_enter_only_numerics },
 
-      coupon_expiry_date: {required: errorobj_please_select_expiry_date},
+      coupon_expiry_date: { required: errorobj_please_select_expiry_date },
 
     }
 
@@ -8561,7 +8554,7 @@ jQuery(document).on("click", "#promo_code", function () {
 
     success: function (response) {
 
-      if(parseInt(response) == 1){
+      if (parseInt(response) == 1) {
 
         jQuery(".mainheader_message_fail").show();
 
@@ -8595,7 +8588,7 @@ jQuery(document).on("click", ".mybtndeletepromocode", function () {
 
   jQuery(".ct-loading-main").show();
 
-  var datastring = {recordid: recordid, action: "delete_record"};
+  var datastring = { recordid: recordid, action: "delete_record" };
 
   jQuery.ajax({
 
@@ -8635,31 +8628,31 @@ jQuery(document).on("click", ".mybtnupdatepromocode", function () {
 
   jQuery("#update_promo_formss" + id).validate();
 
-  jQuery("#edit_value" + id).rules("add",{
-
-    required: true, 
-
-    messages: {required: errorobj_please_enter_coupon_value}
-
-  });
-
-  jQuery("#edit_coupon_code" + id).rules("add",{
+  jQuery("#edit_value" + id).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_coupon_code}
+    messages: { required: errorobj_please_enter_coupon_value }
 
   });
 
-  jQuery("#edit_limit" + id).rules("add",{
+  jQuery("#edit_coupon_code" + id).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_coupon_limit}
+    messages: { required: errorobj_please_enter_coupon_code }
 
   });
 
-  if (!jQuery("#update_promo_formss" + id).valid()) {return false;}
+  jQuery("#edit_limit" + id).rules("add", {
+
+    required: true,
+
+    messages: { required: errorobj_please_enter_coupon_limit }
+
+  });
+
+  if (!jQuery("#update_promo_formss" + id).valid()) { return false; }
 
   jQuery(".ct-loading-main").show();
 
@@ -8795,7 +8788,7 @@ jQuery(document).on("click", ".booking_methods", function () {
 
   var table = jQuery("#table-booking-method").DataTable();
 
-  var dataString = { id : id, action: "display_booking_method" }
+  var dataString = { id: id, action: "display_booking_method" }
 
   jQuery(".ct-loading-main").show();
 
@@ -9035,39 +9028,39 @@ jQuery(document).on("click", ".myregistercust_bookings", function () {
 
 jQuery(document).on("click", ".myguestcust_bookings", function () {
 
-    var id = jQuery(this).attr("data-id");
+  var id = jQuery(this).attr("data-id");
 
-    var email = jQuery(this).attr("data-email");
+  var email = jQuery(this).attr("data-email");
 
-    var table = jQuery("#guest-client-booking-details_new").DataTable();
+  var table = jQuery("#guest-client-booking-details_new").DataTable();
 
-    var dataString = {
+  var dataString = {
 
-        orderid: id,
+    orderid: id,
 
-        guest: 1,
+    guest: 1,
 
-        email: email
+    email: email
 
-    };
+  };
 
-    jQuery.ajax({
+  jQuery.ajax({
 
-        type: "POST",
+    type: "POST",
 
-        url: ajax_url + "customer_admin_ajax.php",
+    url: ajax_url + "customer_admin_ajax.php",
 
-        data: dataString,
+    data: dataString,
 
-        success: function (res) {
+    success: function (res) {
 
-            table.destroy();
+      table.destroy();
 
-            jQuery("#details_booking_display_guest").html(res);
+      jQuery("#details_booking_display_guest").html(res);
 
-        }
+    }
 
-    });
+  });
 
 });
 
@@ -9103,7 +9096,7 @@ jQuery(document).on("click", ".mybtndelete_guest_customers_entry", function () {
 
 jQuery(document).on("click", "#logout", function () {
 
-  var site_url=site_ur.site_url;
+  var site_url = site_ur.site_url;
 
   var user = jQuery(this).attr("data-id");
 
@@ -9117,11 +9110,11 @@ jQuery(document).on("click", "#logout", function () {
 
     success: function (res) {
 
-      if(user=="user"){
+      if (user == "user") {
 
-        window.location=site_url+"admin/";
+        window.location = site_url + "admin/";
 
-      } else{
+      } else {
 
         location.reload();
 
@@ -9215,7 +9208,7 @@ jQuery(document).on("click", ".ct_upload_img3", function (e) {
 
       jQuery(".error_image").hide();
 
-      jQuery("#"+imageids).val("");
+      jQuery("#" + imageids).val("");
 
     }
 
@@ -9243,65 +9236,65 @@ jQuery(document).on("click", ".mybtnadminprofile_save", function () {
 
   jQuery("#admin_info_form").validate();
 
-  jQuery("#adminfullname").rules("add",{
+  jQuery("#adminfullname").rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_fullname}
+    messages: { required: errorobj_please_enter_fullname }
 
   });
 
-  if(new_email!=old_email){    
+  if (new_email != old_email) {
 
-    jQuery(".admin_inputEmail").rules("add",{
+    jQuery(".admin_inputEmail").rules("add", {
 
-      required: true, email:true, remote: { url:ajax_url+"staff_ajax.php", type: "POST" },
+      required: true, email: true, remote: { url: ajax_url + "staff_ajax.php", type: "POST" },
 
-      messages: {required: errorobj_please_enter_email, email:errorobj_please_enter_valid_email_address, remote:errorobj_email_already_exists }
+      messages: { required: errorobj_please_enter_email, email: errorobj_please_enter_valid_email_address, remote: errorobj_email_already_exists }
 
     });
 
   }
 
-  jQuery("#adminzip").rules("add",{
+  jQuery("#adminzip").rules("add", {
 
-    minlength : 3,maxlength : 7,
+    minlength: 3, maxlength: 7,
 
-    messages: {minlength: errorobj_please_enter_minimum_3_chars,maxlength: errorobj_please_enter_only_7_chars_maximum}
+    messages: { minlength: errorobj_please_enter_minimum_3_chars, maxlength: errorobj_please_enter_only_7_chars_maximum }
 
   });
 
-  jQuery("#adminphone").rules("add",{
+  jQuery("#adminphone").rules("add", {
 
     pattern_phone: true, minlength: 10, maxlength: 10,
 
-    messages: { pattern_phone : errorobj_please_enter_valid_number_with_country_code, minlength: errorobj_please_enter_valid_number, maxlength: errorobj_please_enter_valid_number }
+    messages: { pattern_phone: errorobj_please_enter_valid_number_with_country_code, minlength: errorobj_please_enter_valid_number, maxlength: errorobj_please_enter_valid_number }
 
   });
 
   if (jQuery(".ct-change-password").is(":visible")) {
 
-    jQuery("#oldpass").rules("add",{
+    jQuery("#oldpass").rules("add", {
 
       required: true, user_profile_pattern_password: true,
 
-      messages: {required: errorobj_please_enter_old_password,minlength: errorobj_password_must_be_8_character_long}
+      messages: { required: errorobj_please_enter_old_password, minlength: errorobj_password_must_be_8_character_long }
 
     });
 
-    jQuery("#newpass").rules("add",{
+    jQuery("#newpass").rules("add", {
 
-      required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
+      required: true, user_profile_pattern_password: true, minlength: 8, maxlength: 20,
 
-      messages: {required: errorobj_please_enter_new_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
+      messages: { required: errorobj_please_enter_new_password, minlength: errorobj_password_must_be_8_character_long, maxlength: errorobj_password_should_not_exist_more_then_20_characters }
 
     });
 
-    jQuery("#retypenewpass").rules("add",{
+    jQuery("#retypenewpass").rules("add", {
 
-      required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
+      required: true, user_profile_pattern_password: true, minlength: 8, maxlength: 20,
 
-      messages: {required: errorobj_please_enter_confirm_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
+      messages: { required: errorobj_please_enter_confirm_password, minlength: errorobj_password_must_be_8_character_long, maxlength: errorobj_password_should_not_exist_more_then_20_characters }
 
     });
 
@@ -9313,7 +9306,7 @@ jQuery(document).on("click", ".mybtnadminprofile_save", function () {
 
     type: "post",
 
-    data: { "fullname": jQuery("#adminfullname").val(), "adminemail": jQuery("#inputEmail").val(), "phone": jQuery("#adminphone").val(), "address": jQuery("#adminaddress").val(), "city": jQuery("#admincity").val(), "state": jQuery("#adminstate").val(), "zip": jQuery("#adminzip").val(), "country": jQuery("#admincountry").val(), "dboldpassword" : jQuery("#dboldpass").val(), "oldpassword" : jQuery("#oldpass").val(), "newpassword" : jQuery("#newpass").val(), "retypepassword" : jQuery("#retypenewpass").val(), "id": adminid, "updatepass": 1 },
+    data: { "fullname": jQuery("#adminfullname").val(), "adminemail": jQuery("#inputEmail").val(), "phone": jQuery("#adminphone").val(), "address": jQuery("#adminaddress").val(), "city": jQuery("#admincity").val(), "state": jQuery("#adminstate").val(), "zip": jQuery("#adminzip").val(), "country": jQuery("#admincountry").val(), "dboldpassword": jQuery("#dboldpass").val(), "oldpassword": jQuery("#oldpass").val(), "newpassword": jQuery("#newpass").val(), "retypepassword": jQuery("#retypenewpass").val(), "id": adminid, "updatepass": 1 },
 
     url: ajax_url + "admin_profile_ajax.php",
 
@@ -9321,17 +9314,17 @@ jQuery(document).on("click", ".mybtnadminprofile_save", function () {
 
       jQuery(".ct-loading-main").hide();
 
-      if(jQuery.trim(res) == "sorry"){
+      if (jQuery.trim(res) == "sorry") {
 
-        jQuery(".old_pass_msg").css("display","block");
+        jQuery(".old_pass_msg").css("display", "block");
 
         jQuery(".old_pass_msg").addClass("error");
 
         jQuery(".old_pass_msg").html(errorobj_your_old_password_incorrect);
 
-      } else if (jQuery.trim(res) == "Please Retype Correct Password..."){
+      } else if (jQuery.trim(res) == "Please Retype Correct Password...") {
 
-        jQuery(".retype_pass_msg").css("display","block");
+        jQuery(".retype_pass_msg").css("display", "block");
 
         jQuery(".retype_pass_msg").addClass("error");
 
@@ -9351,7 +9344,7 @@ jQuery(document).on("click", ".mybtnadminprofile_save", function () {
 
 /* Remove new passowrd and retype new password error after correct */
 
-jQuery(document).on("click",".u_rp",function(){
+jQuery(document).on("click", ".u_rp", function () {
 
   jQuery(".retype_pass_msg").hide();
 
@@ -9359,7 +9352,7 @@ jQuery(document).on("click",".u_rp",function(){
 
 /* Remove old password error after correct */
 
-jQuery(document).on("click",".u_op",function(){
+jQuery(document).on("click", ".u_op", function () {
 
   jQuery(".old_pass_msg").hide();
 
@@ -9368,186 +9361,186 @@ jQuery(document).on("click",".u_op",function(){
 /* Change profile USER */
 
 jQuery(document).on("click", ".mybtnuserprofile_save", function () {
-  if(jQuery("#user_info_form").valid()){
+  debugger
+  if (jQuery("#user_info_form").valid()) {
+    jQuery(".ct-loading-main").show();
 
-      jQuery(".ct-loading-main").show();
+    var userid = jQuery(this).attr("data-id");
 
-      var userid = jQuery(this).attr("data-id");
-    
-      var oldpass = jQuery("#oldpass").val();
-    
-      var dboldpass = jQuery("#dboldpass").val();
-    
-      var zip_status_check = jQuery(this).attr("data-zip");
-      
-      var user_image = jQuery("#pppp"+userid+"ctimagename").val();
-    
-      jQuery("#userfirstname").rules("add",{
-    
+    var oldpass = jQuery("#oldpass").val();
+
+    var dboldpass = jQuery("#dboldpass").val();
+
+    var zip_status_check = jQuery(this).attr("data-zip");
+
+    var user_image = jQuery("#pppp" + userid + "ctimagename").val();
+
+    jQuery("#userfirstname").rules("add", {
+
+      required: true,
+
+      messages: { required: errorobj_please_enter_firstname }
+
+    });
+
+    if (jQuery(".ct-change-password").is(":visible")) {
+
+      jQuery("#useroldpass").rules("add", {
+
+        required: true, user_profile_pattern_password: true, minlength: 8,
+
+        messages: { required: errorobj_please_enter_old_password, minlength: errorobj_password_must_be_8_character_long }
+
+      });
+
+      jQuery("#usernewpasswrd").rules("add", {
+
+        required: true, user_profile_pattern_password: true, minlength: 8, maxlength: 20,
+
+        messages: { required: errorobj_please_enter_new_password, minlength: errorobj_password_must_be_8_character_long, maxlength: errorobj_password_should_not_exist_more_then_20_characters }
+
+      });
+
+      jQuery("#userrenewpasswrd").rules("add", {
+
+        required: true, user_profile_pattern_password: true, minlength: 8, maxlength: 20,
+
+        messages: { required: errorobj_please_enter_confirm_password, minlength: errorobj_password_must_be_8_character_long, maxlength: errorobj_password_should_not_exist_more_then_20_characters }
+
+      });
+
+    }
+
+    jQuery("#userlastname").rules("add", {
+
+      required: true,
+
+      messages: { required: errorobj_please_enter_lastname }
+
+    });
+
+
+    /*jQuery("#useremail").rules("add",{
+  
         required: true,
-    
-        messages: {required: errorobj_please_enter_firstname}
-    
-      });
-    
-      if (jQuery(".ct-change-password").is(":visible")) {
-    
-        jQuery("#useroldpass").rules("add",{
-    
-          required: true, user_profile_pattern_password: true,minlength: 8,
-    
-          messages: {required: errorobj_please_enter_old_password,minlength: errorobj_password_must_be_8_character_long}
-    
-        });
-    
-        jQuery("#usernewpasswrd").rules("add",{
-    
-          required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
-    
-          messages: {required: errorobj_please_enter_new_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
-    
-        });
-    
-        jQuery("#userrenewpasswrd").rules("add",{
-    
-          required: true, user_profile_pattern_password: true,minlength: 8, maxlength: 20,
-    
-          messages: {required: errorobj_please_enter_confirm_password,minlength: errorobj_password_must_be_8_character_long,maxlength : errorobj_password_should_not_exist_more_then_20_characters}
-    
-        });
-    
-      }
-    
-      jQuery("#userlastname").rules("add",{
-    
-        required: true,
-    
-        messages: {required: errorobj_please_enter_lastname}
-    
-      });
-      
-    
-      /*jQuery("#useremail").rules("add",{
-    
-          required: true,
-    
-          email:true,
-          
-          messages: {required:errorobj_please_enter_email,
-    
-              email:errorobj_please_enter_valid_email_address}
-    
-      });*/
-    
-    
-    
-      jQuery("#usercity").rules("add",{
-    
-        required: true, 
-    
-        messages: {required: errorobj_please_enter_city}
-    
-      });
-    
-      jQuery("#userstate").rules("add",{
-    
-        required: true, 
-    
-        messages: {required: errorobj_please_enter_state}
-    
-      });
-    
-      /*jQuery("#usergrinderid").rules("add",{
-    
-        required: true, 
-    
-        messages: {required: 'Please Enter Homebod User ID'}
-    
-      });*/
-    
-      jQuery("#userfitnessbio").rules("add",{
-    
-        required: true, 
-    
-        messages: {required: 'Please Enter Bio/Fitness Goal'}
-    
-      });
-    
-      if(zip_status_check == "Y"){
-    
-        jQuery("#userzip").rules("add",{
-    
-          required: true, minlength: 3, maxlength: 7,
-    
-          messages: {required: errorobj_please_enter_zipcode,minlength: errorobj_please_enter_minimum_3_chars,maxlength: errorobj_please_enter_only_7_chars_maximum}
-    
-        });
-    
-      }
-    
-      jQuery("#userphone").rules("add",{
-    
-        required: true, pattern_phone: true, minlength: 10, maxlength: 10,
-    
-        messages: { required: errorobj_please_enter_phone_number, pattern_phone : errorobj_please_enter_valid_number_with_country_code, minlength: errorobj_please_enter_valid_number, maxlength: errorobj_please_enter_valid_number }
-    
-      });
-    
-      if(zip_status_check == "Y"){
-    
-        var datastring={user_image:user_image,"user_bio": jQuery("#userfitnessbio").val(),"grinders_id": jQuery("#usergrinderid").val(),"firstname": jQuery("#userfirstname").val(),"lastname": jQuery("#userlastname").val(),"email": jQuery("#useremail").val(),"phone": jQuery("#userphone").val(),"address": jQuery("#useraddress").val(),  "city": jQuery("#usercity").val(),"state": jQuery("#userstate").val(),"zip": jQuery("#userzip").val(),"dboldpassword" : jQuery("#userdboldpass").val(),"oldpassword" : jQuery("#useroldpass").val(), "newpassword" : jQuery("#usernewpasswrd").val(),"retypepassword" : jQuery("#userrenewpasswrd").val(),"id": userid,"updatepass": 1};  
-    
-      } else {
-    
-        var datastring={user_image:user_image,"user_bio": jQuery("#userfitnessbio").val(),"grinders_id": jQuery("#usergrinderid").val(),"firstname": jQuery("#userfirstname").val(),"lastname": jQuery("#userlastname").val(),"email": jQuery("#useremail").val(),"phone": jQuery("#userphone").val(),"address": jQuery("#useraddress").val(),  "city": jQuery("#usercity").val(),"state": jQuery("#userstate").val(),"dboldpassword" : jQuery("#userdboldpass").val(),"oldpassword" : jQuery("#useroldpass").val(), "newpassword" : jQuery("#usernewpasswrd").val(),"retypepassword" : jQuery("#userrenewpasswrd").val(),"id": userid,"updatepass": 1};
-    
-      }
-    
-      jQuery.ajax(  {
-    
-        type: "post",
-    
-        data: datastring,
-    
-        url: ajax_url + "user_details_ajax.php",
-    
-        success: function (res) { 
-          
-          jQuery(".ct-loading-main").hide();
+  
+        email:true,
+        
+        messages: {required:errorobj_please_enter_email,
+  
+            email:errorobj_please_enter_valid_email_address}
+  
+    });*/
 
-          if(jQuery.trim(res) == "Your Old Password Incorrect..."){
 
-            jQuery(".old_pass_msg").css("display","block");
-    
-            jQuery(".old_pass_msg").addClass("error");
-    
-            jQuery(".old_pass_msg").html(errorobj_your_old_password_incorrect+"...");
-    
-          } else if(jQuery.trim(res) == "Please Retype Correct Password..."){
 
-            jQuery(".retype_pass_msg").css("display","block");
-    
-            jQuery(".retype_pass_msg").addClass("error");
-    
-            jQuery(".retype_pass_msg").html(errorobj_please_retype_correct_password+"...");
-    
-          } else{
+    jQuery("#usercity").rules("add", {
 
-            jQuery(".mainheader_message").show();
-    
-            jQuery(".mainheader_message_inner").css("display","inline");
-    
-            jQuery("#ct_sucess_message").html("Your Profile has been successfully updated.");
-    
-            jQuery(".mainheader_message").fadeOut(3000);
-    
-            location.reload();
-    
-          }
-    
+      required: true,
+
+      messages: { required: errorobj_please_enter_city }
+
+    });
+
+    jQuery("#userstate").rules("add", {
+
+      required: true,
+
+      messages: { required: errorobj_please_enter_state }
+
+    });
+
+    /*jQuery("#usergrinderid").rules("add",{
+  
+      required: true, 
+  
+      messages: {required: 'Please Enter Homebod User ID'}
+  
+    });*/
+
+    jQuery("#userfitnessbio").rules("add", {
+
+      required: true,
+
+      messages: { required: 'Please Enter Bio/Fitness Goal' }
+
+    });
+
+    if (zip_status_check == "Y") {
+
+      jQuery("#userzip").rules("add", {
+
+        required: true, minlength: 3, maxlength: 7,
+
+        messages: { required: errorobj_please_enter_zipcode, minlength: errorobj_please_enter_minimum_3_chars, maxlength: errorobj_please_enter_only_7_chars_maximum }
+
+      });
+
+    }
+
+    jQuery("#userphone").rules("add", {
+
+      required: true, pattern_phone: true, minlength: 10, maxlength: 10,
+
+      messages: { required: errorobj_please_enter_phone_number, pattern_phone: errorobj_please_enter_valid_number_with_country_code, minlength: errorobj_please_enter_valid_number, maxlength: errorobj_please_enter_valid_number }
+
+    });
+
+    if (zip_status_check == "Y") {
+
+      var datastring = { user_image: user_image, "user_bio": jQuery("#userfitnessbio").val(), "grinders_id": jQuery("#usergrinderid").val(), "firstname": jQuery("#userfirstname").val(), "lastname": jQuery("#userlastname").val(), "email": jQuery("#useremail").val(), "phone": jQuery("#userphone").val(), "address": jQuery("#useraddress").val(), "city": jQuery("#usercity").val(), "state": jQuery("#userstate").val(), "zip": jQuery("#userzip").val(), "dboldpassword": jQuery("#userdboldpass").val(), "oldpassword": jQuery("#useroldpass").val(), "newpassword": jQuery("#usernewpasswrd").val(), "retypepassword": jQuery("#userrenewpasswrd").val(), "id": userid, "updatepass": 1 };
+
+    } else {
+
+      var datastring = { user_image: user_image, "user_bio": jQuery("#userfitnessbio").val(), "grinders_id": jQuery("#usergrinderid").val(), "firstname": jQuery("#userfirstname").val(), "lastname": jQuery("#userlastname").val(), "email": jQuery("#useremail").val(), "phone": jQuery("#userphone").val(), "address": jQuery("#useraddress").val(), "city": jQuery("#usercity").val(), "state": jQuery("#userstate").val(), "dboldpassword": jQuery("#userdboldpass").val(), "oldpassword": jQuery("#useroldpass").val(), "newpassword": jQuery("#usernewpasswrd").val(), "retypepassword": jQuery("#userrenewpasswrd").val(), "id": userid, "updatepass": 1 };
+
+    }
+
+    jQuery.ajax({
+
+      type: "post",
+
+      data: datastring,
+
+      url: ajax_url + "user_details_ajax.php",
+
+      success: function (res) {
+
+        jQuery(".ct-loading-main").hide();
+
+        if (jQuery.trim(res) == "Your Old Password Incorrect...") {
+
+          jQuery(".old_pass_msg").css("display", "block");
+
+          jQuery(".old_pass_msg").addClass("error");
+
+          jQuery(".old_pass_msg").html(errorobj_your_old_password_incorrect + "...");
+
+        } else if (jQuery.trim(res) == "Please Retype Correct Password...") {
+
+          jQuery(".retype_pass_msg").css("display", "block");
+
+          jQuery(".retype_pass_msg").addClass("error");
+
+          jQuery(".retype_pass_msg").html(errorobj_please_retype_correct_password + "...");
+
+        } else {
+
+          jQuery(".mainheader_message").show();
+
+          jQuery(".mainheader_message_inner").css("display", "inline");
+
+          jQuery("#ct_sucess_message").html("Your Profile has been successfully updated.");
+
+          jQuery(".mainheader_message").fadeOut(3000);
+
+          location.reload();
+
         }
-    
-      }); 
+
+      }
+
+    });
   }
 
 });
@@ -9556,7 +9549,7 @@ jQuery(document).on("click", ".delete_image", function () {
 
   var service_id = jQuery(this).attr("data-service_id");
 
-  var dataString = {service_id: service_id, action: "delete_image"};
+  var dataString = { service_id: service_id, action: "delete_image" };
 
   var imgObj_url = imgObj.img_url;
 
@@ -9592,9 +9585,9 @@ jQuery(document).on("click", ".delete_image", function () {
 
 jQuery(document).on("click", ".delete_image", function () {
 
-   var service_id = jQuery(this).attr("data-service_id");
+  var service_id = jQuery(this).attr("data-service_id");
 
-  var dataString = {service_id: service_id, action: "delete_image"};
+  var dataString = { service_id: service_id, action: "delete_image" };
 
   var imgObj_url = imgObj.img_url;
 
@@ -9634,7 +9627,7 @@ jQuery(document).on("click", ".delete_image_addons", function () {
 
   var serviceaddons_id = jQuery(this).attr("data-pcaolid");
 
-  var dataString = {serviceaddons_id: serviceaddons_id, action: "delete_image_addons"};
+  var dataString = { serviceaddons_id: serviceaddons_id, action: "delete_image_addons" };
 
   var imgObj_url = imgObj.img_url;
 
@@ -9674,7 +9667,7 @@ jQuery(document).on("click", ".delete_com_logo", function () {
 
   var imgObj_url = imgObj.img_url;
 
-  var dataString = {optionname: optionname, action: "delete_logo"};
+  var dataString = { optionname: optionname, action: "delete_logo" };
 
   jQuery.ajax({
 
@@ -9732,7 +9725,7 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
     if (jQuery(this).attr("id") != toggle_id) {
 
-      jQuery(this).hide("blind", {direction: "vertical"}, 500);
+      jQuery(this).hide("blind", { direction: "vertical" }, 500);
 
     }
 
@@ -9742,11 +9735,11 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
   if (jQuery(this).is(":checked")) {
 
-    jQuery("#detail_" + toggle_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery("#detail_" + toggle_id).show("blind", { direction: "vertical" }, 1000);
 
   } else {
 
-    jQuery("#detail_" + toggle_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery("#detail_" + toggle_id).hide("blind", { direction: "vertical" }, 500);
 
   }
 
@@ -9776,7 +9769,7 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
     if (jQuery(this).attr("id") != toggles_id) {
 
-      jQuery(this).hide("blind", {direction: "vertical"}, 500);
+      jQuery(this).hide("blind", { direction: "vertical" }, 500);
 
     }
 
@@ -9786,11 +9779,11 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
   if (jQuery(this).is(":checked")) {
 
-    jQuery("#details_" + toggles_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery("#details_" + toggles_id).show("blind", { direction: "vertical" }, 1000);
 
   } else {
 
-    jQuery("#details_" + toggles_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery("#details_" + toggles_id).hide("blind", { direction: "vertical" }, 500);
 
   }
 
@@ -9820,7 +9813,7 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
     if (jQuery(this).attr("id") != toggles_id) {
 
-      jQuery(this).hide("blind", {direction: "vertical"}, 500);
+      jQuery(this).hide("blind", { direction: "vertical" }, 500);
 
     }
 
@@ -9830,11 +9823,11 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
   if (jQuery(this).is(":checked")) {
 
-    jQuery("#detailmes_" + toggles_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery("#detailmes_" + toggles_id).show("blind", { direction: "vertical" }, 1000);
 
   } else {
 
-    jQuery("#detailmes_" + toggles_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery("#detailmes_" + toggles_id).hide("blind", { direction: "vertical" }, 500);
 
   }
 
@@ -9850,15 +9843,15 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
   jQuery(".language_detail").each(function () {
 
-    if (jQuery(this).attr("id") != "detail_"+toggles_id) {
+    if (jQuery(this).attr("id") != "detail_" + toggles_id) {
 
-      jQuery(this).hide("blind", {direction: "vertical"}, 500);
+      jQuery(this).hide("blind", { direction: "vertical" }, 500);
 
     }
 
   });
 
-/*  uncheck other checkbox  */
+  /*  uncheck other checkbox  */
 
   jQuery(".ct-show-hide-checkbox").each(function () {
 
@@ -9874,31 +9867,31 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
   if (jQuery(this).is(":checked")) {
 
-    jQuery("#detail_" + toggles_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery("#detail_" + toggles_id).show("blind", { direction: "vertical" }, 1000);
 
   } else {
 
-    jQuery("#detail_" + toggles_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery("#detail_" + toggles_id).hide("blind", { direction: "vertical" }, 500);
 
   }
 
 });
 
-jQuery(document).on("change",".endtimenew",function(){
+jQuery(document).on("change", ".endtimenew", function () {
 
-  var endid=jQuery(this).attr("id");
+  var endid = jQuery(this).attr("id");
 
-  var wdid=jQuery(this).attr("data-aid");
+  var wdid = jQuery(this).attr("data-aid");
 
-  var endval=jQuery(this).val();
+  var endval = jQuery(this).val();
 
-  var startval=jQuery("#starttimenews_"+wdid).val();
+  var startval = jQuery("#starttimenews_" + wdid).val();
 
-  if(endval<startval){
+  if (endval < startval) {
 
     jQuery(".mainheader_message_fail").show();
 
-    jQuery(".mainheader_message_inner_fail").css("display","inline");
+    jQuery(".mainheader_message_inner_fail").css("display", "inline");
 
     jQuery("#ct_sucess_message_fail").html(errorobj_please_select_end_time_greater_than_start_time);
 
@@ -9908,21 +9901,21 @@ jQuery(document).on("change",".endtimenew",function(){
 
 });
 
-jQuery(document).on("change",".starttimenew",function(){
+jQuery(document).on("change", ".starttimenew", function () {
 
-  var endid=jQuery(this).attr("id");
+  var endid = jQuery(this).attr("id");
 
-  var wdid=jQuery(this).attr("data-aid");
+  var wdid = jQuery(this).attr("data-aid");
 
-  var startval=jQuery("#starttimenew_"+wdid).val();
+  var startval = jQuery("#starttimenew_" + wdid).val();
 
-  var endval=jQuery("#endtimenews_"+wdid).val();
+  var endval = jQuery("#endtimenews_" + wdid).val();
 
-  if(endval>startval){
+  if (endval > startval) {
 
     jQuery(".mainheader_message_fail").show();
 
-    jQuery(".mainheader_message_inner_fail").css("display","inline");
+    jQuery(".mainheader_message_inner_fail").css("display", "inline");
 
     jQuery("#ct_sucess_message_fail").html(errorobj_please_select_end_time_less_than_start_time);
 
@@ -9938,71 +9931,71 @@ jQuery(document).on("change",".starttimenew",function(){
 
 jQuery(document).on("change", ".myfrequentlydiscount_status", function () {
 
-    if (jQuery(this).prop("checked") == true) {
+  if (jQuery(this).prop("checked") == true) {
 
-      var id = jQuery(this).attr("data-id");
+    var id = jQuery(this).attr("data-id");
 
-      jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-      jQuery.ajax({
+    jQuery.ajax({
 
-        type: "post",
+      type: "post",
 
-        data: { id: id, changestatus: "E", freqdis : 1 },
+      data: { id: id, changestatus: "E", freqdis: 1 },
 
-        url: ajax_url + "setting_ajax.php",
+      url: ajax_url + "setting_ajax.php",
 
-        success: function (res) {
+      success: function (res) {
 
-          jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-          jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-          jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
-          jQuery("#ct_sucess_message").html(errorobj_frequently_discount_status_updated);
+        jQuery("#ct_sucess_message").html(errorobj_frequently_discount_status_updated);
 
-          jQuery(".mainheader_message").show();
+        jQuery(".mainheader_message").show();
 
-          jQuery(".mainheader_message").fadeOut(5000);
+        jQuery(".mainheader_message").fadeOut(5000);
 
-        }
+      }
 
-      });
+    });
 
-    } else {
+  } else {
 
-      var id = jQuery(this).attr("data-id");
+    var id = jQuery(this).attr("data-id");
 
-      jQuery(".ct-loading-main").show();
+    jQuery(".ct-loading-main").show();
 
-      jQuery.ajax({
+    jQuery.ajax({
 
-        type: "post",
+      type: "post",
 
-        data: { id: id, changestatus: "D", freqdis : 1 },
+      data: { id: id, changestatus: "D", freqdis: 1 },
 
-        url: ajax_url + "setting_ajax.php",
+      url: ajax_url + "setting_ajax.php",
 
-        success: function (res) {
+      success: function (res) {
 
-          jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-          jQuery(".ct-loading-main").hide();
+        jQuery(".ct-loading-main").hide();
 
-          jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
-          jQuery("#ct_sucess_message").html(errorobj_frequently_discount_status_updated);
+        jQuery("#ct_sucess_message").html(errorobj_frequently_discount_status_updated);
 
-          jQuery(".mainheader_message").show();
+        jQuery(".mainheader_message").show();
 
-          jQuery(".mainheader_message").fadeOut(5000);
+        jQuery(".mainheader_message").fadeOut(5000);
 
-        }
+      }
 
-      });
+    });
 
-    }
+  }
 
 });
 
@@ -10030,7 +10023,7 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
     if (jQuery(this).attr("id") != toggle_id) {
 
-      jQuery(this).hide("blind", {direction: "vertical"}, 500);
+      jQuery(this).hide("blind", { direction: "vertical" }, 500);
 
     }
 
@@ -10040,11 +10033,11 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
   if (jQuery(this).is(":checked")) {
 
-    jQuery("#detail" + toggle_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery("#detail" + toggle_id).show("blind", { direction: "vertical" }, 1000);
 
   } else {
 
-    jQuery("#detail" + toggle_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery("#detail" + toggle_id).hide("blind", { direction: "vertical" }, 500);
 
   }
 
@@ -10054,7 +10047,7 @@ jQuery(document).on("change", ".ct-show-hide-checkbox", function () {
 
 /* DELETE THE ORDER FROM BOOKINGS */
 
-jQuery(document).on("click",".mybtncancel_booking_user_details",function(e){
+jQuery(document).on("click", ".mybtncancel_booking_user_details", function (e) {
 
 
 
@@ -10067,51 +10060,51 @@ jQuery(document).on("click",".mybtncancel_booking_user_details",function(e){
     var order = jQuery(this).attr("data-id");
 
     var gc_event_id = jQuery(this).attr("data-gc_event");
-  
+
     var gc_staff_event_id = jQuery(this).attr("data-gc_staff_event");
-  
+
     var pid = jQuery(this).attr("data-pid");
-  
+
     var cancel_reson_book = jQuery("#reason_cancel" + order).val();
-  
-    if(check_update_if_btn == "0"){
-  
+
+    if (check_update_if_btn == "0") {
+
       check_update_if_btn = "1";
-  
+
       e.preventDefault();
-  
+
       jQuery.ajax({
-  
+
         type: "POST",
-  
+
         data: { id: order, gc_event_id: gc_event_id, gc_staff_event_id: gc_staff_event_id, pid: pid, cancel_reson_book: cancel_reson_book, update_booking_users: 1 },
-  
+
         url: ajax_url + "user_details_ajax.php",
-  
+
         success: function (response) {
-  
+
           check_update_if_btn = "0";
-  
+
           jQuery(".mainheader_message").show();
-  
+
           jQuery(".mainheader_message_inner").css("display", "inline");
-  
+
           jQuery("#ct_sucess_message").text(errorobj_booking_cancel);
-  
+
           jQuery(".mainheader_message").fadeOut(3000);
-  
+
           jQuery("#info_modal_close").trigger("click");
-  
+
           jQuery("#updateinfo_modal_close").trigger("click");
-  
+
           jQuery(".closesss").trigger("click");
-  
+
           location.reload();
-  
+
         }
-  
+
       });
-  
+
     }
   }
 
@@ -10119,7 +10112,7 @@ jQuery(document).on("click",".mybtncancel_booking_user_details",function(e){
 
 });
 
-jQuery(document).on("change",".exp_cp_date",function() {
+jQuery(document).on("change", ".exp_cp_date", function () {
 
   jQuery.ajax({
 
@@ -10133,7 +10126,7 @@ jQuery(document).on("change",".exp_cp_date",function() {
 
       jQuery(".mytime_slots_booking").html(res);
 
-      localStorage.setItem("time1",jQuery("#myuser_reschedule_time").val());
+      localStorage.setItem("time1", jQuery("#myuser_reschedule_time").val());
 
     }
 
@@ -10143,31 +10136,31 @@ jQuery(document).on("change",".exp_cp_date",function() {
 
 /* SET ORDER ID FOR UPDATE */
 
-jQuery(document).on("click",".display_myappointment_data",function(){
+jQuery(document).on("click", ".display_myappointment_data", function () {
 
-  localStorage.setItem("order_id",jQuery(this).attr("data-order_id"));
+  localStorage.setItem("order_id", jQuery(this).attr("data-order_id"));
 
   var total = jQuery(this).attr("data-total_price");
 
-  jQuery(".booking_total_payment").html("<span class=''>"+total+"</span>");
+  jQuery(".booking_total_payment").html("<span class=''>" + total + "</span>");
 
 });
 
-jQuery(document).on("change","#myuser_reschedule_time",function(){
+jQuery(document).on("change", "#myuser_reschedule_time", function () {
 
-  localStorage.setItem("time1",jQuery(this).val());
+  localStorage.setItem("time1", jQuery(this).val());
 
 });
 
-localStorage.setItem("time1","");
+localStorage.setItem("time1", "");
 
 /* RESCHEDULE FOR USERPROFILE */
 
-jQuery(document).on("click",".my_user_btn_for_reschedule",function(e){
+jQuery(document).on("click", ".my_user_btn_for_reschedule", function (e) {
 
   jQuery(".ct-loading-main").show();
 
-  if(check_update_if_btn == "0"){
+  if (check_update_if_btn == "0") {
 
     check_update_if_btn = "1";
 
@@ -10175,13 +10168,13 @@ jQuery(document).on("click",".my_user_btn_for_reschedule",function(e){
 
     var order = jQuery(this).attr("data-order");
 
-    var notes = jQuery(".my_user_notes_reschedule"+order).val();
+    var notes = jQuery(".my_user_notes_reschedule" + order).val();
 
-    var dates = jQuery("#expiry_date"+order).val();
+    var dates = jQuery("#expiry_date" + order).val();
 
     var extension_js = jQuery("#extension_js").val();
 
-    if(extension_js == "true") {
+    if (extension_js == "true") {
 
       var gc_event_id = jQuery(this).attr("data-gc_event");
 
@@ -10201,13 +10194,13 @@ jQuery(document).on("click",".my_user_btn_for_reschedule",function(e){
 
     var times1 = "";
 
-    if(localStorage.getItem("time1") != ""){
+    if (localStorage.getItem("time1") != "") {
 
-      times1 =  localStorage.getItem("time1");
+      times1 = localStorage.getItem("time1");
 
     }
 
-    if(times1 == ""){
+    if (times1 == "") {
 
       check_update_if_btn = "0";
 
@@ -10225,15 +10218,15 @@ jQuery(document).on("click",".my_user_btn_for_reschedule",function(e){
 
       jQuery.ajax({
 
-        type : "post",
+        type: "post",
 
-        data : { orderid : order, notes : notes, dates : dates, timess : times1, gc_event_id : gc_event_id, gc_staff_event_id : gc_staff_event_id, pid : pid, user : "customer", reschedulebooking : 1 },
+        data: { orderid: order, notes: notes, dates: dates, timess: times1, gc_event_id: gc_event_id, gc_staff_event_id: gc_staff_event_id, pid: pid, user: "customer", reschedulebooking: 1 },
 
-        url : ajax_url+"user_details_ajax.php",
+        url: ajax_url + "user_details_ajax.php",
 
-        success : function(res){
+        success: function (res) {
 
-          if(parseInt(jQuery.trim(res))==1){
+          if (parseInt(jQuery.trim(res)) == 1) {
 
             jQuery(".close").trigger("click");
 
@@ -10281,13 +10274,13 @@ jQuery(document).on("click", "#ct-sample-data", function () {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { add_sample_data : 1 },
+    data: { add_sample_data: 1 },
 
-    url : ajax_url+"dummy_ajax.php",
+    url: ajax_url + "dummy_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -10315,13 +10308,13 @@ jQuery(document).on("click", "#ct-remove-sample-data-ok", function () {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { remove_sample_data : 1 },
+    data: { remove_sample_data: 1 },
 
-    url : ajax_url+"dummy_ajax.php",
+    url: ajax_url + "dummy_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -10335,49 +10328,50 @@ jQuery(document).on("click", "#ct-remove-sample-data-ok", function () {
 
 /*  Display Country Code on click flag on phone */
 
-jQuery(document).on("click",".country",function() {
+jQuery(document).on("click", ".country", function () {
 
-  var country_code=jQuery(this).attr("data-dial-code");
+  var country_code = jQuery(this).attr("data-dial-code");
 
-  jQuery("#adminphone").val("+"+country_code);
+  jQuery("#adminphone").val("+" + country_code);
 
 });
 
 /* ADMIN SMS TEMPLATE SETTINGS START */
 
-jQuery(document).on("click","#save_sms_template",function() {
+jQuery(document).on("click", "#save_sms_template", function () {
 
   var id = jQuery(this).attr("data-id");
 
-  var sms_message = jQuery('#sms_message_'+id).val();
+  var sms_message = jQuery('#sms_message_' + id).val();
 
-  jQuery("#sms_template_form_"+id).validate({
+  jQuery("#sms_template_form_" + id).validate({
 
-    rules: {sms_message: {required: true}
+    rules: {
+      sms_message: { required: true }
 
-    },messages: { sms_message: {required: errorobj_please_enter_sms_message}}
+    }, messages: { sms_message: { required: errorobj_please_enter_sms_message } }
 
   });
 
-  if (jQuery("#sms_template_form_"+id).valid()) {
+  if (jQuery("#sms_template_form_" + id).valid()) {
 
     jQuery(".ct-loading-main").show();
 
     jQuery.ajax({
 
-      type : "post",
+      type: "post",
 
-      data: { id : id, sms_messages : sms_message, save_sms_template : 1 },
+      data: { id: id, sms_messages: sms_message, save_sms_template: 1 },
 
-      url : ajax_url+"sms_template_ajax.php",
+      url: ajax_url + "sms_template_ajax.php",
 
-      success : function(res){
+      success: function (res) {
 
         jQuery(".ct-loading-main").hide();
 
-        jQuery("#cm"+id).trigger("click");
+        jQuery("#cm" + id).trigger("click");
 
-        jQuery("#as"+id).trigger("click");
+        jQuery("#as" + id).trigger("click");
 
       }
 
@@ -10387,7 +10381,7 @@ jQuery(document).on("click","#save_sms_template",function() {
 
 });
 
-jQuery(document).on("change",".save_client_sms_template_status",function() {
+jQuery(document).on("change", ".save_client_sms_template_status", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -10395,7 +10389,7 @@ jQuery(document).on("change",".save_client_sms_template_status",function() {
 
   var id = jQuery(this).attr("data-id");
 
-  var client_status = jQuery("#sms-client"+id).prop("checked");
+  var client_status = jQuery("#sms-client" + id).prop("checked");
 
   var sms_template_status = "D";
 
@@ -10407,13 +10401,13 @@ jQuery(document).on("change",".save_client_sms_template_status",function() {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { id : id, sms_template_status : sms_template_status, save_sms_template_status : 1 },
+    data: { id: id, sms_template_status: sms_template_status, save_sms_template_status: 1 },
 
-    url : ajax_url+"sms_template_ajax.php",
+    url: ajax_url + "sms_template_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -10423,7 +10417,7 @@ jQuery(document).on("change",".save_client_sms_template_status",function() {
 
 });
 
-jQuery(document).on("change",".save_admin_sms_template_status",function() {
+jQuery(document).on("change", ".save_admin_sms_template_status", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -10431,7 +10425,7 @@ jQuery(document).on("change",".save_admin_sms_template_status",function() {
 
   var id = jQuery(this).attr("data-id");
 
-  var admin_status = jQuery("#sms-admin"+id).prop("checked");
+  var admin_status = jQuery("#sms-admin" + id).prop("checked");
 
   var sms_template_status = "D";
 
@@ -10443,13 +10437,13 @@ jQuery(document).on("change",".save_admin_sms_template_status",function() {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { id : id, sms_template_status : sms_template_status, save_sms_template_status : 1 },
+    data: { id: id, sms_template_status: sms_template_status, save_sms_template_status: 1 },
 
-    url : ajax_url+"sms_template_ajax.php",
+    url: ajax_url + "sms_template_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -10479,9 +10473,9 @@ jQuery(document).on("change", ".ct_show_hide_checkbox", function () {
 
   jQuery(".sms_content").each(function () {
 
-    if (jQuery(this).attr("id") != "detail_sms_template_"+toggle_id) {
+    if (jQuery(this).attr("id") != "detail_sms_template_" + toggle_id) {
 
-      jQuery(this).hide("blind", {direction: "vertical"}, 500);
+      jQuery(this).hide("blind", { direction: "vertical" }, 500);
 
     }
 
@@ -10491,15 +10485,15 @@ jQuery(document).on("change", ".ct_show_hide_checkbox", function () {
 
   if (jQuery(this).is(":checked")) {
 
-    jQuery(".detail_cm" + toggle_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery(".detail_cm" + toggle_id).show("blind", { direction: "vertical" }, 1000);
 
-    jQuery(".detail_as" + toggle_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery(".detail_as" + toggle_id).show("blind", { direction: "vertical" }, 1000);
 
   } else {
 
-    jQuery(".detail_cm" + toggle_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery(".detail_cm" + toggle_id).hide("blind", { direction: "vertical" }, 500);
 
-    jQuery(".detail_as" + toggle_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery(".detail_as" + toggle_id).hide("blind", { direction: "vertical" }, 500);
 
   }
 
@@ -10509,13 +10503,13 @@ jQuery(document).on("change", ".ct_show_hide_checkbox", function () {
 
 
 
-jQuery(document).on("change",".save_client_email_template_status",function() {
+jQuery(document).on("change", ".save_client_email_template_status", function () {
 
   jQuery(".ct-loading-main").show();
 
   var id = jQuery(this).attr("data-id");
 
-  var client_status = jQuery("#email-client"+id).prop("checked");
+  var client_status = jQuery("#email-client" + id).prop("checked");
 
   var email_template_status = "D";
 
@@ -10523,17 +10517,17 @@ jQuery(document).on("change",".save_client_email_template_status",function() {
 
     email_template_status = "E";
 
-  } 
+  }
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { id : id, email_template_status : email_template_status, save_email_template_status : 1 },
+    data: { id: id, email_template_status: email_template_status, save_email_template_status: 1 },
 
-    url : ajax_url+"email_template_ajax.php",
+    url: ajax_url + "email_template_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -10543,13 +10537,13 @@ jQuery(document).on("change",".save_client_email_template_status",function() {
 
 });
 
-jQuery(document).on("change",".save_admin_email_template_status",function() {
+jQuery(document).on("change", ".save_admin_email_template_status", function () {
 
   jQuery(".ct-loading-main").show();
 
   var id = jQuery(this).attr("data-id");
 
-  var admin_status = jQuery("#email-admin"+id).prop("checked");
+  var admin_status = jQuery("#email-admin" + id).prop("checked");
 
   email_template_status = "D";
 
@@ -10561,13 +10555,13 @@ jQuery(document).on("change",".save_admin_email_template_status",function() {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { id : id, email_template_status : email_template_status, save_email_template_status : 1 },
+    data: { id: id, email_template_status: email_template_status, save_email_template_status: 1 },
 
-    url : ajax_url+"email_template_ajax.php",
+    url: ajax_url + "email_template_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -10577,13 +10571,13 @@ jQuery(document).on("change",".save_admin_email_template_status",function() {
 
 });
 
-jQuery(document).on("change",".save_staff_email_template_status",function() {
+jQuery(document).on("change", ".save_staff_email_template_status", function () {
 
   jQuery(".ct-loading-main").show();
 
   var id = jQuery(this).attr("data-id");
 
-  var admin_status = jQuery("#email-staff"+id).prop("checked");
+  var admin_status = jQuery("#email-staff" + id).prop("checked");
 
   var email_template_status = "D";
 
@@ -10595,13 +10589,13 @@ jQuery(document).on("change",".save_staff_email_template_status",function() {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { id : id, email_template_status : email_template_status, save_email_template_status : 1 },
+    data: { id: id, email_template_status: email_template_status, save_email_template_status: 1 },
 
-    url : ajax_url+"email_template_ajax.php",
+    url: ajax_url + "email_template_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -10631,9 +10625,9 @@ jQuery(document).on("change", ".ct_open_close_email_template", function () {
 
   jQuery(".email_content").each(function () {
 
-    if (jQuery(this).attr("id") != "detail_email_templates_"+toggle_id) {
+    if (jQuery(this).attr("id") != "detail_email_templates_" + toggle_id) {
 
-      jQuery(this).hide("blind", {direction: "vertical"}, 500);
+      jQuery(this).hide("blind", { direction: "vertical" }, 500);
 
     }
 
@@ -10643,15 +10637,15 @@ jQuery(document).on("change", ".ct_open_close_email_template", function () {
 
   if (jQuery(this).is(":checked")) {
 
-    jQuery(".detail_ce" + toggle_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery(".detail_ce" + toggle_id).show("blind", { direction: "vertical" }, 1000);
 
-    jQuery(".detail_ae" + toggle_id).show("blind", {direction: "vertical"}, 1000);
+    jQuery(".detail_ae" + toggle_id).show("blind", { direction: "vertical" }, 1000);
 
   } else {
 
-    jQuery(".detail_ce" + toggle_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery(".detail_ce" + toggle_id).hide("blind", { direction: "vertical" }, 500);
 
-    jQuery(".detail_ae" + toggle_id).hide("blind", {direction: "vertical"}, 500);
+    jQuery(".detail_ae" + toggle_id).hide("blind", { direction: "vertical" }, 500);
 
   }
 
@@ -10661,7 +10655,7 @@ jQuery(document).on("change", ".ct_open_close_email_template", function () {
 
 /* SAVE EMAIL AND SMS TEMPLATE IN DB */
 
-jQuery(document).on("click","#default_email_contents",function() {
+jQuery(document).on("click", "#default_email_contents", function () {
 
   var id = jQuery(this).attr("data-id");
 
@@ -10669,17 +10663,17 @@ jQuery(document).on("click","#default_email_contents",function() {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { id : id, default_email_content : 1 },
+    data: { id: id, default_email_content: 1 },
 
-    url : ajax_url+"email_template_ajax.php",
+    url: ajax_url + "email_template_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
-      jQuery("#email_message_"+id).val(res);
+      jQuery("#email_message_" + id).val(res);
 
     }
 
@@ -10687,13 +10681,13 @@ jQuery(document).on("click","#default_email_contents",function() {
 
 });
 
-jQuery(document).on("click",".email_short_tags",function() {
+jQuery(document).on("click", ".email_short_tags", function () {
 
   var id = jQuery(this).attr("data-id");
 
   var val = jQuery(this).attr("data-value");
 
-  jQuery("#email_message_"+id).each(function(i) {
+  jQuery("#email_message_" + id).each(function (i) {
 
     if (document.selection) {
 
@@ -10739,7 +10733,7 @@ jQuery(document).on("click",".email_short_tags",function() {
 
 });
 
-jQuery(document).on("click","#default_sms_contents",function() {
+jQuery(document).on("click", "#default_sms_contents", function () {
 
   var id = jQuery(this).attr("data-id");
 
@@ -10747,17 +10741,17 @@ jQuery(document).on("click","#default_sms_contents",function() {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data: { id : id, default_sms_content : 1 },
+    data: { id: id, default_sms_content: 1 },
 
-    url : ajax_url+"sms_template_ajax.php",
+    url: ajax_url + "sms_template_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
-      jQuery("#sms_message_"+id).val(res);
+      jQuery("#sms_message_" + id).val(res);
 
     }
 
@@ -10765,13 +10759,13 @@ jQuery(document).on("click","#default_sms_contents",function() {
 
 });
 
-jQuery(document).on("click",".sms_short_tags",function() {
+jQuery(document).on("click", ".sms_short_tags", function () {
 
   var id = jQuery(this).attr("data-id");
 
   var val = jQuery(this).attr("data-value");
 
-  jQuery("#sms_message_"+id).each(function(i) {
+  jQuery("#sms_message_" + id).each(function (i) {
 
     if (document.selection) {
 
@@ -10855,41 +10849,41 @@ jQuery(document).on("click", ".mybtndelete_register_customers_entry", function (
 
     }
 
-  }); 
+  });
 
 });
 
-jQuery(document).on("click","#loginbg",function(){
+jQuery(document).on("click", "#loginbg", function () {
 
-  var ajax_url = settingObj.ajax_url; 
+  var ajax_url = settingObj.ajax_url;
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"setting_ajax.php",
+    url: ajax_url + "setting_ajax.php",
 
-    data:{action:"delete_login_image"},
+    data: { action: "delete_login_image" },
 
-    success:function(){}
+    success: function () { }
 
   });
 
 });
 
-jQuery(document).on("click","#frontbg",function(){
+jQuery(document).on("click", "#frontbg", function () {
 
-  var ajax_url = settingObj.ajax_url; 
+  var ajax_url = settingObj.ajax_url;
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"setting_ajax.php",
+    url: ajax_url + "setting_ajax.php",
 
-    data:{action:"delete_front_imge"},
+    data: { action: "delete_front_imge" },
 
-    success:function(){     
+    success: function () {
 
     }
 
@@ -10897,11 +10891,11 @@ jQuery(document).on("click","#frontbg",function(){
 
 });
 
-jQuery(document).on("click", ".appearance_settings_btn_check", function(e){
+jQuery(document).on("click", ".appearance_settings_btn_check", function (e) {
 
   jQuery(".ct-loading-main").show();
 
-  if(jQuery("#existing-and-new-user-checkout").prop("checked") === false && jQuery("#guest-user-checkout").prop("checked") === false){
+  if (jQuery("#existing-and-new-user-checkout").prop("checked") === false && jQuery("#guest-user-checkout").prop("checked") === false) {
 
     jQuery(".ct-loading-main").hide();
 
@@ -10921,37 +10915,37 @@ jQuery(document).on("click", ".appearance_settings_btn_check", function(e){
 
 /* service form reset */
 
-jQuery(document).on("click","#reset_service_form",function(){
+jQuery(document).on("click", "#reset_service_form", function () {
 
   jQuery("#addservice_form")[0].reset();
 
-  var img_url=imgObj.img_url;
+  var img_url = imgObj.img_url;
 
   var color_reset = jQuery("#ct-service-color-tag").val();
 
-  jQuery("#pcasctimagename").attr("value","");
+  jQuery("#pcasctimagename").attr("value", "");
 
-  jQuery("#pcasserviceimage").attr("src",img_url+"default_service.png");
+  jQuery("#pcasserviceimage").attr("src", img_url + "default_service.png");
 
-  jQuery(".minicolors-swatch-color").css("background-color",color_reset);
+  jQuery(".minicolors-swatch-color").css("background-color", color_reset);
 
 });
 
 /* Service addons reset*/
 
-jQuery(document).on("click","#reset_service_addons",function(){
+jQuery(document).on("click", "#reset_service_addons", function () {
 
   jQuery("#mynewformfor_insertaddons")[0].reset();
 
-  var img_url=imgObj.img_url;
+  var img_url = imgObj.img_url;
 
-  jQuery("#pcaoctimagename").attr("value","");
+  jQuery("#pcaoctimagename").attr("value", "");
 
-  jQuery("#pcaoaddonimage").attr("src",img_url+"default_service.png");
+  jQuery("#pcaoaddonimage").attr("src", img_url + "default_service.png");
 
 });
 
-jQuery(document).on("click",".save_manage_form_fields",function(){
+jQuery(document).on("click", ".save_manage_form_fields", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -11009,9 +11003,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  
 
-  
+
+
 
   var company_logo_status = jQuery("#show_company_logo").prop("checked");
 
@@ -11119,9 +11113,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_first_name_3 =  jQuery(".fname_min").val();
+  var ct_bf_first_name_3 = jQuery(".fname_min").val();
 
-  var ct_bf_first_name_4 =  jQuery(".fname_max").val();
+  var ct_bf_first_name_4 = jQuery(".fname_max").val();
 
   var ct_bf_last_name_1 = jQuery("#cff_last_name_1").prop("checked");
 
@@ -11143,9 +11137,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_last_name_3 =  jQuery(".lname_min").val();
+  var ct_bf_last_name_3 = jQuery(".lname_min").val();
 
-  var ct_bf_last_name_4 =  jQuery(".lname_max").val();
+  var ct_bf_last_name_4 = jQuery(".lname_max").val();
 
   var ct_bf_phone_1 = jQuery("#cff_phone_1").prop("checked");
 
@@ -11167,9 +11161,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_phone_3 =  jQuery(".phone_min").val();
+  var ct_bf_phone_3 = jQuery(".phone_min").val();
 
-  var ct_bf_phone_4 =  jQuery(".phone_max").val();
+  var ct_bf_phone_4 = jQuery(".phone_max").val();
 
   var ct_bf_address_1 = jQuery("#cff_street_address_1").prop("checked");
 
@@ -11191,9 +11185,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_address_3 =  jQuery(".street_address_min").val();
+  var ct_bf_address_3 = jQuery(".street_address_min").val();
 
-  var ct_bf_address_4 =  jQuery(".street_address_max").val();
+  var ct_bf_address_4 = jQuery(".street_address_max").val();
 
   var ct_bf_zip_1 = jQuery("#cff_zip_code_1").prop("checked");
 
@@ -11215,9 +11209,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_zip_3 =  jQuery(".zip_code_min").val();
+  var ct_bf_zip_3 = jQuery(".zip_code_min").val();
 
-  var ct_bf_zip_4 =  jQuery(".zip_code_max").val();
+  var ct_bf_zip_4 = jQuery(".zip_code_max").val();
 
   var ct_bf_city_1 = jQuery("#cff_city_1").prop("checked");
 
@@ -11239,9 +11233,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_city_3 =  jQuery(".city_min").val();
+  var ct_bf_city_3 = jQuery(".city_min").val();
 
-  var ct_bf_city_4 =  jQuery(".city_max").val();
+  var ct_bf_city_4 = jQuery(".city_max").val();
 
   /* STATES */
 
@@ -11265,9 +11259,9 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_state_3 =  jQuery(".state_min").val();
+  var ct_bf_state_3 = jQuery(".state_min").val();
 
-  var ct_bf_state_4 =  jQuery(".state_max").val();
+  var ct_bf_state_4 = jQuery(".state_max").val();
 
   /* NOTES */
 
@@ -11291,33 +11285,33 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  var ct_bf_notes_3 =  jQuery(".notes_min").val();
+  var ct_bf_notes_3 = jQuery(".notes_min").val();
 
-  var ct_bf_notes_4 =  jQuery(".notes_max").val();
+  var ct_bf_notes_4 = jQuery(".notes_max").val();
 
   /* form fields */
 
-  var dataString = { coupon_checkout : coupon_checkout,referral_checkout:referral_checkout,company_header_address : company_header_address, company_logo_display : company_logo_display, company_title_display : company_title_display, company_service_desc_status : company_service_desc_status, appointment_details_display : appointment_details_display, company_willwe_getin_status : company_willwe_getin_status, ct_subheaders : ct_subheaders_status, ct_vc_status : ct_vc_status, ct_p_status : ct_p_status, ct_bf_notes_1 : ct_bf_notes_1_status, ct_bf_notes_2 : ct_bf_notes_2_status, ct_bf_notes_3 : ct_bf_notes_3, ct_bf_notes_4 : ct_bf_notes_4, ct_bf_first_name_1 : ct_bf_first_name_1_status, ct_bf_first_name_2 : ct_bf_first_name_2_status, ct_bf_first_name_3 : ct_bf_first_name_3, ct_bf_first_name_4 : ct_bf_first_name_4, ct_bf_last_name_1 : ct_bf_last_name_1_status, ct_bf_last_name_2 : ct_bf_last_name_2_status, ct_bf_last_name_3 : ct_bf_last_name_3, ct_bf_last_name_4 : ct_bf_last_name_4, ct_bf_phone_1 : ct_bf_phone_1_status, ct_bf_phone_2 : ct_bf_phone_2_status, ct_bf_phone_3 : ct_bf_phone_3, ct_bf_phone_4 : ct_bf_phone_4, ct_bf_address_1 : ct_bf_address_1_status, ct_bf_address_2 : ct_bf_address_2_status, ct_bf_address_3 : ct_bf_address_3, ct_bf_address_4 : ct_bf_address_4, ct_bf_zip_1 : ct_bf_zip_1_status, ct_bf_zip_2 : ct_bf_zip_2_status, ct_bf_zip_3 : ct_bf_zip_3, ct_bf_zip_4 : ct_bf_zip_4, ct_bf_city_1 : ct_bf_city_1_status, ct_bf_city_2 : ct_bf_city_2_status, ct_bf_city_3 : ct_bf_city_3, ct_bf_city_4 : ct_bf_city_4, ct_bf_state_1 : ct_bf_state_1_status, ct_bf_state_2 : ct_bf_state_2_status, ct_bf_state_3 : ct_bf_state_3, ct_bf_state_4 : ct_bf_state_4, front_lang_dd : front_lang_dd_status, preferred_password_min : preferred_password_min, wallet_section_display : wallet_section_display ,preferred_password_max : preferred_password_max, "manage_form_fields_setting" : "yes" };
+  var dataString = { coupon_checkout: coupon_checkout, referral_checkout: referral_checkout, company_header_address: company_header_address, company_logo_display: company_logo_display, company_title_display: company_title_display, company_service_desc_status: company_service_desc_status, appointment_details_display: appointment_details_display, company_willwe_getin_status: company_willwe_getin_status, ct_subheaders: ct_subheaders_status, ct_vc_status: ct_vc_status, ct_p_status: ct_p_status, ct_bf_notes_1: ct_bf_notes_1_status, ct_bf_notes_2: ct_bf_notes_2_status, ct_bf_notes_3: ct_bf_notes_3, ct_bf_notes_4: ct_bf_notes_4, ct_bf_first_name_1: ct_bf_first_name_1_status, ct_bf_first_name_2: ct_bf_first_name_2_status, ct_bf_first_name_3: ct_bf_first_name_3, ct_bf_first_name_4: ct_bf_first_name_4, ct_bf_last_name_1: ct_bf_last_name_1_status, ct_bf_last_name_2: ct_bf_last_name_2_status, ct_bf_last_name_3: ct_bf_last_name_3, ct_bf_last_name_4: ct_bf_last_name_4, ct_bf_phone_1: ct_bf_phone_1_status, ct_bf_phone_2: ct_bf_phone_2_status, ct_bf_phone_3: ct_bf_phone_3, ct_bf_phone_4: ct_bf_phone_4, ct_bf_address_1: ct_bf_address_1_status, ct_bf_address_2: ct_bf_address_2_status, ct_bf_address_3: ct_bf_address_3, ct_bf_address_4: ct_bf_address_4, ct_bf_zip_1: ct_bf_zip_1_status, ct_bf_zip_2: ct_bf_zip_2_status, ct_bf_zip_3: ct_bf_zip_3, ct_bf_zip_4: ct_bf_zip_4, ct_bf_city_1: ct_bf_city_1_status, ct_bf_city_2: ct_bf_city_2_status, ct_bf_city_3: ct_bf_city_3, ct_bf_city_4: ct_bf_city_4, ct_bf_state_1: ct_bf_state_1_status, ct_bf_state_2: ct_bf_state_2_status, ct_bf_state_3: ct_bf_state_3, ct_bf_state_4: ct_bf_state_4, front_lang_dd: front_lang_dd_status, preferred_password_min: preferred_password_min, wallet_section_display: wallet_section_display, preferred_password_max: preferred_password_max, "manage_form_fields_setting": "yes" };
 
   var check_status = 0;
 
-  jQuery(".v_c").each(function(){
+  jQuery(".v_c").each(function () {
 
     var fors = jQuery(this).attr("data-names");
 
-    if(parseInt(jQuery(this).val()) > parseInt(jQuery(".v_c_"+fors).val())){
+    if (parseInt(jQuery(this).val()) > parseInt(jQuery(".v_c_" + fors).val())) {
 
-      jQuery(this).css("border-color","red");
+      jQuery(this).css("border-color", "red");
 
-      jQuery(".v_c_"+fors).css("border-color","red");
+      jQuery(".v_c_" + fors).css("border-color", "red");
 
-      check_status = check_status+1;
+      check_status = check_status + 1;
 
     }
 
   });
 
-  if(check_status == 0){
+  if (check_status == 0) {
 
     jQuery.ajax({
 
@@ -11327,7 +11321,7 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
       data: dataString,
 
-      success: function (response){
+      success: function (response) {
 
         jQuery(".ct-loading-main").hide();
 
@@ -11337,11 +11331,11 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
   }
 
-  else{
+  else {
 
     jQuery(".mainheader_message_fail").show();
 
-    jQuery(".mainheader_message_inner_fail").css("display","inline");
+    jQuery(".mainheader_message_inner_fail").css("display", "inline");
 
     jQuery("#ct_sucess_message_fail").html(errorobj_invalid_values);
 
@@ -11349,16 +11343,16 @@ jQuery(document).on("click",".save_manage_form_fields",function(){
 
     jQuery(".ct-loading-main").hide();
 
-  } 
+  }
 
 });
 
-jQuery(document).on("click",".save_staff",function(){
+jQuery(document).on("click", ".save_staff", function () {
 
   var email = jQuery(".staff_email").val();
 
   var name = jQuery(".staff_name").val();
-  
+
   var last_name = jQuery(".last_name").val();
 
   var pass = jQuery(".staff_pass").val();
@@ -11367,17 +11361,17 @@ jQuery(document).on("click",".save_staff",function(){
 
   if (!jQuery("#staff_insert").valid()) { return false; }
 
-  if(jQuery("#staff_insert").valid()){
+  if (jQuery("#staff_insert").valid()) {
 
     jQuery.ajax({
 
-      type : "POST",
+      type: "POST",
 
-      data : {"email":email,"pass" : pass,"name" : name,"last_name" : last_name,"role":role,"staff_add" : "add"},
+      data: { "email": email, "pass": pass, "name": name, "last_name": last_name, "role": role, "staff_add": "add" },
 
-      url : ajax_url + "staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-      success : function(res){
+      success: function (res) {
 
         location.reload();
 
@@ -11391,21 +11385,21 @@ jQuery(document).on("click",".save_staff",function(){
 
 /*validation  for staff insert form*/
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
 
   jQuery("#staff_insert").validate({
 
     rules: {
 
-      staff_email:{
+      staff_email: {
 
         required: true,
 
-        email:true,
+        email: true,
 
         remote: {
 
-          url:ajax_url+"staff_ajax.php",
+          url: ajax_url + "staff_ajax.php",
 
           type: "POST"
 
@@ -11415,13 +11409,13 @@ jQuery(document).ready(function(){
 
       staff_name: {
 
-        required:true,
+        required: true,
 
       },
 
       staff_pass: {
 
-        required:true,
+        required: true,
 
         minlength: 8,
 
@@ -11433,25 +11427,25 @@ jQuery(document).ready(function(){
 
     messages: {
 
-      staff_email:{
+      staff_email: {
 
-      required:errorobj_please_enter_email,email:errorobj_please_enter_valid_email_address,remote:errorobj_email_already_exists 
+        required: errorobj_please_enter_email, email: errorobj_please_enter_valid_email_address, remote: errorobj_email_already_exists
 
       },
 
       staff_name: {
 
-      required: errorobj_please_enter_name,
+        required: errorobj_please_enter_name,
 
       },
 
       staff_pass: {
 
-      required: errorobj_please_enter_password,
+        required: errorobj_please_enter_password,
 
-      min: errorobj_please_enter_minimum_8_characters,
+        min: errorobj_please_enter_minimum_8_characters,
 
-      max: errorobj_please_enter_maximum_15_characters,
+        max: errorobj_please_enter_maximum_15_characters,
 
       },
 
@@ -11461,7 +11455,7 @@ jQuery(document).ready(function(){
 
 });
 
-jQuery(document).on("click",".staff_click",function(){
+jQuery(document).on("click", ".staff_click", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -11469,13 +11463,13 @@ jQuery(document).on("click",".staff_click",function(){
 
   jQuery.ajax({
 
-    type : "POST",
+    type: "POST",
 
-    data : {"staff_id" : staff_id,"staff_detail" : "yes"},
+    data: { "staff_id": staff_id, "staff_detail": "yes" },
 
-    url : ajax_url + "staff_ajax.php",
+    url: ajax_url + "staff_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       jQuery(".get_staff_details").html(res);
 
@@ -11543,9 +11537,9 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly_staff", function ()
 
   var s = 1;
 
-  for(var i = 0;i<=starttimenew.length;i++){
+  for (var i = 0; i <= starttimenew.length; i++) {
 
-    if(starttimenew[i] > endtimenew[i]){
+    if (starttimenew[i] > endtimenew[i]) {
 
       s++;
 
@@ -11553,11 +11547,11 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly_staff", function ()
 
   }
 
-  if(s>1){
+  if (s > 1) {
 
     jQuery(".mainheader_message_fail").show();
 
-    jQuery(".mainheader_message_inner_fail").css("display","inline");
+    jQuery(".mainheader_message_inner_fail").css("display", "inline");
 
     jQuery("#ct_sucess_message_fail").html(errorobj_please_select_porper_time_slots);
 
@@ -11571,7 +11565,7 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly_staff", function ()
 
       type: "post",
 
-      data: { "chkday": chkdaynew, "starttime": st, "endtime": et, "staff_id" : staff_id, "operation_insertmonthlyslots_staff": 1 },
+      data: { "chkday": chkdaynew, "starttime": st, "endtime": et, "staff_id": staff_id, "operation_insertmonthlyslots_staff": 1 },
 
       url: ajax_url + "weekday_ajax.php",
 
@@ -11597,7 +11591,7 @@ jQuery(document).on("click", ".btnupdatenewtimeslots_monthly_staff", function ()
 
 });
 
-jQuery(document).on("click",".staff_link_clicked",function(){
+jQuery(document).on("click", ".staff_link_clicked", function () {
 
   localStorage["trigger_user"] = "";
 
@@ -11605,9 +11599,9 @@ jQuery(document).on("click",".staff_link_clicked",function(){
 
 /*update staff details*/
 
-jQuery(document).on("click","#update_staff_details",function(){
+jQuery(document).on("click", "#update_staff_details", function () {
 
-  if(jQuery("#staff_update_details").valid()){
+  if (jQuery("#staff_update_details").valid()) {
 
     jQuery(".ct-loading-main").show();
 
@@ -11616,9 +11610,9 @@ jQuery(document).on("click","#update_staff_details",function(){
     localStorage["trigger_user"] = id;
 
     var name = jQuery("#ct-member-name").val();
-  
-  var last_name = jQuery("#ct-member-last-name").val();
-  
+
+    var last_name = jQuery("#ct-member-last-name").val();
+
     var email = jQuery("#ct-member-email").val();
 
     var pro_user_id = jQuery("#ct-member-user-id").val();
@@ -11656,17 +11650,17 @@ jQuery(document).on("click","#update_staff_details",function(){
 
     var old_schedule = jQuery(this).attr("data-old_schedule_type");
 
-    var staff_image = jQuery("#pppp"+id+"ctimagename").val();
+    var staff_image = jQuery("#pppp" + id + "ctimagename").val();
 
     jQuery.ajax({
 
-      type : "POST",
+      type: "POST",
 
-      data : {"id":id,"name" : name,"last_name" : last_name,"email":email,"ct_member_rate":ct_member_rate,"ct_single_member_rate":ct_single_member_rate,"desc":desc,"phone":phone,"address":address,"staff_booking":staff_booking,"city":city,"state":state,"zip":zip,"country":country,"staff_update" : "update","old_schedule" : old_schedule,"staff_image": staff_image,"ct_service_staff":ct_service_staff,"pro_user_id":pro_user_id},
+      data: { "id": id, "name": name, "last_name": last_name, "email": email, "ct_member_rate": ct_member_rate, "ct_single_member_rate": ct_single_member_rate, "desc": desc, "phone": phone, "address": address, "staff_booking": staff_booking, "city": city, "state": state, "zip": zip, "country": country, "staff_update": "update", "old_schedule": old_schedule, "staff_image": staff_image, "ct_service_staff": ct_service_staff, "pro_user_id": pro_user_id },
 
-      url : ajax_url + "staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-      success : function(res){
+      success: function (res) {
 
         jQuery(".ct-loading-main").hide();
 
@@ -11684,9 +11678,9 @@ jQuery(document).on("click","#update_staff_details",function(){
 
 /*update staff details*/
 
-jQuery(document).on("click","#update_staff_details_staffsection",function(){
+jQuery(document).on("click", "#update_staff_details_staffsection", function () {
 
-  if(jQuery("#staff_update_details").valid()){
+  if (jQuery("#staff_update_details").valid()) {
 
     jQuery(".ct-loading-main").show();
 
@@ -11695,8 +11689,8 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
     localStorage["trigger_user"] = id;
 
     var name = jQuery("#ct-member-name").val();
-  
-   var last_name = jQuery("#ct-member-last-name").val();
+
+    var last_name = jQuery("#ct-member-last-name").val();
 
     var pro_user_id = jQuery("#ct-member-user-id").val();
 
@@ -11730,7 +11724,7 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
 
     /* var APItestmode = jQuery('#APItestmode').val(); */
 
-    
+
 
     var APItestmode = jQuery("#APItestmode").prop("checked");
 
@@ -11744,7 +11738,7 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
 
     }
 
-    
+
 
     var staff_booking = jQuery("#enable-booking1").prop("checked");
 
@@ -11768,26 +11762,26 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
 
     var old_schedule = jQuery(this).attr("data-old_schedule_type");
 
-    var staff_image = jQuery("#pppp"+id+"ctimagename").val();
+    var staff_image = jQuery("#pppp" + id + "ctimagename").val();
 
     jQuery.ajax({
 
-      type : "POST",
+      type: "POST",
 
-      data : {"zoom_link":zoom_link,"last_name":last_name,"staff_bio":bio,"pro_user_id":pro_user_id,"id":id,"name" : name,"email":email,"desc":desc,"phone":phone,"latitude":ct_member_latitude,"longitude":ct_member_longitude,"address":address,"staff_booking":staff_booking,"city":city,"state":state,"zip":zip,"country":country,"staff_update" : "update","old_schedule" : old_schedule,"APIUsername":APIUsername,"APIPassword":APIPassword,"APISignature":APISignature,"APItestmode":APItestmode,"staff_image": staff_image,"ct_service_staff":ct_service_staff,"ct_member_rate":ct_member_rate,"ct_single_member_rate":ct_single_member_rate},
+      data: { "zoom_link": zoom_link, "last_name": last_name, "staff_bio": bio, "pro_user_id": pro_user_id, "id": id, "name": name, "email": email, "desc": desc, "phone": phone, "latitude": ct_member_latitude, "longitude": ct_member_longitude, "address": address, "staff_booking": staff_booking, "city": city, "state": state, "zip": zip, "country": country, "staff_update": "update", "old_schedule": old_schedule, "APIUsername": APIUsername, "APIPassword": APIPassword, "APISignature": APISignature, "APItestmode": APItestmode, "staff_image": staff_image, "ct_service_staff": ct_service_staff, "ct_member_rate": ct_member_rate, "ct_single_member_rate": ct_single_member_rate },
 
-      url : ajax_url + "staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-      success : function(res){
+      success: function (res) {
 
         jQuery(".ct-loading-main").hide();
 
         jQuery(".mainheader_message").show();
-    
-        jQuery(".mainheader_message_inner").css("display","inline");
+
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
         jQuery("#ct_sucess_message").html("Your Profile has been successfully updated.");
-    
+
         jQuery(".mainheader_message").fadeOut(3000);
 
         location.reload();
@@ -11804,11 +11798,11 @@ jQuery(document).on("click","#update_staff_details_staffsection",function(){
 
 /*end validations*/
 
-jQuery(document).on("click",".save_staff_booking",function(){
+jQuery(document).on("click", ".save_staff_booking", function () {
 
   var staff_ids = jQuery("#staff_select").val();
 
-  if(staff_ids != null){ 
+  if (staff_ids != null) {
 
     jQuery(this).addClass("disabled");
 
@@ -11818,13 +11812,13 @@ jQuery(document).on("click",".save_staff_booking",function(){
 
     jQuery.ajax({
 
-      type : "POST",
+      type: "POST",
 
-      data : {"staff_ids" : staff_ids,"assign_staff_booking" : "yes","order_id" : jQuery(this).attr("data-orderid")},
+      data: { "staff_ids": staff_ids, "assign_staff_booking": "yes", "order_id": jQuery(this).attr("data-orderid") },
 
-      url : ajax_url + "staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-      success : function(res){
+      success: function (res) {
 
         jQuery(".save_staff_booking").removeClass("disabled");
 
@@ -11838,19 +11832,19 @@ jQuery(document).on("click",".save_staff_booking",function(){
 
     });
 
-  } 
+  }
 
 });
 
 
 
-jQuery( document ).ajaxComplete(function() {
+jQuery(document).ajaxComplete(function () {
 
   jQuery(".selectpicker").selectpicker({
 
     container: "body",
 
-  }); 
+  });
 
 });
 
@@ -11858,19 +11852,19 @@ jQuery( document ).ajaxComplete(function() {
 
 
 
-jQuery(document).on("click",".staff_delete",function(){
+jQuery(document).on("click", ".staff_delete", function () {
 
   var id = jQuery(this).attr("data-id");
 
   jQuery.ajax({
 
-    type :"POST",
+    type: "POST",
 
-    data : {"staff_id" : id,"delete_staff" : "yes"},
+    data: { "staff_id": id, "delete_staff": "yes" },
 
-    url : ajax_url + "staff_ajax.php",
+    url: ajax_url + "staff_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       location.reload();
 
@@ -11880,7 +11874,7 @@ jQuery(document).on("click",".staff_delete",function(){
 
 });
 
-jQuery(document).on("click",".save_front_form_error_labels",function(){
+jQuery(document).on("click", ".save_front_form_error_labels", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -11890,13 +11884,13 @@ jQuery(document).on("click",".save_front_form_error_labels",function(){
 
   var labelvalue_front_error = {};
 
-  jQuery(".langlabel_front_error_"+id).each(function () {
+  jQuery(".langlabel_front_error_" + id).each(function () {
 
     labelvalue_front_error[jQuery(this).attr("data-id")] = jQuery(this).val();
 
   });
 
-  var dataString = { id : id, labels_front_error: labelvalue_front_error, update_labels : jQuery("#update_labels").val(), change_language : 1 }
+  var dataString = { id: id, labels_front_error: labelvalue_front_error, update_labels: jQuery("#update_labels").val(), change_language: 1 }
 
   jQuery.ajax({
 
@@ -11930,7 +11924,7 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
   var staffid = jQuery(this).attr("data-staff_id");
 
-  var imageids = jQuery(this).attr("data-imageinputid");  
+  var imageids = jQuery(this).attr("data-imageinputid");
 
   var file_data = jQuery("#" + jQuery(this).attr("data-imageinputid")).prop("files")[0];
 
@@ -12004,9 +11998,9 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
         jQuery("#" + ctus + "staffimage").attr("src", imgObj_url + "services/" + data);
 
-        jQuery("#staff_image_"+staffid).attr("src", imgObj_url + "services/" + data);
+        jQuery("#staff_image_" + staffid).attr("src", imgObj_url + "services/" + data);
 
-        jQuery(".small-staff-image"+staffid).attr("src", imgObj_url + "services/" + data);
+        jQuery(".small-staff-image" + staffid).attr("src", imgObj_url + "services/" + data);
 
         jQuery(".error_image").hide();
 
@@ -12014,13 +12008,13 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
         staffimagename = jQuery("#" + ctus + "staffimage").attr("data-imagename");
 
-        jQuery("#ser_cam_btn").css("display","block");
+        jQuery("#ser_cam_btn").css("display", "block");
 
-        jQuery("#ser_new_del").css("display","none");
+        jQuery("#ser_new_del").css("display", "none");
 
       }
 
-      jQuery("#"+imageids).val("");
+      jQuery("#" + imageids).val("");
 
     }
 
@@ -12030,35 +12024,35 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
 /* delete staff image */
 
-jQuery(document).on("click","#staff_del_images",function(){
+jQuery(document).on("click", "#staff_del_images", function () {
 
-  var staff_id=jQuery(this).attr("data-staff_id");
+  var staff_id = jQuery(this).attr("data-staff_id");
 
   var imgObj_url = imgObj.img_url;
 
-  var datastring={staff_id:staff_id,action:"delete_staff_image"};
+  var datastring = { staff_id: staff_id, action: "delete_staff_image" };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url+"staff_ajax.php",
+    url: ajax_url + "staff_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
-      jQuery("#staff_image_"+staff_id).attr("src",imgObj_url + "user.png");
+      jQuery("#staff_image_" + staff_id).attr("src", imgObj_url + "user.png");
 
-      jQuery("#pppp"+staff_id+"staffimage").attr("src",imgObj_url + "user.png");
+      jQuery("#pppp" + staff_id + "staffimage").attr("src", imgObj_url + "user.png");
 
-      jQuery("#pppp"+staff_id+"ctimagename").val("");
+      jQuery("#pppp" + staff_id + "ctimagename").val("");
 
-      jQuery(".small-staff-image"+staff_id).attr("src", imgObj_url + "user.png");
+      jQuery(".small-staff-image" + staff_id).attr("src", imgObj_url + "user.png");
 
-      jQuery(".ser_cam_btn"+staff_id).css("display","block");
+      jQuery(".ser_cam_btn" + staff_id).css("display", "block");
 
-      jQuery("#ct-remove-staff-imagepppp"+staff_id).css("display","none");
+      jQuery("#ct-remove-staff-imagepppp" + staff_id).css("display", "none");
 
       jQuery(".popover").fadeOut();
 
@@ -12070,35 +12064,35 @@ jQuery(document).on("click","#staff_del_images",function(){
 
 /* delete staff image */
 
-jQuery(document).on("click","#customer_del_images",function(){
+jQuery(document).on("click", "#customer_del_images", function () {
 
-  var user_id=jQuery(this).attr("data-staff_id");
+  var user_id = jQuery(this).attr("data-staff_id");
 
   var imgObj_url = imgObj.img_url;
 
-  var datastring={user_id:user_id,action:"delete_customer_image"};
+  var datastring = { user_id: user_id, action: "delete_customer_image" };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url+"staff_ajax.php",
+    url: ajax_url + "staff_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
-      jQuery("#staff_image_"+user_id).attr("src",imgObj_url + "user.png");
+      jQuery("#staff_image_" + user_id).attr("src", imgObj_url + "user.png");
 
-      jQuery("#pppp"+user_id+"staffimage").attr("src",imgObj_url + "user.png");
+      jQuery("#pppp" + user_id + "staffimage").attr("src", imgObj_url + "user.png");
 
-      jQuery("#pppp"+user_id+"ctimagename").val("");
+      jQuery("#pppp" + user_id + "ctimagename").val("");
 
-      jQuery(".small-staff-image"+user_id).attr("src", imgObj_url + "user.png");
+      jQuery(".small-staff-image" + user_id).attr("src", imgObj_url + "user.png");
 
-      jQuery(".ser_cam_btn"+user_id).css("display","block");
+      jQuery(".ser_cam_btn" + user_id).css("display", "block");
 
-      jQuery("#ct-remove-staff-imagepppp"+user_id).css("display","none");
+      jQuery("#ct-remove-staff-imagepppp" + user_id).css("display", "none");
 
       jQuery(".popover").fadeOut();
 
@@ -12123,7 +12117,7 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
   var staffid = jQuery(this).attr("data-staff_id");
 
-  var imageids = jQuery(this).attr("data-imageinputid");  
+  var imageids = jQuery(this).attr("data-imageinputid");
 
   var file_data = jQuery("#" + jQuery(this).attr("data-imageinputid")).prop("files")[0];
 
@@ -12197,9 +12191,9 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
         jQuery("#" + ctus + "staffimage").attr("src", imgObj_url + "services/" + data);
 
-        jQuery("#staff_image_"+staffid).attr("src", imgObj_url + "services/" + data);
+        jQuery("#staff_image_" + staffid).attr("src", imgObj_url + "services/" + data);
 
-        jQuery(".small-staff-image"+staffid).attr("src", imgObj_url + "services/" + data);
+        jQuery(".small-staff-image" + staffid).attr("src", imgObj_url + "services/" + data);
 
         jQuery(".error_image").hide();
 
@@ -12207,13 +12201,13 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
         staffimagename = jQuery("#" + ctus + "staffimage").attr("data-imagename");
 
-        jQuery("#ser_cam_btn").css("display","block");
+        jQuery("#ser_cam_btn").css("display", "block");
 
-        jQuery("#ser_new_del").css("display","none");
+        jQuery("#ser_new_del").css("display", "none");
 
       }
 
-      jQuery("#"+imageids).val("");
+      jQuery("#" + imageids).val("");
 
     }
 
@@ -12221,25 +12215,25 @@ jQuery(document).on("click", ".ct_upload_img_staff", function (e) {
 
 });
 
-jQuery(document).on("click",".show_staff_payment_details",function(){
+jQuery(document).on("click", ".show_staff_payment_details", function () {
 
   jQuery(".custm_staff_payment_details").html("<tr><td align='center' colspan='5'>Loading...</td></tr>");
 
-  var staff_ids=jQuery(this).attr("data-staff_ids");
+  var staff_ids = jQuery(this).attr("data-staff_ids");
 
-  var order_id=jQuery(this).attr("data-order_id");
+  var order_id = jQuery(this).attr("data-order_id");
 
-  var datastring={staff_ids:staff_ids,order_id:order_id,"staff_payment_details":1};
+  var datastring = { staff_ids: staff_ids, order_id: order_id, "staff_payment_details": 1 };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url+"staff_commision_ajax.php",
+    url: ajax_url + "staff_commision_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(res){
+    success: function (res) {
 
       jQuery(".custm_staff_payment_details").html(res);
 
@@ -12249,59 +12243,59 @@ jQuery(document).on("click",".show_staff_payment_details",function(){
 
 });
 
-jQuery(document).on("keyup",".sp_staff_amount",function(){
+jQuery(document).on("keyup", ".sp_staff_amount", function () {
 
   var sid = jQuery(this).attr("data-id");
 
-  var total = parseInt(jQuery(this).val())+parseInt(jQuery("#sp_staff_advance_paid"+sid).val());
+  var total = parseInt(jQuery(this).val()) + parseInt(jQuery("#sp_staff_advance_paid" + sid).val());
 
-  jQuery("#sp_staff_net_total"+sid).val(total);
+  jQuery("#sp_staff_net_total" + sid).val(total);
 
-  jQuery(".sp_staff_net_total"+sid).html(total);
+  jQuery(".sp_staff_net_total" + sid).html(total);
 
 });
 
-jQuery(document).on("keyup",".sp_staff_advance_paid",function(){
+jQuery(document).on("keyup", ".sp_staff_advance_paid", function () {
 
   var sid = jQuery(this).attr("data-id");
 
-  var total = parseInt(jQuery(this).val())+parseInt(jQuery("#sp_staff_amount"+sid).val());
+  var total = parseInt(jQuery(this).val()) + parseInt(jQuery("#sp_staff_amount" + sid).val());
 
-  jQuery("#sp_staff_net_total"+sid).val(total);
+  jQuery("#sp_staff_net_total" + sid).val(total);
 
-  jQuery(".sp_staff_net_total"+sid).html(total);
+  jQuery(".sp_staff_net_total" + sid).html(total);
 
 });
 
 
 
-jQuery(document).on("click",".save_sp_staff_commision",function(){
+jQuery(document).on("click", ".save_sp_staff_commision", function () {
 
-  var staff_pymnt_id="";
+  var staff_pymnt_id = "";
 
-  var sp_staff_amount="";
+  var sp_staff_amount = "";
 
-  var sp_staff_advance_paid="";
+  var sp_staff_advance_paid = "";
 
-  var sp_staff_net_total="";
+  var sp_staff_net_total = "";
 
-  var i=1;
+  var i = 1;
 
-  var j=1;
+  var j = 1;
 
-  var k=1;
+  var k = 1;
 
-  var l=1;
+  var l = 1;
 
-  jQuery(".staff_pymnt_id").each(function(){
+  jQuery(".staff_pymnt_id").each(function () {
 
-    if(i == 1){
+    if (i == 1) {
 
       staff_pymnt_id += jQuery(this).val();
 
-    }else{
+    } else {
 
-      staff_pymnt_id += ","+jQuery(this).val();
+      staff_pymnt_id += "," + jQuery(this).val();
 
     }
 
@@ -12309,15 +12303,15 @@ jQuery(document).on("click",".save_sp_staff_commision",function(){
 
   });
 
-  jQuery(".sp_staff_amount").each(function(){
+  jQuery(".sp_staff_amount").each(function () {
 
-    if(j == 1){
+    if (j == 1) {
 
       sp_staff_amount += jQuery(this).val();
 
-    }else{
+    } else {
 
-      sp_staff_amount += ","+jQuery(this).val();
+      sp_staff_amount += "," + jQuery(this).val();
 
     }
 
@@ -12325,15 +12319,15 @@ jQuery(document).on("click",".save_sp_staff_commision",function(){
 
   });
 
-  jQuery(".sp_staff_advance_paid").each(function(){
+  jQuery(".sp_staff_advance_paid").each(function () {
 
-    if(k == 1){
+    if (k == 1) {
 
       sp_staff_advance_paid += jQuery(this).val();
 
-    }else{
+    } else {
 
-      sp_staff_advance_paid += ","+jQuery(this).val();
+      sp_staff_advance_paid += "," + jQuery(this).val();
 
     }
 
@@ -12341,15 +12335,15 @@ jQuery(document).on("click",".save_sp_staff_commision",function(){
 
   });
 
-  jQuery(".sp_staff_net_total").each(function(){
+  jQuery(".sp_staff_net_total").each(function () {
 
-    if(l == 1){
+    if (l == 1) {
 
       sp_staff_net_total += jQuery(this).val();
 
-    }else{
+    } else {
 
-      sp_staff_net_total += ","+jQuery(this).val();
+      sp_staff_net_total += "," + jQuery(this).val();
 
     }
 
@@ -12359,25 +12353,25 @@ jQuery(document).on("click",".save_sp_staff_commision",function(){
 
   var staff_pymnt_orderid = jQuery(".staff_pymnt_orderid").val();
 
-  var datastring={staff_pymnt_id:staff_pymnt_id,sp_staff_amount:sp_staff_amount,sp_staff_advance_paid:sp_staff_advance_paid,sp_staff_net_total:sp_staff_net_total,staff_pymnt_orderid:staff_pymnt_orderid,"staff_payment_save":1};
+  var datastring = { staff_pymnt_id: staff_pymnt_id, sp_staff_amount: sp_staff_amount, sp_staff_advance_paid: sp_staff_advance_paid, sp_staff_net_total: sp_staff_net_total, staff_pymnt_orderid: staff_pymnt_orderid, "staff_payment_save": 1 };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url+"staff_commision_ajax.php",
+    url: ajax_url + "staff_commision_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(res){
+    success: function (res) {
 
-      if(res == "not_ok_comission"){
+      if (res == "not_ok_comission") {
 
         jQuery(".comission_error_display").removeClass("hide");
 
         return false;
 
-      }else{
+      } else {
 
         jQuery(".close_spc_popup").trigger("click");
 
@@ -12393,11 +12387,11 @@ jQuery(document).on("click",".save_sp_staff_commision",function(){
 
 
 
-jQuery(document).on('click','.request_for_transfer',function(){ 
+jQuery(document).on('click', '.request_for_transfer', function () {
 
   jQuery('.ct-loading-main').show();
 
-  var site_url=site_ur.site_url;
+  var site_url = site_ur.site_url;
 
   var email_id = jQuery(this).data('email');
 
@@ -12407,7 +12401,7 @@ jQuery(document).on('click','.request_for_transfer',function(){
 
   var transfer_amount_value = jQuery('#transfer_amount_value').val();
 
-  if(currentamount < transfer_amount_value){
+  if (currentamount < transfer_amount_value) {
 
     jQuery('.wallet_error').css('display', 'block');
 
@@ -12415,7 +12409,7 @@ jQuery(document).on('click','.request_for_transfer',function(){
 
     return false;
 
-  }else{
+  } else {
 
     jQuery('.wallet_error').css('display', 'none');
 
@@ -12427,7 +12421,8 @@ jQuery(document).on('click','.request_for_transfer',function(){
 
     type: 'post',
 
-    data: {'email_id': email_id, 'staffid': staffid, 'transfer_amount_value': transfer_amount_value, 'currentamount': currentamount, 'action':'money_transfer_request'
+    data: {
+      'email_id': email_id, 'staffid': staffid, 'transfer_amount_value': transfer_amount_value, 'currentamount': currentamount, 'action': 'money_transfer_request'
 
     },
 
@@ -12461,7 +12456,7 @@ jQuery(document).on("click", ".get_staff_bookingandpayment_by_dateser", function
 
     type: "post",
 
-    data: {get_staff_bookingandpayment_by_dateser: 1, startdate: startDate, enddate: endDate, service_id: service_id},
+    data: { get_staff_bookingandpayment_by_dateser: 1, startdate: startDate, enddate: endDate, service_id: service_id },
 
     url: ajax_url + "staff_ajax.php",
 
@@ -12491,7 +12486,7 @@ jQuery(document).on("click", ".get_payment_staff_by_date", function () {
 
     type: "post",
 
-    data: {get_payment_staff_by_date: 1, startdate: startDate, enddate: endDate},
+    data: { get_payment_staff_by_date: 1, startdate: startDate, enddate: endDate },
 
     url: ajax_url + "staff_ajax.php",
 
@@ -12509,7 +12504,7 @@ jQuery(document).on("click", ".get_payment_staff_by_date", function () {
 
 /* recurrence booking */
 
-jQuery(document).on("change","#ct_recurrence_booking_status",function () {
+jQuery(document).on("change", "#ct_recurrence_booking_status", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -12517,13 +12512,13 @@ jQuery(document).on("change","#ct_recurrence_booking_status",function () {
 
   var ct_recurrence_booking_status = "N";
 
-  if(recurrence_booking_status == true) {
+  if (recurrence_booking_status == true) {
 
     ct_recurrence_booking_status = "Y";
 
   }
 
-  var datastring = { "ct_recurrence_booking_status" : ct_recurrence_booking_status, "ct_recurrence_booking" : "1" };
+  var datastring = { "ct_recurrence_booking_status": ct_recurrence_booking_status, "ct_recurrence_booking": "1" };
 
   jQuery.ajax({
 
@@ -12535,7 +12530,7 @@ jQuery(document).on("change","#ct_recurrence_booking_status",function () {
 
     success: function (res) {
 
-      if(recurrence_booking_status == true) {
+      if (recurrence_booking_status == true) {
 
         jQuery(".reccurence_div").slideDown(2000);
 
@@ -12563,7 +12558,7 @@ jQuery(document).on("change","#ct_recurrence_booking_status",function () {
 
 /* add new reccurence click event */
 
-jQuery(document).on("click","#ct-add-reccurence",function(){
+jQuery(document).on("click", "#ct-add-reccurence", function () {
 
   jQuery(".add_rec_li").show();
 
@@ -12571,35 +12566,35 @@ jQuery(document).on("click","#ct-add-reccurence",function(){
 
 });
 
-jQuery(document).on("click",".btnaddreccurence",function(){
+jQuery(document).on("click", ".btnaddreccurence", function () {
 
   jQuery(".ct-loading-main").show();
 
-  var name  = jQuery("#txtfreqnameadd").val();
+  var name = jQuery("#txtfreqnameadd").val();
 
-  var label  = jQuery("#txtfreqlabeladd").val();
+  var label = jQuery("#txtfreqlabeladd").val();
 
-  var days  = jQuery("#txtfreqdaysidadd").val();
+  var days = jQuery("#txtfreqdaysidadd").val();
 
-  var types  = jQuery("#txtfreqtypeadd").val();
+  var types = jQuery("#txtfreqtypeadd").val();
 
-  var values  = jQuery("#txtfreqvalueidadd").val();
+  var values = jQuery("#txtfreqvalueidadd").val();
 
   jQuery("#freq_discount_formadd").validate();
 
-  jQuery("#txtfreqnameadd").rules("add",{
+  jQuery("#txtfreqnameadd").rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_name}
+    messages: { required: errorobj_please_enter_name }
 
   });
 
-  jQuery("#txtfreqvalueidadd").rules("add",{
+  jQuery("#txtfreqvalueidadd").rules("add", {
 
-    required: true,pattern_price : true,
+    required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_enter_valid_value_for_discount,pattern_price: errorobj_please_enter_valid_value_for_discount}
+    messages: { required: errorobj_please_enter_valid_value_for_discount, pattern_price: errorobj_please_enter_valid_value_for_discount }
 
   });
 
@@ -12607,15 +12602,15 @@ jQuery(document).on("click",".btnaddreccurence",function(){
 
     required: true,
 
-    messages: {required: errorobj_please_enter_title}
+    messages: { required: errorobj_please_enter_title }
 
   });
 
-  jQuery("#txtfreqdaysidadd").rules("add",{
+  jQuery("#txtfreqdaysidadd").rules("add", {
 
-    required: true,pattern_cp : true,maxlength: 2,
+    required: true, pattern_cp: true, maxlength: 2,
 
-    messages: {required: errorobj_please_enter_valid_value_for_discount,pattern_cp: errorobj_please_enter_only_numeric,maxlength: errorobj_please_enter_maximum_2_digits}
+    messages: { required: errorobj_please_enter_valid_value_for_discount, pattern_cp: errorobj_please_enter_only_numeric, maxlength: errorobj_please_enter_maximum_2_digits }
 
   });
 
@@ -12631,11 +12626,11 @@ jQuery(document).on("click",".btnaddreccurence",function(){
 
     success: function (res) {
 
-      if(res == "1"){
+      if (res == "1") {
 
         location.reload();
 
-      }else{
+      } else {
 
         jQuery(".ct-loading-main").hide();
 
@@ -12649,35 +12644,35 @@ jQuery(document).on("click",".btnaddreccurence",function(){
 
 /* Update details */
 
-jQuery(document).on("click",".btnupdaterecurrence_once",function(){
+jQuery(document).on("click", ".btnupdaterecurrence_once", function () {
 
   jQuery(".ct-loading-main").show();
 
   var id = jQuery(this).attr("data-id");
 
-  var name  = jQuery("#txtfreqname"+id).val();
+  var name = jQuery("#txtfreqname" + id).val();
 
-  var label  = jQuery("#txtfreqlabel"+id).val();
+  var label = jQuery("#txtfreqlabel" + id).val();
 
-  jQuery("#freq_discount_form"+id).validate();
+  jQuery("#freq_discount_form" + id).validate();
 
-  jQuery("#txtfreqname" + id).rules("add",{
-
-    required: true,
-
-    messages: {required: errorobj_please_enter_name}
-
-  });
-
-  jQuery("#txtfreqlabel" + id).rules("add",{
+  jQuery("#txtfreqname" + id).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_title}
+    messages: { required: errorobj_please_enter_name }
 
   });
 
-  if (!jQuery("#freq_discount_form"+id).valid()) { jQuery(".ct-loading-main").hide(); return false; }
+  jQuery("#txtfreqlabel" + id).rules("add", {
+
+    required: true,
+
+    messages: { required: errorobj_please_enter_title }
+
+  });
+
+  if (!jQuery("#freq_discount_form" + id).valid()) { jQuery(".ct-loading-main").hide(); return false; }
 
   jQuery.ajax({
 
@@ -12699,11 +12694,11 @@ jQuery(document).on("click",".btnupdaterecurrence_once",function(){
 
     success: function (res) {
 
-      if(res == "1"){
+      if (res == "1") {
 
         location.reload();
 
-      }else{
+      } else {
 
         jQuery(".ct-loading-main").hide();
 
@@ -12715,57 +12710,57 @@ jQuery(document).on("click",".btnupdaterecurrence_once",function(){
 
 });
 
-jQuery(document).on("click",".btnupdaterecurrence",function(){
+jQuery(document).on("click", ".btnupdaterecurrence", function () {
 
   jQuery(".ct-loading-main").show();
 
   var id = jQuery(this).attr("data-id");
 
-  var name  = jQuery("#txtfreqname"+id).val();
+  var name = jQuery("#txtfreqname" + id).val();
 
-  var label  = jQuery("#txtfreqlabel"+id).val();
+  var label = jQuery("#txtfreqlabel" + id).val();
 
-  var days  = jQuery("#txtfreqdaysid"+id).val();
+  var days = jQuery("#txtfreqdaysid" + id).val();
 
-  var types  = jQuery("#txtfreqtype"+id).val();
+  var types = jQuery("#txtfreqtype" + id).val();
 
-  var values  = jQuery("#txtfreqvalueid"+id).val();
+  var values = jQuery("#txtfreqvalueid" + id).val();
 
-  jQuery("#freq_discount_form"+id).validate();
+  jQuery("#freq_discount_form" + id).validate();
 
-  jQuery("#txtfreqname" + id).rules("add",{
-
-    required: true,
-
-    messages: {required: errorobj_please_enter_name}
-
-  });
-
-  jQuery("#txtfreqvalueid" + id).rules("add",{
-
-    required: true,pattern_price : true,
-
-    messages: {required: errorobj_please_enter_valid_value_for_discount,pattern_price: errorobj_please_enter_valid_value_for_discount}
-
-  });
-
-  jQuery("#txtfreqlabel" + id).rules("add",{
+  jQuery("#txtfreqname" + id).rules("add", {
 
     required: true,
 
-    messages: {required: errorobj_please_enter_title}
+    messages: { required: errorobj_please_enter_name }
 
   });
 
-  jQuery("#txtfreqdaysid" + id).rules("add",{
+  jQuery("#txtfreqvalueid" + id).rules("add", {
 
-    required: true,pattern_cp : true,maxlength: 2,
+    required: true, pattern_price: true,
 
-    messages: {required: errorobj_please_enter_valid_value_for_discount,pattern_cp: errorobj_please_enter_only_numeric,maxlength: errorobj_please_enter_maximum_2_digits}
+    messages: { required: errorobj_please_enter_valid_value_for_discount, pattern_price: errorobj_please_enter_valid_value_for_discount }
 
   });
 
-  if (!jQuery("#freq_discount_form"+id).valid()){  jQuery(".ct-loading-main").hide(); return false; }
+  jQuery("#txtfreqlabel" + id).rules("add", {
+
+    required: true,
+
+    messages: { required: errorobj_please_enter_title }
+
+  });
+
+  jQuery("#txtfreqdaysid" + id).rules("add", {
+
+    required: true, pattern_cp: true, maxlength: 2,
+
+    messages: { required: errorobj_please_enter_valid_value_for_discount, pattern_cp: errorobj_please_enter_only_numeric, maxlength: errorobj_please_enter_maximum_2_digits }
+
+  });
+
+  if (!jQuery("#freq_discount_form" + id).valid()) { jQuery(".ct-loading-main").hide(); return false; }
 
   jQuery.ajax({
 
@@ -12777,11 +12772,11 @@ jQuery(document).on("click",".btnupdaterecurrence",function(){
 
     success: function (res) {
 
-      if(res == "1"){
+      if (res == "1") {
 
         location.reload();
 
-      }else{
+      } else {
 
         jQuery(".ct-loading-main").hide();
 
@@ -12795,7 +12790,7 @@ jQuery(document).on("click",".btnupdaterecurrence",function(){
 
 /* Delete reccurence details */
 
-jQuery(document).on("click",".reccurence-delete-button",function(){
+jQuery(document).on("click", ".reccurence-delete-button", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -12811,11 +12806,11 @@ jQuery(document).on("click",".reccurence-delete-button",function(){
 
     success: function (res) {
 
-      if(res == "1"){
+      if (res == "1") {
 
         location.reload();
 
-      }else{
+      } else {
 
         jQuery(".ct-loading-main").hide();
 
@@ -12827,7 +12822,7 @@ jQuery(document).on("click",".reccurence-delete-button",function(){
 
 });
 
-jQuery(document).on("click",".send_inovoice",function () {
+jQuery(document).on("click", ".send_inovoice", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -12837,7 +12832,7 @@ jQuery(document).on("click",".send_inovoice",function () {
 
   var links = jQuery(this).attr("data-link");
 
-  var datastring = { "email" : email, "name" : name, "link" : links, "send_email_invoice" : 1 }
+  var datastring = { "email": email, "name": name, "link": links, "send_email_invoice": 1 }
 
   jQuery.ajax({
 
@@ -12849,7 +12844,7 @@ jQuery(document).on("click",".send_inovoice",function () {
 
     success: function (res) {
 
-      
+
 
       jQuery(".ct-loading-main").hide();
 
@@ -12877,17 +12872,17 @@ jQuery(document).on("submit", "#ct-seo-ga-settings", function (e) {
 
     type: "POST",
 
-    data: new FormData(this), 
+    data: new FormData(this),
 
     contentType: false,
 
     cache: false,
 
-    processData:false,
+    processData: false,
 
-    success: function(res) {
+    success: function (res) {
 
-      if(jQuery.trim(res) == "Invalid Image Type"){
+      if (jQuery.trim(res) == "Invalid Image Type") {
 
         jQuery(".mainheader_message_fail").show();
 
@@ -12899,7 +12894,7 @@ jQuery(document).on("submit", "#ct-seo-ga-settings", function (e) {
 
         jQuery(".ct-loading-main").hide();
 
-      } else{
+      } else {
 
         jQuery(".mainheader_message").show();
 
@@ -12973,13 +12968,13 @@ jQuery(document).on("focusout", "#ct_custom_css_loader", function () {
 
   var t_val = jQuery(this).val();
 
-  if(t_val != ""){
+  if (t_val != "") {
 
     jQuery(".ct_custom_css_loader_preview_overlay").html(t_val);
 
     jQuery(".ct_custom_css_loader_preview_overlay").show();
 
-  }else{
+  } else {
 
     jQuery(".ct_custom_css_loader_preview_overlay").html("");
 
@@ -12989,21 +12984,21 @@ jQuery(document).on("focusout", "#ct_custom_css_loader", function () {
 
 });
 
-jQuery(document).ready( function () {
+jQuery(document).ready(function () {
 
-  if(jQuery("#ct_gifloader").prop("checked")){
+  if (jQuery("#ct_gifloader").prop("checked")) {
 
     jQuery(".ct_CSS_Loader_div").hide();
 
     jQuery(".ct_GIF_Loader_div").show();
 
-  }else if(jQuery("#ct_cssloader").prop("checked")){
+  } else if (jQuery("#ct_cssloader").prop("checked")) {
 
     jQuery(".ct_CSS_Loader_div").show();
 
     jQuery(".ct_GIF_Loader_div").hide();
 
-  }else{
+  } else {
 
     jQuery(".ct_CSS_Loader_div").hide();
 
@@ -13011,7 +13006,7 @@ jQuery(document).ready( function () {
 
   }
 
-  if(jQuery("#ct_custom_css_loader").val() == ""){
+  if (jQuery("#ct_custom_css_loader").val() == "") {
 
     jQuery(".ct_custom_css_loader_preview_overlay").html("");
 
@@ -13023,13 +13018,13 @@ jQuery(document).ready( function () {
 
 /***  auto updater ***/
 
-jQuery(document).on("click",".pulse-update",function(e){
+jQuery(document).on("click", ".pulse-update", function (e) {
 
   jQuery(".modal-backdrop").hide();
 
 });
 
-jQuery(document).on("click","#ct_update_available",function(e){
+jQuery(document).on("click", "#ct_update_available", function (e) {
 
   jQuery(".ct-loading-main").show();
 
@@ -13037,15 +13032,15 @@ jQuery(document).on("click","#ct_update_available",function(e){
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"ct_auto_updater_ajax.php",
+    url: ajax_url + "ct_auto_updater_ajax.php",
 
-    data:{action:"auto_updater"},
+    data: { action: "auto_updater" },
 
-    success:function(res){
+    success: function (res) {
 
-      if(jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it."){
+      if (jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it.") {
 
         jQuery(".mainheader_message_fail_upgrade").show();
 
@@ -13057,7 +13052,7 @@ jQuery(document).on("click","#ct_update_available",function(e){
 
         jQuery(".ct-loading-main").hide();
 
-      }else{
+      } else {
 
         window.location.reload();
 
@@ -13073,7 +13068,7 @@ jQuery(document).on("click","#ct_update_available",function(e){
 
 /***  Add extensions ***/
 
-jQuery(document).on("click",".ct_add_extensions",function(e){
+jQuery(document).on("click", ".ct_add_extensions", function (e) {
 
   jQuery(".ct-loading-main").show();
 
@@ -13099,15 +13094,15 @@ jQuery(document).on("click",".ct_add_extensions",function(e){
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"ct_add_extensions_ajax.php",
+    url: ajax_url + "ct_add_extensions_ajax.php",
 
-    data:{installed_version:installed_version, update_version:update_version, extension:extension, purchase_option:purchase_option, version_option:version_option, payment_option:payment_option, payment_add_option:payment_add_option, payment_add_lable:payment_add_lable, action:"add_extension"},
+    data: { installed_version: installed_version, update_version: update_version, extension: extension, purchase_option: purchase_option, version_option: version_option, payment_option: payment_option, payment_add_option: payment_add_option, payment_add_lable: payment_add_lable, action: "add_extension" },
 
-    success:function(res){
+    success: function (res) {
 
-      if(jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it."){
+      if (jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it.") {
 
         jQuery(".mainheader_message_fail_upgrade").show();
 
@@ -13119,13 +13114,13 @@ jQuery(document).on("click",".ct_add_extensions",function(e){
 
         jQuery(".ct-loading-main").hide();
 
-      }else{
+      } else {
 
-        if(redirect_to != ""){
+        if (redirect_to != "") {
 
-          window.location.href = site_ur.site_url+redirect_to;
+          window.location.href = site_ur.site_url + redirect_to;
 
-        }else{
+        } else {
 
           window.location.reload();
 
@@ -13139,13 +13134,13 @@ jQuery(document).on("click",".ct_add_extensions",function(e){
 
 });
 
-jQuery(document).on("click",".ct_activate_extensions",function(e){
+jQuery(document).on("click", ".ct_activate_extensions", function (e) {
 
   jQuery(".ct-loading-main").show();
 
   e.preventDefault();
 
-  jQuery(".purchase_code_err_"+extension).css("cssText", "display: none !important;");
+  jQuery(".purchase_code_err_" + extension).css("cssText", "display: none !important;");
 
   var installed_version = jQuery(this).attr("data-installed_version");
 
@@ -13159,7 +13154,7 @@ jQuery(document).on("click",".ct_activate_extensions",function(e){
 
   var redirect_to = jQuery(this).attr("data-redirect_to");
 
-  var purchase_code = jQuery(".verify_purchase_code_value_"+extension).val();
+  var purchase_code = jQuery(".verify_purchase_code_value_" + extension).val();
 
   var payment_option = jQuery(this).attr("data-option");
 
@@ -13167,19 +13162,19 @@ jQuery(document).on("click",".ct_activate_extensions",function(e){
 
   var payment_add_lable = jQuery(this).attr("data-add_lable");
 
-  if(purchase_code != ""){
+  if (purchase_code != "") {
 
     jQuery.ajax({
 
-      type:"POST",
+      type: "POST",
 
-      url: ajax_url +"ct_add_extensions_ajax.php",
+      url: ajax_url + "ct_add_extensions_ajax.php",
 
-      data:{purchase_code:purchase_code, version_option:version_option, payment_option:payment_option, payment_add_option:payment_add_option, payment_add_lable:payment_add_lable, extension:extension, action:"verify_purchase_code"},
+      data: { purchase_code: purchase_code, version_option: version_option, payment_option: payment_option, payment_add_option: payment_add_option, payment_add_lable: payment_add_lable, extension: extension, action: "verify_purchase_code" },
 
-      success:function(res){
+      success: function (res) {
 
-        if(jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it."){
+        if (jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it.") {
 
           jQuery(".mainheader_message_fail_upgrade").show();
 
@@ -13191,25 +13186,25 @@ jQuery(document).on("click",".ct_activate_extensions",function(e){
 
           jQuery(".ct-loading-main").hide();
 
-        }else if(jQuery.trim(res) == "valid" || jQuery.trim(res) == "verified"){
+        } else if (jQuery.trim(res) == "valid" || jQuery.trim(res) == "verified") {
 
-          jQuery(".purchase_code_err_"+extension).css("cssText", "display: none !important;");
+          jQuery(".purchase_code_err_" + extension).css("cssText", "display: none !important;");
 
           jQuery.ajax({
 
-            type:"POST",
+            type: "POST",
 
-            url: ajax_url +"ct_add_extensions_ajax.php",
+            url: ajax_url + "ct_add_extensions_ajax.php",
 
-            data:{installed_version:installed_version, update_version:update_version, extension:extension, purchase_option:purchase_option, version_option:version_option, payment_option:payment_option, payment_add_option:payment_add_option, payment_add_lable:payment_add_lable, action:"activate_extension"},
+            data: { installed_version: installed_version, update_version: update_version, extension: extension, purchase_option: purchase_option, version_option: version_option, payment_option: payment_option, payment_add_option: payment_add_option, payment_add_lable: payment_add_lable, action: "activate_extension" },
 
-            success:function(res){
+            success: function (res) {
 
-              if(redirect_to != ""){
+              if (redirect_to != "") {
 
-                window.location.href = site_ur.site_url+redirect_to;
+                window.location.href = site_ur.site_url + redirect_to;
 
-              }else{
+              } else {
 
                 window.location.reload();
 
@@ -13219,13 +13214,13 @@ jQuery(document).on("click",".ct_activate_extensions",function(e){
 
           });
 
-        }else{
+        } else {
 
-          jQuery(".purchase_code_err_"+extension).css("cssText", "display: block !important;");
+          jQuery(".purchase_code_err_" + extension).css("cssText", "display: block !important;");
 
-          jQuery(".purchase_code_err_"+extension).show();
+          jQuery(".purchase_code_err_" + extension).show();
 
-          jQuery(".purchase_code_err_"+extension).html("Please enter valid purchase code");
+          jQuery(".purchase_code_err_" + extension).html("Please enter valid purchase code");
 
           jQuery(".ct-loading-main").hide();
 
@@ -13235,13 +13230,13 @@ jQuery(document).on("click",".ct_activate_extensions",function(e){
 
     });
 
-  }else{
+  } else {
 
-    jQuery(".purchase_code_err_"+extension).css("cssText", "display: block !important;");
+    jQuery(".purchase_code_err_" + extension).css("cssText", "display: block !important;");
 
-    jQuery(".purchase_code_err_"+extension).show();
+    jQuery(".purchase_code_err_" + extension).show();
 
-    jQuery(".purchase_code_err_"+extension).html("Please enter purchase code");
+    jQuery(".purchase_code_err_" + extension).html("Please enter purchase code");
 
     jQuery(".ct-loading-main").hide();
 
@@ -13249,13 +13244,13 @@ jQuery(document).on("click",".ct_activate_extensions",function(e){
 
 });
 
-jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
+jQuery(document).on("click", ".ct_activate_extensions_zip", function (e) {
 
   jQuery(".ct-loading-main").show();
 
   e.preventDefault();
 
-  jQuery(".purchase_code_err_"+extension).css("cssText", "display: none !important;");
+  jQuery(".purchase_code_err_" + extension).css("cssText", "display: none !important;");
 
   var installed_version = jQuery(this).attr("data-installed_version");
 
@@ -13269,7 +13264,7 @@ jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
 
   var redirect_to = jQuery(this).attr("data-redirect_to");
 
-  var purchase_code = jQuery(".verify_purchase_code_value_"+extension).val();
+  var purchase_code = jQuery(".verify_purchase_code_value_" + extension).val();
 
   var payment_option = jQuery(this).attr("data-option");
 
@@ -13277,19 +13272,19 @@ jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
 
   var payment_add_lable = jQuery(this).attr("data-add_lable");
 
-  if(purchase_code != ""){
+  if (purchase_code != "") {
 
     jQuery.ajax({
 
-      type:"POST",
+      type: "POST",
 
-      url: ajax_url +"ct_add_extensions_ajax.php",
+      url: ajax_url + "ct_add_extensions_ajax.php",
 
-      data:{purchase_code:purchase_code, version_option:version_option, payment_option:payment_option, payment_add_option:payment_add_option, payment_add_lable:payment_add_lable, extension:extension, action:"verify_purchase_code"},
+      data: { purchase_code: purchase_code, version_option: version_option, payment_option: payment_option, payment_add_option: payment_add_option, payment_add_lable: payment_add_lable, extension: extension, action: "verify_purchase_code" },
 
-      success:function(res){
+      success: function (res) {
 
-        if(jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it."){
+        if (jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it.") {
 
           jQuery(".mainheader_message_fail_upgrade").show();
 
@@ -13301,21 +13296,21 @@ jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
 
           jQuery(".ct-loading-main").hide();
 
-        }else if(jQuery.trim(res) == "valid" || jQuery.trim(res) == "verified"){
+        } else if (jQuery.trim(res) == "valid" || jQuery.trim(res) == "verified") {
 
-          jQuery(".purchase_code_err_"+extension).css("cssText", "display: none !important;");
+          jQuery(".purchase_code_err_" + extension).css("cssText", "display: none !important;");
 
           jQuery.ajax({
 
-            type:"POST",
+            type: "POST",
 
-            url: ajax_url +"ct_add_extensions_ajax.php",
+            url: ajax_url + "ct_add_extensions_ajax.php",
 
-            data:{installed_version:installed_version, update_version:update_version, extension:extension, purchase_option:purchase_option, version_option:version_option, payment_option:payment_option, payment_add_option:payment_add_option, payment_add_lable:payment_add_lable, action:"activate_extensions_zip"},
+            data: { installed_version: installed_version, update_version: update_version, extension: extension, purchase_option: purchase_option, version_option: version_option, payment_option: payment_option, payment_add_option: payment_add_option, payment_add_lable: payment_add_lable, action: "activate_extensions_zip" },
 
-            success:function(res){
+            success: function (res) {
 
-              if(jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it."){
+              if (jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it.") {
 
                 jQuery(".mainheader_message_fail_upgrade").show();
 
@@ -13327,13 +13322,13 @@ jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
 
                 jQuery(".ct-loading-main").hide();
 
-              }else{
+              } else {
 
-                if(redirect_to != ""){
+                if (redirect_to != "") {
 
-                  window.location.href = site_ur.site_url+redirect_to;
+                  window.location.href = site_ur.site_url + redirect_to;
 
-                }else{
+                } else {
 
                   window.location.reload();
 
@@ -13345,13 +13340,13 @@ jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
 
           });
 
-        }else{
+        } else {
 
-          jQuery(".purchase_code_err_"+extension).css("cssText", "display: block !important;");
+          jQuery(".purchase_code_err_" + extension).css("cssText", "display: block !important;");
 
-          jQuery(".purchase_code_err_"+extension).show();
+          jQuery(".purchase_code_err_" + extension).show();
 
-          jQuery(".purchase_code_err_"+extension).html("Please enter valid purchase code");
+          jQuery(".purchase_code_err_" + extension).html("Please enter valid purchase code");
 
           jQuery(".ct-loading-main").hide();
 
@@ -13361,13 +13356,13 @@ jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
 
     });
 
-  }else{
+  } else {
 
-    jQuery(".purchase_code_err_"+extension).css("cssText", "display: block !important;");
+    jQuery(".purchase_code_err_" + extension).css("cssText", "display: block !important;");
 
-    jQuery(".purchase_code_err_"+extension).show();
+    jQuery(".purchase_code_err_" + extension).show();
 
-    jQuery(".purchase_code_err_"+extension).html("Please enter purchase code");
+    jQuery(".purchase_code_err_" + extension).html("Please enter purchase code");
 
     jQuery(".ct-loading-main").hide();
 
@@ -13375,7 +13370,7 @@ jQuery(document).on("click",".ct_activate_extensions_zip",function(e){
 
 });
 
-jQuery(document).on("click",".ct_uninstall_extension",function(e){
+jQuery(document).on("click", ".ct_uninstall_extension", function (e) {
 
   e.preventDefault();
 
@@ -13393,15 +13388,15 @@ jQuery(document).on("click",".ct_uninstall_extension",function(e){
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"ct_remove_extensions_ajax.php",
+    url: ajax_url + "ct_remove_extensions_ajax.php",
 
-    data:{installed_version:installed_version, update_version:update_version, extension:extension, purchase_option:purchase_option, version_option:version_option, action:"uninstall_extension"},
+    data: { installed_version: installed_version, update_version: update_version, extension: extension, purchase_option: purchase_option, version_option: version_option, action: "uninstall_extension" },
 
-    success:function(res){
+    success: function (res) {
 
-      if(jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it."){
+      if (jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it.") {
 
         jQuery(".mainheader_message_fail_upgrade").show();
 
@@ -13413,7 +13408,7 @@ jQuery(document).on("click",".ct_uninstall_extension",function(e){
 
         jQuery(".ct-loading-main").hide();
 
-      }else{
+      } else {
 
         window.location.reload();
 
@@ -13425,7 +13420,7 @@ jQuery(document).on("click",".ct_uninstall_extension",function(e){
 
 });
 
-jQuery(document).on("click",".ct_deactivate_extension",function(e){
+jQuery(document).on("click", ".ct_deactivate_extension", function (e) {
 
   e.preventDefault();
 
@@ -13443,15 +13438,15 @@ jQuery(document).on("click",".ct_deactivate_extension",function(e){
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"ct_remove_extensions_ajax.php",
+    url: ajax_url + "ct_remove_extensions_ajax.php",
 
-    data:{installed_version:installed_version, update_version:update_version, extension:extension, purchase_option:purchase_option, version_option:version_option, action:"deactivate_extension"},
+    data: { installed_version: installed_version, update_version: update_version, extension: extension, purchase_option: purchase_option, version_option: version_option, action: "deactivate_extension" },
 
-    success:function(res){
+    success: function (res) {
 
-      if(jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it."){
+      if (jQuery.trim(res) == "Not installed - ZipArchive is required for importing content. Please contact your server administrator and ask them to enable it.") {
 
         jQuery(".mainheader_message_fail_upgrade").show();
 
@@ -13463,7 +13458,7 @@ jQuery(document).on("click",".ct_deactivate_extension",function(e){
 
         jQuery(".ct-loading-main").hide();
 
-      }else{
+      } else {
 
         window.location.reload();
 
@@ -13477,23 +13472,23 @@ jQuery(document).on("click",".ct_deactivate_extension",function(e){
 
 /* Reschedule Appointment */
 
-jQuery(document).on("click","#ct-reschedual-appointment",function(e){
+jQuery(document).on("click", "#ct-reschedual-appointment", function (e) {
 
   e.preventDefault();
 
   jQuery(".ct-loading-main").show();
 
-  var order_id=jQuery(this).attr("data-id");
+  var order_id = jQuery(this).attr("data-id");
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"my_appoint_ajax.php",
+    url: ajax_url + "my_appoint_ajax.php",
 
-    data:{"order_id":order_id,"reschedual_booking_admin":"yes"},
+    data: { "order_id": order_id, "reschedual_booking_admin": "yes" },
 
-    success:function(res){
+    success: function (res) {
 
       jQuery(".ct-loading-main").hide();
 
@@ -13509,13 +13504,13 @@ jQuery(document).on("click","#ct-reschedual-appointment",function(e){
 
 /* Edit Appointment */
 
-jQuery(document).on("click","#edit_reschedual",function(e){
+jQuery(document).on("click", "#edit_reschedual", function (e) {
 
   jQuery(".ct-loading-main").show();
 
-  if(check_update_if_btn == "0"){
+  if (check_update_if_btn == "0") {
 
-    check_update_if_btn = "1"; 
+    check_update_if_btn = "1";
 
     e.preventDefault();
 
@@ -13523,11 +13518,11 @@ jQuery(document).on("click","#edit_reschedual",function(e){
 
     var notes = jQuery("#rs_notes").val();
 
-    var dates = jQuery("#expiry_date"+order).val();
+    var dates = jQuery("#expiry_date" + order).val();
 
     var extension_js = jQuery("#extension_js").val();
 
-    if(extension_js == "true") {
+    if (extension_js == "true") {
 
       var gc_event_id = jQuery(this).attr("data-gc_event");
 
@@ -13547,13 +13542,13 @@ jQuery(document).on("click","#edit_reschedual",function(e){
 
     var times1 = "";
 
-    if(localStorage.getItem("time1") != ""){
+    if (localStorage.getItem("time1") != "") {
 
-      times1 =  localStorage.getItem("time1");
+      times1 = localStorage.getItem("time1");
 
     }
 
-    if(times1 == ""){
+    if (times1 == "") {
 
       check_update_if_btn = "0";
 
@@ -13571,17 +13566,17 @@ jQuery(document).on("click","#edit_reschedual",function(e){
 
       jQuery.ajax({
 
-        type : "post",
+        type: "post",
 
-        data : { orderid : order, notes : notes, dates : dates, timess : times1, gc_event_id : gc_event_id, gc_staff_event_id : gc_staff_event_id, pid : pid, user : "admin", reschedulebooking : 1 },
+        data: { orderid: order, notes: notes, dates: dates, timess: times1, gc_event_id: gc_event_id, gc_staff_event_id: gc_staff_event_id, pid: pid, user: "admin", reschedulebooking: 1 },
 
-        url : ajax_url+"user_details_ajax.php",
+        url: ajax_url + "user_details_ajax.php",
 
-        success : function(res){
+        success: function (res) {
 
-          if(parseInt(jQuery.trim(res))==1) {
+          if (parseInt(jQuery.trim(res)) == 1) {
 
-            jQuery(".close").trigger("click"); 
+            jQuery(".close").trigger("click");
 
             jQuery(".mainheader_message").show();
 
@@ -13639,7 +13634,7 @@ jQuery(document).on("change", ".myservices_methods_one_status", function (event)
 
         jQuery(".ct-loading-main").hide();
 
-        jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
         jQuery("#ct_sucess_message").html(errorobj_units_status_updated);
 
@@ -13671,7 +13666,7 @@ jQuery(document).on("change", ".myservices_methods_one_status", function (event)
 
         jQuery(".ct-loading-main").hide();
 
-        jQuery(".mainheader_message_inner").css("display","inline");
+        jQuery(".mainheader_message_inner").css("display", "inline");
 
         jQuery("#ct_sucess_message").html(errorobj_units_status_updated);
 
@@ -13685,7 +13680,7 @@ jQuery(document).on("change", ".myservices_methods_one_status", function (event)
 
     });
 
-    event.preventDefault(); 
+    event.preventDefault();
 
   }
 
@@ -13693,7 +13688,7 @@ jQuery(document).on("change", ".myservices_methods_one_status", function (event)
 
 /* Email Send Code */
 
-jQuery(document).on("click","#eml_sub_add",function(){
+jQuery(document).on("click", "#eml_sub_add", function () {
 
   var cusids = jQuery("#idsdata").val();
 
@@ -13703,7 +13698,7 @@ jQuery(document).on("click","#eml_sub_add",function(){
 
   var cusimg = "";
 
-  if(cusids == "[]" || cusids == ""){
+  if (cusids == "[]" || cusids == "") {
 
     jQuery(".eml_errors").html("Please Select Customers First.").show();
 
@@ -13713,7 +13708,7 @@ jQuery(document).on("click","#eml_sub_add",function(){
 
     return;
 
-  } else if(cussub == ""){
+  } else if (cussub == "") {
 
     jQuery("#email_sub").focus();
 
@@ -13721,7 +13716,7 @@ jQuery(document).on("click","#eml_sub_add",function(){
 
     return;
 
-  } else if(cusmsg == ""){
+  } else if (cusmsg == "") {
 
     CKEDITOR.instances["email_msg"].focus();
 
@@ -13729,7 +13724,7 @@ jQuery(document).on("click","#eml_sub_add",function(){
 
     return;
 
-  }else{
+  } else {
 
     jQuery(".eml_errors").html(errorob_please_wait_while_we_send_all_your_message).show();
 
@@ -13737,7 +13732,7 @@ jQuery(document).on("click","#eml_sub_add",function(){
 
   var emlformdata = new FormData();
 
-  if(jQuery("#files-input-upload").get(0).files.length === 0) {}else{
+  if (jQuery("#files-input-upload").get(0).files.length === 0) { } else {
 
     var file_data = jQuery("#files-input-upload").prop("files")[0];
 
@@ -13769,13 +13764,13 @@ jQuery(document).on("click","#eml_sub_add",function(){
 
     success: function (data) {
 
-      if(data == "No"){
+      if (data == "No") {
 
         jQuery(".eml_errors").html(errorobj_please_enable_email_to_client).show();
 
         return;
 
-      }else if(data == "done"){
+      } else if (data == "done") {
 
         window.location.reload();
 
@@ -13789,7 +13784,7 @@ jQuery(document).on("click","#eml_sub_add",function(){
 
 /* sms code */
 
-jQuery(document).on("click","#sms_sub_add",function(){
+jQuery(document).on("click", "#sms_sub_add", function () {
 
   var cusids = jQuery("#idsdata").val();
 
@@ -13797,7 +13792,7 @@ jQuery(document).on("click","#sms_sub_add",function(){
 
   var cusimg = "";
 
-  if(cusids == "[]" || cusids == ""){
+  if (cusids == "[]" || cusids == "") {
 
     jQuery(".sms_errors").html("Please Select Customers First.").show();
 
@@ -13807,7 +13802,7 @@ jQuery(document).on("click","#sms_sub_add",function(){
 
     return;
 
-  } else if(cusmsg == ""){
+  } else if (cusmsg == "") {
 
     jQuery("#sms_msg").focus();
 
@@ -13815,7 +13810,7 @@ jQuery(document).on("click","#sms_sub_add",function(){
 
     return;
 
-  }else{
+  } else {
 
     jQuery(".sms_errors").html(errorob_please_wait_while_we_send_all_your_message).show();
 
@@ -13845,19 +13840,19 @@ jQuery(document).on("click","#sms_sub_add",function(){
 
     success: function (data) {
 
-      if(data == "No"){
+      if (data == "No") {
 
         jQuery(".sms_errors").html(errorobj_please_enable_sms_gateway).show();
 
         return;
 
-      }else if(data == "Noo"){
+      } else if (data == "Noo") {
 
         jQuery(".sms_errors").html(errorobj_please_enable_client_notification).show();
 
         return;
 
-      }else if(data == "done"){
+      } else if (data == "done") {
 
         window.location.reload();
 
@@ -13945,7 +13940,7 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
   var country_code = jQuery(".selected-flag").attr("title");
 
-  var cod=country_code.substring(country_code.indexOf("+"));
+  var cod = country_code.substring(country_code.indexOf("+"));
 
   var phno = jQuery("#admin_cus_phno").val();
 
@@ -13961,7 +13956,7 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
   var admin_cus_note = jQuery("#admin_cus_note").val();
 
-  jQuery.validator.addMethod("lettersonly", function(value, element) {
+  jQuery.validator.addMethod("lettersonly", function (value, element) {
 
     return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
 
@@ -13969,7 +13964,7 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
   jQuery(".add_new_user_add").validate({
 
-  rules: { 
+    rules: {
 
       admin_cus_email: {
 
@@ -13979,23 +13974,23 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
         remote: {
 
-          url:ajax_url+"eml_sms_ajax.php",
+          url: ajax_url + "eml_sms_ajax.php",
 
           type: "POST",
 
-          async:false,
+          async: false,
 
           data: {
 
-            email: function(){ return jQuery("#admin_cus_email").val(); },
+            email: function () { return jQuery("#admin_cus_email").val(); },
 
-            action:"check_admin_cus_email"
+            action: "check_admin_cus_email"
 
           }
 
         },
 
-      },  
+      },
 
       admin_cus_pwd: {
 
@@ -14003,7 +13998,7 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
         minlength: 8,
 
-      }, 
+      },
 
       admin_cus_fstnm: {
 
@@ -14011,7 +14006,7 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
         lettersonly: true,
 
-      }, 
+      },
 
       admin_cus_lstnm: {
 
@@ -14019,7 +14014,7 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
         lettersonly: true,
 
-      }, 
+      },
 
       admin_cus_phno: {
 
@@ -14029,13 +14024,13 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
         minlength: 6,
 
-      }, 
+      },
 
       admin_cus_str_addr: {
 
         required: true,
 
-      }, 
+      },
 
       admin_cus_zipcode: {
 
@@ -14059,9 +14054,9 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
       },
 
-    },      
+    },
 
-    messages:{ 
+    messages: {
 
       admin_cus_email: {
 
@@ -14139,19 +14134,19 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
   });
 
-  if(jQuery(".add_new_user_add").valid()){
+  if (jQuery(".add_new_user_add").valid()) {
 
     jQuery.ajax({
 
-      type:"POST",
+      type: "POST",
 
-      url: ajax_url +"user_details_ajax.php",
+      url: ajax_url + "user_details_ajax.php",
 
-      data:{insert_crm_user_detail:1,admin_cus_email:admin_cus_email,admin_cus_pwd:admin_cus_pwd,admin_cus_fstnm:admin_cus_fstnm,admin_cus_lstnm:admin_cus_lstnm,admin_cus_phno:admin_cus_phno,admin_cus_str_addr:admin_cus_str_addr,admin_cus_zipcode:admin_cus_zipcode,admin_cus_city:admin_cus_city,admin_cus_state:admin_cus_state,admin_cus_note:admin_cus_note},
+      data: { insert_crm_user_detail: 1, admin_cus_email: admin_cus_email, admin_cus_pwd: admin_cus_pwd, admin_cus_fstnm: admin_cus_fstnm, admin_cus_lstnm: admin_cus_lstnm, admin_cus_phno: admin_cus_phno, admin_cus_str_addr: admin_cus_str_addr, admin_cus_zipcode: admin_cus_zipcode, admin_cus_city: admin_cus_city, admin_cus_state: admin_cus_state, admin_cus_note: admin_cus_note },
 
-      success:function(res){
+      success: function (res) {
 
-        if(res == "NoData"){
+        if (res == "NoData") {
 
           jQuery(".fltr_error_show").html("No Records Available Please Try Again").show();
 
@@ -14159,7 +14154,7 @@ jQuery(document).on("click", "#new_cus_add_admin", function (e) {
 
           return;
 
-        }else{
+        } else {
 
           window.location.reload();
 
@@ -14177,7 +14172,7 @@ const multiSelect = {
 
   el: "#app",
 
-  data () {
+  data() {
 
     return {
 
@@ -14191,7 +14186,7 @@ const multiSelect = {
 
       selectedList: [],
 
-    idList: proids,
+      idList: proids,
 
       idselectList: [],
 
@@ -14209,17 +14204,17 @@ const multiSelect = {
 
   computed: {
 
-    sanitizedTerm () {
+    sanitizedTerm() {
 
       return this.searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 
     },
 
-    filteredSuggest () {
+    filteredSuggest() {
 
       if (!this.searchTerm) return this.suggestList
 
-      
+
 
       const ex = RegExp(this.sanitizedTerm, "i")
 
@@ -14235,31 +14230,31 @@ const multiSelect = {
 
   watch: {
 
-    value (newList) {
+    value(newList) {
 
       this.selectedList = newList
 
     },
 
-    list (newList) {
+    list(newList) {
 
       this.suggestList = newList
 
     },
 
-    filteredSuggest (newList) {
+    filteredSuggest(newList) {
 
       this.activeVertical = 0
 
     },
 
-    searchTerm (newTerm) {
+    searchTerm(newTerm) {
 
       this.$nextTick().then(() => this.calcTextWidth())
 
     },
 
-    selectedList (newList) {
+    selectedList(newList) {
 
       this.$emit("input", newList)
 
@@ -14269,47 +14264,47 @@ const multiSelect = {
 
   methods: {
 
-    addSelected (val) {
+    addSelected(val) {
 
-      if (this.selectedList.includes(val)){
+      if (this.selectedList.includes(val)) {
 
-      var inx=this.selectedList.indexOf(val);
+        var inx = this.selectedList.indexOf(val);
 
-      if(inx != "-1"){
+        if (inx != "-1") {
 
-        this.selectedList.splice(inx, 1)
+          this.selectedList.splice(inx, 1)
 
-        this.idselectList.splice(inx, 1)
+          this.idselectList.splice(inx, 1)
 
-        jQuery("#idsdata").val(JSON.stringify(this.idselectList));
+          jQuery("#idsdata").val(JSON.stringify(this.idselectList));
+
+        }
+
+        return
 
       }
 
-      return
+      if (this.suggestList.includes(val)) {
 
-    }     
+        this.selectedList.push(val)
 
-    if(this.suggestList.includes(val)){
+        var inx = this.suggestList.indexOf(val);
 
-      this.selectedList.push(val)
+        var idvl = this.idList[inx];
 
-      var inx=this.suggestList.indexOf(val);
+        this.idselectList.push(idvl)
 
-      var idvl=this.idList[inx];
-
-      this.idselectList.push(idvl)
-
-      jQuery("#idsdata").val(JSON.stringify(this.idselectList));
+        jQuery("#idsdata").val(JSON.stringify(this.idselectList));
 
         this.searchTerm = ""
 
         this.activeHorizontal = -1
 
-    }
+      }
 
     },
 
-    addActive () {
+    addActive() {
 
       const value = this.filteredSuggest[this.activeVertical]
 
@@ -14317,27 +14312,27 @@ const multiSelect = {
 
     },
 
-  rmnseldt(){
+    rmnseldt() {
 
-    while(this.selectedList.length > 0) {
+      while (this.selectedList.length > 0) {
 
-      this.backspaceDelete();
+        this.backspaceDelete();
 
-    }
-
-  },
-
-    removeSelected (index) {
-
-      this.selectedList.splice(index, 1)
-
-    this.idselectList.splice(index, 1)
-
-    jQuery("#idsdata").val(JSON.stringify(this.idselectList));
+      }
 
     },
 
-    traverseList (direction) {
+    removeSelected(index) {
+
+      this.selectedList.splice(index, 1)
+
+      this.idselectList.splice(index, 1)
+
+      jQuery("#idsdata").val(JSON.stringify(this.idselectList));
+
+    },
+
+    traverseList(direction) {
 
       if (direction === "next" && !this.showSuggestPanel) {
 
@@ -14345,17 +14340,17 @@ const multiSelect = {
 
       }
 
-      
+
 
       const lastIndex = this.filteredSuggest.length - 1
 
-      let newIndex = direction === "next" ? 
+      let newIndex = direction === "next" ?
 
-          this.activeVertical + 1 :
+        this.activeVertical + 1 :
 
-          this.activeVertical - 1
+        this.activeVertical - 1
 
-      
+
 
       if (newIndex <= lastIndex && newIndex >= 0) {
 
@@ -14363,13 +14358,13 @@ const multiSelect = {
 
       }
 
-      
+
 
       this.scrollToView()
 
     },
 
-    traverseSelected (direction) {
+    traverseSelected(direction) {
 
       const lastIndex = this.selectedList.length - 1
 
@@ -14379,15 +14374,15 @@ const multiSelect = {
 
         this.activeHorizontal = lastIndex + 1
 
-      } 
+      }
 
 
 
-      let newIndex = direction === "left" ? 
+      let newIndex = direction === "left" ?
 
-            this.activeHorizontal - 1 :
+        this.activeHorizontal - 1 :
 
-            this.activeHorizontal + 1 
+        this.activeHorizontal + 1
 
 
 
@@ -14399,7 +14394,7 @@ const multiSelect = {
 
       }
 
-      
+
 
       if (newIndex <= lastIndex && newIndex >= 0) {
 
@@ -14409,7 +14404,7 @@ const multiSelect = {
 
     },
 
-    traverseSelectedDelete () {
+    traverseSelectedDelete() {
 
       if (this.activeHorizontal === -1) return
 
@@ -14417,7 +14412,7 @@ const multiSelect = {
 
     },
 
-    backspaceDelete () {
+    backspaceDelete() {
 
       if (this.activeHorizontal !== -1) return
 
@@ -14429,11 +14424,11 @@ const multiSelect = {
 
       const lastIndex = this.selectedList.length - 1
 
-      if (lastIndex !== -1) this.removeSelected (lastIndex)
+      if (lastIndex !== -1) this.removeSelected(lastIndex)
 
     },
 
-    scrollToView () {
+    scrollToView() {
 
       if (!this.showSuggestPanel) return
 
@@ -14445,13 +14440,13 @@ const multiSelect = {
 
         const item = this.$el.querySelector(".suggest-item.active")
 
-        
+
 
         const sy1 = container.scrollTop
 
         const sy2 = container.offsetHeight + sy1
 
-        
+
 
         const ty1 = item.offsetTop
 
@@ -14459,7 +14454,7 @@ const multiSelect = {
 
         const ty2 = th + ty1
 
-        
+
 
         if (ty1 <= sy2 && sy2 < ty2) {
 
@@ -14475,7 +14470,7 @@ const multiSelect = {
 
     },
 
-    calcTextWidth () {
+    calcTextWidth() {
 
       const textWidth = this.$refs.tester.clientWidth
 
@@ -14485,7 +14480,7 @@ const multiSelect = {
 
     },
 
-    hightlightWord (val) {
+    hightlightWord(val) {
 
       if (val.label) return val.label
 
@@ -14519,41 +14514,41 @@ jQuery(document).ready(function () {
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ,3 ,4 ,5 ,6 ,7 ]
+        columns: [0, 1, 2, 3, 4, 5, 6, 7]
 
       }
 
-      },{
+    }, {
 
       extend: "csvHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ,3 ,4 ,5 ,6 ,7 ]
+        columns: [0, 1, 2, 3, 4, 5, 6, 7]
 
       }
 
-      },{
+    }, {
 
       extend: "excelHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ,3 ,4 ,5 ,6 ,7 ]
+        columns: [0, 1, 2, 3, 4, 5, 6, 7]
 
       }
 
-      },{
+    }, {
 
       extend: "pdfHtml5",
 
       exportOptions: {
 
-        columns: [ 0, 1 ,2 ,3 ,4 ,5 ,6 ,7 ]
+        columns: [0, 1, 2, 3, 4, 5, 6, 7]
 
       }
 
-      },],
+    },],
 
     "bProcessing": true,
 
@@ -14561,15 +14556,15 @@ jQuery(document).ready(function () {
 
     "order": [0, "desc"],
 
-    "ajax":{
+    "ajax": {
 
-      url :"post_list.php",
+      url: "post_list.php",
 
       type: "POST",
 
-      error: function(data){
+      error: function (data) {
 
-        jQuery("#post_list_processing").css("display","block");
+        jQuery("#post_list_processing").css("display", "block");
 
       },
 
@@ -14583,11 +14578,12 @@ jQuery(document).ready(function () {
 
     "columns": [
 
-      { "data": null,
+      {
+        "data": null,
 
         "render": function (data, type, row) {
 
-          var nm=data["first_name"]+" "+data["last_name"];
+          var nm = data["first_name"] + " " + data["last_name"];
 
           adddatapush(nm);
 
@@ -14611,11 +14607,12 @@ jQuery(document).ready(function () {
 
       { "data": "cus_dt" },
 
-      { "data": null,
+      {
+        "data": null,
 
         "render": function (data, type, row) {
 
-          var rtndt='<a class="btn btn-primary '+data["bk"]+'" data-id="'+data["id"]+'" href="#registered-details"  data-toggle="modal"><i class="fa fa-calendar"></i><span class="badge br-10">'+data["count_book"]+'</span></a><a data-id="'+data["id"]+'" class="btn btn-danger col-sm-offset-1 delete_new_customer" data-toggle="modal" data-target="#delete_new_customer" title="Delete this customer?"><i class="fa fa-trash"></i></a>';
+          var rtndt = '<a class="btn btn-primary ' + data["bk"] + '" data-id="' + data["id"] + '" href="#registered-details"  data-toggle="modal"><i class="fa fa-calendar"></i><span class="badge br-10">' + data["count_book"] + '</span></a><a data-id="' + data["id"] + '" class="btn btn-danger col-sm-offset-1 delete_new_customer" data-toggle="modal" data-target="#delete_new_customer" title="Delete this customer?"><i class="fa fa-trash"></i></a>';
 
           return rtndt;
 
@@ -14625,7 +14622,7 @@ jQuery(document).ready(function () {
 
     ],
 
-    "drawCallback":function() {
+    "drawCallback": function () {
 
       datagatidnm(passdata);
 
@@ -14641,43 +14638,43 @@ jQuery(document).ready(function () {
 
     buttons: [{
 
-    extend: "copyHtml5",
+      extend: "copyHtml5",
 
-    exportOptions: {
+      exportOptions: {
 
-      columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
-    }
+      }
 
-    },{
+    }, {
 
-    extend: "csvHtml5",
+      extend: "csvHtml5",
 
-    exportOptions: {
+      exportOptions: {
 
-      columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
-    }
+      }
 
-    },{
+    }, {
 
-    extend: "excelHtml5",
+      extend: "excelHtml5",
 
-    exportOptions: {
+      exportOptions: {
 
-      columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
-    }
+      }
 
-    },{
+    }, {
 
-    extend: "pdfHtml5",
+      extend: "pdfHtml5",
 
-    exportOptions: {
+      exportOptions: {
 
-    columns: [ 0, 1 ,2 ]
+        columns: [0, 1, 2]
 
-    }
+      }
 
     },],
 
@@ -14689,7 +14686,7 @@ jQuery(document).ready(function () {
 
 jQuery(document).on("click", ".delete_new_customer", function () {
 
-  var tisid=jQuery(this).attr("data-id");
+  var tisid = jQuery(this).attr("data-id");
 
   jQuery(".mybtndelete_register_customers_entry").attr("data-id", tisid);
 
@@ -14697,61 +14694,61 @@ jQuery(document).on("click", ".delete_new_customer", function () {
 
 /* this function for load every time when datatable load and put data on select customers */
 
-var chkdts="1";
+var chkdts = "1";
 
-function datagatidnm(psdts){
+function datagatidnm(psdts) {
 
-  if(chkdts == "1"){
+  if (chkdts == "1") {
 
     var idarray = jQuery("#allidsnm")
 
-     .find("input")
+      .find("input")
 
-     .map(function() {
+      .map(function () {
 
-      var inpids = this.id;
+        var inpids = this.id;
 
-      var pri = "";
+        var pri = "";
 
-      var prd = "";
+        var prd = "";
 
-        if(inpids.indexOf("proid") !== -1){
+        if (inpids.indexOf("proid") !== -1) {
 
-          pri+=this.value;
+          pri += this.value;
 
           proids.push(pri);
 
         }
 
-        if(inpids.indexOf("prodt") !== -1){
+        if (inpids.indexOf("prodt") !== -1) {
 
-          prd+=this.value;
+          prd += this.value;
 
           prodata.push(prd);
 
         }
 
-      return pri;
+        return pri;
 
-     })
+      })
 
-     .get();
+      .get();
 
-     vm = new Vue(multiSelect)  
+    vm = new Vue(multiSelect)
 
-     chkdts = "0";
+    chkdts = "0";
 
-     for (var key in psdts) {
+    for (var key in psdts) {
 
       vm.addSelected(psdts[key]);
 
     }
 
-  }else{
+  } else {
 
-     vm.rmnseldt();
+    vm.rmnseldt();
 
-     for (var key in psdts) {
+    for (var key in psdts) {
 
       vm.addSelected(psdts[key]);
 
@@ -14763,9 +14760,9 @@ function datagatidnm(psdts){
 
 /* push data function from ajax dara post_list datatable */
 
-function adddatapush(nm){
+function adddatapush(nm) {
 
-  if (!passdata.includes(nm)){
+  if (!passdata.includes(nm)) {
 
     passdata.push(nm);
 
@@ -14775,19 +14772,19 @@ function adddatapush(nm){
 
 /* Show customers for emails */
 
-jQuery(document).on("click",".all_cus_show_click",function(){
+jQuery(document).on("click", ".all_cus_show_click", function () {
 
-  var eml_id=jQuery(this).attr("data-id");
+  var eml_id = jQuery(this).attr("data-id");
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"user_details_ajax.php",
+    url: ajax_url + "user_details_ajax.php",
 
-    data:{getallcus:1,eml_id:eml_id},
+    data: { getallcus: 1, eml_id: eml_id },
 
-    success:function(res){
+    success: function (res) {
 
       jQuery(".custmrdtl").html(res);
 
@@ -14799,19 +14796,19 @@ jQuery(document).on("click",".all_cus_show_click",function(){
 
 /* Show customers for sms details */
 
-jQuery(document).on("click",".sms_cus_show_click",function(){
+jQuery(document).on("click", ".sms_cus_show_click", function () {
 
-  var eml_id=jQuery(this).attr("data-id");
+  var eml_id = jQuery(this).attr("data-id");
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url: ajax_url +"user_details_ajax.php",
+    url: ajax_url + "user_details_ajax.php",
 
-    data:{getallcussms:1,eml_id:eml_id},
+    data: { getallcussms: 1, eml_id: eml_id },
 
-    success:function(res){
+    success: function (res) {
 
       jQuery(".custmrdtl").html(res);
 
@@ -14821,9 +14818,9 @@ jQuery(document).on("click",".sms_cus_show_click",function(){
 
 });
 
-/* code for input type file */  
+/* code for input type file */
 
-jQuery(document).on("click","#fake-file-button-browse",function(){
+jQuery(document).on("click", "#fake-file-button-browse", function () {
 
   jQuery("#files-input-upload").click();
 
@@ -14831,7 +14828,7 @@ jQuery(document).on("click","#fake-file-button-browse",function(){
 
 
 
-jQuery(document).on("change","#files-input-upload",function(){
+jQuery(document).on("change", "#files-input-upload", function () {
 
   jQuery("#fake-file-input-name").val(jQuery(this).val());
 
@@ -14839,27 +14836,27 @@ jQuery(document).on("change","#files-input-upload",function(){
 
 /* /  add special offer / */
 
-jQuery(document).on("click",".specail_offer_setting",function(){
+jQuery(document).on("click", ".specail_offer_setting", function () {
 
-  jQuery(".cw-loading-main").show(); 
+  jQuery(".cw-loading-main").show();
 
 
 
-  
 
-  var special_offer_check = jQuery(".cta-toggle-checkbox1").prop("checked"); 
 
-  var special_text = ""; 
+  var special_offer_check = jQuery(".cta-toggle-checkbox1").prop("checked");
 
-  if(special_offer_check == true){
+  var special_text = "";
 
-   special_offer_check = "Y";
+  if (special_offer_check == true) {
 
-   special_text = jQuery("#special_text").val();  
+    special_offer_check = "Y";
 
-  }else{
+    special_text = jQuery("#special_text").val();
 
-   special_offer_check = "N";
+  } else {
+
+    special_offer_check = "N";
 
   }
 
@@ -14867,11 +14864,11 @@ jQuery(document).on("click",".specail_offer_setting",function(){
 
   jQuery("#special_offer_form").validate();
 
-  jQuery("#special_text").rules("add",{
+  jQuery("#special_text").rules("add", {
 
     required: true,
 
-    messages: {required: "Enter special offer text"}
+    messages: { required: "Enter special offer text" }
 
   });
 
@@ -14883,17 +14880,17 @@ jQuery(document).on("click",".specail_offer_setting",function(){
 
 
 
-  var datastring={special_offer_check:special_offer_check,special_text:special_text,action:"add_specail_offer"};
+  var datastring = { special_offer_check: special_offer_check, special_text: special_text, action: "add_specail_offer" };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url + "setting_ajax.php",
+    url: ajax_url + "setting_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
       location.reload();
 
@@ -14905,15 +14902,15 @@ jQuery(document).on("click",".specail_offer_setting",function(){
 
 jQuery(document).on("change", ".cta-toggle-checkbox1", function () {
 
-  if(jQuery(this).prop("checked")==true){       
+  if (jQuery(this).prop("checked") == true) {
 
-    jQuery(".promocode_text").show();  
+    jQuery(".promocode_text").show();
 
-  }            
+  }
 
-  else{               
+  else {
 
-    jQuery(".promocode_text").hide();     
+    jQuery(".promocode_text").hide();
 
   }
 
@@ -14929,7 +14926,7 @@ jQuery(document).on("click", "#accept_appointment", function (e) {
 
   var order_id = jQuery(this).attr("data-id");
 
-  var datast = { idd:idd,staff_status:staff_status,order_id:order_id,action:"accept_appointment_staff" };
+  var datast = { idd: idd, staff_status: staff_status, order_id: order_id, action: "accept_appointment_staff" };
 
   jQuery.ajax({
 
@@ -14951,7 +14948,7 @@ jQuery(document).on("click", "#accept_appointment", function (e) {
 
 
 
-jQuery(document).on("click",".referral_setting",function(){
+jQuery(document).on("click", ".referral_setting", function () {
 
   jQuery(".refer_radio").click(function () {
 
@@ -14963,7 +14960,7 @@ jQuery(document).on("click",".referral_setting",function(){
 
   });
 
-  
+
 
   var refer = jQuery("#refer").prop("checked");
 
@@ -14987,19 +14984,19 @@ jQuery(document).on("click",".referral_setting",function(){
 
   var refs_value = jQuery("#ct_refs_value").val();
 
-  
 
-  var datastring={refer_1:refer_1,percent_ref_flatfree:percent_ref_flatfree,referral_value : referral_value,percent_refs_flatfree:percent_refs_flatfree,refs_value:refs_value,action:"add_referral_setting"};
+
+  var datastring = { refer_1: refer_1, percent_ref_flatfree: percent_ref_flatfree, referral_value: referral_value, percent_refs_flatfree: percent_refs_flatfree, refs_value: refs_value, action: "add_referral_setting" };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url + "setting_ajax.php",
+    url: ajax_url + "setting_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
       location.reload();
 
@@ -15015,36 +15012,36 @@ jQuery(document).on("click",".referral_setting",function(){
 
 jQuery(document).on("click", "#decline_appointment", function (e) {
 
-  let cnf  = confirm("Are you sure? You want to cancel this order.");
+  let cnf = confirm("Are you sure? You want to cancel this order.");
   if (cnf) {
     jQuery(".ct-loading-main").show();
     var ajaxurl = ajax_url;
 
     var idd = jQuery(this).attr("data-idd");
-  
+
     var staff_status = jQuery(this).attr("data-status");
-  
+
     var order_id = jQuery(this).attr("data-id");
-  
-    var datast = { idd:idd,staff_status:staff_status,order_id:order_id,action:"decline_appointmentt_staff" };
-  
+
+    var datast = { idd: idd, staff_status: staff_status, order_id: order_id, action: "decline_appointmentt_staff" };
+
     jQuery.ajax({
-  
+
       type: "post",
-  
+
       url: ajaxurl + "accept_appointment_staff.php",
-  
+
       data: datast,
-  
+
       success: function (response) {
-  
+
         location.reload();
-  
+
       }
-  
+
     });
   }
- 
+
 
 });
 
@@ -15060,7 +15057,7 @@ jQuery(document).on("click", ".payment-status-button", function (e) {
 
   var order_id = jQuery(this).attr("data-order_id");
 
-  var datast = { order_id:order_id,action:"payment_status_of_staff" };
+  var datast = { order_id: order_id, action: "payment_status_of_staff" };
 
   jQuery.ajax({
 
@@ -15082,37 +15079,37 @@ jQuery(document).on("click", ".payment-status-button", function (e) {
 
 /*  language traslate enable and disable */
 
-jQuery(document).on("change",".language_status_change",function(){
+jQuery(document).on("change", ".language_status_change", function () {
 
-  jQuery(".cw-loading-main").show(); 
+  jQuery(".cw-loading-main").show();
 
-  var lang = jQuery(this).attr("data-id"); 
+  var lang = jQuery(this).attr("data-id");
 
-  var language_status = jQuery(this).prop("checked"); 
+  var language_status = jQuery(this).prop("checked");
 
-  if(language_status == true){
+  if (language_status == true) {
 
     language_status = "Y";
 
-  }else{
+  } else {
 
     language_status = "N";
 
   }
 
-  var datastring={lang:lang,language_status:language_status,action:"change_language_status"};
+  var datastring = { lang: lang, language_status: language_status, action: "change_language_status" };
 
   jQuery.ajax({
 
-  type:"POST",
+    type: "POST",
 
-  url:ajax_url + "setting_ajax.php",
+    url: ajax_url + "setting_ajax.php",
 
-  data:datastring,
+    data: datastring,
 
-  success:function(response){
+    success: function (response) {
 
-      if(response == "ok"){
+      if (response == "ok") {
 
         jQuery(".mainheader_message").show();
 
@@ -15134,33 +15131,33 @@ jQuery(document).on("change",".language_status_change",function(){
 
 jQuery(document).on("click", "#rating_review_submit", function () {
 
-  jQuery(".ct-loading-main").show(); 
+  jQuery(".ct-loading-main").show();
 
-  var order_id = jQuery(this).attr("data-id"); 
+  var order_id = jQuery(this).attr("data-id");
 
-  var staff_id = jQuery(this).attr("data-staff_id"); 
+  var staff_id = jQuery(this).attr("data-staff_id");
 
-  var rating = jQuery("#ratings"+order_id).val();
+  var rating = jQuery("#ratings" + order_id).val();
 
-  if(rating == ""){
+  if (rating == "") {
 
     rating = 0;
 
   }
 
-  var review = jQuery("#review_note"+order_id).val();
+  var review = jQuery("#review_note" + order_id).val();
 
-  var datastring={rating:rating,review:review,order_id:order_id,staff_id:staff_id,action:"rating_review"};
+  var datastring = { rating: rating, review: review, order_id: order_id, staff_id: staff_id, action: "rating_review" };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url + "rating_review_ajax.php",
+    url: ajax_url + "rating_review_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
       location.reload();
 
@@ -15170,49 +15167,49 @@ jQuery(document).on("click", "#rating_review_submit", function () {
 
 });
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
 
-  jQuery(".staff_ratings_class").each(function(){
+  jQuery(".staff_ratings_class").each(function () {
 
     var order_id = jQuery(this).attr("data-order_id");
 
-    jQuery(".staff_ratings"+order_id).rating("refresh", {disabled: true, showClear: false, showCaption: false});
+    jQuery(".staff_ratings" + order_id).rating("refresh", { disabled: true, showClear: false, showCaption: false });
 
   });
 
-  jQuery("#ratings_staff_display").rating("refresh", {disabled: true, showClear: false});
+  jQuery("#ratings_staff_display").rating("refresh", { disabled: true, showClear: false });
 
 });
 
-jQuery(document).on("click","#update_payment_status",function() {
+jQuery(document).on("click", "#update_payment_status", function () {
 
-  jQuery(".ct-loading-main").show(); 
+  jQuery(".ct-loading-main").show();
 
-  var order_id = jQuery(this).attr("data-order_id"); 
+  var order_id = jQuery(this).attr("data-order_id");
 
-  var current_status = jQuery(this).attr("data-status"); 
+  var current_status = jQuery(this).attr("data-status");
 
   update_current_status = "Pending";
 
-  if(current_status=="Pending"){
+  if (current_status == "Pending") {
 
     update_current_status = "Paid";
 
   }
 
-  var datastring={order_id:order_id,update_current_status:update_current_status,update_payment_status:1};
+  var datastring = { order_id: order_id, update_current_status: update_current_status, update_payment_status: 1 };
 
   jQuery.ajax({
 
-  type:"POST",
+    type: "POST",
 
-  url:ajax_url + "admin_payments_ajax.php",
+    url: ajax_url + "admin_payments_ajax.php",
 
-  data:datastring,
+    data: datastring,
 
-  success:function(response){
+    success: function (response) {
 
-      if(response == "1"){
+      if (response == "1") {
 
         jQuery(".ct-loading-main").hide();
 
@@ -15228,17 +15225,17 @@ jQuery(document).on("click","#update_payment_status",function() {
 
 /* preview email template */
 
-jQuery(document).on("click",".preview_email_contents",function(){
+jQuery(document).on("click", ".preview_email_contents", function () {
 
-  var site_url=site_ur.site_url;
+  var site_url = site_ur.site_url;
 
-  var id = jQuery(this).attr("data-id");  
+  var id = jQuery(this).attr("data-id");
 
-  var email_content = jQuery("#email_message_"+id).val();
+  var email_content = jQuery("#email_message_" + id).val();
 
-  email_content = email_content.replace("{{business_logo}}", site_url+"assets/images/cleanto-logo-new.png");;
+  email_content = email_content.replace("{{business_logo}}", site_url + "assets/images/cleanto-logo-new.png");;
 
-  var template_title = jQuery(this).attr("data-title"); 
+  var template_title = jQuery(this).attr("data-title");
 
   jQuery(".email_html_content").html(email_content);
 
@@ -15250,13 +15247,13 @@ jQuery(document).on("click",".preview_email_contents",function(){
 
 /* ct_stripe_create_plan change */
 
-jQuery(document).on("change","#ct_stripe_create_plan",function () {
+jQuery(document).on("change", "#ct_stripe_create_plan", function () {
 
   jQuery(".ct-loading-main").show();
 
   var create_plan_status = jQuery(this).prop("checked");
 
-  if(create_plan_status == true) {
+  if (create_plan_status == true) {
 
     var ct_stripe_create_plan = "Y";
 
@@ -15266,7 +15263,7 @@ jQuery(document).on("change","#ct_stripe_create_plan",function () {
 
   }
 
-  var datastring = { "ct_stripe_create_plan" : ct_stripe_create_plan, "ct_create_plan" : "1" };
+  var datastring = { "ct_stripe_create_plan": ct_stripe_create_plan, "ct_create_plan": "1" };
 
   jQuery.ajax({
 
@@ -15286,39 +15283,39 @@ jQuery(document).on("change","#ct_stripe_create_plan",function () {
 
 });
 
-jQuery(document).on("mouseenter",".badges_show",function () {
+jQuery(document).on("mouseenter", ".badges_show", function () {
 
   var o_id = jQuery(this).attr("data-order_id");
 
-  jQuery(".badge_"+o_id).show();
+  jQuery(".badge_" + o_id).show();
 
 });
 
-jQuery(document).on("mouseleave",".badges_show",function () {
+jQuery(document).on("mouseleave", ".badges_show", function () {
 
   jQuery(".hide_badges").hide();
 
 });
 
-jQuery(document).on("click",".recurring_request",function () {
+jQuery(document).on("click", ".recurring_request", function () {
 
   jQuery(".ct-loading-main").show();
 
   var rec_id = jQuery(this).attr("data-recurring_id");
 
-  var datastring={rec_id:rec_id,add_rec_status:1};
+  var datastring = { rec_id: rec_id, add_rec_status: 1 };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url + "customer_admin_ajax.php",
+    url: ajax_url + "customer_admin_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
-      if(response == "1"){
+      if (response == "1") {
 
         location.reload();
 
@@ -15330,25 +15327,25 @@ jQuery(document).on("click",".recurring_request",function () {
 
 });
 
-jQuery(document).on("click",".accept_rec_status",function () {
+jQuery(document).on("click", ".accept_rec_status", function () {
 
   jQuery(".ct-loading-main").show();
 
   var rec_id = jQuery(this).attr("data-recurring_id");
 
-  var datastring={rec_id:rec_id,accept_rec_status:1};
+  var datastring = { rec_id: rec_id, accept_rec_status: 1 };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url + "customer_admin_ajax.php",
+    url: ajax_url + "customer_admin_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
-      if(response == "1"){
+      if (response == "1") {
 
         location.reload();
 
@@ -15360,23 +15357,23 @@ jQuery(document).on("click",".accept_rec_status",function () {
 
 });
 
-jQuery(document).on("click",".delete_rec_status",function () {
+jQuery(document).on("click", ".delete_rec_status", function () {
 
   var rec_id = jQuery(this).attr("data-recurring_id");
 
-  var datastring={rec_id:rec_id,delete_rec_status:1};
+  var datastring = { rec_id: rec_id, delete_rec_status: 1 };
 
   jQuery.ajax({
 
-    type:"POST",
+    type: "POST",
 
-    url:ajax_url + "customer_admin_ajax.php",
+    url: ajax_url + "customer_admin_ajax.php",
 
-    data:datastring,
+    data: datastring,
 
-    success:function(response){
+    success: function (response) {
 
-      if(response == "1"){
+      if (response == "1") {
 
         location.reload();
 
@@ -15388,15 +15385,15 @@ jQuery(document).on("click",".delete_rec_status",function () {
 
 });
 
-jQuery(document).on("click",".ct-reschedual-calendar-appointment-cal",function () {
+jQuery(document).on("click", ".ct-reschedual-calendar-appointment-cal", function () {
 
   var GC_id = jQuery(this).attr("data-id");
 
   var GC_duration = jQuery(this).attr("data-duration");
 
-  jQuery("#edit_gc_reschedual").attr("data-gc_event",GC_id);
+  jQuery("#edit_gc_reschedual").attr("data-gc_event", GC_id);
 
-  jQuery("#edit_gc_reschedual").attr("data-duration",GC_duration);
+  jQuery("#edit_gc_reschedual").attr("data-duration", GC_duration);
 
   jQuery(".exp_cp_date").trigger("change");
 
@@ -15404,7 +15401,7 @@ jQuery(document).on("click",".ct-reschedual-calendar-appointment-cal",function (
 
 });
 
-jQuery(document).on("click","#edit_gc_reschedual",function () {
+jQuery(document).on("click", "#edit_gc_reschedual", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -15422,13 +15419,13 @@ jQuery(document).on("click","#edit_gc_reschedual",function () {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data : { dates : dates, timess : times1, duration : duration, gc_event_id : gc_event_id, gc_staff_event_id : gc_staff_event_id, pid : pid, reschedule_gc_booking : 1 },
+    data: { dates: dates, timess: times1, duration: duration, gc_event_id: gc_event_id, gc_staff_event_id: gc_staff_event_id, pid: pid, reschedule_gc_booking: 1 },
 
-    url : ajax_url+"user_details_ajax.php",
+    url: ajax_url + "user_details_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       location.reload();
 
@@ -15438,7 +15435,7 @@ jQuery(document).on("click","#edit_gc_reschedual",function () {
 
 });
 
-jQuery(document).on("click",".mybtn_calendar_delete_booking",function () {
+jQuery(document).on("click", ".mybtn_calendar_delete_booking", function () {
 
   jQuery(".ct-loading-main").show();
 
@@ -15446,15 +15443,16 @@ jQuery(document).on("click",".mybtn_calendar_delete_booking",function () {
 
   jQuery.ajax({
 
-    type : "post",
+    type: "post",
 
-    data : { gc_event_id : gc_event_id, delete_gc_booking : 1
+    data: {
+      gc_event_id: gc_event_id, delete_gc_booking: 1
 
     },
 
-    url : ajax_url+"user_details_ajax.php",
+    url: ajax_url + "user_details_ajax.php",
 
-    success : function(res){
+    success: function (res) {
 
       location.reload();
 
@@ -15464,17 +15462,17 @@ jQuery(document).on("click",".mybtn_calendar_delete_booking",function () {
 
 });
 
-jQuery(document).on("click","#change_password_link",function () {
+jQuery(document).on("click", "#change_password_link", function () {
 
   jQuery("#staff_password_update").slideToggle(500);
 
-  setTimeout(function(){ jQuery("html, body").animate({ scrollTop: jQuery(document).height()-jQuery(window).height() }); }, 700);
+  setTimeout(function () { jQuery("html, body").animate({ scrollTop: jQuery(document).height() - jQuery(window).height() }); }, 700);
 
 });
 
-jQuery(document).on("click","#update_staff_password",function () {
+jQuery(document).on("click", "#update_staff_password", function () {
 
-  jQuery(".old_pass_msg").css("display","none");
+  jQuery(".old_pass_msg").css("display", "none");
 
   var current_log_in_id = jQuery(this).attr("data-id");
 
@@ -15482,7 +15480,7 @@ jQuery(document).on("click","#update_staff_password",function () {
 
     rules: {
 
-      staff_old_password:{
+      staff_old_password: {
 
         required: true,
 
@@ -15490,7 +15488,7 @@ jQuery(document).on("click","#update_staff_password",function () {
 
       staff_new_password: {
 
-        required:true,
+        required: true,
 
         minlength: 8,
 
@@ -15500,7 +15498,7 @@ jQuery(document).on("click","#update_staff_password",function () {
 
       staff_retype_new_password: {
 
-        equalTo:"#staff_new_password",
+        equalTo: "#staff_new_password",
 
       },
 
@@ -15508,9 +15506,9 @@ jQuery(document).on("click","#update_staff_password",function () {
 
     messages: {
 
-      staff_old_password:{
+      staff_old_password: {
 
-        required:errorobj_please_enter_old_password, 
+        required: errorobj_please_enter_old_password,
 
       },
 
@@ -15520,7 +15518,7 @@ jQuery(document).on("click","#update_staff_password",function () {
 
         minlength: errorobj_password_must_be_8_character_long,
 
-        maxlength: errorobj_password_should_not_exist_more_then_20_characters ,
+        maxlength: errorobj_password_should_not_exist_more_then_20_characters,
 
       },
 
@@ -15534,7 +15532,7 @@ jQuery(document).on("click","#update_staff_password",function () {
 
   });
 
-  if(jQuery("#staff_password_update_form").valid()){
+  if (jQuery("#staff_password_update_form").valid()) {
 
     jQuery(".ct-loading-main").show();
 
@@ -15546,17 +15544,17 @@ jQuery(document).on("click","#update_staff_password",function () {
 
     jQuery.ajax({
 
-      type : "post",
+      type: "post",
 
-      data : { current_log_in_id : current_log_in_id, staff_old_password : staff_old_password, staff_new_password : staff_new_password, staff_olddb_password : staff_olddb_password, "staff_old_password_change" : 1 },
+      data: { current_log_in_id: current_log_in_id, staff_old_password: staff_old_password, staff_new_password: staff_new_password, staff_olddb_password: staff_olddb_password, "staff_old_password_change": 1 },
 
-      url : ajax_url+"admin_profile_ajax.php",
+      url: ajax_url + "admin_profile_ajax.php",
 
-      success : function(res){
+      success: function (res) {
 
-        if(jQuery.trim(res) == "sorry"){
+        if (jQuery.trim(res) == "sorry") {
 
-          jQuery(".old_pass_msg").css("display","block");
+          jQuery(".old_pass_msg").css("display", "block");
 
           jQuery(".old_pass_msg").addClass("error");
 
@@ -15580,13 +15578,13 @@ jQuery(document).on("click","#update_staff_password",function () {
 
 
 
-jQuery(document).on('click','.add_client_money',function(){
+jQuery(document).on('click', '.add_client_money', function () {
 
-  
 
-  
 
-  var site_url=site_ur.site_url;
+
+
+  var site_url = site_ur.site_url;
 
   var email_id = jQuery(this).data('email');
 
@@ -15598,61 +15596,63 @@ jQuery(document).on('click','.add_client_money',function(){
 
   var cc_card_num = jQuery(".cc-number").val();
 
-    var cc_exp_month = jQuery(".cc-exp-month").val();
+  var cc_exp_month = jQuery(".cc-exp-month").val();
 
-    var cc_exp_year = jQuery(".cc-exp-year").val();
+  var cc_exp_year = jQuery(".cc-exp-year").val();
 
-    var cc_card_code = jQuery(".cc-cvc").val();
+  var cc_card_code = jQuery(".cc-cvc").val();
 
-  
 
-  
 
-  
+
+
+
 
   var stripe_pubkey = baseurlObj.stripe_publishkey;
 
-  var stripe_status = baseurlObj.stripe_status;   
+  var stripe_status = baseurlObj.stripe_status;
 
-  if(stripe_status=="on"){ 
+  if (stripe_status == "on") {
 
-    Stripe.setPublishableKey(stripe_pubkey);  
+    Stripe.setPublishableKey(stripe_pubkey);
 
   }
 
 
 
-    
 
-    var dataString={'email_id': email_id,
 
-      'add_amount': add_amount,
+  var dataString = {
+    'email_id': email_id,
 
-      'preamount': preamount,
+    'add_amount': add_amount,
 
-      'payment_method': payment_method,
+    'preamount': preamount,
 
-       cc_card_num:cc_card_num,
+    'payment_method': payment_method,
 
-       cc_exp_month:cc_exp_month,
+    cc_card_num: cc_card_num,
 
-       cc_exp_year:cc_exp_year,
+    cc_exp_month: cc_exp_month,
 
-       cc_card_code:cc_card_code,
+    cc_exp_year: cc_exp_year,
 
-      'action':'add_money_client_wallet'};
+    cc_card_code: cc_card_code,
 
-  
+    'action': 'add_money_client_wallet'
+  };
 
-  if(payment_method == "stripe-payment"){
 
-  
+
+  if (payment_method == "stripe-payment") {
+
+
 
     jQuery("#cart_submit").validate({
 
       rules: {
 
-        ct_card_number:{
+        ct_card_number: {
 
           required: true,
 
@@ -15660,7 +15660,7 @@ jQuery(document).on('click','.add_client_money',function(){
 
         ct_exp_month: {
 
-          required:true,
+          required: true,
 
         },
 
@@ -15686,33 +15686,33 @@ jQuery(document).on('click','.add_client_money',function(){
 
       messages: {
 
-        ct_card_number:{
+        ct_card_number: {
 
-          required:"The cart number is required field", 
+          required: "The cart number is required field",
 
         },
 
         ct_exp_month: {
 
-         required:"The exp month is required field", 
+          required: "The exp month is required field",
 
         },
 
         ct_exp_year: {
 
-          required:"The exp year is required field", 
+          required: "The exp year is required field",
 
         },
 
         ct_cvc_code: {
 
-          required:"The cvc code is required field", 
+          required: "The cvc code is required field",
 
         },
 
         add_amount: {
 
-          required:"The amount is required field", 
+          required: "The amount is required field",
 
         },
 
@@ -15720,27 +15720,27 @@ jQuery(document).on('click','.add_client_money',function(){
 
     });
 
-    
 
-    if(jQuery("#cart_submit").valid()){ 
+
+    if (jQuery("#cart_submit").valid()) {
 
       jQuery(".ct-loading-main-complete_booking").show();
 
-      var stripeResponseHandler = function(status, response) {   
+      var stripeResponseHandler = function (status, response) {
 
-      
+
 
         if (response.error) {
 
           /* Show the errors on the form*/
 
-          clicked=false; 
+          clicked = false;
 
           jQuery(".ct-loading-main-complete_booking").hide();
 
           jQuery("#ct-card-payment-error").show();
 
-          jQuery("#ct-card-payment-error").text(response.error.message);        
+          jQuery("#ct-card-payment-error").text(response.error.message);
 
         } else {
 
@@ -15748,37 +15748,37 @@ jQuery(document).on('click','.add_client_money',function(){
 
           var token = response.id;
 
-          
 
-          function waitForElement(){ 
 
-            if(typeof token !== "undefined" && token != ""){ 
+          function waitForElement() {
 
-              var st_token = token;                 
+            if (typeof token !== "undefined" && token != "") {
+
+              var st_token = token;
 
               dataString["st_token"] = st_token;
 
               jQuery.ajax({
 
-                type:"POST",
+                type: "POST",
 
-                url:site_url+"front/checkout.php",
+                url: site_url + "front/checkout.php",
 
-                data:dataString,
+                data: dataString,
 
-                success:function(response){
+                success: function (response) {
 
 
 
-                  if(jQuery.trim(response) == "ok"){
+                  if (jQuery.trim(response) == "ok") {
 
                     jQuery(".ct-loading-main-complete_booking").hide();
 
-                    window.location=site_url+"admin/wallet-history.php"; 
+                    window.location = site_url + "admin/wallet-history.php";
 
-                  }else{
+                  } else {
 
-                    clicked=false; 
+                    clicked = false;
 
                     jQuery(".ct-loading-main-complete_booking").hide();
 
@@ -15792,11 +15792,11 @@ jQuery(document).on('click','.add_client_money',function(){
 
               });
 
-            } else{ 
+            } else {
 
-              setTimeout(function(){ waitForElement(); },2000); 
+              setTimeout(function () { waitForElement(); }, 2000);
 
-            } 
+            }
 
           }
 
@@ -15806,13 +15806,13 @@ jQuery(document).on('click','.add_client_money',function(){
 
       };
 
-      
 
-  }
 
-      /*Disable the submit button to prevent repeated clicks*/
+    }
 
-      Stripe.card.createToken({
+    /*Disable the submit button to prevent repeated clicks*/
+
+    Stripe.card.createToken({
 
       number: jQuery(".ct-card-number").val(),
 
@@ -15822,127 +15822,127 @@ jQuery(document).on('click','.add_client_money',function(){
 
       exp_year: jQuery(".ct-exp-year").val()
 
-      }, stripeResponseHandler); 
+    }, stripeResponseHandler);
 
-          }else if(payment_method == "paypal"){ 
+  } else if (payment_method == "paypal") {
 
-          
 
-            jQuery("#cart_submit").validate({
 
-              rules: {
+    jQuery("#cart_submit").validate({
 
-              add_amount: {
+      rules: {
 
-              required: true,
+        add_amount: {
 
-            }
-
-            },
-
-              messages: {
-
-              add_amount: {
-
-              required:"The amount is required field", 
-
-            },
-
-            }
-
-            });
-
-            if(jQuery("#cart_submit").valid()){ 
-
-            jQuery('.ct-loading-main').show();
-
-              jQuery.ajax({
-
-              type: 'post',
-
-              data: dataString,
-
-              url: site_url + "front/checkout.php",
-
-              success: function (res) {
-
-                var response_detail = jQuery.parseJSON(res);
-
-                  if (response_detail.status == 'success') {
-
-                    window.location = response_detail.value;
-
-                  }
-
-                  if (response_detail.status == 'error') {
-
-                    clicked = false;
-
-                    jQuery('.ld-loading-main-complete_booking').hide();
-
-                    jQuery('#paypal_error').show();
-
-                    jQuery('#paypal_error').text(response_detail.value);
-
-                  }
-
-                }
-
-              });
-
-           }
-
-          }
-
-  
-
-   
-
-/*   jQuery.ajax({
-
-    type: 'post',
-
-    data: {
-
-      'email_id': email_id,
-
-      'add_amount': add_amount,
-
-      'preamount': preamount,
-
-      'payment_method': payment_method,
-
-      'action':'add_money_client_wallet'
-
-    },
-
-    url: site_url + "front/checkout.php",
-
-    success: function (res) {
-
-      var response_detail = jQuery.parseJSON(res);
-
-        if (response_detail.status == 'success') {
-
-          window.location = response_detail.value;
+          required: true,
 
         }
 
-        if (response_detail.status == 'error') {
+      },
 
-          clicked = false;
+      messages: {
 
-          jQuery('.ld-loading-main-complete_booking').hide();
+        add_amount: {
 
-          jQuery('#paypal_error').show();
+          required: "The amount is required field",
 
-          jQuery('#paypal_error').text(response_detail.value);
-
-        }
+        },
 
       }
 
-  }); */
+    });
+
+    if (jQuery("#cart_submit").valid()) {
+
+      jQuery('.ct-loading-main').show();
+
+      jQuery.ajax({
+
+        type: 'post',
+
+        data: dataString,
+
+        url: site_url + "front/checkout.php",
+
+        success: function (res) {
+
+          var response_detail = jQuery.parseJSON(res);
+
+          if (response_detail.status == 'success') {
+
+            window.location = response_detail.value;
+
+          }
+
+          if (response_detail.status == 'error') {
+
+            clicked = false;
+
+            jQuery('.ld-loading-main-complete_booking').hide();
+
+            jQuery('#paypal_error').show();
+
+            jQuery('#paypal_error').text(response_detail.value);
+
+          }
+
+        }
+
+      });
+
+    }
+
+  }
+
+
+
+
+
+  /*   jQuery.ajax({
+  
+      type: 'post',
+  
+      data: {
+  
+        'email_id': email_id,
+  
+        'add_amount': add_amount,
+  
+        'preamount': preamount,
+  
+        'payment_method': payment_method,
+  
+        'action':'add_money_client_wallet'
+  
+      },
+  
+      url: site_url + "front/checkout.php",
+  
+      success: function (res) {
+  
+        var response_detail = jQuery.parseJSON(res);
+  
+          if (response_detail.status == 'success') {
+  
+            window.location = response_detail.value;
+  
+          }
+  
+          if (response_detail.status == 'error') {
+  
+            clicked = false;
+  
+            jQuery('.ld-loading-main-complete_booking').hide();
+  
+            jQuery('#paypal_error').show();
+  
+            jQuery('#paypal_error').text(response_detail.value);
+  
+          }
+  
+        }
+  
+    }); */
 
 });
 
@@ -15962,11 +15962,11 @@ jQuery(document).on('click', '.copy_refer_earn', function () {
 
 
 
-jQuery(document).on('click','.accept_staff_request',function(){ 
+jQuery(document).on('click', '.accept_staff_request', function () {
 
   jQuery('.ld-loading-main').show();
 
-  var site_url=site_ur.site_url;
+  var site_url = site_ur.site_url;
 
   var email_id = jQuery(this).data('email');
 
@@ -15982,13 +15982,13 @@ jQuery(document).on('click','.accept_staff_request',function(){
 
     type: 'post',
 
-    data: { 'email_id': email_id, 'staffid': staffid, 'reqid': reqid, 'currentamount': currentamount, 'requestamount': requestamount, 'action':'accept_staff_request' },
+    data: { 'email_id': email_id, 'staffid': staffid, 'reqid': reqid, 'currentamount': currentamount, 'requestamount': requestamount, 'action': 'accept_staff_request' },
 
     url: site_url + "front/checkout.php",
 
     success: function (res) {
 
-    var response_detail = jQuery.parseJSON(res);
+      var response_detail = jQuery.parseJSON(res);
 
       if (response_detail.status == 'success') {
 
@@ -16022,77 +16022,75 @@ jQuery(document).on('click','.accept_staff_request',function(){
 
 jQuery(document).ready(function () {
 
-    jQuery(document).on("change", ".payment_gateway", function() {
-
-        
-
-        
-
-        if(jQuery(this).is(":checked")){
-
-        
-
-          jQuery(this).prop( "checked", true );
-
-          if(jQuery(this).val() == "2checkout-payment"){
-
-            jQuery('#card-payment-fields').show();
-
-          }else{
-
-            jQuery('#card-payment-fields').hide();
-
-          }
-
-        }else
-
-        {
-
-          jQuery('.payment_gateway').prop( "checked", false );
-
-        }
-
-    });
-
-    jQuery(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) { 
-
-          
-
-           jQuery(this).val(jQuery(this).val().replace(/[^\d].+/, ""));
-
-            if ((event.which < 48 || event.which > 57)) {
-
-                event.preventDefault();
-
-            }
-
-    });
-
-});
-
-    
+  jQuery(document).on("change", ".payment_gateway", function () {
 
 
 
-    
 
-  jQuery(document).ready(function () {
 
-  jQuery(document).on("change", ".payment_gateway", function() {
+    if (jQuery(this).is(":checked")) {
 
-      if(jQuery("#pay-card").is(":checked")){
+
+
+      jQuery(this).prop("checked", true);
+
+      if (jQuery(this).val() == "2checkout-payment") {
 
         jQuery('#card-payment-fields').show();
 
-      }else{
+      } else {
 
         jQuery('#card-payment-fields').hide();
 
       }
 
+    } else {
+
+      jQuery('.payment_gateway').prop("checked", false);
+
+    }
+
   });
 
-  jQuery(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) { 
+  jQuery(".allownumericwithoutdecimal").on("keypress keyup blur", function (event) {
+
+
+
+    jQuery(this).val(jQuery(this).val().replace(/[^\d].+/, ""));
+
+    if ((event.which < 48 || event.which > 57)) {
+
+      event.preventDefault();
+
+    }
+
+  });
+
+});
+
+
+
+
+
+
+
+jQuery(document).ready(function () {
+
+  jQuery(document).on("change", ".payment_gateway", function () {
+
+    if (jQuery("#pay-card").is(":checked")) {
+
+      jQuery('#card-payment-fields').show();
+
+    } else {
+
+      jQuery('#card-payment-fields').hide();
+
+    }
+
+  });
+
+  jQuery(".allownumericwithoutdecimal").on("keypress keyup blur", function (event) {
 
     jQuery(this).val(jQuery(this).val().replace(/[^\d].+/, ""));
 
@@ -16108,11 +16106,11 @@ jQuery(document).ready(function () {
 
 /* create embed code according to service */
 
-jQuery(document).on('click','#genrate_embed',function(){ 
+jQuery(document).on('click', '#genrate_embed', function () {
 
   /* jQuery('.ld-loading-main').show(); */
 
-  var site_url=site_ur.site_url;  
+  var site_url = site_ur.site_url;
 
   var service_ids = jQuery(".service_name").val();
 
@@ -16122,7 +16120,7 @@ jQuery(document).on('click','#genrate_embed',function(){
 
     type: 'post',
 
-    data: { 'service_ids': service_ids, 'action':'create_embed_accordingly' },
+    data: { 'service_ids': service_ids, 'action': 'create_embed_accordingly' },
 
     url: ajax_url + "service_ajax.php",
 
@@ -16130,7 +16128,7 @@ jQuery(document).on('click','#genrate_embed',function(){
 
       alert(res)
 
-    var response_detail = jQuery.parseJSON(res);
+      var response_detail = jQuery.parseJSON(res);
 
       jQuery('.ld-loading-main-complete_booking').hide();
 
@@ -16140,7 +16138,7 @@ jQuery(document).on('click','#genrate_embed',function(){
 
       alert(response_detail.embed);
 
-      jQuery('#cta-user-embedd-code-service').text(response_detail.embed);                  
+      jQuery('#cta-user-embedd-code-service').text(response_detail.embed);
 
     }
 
@@ -16152,33 +16150,33 @@ jQuery(document).on('click','#genrate_embed',function(){
 
 jQuery(document).on("focusout", "#ct-member-country", function () {
 
-    
 
-    var address = jQuery("#ct-member-address").val();
 
-    var city = jQuery("#ct-member-city").val();
+  var address = jQuery("#ct-member-address").val();
 
-    var state = jQuery("#ct-member-state").val();
+  var city = jQuery("#ct-member-city").val();
 
-    var zip = jQuery("#ct-member-zip").val();
+  var state = jQuery("#ct-member-state").val();
 
-    var country = jQuery("#ct-member-country").val();
+  var zip = jQuery("#ct-member-zip").val();
 
-   
+  var country = jQuery("#ct-member-country").val();
 
-    jQuery.ajax({
+
+
+  jQuery.ajax({
 
     type: 'post',
 
-    data: { 'address': address,'city': city,'state': state,'zip': zip,'country': country, 'action':'get_lat_lon' },
+    data: { 'address': address, 'city': city, 'state': state, 'zip': zip, 'country': country, 'action': 'get_lat_lon' },
 
     url: ajax_url + "staff_ajax.php",
 
     success: function (res) {
 
-    
 
-     var response_detail = jQuery.parseJSON(res);
+
+      var response_detail = jQuery.parseJSON(res);
 
       /*  jQuery('.ld-loading-main-complete_booking').hide();
 
@@ -16188,19 +16186,19 @@ jQuery(document).on("focusout", "#ct-member-country", function () {
 
       alert(response_detail.embed);
 
-      jQuery('#cta-user-embedd-code-service').text(response_detail.embed);  */  
+      jQuery('#cta-user-embedd-code-service').text(response_detail.embed);  */
 
-      jQuery('#ct-member-latitude').attr('value',response_detail.latitude);
+      jQuery('#ct-member-latitude').attr('value', response_detail.latitude);
 
-      jQuery('#ct-member-longitude').attr('value',response_detail.longitude);
+      jQuery('#ct-member-longitude').attr('value', response_detail.longitude);
 
     }
 
   });
 
-  
 
-    
+
+
 
 });
 
@@ -16214,55 +16212,55 @@ jQuery(document).on("focusout", "#ct-member-country", function () {
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
-  
+
 
   var $this = $(this),
 
-      label = $this.prev('label');
+    label = $this.prev('label');
 
 
 
-    if (e.type === 'keyup') {
+  if (e.type === 'keyup') {
 
-      if ($this.val() === '') {
+    if ($this.val() === '') {
 
-          label.removeClass('active highlight');
+      label.removeClass('active highlight');
 
-        } else {
+    } else {
 
-          label.addClass('active highlight');
-
-        }
-
-    } else if (e.type === 'blur') {
-
-      if( $this.val() === '' ) {
-
-        label.removeClass('active highlight'); 
-
-      } else {
-
-        label.removeClass('highlight');   
-
-      }   
-
-    } else if (e.type === 'focus') {
-
-      
-
-      if( $this.val() === '' ) {
-
-        label.removeClass('highlight'); 
-
-      } 
-
-      else if( $this.val() !== '' ) {
-
-        label.addClass('highlight');
-
-      }
+      label.addClass('active highlight');
 
     }
+
+  } else if (e.type === 'blur') {
+
+    if ($this.val() === '') {
+
+      label.removeClass('active highlight');
+
+    } else {
+
+      label.removeClass('highlight');
+
+    }
+
+  } else if (e.type === 'focus') {
+
+
+
+    if ($this.val() === '') {
+
+      label.removeClass('highlight');
+
+    }
+
+    else if ($this.val() !== '') {
+
+      label.addClass('highlight');
+
+    }
+
+  }
 
 
 
@@ -16272,17 +16270,17 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
 $('.tab a').on('click', function (e) {
 
-  
+
 
   e.preventDefault();
 
-  
+
 
   $(this).parent().addClass('active');
 
   $(this).parent().siblings().removeClass('active');
 
-  
+
 
   target = $(this).attr('href');
 
@@ -16290,18 +16288,18 @@ $('.tab a').on('click', function (e) {
 
   $('.tab-content > div').not(target).hide();
 
-  
+
 
   $(target).fadeIn(600);
 
-  
+
 
 });
 
- /* Booking Complete Button in staff dashboard */
- 
-  jQuery(document).on("click", "#complete_appointment", function (e) {
-  
+/* Booking Complete Button in staff dashboard */
+
+jQuery(document).on("click", "#complete_appointment", function (e) {
+
   var ajaxurl = ajax_url;
 
   var idd = jQuery(this).attr("data-idd");
@@ -16310,8 +16308,8 @@ $('.tab a').on('click', function (e) {
 
   var order_id = jQuery(this).attr("data-id");
 
-  var datast = { idd:idd,staff_status:staff_status,order_id:order_id,action:"complete_appointment_staff" };
-  
+  var datast = { idd: idd, staff_status: staff_status, order_id: order_id, action: "complete_appointment_staff" };
+
   jQuery.ajax({
 
     type: "post",
@@ -16333,59 +16331,59 @@ $('.tab a').on('click', function (e) {
 /* Registration Design End */
 
 
-jQuery(document).on("keyup",".useremail",function(){
-  jQuery(".useremail").rules("add",{
+jQuery(document).on("keyup", ".useremail", function () {
+  jQuery(".useremail").rules("add", {
 
-            remote: {
+    remote: {
 
-              url:ajax_url+"staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-              type: "POST"
+      type: "POST"
 
-            },
+    },
 
-        messages: {remote:errorobj_email_already_exists}
+    messages: { remote: errorobj_email_already_exists }
   });
 });
-jQuery(document).on("keyup",".usergrinderid",function(){
-  jQuery(".usergrinderid").rules("add",{
+jQuery(document).on("keyup", ".usergrinderid", function () {
+  jQuery(".usergrinderid").rules("add", {
 
-            remote: {
+    remote: {
 
-              url:ajax_url+"staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-              type: "POST"
+      type: "POST"
 
-            },
+    },
 
-        messages: {remote:"User ID already exist"}
+    messages: { remote: "User ID already exist" }
   });
 });
-jQuery(document).on("keyup",".staffemail",function(){
-  jQuery(".staffemail").rules("add",{
+jQuery(document).on("keyup", ".staffemail", function () {
+  jQuery(".staffemail").rules("add", {
 
-            remote: {
+    remote: {
 
-              url:ajax_url+"staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-              type: "POST"
+      type: "POST"
 
-            },
+    },
 
-        messages: {remote:errorobj_email_already_exists}
+    messages: { remote: errorobj_email_already_exists }
   });
 });
-jQuery(document).on("keyup",".staffuserid",function(){
-  jQuery(".staffuserid").rules("add",{
+jQuery(document).on("keyup", ".staffuserid", function () {
+  jQuery(".staffuserid").rules("add", {
 
-            remote: {
+    remote: {
 
-              url:ajax_url+"staff_ajax.php",
+      url: ajax_url + "staff_ajax.php",
 
-              type: "POST"
+      type: "POST"
 
-            },
+    },
 
-        messages: {remote:"User ID already exist"}
+    messages: { remote: "User ID already exist" }
   });
 });

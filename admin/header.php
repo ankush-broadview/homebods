@@ -729,7 +729,7 @@ if($file){   if(!filesize($filename) > 0){
                         <a href="<?php echo BASE_URL; ?>/admin/wallet-history.php"><i class="fa fa-google-wallet"></i><span><?php echo $label_language_values['wallet_history'];?></span></a>
                      </li>
                      <?php } ?>                                                     
-                     <li><a id="logout" data-id="user"  href="javascript:void(0)"><i class="fa fa-power-off"></i><span><?php echo $label_language_values['logout'];?></span></a></li>
+                     <li><a id="logout" data-id="user"  href="javascript:void(0)"><i class="fa fa-power-off"></i><span>Logout</span></a></li>
                   </ul>
                </div>
             </div>
