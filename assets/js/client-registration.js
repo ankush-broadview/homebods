@@ -430,7 +430,7 @@
              staff_address:{ required:true },
              staff_city: { required: true },
              staff_state: { required: true },
-             staff_zip: { required: true, digits: true, minlength:5,maxlength:5 },
+             staff_zip: { required: true, digits: true, minlength:5,maxlength:8 },
              staff_country: { required: true },
              zoom_link: { required: true },
              trainer_type: { required: true },
@@ -642,7 +642,7 @@
              client_address: { required: true },
              client_city: { required: true },
              client_state: { required: true },
-             client_zip: { required: true, digits: true,minlength:5,maxlength:5},
+             client_zip: { required: true, digits: true,minlength:5,maxlength:8},
              client_country: { required: true }
          },
          messages: {
