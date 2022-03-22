@@ -9360,8 +9360,7 @@ jQuery(document).on("click", ".u_op", function () {
 
 /* Change profile USER */
 
-jQuery(document).on("click", ".mybtnuserprofile_save", function () {
-  debugger
+jQuery(document).on("click", ".mybtnuserprofile_save", function () {  
   if (jQuery("#user_info_form").valid()) {
     jQuery(".ct-loading-main").show();
 

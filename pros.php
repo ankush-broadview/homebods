@@ -86,7 +86,7 @@
 				<form id="pros_registration_form" class="" method="post">
 					<div class="form-group mb-3 mt-3">
 						<div class="text-center">
-							<a href="https://www.homebods.club/"> <img style="width: 130px;border-radius: 50%;" class="rounded-circle" src="http://localhost/homebods/assets/images/services/company_74315.png" alt="homebods"></a>
+							<a href="https://www.homebods.club/"> <img style="width: 130px;border-radius: 50%;" class="rounded-circle" src="assets/images/services/company_74315.png" alt="homebods"></a>
 
 							<h3>FITNESS PRO REGISTRATION</h3>
 						</div>
@@ -222,14 +222,17 @@
 
 		// for customer rate  float validation
 
-		function isNumberKey(evt, element) {
+		function isNumberKey(evt, element) {				
 			var charCode = (evt.which) ? evt.which : event.keyCode
 			if (charCode > 31 && (charCode < 48 || charCode > 57) && !(charCode == 46 || charCode == 8))
 				return false;
 			else {
 				var len = $(element).val().length;
 				var index = $(element).val().indexOf('.');
-				if (index > 0 && charCode == 46) {
+				if ((index > 0 ) && charCode == 46) {
+					return false;
+				}
+				if ((index==-1 ) && charCode == 46 && len==0) {
 					return false;
 				}
 				if (index > 0) {

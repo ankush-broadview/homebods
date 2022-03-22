@@ -425,12 +425,12 @@
              single_customer_rate: { required: true, number: true },
              custom_rate: { required: true, number: true },
              staff_bio: { required: true },
-             staff_phone: { required: true, digits: true },
+             staff_phone: { required: true, digits: true,minlength:9,maxlength:12 },
              
              staff_address:{ required:true },
              staff_city: { required: true },
              staff_state: { required: true },
-             staff_zip: { required: true, digits: true },
+             staff_zip: { required: true, digits: true, minlength:5,maxlength:5 },
              staff_country: { required: true },
              zoom_link: { required: true },
              trainer_type: { required: true },
@@ -500,9 +500,10 @@
      var fileInput = jQuery("#pcasctimagename").val();
      var term_condition = jQuery("#term_condition").prop("checked");
      
-
+     let ph_len = ct_phone.length;
+     console.log(ph_len);
     let clickedId  = $(this).attr('id');    
-    if (first_name && last_name && ct_email && ct_phone && pro_user_id && ct_password && ct_staff_bio && custom_rate && single_customer_rate && clickedId=='form1') {                
+    if (first_name && last_name && ct_email && ct_phone && pro_user_id && ct_password && ct_staff_bio && custom_rate && single_customer_rate && clickedId=='form1' && ph_len>8) {                
         nextform(clickedId);
         return false;
     }
@@ -637,11 +638,11 @@
              fitness_goal: { required: true },
              client_password: { required: true, minlength: 8 },
              client_repassword: { required: true, equalTo: "#client_password" },
-             client_phone: { required: true, digits: true },
+             client_phone: { required: true, digits: true,minlength:9,maxlength:12 },
              client_address: { required: true },
              client_city: { required: true },
              client_state: { required: true },
-             client_zip: { required: true, digits: true },
+             client_zip: { required: true, digits: true,minlength:5,maxlength:5},
              client_country: { required: true }
          },
          messages: {
@@ -677,8 +678,12 @@
      var ct_country = jQuery("#client_country").val();
      var fileInput = jQuery("#pcasserviceimage").attr('data-imagename');
      
-    let clickedId  = $(this).attr('id');    
-    if (ct_first_name && ct_last_name && ct_email && ct_grinder_user_id && ct_password && client_repassword && ct_fitness_goal && clickedId=='form1') {                
+    let clickedId  = $(this).attr('id');   
+     
+    let ph_len = ct_phone.length;
+    console.log(ph_len);
+    
+    if (ct_first_name && ct_last_name && ct_email && ct_grinder_user_id && ct_password && client_repassword && ct_fitness_goal && clickedId=='form1' && ph_len>8) {                
         nextform(clickedId);
         return false;
     }
