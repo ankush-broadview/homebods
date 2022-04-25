@@ -72,7 +72,7 @@
 
             <label style="width:100% !important; margin-top:10px;margin-left:15px; text-align:left !important">
                 <input type="checkbox" style="width: 11px !important; float:left;" class="term_condition" id="term_condition" name="term_condition" value="Y"><!-- <span  style="margin: 10px !important;">By Registering with HOMEBODS, Ltd., you are agreeing to the Terms and Conditions of the Company.<span> -->
-                <span style="margin: 10px !important;font-size:12">BY REGISTERING AS A FITNESS PRO WITH HOMEBODS, YOU HEREBY REPRESENT THAT YOU HAVE READ AND AGREE TO OUR <a href="<?php echo $settings->get_option('ct_terms_condition_link_for_staff'); ?>">TERMS OF SERVICE</a> WHICH INCLUDES OUR PRIVACY POLICY, COMMUNITY GUIDELINES, AND COVID-19 POLICY.<span>
+                <span style="margin: 10px !important;font-size:12">BY REGISTERING AS A HOMEBOD WITH HOMEBODS, YOU HEREBY REPRESENT THAT YOU HAVE READ AND AGREE TO OUR <a href="<?php echo $settings->get_option('ct_terms_condition_link_for_staff'); ?>">TERMS OF SERVICE</a> WHICH INCLUDES OUR PRIVACY POLICY, COMMUNITY GUIDELINES, AND COVID-19 POLICY.<span>
                         <label class="spacial_class" style="display:none; color:red">Please Agree Terms and Condition for Register</label>
             </label>s
         </div>
