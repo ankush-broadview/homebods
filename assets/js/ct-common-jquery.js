@@ -2799,8 +2799,7 @@ jQuery(document).on("click", ".provider_select", function() {
         dataType: "json",
         url: site_url + "front/firststep.php",
 
-        success: function(res) {
-            debugger
+        success: function(res) {            
             /*  var details=jQuery.parseJSON(res); */
             var currency_symbol = jQuery("#complete_bookings").attr("data-currency_symbol");
             if (res.rate_type == 'Single Customer') {
