@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31,7 +31,7 @@ $oauth2 = new Google_Oauth2Service($client);
 if (isset($_GET['code'])) {
   $client->authenticate($_GET['code']);
   $_SESSION['token'] = $client->getAccessToken();
-  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
   header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
   return;
 }
@@ -49,7 +49,7 @@ if ($client->getAccessToken()) {
   $user = $oauth2->userinfo->get();
 
   // These fields are currently filtered through the PHP sanitize filters.
-  // See http://www.php.net/manual/en/filter.filters.sanitize.php
+  // See https://www.php.net/manual/en/filter.filters.sanitize.php
   $email = filter_var($user['email'], FILTER_SANITIZE_EMAIL);
   $img = filter_var($user['picture'], FILTER_VALIDATE_URL);
   $personMarkup = "$email<div><img src='$img?sz=50'></div>";

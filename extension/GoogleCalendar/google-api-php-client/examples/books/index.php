@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -59,7 +59,7 @@ HTML;
     if ($result['accessInfo']['embeddable'] == true) {
       $previewLink = ""
           . "<a href=\"javascript:load_viewport('${preview}','viewport');\">"
-          . "<img class='previewbutton' src='http://code.google.com/apis/books/images/gbs_preview_button1.png' />"
+          . "<img class='previewbutton' src='https://code.google.com/apis/books/images/gbs_preview_button1.png' />"
           . "</a><br>";
     }
 

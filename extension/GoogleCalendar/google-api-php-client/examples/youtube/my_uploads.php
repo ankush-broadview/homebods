@@ -5,7 +5,7 @@ require_once 'google-api-php-client/src/contrib/Google_YouTubeService.php';
 session_start();
 
 /* You can acquire an OAuth 2 ID/secret pair from the API Access tab on the Google APIs Console
-  <http://code.google.com/apis/console#access>
+  <https://code.google.com/apis/console#access>
 For more information about using OAuth2 to access Google APIs, please visit:
   <https://developers.google.com/accounts/docs/OAuth2>
 Please ensure that you have enabled the YouTube Data API for your project. */
@@ -15,7 +15,7 @@ $OAUTH2_CLIENT_SECRET = 'REPLACE ME';
 $client = new Google_Client();
 $client->setClientId($OAUTH2_CLIENT_ID);
 $client->setClientSecret($OAUTH2_CLIENT_SECRET);
-$redirect = filter_var('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
+$redirect = filter_var('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'],
   FILTER_SANITIZE_URL);
 $client->setRedirectUri($redirect);
 

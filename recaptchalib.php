@@ -2,13 +2,13 @@
 /*
  * This is a PHP library that handles calling reCAPTCHA.
  *    - Documentation and latest version
- *          http://recaptcha.net/plugins/php/
+ *          https://recaptcha.net/plugins/php/
  *    - Get a reCAPTCHA API Key
- *          http://recaptcha.net/api/getkey
+ *          https://recaptcha.net/api/getkey
  *    - Discussion group
- *          http://groups.google.com/group/recaptcha
+ *          https://groups.google.com/group/recaptcha
  *
- * Copyright (c) 2007 reCAPTCHA -- http://recaptcha.net
+ * Copyright (c) 2007 reCAPTCHA -- https://recaptcha.net
  * AUTHORS:
  *   Mike Crawford
  *   Ben Maurer
@@ -35,7 +35,7 @@
 /**
  * The reCAPTCHA server URL's
  */
-$recaptcha_api_server = ' http://api.recaptcha.net';
+$recaptcha_api_server = ' https://api.recaptcha.net';
 $recaptcha_api_secure_server = 'https://api-secure.recaptcha.net';
 $recaptcha_verify_server = 'api-verify.recaptcha.net';
 
@@ -189,7 +189,7 @@ function recaptcha_check_answer ($privkey, $remoteip, $challenge, $response)
  * @param string $appname The name of your application
  */
 function recaptcha_get_signup_url ($domain = null, $appname = null) {
-	return "http://recaptcha.net/api/getkey?" .  _recaptcha_qsencode (array ('domain' => $domain, 'app' => $appname));
+	return "https://recaptcha.net/api/getkey?" .  _recaptcha_qsencode (array ('domain' => $domain, 'app' => $appname));
 }
 
 

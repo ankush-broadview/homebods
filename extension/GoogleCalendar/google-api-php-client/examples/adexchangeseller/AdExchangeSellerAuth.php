@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -56,7 +56,7 @@ class AdExchangeSellerAuth {
     $this->apiClient->setClientSecret('YOUR_CLIENT_SECRET_HERE');
     $this->apiClient->setDeveloperKey('YOUR_DEVELOPER_KEY_HERE');
     // Point the oauth2_redirect_uri to index.php.
-    $this->apiClient->setRedirectUri('http://localhost/index.php');
+    $this->apiClient->setRedirectUri('https://localhost/index.php');
     // Create the api Google_AdExchangeSellerService instance.
     $this->adExchangeSellerService =
         new Google_AdExchangeSellerService($this->apiClient);

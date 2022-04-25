@@ -86,7 +86,7 @@
 				<form id="pros_registration_form" class="" method="post">
 					<div class="form-group mb-3 mt-3">
 						<div class="text-center">
-							<a href="https://www.homebods.club/"> <img style="width: 130px;border-radius: 50%;" class="rounded-circle" src="http://localhost/homebods/assets/images/services/company_74315.png" alt="homebods"></a>
+							<a href="https://www.homebods.club/"> <img style="width: 130px;border-radius: 50%;" class="rounded-circle" src="https://localhost/homebods/assets/images/services/company_74315.png" alt="homebods"></a>
 
 							<h3>FITNESS PRO REGISTRATION</h3>
 						</div>

@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,7 +17,7 @@
 
 /**
  * This class defines attributes, valid values, and usage which is generated from
- * a given json schema. http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5
+ * a given json schema. https://tools.ietf.org/html/draft-zyp-json-schema-03#section-5
  *
  * @author Chirag Shah <chirags@google.com>
  *

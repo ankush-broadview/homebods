@@ -8,7 +8,7 @@
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -52,10 +52,10 @@ class ApiClientTest extends BaseTest {
     $this->assertEquals(" scope2", $service['scope']);
 
     $client->setClientId('test1');
-    $client->setRedirectUri('http://localhost/');
-    $client->setScopes(array("http://test.com", "scope2"));
+    $client->setRedirectUri('https://localhost/');
+    $client->setScopes(array("https://test.com", "scope2"));
     $service = $client->prepareService();
-    $this->assertEquals("http://test.com scope2", $service['scope']);
+    $this->assertEquals("https://test.com scope2", $service['scope']);
     $this->assertEquals(''
         .  'https://accounts.google.com/o/oauth2/auth'
         . '?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2F'

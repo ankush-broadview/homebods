@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -28,7 +28,7 @@ class RestTest extends BaseTest {
   }
 
   public function testDecodeResponse() {
-    $url = 'http://localhost';
+    $url = 'https://localhost';
     
     $response = new Google_HttpRequest($url);
     $response->setResponseHttpCode(204);
@@ -56,12 +56,12 @@ class RestTest extends BaseTest {
       $error = $e->getMessage();
 
     }
-    $this->assertEquals(trim($error), "Error calling GET http://localhost: (500)");
+    $this->assertEquals(trim($error), "Error calling GET https://localhost: (500)");
   }
 
 
   public function testDecodeEmptyResponse() {
-    $url = 'http://localhost';
+    $url = 'https://localhost';
 
     $response = new Google_HttpRequest($url, 'GET', array());
     $response->setResponseBody('{}');
@@ -72,7 +72,7 @@ class RestTest extends BaseTest {
   }
 
   public function testCreateRequestUri() {
-    $basePath = "http://localhost";
+    $basePath = "https://localhost";
     $restPath = "/plus/{u}";
     
     // Test Path
@@ -81,7 +81,7 @@ class RestTest extends BaseTest {
     $params['u']['location'] = 'path';
     $params['u']['value'] = 'me';
     $value = $this->rest->createRequestUri($basePath, $restPath, $params);
-    $this->assertEquals("http://localhost/plus/me", $value);
+    $this->assertEquals("https://localhost/plus/me", $value);
 
     // Test Query
     $params = array();
@@ -89,7 +89,7 @@ class RestTest extends BaseTest {
     $params['u']['location'] = 'query';
     $params['u']['value'] = 'me';
     $value = $this->rest->createRequestUri($basePath, '/plus', $params);
-    $this->assertEquals("http://localhost/plus?u=me", $value);
+    $this->assertEquals("https://localhost/plus?u=me", $value);
 
     // Test Booleans
     $params = array();
@@ -97,11 +97,11 @@ class RestTest extends BaseTest {
     $params['u']['location'] = 'path';
     $params['u']['value'] = '1';
     $value = $this->rest->createRequestUri($basePath, $restPath, $params);
-    $this->assertEquals("http://localhost/plus/true", $value);
+    $this->assertEquals("https://localhost/plus/true", $value);
 
     $params['u']['location'] = 'query';
     $value = $this->rest->createRequestUri($basePath, '/plus', $params);
-    $this->assertEquals("http://localhost/plus?u=true", $value);
+    $this->assertEquals("https://localhost/plus?u=true", $value);
     
     // Test encoding
     $params = array();
@@ -109,7 +109,7 @@ class RestTest extends BaseTest {
     $params['u']['location'] = 'query';
     $params['u']['value'] = '@me/';
     $value = $this->rest->createRequestUri($basePath, '/plus', $params);
-    $this->assertEquals("http://localhost/plus?u=%40me%2F", $value);
+    $this->assertEquals("https://localhost/plus?u=%40me%2F", $value);
   }
 }
  

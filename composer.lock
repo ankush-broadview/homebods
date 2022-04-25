@@ -232,7 +232,7 @@
                 {
                     "name": "Joshua Gigg",
                     "email": "giggsey@gmail.com",
-                    "homepage": "http://giggsey.com/"
+                    "homepage": "https://giggsey.com/"
                 }
             ],
             "description": "Locale functions required by libphonenumber-for-php",
@@ -286,7 +286,7 @@
                 "Apache-2.0"
             ],
             "description": "Google Auth Library for PHP",
-            "homepage": "http://github.com/google/google-auth-library-php",
+            "homepage": "https://github.com/google/google-auth-library-php",
             "keywords": [
                 "Authentication",
                 "google",
@@ -518,7 +518,7 @@
                 }
             ],
             "description": "Guzzle is a PHP HTTP client library",
-            "homepage": "http://guzzlephp.org/",
+            "homepage": "https://guzzlephp.org/",
             "keywords": [
                 "client",
                 "curl",
@@ -1353,7 +1353,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -1402,7 +1402,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for HTTP messages",
@@ -1455,7 +1455,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -1505,7 +1505,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interfaces for simple caching",
@@ -1606,7 +1606,7 @@
                 },
                 {
                     "name": "Riverline",
-                    "homepage": "http://www.riverline.fr"
+                    "homepage": "https://www.riverline.fr"
                 }
             ],
             "description": "One class library to parse multipart content with encoding and charset support.",
@@ -1654,7 +1654,7 @@
             "authors": [
                 {
                     "name": "Marut K",
-                    "homepage": "http://twitter.com/rezigned"
+                    "homepage": "https://twitter.com/rezigned"
                 }
             ],
             "description": "PHP URI Template (RFC 6570) supports both expansion & extraction",

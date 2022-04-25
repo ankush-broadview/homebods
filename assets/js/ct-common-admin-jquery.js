@@ -51,7 +51,7 @@ jQuery(document).ready(function () {
 
   jQuery.validator.addMethod("urlss", function (value, element) {
 
-    return this.optional(element) || /^(http:\/\/|https:\/\/|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(value);
+    return this.optional(element) || /^(https:\/\/|https:\/\/|https:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(value);
 
   }, errorobj_enter_valid_url);
 

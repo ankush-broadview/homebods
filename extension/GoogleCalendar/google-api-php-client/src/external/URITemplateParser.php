@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright (c) 2010 Kevin M Burns Jr, http://kevburnsjr.com/
+Copyright (c) 2010 Kevin M Burns Jr, https://kevburnsjr.com/
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -24,8 +24,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 /**
  * A URI Template Parser which is used by the apiREST class to resolve the REST requests
- * Blogpost: http://lab.kevburnsjr.com/php-uri-template-parser
- * Source: http://github.com/KevBurnsJr/php-uri-template-parser
+ * Blogpost: https://lab.kevburnsjr.com/php-uri-template-parser
+ * Source: https://github.com/KevBurnsJr/php-uri-template-parser
  */
 class URI_Template_Parser {
 

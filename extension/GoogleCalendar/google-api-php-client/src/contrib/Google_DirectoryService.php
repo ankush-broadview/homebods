@@ -4,7 +4,7 @@
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
@@ -55,7 +55,7 @@
      * @opt_param string orderBy Column to use for sorting results
      * @opt_param string pageToken Token to specify next page in the list
      * @opt_param string projection Restrict information returned to a set of selected fields.
-     * @opt_param string query Search string in the format given at http://support.google.com/chromeos/a/bin/answer.py?hl=en=1698333
+     * @opt_param string query Search string in the format given at https://support.google.com/chromeos/a/bin/answer.py?hl=en=1698333
      * @opt_param string sortOrder Whether to return results in ascending or descending order. Only of use when orderBy is also used
      * @return Google_ChromeOsDevices
      */
@@ -481,7 +481,7 @@
      * @opt_param string orderBy Column to use for sorting results
      * @opt_param string pageToken Token to specify next page in the list
      * @opt_param string projection Restrict information returned to a set of selected fields.
-     * @opt_param string query Search string in the format given at http://support.google.com/a/bin/answer.py?hl=en=1408863#search
+     * @opt_param string query Search string in the format given at https://support.google.com/a/bin/answer.py?hl=en=1408863#search
      * @opt_param string sortOrder Whether to return results in ascending or descending order. Only of use when orderBy is also used
      * @return Google_MobileDevices
      */

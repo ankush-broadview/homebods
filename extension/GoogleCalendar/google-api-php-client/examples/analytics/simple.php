@@ -21,7 +21,7 @@ if (isset($_GET['logout'])) {
 if (isset($_GET['code'])) {
   $client->authenticate();
   $_SESSION['token'] = $client->getAccessToken();
-  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
   header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 }
 

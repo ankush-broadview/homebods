@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -67,7 +67,7 @@ class AuthHelper {
    * authorization code then exchange it for an access token. This method
    * also removes the authorization code from the URL to keep things pretty.
    * Details on how the apiClient implements authorization can be found here:
-   * http://code.google.com/p/google-api-php-client/source/browse/trunk/src/auth/apiOAuth2.php#84
+   * https://code.google.com/p/google-api-php-client/source/browse/trunk/src/auth/apiOAuth2.php#84
    * If an authorization error occurs, the exception is caught and the error
    * message is saved in $error.
    */

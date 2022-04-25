@@ -51,7 +51,7 @@ if ($client->isAccessTokenExpired()) {
   // Render the Google+ sign-in button.
   print <<<MARKUP
 <!doctype html><html><head>
-<script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript">
   // The simplest possible solution to this callback. In your application,
   // you would want to replace the button with markup that indicates the state.
@@ -74,7 +74,7 @@ MARKUP;
   $target->url = 'https://developers.google.com/+/plugins/snippet/examples/thing';
 
   $moment = new Google_Moment();
-  $moment->type = "http://schemas.google.com/AddActivity";
+  $moment->type = "https://schemas.google.com/AddActivity";
   $moment->target = $target;
 
   // Execute the request

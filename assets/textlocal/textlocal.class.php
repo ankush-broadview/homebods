@@ -10,7 +10,7 @@
 class Textlocal {
 
 
-	const REQUEST_URL = 'http://api.txtlocal.com/';
+	const REQUEST_URL = 'https://api.txtlocal.com/';
 	const REQUEST_TIMEOUT = 8;
 	const REQUEST_HANDLER = 'curl';
 	

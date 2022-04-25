@@ -5,9 +5,9 @@ Google+ PHP Starter Application
 This application helps you get started writing a Google+ PHP application.
 
 Requirements:
-  PHP 5.2.x or higher [http://www.php.net/]
-  PHP Curl extension [http://www.php.net/manual/en/intro.curl.php]
-  PHP JSON extension [http://php.net/manual/en/book.json.php]
+  PHP 5.2.x or higher [https://www.php.net/]
+  PHP Curl extension [https://www.php.net/manual/en/intro.curl.php]
+  PHP JSON extension [https://php.net/manual/en/book.json.php]
 
 Getting Started:
   1) Visit https://code.google.com/apis/console/?api=plus to register your application.
@@ -30,7 +30,7 @@ Getting Started:
   3) You are now ready to load index.php on your web server.
 
 OAuth 2 instructions:
-  http://code.google.com/p/google-api-php-client/wiki/OAuth2
+  https://code.google.com/p/google-api-php-client/wiki/OAuth2
 
 Supported sample applications:
-  http://code.google.com/p/google-api-php-client/wiki/Samples
+  https://code.google.com/p/google-api-php-client/wiki/Samples

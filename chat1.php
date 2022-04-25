@@ -69,7 +69,7 @@ $_SESSION['ct_name'] = 'rashmita123456';
                   		<span class="time">now</span>
                		</div>
                		<div class="list">
-                  		<img src="https://ia.tmgrup.com.tr/2fc58d/0/0/0/0/0/0?u=http://i.tmgrup.com.tr/cosmopolitan/galeri/unluler/isimleri-en-cok-aratilmis-dunyaca-unlu-50-kadin/10.jpg&mw=750" width="50" height="50" alt="" />
+                  		<img src="https://ia.tmgrup.com.tr/2fc58d/0/0/0/0/0/0?u=https://i.tmgrup.com.tr/cosmopolitan/galeri/unluler/isimleri-en-cok-aratilmis-dunyaca-unlu-50-kadin/10.jpg&mw=750" width="50" height="50" alt="" />
                   		<div class="info">
                      		<span class="user">Miley Cyrus</span>
                      		<span class="text">Good night.</span>
@@ -102,7 +102,7 @@ $_SESSION['ct_name'] = 'rashmita123456';
                   		<span class="time">1 day ago</span>
                		</div>
                		<div class="list">
-                  		<img src="https://ia.tmgrup.com.tr/2fc58d/0/0/0/0/0/0?u=http://i.tmgrup.com.tr/cosmopolitan/galeri/unluler/isimleri-en-cok-aratilmis-dunyaca-unlu-50-kadin/10.jpg&mw=750" width="50" height="50" alt="" />
+                  		<img src="https://ia.tmgrup.com.tr/2fc58d/0/0/0/0/0/0?u=https://i.tmgrup.com.tr/cosmopolitan/galeri/unluler/isimleri-en-cok-aratilmis-dunyaca-unlu-50-kadin/10.jpg&mw=750" width="50" height="50" alt="" />
                   		<div class="info">
                      		<span class="user">Miley Cyrus</span>
                      		<span class="text">Good night.</span>
@@ -127,7 +127,7 @@ $_SESSION['ct_name'] = 'rashmita123456';
                   		<span class="time">1 day ago</span>
                		</div>
                		<div class="list">
-                  		<img src="https://ia.tmgrup.com.tr/2fc58d/0/0/0/0/0/0?u=http://i.tmgrup.com.tr/cosmopolitan/galeri/unluler/isimleri-en-cok-aratilmis-dunyaca-unlu-50-kadin/10.jpg&mw=750" width="50" height="50" alt="" />
+                  		<img src="https://ia.tmgrup.com.tr/2fc58d/0/0/0/0/0/0?u=https://i.tmgrup.com.tr/cosmopolitan/galeri/unluler/isimleri-en-cok-aratilmis-dunyaca-unlu-50-kadin/10.jpg&mw=750" width="50" height="50" alt="" />
                   		<div class="info">
                      		<span class="user">Miley Cyrus</span>
                      		<span class="text">Good night.</span>
@@ -179,7 +179,7 @@ $_SESSION['ct_name'] = 'rashmita123456';
 	                     <Button type="button" class="mesg-send message-submit"> Send </Button>
 	                  </div>
 	               </div>
-	               <svg class="inline w-6 h-6 ml-2 -mt-1 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+	               <svg class="inline w-6 h-6 ml-2 -mt-1 cursor-pointer" xmlns="https://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 	                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
 	               </svg>
 	            </div>

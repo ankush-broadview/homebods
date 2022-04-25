@@ -4,7 +4,7 @@ define("MOCK_MINIMUM_VERSION", "0.30.0");
 define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
 
 // Send a request to stripe-mock
-$ch = curl_init("http://localhost:" . MOCK_PORT . "/");
+$ch = curl_init("https://localhost:" . MOCK_PORT . "/");
 curl_setopt($ch, CURLOPT_HEADER, 1);
 curl_setopt($ch, CURLOPT_NOBODY, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

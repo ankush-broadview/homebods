@@ -8,7 +8,7 @@
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -21,14 +21,14 @@ require_once 'io/Google_CacheParser.php';
 
 class ApiCacheParserTest extends BaseTest {
   public function testIsResponseCacheable() {
-    $resp = new Google_HttpRequest('http://localhost', 'POST');
+    $resp = new Google_HttpRequest('https://localhost', 'POST');
     $result = Google_CacheParser::isResponseCacheable($resp);
     $this->assertFalse($result);
 
 
     // The response has expired, and we don't have an etag for
     // revalidation.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Cache-Control' => 'max-age=3600, must-revalidate',
@@ -40,7 +40,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertFalse($result);
 
     // Verify cacheable responses.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Cache-Control' => 'max-age=3600, must-revalidate',
@@ -53,7 +53,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertTrue($result);
 
     // Verify that responses to HEAD requests are cacheable.
-    $resp = new Google_HttpRequest('http://localhost', 'HEAD');
+    $resp = new Google_HttpRequest('https://localhost', 'HEAD');
     $resp->setResponseHttpCode('200');
     $resp->setResponseBody(null);
     $resp->setResponseHeaders(array(
@@ -67,7 +67,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertTrue($result);
 
     // Verify that Vary: * cannot get cached.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Cache-Control' => 'max-age=3600, must-revalidate',
@@ -81,7 +81,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertFalse($result);
 
     // Verify 201s cannot get cached.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('201');
     $resp->setResponseBody(null);
     $resp->setResponseHeaders(array(
@@ -94,7 +94,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertFalse($result);
 
     // Verify pragma: no-cache.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Expires' =>  'Wed, 11 Jan 2012 04:03:37 GMT',
@@ -119,7 +119,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertFalse($result);
 
     // Verify that authorized responses are not cacheable.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setRequestHeaders(array('Authorization' => 'Bearer Token'));
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
@@ -137,7 +137,7 @@ class ApiCacheParserTest extends BaseTest {
     $future = $now + (365 * 24 * 60 * 60);
 
     // Expires 1 year in the future. Response is fresh.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Expires' =>  gmdate('D, d M Y H:i:s', $future) . ' GMT',
@@ -146,7 +146,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertFalse(Google_CacheParser::isExpired($resp));
 
     // The response expires soon. Response is fresh.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Expires' =>  gmdate('D, d M Y H:i:s', $now + 2) . ' GMT',
@@ -156,7 +156,7 @@ class ApiCacheParserTest extends BaseTest {
 
     // Expired 1 year ago. Response is stale.
     $past = $now - (365 * 24 * 60 * 60);
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Expires' =>  gmdate('D, d M Y H:i:s', $past) . ' GMT',
@@ -165,7 +165,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertTrue(Google_CacheParser::isExpired($resp));
 
     // Invalid expires header. Response is stale.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Expires' =>  '-1',
@@ -174,7 +174,7 @@ class ApiCacheParserTest extends BaseTest {
     $this->assertTrue(Google_CacheParser::isExpired($resp));
 
     // The response expires immediately. G+ APIs do this. Response is stale.
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Expires' =>  gmdate('D, d M Y H:i:s', $now) . ' GMT',
@@ -189,7 +189,7 @@ class ApiCacheParserTest extends BaseTest {
     // Expires 1 year in the future, and contains the must-revalidate directive.
     // Don't revalidate. must-revalidate only applies to expired entries.
     $future = $now + (365 * 24 * 60 * 60);
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Cache-Control' => 'max-age=3600, must-revalidate',
@@ -201,7 +201,7 @@ class ApiCacheParserTest extends BaseTest {
     // Contains the max-age=3600 directive, but was created 2 hours ago.
     // Must revalidate.
     $past = $now - (2 * 60 * 60);
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Cache-Control' => 'max-age=3600',
@@ -213,7 +213,7 @@ class ApiCacheParserTest extends BaseTest {
     // Contains the max-age=3600 directive, and was created 600 seconds ago.
     // No need to revalidate, regardless of the expires header.
     $past = $now - (600);
-    $resp = new Google_HttpRequest('http://localhost', 'GET');
+    $resp = new Google_HttpRequest('https://localhost', 'GET');
     $resp->setResponseHttpCode('200');
     $resp->setResponseHeaders(array(
       'Cache-Control' => 'max-age=3600',

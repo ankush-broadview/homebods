@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,7 +26,7 @@ $client->setScopes(array(
     'https://apps-apis.google.com/a/feeds/user/',
 ));
 
-// Documentation: http://code.google.com/googleapps/domain/provisioning_API_v2_developers_guide.html
+// Documentation: https://code.google.com/googleapps/domain/provisioning_API_v2_developers_guide.html
 // Visit https://code.google.com/apis/console to generate your
 // oauth2_client_id, oauth2_client_secret, and to register your oauth2_redirect_uri.
 // $client->setClientId('insert_your_oauth2_client_id');
@@ -41,7 +41,7 @@ if (isset($_REQUEST['logout'])) {
 if (isset($_GET['code'])) {
   $client->authenticate();
   $_SESSION['access_token'] = $client->getAccessToken();
-  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
   header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 }
 

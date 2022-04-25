@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -62,7 +62,7 @@ class Google_HttpRequest {
    * Misc function that returns the base url component of the $url
    * used by the OAuth signing class to calculate the base string
    * @return string The base url component of the $url.
-   * @see http://oauth.net/core/1.0a/#anchor13
+   * @see https://oauth.net/core/1.0a/#anchor13
    */
   public function getBaseUrl() {
     if ($pos = strpos($this->url, '?')) {

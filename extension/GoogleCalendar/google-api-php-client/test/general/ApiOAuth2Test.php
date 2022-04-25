@@ -8,7 +8,7 @@
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -30,14 +30,14 @@ class ApiOAuth2Test extends BaseTest {
     $oauth->developerKey = "devKey";
     $oauth->clientId = "clientId1";
     $oauth->clientSecret = "clientSecret1";
-    $oauth->redirectUri = "http://localhost";
+    $oauth->redirectUri = "https://localhost";
     $oauth->approvalPrompt = 'force';
     $oauth->accessType = "offline";
 
-    $req = new Google_HttpRequest('http://localhost');
+    $req = new Google_HttpRequest('https://localhost');
     $req = $oauth->sign($req);
 
-    $this->assertEquals('http://localhost?key=devKey', $req->getUrl());
+    $this->assertEquals('https://localhost?key=devKey', $req->getUrl());
 
     // test accessToken
     $oauth->token = array(
@@ -57,11 +57,11 @@ class ApiOAuth2Test extends BaseTest {
     $oauth->developerKey = "devKey";
     $oauth->clientId = "clientId1";
     $oauth->clientSecret = "clientSecret1";
-    $oauth->redirectUri = "http://localhost";
+    $oauth->redirectUri = "https://localhost";
     $oauth->approvalPrompt = 'force';
     $oauth->accessType = "offline";
 
-    $authUrl = $oauth->createAuthUrl("http://googleapis.com/scope/foo");
+    $authUrl = $oauth->createAuthUrl("https://googleapis.com/scope/foo");
     $expected = "https://accounts.google.com/o/oauth2/auth"
         . "?response_type=code"
         . "&redirect_uri=http%3A%2F%2Flocalhost"

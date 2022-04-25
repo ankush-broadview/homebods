@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,7 +29,7 @@
  *   - Register for OAuth2.0
  *   - The Redirect URL must be the same as defined in the constant below.
  *     this value should be the exact location of this script. So if this
- *     script resides on the URL: http://localhost/ga-api then both the
+ *     script resides on the URL: https://localhost/ga-api then both the
  *     REDIRECT_URI as well as the redirect value in the APIs console must
  *     be the URL.
  *   Once complete you must copy the Client ID and Client Secret values from
@@ -155,9 +155,9 @@ $errors = htmlspecialchars($errors, ENT_NOQUOTES);
     <p>This is a sample PHP application that demonstrates how to use the
        Google Analytics API. This sample application contains various
        demonstrations using the Google Analytics
-       <a href="http://code.google.com/apis/analytics/docs/mgmt/v3/mgmtGettingStarted.html">
+       <a href="https://code.google.com/apis/analytics/docs/mgmt/v3/mgmtGettingStarted.html">
            Management API</a> and
-       <a href="http://code.google.com/apis/analytics/docs/gdata/v3/gdataGettingStarted.html">
+       <a href="https://code.google.com/apis/analytics/docs/gdata/v3/gdataGettingStarted.html">
            Core Reporting API</a>.</p>
 
     <p>To begin, you must first grant this application access to your
@@ -177,21 +177,21 @@ $errors = htmlspecialchars($errors, ENT_NOQUOTES);
     <ul>
       <li><a href="<?=$helloAnalyticsDemoUrl?>">Hello Analytics API</a> &ndash;
           Traverse through the
-          <a href="http://code.google.com/apis/analytics/docs/mgmt/v3/mgmtGettingStarted.html">
+          <a href="https://code.google.com/apis/analytics/docs/mgmt/v3/mgmtGettingStarted.html">
              Management API</a> to get the first profile ID.
           The use this ID with the
-          <a href="http://code.google.com/apis/analytics/docs/gdata/v3/gdataGettingStarted.html">
+          <a href="https://code.google.com/apis/analytics/docs/gdata/v3/gdataGettingStarted.html">
              Core Reporting API</a> to print the top 25
           organic search terms.</li>
 
       <li><a href="<?=$mgmtApiDemoUrl?>">Management API Reference</a> &ndash;
           Traverse through the
-          <a href="http://code.google.com/apis/analytics/docs/mgmt/v3/mgmtGettingStarted.html">
+          <a href="https://code.google.com/apis/analytics/docs/mgmt/v3/mgmtGettingStarted.html">
              Management API</a> and print all the important
           information returned from the API for each of the first entities.</li>
 
       <li><a href="<?=$coreReportingDemoUrl?>">Core Reporting API Reference</a> &ndash;
-          Query the <a href="http://code.google.com/apis/analytics/docs/gdata/v3/gdataGettingStarted.html">
+          Query the <a href="https://code.google.com/apis/analytics/docs/gdata/v3/gdataGettingStarted.html">
              Core Reporting API</a> and print out all the important information
           returned from the API.</li>
     </ul>

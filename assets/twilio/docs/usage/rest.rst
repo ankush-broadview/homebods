@@ -13,7 +13,7 @@ Creating a REST Client
 Before querying the API, you'll need to create a :php:class:`Services_Twilio`
 instance. The constructor takes your Twilio Account Sid and Auth
 Token (both available through your `Twilio Account Dashboard
-<http:www.twilio.com/user/account>`_).
+<https:www.twilio.com/user/account>`_).
 
 .. code-block:: php
 
@@ -27,7 +27,7 @@ The :attr:`account` attribute
 You access the Twilio API resources through this :attr:`$client`,
 specifically the :attr:`$account` attribute, which is an instance of
 :php:class:`Services_Twilio_Rest_Account`. We'll use the `Calls resource
-<http://www.twilio.com/docs/api/rest/call>`_ as an example.
+<https://www.twilio.com/docs/api/rest/call>`_ as an example.
 
 Listing Resources
 ====================

@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,16 +29,16 @@ class UrlShortenerTests extends BaseTest {
 
   public function testUrlShort() {
     $url = new Google_Url();
-    $url->longUrl = "http://google.com";
+    $url->longUrl = "https://google.com";
 
     $shortUrl = $this->service->url->insert($url);
     $this->assertEquals('urlshortener#url', $shortUrl['kind']);
-    $this->assertEquals('http://google.com/', $shortUrl['longUrl']);
+    $this->assertEquals('https://google.com/', $shortUrl['longUrl']);
   }
 
   public function testEmptyJsonResponse() {
     $optParams = array('fields' => '');
-    $resp = $this->service->url->get('http://goo.gl/KkHq8', $optParams);
+    $resp = $this->service->url->get('https://goo.gl/KkHq8', $optParams);
 
     $this->assertEquals(array(), $resp);
   }

@@ -8,7 +8,7 @@
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -55,7 +55,7 @@ class IoTest extends BaseTest {
 
   public function testProcessEntityRequest() {
     $io = new Google_CurlIO();
-    $req = new Google_HttpRequest("http://localhost.com");
+    $req = new Google_HttpRequest("https://localhost.com");
     $req->setRequestMethod("POST");
 
     // Verify that the content-length is calculated.
@@ -93,7 +93,7 @@ class IoTest extends BaseTest {
 
   public function testCacheHit() {
     $io = new Google_CurlIO();
-    $url = "http://www.googleapis.com";
+    $url = "https://www.googleapis.com";
     // Create a cacheable request/response.
     // Should not be revalidated.
     $cacheReq = new Google_HttpRequest($url, "GET");
@@ -121,7 +121,7 @@ class IoTest extends BaseTest {
 
   public function testAuthCache() {
     $io = new Google_CurlIO();
-    $url = "http://www.googleapis.com/protected/resource";
+    $url = "https://www.googleapis.com/protected/resource";
 
     // Create a cacheable request/response, but it should not be cached.
     $cacheReq = new Google_HttpRequest($url, "GET");

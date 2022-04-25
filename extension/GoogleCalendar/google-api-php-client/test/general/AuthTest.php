@@ -8,7 +8,7 @@
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -199,7 +199,7 @@ class AuthTest extends BaseTest {
   public function testNoAuth() {
     /** @var $noAuth Google_AuthNone */
     $noAuth = new Google_AuthNone();
-    $req = new Google_HttpRequest("http://example.com");
+    $req = new Google_HttpRequest("https://example.com");
 
     $resp = $noAuth->sign($req);
     $noAuth->authenticate(null);
@@ -209,7 +209,7 @@ class AuthTest extends BaseTest {
     $noAuth->refreshToken(null);
     $noAuth->revokeToken();
     $noAuth->setDeveloperKey(null);
-    $this->assertTrue(strpos($resp->getUrl(), "http://example.com?key=") === 0);
+    $this->assertTrue(strpos($resp->getUrl(), "https://example.com?key=") === 0);
   }
 
   public function testAssertionCredentials() {

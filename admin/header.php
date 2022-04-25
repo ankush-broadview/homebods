@@ -579,11 +579,11 @@ if($file){   if(!filesize($filename) > 0){
                            if($today_date == $first_month_date){ 
 
                               /*** auto updater code  ***/                    
-                              $version_updated_checker = $setting->get_contents('http://skymoonlabs.com/cleanto/versioncheck.php?'.time());                    
+                              $version_updated_checker = $setting->get_contents('https://skymoonlabs.com/cleanto/versioncheck.php?'.time());                    
                               if($version_updated_checker > $setting->get_option("ct_version")){                     ?>                   
                      <li><a href="#ct-update-version-modal" class="pulse-update" title="Cleanto Update Available"  data-toggle="modal"><i class="fa fa-download"></i></a>
                      </li>
-                     <?php echo $setting->get_contents('http://skymoonlabs.com/cleanto/versiondetailpopup.php?'.time());                     
+                     <?php echo $setting->get_contents('https://skymoonlabs.com/cleanto/versiondetailpopup.php?'.time());                     
                      }
                      /*** auto updater code  ***/                
                   } ?>                

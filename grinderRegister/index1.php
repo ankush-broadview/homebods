@@ -76,8 +76,8 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="http://localhost/homebods/assets/select2.css" rel="stylesheet" />
-    <script src="http://localhost/homebods/assets/select2.js"></script>
+    <link href="https://localhost/homebods/assets/select2.css" rel="stylesheet" />
+    <script src="https://localhost/homebods/assets/select2.js"></script>
 
 </head>
 

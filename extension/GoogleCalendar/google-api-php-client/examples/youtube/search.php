@@ -17,7 +17,7 @@ require_once 'google-api-php-client/src/Google_Client.php';
 require_once 'google-api-php-client/src/contrib/Google_YouTubeService.php';
 
   /* Set $DEVELOPER_KEY to the "API key" value from the "Access" tab of the
-  Google APIs Console <http://code.google.com/apis/console#access>
+  Google APIs Console <https://code.google.com/apis/console#access>
   Please ensure that you have enabled the YouTube Data API for your project. */
   $DEVELOPER_KEY = 'REPLACE ME';
 

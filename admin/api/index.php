@@ -900,7 +900,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 					}
 					$message = str_replace($searcharray, $replacearray, $message);
 					$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-					$ch = curl_init("http://api.textlocal.in/send/?");
+					$ch = curl_init("https://api.textlocal.in/send/?");
 					curl_setopt($ch, CURLOPT_POST, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -919,7 +919,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 					}
 					$message = str_replace($searcharray, $replacearray, $message);
 					$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-					$ch = curl_init("http://api.textlocal.in/send/?");
+					$ch = curl_init("https://api.textlocal.in/send/?");
 					curl_setopt($ch, CURLOPT_POST, true);
 					curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1279,7 +1279,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1298,7 +1298,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1650,7 +1650,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1669,7 +1669,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -2013,7 +2013,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -2032,7 +2032,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -2376,7 +2376,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -2395,7 +2395,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 				}
 				$message = str_replace($searcharray, $replacearray, $message);
 				$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-				$ch = curl_init("http://api.textlocal.in/send/?");
+				$ch = curl_init("https://api.textlocal.in/send/?");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -2718,7 +2718,7 @@ elseif (isset($_POST["action"]) && $_POST["action"] == "get_all_services") {
 						}
 						$message = str_replace($searcharray, $replacearray, $message);
 						$data = "username=".$textlocal_username."&hash=".$textlocal_hash_id."&message=".$message."&numbers=".$phone."&test=0";
-						$ch = curl_init("http://api.textlocal.in/send/?");
+						$ch = curl_init("https://api.textlocal.in/send/?");
 						curl_setopt($ch, CURLOPT_POST, true);
 						curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

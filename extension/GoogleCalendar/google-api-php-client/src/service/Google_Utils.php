@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -45,9 +45,9 @@ class Google_Utils {
    * This algorithm was originally developed for the
    * Solar Framework by Paul M. Jones
    *
-   * @link   http://solarphp.com/
-   * @link   http://svn.solarphp.com/core/trunk/Solar/Json.php
-   * @link   http://framework.zend.com/svn/framework/standard/trunk/library/Zend/Json/Decoder.php
+   * @link   https://solarphp.com/
+   * @link   https://svn.solarphp.com/core/trunk/Solar/Json.php
+   * @link   https://framework.zend.com/svn/framework/standard/trunk/library/Zend/Json/Decoder.php
    * @param  string $str
    * @return int The number of bytes in a string.
    */
@@ -64,31 +64,31 @@ class Google_Utils {
 
         case (($ordinalValue & 0xE0) == 0xC0):
           // characters U-00000080 - U-000007FF, mask 110XXXXX
-          // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+          // see https://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
           $ret += 2;
           break;
 
         case (($ordinalValue & 0xF0) == 0xE0):
           // characters U-00000800 - U-0000FFFF, mask 1110XXXX
-          // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+          // see https://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
           $ret += 3;
           break;
 
         case (($ordinalValue & 0xF8) == 0xF0):
           // characters U-00010000 - U-001FFFFF, mask 11110XXX
-          // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+          // see https://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
           $ret += 4;
           break;
 
         case (($ordinalValue & 0xFC) == 0xF8):
           // characters U-00200000 - U-03FFFFFF, mask 111110XX
-          // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+          // see https://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
           $ret += 5;
           break;
 
         case (($ordinalValue & 0xFE) == 0xFC):
           // characters U-04000000 - U-7FFFFFFF, mask 1111110X
-          // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+          // see https://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
           $ret += 6;
           break;
         default:

@@ -106,11 +106,11 @@
             <div class="img">
                <div class="img__text m--up">
                   <h2>New here?</h2>
-                  <p>If you want to sing up as Vendor</p>
+                  <p>If you want to sign up as Vendor</p>
                </div>
                <div class="img__text m--in">
                   <h2>One of us?</h2>
-                  <p>If you want to sing up as Client</p>
+                  <p>If you want to sign up as Client</p>
                </div>
                <div class="img__btn img__btnss">
                   <span class="m--up">Sign Up As Vendor</span>

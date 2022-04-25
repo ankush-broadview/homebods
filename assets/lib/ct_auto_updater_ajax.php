@@ -20,7 +20,7 @@ if (extension_loaded('zip')) {
 	 /* download zip */
 	if(isset($_POST['action']) && $_POST['action'] == "auto_updater")
 	{
-		$getVersions = $settings->ext_get_contents('http://skymoonlabs.com/cleanto/versioncheck.php?'.time());
+		$getVersions = $settings->ext_get_contents('https://skymoonlabs.com/cleanto/versioncheck.php?'.time());
 		if ($getVersions != '')
 		{
 			/* If we managed to access that file, then lets break up those release versions into an array. */
