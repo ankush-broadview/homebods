@@ -113,7 +113,7 @@
 									</div>
 								</div>
 								<div class="modal-body">
-									<img id="ct-preview-imgpcas" class="ct-preview-img" style="width: 100%;" />
+									<img id="ct-preview-imgpcas" class="ct-preview-img" style="width: 400px;" />
 								</div>
 								<div class="modal-footer">
 									<div class="col-md-12 np">
@@ -164,7 +164,7 @@
 						</div>
 					</div>
 					<div class="modal-body">
-						<img id="ct-preview-imgpcas" class="ct-preview-img" style="width: 100%;" />
+						<img id="ct-preview-imgpcas" class="ct-preview-img" style="width: 500px" />
 					</div>
 					<div class="modal-footer">
 						<div class="col-md-12 np">
