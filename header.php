@@ -1,11 +1,17 @@
 <?php  
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// echo '<pre>';
+// print_r($_SERVER);
+// echo '</pre>';
+// die;
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") { 
     $protocol = 'https';
     define("STRIPE_MODE", 'LIVE');
 } else {
 	define("STRIPE_MODE", 'TEST');
-    $protocol = 'http';
+    $protocol = 'https';
 }
 
 $cur_dirname = basename(__DIR__);

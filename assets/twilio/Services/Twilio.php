@@ -2,8 +2,6 @@
 
 
 
-https:
-
 /*
 
 
@@ -46,7 +44,7 @@ function Services_Twilio_autoload($className)
         return false;
 
 
-    }https:
+    }
 
 
     $file = str_replace('_', '/', $className);
@@ -311,8 +309,7 @@ abstract class Base_Services_Twilio extends Services_Twilio_Resource
 
 
                 // Loop through the values
-https:
-https:
+
                 foreach ($value as $value2) {
 
 
@@ -354,8 +351,7 @@ https:
 
                 // Add the key and the urlencoded value (as a string)
 
-https:
-           https:$query .= $key . '=' . urlencode((string)$value);
+$query .= $key . '=' . urlencode((string)$value);
 
 
             }
@@ -464,8 +460,7 @@ https:
 
 
      * :rtype: string
-https:
-https:
+
      */
 
 
@@ -540,10 +535,6 @@ https:
 
     }
 
-
-
-
-https:
     /**https:
 
 
@@ -619,9 +610,6 @@ https:
     }
 
 
-
-https:
-https:
     /**
 
 

@@ -1,4 +1,4 @@
-<?php https:https:https:https:
+<?php
 
 /**
  * PHPMailer RFC821 SMTP email transport class.
