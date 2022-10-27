@@ -189,7 +189,9 @@
 		$(document).ready(function() {
 		
 			$('.form-select').css('color', 'black');
-			$('#client_city').select2();
+			$('#client_city').select2({
+					tags: true
+				});
 			$('#trainer_type').select2({
 				placeholder: "Choose Trainer Type",
 				allowClear: true
@@ -209,7 +211,9 @@
 					options += `<option>${state}</option>`;
 				});
 				$("#client_state").html(options);
-				$('#client_state').select2();
+				$('#client_state').select2({
+					tags: true
+				});
 			});
 		}
 
@@ -223,7 +227,9 @@
 				options += `<option>${city}</option>`;
 			});
 			$("#client_city").html(options);
-			$('#client_city').select2();
+			$('#client_city').select2({
+					tags: true
+				});
 
 		}
 

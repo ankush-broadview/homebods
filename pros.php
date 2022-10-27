@@ -251,7 +251,9 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.form-select').css('color', 'black');
-			$('#staff_city').select2();
+			$('#staff_city').select2({
+					tags: true
+				});
 			$('#trainer_type').select2({
 				placeholder: "Choose Trainer Type",
 				allowClear: true
@@ -285,7 +287,9 @@
 				options += `<option>${city}</option>`;
 			});
 			$("#staff_city").html(options);
-			$('#staff_city').select2();
+			$('#staff_city').select2({
+					tags: true
+				});
 
 		}
 
